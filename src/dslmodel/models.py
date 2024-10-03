@@ -4,6 +4,7 @@ from contextlib import contextmanager, asynccontextmanager
 from typing import Any, Optional, TypeVar, Union, Type, Dict
 
 import aiofiles
+from pydantic_core import PydanticUndefinedType, PydanticUndefined
 import yaml
 import json
 from pydantic import BaseModel, ValidationError, ConfigDict
@@ -35,15 +36,17 @@ class DSLModel(BaseModel):
         Renders default values that are defined as Jinja2 templates.
         """
         for field_name, field_value in cls.model_fields.items():
-            if field_name in data:
+            if field_name in data or field_value.default is None or field_value.default is PydanticUndefined:
                 continue
-
-            if "{{" in field_value.default:
-                # Render the template if it contains a Jinja2 expression
-                rendered_value = render_native(field_value.default)
-                # Only set the value if not already provided by user input
-                if field_name not in data:
-                    data[field_name] = rendered_value
+            try:
+                if field_value.default and "{{" in field_value.default:
+                    # Render the template if it contains a Jinja2 expression
+                    rendered_value = render_native(field_value.default)
+                    # Only set the value if not already provided by user input
+                    if field_name not in data:
+                        data[field_name] = rendered_value
+            except Exception as e:
+                pass
 
         return data
 
@@ -82,7 +85,6 @@ class DSLModel(BaseModel):
             raise ValueError("Unsupported file format. Use 'yaml' or 'json'.")
 
         return file_path
-
 
     def to_yaml(self, file_path: Optional[str] = None) -> str:
         """

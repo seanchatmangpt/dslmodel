@@ -36,6 +36,9 @@
             <li>
                     <a class="function" href="#fire">fire</a>
             </li>
+            <li>
+                    <a class="function" href="#generate_class">generate_class</a>
+            </li>
     </ul>
 
 
@@ -64,14 +67,51 @@
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">import</span> <span class="nn">typer</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="kn">from</span> <span class="nn">rich</span> <span class="kn">import</span> <span class="nb">print</span>
 </span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="n">app</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Typer</span><span class="p">()</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">dslmodel.generators.gen_dslmodel_class</span> <span class="kn">import</span> <span class="n">generate_and_save_dslmodel</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Chell&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fire portal gun.&quot;&quot;&quot;</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[bold red]Alert![/bold red] </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> fired [green]portal gun[/green] :boom:&quot;</span><span class="p">)</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="n">app</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Typer</span><span class="p">()</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Chell&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fire portal gun.&quot;&quot;&quot;</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[bold red]Alert![/bold red] </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> fired [green]portal gun[/green] :boom:&quot;</span><span class="p">)</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s2">&quot;gen&quot;</span><span class="p">)</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="k">def</span> <span class="nf">generate_class</span><span class="p">(</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;A natural language description of the model(s) to generate.&quot;</span><span class="p">),</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>        <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="s2">&quot;--output-dir&quot;</span><span class="p">,</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>                                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The directory to save the generated class files. Defaults to the current directory.&quot;</span><span class="p">),</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="n">file_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;py&quot;</span><span class="p">,</span> <span class="s2">&quot;--file-format&quot;</span><span class="p">,</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>                                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The file format for saving the generated models. Defaults to &#39;py&#39;.&quot;</span><span class="p">),</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>        <span class="n">config</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;--config&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to a custom configuration file.&quot;</span><span class="p">),</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="p">):</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">    Generate DSLModel-based classes from a natural language prompt.</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">    The generated classes are saved to the specified directory in the chosen format.</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">typer</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generating class from prompt: &#39;</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="kn">from</span> <span class="nn">dslmodel.utils.dspy_tools</span> <span class="kn">import</span> <span class="n">init_lm</span><span class="p">,</span> <span class="n">init_instant</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>    <span class="c1"># init_lm()</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>    <span class="n">init_instant</span><span class="p">()</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>    <span class="c1"># Delegate the core logic to the generate_and_save_dslmodel function</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="n">generate_and_save_dslmodel</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">file_format</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="n">typer</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error generating class: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="k">raise</span> <span class="n">typer</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">typer</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Class generated successfully! Saved in: </span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">app</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -100,14 +140,63 @@
 
     </div>
     <a class="headerlink" href="#fire"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fire-11"><a href="#fire-11"><span class="linenos">11</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-</span><span id="fire-12"><a href="#fire-12"><span class="linenos">12</span></a><span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Chell&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fire-13"><a href="#fire-13"><span class="linenos">13</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fire portal gun.&quot;&quot;&quot;</span>
-</span><span id="fire-14"><a href="#fire-14"><span class="linenos">14</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[bold red]Alert![/bold red] </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> fired [green]portal gun[/green] :boom:&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fire-15"><a href="#fire-15"><span class="linenos">15</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="fire-16"><a href="#fire-16"><span class="linenos">16</span></a><span class="k">def</span> <span class="nf">fire</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Chell&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fire-17"><a href="#fire-17"><span class="linenos">17</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fire portal gun.&quot;&quot;&quot;</span>
+</span><span id="fire-18"><a href="#fire-18"><span class="linenos">18</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[bold red]Alert![/bold red] </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> fired [green]portal gun[/green] :boom:&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Fire portal gun.</p>
+</div>
+
+
+                </section>
+                <section id="generate_class">
+                            <input id="generate_class-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@app.command(&#39;gen&#39;)</div>
+
+        <span class="def">def</span>
+        <span class="name">generate_class</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ArgumentInfo</span> <span class="nb">object</span><span class="o">&gt;</span>,</span><span class="param">	<span class="n">output_dir</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span><span class="o">&gt;</span>,</span><span class="param">	<span class="n">file_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span><span class="o">&gt;</span>,</span><span class="param">	<span class="n">config</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span><span class="o">&gt;</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="generate_class-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#generate_class"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="generate_class-21"><a href="#generate_class-21"><span class="linenos">21</span></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s2">&quot;gen&quot;</span><span class="p">)</span>
+</span><span id="generate_class-22"><a href="#generate_class-22"><span class="linenos">22</span></a><span class="k">def</span> <span class="nf">generate_class</span><span class="p">(</span>
+</span><span id="generate_class-23"><a href="#generate_class-23"><span class="linenos">23</span></a>        <span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;A natural language description of the model(s) to generate.&quot;</span><span class="p">),</span>
+</span><span id="generate_class-24"><a href="#generate_class-24"><span class="linenos">24</span></a>        <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span> <span class="s2">&quot;--output-dir&quot;</span><span class="p">,</span>
+</span><span id="generate_class-25"><a href="#generate_class-25"><span class="linenos">25</span></a>                                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The directory to save the generated class files. Defaults to the current directory.&quot;</span><span class="p">),</span>
+</span><span id="generate_class-26"><a href="#generate_class-26"><span class="linenos">26</span></a>        <span class="n">file_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;py&quot;</span><span class="p">,</span> <span class="s2">&quot;--file-format&quot;</span><span class="p">,</span>
+</span><span id="generate_class-27"><a href="#generate_class-27"><span class="linenos">27</span></a>                                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The file format for saving the generated models. Defaults to &#39;py&#39;.&quot;</span><span class="p">),</span>
+</span><span id="generate_class-28"><a href="#generate_class-28"><span class="linenos">28</span></a>        <span class="n">config</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;--config&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to a custom configuration file.&quot;</span><span class="p">),</span>
+</span><span id="generate_class-29"><a href="#generate_class-29"><span class="linenos">29</span></a><span class="p">):</span>
+</span><span id="generate_class-30"><a href="#generate_class-30"><span class="linenos">30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="generate_class-31"><a href="#generate_class-31"><span class="linenos">31</span></a><span class="sd">    Generate DSLModel-based classes from a natural language prompt.</span>
+</span><span id="generate_class-32"><a href="#generate_class-32"><span class="linenos">32</span></a>
+</span><span id="generate_class-33"><a href="#generate_class-33"><span class="linenos">33</span></a><span class="sd">    The generated classes are saved to the specified directory in the chosen format.</span>
+</span><span id="generate_class-34"><a href="#generate_class-34"><span class="linenos">34</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="generate_class-35"><a href="#generate_class-35"><span class="linenos">35</span></a>    <span class="n">typer</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generating class from prompt: &#39;</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</span><span id="generate_class-36"><a href="#generate_class-36"><span class="linenos">36</span></a>    <span class="kn">from</span> <span class="nn">dslmodel.utils.dspy_tools</span> <span class="kn">import</span> <span class="n">init_lm</span><span class="p">,</span> <span class="n">init_instant</span>
+</span><span id="generate_class-37"><a href="#generate_class-37"><span class="linenos">37</span></a>    <span class="c1"># init_lm()</span>
+</span><span id="generate_class-38"><a href="#generate_class-38"><span class="linenos">38</span></a>    <span class="n">init_instant</span><span class="p">()</span>
+</span><span id="generate_class-39"><a href="#generate_class-39"><span class="linenos">39</span></a>
+</span><span id="generate_class-40"><a href="#generate_class-40"><span class="linenos">40</span></a>    <span class="c1"># Delegate the core logic to the generate_and_save_dslmodel function</span>
+</span><span id="generate_class-41"><a href="#generate_class-41"><span class="linenos">41</span></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="generate_class-42"><a href="#generate_class-42"><span class="linenos">42</span></a>        <span class="n">generate_and_save_dslmodel</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">file_format</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+</span><span id="generate_class-43"><a href="#generate_class-43"><span class="linenos">43</span></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="generate_class-44"><a href="#generate_class-44"><span class="linenos">44</span></a>        <span class="n">typer</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error generating class: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="generate_class-45"><a href="#generate_class-45"><span class="linenos">45</span></a>        <span class="k">raise</span> <span class="n">typer</span><span class="o">.</span><span class="n">Exit</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="generate_class-46"><a href="#generate_class-46"><span class="linenos">46</span></a>
+</span><span id="generate_class-47"><a href="#generate_class-47"><span class="linenos">47</span></a>    <span class="n">typer</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Class generated successfully! Saved in: </span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Generate DSLModel-based classes from a natural language prompt.</p>
+
+<p>The generated classes are saved to the specified directory in the chosen format.</p>
 </div>
 
 

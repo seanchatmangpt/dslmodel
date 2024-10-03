@@ -5,6 +5,7 @@ from pydantic import BaseModel, ValidationError
 
 from dspy import InputField, OutputField, Signature
 
+from dslmodel.template import render
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
@@ -176,6 +177,8 @@ class GenPydanticInstance(dspy.Module):
     def forward(self, prompt: str) -> T:
         """The main function that handles generation, validation, correction, and diagnosis."""
         # Step 1: Generate initial output
+        prompt = render(prompt)
+
         output = self.generate_output(prompt)
 
         # Step 2: Attempt to validate the generated output

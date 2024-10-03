@@ -577,6 +577,23 @@ traitlets = ">=4"
 test = ["pytest"]
 
 [[package]]
+name = "confz"
+version = "2.0.1"
+description = "ConfZ is a configuration management library for Python based on pydantic."
+optional = false
+python-versions = ">=3.7.2,<4.0.0"
+files = [
+    {file = "confz-2.0.1-py3-none-any.whl", hash = "sha256:271dfbc7343dafda414f731c4931ba91bc62a448e4a3b2fdf2fb7334ffac1d36"},
+    {file = "confz-2.0.1.tar.gz", hash = "sha256:c2d7af28224d8e70c72f66c4ea7ca0069abdc73dda11732d74f2be7dbe8641a0"},
+]
+
+[package.dependencies]
+pydantic = ">=1.9.0,<3.0.0"
+python-dotenv = ">=0.19.2,<2.0.0"
+PyYAML = ">=5.4.1,<7.0.0"
+toml = ">=0.10.2,<0.11.0"
+
+[[package]]
 name = "cookiecutter"
 version = "2.6.0"
 description = "A command-line utility that creates projects from project templates, e.g. creating a Python package project from a Python package project template."
@@ -1995,13 +2012,13 @@ files = [
 
 [[package]]
 name = "litellm"
-version = "1.48.9"
+version = "1.48.10"
 description = "Library to easily interface with LLM API providers"
 optional = false
 python-versions = "!=2.7.*,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,!=3.7.*,>=3.8"
 files = [
-    {file = "litellm-1.48.9-py3-none-any.whl", hash = "sha256:9608f510e82c27b15bab7bcfab5e1308055f0c457e7881ccfff91c189bf2c055"},
-    {file = "litellm-1.48.9.tar.gz", hash = "sha256:02dd2f66fab24f388692694401bbabd34de5a62a16d064b3f15726a550a65cd3"},
+    {file = "litellm-1.48.10-py3-none-any.whl", hash = "sha256:752efd59747a0895f4695d025c66f0b2258d80a61175f7cfa41dbe4894ef95e1"},
+    {file = "litellm-1.48.10.tar.gz", hash = "sha256:0a4ff75da78e66baeae0658ad8de498298310a5efda74c3d840ce2b013e8401d"},
 ]
 
 [package.dependencies]
@@ -4144,6 +4161,17 @@ docs = ["setuptools-rust", "sphinx", "sphinx-rtd-theme"]
 testing = ["black (==22.3)", "datasets", "numpy", "pytest", "requests", "ruff"]
 
 [[package]]
+name = "toml"
+version = "0.10.2"
+description = "Python Library for Tom's Obvious, Minimal Language"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+files = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
+
+[[package]]
 name = "tornado"
 version = "6.4.1"
 description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
@@ -4217,13 +4245,13 @@ typing-extensions = ">=3.7.4.3"
 
 [[package]]
 name = "types-python-dateutil"
-version = "2.9.0.20240906"
+version = "2.9.0.20241003"
 description = "Typing stubs for python-dateutil"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "types-python-dateutil-2.9.0.20240906.tar.gz", hash = "sha256:9706c3b68284c25adffc47319ecc7947e5bb86b3773f843c73906fd598bc176e"},
-    {file = "types_python_dateutil-2.9.0.20240906-py3-none-any.whl", hash = "sha256:27c8cc2d058ccb14946eebcaaa503088f4f6dbc4fb6093d3d456a49aef2753f6"},
+    {file = "types-python-dateutil-2.9.0.20241003.tar.gz", hash = "sha256:58cb85449b2a56d6684e41aeefb4c4280631246a0da1a719bdbe6f3fb0317446"},
+    {file = "types_python_dateutil-2.9.0.20241003-py3-none-any.whl", hash = "sha256:250e1d8e80e7bbc3a6c99b907762711d1a1cdd00e978ad39cb5940f6f0a87f3d"},
 ]
 
 [[package]]
@@ -4968,4 +4996,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.12,<4.0"
-content-hash = "310c42c46af137adaac6fa2d4574331eaa0e2fc8173f60ecfa6dad754c812dc7"
+content-hash = "d2d21d95975a62510482de921ef1fd395a83e530d64a5b758b46ff1053fa6677"

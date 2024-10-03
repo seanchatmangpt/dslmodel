@@ -4,14 +4,14 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]  # https://python-poetry.org/docs/pyproject/
 name = "dslmodel"
-version = "0.0.0"
-description = "TODO"
+version = "2024.10.3.3"
+description = "Pydantic + DSPy instances from prompts and Jinja."
 authors = ["Sean Chatman <info@chatmangpt.com>"]
 readme = "README.md"
-repository = "https://github.com/to/do"
+repository = "https://github.com/seanchatmangpt/dslmodel"
 
 [tool.poetry.scripts]  # https://python-poetry.org/docs/pyproject/#scripts
-dslmodel = "dslmodel.cli:app"
+dsl = "dslmodel.cli:app"
 
 [tool.poetry.dependencies]  # https://python-poetry.org/docs/dependency-specification/
 coloredlogs = ">=15.0.1"
@@ -33,6 +33,7 @@ ijson = "^3.3.0"
 factory-boy = "^3.3.1"
 inject = "^5.2.1"
 pytest-xdist = "^3.6.1"
+confz = "^2.0.1"
 
 [tool.poetry.group.test.dependencies]  # https://python-poetry.org/docs/master/managing-dependencies/
 coverage = { extras = ["toml"], version = ">=7.4.4" }
@@ -99,6 +100,8 @@ ban-relative-imports = "all"
 convention = "numpy"
 
 [tool.poe.tasks]  # https://github.com/nat-n/poethepoet
+pub = "poetry publish --build"
+
 
   [tool.poe.tasks.api]
   help = "Serve the REST API"

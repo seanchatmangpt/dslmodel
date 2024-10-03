@@ -6,33 +6,10 @@ from enum import Enum
 from dslmodel import DSLModel
 
 
-class StepKeyword(str, Enum):
-    """Enumeration of primary step keywords in Gherkin."""
-    GIVEN = "Given"
-    WHEN = "When"
-    THEN = "Then"
-    AND = "And"
-    BUT = "But"
-    STAR = "*"
+from typing import List, Optional, Union, Literal
+from pydantic import Field
 
-
-class PrimaryKeyword(str, Enum):
-    """Enumeration of primary keywords in Gherkin."""
-    FEATURE = "Feature"
-    RULE = "Rule"
-    SCENARIO = "Scenario"
-    SCENARIO_OUTLINE = "Scenario Outline"
-    BACKGROUND = "Background"
-    EXAMPLES = "Examples"
-
-
-class SecondaryKeyword(str, Enum):
-    """Enumeration of secondary keywords in Gherkin."""
-    DOC_STRING = '"""'  # or '```'
-    DATA_TABLE = '|'
-    TAG = '@'
-    COMMENT = '#'
-
+# Replacing Enums with simple strings in the fields
 
 class DocString(DSLModel):
     """
@@ -72,7 +49,7 @@ class Step(DSLModel):
     """
     keyword: str = Field(
         ...,
-        description='The keyword that begins the step (e.g., Given, When, Then).'
+        description='The keyword that begins the step (e.g., "Given", "When", "Then").'
     )
     text: str = Field(
         ...,
@@ -82,9 +59,6 @@ class Step(DSLModel):
         None,
         description='Optional argument for the step, either a DocString or a DataTable.'
     )
-
-
-
 
 
 class Comment(DSLModel):
@@ -101,13 +75,13 @@ class Background(DSLModel):
     """
     Represents a Background section containing steps common to all scenarios in a feature or rule.
     """
-    keyword: Literal['Background'] = Field(
-        ...,
+    keyword: str = Field(
+        "Background",
         description='The keyword indicating this section is a Background.'
     )
     steps: List[Step] = Field(
         ...,
-        description='List of Given steps that set up the context for all scenarios.'
+        description='List of steps that set up the context for all scenarios.'
     )
 
 
@@ -115,8 +89,8 @@ class Example(DSLModel):
     """
     Represents an Examples section providing data for a Scenario Outline.
     """
-    keyword: Literal['Examples', 'Scenarios'] = Field(
-        ...,
+    keyword: str = Field(
+        "Examples",
         description='The keyword indicating this section provides examples for a Scenario Outline.'
     )
     name: Optional[str] = Field(
@@ -137,9 +111,9 @@ class Scenario(DSLModel):
     """
     Represents a Scenario, which is a single executable test case.
     """
-    keyword: Literal['Scenario', 'Example'] = Field(
-        ...,
-        description='The keyword indicating this is a Scenario or Example.'
+    keyword: str = Field(
+        "Scenario",
+        description='The keyword indicating this is a Scenario.'
     )
     name: str = Field(
         ...,
@@ -150,7 +124,7 @@ class Scenario(DSLModel):
         description='Optional description providing additional context for the scenario.'
     )
     tags: List[str] = Field(
-        [],
+        default=[],
         description='Optional list of tags categorizing the scenario.'
     )
     steps: List[Step] = Field(
@@ -163,9 +137,9 @@ class ScenarioOutline(DSLModel):
     """
     Represents a Scenario Outline, which allows parameterization of scenarios using examples.
     """
-    keyword: Literal['Scenario Outline', 'Scenario Template'] = Field(
-        ...,
-        description='The keyword indicating this is a Scenario Outline or Template.'
+    keyword: str = Field(
+        "Scenario Outline",
+        description='The keyword indicating this is a Scenario Outline.'
     )
     name: str = Field(
         ...,
@@ -176,7 +150,7 @@ class ScenarioOutline(DSLModel):
         description='Optional description providing additional context for the scenario outline.'
     )
     tags: Optional[List[str]] = Field(
-        None,
+        default=None,
         description='Optional list of tags categorizing the scenario outline.'
     )
     steps: List[Step] = Field(
@@ -193,8 +167,8 @@ class Rule(DSLModel):
     """
     Represents a Rule, which groups related scenarios under a business rule.
     """
-    keyword: Literal['Rule'] = Field(
-        ...,
+    keyword: str = Field(
+        "Rule",
         description='The keyword indicating this section is a Rule.'
     )
     name: str = Field(
@@ -206,7 +180,7 @@ class Rule(DSLModel):
         description='Optional description providing additional context for the rule.'
     )
     tags: Optional[List[str]] = Field(
-        None,
+        default=None,
         description='Optional list of tags categorizing the rule.'
     )
     background: Optional[Background] = Field(
@@ -223,8 +197,8 @@ class Feature(DSLModel):
     """
     Represents a Feature, which is the root element of a Gherkin document.
     """
-    keyword: Literal['Feature'] = Field(
-        ...,
+    keyword: str = Field(
+        "Feature",
         description='The keyword indicating this section is a Feature.'
     )
     name: str = Field(
@@ -236,27 +210,23 @@ class Feature(DSLModel):
         description='Optional description providing additional context for the feature.'
     )
     tags: List[str] = Field(
-        [],
+        default=[],
         description='Optional list of tags categorizing the feature.'
     )
     background: Optional[Background] = Field(
         None,
         description='Optional Background section containing common steps for all scenarios in the feature.'
     )
-    # children: List[Union[Rule, Scenario, ScenarioOutline]] = Field(
-    #     ...,
-    #     description='List of rules, scenarios, or scenario outlines that belong to this feature.'
-    # )
     rules: List[Rule] = Field(
-        [],
+        default=[],
         description='List of rules that belong to this feature.'
     )
     scenarios: List[Scenario] = Field(
-        [],
+        default=[],
         description='List of scenarios that belong to this feature.'
     )
     scenario_outlines: List[ScenarioOutline] = Field(
-        [],
+        default=[],
         description='List of scenario outlines that belong to this feature.'
     )
 
@@ -270,20 +240,20 @@ class GherkinDocument(DSLModel):
         description='The Feature defined in the Gherkin document.'
     )
     comments: Optional[List[Comment]] = Field(
-        None,
+        default=None,
         description='Optional list of comments present in the Gherkin document.'
     )
-
 
 def main():
     """Main function"""
     from dslmodel.utils.dspy_tools import init_text, init_instant
     # from dslmodel.utils.dspy_tools import init_lm
     # init_lm()
-    init_text()
-    # init_instant()
+    # init_text()
+    init_instant()
 
-    scenario = Scenario.from_prompt("I want to test the login feature with 4 steps. Make sure all fields have example values and tags")
+    scenario = Scenario.from_prompt("I want to test the {{ fake_bs() }} feature with 4 steps. Make sure all fields have example values and tags")
+    # scenario = Scenario.model_validate({"keyword": "Scenario", "name": "Login Feature Test", "description": "Test the login feature with different scenarios", "tags": ["login", "feature"], "steps": [{"keyword": "Given", "text": "I am on the login page", "argument": {"__class__": "DocString", "content_type": "text/plain", "content": "This is a docstring argument"}}, {"keyword": "When", "text": "I enter my username and password", "argument": {"__class__": "DataTable", "headers": ["username", "password"], "rows": [["user1", "pass1"], ["user2", "pass2"]]}}, {"keyword": "Then", "text": "I should see the dashboard", "argument": None}, {"keyword": "And", "text": "I should see my profile information", "argument": None}]})
     print(scenario.to_yaml())
 
 

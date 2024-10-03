@@ -1,8 +1,8 @@
-[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/to/do) [![Open in GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://github.com/codespaces/new/to/do)
-
 # dslmodel
 
-TODO
+`dslmodel` is a framework for declarative model creation using templates and concurrent execution, built on top of the `pydantic` and `dspy` library. It provides tools to generate models with dynamic fields and execute tasks concurrently.
+
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/to/do) [![Open in GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://github.com/codespaces/new/to/do)
 
 ## Installing
 
@@ -17,7 +17,87 @@ pip install dslmodel
 To view the CLI help information, run:
 
 ```sh
-dslmodel --help
+dsl --help
+```
+
+## Example Usage
+
+### Defining Models
+
+You can define models with dynamic fields using Jinja templates, and then instantiate these models using the provided tools.
+
+```python
+from typing import List
+from pydantic import Field
+from dslmodel import DSLModel
+
+class Participant(DSLModel):
+    """Represents a participant in a meeting."""
+    name: str = Field("{{ fake_name() }}", description="Name of the participant.")
+    role: str = Field("{{ fake_job() }}", description="Role of the participant.")
+
+class Meeting(DSLModel):
+    """Represents a meeting, its participants, and other details."""
+    name: str = Field(..., description="Name of the meeting.")
+    participants: List[Participant] = Field(..., description="List of participants.")
+```
+
+### Generating Data from a Template
+
+Here's how you can use a Jinja template to dynamically generate meeting details, including participants with fake data:
+
+```python
+meeting_template = """
+Fortune 500 Meeting about {{ fake_bs() }}
+Participants: 
+{% for participant in participants %}
+  - {{ participant.name }} ({{ participant.role }})
+{% endfor %}
+"""
+
+# Create participants
+participants = [Participant() for _ in range(5)]
+
+# Generate the meeting instance
+meeting_instance = Meeting.from_prompt(meeting_template, participants=participants)
+
+# Output the meeting in YAML format
+print(meeting_instance.to_yaml())
+```
+
+### Concurrent Execution with `run_dsls`
+
+You can generate multiple participants concurrently using the `run_dsls` function:
+
+```python
+from dslmodel.utils.model_tools import run_dsls
+
+def create_participants_concurrently():
+    tasks = [(Participant, "{{ fake_name() }} - {{ fake_job() }}") for _ in range(5)]
+    
+    # Run the tasks concurrently
+    results = run_dsls(tasks, max_workers=5)
+
+    for i, result in enumerate(results):
+        print(f"Participant {i+1}: {result}")
+
+# Create participants concurrently
+create_participants_concurrently()
+```
+
+### Saving and Loading Models
+
+You can save your generated model instances to a file and reload them as needed:
+
+```python
+# Save the meeting instance to a YAML file
+meeting_instance.save(file_path="meeting_output.yaml")
+
+# Load the meeting instance from the saved YAML file
+loaded_meeting = Meeting.from_yaml("meeting_output.yaml")
+
+# Display loaded content
+print(loaded_meeting.to_yaml())
 ```
 
 ## Contributing

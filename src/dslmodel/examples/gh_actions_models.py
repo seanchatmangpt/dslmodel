@@ -6,6 +6,7 @@ import yaml
 
 from dslmodel import DSLModel
 
+
 class Trigger(DSLModel):
     """
     Represents the trigger section of a GitHub Actions workflow.

@@ -1,21 +1,4 @@
-"""
-Module for leveraging DSPy Typed Predictors with Pydantic models to enforce input-output type constraints.
-This module provides utilities for initializing and optimizing language models, generating context-based predictions,
-and running typed prediction tasks concurrently using custom input-output models.
-
-The core functionality revolves around TypedPredictors and ChainOfThought Predictors, enabling users to enforce
-type safety on the inputs and outputs of prediction pipelines.
-
-Additionally, this module supports concurrent execution of multiple typed prediction tasks, optimized with a
-thread pool, and includes dynamic input model generation based on input data structures.
-"""
-import logging
-from concurrent.futures import ThreadPoolExecutor
-from concurrent.futures import as_completed
-
-from typing import TypeVar, Type, Generic, List, Optional
-
-from pydantic import BaseModel
+from typing import Optional
 
 import dspy
 
@@ -77,13 +60,3 @@ def init_versatile():
 def init_text():
     """Initialize the text preview version of the model."""
     return init_lm("groq/llama-3.2-90b-text-preview", model_type="chat", max_tokens=8000)
-
-
-def main():
-    """Main function"""
-    from sungen.utils.dspy_tools import init_dspy
-    init_dspy()
-
-
-if __name__ == '__main__':
-    main()

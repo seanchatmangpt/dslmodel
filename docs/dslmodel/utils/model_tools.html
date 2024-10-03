@@ -214,9 +214,6 @@ between Pydantic models and YAML and JSON formats. It facilitates saving model i
 to files and loading data from files into model objects.
 Includes support for asynchronous file operations, versioning, enhanced context managers,
 automatic documentation generation, and enhanced error handling.</p>
-
-<p>Attributes:
-    version (str): Version number of the model instance.</p>
 </div>
 
 
@@ -233,8 +230,8 @@ automatic documentation generation, and enhanced error handling.</p>
                             </div>
                             <div id="ModelA.model_config" class="classattr">
                                 <div class="attr variable">
-            <span class="name">model_config</span><span class="annotation">: ClassVar[pydantic.config.ConfigDict]</span>        =
-<span class="default_value">{&#39;arbitrary_types_allowed&#39;: True, &#39;populate_by_name&#39;: True, &#39;validate_assignment&#39;: True}</span>
+            <span class="name">model_config</span>        =
+<span class="default_value">{&#39;arbitrary_types_allowed&#39;: True, &#39;validate_assignment&#39;: True, &#39;populate_by_name&#39;: True}</span>
 
         
     </div>
@@ -248,8 +245,7 @@ automatic documentation generation, and enhanced error handling.</p>
                             <div id="ModelA.model_fields" class="classattr">
                                 <div class="attr variable">
             <span class="name">model_fields</span><span class="annotation">: ClassVar[Dict[str, pydantic.fields.FieldInfo]]</span>        =
-<input id="ModelA.model_fields-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="ModelA.model_fields-view-value"></label><span class="default_value">{&#39;version&#39;: FieldInfo(annotation=str, required=False, default=&#39;1.0.0&#39;), &#39;user_story&#39;: FieldInfo(annotation=str, required=True)}</span>
+<span class="default_value">{&#39;user_story&#39;: FieldInfo(annotation=str, required=True)}</span>
 
         
     </div>
@@ -280,9 +276,20 @@ mapping of field names to [<code>FieldInfo</code>][pydantic.fields.FieldInfo] ob
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
-                                    <div><dt>pydantic.main.BaseModel</dt>
-                                <dd id="ModelA.__init__" class="function">BaseModel</dd>
-                <dd id="ModelA.model_extra" class="variable">model_extra</dd>
+                                    <div><dt><a href="../models.html#DSLModel">dslmodel.models.DSLModel</a></dt>
+                                <dd id="ModelA.__init__" class="function"><a href="../models.html#DSLModel.__init__">DSLModel</a></dd>
+                <dd id="ModelA.render_defaults" class="function"><a href="../models.html#DSLModel.render_defaults">render_defaults</a></dd>
+                <dd id="ModelA.generate_filename" class="function"><a href="../models.html#DSLModel.generate_filename">generate_filename</a></dd>
+                <dd id="ModelA.save" class="function"><a href="../models.html#DSLModel.save">save</a></dd>
+                <dd id="ModelA.to_yaml" class="function"><a href="../models.html#DSLModel.to_yaml">to_yaml</a></dd>
+                <dd id="ModelA.from_yaml" class="function"><a href="../models.html#DSLModel.from_yaml">from_yaml</a></dd>
+                <dd id="ModelA.to_json" class="function"><a href="../models.html#DSLModel.to_json">to_json</a></dd>
+                <dd id="ModelA.from_json" class="function"><a href="../models.html#DSLModel.from_json">from_json</a></dd>
+                <dd id="ModelA.from_prompt" class="function"><a href="../models.html#DSLModel.from_prompt">from_prompt</a></dd>
+
+            </div>
+            <div><dt>pydantic.main.BaseModel</dt>
+                                <dd id="ModelA.model_extra" class="variable">model_extra</dd>
                 <dd id="ModelA.model_fields_set" class="variable">model_fields_set</dd>
                 <dd id="ModelA.model_construct" class="function">model_construct</dd>
                 <dd id="ModelA.model_copy" class="function">model_copy</dd>
@@ -307,26 +314,6 @@ mapping of field names to [<code>FieldInfo</code>][pydantic.fields.FieldInfo] ob
                 <dd id="ModelA.schema_json" class="function">schema_json</dd>
                 <dd id="ModelA.validate" class="function">validate</dd>
                 <dd id="ModelA.update_forward_refs" class="function">update_forward_refs</dd>
-
-            </div>
-            <div><dt><a href="../models.html#DSLModel">dslmodel.models.DSLModel</a></dt>
-                                <dd id="ModelA.version" class="variable"><a href="../models.html#DSLModel.version">version</a></dd>
-                <dd id="ModelA.Config" class="class"><a href="../models.html#DSLModel.Config">Config</a></dd>
-                <dd id="ModelA.generate_filename" class="function"><a href="../models.html#DSLModel.generate_filename">generate_filename</a></dd>
-                <dd id="ModelA.save" class="function"><a href="../models.html#DSLModel.save">save</a></dd>
-                <dd id="ModelA.asave" class="function"><a href="../models.html#DSLModel.asave">asave</a></dd>
-                <dd id="ModelA.upgrade" class="function"><a href="../models.html#DSLModel.upgrade">upgrade</a></dd>
-                <dd id="ModelA.to_yaml" class="function"><a href="../models.html#DSLModel.to_yaml">to_yaml</a></dd>
-                <dd id="ModelA.from_yaml" class="function"><a href="../models.html#DSLModel.from_yaml">from_yaml</a></dd>
-                <dd id="ModelA.ato_yaml" class="function"><a href="../models.html#DSLModel.ato_yaml">ato_yaml</a></dd>
-                <dd id="ModelA.afrom_yaml" class="function"><a href="../models.html#DSLModel.afrom_yaml">afrom_yaml</a></dd>
-                <dd id="ModelA.to_json" class="function"><a href="../models.html#DSLModel.to_json">to_json</a></dd>
-                <dd id="ModelA.from_json" class="function"><a href="../models.html#DSLModel.from_json">from_json</a></dd>
-                <dd id="ModelA.io_context" class="function"><a href="../models.html#DSLModel.io_context">io_context</a></dd>
-                <dd id="ModelA.aio_context" class="function"><a href="../models.html#DSLModel.aio_context">aio_context</a></dd>
-                <dd id="ModelA.ato_json" class="function"><a href="../models.html#DSLModel.ato_json">ato_json</a></dd>
-                <dd id="ModelA.afrom_json" class="function"><a href="../models.html#DSLModel.afrom_json">afrom_json</a></dd>
-                <dd id="ModelA.from_prompt" class="function"><a href="../models.html#DSLModel.from_prompt">from_prompt</a></dd>
 
             </div>
                                 </dl>

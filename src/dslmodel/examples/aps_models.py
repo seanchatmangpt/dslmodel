@@ -119,26 +119,29 @@ class Meeting(DSLModel):
     chairperson: Participant = Field(..., description="Chairperson of the meeting.")
     secretary: Participant = Field(..., description="Secretary responsible for taking minutes.")
     participants: List[Participant] = Field(..., description="List of all participants in the meeting.")
-    agenda: List[str] = Field(..., description="Agenda items for the meeting.", min_length=3)
-    minutes: List[str] = Field(..., description="Minutes of the meeting. Time, Description", min_length=3)
-    rules_of_order: List[str] = Field(..., description="Rules governing the meeting.", min_length=3)
+    agenda: List[str] = Field(..., description="Agenda items for the meeting.", min_length=10)
+    minutes: List[str] = Field(..., description="Minutes of the meeting. Time, Description", min_length=10)
+    rules_of_order: List[str] = Field(..., description="Rules governing the meeting.", min_length=10)
 
 
 meeting_template = """Fortune 10 Board Meeting about {{ fake_bs() }} 
-with {% for participant in participants %}{{ participant }}{% if not loop.last %}, {% endif %}{% endfor %}."""
+with {% for participant in participants %}{{ participant }}{% if not loop.last %}, {% endif %}{% endfor %}.
+
+MAKE SURE ALL FIELDS ARE VERBOSE WITH RELEVANT EXAMPLE TEXT
+"""
 
 
 def main():
     """Main function"""
 
-    participants = [Participant() for _ in range(5)]
+    participants = [Participant() for _ in range(20)]
 
     # Output the generated participants
     for i, participant in enumerate(participants):
         print(f"Participant {i+1}: {participant}")
 
     instance = Meeting.from_prompt(meeting_template, participants=participants)
-    print(instance)
+    print(instance.to_yaml())
 
 
 def run_participants_concurrently():
@@ -161,8 +164,8 @@ def run_participants_concurrently():
 
 if __name__ == '__main__':
     from dslmodel.utils.dspy_tools import init_text, init_instant
+    init_text()
     # init_instant()
-    init_instant()
     # run_participants_concurrently()
     main()
 
