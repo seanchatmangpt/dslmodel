@@ -1,0 +1,29 @@
+{
+  "template": "https://github.com/radix-ai/poetry-cookiecutter",
+  "commit": "b7f2fb0f123aae0a01d2ab015db31f52d2d8cc21",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_type": "app",
+      "project_name": "dslmodel",
+      "project_description": "TODO",
+      "project_url": "https://github.com/to/do",
+      "author_name": "Sean Chatman",
+      "author_email": "info@chatmangpt.com",
+      "python_version": "3.12",
+      "development_environment": "simple",
+      "with_conventional_commits": "0",
+      "with_fastapi_api": "1",
+      "with_typer_cli": "1",
+      "continuous_integration": "GitHub",
+      "private_package_repository_name": "",
+      "private_package_repository_url": "",
+      "__docker_image": "python:$PYTHON_VERSION-slim",
+      "__docstring_style": "NumPy",
+      "__project_name_kebab_case": "dslmodel",
+      "__project_name_snake_case": "dslmodel",
+      "_template": "https://github.com/radix-ai/poetry-cookiecutter"
+    }
+  },
+  "directory": null
+}
