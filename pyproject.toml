@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]  # https://python-poetry.org/docs/pyproject/
 name = "dslmodel"
-version = "2024.10.3.3"
+version = "2024.10.3.4"
 description = "Pydantic + DSPy instances from prompts and Jinja."
 authors = ["Sean Chatman <info@chatmangpt.com>"]
 readme = "README.md"
@@ -35,6 +35,8 @@ inject = "^5.2.1"
 pytest-xdist = "^3.6.1"
 confz = "^2.0.1"
 jupyter = "^1.1.1"
+wcmatch = "^10.0"
+pandasql = "^0.7.3"
 
 [tool.poetry.group.test.dependencies]  # https://python-poetry.org/docs/master/managing-dependencies/
 coverage = { extras = ["toml"], version = ">=7.4.4" }

@@ -18,6 +18,19 @@ class DSLModel(BaseModel, FileHandlerDSLMixin, JinjaDSLMixin, DSPyDSLMixin, ToFr
         data = self.render_defaults(data)
         super().__init__(**data)
 
+    @classmethod
+    def field_names(cls) -> list[str]:
+        """
+        Returns a list of field names defined in the DSLModel.
+
+        Returns:
+        - A list of strings representing the names of the fields.
+        """
+        names = list(cls.model_fields.keys())
+        # Remove the trailing underscore from each field name in the names list
+        names = [name[:-1] if name.endswith('_') else name for name in names]
+        return names
+
     model_config = ConfigDict(
         arbitrary_types_allowed=True,
         validate_assignment=True,
