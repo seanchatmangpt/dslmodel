@@ -3,7 +3,6 @@ from typing import Any, Set, get_args, get_origin, List, Union, Literal, Optiona
 from enum import Enum
 
 
-
 def collect_class_sources(cls: Any, collected_sources: Set[str]) -> None:
     """
     Recursively collect source code for the given class and all related classes
@@ -18,7 +17,8 @@ def collect_class_sources(cls: Any, collected_sources: Set[str]) -> None:
         source_code = inspect.getsource(cls)
         collected_sources.add(source_code)  # Add the source code as a string, not the class object
     except (TypeError, OSError) as e:
-        print(f"Unable to retrieve source for {cls.__name__}: {str(e)}")
+        source_code = str(cls.schema())
+        collected_sources.add(source_code)  # Add the source code as a string, not the class object
 
     # Now process the fields of the class
     if hasattr(cls, 'model_fields'):  # Pydantic v2
@@ -68,6 +68,7 @@ def handle_complex_type(field_type: Any, collected_sources: Set[str]) -> None:
         elif issubclass(field_type, Enum):
             collect_enum_sources(field_type, collected_sources)
 
+
 def collect_enum_sources(enum_cls: Enum, collected_sources: Set[str]) -> None:
     """
     Collects the source code for an Enum class.
@@ -99,11 +100,11 @@ def collect_all_sources_as_string(cls: Any) -> str:
 
 def main():
     """Main function"""
-    from dslmodel.utils.dspy_tools import init_lm
-    init_lm()
+    # from dslmodel.utils.dspy_tools import init_lm
+    # init_lm()
 
     # Now, let's collect the sources from the GherkinDocument class:
-    # all_sources_string = collect_all_sources_as_string(GherkinDocument)
+    # all_sources_string = collect_all_sources_as_string(create_dynamic_dslmodel_class())
 
     # Print the result
     # print(all_sources_string)

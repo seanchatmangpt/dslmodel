@@ -1,6 +1,7 @@
 # """dslmodel."""
 import warnings
 from .models import DSLModel
+from .utils.dspy_tools import init_lm, init_text, init_instant
 
 #
 # # Ignore all DeprecationWarnings
