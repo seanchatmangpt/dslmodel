@@ -3,6 +3,7 @@ from pathlib import Path
 
 import dspy
 import pandas as pd
+# import modin.pandas as pd
 import os
 
 from pandasql import sqldf

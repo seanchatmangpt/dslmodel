@@ -164,10 +164,10 @@ def run_participants_concurrently():
 
 if __name__ == '__main__':
     from dslmodel.utils.dspy_tools import init_text, init_instant
-    init_text()
-    # init_instant()
-    # run_participants_concurrently()
-    main()
+    # init_text()
+    init_instant()
+    run_participants_concurrently()
+    # main()
 
 # if __name__ == '__main__':
 #     main()

@@ -9,6 +9,7 @@ class Person(DSLModel):
     id_: int = Field(alias="id")
     name: str
     age: int
+    friends_ids: list[int]
 
 
 class PandasSQLModel(DSLModel):

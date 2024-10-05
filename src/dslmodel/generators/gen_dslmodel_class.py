@@ -90,7 +90,7 @@ class DSLModelClassTemplateSpecificationModel(DSLModel):
     # )
     #
 
-class_template_str = '''from pydantic import Field, validator, root_validator, EmailStr, UrlStr
+class_template_str = '''from pydantic import Field, validator, root_validator, EmailStr
 from typing import List, Optional
 from datetime import datetime
 from dslmodel import DSLModel
