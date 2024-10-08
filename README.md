@@ -30,6 +30,16 @@ You can define models with dynamic fields using Jinja templates, and then instan
 from typing import List
 from pydantic import Field
 from dslmodel import DSLModel
+import dspy
+from dotenv import load_dotenv
+import yaml
+
+# .env should contains OPENAI_API_KEY 
+load_dotenv()
+
+
+gpt_lm = dspy.LM('openai/gpt-4o-mini') 
+dspy.configure(lm=gpt_lm)
 
 class Participant(DSLModel):
     """Represents a participant in a meeting."""
@@ -94,7 +104,11 @@ You can save your generated model instances to a file and reload them as needed:
 meeting_instance.save(file_path="meeting_output.yaml")
 
 # Load the meeting instance from the saved YAML file
-loaded_meeting = Meeting.from_yaml("meeting_output.yaml")
+with open("meeting_output.yaml", 'r') as file:
+    yaml_content = file.read()
+
+# Use the mixin's from_yaml method with the content
+loaded_meeting = Meeting.from_yaml(yaml_content)
 
 # Display loaded content
 print(loaded_meeting.to_yaml())
