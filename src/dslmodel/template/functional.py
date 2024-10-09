@@ -4,8 +4,8 @@ from typing import Any
 
 from jinja2 import FileSystemLoader
 
-from dslmodel.template.environment import CustomEnvironment
-from dslmodel.template.environment import CustomNativeEnvironment
+from dslmodel.template.environments import CustomEnvironment
+from dslmodel.template.environments import CustomNativeEnvironment
 
 
 def render(tmpl_str_or_path: str | Path, to: str = "", **kwargs) -> str:

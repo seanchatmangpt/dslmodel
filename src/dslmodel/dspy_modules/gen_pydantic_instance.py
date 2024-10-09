@@ -31,7 +31,7 @@ class PromptToPydanticInstanceSignature(Signature):
     )
     root_model_kwargs_dict = OutputField(
         prefix="```python\nkwargs_dict: dict = ",
-        desc="Generate a Python dictionary as a string with minimized whitespace that only contains json valid values.",
+        desc="Generate a Python dictionary as a string",
     )
 
 
@@ -50,7 +50,7 @@ class PromptToPydanticInstanceErrorSignature(Signature):
     how_to_fix = OutputField(desc="How to fix the kwargs generation")
     root_model_kwargs_dict = OutputField(
         prefix="kwargs_dict = ",
-        desc="Generate a Python dictionary as a string with minimized whitespace that only contains json valid values.",
+        desc="Generate a Python dictionary as a string with minimized whitespace that only contains valid values.",
     )
 
 

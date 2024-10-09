@@ -85,7 +85,7 @@ class ToFromDSLMixin:
         except Exception as e:
             raise IOError(f"Failed to serialize model to YAML: {e}")
 
-    def to_json(self) -> str:
+    def to_json(self, indent: int | None = None) -> str:
         """
         Serializes the model instance into a JSON string.
 
@@ -93,7 +93,7 @@ class ToFromDSLMixin:
         :raises IOError: If serialization to JSON fails.
         """
         try:
-            return self.model_dump_json()
+            return self.model_dump_json(indent=indent)
         except Exception as e:
             raise IOError(f"Failed to serialize model to JSON: {e}")
 

@@ -13,7 +13,7 @@ class FileHandlerDSLMixin:
         """
         Generates a safe filename based on the model's content.
 
-        :param extension: The file extension (e.g., 'yaml', 'json', 'toml').
+        :param extension: The file extensions (e.g., 'yaml', 'json', 'toml').
         :param add_timestamp: Whether to append a timestamp to the filename.
         :return: The generated filename.
         """

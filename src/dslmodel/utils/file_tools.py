@@ -157,11 +157,11 @@ async def write(
         time_stamp=False,
         path="",
 ):
-    # if extension == "yaml" or extension == "yml":
+    # if extensions == "yaml" or extensions == "yml":
     #     contents = yaml.dump(
     #         contents, default_style="", default_flow_style=False, width=1000
     #     )
-    # elif extension == "json":
+    # elif extensions == "json":
     #     contents = json.dumps(contents)
 
     async with await anyio.open_file(path + filename, mode=mode) as f:

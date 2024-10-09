@@ -25,7 +25,7 @@ class TimeFormats:
 
 class WindowsSafeFileName(dspy.Signature):
     """
-    Generate a Windows-safe filename from file content without adding the file extension.
+    Generate a Windows-safe filename from file content without adding the file extensions.
     Ensures the filename complies with Windows naming conventions and restrictions.
     """
 
@@ -34,7 +34,7 @@ class WindowsSafeFileName(dspy.Signature):
 
 
 class FileContentToFileNameModule(dspy.Module):
-    """Converts file content to a safe file name with an optional timestamp and extension."""
+    """Converts file content to a safe file name with an optional timestamp and extensions."""
 
     def __init__(self, extension: str = None, time_format: str = None, add_timestamp: bool = False):
         super().__init__()
@@ -44,7 +44,7 @@ class FileContentToFileNameModule(dspy.Module):
 
     def forward(self, file_content: str) -> str:
         """
-        Converts the provided file content to a valid filename with the specified extension.
+        Converts the provided file content to a valid filename with the specified extensions.
         Optionally appends a timestamp using a specified time format.
         """
         # Chain of Thought to generate a valid file name
@@ -54,7 +54,7 @@ class FileContentToFileNameModule(dspy.Module):
         result = pred(file_content=file_content).safe_filename
         result = result.replace(" ", "-")
 
-        # Convert to snake_case if the extension is .py
+        # Convert to snake_case if the extensions is .py
         if self.extension == "py":
             result = pythonic_str(result)
 
@@ -63,7 +63,7 @@ class FileContentToFileNameModule(dspy.Module):
             current_time = datetime.now().strftime(self.time_format)
             result = f"{result}_{current_time}"
 
-        # Append the extension to the file name if provided
+        # Append the extensions to the file name if provided
         if self.extension:
             result = f"{result}.{self.extension}"
 
@@ -71,7 +71,7 @@ class FileContentToFileNameModule(dspy.Module):
 
 
 def file_name_call(file_content: str, extension: str = None, time_format: str = TimeFormats.YEAR_MONTH_DAY_UNDERSCORE, add_timestamp: bool = False) -> str:
-    """Generates the file name from content with an optional timestamp and file extension."""
+    """Generates the file name from content with an optional timestamp and file extensions."""
     file_content_to_file_name = FileContentToFileNameModule(
         extension=extension, time_format=time_format, add_timestamp=add_timestamp
     )
@@ -87,7 +87,7 @@ def main():
     # Example usage of file_name_call with a timestamp
     file_name = file_name_call(
         file_content=file_content,
-        extension="md",  # Example: Python file extension
+        extension="md",  # Example: Python file extensions
         time_format=TimeFormats.FULL_DATETIME_UNDERSCORE,  # Example safe timestamp format
         add_timestamp=True
     ) 

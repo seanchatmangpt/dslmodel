@@ -2,9 +2,10 @@ import inspect
 
 from transitions import Machine
 from transitions.core import State
-from dspygen.modules.fsm_trigger_module import fsm_trigger_call
 
 import functools
+
+from dslmodel.dspy_modules.fsm_trigger_module import fsm_trigger_call
 
 
 def trigger(source, dest, conditions=None, unless=None, before=None, after=None, prepare=None):

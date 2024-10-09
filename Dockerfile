@@ -14,7 +14,7 @@ RUN groupadd --gid $GID user && \
     chown user /opt/
 USER user
 
-# Create and activate a virtual environment.
+# Create and activate a virtual environments.
 ENV VIRTUAL_ENV /opt/dslmodel-env
 ENV PATH $VIRTUAL_ENV/bin:$PATH
 RUN python -m venv $VIRTUAL_ENV
@@ -44,7 +44,7 @@ RUN --mount=type=cache,target=/var/cache/apt/ \
 
 USER user
 
-# Install the run time Python dependencies in the virtual environment.
+# Install the run time Python dependencies in the virtual environments.
 COPY --chown=user:user poetry.lock* pyproject.toml /workspaces/dslmodel/
 RUN mkdir -p /home/user/.cache/pypoetry/ && mkdir -p /home/user/.config/pypoetry/ && \
     mkdir -p src/dslmodel/ && touch src/dslmodel/__init__.py && touch README.md
@@ -67,7 +67,7 @@ RUN --mount=type=cache,target=/var/cache/apt/ \
 RUN git config --system --add safe.directory '*'
 USER user
 
-# Install the development Python dependencies in the virtual environment.
+# Install the development Python dependencies in the virtual environments.
 RUN --mount=type=cache,uid=$UID,gid=$GID,target=/home/user/.cache/pypoetry/ \
     poetry install --all-extras --no-interaction
 
@@ -98,7 +98,7 @@ RUN git clone --branch v$ANTIDOTE_VERSION --depth=1 https://github.com/mattmc3/a
 
 FROM base AS app
 
-# Copy the virtual environment from the poetry stage.
+# Copy the virtual environments from the poetry stage.
 COPY --from=poetry $VIRTUAL_ENV $VIRTUAL_ENV
 
 # Copy the app source code to the working directory.

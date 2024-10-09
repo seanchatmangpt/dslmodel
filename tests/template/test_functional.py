@@ -27,7 +27,7 @@ def test_render_native_dict():
 
 
 def test_render_native_inflection_extension():
-    """Test that render_native correctly renders with Inflection extension."""
+    """Test that render_native correctly renders with Inflection extensions."""
     template_str = "{{ 'person' | pluralize }}"
     result = render_native(template_str)
     assert result == "people"  # Plural of "person" is "people"

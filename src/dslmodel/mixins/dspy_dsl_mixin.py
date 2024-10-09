@@ -1,4 +1,4 @@
-from typing import Type, TypeVar, Union
+from typing import Type, TypeVar, Union, Any
 import dspy
 
 T = TypeVar("T", bound="DSLModel")
@@ -11,7 +11,7 @@ class DSPyDSLMixin:
     """
 
     @classmethod
-    def from_prompt(cls: Type[T], prompt: str, verbose=False, **kwargs) -> T:
+    def from_prompt(cls: Type[T], prompt: Any, verbose=False, **kwargs) -> T:
         """
         Creates an instance of the model from a user prompt.
 
@@ -19,16 +19,31 @@ class DSPyDSLMixin:
         :param verbose: Whether to print verbose output and debug information.
         :return: An instance of the model.
         """
-        from dslmodel.template import render
         from dslmodel.dspy_modules.gen_pydantic_instance import gen_instance
 
-        prompt = render(prompt, **kwargs)
-
         if verbose:
-            print(f"Prompt: {prompt}")
+            print(prompt)
 
-        return gen_instance(cls, prompt, verbose)
+        instance = gen_instance(cls, prompt, verbose)
+        print(instance)
+        return instance
+    
 
+    @classmethod
+    def from_template(cls: Type[T], template: str, verbose=False, **kwargs) -> T:
+        """
+        Creates an instance of the model from a template and a context dictionary.
+
+        :param template: The template string to render.
+        :param verbose: Whether to print verbose output and debug information.
+        :return: An instance of the model.
+        """
+        from dslmodel.template import render
+
+        rendered_prompt = render(template, **kwargs)
+        return cls.from_prompt(rendered_prompt, verbose=verbose)
+
+    
     @classmethod
     def from_signature(
             cls: Type[T],

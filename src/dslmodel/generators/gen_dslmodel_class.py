@@ -99,7 +99,7 @@ from dslmodel import DSLModel
 class {{ model.class_name }}(DSLModel):
     """{{ model.description }}"""
     {% for field in model.fields %}
-    {{ field.field_name | underscore }}: {{ field.field_type }} = Field(default={{ field.default_value }}, title="{{ field.title }}", description="{{ field.description }}"{% if field.constraints %}, {{ field.constraints }}{% endif %})
+    {{ field.field_name | underscore }}: {{ field.field_type }} = Field(default={{ field.default_value }}, alias: "{{ field.field_name }}", title="{{ field.title }}", description="{{ field.description }}"{% if field.constraints %}, {{ field.constraints }}{% endif %})
     {% endfor %}
 
     {% if model.validators|length > 0 %}
@@ -203,8 +203,32 @@ icalendar_entities = {
 from pydantic import BaseModel, Field
 
 
-if __name__ == "__main__":
-    main()
+
+
+swagger_data = {
+    'x-swagger-router-model': 'io.swagger.petstore.model.Order',
+    'properties': {
+        'id': {'type': 'integer', 'format': 'int64', 'example': 10},
+        'petId': {'type': 'integer', 'format': 'int64', 'example': 198772},
+        'quantity': {'type': 'integer', 'format': 'int32', 'example': 7},
+        'shipDate': {'type': 'string', 'format': 'date-time'},
+        'status': {'type': 'string', 'description': 'Order Status', 'enum': ['placed', 'approved', 'delivered'], 'example': 'approved'},
+        'complete': {'type': 'boolean'}
+    },
+    'xml': {'name': 'order'},
+    'type': 'object'
+}
+
+
+def create_dslmodel_from_swagger(swagger: dict):
+    jinja_template = """I need a DSLModel called {{ swagger['x-swagger-router-model'].split('.')[-1] }} with the following fields:
+{% for field_name, field_info in swagger['properties'].items() %}
+    {{ field_name }}: {{ field_info['type'] }} = Field(..., description="{{ field_info.get('description', '') }}")
+{% endfor %}
+"""
+    prompt = render(jinja_template, swagger=swagger)
+    print(prompt)
+    return DSLModel.from_prompt(prompt)
 
 
 def generate_and_save_dslmodel(prompt: str, output_dir: Path, file_format: str, config: Path):
@@ -239,3 +263,8 @@ def generate_and_save_dslmodel(prompt: str, output_dir: Path, file_format: str, 
 
     # Step 7: Write the class to the file
     write_pydantic_class_to_file(rendered_class_str, output_path)
+
+
+if __name__ == "__main__":
+    # main()
+    create_dslmodel_from_swagger(swagger_data)

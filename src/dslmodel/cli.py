@@ -4,9 +4,10 @@ import typer
 from rich import print
 
 from pathlib import Path
+
+from dslmodel import DSLClassGenerator, init_text, init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
-
-
+from dslmodel.template import render
 
 app = typer.Typer()
 
@@ -44,6 +45,56 @@ def generate_class(
         raise typer.Exit(code=1)
 
     typer.echo(f"Class generated successfully! Saved in: {output_dir}")
+
+
+from pathlib import Path
+import yaml
+import json
+import typer
+
+
+@app.command("openapi")
+def generate_models(openapi_file: Path = Path("openapi.yaml"), output_dir: Path = Path(".")):
+    # Ensure the output directory exists
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Load the OpenAPI file
+    with open(openapi_file, 'r') as file:
+        if openapi_file.suffix in ['.yaml', '.yml']:
+            openapi_data = yaml.safe_load(file)
+        elif openapi_file.suffix == '.json':
+            openapi_data = json.load(file)
+        else:
+            typer.echo("Unsupported file format. Use YAML or JSON.")
+            raise typer.Exit()
+
+
+    # Process each schema in OpenAPI
+    schemas = openapi_data.get('components', {}).get('schemas', {})
+    if not schemas:
+        typer.echo("No schemas found in the OpenAPI file.")
+        raise typer.Exit()
+
+    init_instant()
+
+    for schema_name, schema in schemas.items():
+        if schema_name != "Pet":
+            continue
+        print(schema)
+        # Render the model
+        jinja_template = """I need a DSLModel called {{ schema_name }} with the following fields:
+        {% for field_name, field_info in swagger['properties'].items() %}
+            {{ field_name }}: {{ field_info['type'] }} = Field(..., description="{{ field_info.get('description', '') }}")
+        {% endfor %}
+        """
+        prompt = render(jinja_template, schema_name=schema_name, swagger=schema)
+        DSLClassGenerator(prompt, max_workers=3)()
+
+        from time import sleep
+
+        sleep(1)
+
+        typer.echo(f"Generated Pydantic model for '{schema_name}'")
 
 
 if __name__ == "__main__":

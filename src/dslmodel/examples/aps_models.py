@@ -14,7 +14,7 @@ class BusinessRequirements(DSLModel):
 
 class Development(DSLModel):
     """Describes development setup, guidelines, and review processes."""
-    setup_steps: List[str] = Field(..., description="Steps to set up the development environment.")
+    setup_steps: List[str] = Field(..., description="Steps to set up the development environments.")
     build_command: Optional[str] = Field(None, description="Command to build the project.")
     test_command: Optional[str] = Field(None, description="Command to run tests.")
     guidelines: Optional[List[str]] = Field(None, description="Guidelines to follow during development.")
@@ -25,8 +25,8 @@ class Deployment(DSLModel):
     """Represents deployment configurations, platforms, and environments."""
     platform: str = Field(..., description="Deployment platform used.")
     cicd_pipeline: Optional[str] = Field(None, description="CI/CD pipeline configuration.")
-    staging_environment: Optional[str] = Field(None, description="Staging environment setup.")
-    production_environment: Optional[str] = Field(None, description="Production environment setup.")
+    staging_environment: Optional[str] = Field(None, description="Staging environments setup.")
+    production_environment: Optional[str] = Field(None, description="Production environments setup.")
     review_cycle: Optional[str] = Field(None, description="Frequency of deployment reviews.")
 
 
@@ -72,7 +72,7 @@ class Task(DSLModel):
 class Workflow(DSLModel):
     """Defines the workflow for the project, organizing tasks in a specific order."""
     workflow_type: str = Field(..., description="Type of workflow (Sequential or Parallel).")
-    tasks: List[str] = Field(..., description="List of task IDs in the workflow order.")
+    tasks: List[Task] = Field(..., description="List of task IDs in the workflow order.", min_length=5)
 
 
 # class Role(DSLModel):
@@ -114,27 +114,27 @@ class Participant(DSLModel):
 class Meeting(DSLModel):
     """Represents a meeting, its participants, agenda, and other details."""
     name: str = Field(..., description="Name of the meeting.")
-    meeting_date: date = Field(..., description="Date of the meeting.")
+    meeting_date: str = Field(..., description="Date of the meeting.")
     location: Optional[str] = Field(None, description="Location where the meeting is held.")
     chairperson: Participant = Field(..., description="Chairperson of the meeting.")
     secretary: Participant = Field(..., description="Secretary responsible for taking minutes.")
     participants: List[Participant] = Field(..., description="List of all participants in the meeting.")
-    agenda: List[str] = Field(..., description="Agenda items for the meeting.", min_length=10)
-    minutes: List[str] = Field(..., description="Minutes of the meeting. Time, Description", min_length=10)
-    rules_of_order: List[str] = Field(..., description="Rules governing the meeting.", min_length=10)
+    agenda: List[str] = Field(..., description="Agenda items for the meeting.", min_length=3)
+    minutes: List[str] = Field(..., description="Minutes of the meeting. Time, Description", min_length=3)
+    rules_of_order: List[str] = Field(..., description="Rules governing the meeting.", min_length=3)
 
 
-meeting_template = """Fortune 10 Board Meeting about {{ fake_bs() }} 
+meeting_template = """Fortune 10 Board Meeting about implementing TOGAF with medallion architecture.
 with {% for participant in participants %}{{ participant }}{% if not loop.last %}, {% endif %}{% endfor %}.
 
-MAKE SURE ALL FIELDS ARE VERBOSE WITH RELEVANT EXAMPLE TEXT
+MAKE SURE ALL FIELDS ARE VERBOSE WITH RELEVANT EXAMPLE TEXT. WE NEED THIS TO BE ACTIONABLE.
 """
 
 
 def main():
     """Main function"""
 
-    participants = [Participant() for _ in range(20)]
+    participants = [Participant() for _ in range(10)]
 
     # Output the generated participants
     for i, participant in enumerate(participants):
@@ -142,6 +142,10 @@ def main():
 
     instance = Meeting.from_prompt(meeting_template, participants=participants)
     print(instance.to_yaml())
+
+    for agenda_item in instance.agenda:
+        new_task = Task.from_prompt(f"{agenda_item}\nMAKE SURE ALL FIELDS ARE VERBOSE WITH RELEVANT EXAMPLE TEXT. WE NEED THIS TO BE ACTIONABLE.")
+        print(new_task.to_yaml())
 
 
 def run_participants_concurrently():
@@ -166,8 +170,8 @@ if __name__ == '__main__':
     from dslmodel.utils.dspy_tools import init_text, init_instant
     # init_text()
     init_instant()
-    run_participants_concurrently()
-    # main()
+    # run_participants_concurrently()
+    main()
 
 # if __name__ == '__main__':
 #     main()

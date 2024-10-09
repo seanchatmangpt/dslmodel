@@ -34,5 +34,6 @@ class DSLModel(BaseModel, FileHandlerDSLMixin, JinjaDSLMixin, DSPyDSLMixin, ToFr
     model_config = ConfigDict(
         arbitrary_types_allowed=True,
         validate_assignment=True,
-        populate_by_name=True
+        populate_by_name=True,
+        extra="allow"
     )

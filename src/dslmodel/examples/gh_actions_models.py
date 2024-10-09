@@ -66,7 +66,7 @@ class Job(DSLModel):
         None, description="The name of the job."
     )
     runs_on: str = Field(
-        "ubuntu-latest", description="The runner environment for the job. "
+        "ubuntu-latest", description="The runner environments for the job. "
                          "Valid values are 'ubuntu-latest', 'macos-latest', and 'windows-latest'."
     )
     steps: List[Step] = Field(

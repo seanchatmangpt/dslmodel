@@ -2,7 +2,7 @@
 Advanced LLM-Powered Chat Tools for dslmodel
 
 This module provides state-of-the-art language model interactions for the dslmodel project,
-pushing the boundaries of what's possible with LLMs in a development environment.
+pushing the boundaries of what's possible with LLMs in a development environments.
 
 Key Features and Capabilities:
 1. Multi-Modal Understanding: Processes and generates text, code, images, and audio.

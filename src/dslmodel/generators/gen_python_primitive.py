@@ -252,7 +252,11 @@ class GenListModule(GenPrimitiveModule):
         """
         Attempt to evaluate the generated output string into the correct Python primitive type.
         """
-        list_part = output.split("list = ", 1)[1].strip("```").strip()
+        # find [
+        start_index = output.index('[')
+        # find ]
+        end_index = output.index(']')
+        list_part = output[start_index:end_index+1]
         return eval_output_str(list_part)
 
 

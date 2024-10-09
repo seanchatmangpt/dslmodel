@@ -19,7 +19,7 @@ from dslmodel import DSLModel
 class {{ model.class_name }}(DSLModel):
     """{{ model.description }}"""
     {% for field in model.fields %}
-    {{ field.field_name | underscore }}: {{ field.field_type }} = Field(default={{ field.default_value }}, description="{{ field.description }}"{% if field.constraints %}, {{ field.constraints }}{% endif %})
+    {{ field.field_name | underscore }}: {{ field.field_type }} = Field(default={{ field.default_value }}, alias="{{ field.field_name }}", description="{{ field.description }}"{% if field.constraints %}, {{ field.constraints }}{% endif %})
     {% endfor %}
 
     {% if model.validators|length > 0 %}
@@ -65,8 +65,8 @@ class {{ model.class_name }}(DSLModel):
         return gen_list(
             f"Please provide only the field names for a BaseModel derived from the following prompt. "
             f"The model should follow Python naming conventions and include only the names of the fields, "
-            f"without any additional metadata or descriptions."
-            f"Example: list = ['id, 'name', 'age']"
+            f"without any additional metadata or descriptions. Strings must have quotes."
+            f"Example: list = [\"id\", \"name\", \"age\"]"
             f"\nPrompt: {self.model_prompt}")
 
     def generate_field_descriptions(self, fields: list):
@@ -134,17 +134,48 @@ class {{ model.class_name }}(DSLModel):
         return self.write_class_to_file(rendered_class, model_instance.class_name)
 
 
+swagger_data = {
+    'x-swagger-router-model': 'io.swagger.petstore.model.Pet',
+    'required': ['name', 'photoUrls'],
+    'properties': {
+        'id': {'type': 'integer', 'format': 'int64', 'example': 10},
+        'name': {'type': 'string', 'example': 'doggie'},
+        'category': {'$ref': '#/components/schemas/Category'},
+        'photoUrls': {'type': 'array', 'xml': {'wrapped': True}, 'items': {'type': 'string', 'xml': {'name': 'photoUrl'}}},
+        'tags': {'type': 'array', 'xml': {'wrapped': True}, 'items': {'$ref': '#/components/schemas/Tag', 'xml': {'name': 'tag'}}},
+        'status': {'type': 'string', 'description': 'pet status in the store', 'enum': ['available', 'pending', 'sold']}
+    },
+    'xml': {'name': 'pet'},
+    'type': 'object'
+}
+
+
+
+def create_dslmodel_from_swagger(swagger: dict):
+    jinja_template = """I need a DSLModel called {{ swagger['x-swagger-router-model'].split('.')[-1] }} with the following fields:
+{% for field_name, field_info in swagger['properties'].items() %}
+    {{ field_name }}: {{ field_info['type'] }} = Field(..., description="{{ field_info.get('description', '') }}")
+{% endfor %}
+"""
+    prompt = render(jinja_template, swagger=swagger)
+    print(prompt)
+    return DSLClassGenerator(prompt)()
+
+
 # Example usage
 if __name__ == "__main__":
     from dslmodel import init_instant
     init_instant()
-    model_prompt = "I need a UserModel with 2 fields"
-    output_dir = Path("gen_models.py")
-    append_to_file = True  # Set to True to append to the file instead of overwriting
 
-    # Create an instance of DSLClassGenerator
-    dsl_generator = DSLClassGenerator(model_prompt, output_dir, append=append_to_file)
+    create_dslmodel_from_swagger(swagger_data)
 
-    # Generate and save (or append) the class
-    generated_class_path = dsl_generator.forward()
-    print(f"Generated class saved at: {generated_class_path}")
+    # model_prompt = "I need a UserModel with 2 fields"
+    # output_dir = Path("gen_models.py")
+    # append_to_file = True  # Set to True to append to the file instead of overwriting
+    #
+    # # Create an instance of DSLClassGenerator
+    # dsl_generator = DSLClassGenerator(model_prompt, output_dir, append=append_to_file)
+    #
+    # # Generate and save (or append) the class
+    # generated_class_path = dsl_generator.forward()
+    # print(f"Generated class saved at: {generated_class_path}")
