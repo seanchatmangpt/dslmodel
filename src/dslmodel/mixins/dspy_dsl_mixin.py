@@ -1,8 +1,8 @@
 from typing import Any, TypeVar
 
 import dspy
+from dslmodel.dspy_modules.gen_pydantic_instance import gen_instance
 
-# from dslmodel.models import DSLModel
 
 T = TypeVar("T", bound="DSLModel")
 
@@ -22,13 +22,10 @@ class DSPyDSLMixin:
         :param verbose: Whether to print verbose output and debug information.
         :return: An instance of the model.
         """
-        from dslmodel.dspy_modules.gen_pydantic_instance import gen_instance
-
         if verbose:
             print(prompt)
 
         instance = gen_instance(cls, prompt, verbose)
-        print(instance)
         return instance
 
     @classmethod
@@ -48,11 +45,8 @@ class DSPyDSLMixin:
     @classmethod
     def from_signature(
         cls: type[T],
-        signature: str
-        | type[dspy.Signature],  # Signature can be a string or a dspy.Signature subclass
-        predictor_class: type[
-            dspy.Module
-        ] = dspy.Predict,  # Default predictor class is dspy.Predict
+        signature: str | type[dspy.Signature],  # Signature can be a string or a dspy.Signature subclass
+        predictor_class: type[dspy.Module] = dspy.Predict,  # Default predictor class is dspy.Predict
         verbose=False,
         **kwargs,
     ) -> T:

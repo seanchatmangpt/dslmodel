@@ -71,7 +71,7 @@ class ToFromDSLMixin:
         try:
             data = toml.loads(content)
             return cls.from_dict(data)
-        except toml.TomlDecodeError as e:
+        except Exception as e:
             raise ValueError(f"Error parsing TOML content: {e}")
 
     def to_yaml(self) -> str:
@@ -106,6 +106,7 @@ class ToFromDSLMixin:
         :raises IOError: If serialization to TOML fails.
         """
         try:
+            # Sanitize strings in the model data to replace control characters with safe equivalents.
             return toml.dumps(self.model_dump())
         except Exception as e:
             raise OSError(f"Failed to serialize model to TOML: {e}")

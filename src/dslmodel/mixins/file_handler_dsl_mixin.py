@@ -1,4 +1,5 @@
 from typing import TypeVar
+import os
 
 T = TypeVar("T", bound="DSLModel")
 
@@ -9,18 +10,18 @@ class FileHandlerDSLMixin:
     models to and from YAML, JSON, and TOML formats.
     """
 
-    def generate_filename(self, extension: str = "yaml", add_timestamp: bool = False) -> str:
+    def generate_filename(self, ext: str = "yaml", add_timestamp: bool = False) -> str:
         """
         Generates a safe filename based on the model's content.
 
-        :param extension: The file extensions (e.g., 'yaml', 'json', 'toml').
+        :param ext: The file exts (e.g., 'yaml', 'json', 'toml').
         :param add_timestamp: Whether to append a timestamp to the filename.
         :return: The generated filename.
         """
         from dslmodel.dspy_modules.file_name_module import file_name_call
 
         content = self.to_yaml()  # Use the YAML representation to generate the filename
-        filename = file_name_call(file_content=content, extension=extension)
+        filename = file_name_call(file_content=content, ext=ext)
         return filename
 
     def save(
@@ -35,7 +36,7 @@ class FileHandlerDSLMixin:
         :return: The path to the saved file.
         """
         if file_path is None:
-            file_path = self.generate_filename(extension=file_format, add_timestamp=add_timestamp)
+            file_path = self.generate_filename(ext=file_format, add_timestamp=add_timestamp)
 
         if file_format == "yaml":
             content = self.to_yaml()
@@ -52,21 +53,25 @@ class FileHandlerDSLMixin:
         return file_path
 
     @classmethod
-    def load(cls: type[T], file_path: str, file_format: str = "yaml") -> T:
+    def load(cls: type[T], file_path: str) -> T:
         """
-        Loads a model from a file in the specified format.
+        Loads a model from a file, inferring the file format from its ext.
 
         :param file_path: The path to the file.
-        :param file_format: The format of the file ('yaml', 'json', 'toml').
         :return: An instance of the model populated with data from the file.
+        :raises ValueError: If the file format is unsupported.
         """
+        _, ext = os.path.splitext(file_path)
+        ext = ext.lower()
+
         with open(file_path) as file:
             content = file.read()
 
-        if file_format == "yaml":
+        if ext in [".yaml", ".yml"]:
             return cls.from_yaml(content)
-        if file_format == "json":
+        elif ext == ".json":
             return cls.from_json(content)
-        if file_format == "toml":
+        elif ext == ".toml":
             return cls.from_toml(content)
-        raise ValueError("Unsupported file format. Use 'yaml', 'json', or 'toml'.")
+        else:
+            raise ValueError(f"Unsupported file format '{ext}'. Supported formats are 'yaml', 'json', 'toml'.")

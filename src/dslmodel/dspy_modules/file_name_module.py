@@ -76,13 +76,13 @@ class FileContentToFileNameModule(dspy.Module):
 
 def file_name_call(
     file_content: str,
-    extension: str = None,
+    ext: str = None,
     time_format: str = TimeFormats.YEAR_MONTH_DAY_UNDERSCORE,
     add_timestamp: bool = False,
 ) -> str:
     """Generates the file name from content with an optional timestamp and file extensions."""
     file_content_to_file_name = FileContentToFileNameModule(
-        extension=extension, time_format=time_format, add_timestamp=add_timestamp
+        extension=ext, time_format=time_format, add_timestamp=add_timestamp
     )
     return file_content_to_file_name.forward(file_content=file_content)
 
@@ -97,7 +97,7 @@ def main():
     # Example usage of file_name_call with a timestamp
     file_name = file_name_call(
         file_content=file_content,
-        extension="md",  # Example: Python file extensions
+        ext="md",  # Example: Python file extensions
         time_format=TimeFormats.FULL_DATETIME_UNDERSCORE,  # Example safe timestamp format
         add_timestamp=True,
     )
@@ -117,7 +117,7 @@ def call(
     """CLI command to convert file content to a file name with optional timestamp."""
     file_name = file_name_call(
         file_content=file_content,
-        extension=extension,
+        ext=extension,
         time_format=time_format if time_format else TimeFormats.YEAR_MONTH_DAY_UNDERSCORE,
         add_timestamp=add_timestamp,
     )
