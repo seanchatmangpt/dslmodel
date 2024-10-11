@@ -3,7 +3,7 @@ from typing import TypeVar, Type
 
 from pydantic import BaseModel, ValidationError
 
-from dspy import InputField, OutputField, Signature
+from dspy import InputField, OutputField, Signature, Predict
 
 from dslmodel.template import render
 
@@ -31,7 +31,7 @@ class PromptToPydanticInstanceSignature(Signature):
     )
     root_model_kwargs_dict = OutputField(
         prefix="```python\nkwargs_dict: dict = ",
-        desc="Generate a Python dictionary as a string",
+        desc="Generate a Python dictionary. IT WILL HAVE TO VALIDATE WITHIN PYDANTIC",
     )
 
 
@@ -49,8 +49,8 @@ class PromptToPydanticInstanceErrorSignature(Signature):
     what_went_wrong = OutputField(desc="What went wrong in the kwargs generation")
     how_to_fix = OutputField(desc="How to fix the kwargs generation")
     root_model_kwargs_dict = OutputField(
-        prefix="kwargs_dict = ",
-        desc="Generate a Python dictionary as a string with minimized whitespace that only contains valid values.",
+        prefix="```python\nkwargs_dict: dict = ",
+        desc="Generate a Python dictionary. IT WILL HAVE TO VALIDATE WITHIN PYDANTIC",
     )
 
 
@@ -116,7 +116,7 @@ class GenPydanticInstance(dspy.Module):
         self.model_sources = collect_all_sources_as_string(model)
 
         # Initialize DSPy ChainOfThought dspy_modules for generation, correction, and diagnosis
-        self.generate = ChainOfThought(generate_sig)
+        self.generate = Predict(generate_sig)
         self.correct_generate = ChainOfThought(correct_generate_sig)
         self.diagnosis_generate = ChainOfThought(diagnosis_sig)
         self.validation_error = None
@@ -206,8 +206,8 @@ def gen_instance(model, prompt, verbose=False):
 
 
 def main():
-    from dslmodel.utils.dspy_tools import init_ol
-    init_ol(max_tokens=3000)
+    from dslmodel import init_instant
+    init_instant()
     # Example usage would go here
 
 

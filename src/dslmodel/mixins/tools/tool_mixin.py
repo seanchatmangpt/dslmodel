@@ -45,18 +45,29 @@ def function_to_dict(func: Callable) -> dict:
 
 
 class ToolMixin:
+    """Mixin for tools that allows the model to choose from a list of available tools."""
     tools: list[Tool] = []
+    ignore_list: list[str] = []
 
     def __init__(self):
+        if "call" not in self.ignore_list:
+            self.ignore_list.append("call")
+
         # gather the source code of each def not starting with __
         for name, obj in inspect.getmembers(self):
-            if inspect.ismethod(obj) and not name.startswith("__"):
-                # Get the source code of the method
-                source_code = inspect.getsource(obj)
-                def_dict = function_to_dict(obj)
-                self.tools.append(Tool(name=name, description=obj.__doc__, method=obj, source=source_code, attributes=def_dict["keyword_arguments"]))
+            try:
+                if inspect.ismethod(obj) and not name.startswith("__") and name not in self.ignore_list:
+                    # Get the source code of the method
+                    source_code = inspect.getsource(obj)
+                    def_dict = function_to_dict(obj)
+                    self.tools.append(Tool(name=name, description=obj.__doc__, method=obj, source=source_code, attributes=def_dict["keyword_arguments"]))
+            except Exception as e:
+                print(e)
 
-    def call(self, prompt: str, verbose: bool = False) -> Any:
+    def __call__(self, *args: Any, **kwds: Any) -> Any:
+        return self.call(*args, **kwds)
+
+    def call(self, prompt: str, verbose: bool = False, **kwargs: Any) -> Any:
         """Process a call from a prompt."""
         import textwrap
         template = textwrap.dedent("""Choose a def to use: {{ prompt }} 
@@ -73,3 +84,13 @@ class ToolMixin:
         chose = ChosenTool.from_template(template, prompt=prompt, tools=self.tools, verbose=verbose)
         result = getattr(self, chose.def_name)(**chose.kwargs)
         return result
+
+
+def main():
+    """Main function"""
+    from dslmodel import init_lm, init_instant, init_text
+    init_instant()
+    
+
+if __name__ == '__main__':
+    main()

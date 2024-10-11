@@ -5,6 +5,32 @@ from dslmodel import DSLModel
 from dslmodel.utils.model_tools import run_dsls
 
 
+class Task(DSLModel):
+    """Represents a task in a simplified format for the LLM."""
+    task_id: str = Field(..., description="Unique identifier for the task.")
+    name: str = Field(..., description="Name of the task.")
+    description: Optional[str] = Field(None, description="Detailed description of the task.")
+    assigned_to: List[str] = Field(default_factory=list, description="Roles assigned to the task.")
+    status: Optional[str] = Field("Not Started", description="Current status of the task.")
+    start_date: Optional[str] = Field(None, description="Start date of the task.")
+    end_date: Optional[str] = Field(None, description="End date of the task.")
+
+
+class Subtask(DSLModel):
+    """Represents a subtask with minimal fields."""
+    subtask_id: str = Field(..., description="Unique identifier for the subtask.")
+    name: str = Field(..., description="Name of the subtask.")
+    assigned_to: List[str] = Field(default_factory=list, description="Roles assigned to the subtask.")
+    status: Optional[str] = Field("Not Started", description="Current status of the subtask.")
+
+
+class Project(DSLModel):
+    """Simplified project model with key fields."""
+    name: str = Field(..., description="Name of the project.")
+    description: Optional[str] = Field(None, description="Description of the project.")
+    tasks: List[Task] = Field(default_factory=list, description="List of tasks in the project.")
+
+
 class BusinessRequirements(DSLModel):
     """Describes the business requirements for the project."""
     key_features: List[str] = Field(..., description="Key features required by the business.")
@@ -33,40 +59,40 @@ class Deployment(DSLModel):
 class Interaction(DSLModel):
     """Defines an interaction between roles, specifying the type and involved roles."""
     interaction_type: str = Field(..., description="Type of interaction between roles.")
-    with_role: str = Field(..., alias='with', description="Role with which the interaction occurs.")
+    with_role: str = Field(..., description="Role with which the interaction occurs.")
     description: Optional[str] = Field(None, description="Description of the interaction.")
     notifications: Optional[List[str]] = Field(None, description="Notifications triggered by the interaction.")
 
 
-class Subtask(DSLModel):
-    """Represents a subtask within a larger task, including its dependencies and interactions."""
-    subtask_id: str = Field(..., description="Unique identifier for the subtask.")
-    name: str = Field(..., description="Name of the subtask.")
-    assigned_to: List[str] = Field(..., description="Roles assigned to the subtask.")
-    dependencies: Optional[List[str]] = Field(None, description="List of task IDs that this subtask depends on.")
-    estimated_time: Optional[str] = Field(None, description="Estimated time to complete the subtask.")
-    interactions: Optional[List[Interaction]] = Field(None, description="Interactions involved in the subtask.")
-    status: Optional[str] = Field(None, description="Current status of the subtask.")
-    start_date: Optional[date] = Field(None, description="Start date of the subtask.")
-    end_date: Optional[date] = Field(None, description="End date of the subtask.")
-
-
-class Task(DSLModel):
-    """Represents a task, including its description, dependencies, and subtasks."""
-    task_id: str = Field(..., description="Unique identifier for the task.")
-    name: str = Field(..., description="Name of the task.")
-    description: Optional[str] = Field(None, description="Detailed description of the task.")
-    assigned_to: List[str] = Field(..., description="Roles assigned to the task.")
-    dependencies: Optional[List[str]] = Field(None, description="List of task IDs that this task depends on.")
-    interactions: Optional[List[Interaction]] = Field(None, description="Interactions involved in the task.")
-    subtasks: Optional[List[Subtask]] = Field(None, description="List of subtasks under this task.")
-    estimated_time: Optional[str] = Field(None, description="Estimated time to complete the task.")
-    priority: Optional[str] = Field(None, description="Priority level of the task.")
-    status: Optional[str] = Field(None, description="Current status of the task.")
-    start_date: Optional[date] = Field(None, description="Start date of the task.")
-    end_date: Optional[date] = Field(None, description="End date of the task.")
-    results: Optional[List[str]] = Field(None, description="Results or outputs from the task.")
-    scheduled_date: Optional[date] = Field(None, description="Scheduled date for the task.")
+# class Subtask(DSLModel):
+#     """Represents a subtask within a larger task, including its dependencies and interactions."""
+#     subtask_id: str = Field(..., description="Unique identifier for the subtask.")
+#     name: str = Field(..., description="Name of the subtask.")
+#     assigned_to: List[str] = Field(..., description="Roles assigned to the subtask.")
+#     dependencies: Optional[List[str]] = Field(None, description="List of task IDs that this subtask depends on.")
+#     estimated_time: Optional[str] = Field(None, description="Estimated time to complete the subtask.")
+#     interactions: Optional[List[Interaction]] = Field(None, description="Interactions involved in the subtask.")
+#     status: Optional[str] = Field(None, description="Current status of the subtask.")
+#     start_date: Optional[date] = Field(None, description="Start date of the subtask.")
+#     end_date: Optional[date] = Field(None, description="End date of the subtask.")
+#
+#
+# class Task(DSLModel):
+#     """Represents a task, including its description, dependencies, and subtasks."""
+#     task_id: str = Field(..., description="Unique identifier for the task.")
+#     name: str = Field(..., description="Name of the task.")
+#     description: Optional[str] = Field(None, description="Detailed description of the task.")
+#     assigned_to: List[str] = Field(..., description="Roles assigned to the task.")
+#     dependencies: Optional[List[str]] = Field(None, description="List of task IDs that this task depends on.")
+#     interactions: Optional[List[Interaction]] = Field(None, description="Interactions involved in the task.")
+#     subtasks: Optional[List[Subtask]] = Field(None, description="List of subtasks under this task.")
+#     estimated_time: Optional[str] = Field(None, description="Estimated time to complete the task.")
+#     priority: Optional[str] = Field(None, description="Priority level of the task.")
+#     status: Optional[str] = Field(None, description="Current status of the task.")
+#     start_date: Optional[date] = Field(None, description="Start date of the task.")
+#     end_date: Optional[date] = Field(None, description="End date of the task.")
+#     results: Optional[List[str]] = Field(None, description="Results or outputs from the task.")
+#     scheduled_date: Optional[date] = Field(None, description="Scheduled date for the task.")
 
 
 class Workflow(DSLModel):
@@ -84,15 +110,15 @@ class Workflow(DSLModel):
 #     abbreviation: Optional[str] = Field(None, description="Abbreviation for the role.")
 #
 
-class Project(DSLModel):
-    """Represents a project, its roles, tasks, and overall workflow."""
-    name: str = Field(..., description="Name of the project.")
-    description: Optional[str] = Field(None, description="Description of the project.")
-    timeframe: Optional[Dict[str, date]] = Field(None, description="Start and end dates of the project.")
-    roles: List[str] = Field(..., description="List of roles involved in the project.")
-    tasks: List[Task] = Field(..., description="List of tasks within the project.")
-    workflow: Optional[Workflow] = Field(None, description="Workflow structure of the project.")
-
+# class Project(DSLModel):
+#     """Represents a project, its roles, tasks, and overall workflow."""
+#     name: str = Field(..., description="Name of the project.")
+#     description: Optional[str] = Field(None, description="Description of the project.")
+#     timeframe: Optional[Dict[str, date]] = Field(None, description="Start and end dates of the project.")
+#     roles: List[str] = Field(..., description="List of roles involved in the project.")
+#     tasks: List[Task] = Field(..., description="List of tasks within the project.")
+#     workflow: Optional[Workflow] = Field(None, description="Workflow structure of the project.")
+#
 
 class Amendment(DSLModel):
     """Represents an amendment made during a meeting, including the vote required to pass it."""

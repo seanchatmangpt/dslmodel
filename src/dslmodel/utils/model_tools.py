@@ -48,7 +48,7 @@ def main():
     init_instant()
     # Prepare tasks with the same model but dynamically varying prompt using f-string
     tasks = [
-        (ModelA, f"Generate a model for task {i} for the user login feature.") for i in range(1, 6)  # Running the same prompt with varying index
+        (ModelA, f"Generate a model for task {i} for the user login feature.") for i in range(1, 20)  # Running the same prompt with varying index
     ]
 
     # Run tasks concurrently and get results in order

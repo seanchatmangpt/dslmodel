@@ -90,8 +90,6 @@ class SMARTGoal(DSLModel):
     time_bound: str = Field(..., description="The defined timeframe or deadline for achieving the goal.")
 
 
-
-
 class EndOfDayJournalEntry(DSLModel):
     """
     Represents a journal entry at the end of the day.
@@ -105,7 +103,7 @@ def main():
     from dslmodel import init_instant, init_text
 
     # Define the initial prompt
-    initial_prompt = "Grocery shopping for milk, cheese, and bread."
+    initial_prompt = "Grocery shopping for milk, cheese, and bread. Verbose responses"
 
     # Define the list of models in the desired sequence
     models_chain = [SMARTGoal, Task, EndOfDayJournalEntry]

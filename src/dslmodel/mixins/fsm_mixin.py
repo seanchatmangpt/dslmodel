@@ -94,7 +94,7 @@ class FSMMixin:
         # Get possible destination states from the current state
         return self.machine.get_triggers(self.state)
 
-    def prompt(self, prompt, **kwargs):
+    def forward(self, prompt, **kwargs):
         self.prompts.append(prompt)
         return fsm_trigger_call(prompt, self, **kwargs)
 
