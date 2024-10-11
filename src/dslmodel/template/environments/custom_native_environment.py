@@ -1,4 +1,3 @@
-from jinja2 import FileSystemLoader
 from jinja2.nativetypes import NativeEnvironment
 
 from dslmodel.template.extensions.faker_extension import FakerExtension

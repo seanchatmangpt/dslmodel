@@ -1,4 +1,4 @@
-from typing import Type, TypeVar, Optional
+from typing import TypeVar
 
 T = TypeVar("T", bound="DSLModel")
 
@@ -23,7 +23,9 @@ class FileHandlerDSLMixin:
         filename = file_name_call(file_content=content, extension=extension)
         return filename
 
-    def save(self, file_path: Optional[str] = None, file_format: str = "yaml", add_timestamp: bool = False) -> str:
+    def save(
+        self, file_path: str | None = None, file_format: str = "yaml", add_timestamp: bool = False
+    ) -> str:
         """
         Saves the model to a file in the specified format. Automatically generates a filename if not provided.
 
@@ -50,7 +52,7 @@ class FileHandlerDSLMixin:
         return file_path
 
     @classmethod
-    def load(cls: Type[T], file_path: str, file_format: str = "yaml") -> T:
+    def load(cls: type[T], file_path: str, file_format: str = "yaml") -> T:
         """
         Loads a model from a file in the specified format.
 
@@ -58,14 +60,13 @@ class FileHandlerDSLMixin:
         :param file_format: The format of the file ('yaml', 'json', 'toml').
         :return: An instance of the model populated with data from the file.
         """
-        with open(file_path, "r") as file:
+        with open(file_path) as file:
             content = file.read()
 
         if file_format == "yaml":
             return cls.from_yaml(content)
-        elif file_format == "json":
+        if file_format == "json":
             return cls.from_json(content)
-        elif file_format == "toml":
+        if file_format == "toml":
             return cls.from_toml(content)
-        else:
-            raise ValueError("Unsupported file format. Use 'yaml', 'json', or 'toml'.")
+        raise ValueError("Unsupported file format. Use 'yaml', 'json', or 'toml'.")

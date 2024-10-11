@@ -1,8 +1,7 @@
 import ast
 import logging
-from typing import Type
 
-from dspy import ChainOfThought, Assert, Signature, InputField, OutputField
+from dspy import Assert, ChainOfThought, InputField, OutputField, Signature
 
 from dslmodel.utils.dspy_tools import init_instant
 
@@ -25,35 +24,43 @@ def eval_output_str(output_str: str):
 # Define Signature Classes for Each Primitive Type
 # ===========================
 
+
 class PromptToIntSignature(Signature):
     """Synthesize the prompt into an integer."""
 
     prompt = InputField(desc="The prompt that describes the value to be converted into an integer.")
-    output = OutputField(prefix="```python\ninteger_output: int = ",
-                                 desc="The integer generated from the prompt.")
+    output = OutputField(
+        prefix="```python\ninteger_output: int = ", desc="The integer generated from the prompt."
+    )
 
 
 class PromptToFloatSignature(Signature):
     """Synthesize the prompt into a float."""
 
     prompt = InputField(desc="The prompt that describes the value to be converted into a float.")
-    output = OutputField(prefix="```python\nfloat_output: float = ",
-                               desc="The float value generated from the prompt.")
+    output = OutputField(
+        prefix="```python\nfloat_output: float = ",
+        desc="The float value generated from the prompt.",
+    )
 
 
 class PromptToStrSignature(Signature):
     """Synthesize the prompt into a string."""
 
     prompt = InputField(desc="The prompt that describes the value to be converted into a string.")
-    output = OutputField(prefix="```python\nstring_output: str = ", desc="The string generated from the prompt.")
+    output = OutputField(
+        prefix="```python\nstring_output: str = ", desc="The string generated from the prompt."
+    )
 
 
 class PromptToBoolSignature(Signature):
     """Synthesize the prompt into a boolean."""
 
     prompt = InputField(desc="The prompt that describes the value to be converted into a boolean.")
-    output = OutputField(prefix="```python\nbool_output: bool = ",
-                              desc="The boolean value generated from the prompt.")
+    output = OutputField(
+        prefix="```python\nbool_output: bool = ",
+        desc="The boolean value generated from the prompt.",
+    )
 
 
 class PromptToListSignature(Signature):
@@ -73,51 +80,72 @@ class PromptToListSignature(Signature):
 
     prompt = InputField(desc="The prompt that describes the list to be generated.")
     example = OutputField(desc="An example of the list to be generated.")
-    output = OutputField(prefix="```python\nlist_output: list = ", desc="The list generated from the prompt.")
+    output = OutputField(
+        prefix="```python\nlist_output: list = ", desc="The list generated from the prompt."
+    )
 
 
 class PromptToDictSignature(Signature):
     """Synthesize the prompt into a dictionary."""
 
     prompt = InputField(desc="The prompt that describes the dictionary to be generated.")
-    output = OutputField(prefix="```python\ndict_output: dict = ",
-                              desc="The dictionary generated from the prompt.")
+    output = OutputField(
+        prefix="```python\ndict_output: dict = ", desc="The dictionary generated from the prompt."
+    )
 
 
 # ===========================
 # Error Handling Signatures (Optional, as needed)
 # ===========================
 
+
 class PromptToIntErrorSignature(Signature):
     """Handle errors when synthesizing the prompt into an integer."""
 
     error_message = InputField(desc="The error message indicating why the integer creation failed.")
-    generated_output = InputField(desc="The output that was generated but failed to meet the integer format.")
+    generated_output = InputField(
+        desc="The output that was generated but failed to meet the integer format."
+    )
     prompt = InputField(desc="The prompt that was used to generate the integer.")
-    how_to_fix = OutputField(prefix="```python\nfix_suggestion: str = ", desc="A suggestion for how to fix the prompt.")
-    output = OutputField(prefix="```python\ncorrected_integer_output: int = ",
-                                           desc="The corrected integer output.")
+    how_to_fix = OutputField(
+        prefix="```python\nfix_suggestion: str = ", desc="A suggestion for how to fix the prompt."
+    )
+    output = OutputField(
+        prefix="```python\ncorrected_integer_output: int = ", desc="The corrected integer output."
+    )
 
 
 class PromptToFloatErrorSignature(Signature):
     """Handle errors when synthesizing the prompt into a float."""
 
     error_message = InputField(desc="The error message indicating why the float creation failed.")
-    generated_output = InputField(desc="The output that was generated but failed to meet the float format.")
+    generated_output = InputField(
+        desc="The output that was generated but failed to meet the float format."
+    )
     prompt = InputField(desc="The prompt that was used to generate the float.")
-    how_to_fix = OutputField(prefix="```python\nfix_suggestion: str = ", desc="A suggestion for how to fix the prompt.")
-    output = OutputField(prefix="```python\ncorrected_float_output: float = ",
-                                         desc="The corrected float output.")
+    how_to_fix = OutputField(
+        prefix="```python\nfix_suggestion: str = ", desc="A suggestion for how to fix the prompt."
+    )
+    output = OutputField(
+        prefix="```python\ncorrected_float_output: float = ", desc="The corrected float output."
+    )
 
 
 # ===========================
 # Generic Primitive Module for Generation & Validation
 # ===========================
 
+
 class GenPrimitiveModule:
     """A generic module for generating and validating primitive types from prompts."""
 
-    def __init__(self, primitive_type, generate_sig: Type[Signature], error_sig: Type[Signature], verbose=False):
+    def __init__(
+        self,
+        primitive_type,
+        generate_sig: type[Signature],
+        error_sig: type[Signature],
+        verbose=False,
+    ):
         """
         Initialize the module with the expected primitive type and the relevant DSPy signatures.
 
@@ -149,7 +177,9 @@ class GenPrimitiveModule:
         Validates whether the output matches the expected primitive type.
         """
         is_valid = isinstance(output, self.primitive_type)
-        Assert(is_valid, f"Expected {self.primitive_type.__name__}, but got {type(output).__name__}.")
+        Assert(
+            is_valid, f"Expected {self.primitive_type.__name__}, but got {type(output).__name__}."
+        )
         return is_valid
 
     def forward(self, prompt: str):
@@ -171,12 +201,16 @@ class GenPrimitiveModule:
             logger.warning(f"Validation failed: {e}. Trying correction...")
 
         # Attempt to correct the output
-        corrected_output = self.correct_generate(prompt=prompt, error="Validation failed", generated_output=output)
+        corrected_output = self.correct_generate(
+            prompt=prompt, error="Validation failed", generated_output=output
+        )
         corrected_evaluated_output = self.eval_output(corrected_output.get(self.output_key))
 
         # Validate corrected output
-        Assert(self.validate_output(corrected_evaluated_output),
-               f"Correction failed to generate valid {self.primitive_type.__name__}.")
+        Assert(
+            self.validate_output(corrected_evaluated_output),
+            f"Correction failed to generate valid {self.primitive_type.__name__}.",
+        )
         return corrected_evaluated_output
 
     def __call__(self, prompt: str):
@@ -187,6 +221,7 @@ class GenPrimitiveModule:
 # Submodules for Each Primitive Type
 # ===========================
 
+
 class GenIntModule(GenPrimitiveModule):
     """Module for generating and validating integer values."""
 
@@ -195,7 +230,7 @@ class GenIntModule(GenPrimitiveModule):
             primitive_type=int,
             generate_sig=PromptToIntSignature,
             error_sig=PromptToIntErrorSignature,
-            verbose=verbose
+            verbose=verbose,
         )
 
 
@@ -207,7 +242,7 @@ class GenFloatModule(GenPrimitiveModule):
             primitive_type=float,
             generate_sig=PromptToFloatSignature,
             error_sig=PromptToFloatErrorSignature,
-            verbose=verbose
+            verbose=verbose,
         )
 
 
@@ -220,7 +255,7 @@ class GenStrModule(GenPrimitiveModule):
             generate_sig=PromptToStrSignature,
             error_sig=PromptToIntErrorSignature,
             # Assuming this error signature for now, you can add PromptToStrErrorSignature if needed.
-            verbose=verbose
+            verbose=verbose,
         )
 
 
@@ -233,7 +268,7 @@ class GenBoolModule(GenPrimitiveModule):
             generate_sig=PromptToBoolSignature,
             error_sig=PromptToIntErrorSignature,
             # Assuming same error sig, you can extend to PromptToBoolErrorSignature.
-            verbose=verbose
+            verbose=verbose,
         )
 
 
@@ -245,7 +280,7 @@ class GenListModule(GenPrimitiveModule):
             primitive_type=list,
             generate_sig=PromptToListSignature,
             error_sig=PromptToIntErrorSignature,  # Extend to PromptToListErrorSignature if needed.
-            verbose=verbose
+            verbose=verbose,
         )
 
     def eval_output(self, output: str):
@@ -253,10 +288,10 @@ class GenListModule(GenPrimitiveModule):
         Attempt to evaluate the generated output string into the correct Python primitive type.
         """
         # find [
-        start_index = output.index('[')
+        start_index = output.index("[")
         # find ]
-        end_index = output.index(']')
-        list_part = output[start_index:end_index+1]
+        end_index = output.index("]")
+        list_part = output[start_index : end_index + 1]
         return eval_output_str(list_part)
 
 
@@ -268,13 +303,14 @@ class GenDictModule(GenPrimitiveModule):
             primitive_type=dict,
             generate_sig=PromptToDictSignature,
             error_sig=PromptToIntErrorSignature,  # Extend to PromptToDictErrorSignature if needed.
-            verbose=verbose
+            verbose=verbose,
         )
 
 
 # ===========================
 # Generation Functions (gen_{type})
 # ===========================
+
 
 def gen_int(prompt: str):
     return GenIntModule()(prompt)

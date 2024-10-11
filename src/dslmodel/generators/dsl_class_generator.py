@@ -38,7 +38,13 @@ class {{ model.class_name }}(DSLModel):
     {% endif %}
     '''
 
-    def __init__(self, model_prompt: str, file_path: Path = Path.cwd(), append: bool = False, max_workers: int = 5):
+    def __init__(
+        self,
+        model_prompt: str,
+        file_path: Path = Path.cwd(),
+        append: bool = False,
+        max_workers: int = 5,
+    ):
         """
         Initializes the generator with a prompt for the model and output settings.
 
@@ -62,12 +68,14 @@ class {{ model.class_name }}(DSLModel):
         In real implementation, this would use a model generation tool.
         """
         from dslmodel.generators import gen_list
+
         return gen_list(
             f"Please provide only the field names for a BaseModel derived from the following prompt. "
             f"The model should follow Python naming conventions and include only the names of the fields, "
             f"without any additional metadata or descriptions. Strings must have quotes."
-            f"Example: list = [\"id\", \"name\", \"age\"]"
-            f"\nPrompt: {self.model_prompt}")
+            f'Example: list = ["id", "name", "age"]'
+            f"\nPrompt: {self.model_prompt}"
+        )
 
     def generate_field_descriptions(self, fields: list):
         """
@@ -76,10 +84,14 @@ class {{ model.class_name }}(DSLModel):
         from dslmodel.generators.gen_models import FieldTemplateSpecificationModel
 
         tasks = [
-            (FieldTemplateSpecificationModel, f"Generate a field named {field} with a useful description")
+            (
+                FieldTemplateSpecificationModel,
+                f"Generate a field named {field} with a useful description",
+            )
             for field in fields
         ]
         from dslmodel.utils.model_tools import run_dsls
+
         return run_dsls(tasks, self.max_workers)
 
     def generate_model_instance(self):
@@ -87,6 +99,7 @@ class {{ model.class_name }}(DSLModel):
         Creates a model instance from the prompt.
         """
         from dslmodel.generators.gen_models import DSLModelClassTemplateSpecificationModel
+
         return DSLModelClassTemplateSpecificationModel.from_prompt(self.model_prompt)
 
     def render_class(self, model_inst, fields, include_imports: bool):
@@ -108,7 +121,7 @@ class {{ model.class_name }}(DSLModel):
         else:
             output_path = self.file_path
 
-        mode = 'a' if self.append else 'w'
+        mode = "a" if self.append else "w"
         with open(output_path, mode) as file:
             file.write(rendered_class_str)
 
@@ -135,20 +148,31 @@ class {{ model.class_name }}(DSLModel):
 
 
 swagger_data = {
-    'x-swagger-router-model': 'io.swagger.petstore.model.Pet',
-    'required': ['name', 'photoUrls'],
-    'properties': {
-        'id': {'type': 'integer', 'format': 'int64', 'example': 10},
-        'name': {'type': 'string', 'example': 'doggie'},
-        'category': {'$ref': '#/components/schemas/Category'},
-        'photoUrls': {'type': 'array', 'xml': {'wrapped': True}, 'items': {'type': 'string', 'xml': {'name': 'photoUrl'}}},
-        'tags': {'type': 'array', 'xml': {'wrapped': True}, 'items': {'$ref': '#/components/schemas/Tag', 'xml': {'name': 'tag'}}},
-        'status': {'type': 'string', 'description': 'pet status in the store', 'enum': ['available', 'pending', 'sold']}
+    "x-swagger-router-model": "io.swagger.petstore.model.Pet",
+    "required": ["name", "photoUrls"],
+    "properties": {
+        "id": {"type": "integer", "format": "int64", "example": 10},
+        "name": {"type": "string", "example": "doggie"},
+        "category": {"$ref": "#/components/schemas/Category"},
+        "photoUrls": {
+            "type": "array",
+            "xml": {"wrapped": True},
+            "items": {"type": "string", "xml": {"name": "photoUrl"}},
+        },
+        "tags": {
+            "type": "array",
+            "xml": {"wrapped": True},
+            "items": {"$ref": "#/components/schemas/Tag", "xml": {"name": "tag"}},
+        },
+        "status": {
+            "type": "string",
+            "description": "pet status in the store",
+            "enum": ["available", "pending", "sold"],
+        },
     },
-    'xml': {'name': 'pet'},
-    'type': 'object'
+    "xml": {"name": "pet"},
+    "type": "object",
 }
-
 
 
 def create_dslmodel_from_swagger(swagger: dict):
@@ -165,6 +189,7 @@ def create_dslmodel_from_swagger(swagger: dict):
 # Example usage
 if __name__ == "__main__":
     from dslmodel import init_instant
+
     init_instant()
 
     create_dslmodel_from_swagger(swagger_data)

@@ -1,7 +1,4 @@
-from typing import List, Optional, Callable
-from pydantic import Field
-
-from dslmodel.mixins.tools import Tool, ToolMixin
+from dslmodel.mixins.tools import ToolMixin
 
 
 class MetaToolMixin(ToolMixin):
@@ -10,9 +7,10 @@ class MetaToolMixin(ToolMixin):
 
 def main():
     """Main function"""
-    from dslmodel import init_lm, init_instant, init_text
+    from dslmodel import init_instant
+
     init_instant()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

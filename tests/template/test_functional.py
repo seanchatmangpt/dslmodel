@@ -22,8 +22,8 @@ def test_render_native_dict():
     template_dict = "{'name': '{{ fake_name() }}', 'job': '{{ fake_job() }}'}"
     result = render_native(template_dict)
     assert isinstance(result, dict)
-    assert 'name' in result and isinstance(result['name'], str)
-    assert 'job' in result and isinstance(result['job'], str)
+    assert "name" in result and isinstance(result["name"], str)
+    assert "job" in result and isinstance(result["job"], str)
 
 
 def test_render_native_inflection_extension():
@@ -31,4 +31,3 @@ def test_render_native_inflection_extension():
     template_str = "{{ 'person' | pluralize }}"
     result = render_native(template_str)
     assert result == "people"  # Plural of "person" is "people"
-

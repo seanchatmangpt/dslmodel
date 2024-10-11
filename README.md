@@ -23,6 +23,7 @@ pip install dslmodel
 ## Table of Contents
 
 - [DSLModel](#dslmodel)
+  - [Custom GPT: DSLModel Assistant v2024.10.10](#custom-gpt-dslmodel-assistant-v20241010)
   - [Overview](#overview)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
@@ -91,11 +92,36 @@ class Meeting(DSLModel):
 Use templates to generate model instances with dynamic content.
 
 ```python
-# .env should contain OPENAI_API_KEY 
-load_dotenv()
+from typing import List, Optional, Dict, Union
+from pydantic import Field
 
-gpt_lm = dspy.LM('openai/gpt-4o-mini') 
-dspy.configure(lm=gpt_lm)
+from dslmodel import init_lm, DSLModel
+
+
+class Participant(DSLModel):
+    """Represents a participant in a meeting."""
+    name: str = Field("{{ fake_name() }}", description="Name of the participant.")
+    role: str = Field("{{ fake_job() }}", description="Role of the participant.")
+
+
+class Meeting(DSLModel):
+    """Represents a meeting, its participants, agenda, and other details."""
+    name: str = Field(..., description="Name of the meeting.")
+    meeting_date: str = Field(..., description="Date of the meeting.")
+    location: Optional[str] = Field(None, description="Location where the meeting is held.")
+    chairperson: Participant = Field(..., description="Chairperson of the meeting.")
+    secretary: Participant = Field(..., description="Secretary responsible for taking minutes.")
+    participants: List[Participant] = Field(..., description="List of all participants in the meeting.")
+    agenda: List[str] = Field(..., description="Agenda items for the meeting.", min_length=3)
+    minutes: List[str] = Field(..., description="Minutes of the meeting. Time, Description", min_length=3)
+    rules_of_order: List[str] = Field(..., description="Rules governing the meeting.", min_length=3)
+
+
+participants = [Participant() for _ in range(5)]  # Created using Jinja defaults (no LM)
+
+# Generate the Meeting 
+init_lm()  # Sets the lm to gpt-4o-mini
+
 
 meeting_template = """
 Fortune 500 Meeting about {{ fake_bs() }}
@@ -105,8 +131,8 @@ Participants:
 {% endfor %}
 """
 
-participants = [Participant() for _ in range(5)]
 meeting_instance = Meeting.from_prompt(meeting_template, participants=participants)
+
 print(meeting_instance.to_yaml())
 ```
 
@@ -115,9 +141,21 @@ print(meeting_instance.to_yaml())
 Execute multiple tasks concurrently to improve performance.
 
 ```python
+from dslmodel import init_lm, DSLModel
 from dslmodel.utils.model_tools import run_dsls
+from pydantic import Field
 
-tasks = [(Participant, "{{ fake_name() }} - {{ fake_job() }}") for _ in range(5)]
+
+class Participant(DSLModel):
+    """Represents a participant in a meeting."""
+    name: str = Field(..., description="Name of the participant.")
+    role: str = Field(..., description="Role of the participant.")
+
+
+tasks = [(Participant, "Create a person with a name and job role") for _ in range(5)]
+
+init_lm()  # Sets the lm to gpt-4o-mini
+
 results = run_dsls(tasks, max_workers=5)
 
 for i, result in enumerate(results):
@@ -253,7 +291,7 @@ if __name__ == '__main__':
 Read from and write to various data formats using `DataReader` and `DataWriter`.
 
 ```python
-from dslmodel.utils.file_tools import DataReader, DataWriter
+from dslmodel import DataReader, DataWriter
 
 # Reading data
 data_reader = DataReader(file_path="data/sample_data.csv")
@@ -270,19 +308,11 @@ data_writer.forward()
 Programmatically create and manage IPython notebooks.
 
 ```python
-from dslmodel.notebook_models import (
-    IPythonNotebookGenerator,
-    NotebookMetadataModel,
-    NotebookCodeCellModel,
-    NotebookMarkdownCellModel
-)
+from dslmodel.generators import IPythonNotebookGenerator
 
-metadata = NotebookMetadataModel(
-    kernelspec={"name": "python3", "display_name": "Python 3"},
-    language_info={"name": "python", "version": "3.12"}
-)
 
-notebook_gen = IPythonNotebookGenerator(metadata=metadata, cells=[])
+# The generator is a DSLModel, so it can be used like any other DSLModel
+notebook_gen = IPythonNotebookGenerator()
 
 # Add a markdown cell
 notebook_gen.add_markdown_cell(["# Welcome to DSLModel Notebook", "Demonstrating notebook generation."])
@@ -291,7 +321,7 @@ notebook_gen.add_markdown_cell(["# Welcome to DSLModel Notebook", "Demonstrating
 notebook_gen.add_code_cell(["print('Hello, DSLModel!')"])
 
 # Save the notebook
-notebook_gen.save_notebook("notebooks/demo_notebook.ipynb")
+notebook_gen.save("notebooks/demo_notebook.ipynb")
 ```
 
 ## Architecture

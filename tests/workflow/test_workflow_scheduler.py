@@ -1,12 +1,13 @@
-import pytest
-from datetime import datetime, timedelta
-from apscheduler.schedulers.background import BackgroundScheduler
-from dspygen.workflow.workflow_models import Workflow, Job, Action, CronTrigger
-from dspygen.workflow.workflow_executor import schedule_workflow
-import pytz
 import io
-import sys
+from datetime import datetime, timedelta
 from unittest.mock import patch
+
+import pytest
+import pytz
+from apscheduler.schedulers.background import BackgroundScheduler
+from dspygen.workflow.workflow_executor import schedule_workflow
+from dspygen.workflow.workflow_models import Action, CronTrigger, Job, Workflow
+
 
 class MockClock:
     def __init__(self, initial):
@@ -18,9 +19,11 @@ class MockClock:
     def advance(self, delta):
         self.current += delta
 
+
 @pytest.fixture
 def mock_clock():
     return MockClock(datetime(2023, 1, 1, 0, 0, 0))
+
 
 @pytest.fixture
 def scheduler(mock_clock):
@@ -28,11 +31,13 @@ def scheduler(mock_clock):
     scheduler.configure(clock=mock_clock.get_current_time)
     return scheduler
 
+
 @pytest.fixture
 def captured_output():
     output = io.StringIO()
-    with patch('sys.stdout', new=output):
+    with patch("sys.stdout", new=output):
         yield output
+
 
 def test_cron_trigger_simulation(scheduler, mock_clock, captured_output):
     workflow = Workflow(
@@ -42,9 +47,9 @@ def test_cron_trigger_simulation(scheduler, mock_clock, captured_output):
             Job(
                 name="TestJob",
                 runner="python",
-                steps=[Action(name="TestAction", code="print('Job executed')")]
+                steps=[Action(name="TestAction", code="print('Job executed')")],
             )
-        ]
+        ],
     )
 
     schedule_workflow(workflow, scheduler)
@@ -67,10 +72,11 @@ def test_cron_trigger_simulation(scheduler, mock_clock, captured_output):
 
     # Assert that the job was executed 12 times (every 5 minutes for 1 hour)
     assert len(execution_times) == 12
-    
+
     # Check that executions happened at 5-minute intervals
     for i in range(1, len(execution_times)):
-        assert execution_times[i] - execution_times[i-1] == timedelta(minutes=5)
+        assert execution_times[i] - execution_times[i - 1] == timedelta(minutes=5)
+
 
 def test_daily_trigger_simulation(scheduler, mock_clock, captured_output):
     workflow = Workflow(
@@ -80,9 +86,9 @@ def test_daily_trigger_simulation(scheduler, mock_clock, captured_output):
             Job(
                 name="DailyJob",
                 runner="python",
-                steps=[Action(name="DailyAction", code="print('Daily job executed')")]
+                steps=[Action(name="DailyAction", code="print('Daily job executed')")],
             )
-        ]
+        ],
     )
 
     schedule_workflow(workflow, scheduler)
@@ -114,29 +120,36 @@ def test_daily_trigger_simulation(scheduler, mock_clock, captured_output):
 
     # Assert that the job was executed 5 times (once per day for 5 days)
     assert len(execution_times) == 5, f"Expected 5 executions, but got {len(execution_times)}"
-    
+
     # Check that executions happened at daily intervals at noon
     for i, execution_time in enumerate(execution_times):
         assert execution_time.hour == 12, f"Execution {i} not at noon: {execution_time}"
-        assert execution_time.minute == 0, f"Execution {i} not at the start of the hour: {execution_time}"
+        assert (
+            execution_time.minute == 0
+        ), f"Execution {i} not at the start of the hour: {execution_time}"
         if i > 0:
-            time_diff = execution_time - execution_times[i-1]
-            assert time_diff == timedelta(days=1), f"Incorrect interval between executions {i-1} and {i}: {time_diff}"
+            time_diff = execution_time - execution_times[i - 1]
+            assert time_diff == timedelta(
+                days=1
+            ), f"Incorrect interval between executions {i-1} and {i}: {time_diff}"
+
 
 def test_multiple_triggers(scheduler, mock_clock, captured_output):
     workflow = Workflow(
         name="MultiTriggerWorkflow",
         triggers=[
             CronTrigger(cron="0 */2 * * *"),  # Every 2 hours
-            CronTrigger(cron="30 * * * *"),   # Every hour at 30 minutes past
+            CronTrigger(cron="30 * * * *"),  # Every hour at 30 minutes past
         ],
         jobs=[
             Job(
                 name="MultiTriggerJob",
                 runner="python",
-                steps=[Action(name="MultiTriggerAction", code="print('Multi-trigger job executed')")]
+                steps=[
+                    Action(name="MultiTriggerAction", code="print('Multi-trigger job executed')")
+                ],
             )
-        ]
+        ],
     )
 
     schedule_workflow(workflow, scheduler)
@@ -191,6 +204,7 @@ def test_multiple_triggers(scheduler, mock_clock, captured_output):
     for time in execution_times:
         print(time)
 
+
 def test_weekly_trigger(scheduler, mock_clock, captured_output):
     workflow = Workflow(
         name="WeeklyWorkflow",
@@ -199,9 +213,9 @@ def test_weekly_trigger(scheduler, mock_clock, captured_output):
             Job(
                 name="WeeklyJob",
                 runner="python",
-                steps=[Action(name="WeeklyAction", code="print('Weekly job executed')")]
+                steps=[Action(name="WeeklyAction", code="print('Weekly job executed')")],
             )
-        ]
+        ],
     )
 
     schedule_workflow(workflow, scheduler)
@@ -215,7 +229,7 @@ def test_weekly_trigger(scheduler, mock_clock, captured_output):
         # Advance to next Monday at 9 AM
         while mock_clock.current.weekday() != 0 or mock_clock.current.hour != 9:
             mock_clock.advance(timedelta(hours=1))
-        
+
         print(f"Current time: {mock_clock.current}")
         scheduler.wakeup()
         jobs = scheduler.get_jobs()
@@ -230,7 +244,7 @@ def test_weekly_trigger(scheduler, mock_clock, captured_output):
                     print(f"Job executed at {mock_clock.current}")
                 captured_output.truncate(0)
                 captured_output.seek(0)
-        
+
         # Advance to next day to avoid re-triggering
         mock_clock.advance(timedelta(days=1))
 
@@ -250,6 +264,7 @@ def test_weekly_trigger(scheduler, mock_clock, captured_output):
         assert time.hour == 9, f"Execution not at 9 AM: {time}"
         assert time.minute == 0, f"Execution not at the start of the hour: {time}"
 
+
 def test_multiple_jobs(scheduler, mock_clock, captured_output):
     workflow = Workflow(
         name="MultiJobWorkflow",
@@ -258,14 +273,14 @@ def test_multiple_jobs(scheduler, mock_clock, captured_output):
             Job(
                 name="Job1",
                 runner="python",
-                steps=[Action(name="Action1", code="print('Job 1 executed')")]
+                steps=[Action(name="Action1", code="print('Job 1 executed')")],
             ),
             Job(
                 name="Job2",
                 runner="python",
-                steps=[Action(name="Action2", code="print('Job 2 executed')")]
-            )
-        ]
+                steps=[Action(name="Action2", code="print('Job 2 executed')")],
+            ),
+        ],
     )
 
     schedule_workflow(workflow, scheduler)
@@ -307,8 +322,8 @@ def test_multiple_jobs(scheduler, mock_clock, captured_output):
 
     # Check that executions happened at hourly intervals
     for i in range(1, len(job1_executions)):
-        assert job1_executions[i] - job1_executions[i-1] == timedelta(hours=1)
-        assert job2_executions[i] - job2_executions[i-1] == timedelta(hours=1)
+        assert job1_executions[i] - job1_executions[i - 1] == timedelta(hours=1)
+        assert job2_executions[i] - job2_executions[i - 1] == timedelta(hours=1)
 
     # Print execution times for debugging
     print("\nJob 1 execution times:")

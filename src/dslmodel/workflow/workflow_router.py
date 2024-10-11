@@ -1,6 +1,5 @@
 import os
 import tempfile
-from typing import Optional
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
@@ -14,7 +13,7 @@ router = APIRouter()
 
 class WorkflowRequest(BaseModel):
     yaml_content: str
-    init_ctx: Optional[dict] = None
+    init_ctx: dict | None = None
 
 
 # Route to execute a workflow based on YAML content and an optional initial context.

@@ -21,9 +21,10 @@ The module is designed to be used programmatically within the DSLModel framework
 Intended for data scientists, developers, and analysts, this module simplifies the automation of complex data processing and analysis tasks, enabling users to focus on insights and innovation rather than the intricacies of workflow management.
 """
 
-from typing import List, Union, Dict, Any, Optional
-from pydantic import Field
 from datetime import datetime
+from typing import Any, Union
+
+from pydantic import Field
 
 from dslmodel import DSLModel
 
@@ -36,9 +37,8 @@ class Condition(DSLModel):
 
     The expression should be a valid Python expression that returns a Boolean value.
     """
-    expr: str = Field(
-        ..., description="A Python expression as a string to evaluate the condition."
-    )
+
+    expr: str = Field(..., description="A Python expression as a string to evaluate the condition.")
 
 
 class Loop(DSLModel):
@@ -50,9 +50,8 @@ class Loop(DSLModel):
     The 'over' attribute specifies the iterable to loop over, while 'var' indicates the
     variable name assigned to each item during iteration.
     """
-    over: str = Field(
-        ..., description="A Python expression resulting in an iterable for looping."
-    )
+
+    over: str = Field(..., description="A Python expression resulting in an iterable for looping.")
     var: str = Field(
         ..., description="The variable name that each iteration's value is assigned to."
     )
@@ -66,26 +65,21 @@ class Action(DSLModel):
 
     Conditional execution and looping over actions are supported to allow complex, dynamic workflows.
     """
+
     name: str = Field(..., description="The unique name of the action.")
-    use: Optional[str] = Field(
-        None, description="Identifier for the module or action to be used."
-    )
-    args: Optional[Dict[str, Any]] = Field(
+    use: str | None = Field(None, description="Identifier for the module or action to be used.")
+    args: dict[str, Any] | None = Field(
         None, description="Arguments to pass to the module or action."
     )
-    code: Optional[str] = Field(
-        None, description="Python code to be executed directly."
-    )
-    env: Optional[Dict[str, str]] = Field(
+    code: str | None = Field(None, description="Python code to be executed directly.")
+    env: dict[str, str] | None = Field(
         None,
         description="Environment variables accessible during the action's execution.",
     )
-    cond: Optional[Condition] = Field(
+    cond: Condition | None = Field(
         None, description="Condition required to be true for the action to be executed."
     )
-    loop: Optional[Loop] = Field(
-        None, description="Loop control to iterate over a set of actions."
-    )
+    loop: Loop | None = Field(None, description="Loop control to iterate over a set of actions.")
 
 
 class Job(DSLModel):
@@ -97,8 +91,9 @@ class Job(DSLModel):
 
     Jobs specify where they run, allowing for flexibility in execution environments.
     """
+
     name: str = Field(..., description="The unique name of the job.")
-    depends_on: Optional[List[str]] = Field(
+    depends_on: list[str] | None = Field(
         None,
         description="List of job names that this job depends on to complete before it starts.",
     )
@@ -106,26 +101,37 @@ class Job(DSLModel):
         ...,
         description="Specification of where the job will run, such as a machine or container identifier.",
     )
-    steps: List[Action] = Field(
+    steps: list[Action] = Field(
         ..., description="A sequence of actions that are executed as part of this job."
     )
-    env: Optional[Dict[str, str]] = Field(
+    env: dict[str, str] | None = Field(
         None, description="Environment variables accessible during the job's execution."
     )
-    max_retries: Optional[int] = Field(None, description="Maximum number of retry attempts for the job.")
-    retry_delay_seconds: Optional[int] = Field(None, description="Delay between retry attempts in seconds.")
-    sla_seconds: Optional[int] = Field(None,
-                                       description="Service Level Agreement for the job completion, specified in seconds.")
+    max_retries: int | None = Field(
+        None, description="Maximum number of retry attempts for the job."
+    )
+    retry_delay_seconds: int | None = Field(
+        None, description="Delay between retry attempts in seconds."
+    )
+    sla_seconds: int | None = Field(
+        None, description="Service Level Agreement for the job completion, specified in seconds."
+    )
+
 
 class CronTrigger(DSLModel):
     type: str = Field("cron")
     cron: str = Field(..., description="Cron-like schedule for workflow triggering")
 
+
 class DateTrigger(DSLModel):
     type: str = Field("date")
-    run_date: Union[str, datetime] = Field(..., description="Date and time to run the workflow, or 'now' for immediate execution")
+    run_date: str | datetime = Field(
+        ..., description="Date and time to run the workflow, or 'now' for immediate execution"
+    )
+
 
 Trigger = Union[CronTrigger, DateTrigger]
+
 
 class Workflow(DSLModel):
     """
@@ -136,17 +142,24 @@ class Workflow(DSLModel):
     This class serves as the blueprint for automating complex processes, linking together various
     actions into a cohesive, automated sequence that accomplishes a specific task or set of tasks.
     """
+
     name: str = Field(..., description="The unique name of the workflow.")
-    description: Optional[str] = Field(None, description="A brief description of the workflow.")
-    triggers: List[Union[CronTrigger, DateTrigger]] = Field([], description="List of triggers for the workflow execution.")
-    jobs: List[Job] = Field(
+    description: str | None = Field(None, description="A brief description of the workflow.")
+    triggers: list[CronTrigger | DateTrigger] = Field(
+        [], description="List of triggers for the workflow execution."
+    )
+    jobs: list[Job] = Field(
         ..., description="A collection of jobs that are defined within the workflow."
     )
-    imports: Optional[List[str]] = Field([], description="List of external workflow files to import and execute.")
-    context: Optional[Dict[str, Any]] = Field(
+    imports: list[str] | None = Field(
+        [], description="List of external workflow files to import and execute."
+    )
+    context: dict[str, Any] | None = Field(
         {}, description="Global context variables for the workflow execution."
     )
-    env: Optional[Dict[str, str]] = Field({}, description="Global environments variables for the workflow.")
+    env: dict[str, str] | None = Field(
+        {}, description="Global environments variables for the workflow."
+    )
 
     def process_imports(self) -> None:
         """Process imported workflows and integrate them into the current workflow."""
@@ -161,6 +174,7 @@ class Workflow(DSLModel):
 
     def topological_sort(self):
         from collections import deque
+
         jobs = self.jobs
 
         # Create a mapping from job name to job object for quick access

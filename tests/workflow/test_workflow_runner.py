@@ -1,13 +1,12 @@
-import pytest
-from dspygen.subcommands.wkf_cmd import run_workflows_in_directory
-import os
-from apscheduler.schedulers.background import BackgroundScheduler
 import time
+
+from dspygen.subcommands.wkf_cmd import run_workflows_in_directory
+
 
 def test_run_workflows_in_directory(tmp_path):
     workflows_dir = tmp_path / "workflows"
     workflows_dir.mkdir()
-    
+
     # Create a temporary directory structure with some YAML files
     (workflows_dir / "workflow1.yaml").write_text(f"""
 name: TestWorkflow

@@ -7,9 +7,7 @@ from dslmodel.template.extensions.pydantic_extension import PydanticExtension
 
 class CustomEnvironment(Environment):
     def __init__(self, **kwargs):
-        super(CustomEnvironment, self).__init__(
-            trim_blocks=True, lstrip_blocks=True, **kwargs
-        )
+        super(CustomEnvironment, self).__init__(trim_blocks=True, lstrip_blocks=True, **kwargs)
 
         self.add_extension(FakerExtension)
         self.add_extension(InflectionExtension)

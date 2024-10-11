@@ -67,3 +67,5 @@ local_cache/
 .lh/
 
 .netrc
+
+.secrets

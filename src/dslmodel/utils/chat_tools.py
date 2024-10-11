@@ -57,10 +57,12 @@ Usage:
 For more information on ethical AI and advanced LLM capabilities, visit:
 https://www.nature.com/articles/s41586-021-03819-2
 """
+
+import sys
+import traceback
+
 import dspy
 import typer
-import traceback
-import sys
 
 
 class ChatbotAssistance(dspy.Signature):
@@ -68,9 +70,12 @@ class ChatbotAssistance(dspy.Signature):
     Provides guidance and assistance to users in developing projects with dslmodel,
     leveraging the integrated chatbot functionality.
     """
+
     question = dspy.InputField(desc="The user's query or request for assistance.")
     context = dspy.InputField(desc="Background information relevant to the user's query.")
-    conversation_history = dspy.InputField(desc="Previous exchanges between the user and the chatbot, if any.")
+    conversation_history = dspy.InputField(
+        desc="Previous exchanges between the user and the chatbot, if any."
+    )
     answer = dspy.OutputField(desc="The chatbot's response to the user's query.")
 
 
@@ -78,6 +83,7 @@ class ErrorAnalysis(dspy.Signature):
     """
     Analyzes uncaught errors and provides expert-level suggestions for fixing them.
     """
+
     error_message = dspy.InputField(desc="The error message and traceback.")
     error_context = dspy.InputField(desc="Additional context about where the error occurred.")
     analysis = dspy.OutputField(desc="Expert analysis of the error.")
@@ -111,7 +117,8 @@ def chatbot(question, context, history=""):
         history (str, optional): Previous exchanges between the user and the chatbot. Defaults to "".
         model (str, optional): The language model to use for generating responses. Defaults to GPT_DEFAULT_MODEL.
 
-    Returns:
+    Returns
+    -------
         str: The chatbot's response history, including the latest answer.
 
     Note:
@@ -155,7 +162,7 @@ def handle_global_error(error_type, error_value, tb):
     """
     Handles global uncaught errors, provides the error message, and offers LLM-generated tips and ideas to fix.
     """
-    error_message = f"Error Type: {error_type.__name__}\nError Message: {str(error_value)}\n\nTraceback:\n{''.join(traceback.format_tb(tb))}"
+    error_message = f"Error Type: {error_type.__name__}\nError Message: {error_value!s}\n\nTraceback:\n{''.join(traceback.format_tb(tb))}"
     error_context = f"File: {tb.tb_frame.f_code.co_filename}\nLine: {tb.tb_lineno}\nFunction: {tb.tb_frame.f_code.co_name}"
 
     print("An unexpected error occurred:")

@@ -1,13 +1,12 @@
-import os
 import pytest
-from dslmodel.workflow import Workflow, execute_workflow
 from apscheduler.schedulers.background import BackgroundScheduler
-from datetime import datetime, timedelta
-import time
 from loguru import logger
+
+from dslmodel.workflow import Workflow, execute_workflow
 
 # Add this at the beginning of the file to set up verbose logging
 logger.add("test_workflow_integration.log", level="DEBUG", rotation="1 MB")
+
 
 @pytest.fixture
 def workflow_yaml(tmp_path):
@@ -28,6 +27,7 @@ jobs:
             f.write('Integration test successful')
     """
 
+
 @pytest.fixture(scope="module")
 def scheduler():
     logger.debug("Creating BackgroundScheduler")
@@ -36,6 +36,7 @@ def scheduler():
     yield scheduler
     logger.debug("Shutting down BackgroundScheduler")
     scheduler.shutdown()
+
 
 def test_workflow_execution_from_yaml(workflow_yaml, tmp_path):
     logger.info("Starting test_workflow_execution_from_yaml")
@@ -50,9 +51,8 @@ def test_workflow_execution_from_yaml(workflow_yaml, tmp_path):
 
     output_file = tmp_path / "test_output.txt"
     logger.debug(f"Checking output file: {output_file}")
-    with open(output_file, "r") as f:
+    with open(output_file) as f:
         content = f.read()
     logger.info(f"Output file content: {content}")
     assert content == "Integration test successful"
     logger.info("test_workflow_execution_from_yaml completed successfully")
-

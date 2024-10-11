@@ -1,26 +1,26 @@
+from datetime import datetime
+
 import dspy
 import pyperclip
 from typer import Typer
-from inflection import underscore, dasherize
-from datetime import datetime
 
 from dslmodel.utils.str_tools import pythonic_str
-from zipp import Path
 
 app = Typer(
     help="Generate a file name from any text, with optional timestamp and safe file format handling."
 )
 
+
 # Define safe time formats for filenames (no invalid characters)
 class TimeFormats:
-    ISO_LIKE = "%Y-%m-%dT%H%M%S"                    # 2024-09-27T153000 (ISO-like without colons)
-    YEAR_MONTH_DAY_UNDERSCORE = "%Y-%m-%d"          # 2024-09-27
-    FULL_DATETIME_UNDERSCORE = "%Y-%m-%d-%H%M%S"    # 2024-09-27-153000
-    YEAR_MONTH_DAY_COMPACT = "%Y%m%d"               # 20240927 (Compact date only)
-    DATE_HOUR_MIN_SEC_COMPACT = "%Y%m%d-%H%M%S"     # 20240927-153000
-    TIME_ONLY = "%H%M%S"                            # 153000 (Time only)
-    HUMAN_READABLE_UNDERSCORE = "%B-%d-%Y"          # September-27-2024 (Human-readable, safe)
-    YEAR_MONTH = "%Y-%m"                            # 2024-09 (Year and month only)
+    ISO_LIKE = "%Y-%m-%dT%H%M%S"  # 2024-09-27T153000 (ISO-like without colons)
+    YEAR_MONTH_DAY_UNDERSCORE = "%Y-%m-%d"  # 2024-09-27
+    FULL_DATETIME_UNDERSCORE = "%Y-%m-%d-%H%M%S"  # 2024-09-27-153000
+    YEAR_MONTH_DAY_COMPACT = "%Y%m%d"  # 20240927 (Compact date only)
+    DATE_HOUR_MIN_SEC_COMPACT = "%Y%m%d-%H%M%S"  # 20240927-153000
+    TIME_ONLY = "%H%M%S"  # 153000 (Time only)
+    HUMAN_READABLE_UNDERSCORE = "%B-%d-%Y"  # September-27-2024 (Human-readable, safe)
+    YEAR_MONTH = "%Y-%m"  # 2024-09 (Year and month only)
 
 
 class WindowsSafeFileName(dspy.Signature):
@@ -29,8 +29,12 @@ class WindowsSafeFileName(dspy.Signature):
     Ensures the filename complies with Windows naming conventions and restrictions.
     """
 
-    file_content = dspy.InputField(desc="Text content that needs to be converted to a valid Windows-safe filename.")
-    safe_filename = dspy.OutputField(desc="The generated Windows-safe filename.", prefix="filename:")
+    file_content = dspy.InputField(
+        desc="Text content that needs to be converted to a valid Windows-safe filename."
+    )
+    safe_filename = dspy.OutputField(
+        desc="The generated Windows-safe filename.", prefix="filename:"
+    )
 
 
 class FileContentToFileNameModule(dspy.Module):
@@ -70,7 +74,12 @@ class FileContentToFileNameModule(dspy.Module):
         return result
 
 
-def file_name_call(file_content: str, extension: str = None, time_format: str = TimeFormats.YEAR_MONTH_DAY_UNDERSCORE, add_timestamp: bool = False) -> str:
+def file_name_call(
+    file_content: str,
+    extension: str = None,
+    time_format: str = TimeFormats.YEAR_MONTH_DAY_UNDERSCORE,
+    add_timestamp: bool = False,
+) -> str:
     """Generates the file name from content with an optional timestamp and file extensions."""
     file_content_to_file_name = FileContentToFileNameModule(
         extension=extension, time_format=time_format, add_timestamp=add_timestamp
@@ -81,6 +90,7 @@ def file_name_call(file_content: str, extension: str = None, time_format: str = 
 def main():
     # Get file content from clipboard (or initialize with other input)
     from dspygen.utils.dspy_tools import init_versatile
+
     init_versatile()
     file_content = pyperclip.paste()
 
@@ -89,8 +99,8 @@ def main():
         file_content=file_content,
         extension="md",  # Example: Python file extensions
         time_format=TimeFormats.FULL_DATETIME_UNDERSCORE,  # Example safe timestamp format
-        add_timestamp=True
-    ) 
+        add_timestamp=True,
+    )
 
     print(file_name)
 
@@ -99,17 +109,19 @@ def main():
     with open(file_path, "w") as file:
         file.write(file_content)
 
+
 @app.command()
-def call(file_content: str, extension: str = None, add_timestamp: bool = False, time_format: str = None):
+def call(
+    file_content: str, extension: str = None, add_timestamp: bool = False, time_format: str = None
+):
     """CLI command to convert file content to a file name with optional timestamp."""
     file_name = file_name_call(
         file_content=file_content,
         extension=extension,
         time_format=time_format if time_format else TimeFormats.YEAR_MONTH_DAY_UNDERSCORE,
-        add_timestamp=add_timestamp
+        add_timestamp=add_timestamp,
     )
     print(file_name)
-
 
 
 def watch_clipboard():
@@ -120,10 +132,11 @@ def watch_clipboard():
         new_clipboard_content = pyperclip.paste()
         if new_clipboard_content != clipboard_content:
             import time
+
             time.sleep(0.01)  # Sleep for 0.01 seconds to ensure clipboard content is fully updated
             clipboard_content = new_clipboard_content
             main()
-    
+
 
 if __name__ == "__main__":
     # For running via CLI

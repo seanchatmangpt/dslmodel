@@ -1,19 +1,19 @@
-from typing import Optional
-
 import dspy
 
 GPT_DEFAULT_MODEL = "gpt-4o-mini"
 
 
-def init_lm(model: str = "openai/gpt-4o-mini",
-            api_key: Optional[str] = None,
-            api_base: Optional[str] = None,
-            temperature: float = 0.0,
-            max_tokens: int = 1000,
-            cache: bool = True,
-            model_type: Optional[str] = "text",
-            stop: Optional[list] = None,
-            experimental: bool = True) -> dspy.LM:
+def init_lm(
+    model: str = "openai/gpt-4o-mini",
+    api_key: str | None = None,
+    api_base: str | None = None,
+    temperature: float = 0.0,
+    max_tokens: int = 1000,
+    cache: bool = True,
+    model_type: str | None = "text",
+    stop: list | None = None,
+    experimental: bool = True,
+) -> dspy.LM:
     """
     Initialize a language model using the new DSPy 2.5 setup.
 
@@ -30,12 +30,13 @@ def init_lm(model: str = "openai/gpt-4o-mini",
         adapter (Optional[dspy.ChatAdapter]): DSPy Adapter to manage input/output formatting (default: None).
         experimental (bool): Enable experimental DSPy settings for the LM (default: True).
 
-    Returns:
+    Returns
+    -------
         dspy.LM: Configured LM object.
     """
     # Initialize the LM with flexible configuration options
     if model == "openai/gpt-4o-mini":
-        lm = dspy.LM('openai/gpt-4o-mini')
+        lm = dspy.LM("openai/gpt-4o-mini")
         dspy.settings.configure(lm=lm, experimental=experimental)
         return lm
 

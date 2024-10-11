@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]  # https://python-poetry.org/docs/pyproject/
 name = "dslmodel"
-version = "2024.10.3.4.2"
+version = "2024.10.3.10"
 description = "Pydantic + DSPy instances from prompts and Jinja."
 authors = ["Sean Chatman <info@chatmangpt.com>"]
 readme = "README.md"
@@ -21,7 +21,7 @@ poethepoet = ">=0.25.0"
 python = ">=3.12,<4.0"
 typer = { extras = ["all"], version = ">=0.12.0" }
 uvicorn = { extras = ["standard"], version = ">=0.29.0" }
-dspy-ai = "^2.5.3"
+dspy-ai = "2.5.6"
 pyperclip = "^1.9.0"
 inflection = "^0.5.1"
 jinja2-time = "^0.2.0"
@@ -45,8 +45,6 @@ pygithub = "^2.4.0"
 
 [tool.poetry.group.test.dependencies]  # https://python-poetry.org/docs/master/managing-dependencies/
 coverage = { extras = ["toml"], version = ">=7.4.4" }
-mypy = ">=1.9.0"
-pre-commit = ">=3.7.0"
 pytest = ">=8.1.1"
 pytest-mock = ">=3.14.0"
 pytest-xdist = ">=3.5.0"
@@ -75,15 +73,15 @@ source = ["src"]
 [tool.coverage.xml]  # https://coverage.readthedocs.io/en/latest/config.html#xml
 output = "reports/coverage.xml"
 
-[tool.mypy]  # https://mypy.readthedocs.io/en/latest/config_file.html
-junit_xml = "reports/mypy.xml"
-plugins = "pydantic.mypy"
-ignore_missing_imports = true
-pretty = true
-show_column_numbers = true
-show_error_codes = true
-show_error_context = true
-warn_unreachable = true
+#[tool.mypy]  # https://mypy.readthedocs.io/en/latest/config_file.html
+#junit_xml = "reports/mypy.xml"
+#plugins = "pydantic.mypy"
+#ignore_missing_imports = true
+#pretty = true
+#show_column_numbers = true
+#show_error_codes = true
+#show_error_context = true
+#warn_unreachable = true
 
 [tool.pytest.ini_options]  # https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
 addopts = "--color=yes --doctest-modules --exitfirst --failed-first --verbosity=2 --junitxml=reports/pytest.xml"
@@ -108,6 +106,7 @@ ban-relative-imports = "all"
 convention = "numpy"
 
 [tool.poe.tasks]  # https://github.com/nat-n/poethepoet
+push = "act push --container-architecture linux/amd64 --secret-file .secrets"
 pub = "poetry publish --build"
 
 
@@ -174,16 +173,6 @@ pub = "poetry publish --build"
     name = "outputdirectory"
     options = ["--output-directory"]
     default = "docs"
-
-  [tool.poe.tasks.lint]
-  help = "Lint this app"
-
-    [[tool.poe.tasks.lint.sequence]]
-    cmd = """
-      pre-commit run
-        --all-files
-        --color always
-      """
 
   [tool.poe.tasks.test]
   help = "Test this app"

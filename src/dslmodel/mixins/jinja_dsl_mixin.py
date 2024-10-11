@@ -4,7 +4,6 @@ from dslmodel.template import render_native
 
 
 class JinjaDSLMixin:
-
     model_fields = None
 
     @classmethod
@@ -13,7 +12,11 @@ class JinjaDSLMixin:
         Renders default values that are defined as Jinja2 templates.
         """
         for field_name, field_value in cls.model_fields.items():
-            if field_name in data or field_value.default is None or field_value.default is PydanticUndefined:
+            if (
+                field_name in data
+                or field_value.default is None
+                or field_value.default is PydanticUndefined
+            ):
                 continue
             try:
                 if field_value.default and "{{" in field_value.default:
@@ -22,7 +25,7 @@ class JinjaDSLMixin:
                     # Only set the value if not already provided by user input
                     if field_name not in data:
                         data[field_name] = rendered_value
-            except Exception as e:
+            except Exception:
                 pass
 
         return data

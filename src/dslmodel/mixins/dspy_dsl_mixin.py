@@ -1,5 +1,8 @@
-from typing import Type, TypeVar, Union, Any
+from typing import Any, TypeVar
+
 import dspy
+
+# from dslmodel.models import DSLModel
 
 T = TypeVar("T", bound="DSLModel")
 
@@ -11,7 +14,7 @@ class DSPyDSLMixin:
     """
 
     @classmethod
-    def from_prompt(cls: Type[T], prompt: Any, verbose=False, **kwargs) -> T:
+    def from_prompt(cls: type[T], prompt: Any, verbose=False, **kwargs) -> T:
         """
         Creates an instance of the model from a user prompt.
 
@@ -27,10 +30,9 @@ class DSPyDSLMixin:
         instance = gen_instance(cls, prompt, verbose)
         print(instance)
         return instance
-    
 
     @classmethod
-    def from_template(cls: Type[T], template: str, verbose=False, **kwargs) -> T:
+    def from_template(cls: type[T], template: str, verbose=False, **kwargs) -> T:
         """
         Creates an instance of the model from a template and a context dictionary.
 
@@ -43,14 +45,16 @@ class DSPyDSLMixin:
         rendered_prompt = render(template, **kwargs)
         return cls.from_prompt(rendered_prompt, verbose=verbose)
 
-    
     @classmethod
     def from_signature(
-            cls: Type[T],
-            signature: Union[str, Type[dspy.Signature]],  # Signature can be a string or a dspy.Signature subclass
-            predictor_class: Type[dspy.Module] = dspy.Predict,  # Default predictor class is dspy.Predict
-            verbose=False,
-            **kwargs
+        cls: type[T],
+        signature: str
+        | type[dspy.Signature],  # Signature can be a string or a dspy.Signature subclass
+        predictor_class: type[
+            dspy.Module
+        ] = dspy.Predict,  # Default predictor class is dspy.Predict
+        verbose=False,
+        **kwargs,
     ) -> T:
         """
         Creates an instance of the model using a DSPy signature (either a string or a dspy.Signature)

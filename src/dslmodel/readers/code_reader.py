@@ -1,13 +1,9 @@
-import dspy
 from pathlib import Path
-from fnmatch import fnmatch
-
-from dspy import Prediction
-
-import wcmatch.glob as wglob
 
 import dspy
 import typer
+import wcmatch.glob as wglob
+from dspy import Prediction
 
 
 class CodeReader(dspy.Retrieve):
@@ -29,7 +25,7 @@ class CodeReader(dspy.Retrieve):
             )
         return patterns
 
-    def forward(self, query = None) -> list[str] | Prediction | list[Prediction]:
+    def forward(self, query=None) -> list[str] | Prediction | list[Prediction]:
         content = []
         file_dict = {}
 
@@ -38,18 +34,18 @@ class CodeReader(dspy.Retrieve):
 
         # Setup the walker with respect to the max_depth
         for file_path in wglob.iglob(
-                str(self.path / "**"),
-                flags=flags,
-                exclude=self.gitignore_patterns,
-                depth=(0 if self.max_depth is None else self.max_depth)
+            str(self.path / "**"),
+            flags=flags,
+            exclude=self.gitignore_patterns,
+            depth=(0 if self.max_depth is None else self.max_depth),
         ):
             file_path = Path(file_path)
 
             # Apply additional filters
             if (
-                    file_path.is_file()
-                    and not self.is_binary(file_path)
-                    and (not query or self.is_filtered(file_path, query))
+                file_path.is_file()
+                and not self.is_binary(file_path)
+                and (not query or self.is_filtered(file_path, query))
             ):
                 try:
                     print(file_path)
@@ -72,11 +68,11 @@ class CodeReader(dspy.Retrieve):
         try:
             with open(file_path, "rb") as file:
                 return b"\x00" in file.read(1024)
-        except IOError:
+        except OSError:
             return False
 
     def extract_file_info(self, file_path):
-        file_extension = file_path.suffix.lstrip('.')
+        file_extension = file_path.suffix.lstrip(".")
         file_info = f"## File: {file_path}\n\n```{file_extension}\n"
         return file_info
 
@@ -101,7 +97,7 @@ def main(directory: str, query: str, gitignore: str = None, max_depth: int = Non
         print(file_content)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     typer.run(main)
 
 # def main():
@@ -133,73 +129,92 @@ if __name__ == '__main__':
 
 
 import os
-from pathlib import Path
 from datetime import datetime, timedelta
-from typing import List, Any
+
 import typer
 
-from dslmodel.utils.dspy_tools import init_lm, init_instant
+from dslmodel.utils.dspy_tools import init_instant
 
 # Initialize Typer application
 app = typer.Typer()
 
 
-def query_python_files(directory: str, gitignore: str = None) -> List[str]:
+def query_python_files(directory: str, gitignore: str = None) -> list[str]:
     """Find all Python files in the directory."""
     return get_files_from_directory(directory, "*.py", gitignore)
 
 
-def query_markdown_files(directory: str, gitignore: str = None) -> List[str]:
+def query_markdown_files(directory: str, gitignore: str = None) -> list[str]:
     """Find all Markdown files in the directory."""
     return get_files_from_directory(directory, "*.md", gitignore)
 
 
-def query_large_files(directory: str, size_threshold: int, gitignore: str = None) -> List[str]:
+def query_large_files(directory: str, size_threshold: int, gitignore: str = None) -> list[str]:
     """Find all files larger than a specified size."""
     result = []
-    for file_path in wglob.iglob(str(Path(directory) / "**"), flags=wglob.GLOBSTAR | wglob.RECURSIVE):
+    for file_path in wglob.iglob(
+        str(Path(directory) / "**"), flags=wglob.GLOBSTAR | wglob.RECURSIVE
+    ):
         if Path(file_path).is_file() and (os.path.getsize(file_path) > size_threshold):
             result.append(str(file_path))
     return result
 
 
-def query_recent_files(directory: str, days: int, gitignore: str = None) -> List[str]:
+def query_recent_files(directory: str, days: int, gitignore: str = None) -> list[str]:
     """Find files modified within a specific number of days."""
     cutoff_time = datetime.now() - timedelta(days=days)
     result = []
-    for file_path in wglob.iglob(str(Path(directory) / "**"), flags=wglob.GLOBSTAR | wglob.RECURSIVE):
-        if Path(file_path).is_file() and datetime.fromtimestamp(os.path.getmtime(file_path)) > cutoff_time:
+    for file_path in wglob.iglob(
+        str(Path(directory) / "**"), flags=wglob.GLOBSTAR | wglob.RECURSIVE
+    ):
+        if (
+            Path(file_path).is_file()
+            and datetime.fromtimestamp(os.path.getmtime(file_path)) > cutoff_time
+        ):
             result.append(str(file_path))
     return result
 
 
-def query_ignored_files(directory: str, gitignore: str = None) -> List[str]:
+def query_ignored_files(directory: str, gitignore: str = None) -> list[str]:
     """List all files that match patterns in .gitignore."""
     code_retriever = CodeReader(directory, gitignore)
     return [str(path) for path in code_retriever.gitignore_patterns]
 
 
-def query_binary_files(directory: str, gitignore: str = None) -> List[str]:
+def query_binary_files(directory: str, gitignore: str = None) -> list[str]:
     """Find binary files in the directory."""
     result = []
     code_retriever = CodeReader(directory, gitignore)
-    for file_path in wglob.iglob(str(Path(directory) / "**"), flags=wglob.GLOBSTAR | wglob.RECURSIVE):
+    for file_path in wglob.iglob(
+        str(Path(directory) / "**"), flags=wglob.GLOBSTAR | wglob.RECURSIVE
+    ):
         if Path(file_path).is_file() and code_retriever.is_binary(Path(file_path)):
             result.append(str(file_path))
     return result
 
 
-def query_files_with_pattern(directory: str, pattern: str, gitignore: str = None) -> List[str]:
+def query_files_with_pattern(directory: str, pattern: str, gitignore: str = None) -> list[str]:
     """Find files containing a specific text pattern."""
     result = []
     code_retriever = CodeReader(directory, gitignore)
-    for file_path in wglob.iglob(str(Path(directory) / "**"), flags=wglob.GLOBSTAR | wglob.RECURSIVE):
-        if Path(file_path).is_file() and pattern in Path(file_path).read_text(encoding="utf-8", errors="ignore"):
+    for file_path in wglob.iglob(
+        str(Path(directory) / "**"), flags=wglob.GLOBSTAR | wglob.RECURSIVE
+    ):
+        if Path(file_path).is_file() and pattern in Path(file_path).read_text(
+            encoding="utf-8", errors="ignore"
+        ):
             result.append(str(file_path))
     return result
 
 
-def main(directory: str, query_type: str, size: int = 1024, days: int = 7, pattern: str = "", gitignore: str = None):
+def main(
+    directory: str,
+    query_type: str,
+    size: int = 1024,
+    days: int = 7,
+    pattern: str = "",
+    gitignore: str = None,
+):
     # Initialize LLM configuration
     init_instant()
 

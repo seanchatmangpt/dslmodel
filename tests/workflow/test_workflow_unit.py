@@ -1,6 +1,6 @@
-import pytest
-from dspygen.workflow.workflow_models import Workflow, Job, Action, CronTrigger
-from dspygen.workflow.workflow_executor import execute_workflow, execute_job, execute_action
+from dspygen.workflow.workflow_executor import execute_action, execute_job, execute_workflow
+from dspygen.workflow.workflow_models import Action, CronTrigger, Job, Workflow
+
 
 def test_workflow_creation():
     workflow = Workflow(
@@ -10,14 +10,9 @@ def test_workflow_creation():
             Job(
                 name="TestJob",
                 runner="python",
-                steps=[
-                    Action(
-                        name="TestAction",
-                        code="print('Hello, World!')"
-                    )
-                ]
+                steps=[Action(name="TestAction", code="print('Hello, World!')")],
             )
-        ]
+        ],
     )
     assert workflow.name == "TestWorkflow"
     assert len(workflow.triggers) == 1
@@ -25,31 +20,24 @@ def test_workflow_creation():
     assert workflow.triggers[0].cron == "0 0 * * *"
     assert len(workflow.jobs) == 1
 
+
 def test_execute_action(capsys):
-    action = Action(
-        name="TestAction",
-        code="print('Hello, World!')"
-    )
+    action = Action(name="TestAction", code="print('Hello, World!')")
     context = {}
     new_context = execute_action(action, context)
     captured = capsys.readouterr()
     assert captured.out.strip() == "Hello, World!"
     assert new_context == {}
 
+
 def test_execute_job(capsys):
     job = Job(
         name="TestJob",
         runner="python",
         steps=[
-            Action(
-                name="TestAction1",
-                code="print('Action 1')"
-            ),
-            Action(
-                name="TestAction2",
-                code="print('Action 2')"
-            )
-        ]
+            Action(name="TestAction1", code="print('Action 1')"),
+            Action(name="TestAction2", code="print('Action 2')"),
+        ],
     )
     context = {}
     new_context = execute_job(job, context)
@@ -57,6 +45,7 @@ def test_execute_job(capsys):
     assert "Action 1" in captured.out
     assert "Action 2" in captured.out
     assert new_context == {}
+
 
 def test_execute_workflow(capsys):
     workflow = Workflow(
@@ -66,24 +55,14 @@ def test_execute_workflow(capsys):
             Job(
                 name="TestJob1",
                 runner="python",
-                steps=[
-                    Action(
-                        name="TestAction1",
-                        code="print('Job 1, Action 1')"
-                    )
-                ]
+                steps=[Action(name="TestAction1", code="print('Job 1, Action 1')")],
             ),
             Job(
                 name="TestJob2",
                 runner="python",
-                steps=[
-                    Action(
-                        name="TestAction2",
-                        code="print('Job 2, Action 1')"
-                    )
-                ]
-            )
-        ]
+                steps=[Action(name="TestAction2", code="print('Job 2, Action 1')")],
+            ),
+        ],
     )
     execute_workflow(workflow)
     captured = capsys.readouterr()

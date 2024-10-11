@@ -1,11 +1,10 @@
+# import modin.pandas as pd
+import os
 import sqlite3
 from pathlib import Path
 
 import dspy
 import pandas as pd
-# import modin.pandas as pd
-import os
-
 from pandasql import sqldf
 
 
@@ -14,11 +13,13 @@ def apply_sql_to_dataframe(df, query):
     """
     This function applies an SQL query to the given DataFrame.
 
-    Parameters:
+    Parameters
+    ----------
     - df: pandas DataFrame.
     - query: SQL query as a string.
 
-    Returns:
+    Returns
+    -------
     - DataFrame containing the result of the SQL query.
     """
     # Dynamically add the DataFrame to the local scope with the name 'df'
@@ -33,33 +34,33 @@ def read_any(filepath, query, read_options=None):
     _, file_extension = os.path.splitext(filepath)
     file_extension = file_extension.lower()
     read_functions = {
-        '.csv': pd.read_csv,
-        '.xls': pd.read_excel,
-        '.xlsx': pd.read_excel,
-        '.pickle': pd.read_pickle,
-        '.pkl': pd.read_pickle,
-        '.h5': pd.read_hdf,
-        '.hdf': pd.read_hdf,
-        '.sql': pd.read_sql,  # Connection argument needed here.
-        '.db': pd.read_sql,  # Connection argument needed here.
-        '.json': pd.read_json,
-        '.parquet': pd.read_parquet,
-        '.orc': pd.read_orc,
-        '.feather': pd.read_feather,
-        '.gbq': pd.read_gbq,  # Requires additional args like project_id.
-        '.html': pd.read_html,  # Returns a list of DataFrames.
-        '.xml': pd.read_xml,
-        '.stata': pd.read_stata,
-        '.sas': pd.read_sas,  # Might require additional arguments.
-        '.sav': pd.read_spss,
-        '.dta': pd.read_stata,
-        '.fwf': pd.read_fwf,  # Might require formatting arguments.
+        ".csv": pd.read_csv,
+        ".xls": pd.read_excel,
+        ".xlsx": pd.read_excel,
+        ".pickle": pd.read_pickle,
+        ".pkl": pd.read_pickle,
+        ".h5": pd.read_hdf,
+        ".hdf": pd.read_hdf,
+        ".sql": pd.read_sql,  # Connection argument needed here.
+        ".db": pd.read_sql,  # Connection argument needed here.
+        ".json": pd.read_json,
+        ".parquet": pd.read_parquet,
+        ".orc": pd.read_orc,
+        ".feather": pd.read_feather,
+        ".gbq": pd.read_gbq,  # Requires additional args like project_id.
+        ".html": pd.read_html,  # Returns a list of DataFrames.
+        ".xml": pd.read_xml,
+        ".stata": pd.read_stata,
+        ".sas": pd.read_sas,  # Might require additional arguments.
+        ".sav": pd.read_spss,
+        ".dta": pd.read_stata,
+        ".fwf": pd.read_fwf,  # Might require formatting arguments.
     }
 
-    if file_extension == '.sql' or file_extension == '.db':
+    if file_extension == ".sql" or file_extension == ".db":
         connection = sqlite3.connect(filepath)
         # Updated to pass 'params' from read_options to pd.read_sql_query
-        df = pd.read_sql_query(query, connection, params=read_options.get('params', None))
+        df = pd.read_sql_query(query, connection, params=read_options.get("params", None))
         connection.close()
         return df
 
@@ -74,12 +75,40 @@ def read_any(filepath, query, read_options=None):
 
 
 class DataReader(dspy.Retrieve):
-    supported_extensions = ['.csv', '.xls', '.xlsx', '.pickle', '.pkl', '.h5', '.hdf', 
-                            '.sql', '.db', '.json', '.parquet', '.orc', '.feather', 
-                            '.gbq', '.html', '.xml', '.stata', '.sas', '.sav', '.dta', '.fwf']
+    supported_extensions = [
+        ".csv",
+        ".xls",
+        ".xlsx",
+        ".pickle",
+        ".pkl",
+        ".h5",
+        ".hdf",
+        ".sql",
+        ".db",
+        ".json",
+        ".parquet",
+        ".orc",
+        ".feather",
+        ".gbq",
+        ".html",
+        ".xml",
+        ".stata",
+        ".sas",
+        ".sav",
+        ".dta",
+        ".fwf",
+    ]
 
-    def __init__(self, file_path: str | Path, query: str = "", return_columns=None,
-                 read_options=None, pipeline=None, step=None, **kwargs):
+    def __init__(
+        self,
+        file_path: str | Path,
+        query: str = "",
+        return_columns=None,
+        read_options=None,
+        pipeline=None,
+        step=None,
+        **kwargs,
+    ):
         super().__init__()
         if return_columns is None:
             return_columns = []
@@ -115,7 +144,7 @@ class DataReader(dspy.Retrieve):
             # Ensure only specified return columns are included in the results
             matches = matches[self.return_columns]
 
-        result = matches.to_dict(orient='records')
+        result = matches.to_dict(orient="records")
 
         if self.pipeline:
             self.pipeline.context.data = result
@@ -126,9 +155,9 @@ class DataReader(dspy.Retrieve):
 def main():
     from dslmodel.utils.file_tools import data_dir
 
-    file_path = data_dir() / 'sample_data.csv'
+    file_path = data_dir() / "sample_data.csv"
     query = "SELECT name FROM df WHERE age < 30"  # SQL query to filter data
-    return_columns = ['name']
+    return_columns = ["name"]
 
     # Initialize the DataReader with the path to your CSV file
     # Note: The query passed here is an SQL query that will be applied to the DataFrame.

@@ -1,2 +1,1 @@
-from .functional import render
-from .functional import render_native
+from .functional import render, render_native

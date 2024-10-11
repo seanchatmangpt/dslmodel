@@ -1,15 +1,12 @@
-from typing import Optional, List
-
 import httpx
-from pydantic import Field
 
 from dslmodel import DSLModel
-from dslmodel.mixins.tool_mixin import ToolMixin
+from dslmodel.mixins.tools import ToolMixin
 
 
 class Cat(DSLModel):
     id: str
-    name: Optional[str] = None
+    name: str | None = None
     url: str
     width: int
     height: int
@@ -31,27 +28,30 @@ class CatTools(ToolMixin):
             response = client.get(f"{CAT_API_URL}/images/search")
             return Cat(**response.json()[0])
 
-    def fetch_cat_breeds(self, limit: Optional[int] = 5) -> List[CatBreed]:
+    def fetch_cat_breeds(self, limit: int | None = 5) -> list[CatBreed]:
         """Fetch cat breeds with a limit on the number of breeds."""
         with httpx.Client() as client:
             response = client.get(f"{CAT_API_URL}/breeds")
             breeds = response.json()[:limit]  # Limit the number of breeds
-            breed_info = [CatBreed(name=breed["name"], description=breed["description"]) for breed in breeds]
+            breed_info = [
+                CatBreed(name=breed["name"], description=breed["description"]) for breed in breeds
+            ]
             return breed_info
 
 
 def main():
     """Main function"""
-    from dslmodel import init_lm, init_instant, init_text
+    from dslmodel import init_instant
+
     init_instant()
 
     # Example usage
     cats = CatTools()
 
-    result = cats.call("get 20 cats", True)
+    result = cats.call("get rando", True)
     for cat in result:
         print(cat)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

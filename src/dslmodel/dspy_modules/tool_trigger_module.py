@@ -1,6 +1,5 @@
 import typing
 
-from loguru import logger
 import dspy
 from pydantic import BaseModel, Field
 
@@ -24,11 +23,14 @@ class ToolTriggerModule(dspy.Module):
     def forward(self, prompt: str, tool_mixin: "ToolMixin") -> str:
         # Determine the best tool to trigger for the given voice command or prompt
         from dspygen.modules.json_module import json_call
+
         possible_tools = "\n".join(tool_mixin.possible_tools())
 
-        text = (f"```prompt\n{prompt}\n```\n\n"
-                f"Choose from Possible Tools based on prompt:\n\n```possible_tools\n{possible_tools}\n```\n\n"
-                f"You must choose one of the possible tools to proceed.")
+        text = (
+            f"```prompt\n{prompt}\n```\n\n"
+            f"Choose from Possible Tools based on prompt:\n\n```possible_tools\n{possible_tools}\n```\n\n"
+            f"You must choose one of the possible tools to proceed."
+        )
 
         # logger.info(text)
 
@@ -46,4 +48,3 @@ def tool_trigger_call(prompt: str, tool_mixin: "ToolMixin", **kwargs):
         action(**kwargs)
     else:
         raise ValueError(f"No valid tool for command '{prompt}' in the current tool set.")
-

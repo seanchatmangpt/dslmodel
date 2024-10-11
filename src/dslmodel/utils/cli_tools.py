@@ -1,7 +1,6 @@
+import os
 from importlib import import_module
 from pathlib import Path
-
-import os
 
 
 def source_dir(path):
@@ -15,7 +14,9 @@ def load_commands(app, cmd_dir):
         package_path = cmd_dir.resolve()
         module_base = ".".join(package_path.parts[-2:])
     except IndexError:
-        raise ValueError(f"The path '{cmd_dir}' does not appear to be within an importable package structure.")
+        raise ValueError(
+            f"The path '{cmd_dir}' does not appear to be within an importable package structure."
+        )
 
     for filepath in cmd_dir.glob("*_cmd.py"):
         module_name = f"{module_base}.{filepath.stem}"
