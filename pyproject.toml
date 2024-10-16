@@ -1,19 +1,19 @@
-[build-system]  # https://python-poetry.org/docs/pyproject/#poetry-and-pep-517
+[build-system] # https://python-poetry.org/docs/pyproject/#poetry-and-pep-517
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]  # https://python-poetry.org/docs/pyproject/
+[tool.poetry] # https://python-poetry.org/docs/pyproject/
 name = "dslmodel"
-version = "2024.10.3.10"
+version = "2024.10.13"
 description = "Pydantic + DSPy instances from prompts and Jinja."
 authors = ["Sean Chatman <info@chatmangpt.com>"]
 readme = "README.md"
 repository = "https://github.com/seanchatmangpt/dslmodel"
 
-[tool.poetry.scripts]  # https://python-poetry.org/docs/pyproject/#scripts
+[tool.poetry.scripts] # https://python-poetry.org/docs/pyproject/#scripts
 dsl = "dslmodel.cli:app"
 
-[tool.poetry.dependencies]  # https://python-poetry.org/docs/dependency-specification/
+[tool.poetry.dependencies] # https://python-poetry.org/docs/dependency-specification/
 coloredlogs = ">=15.0.1"
 fastapi = { extras = ["all"], version = ">=0.110.1" }
 gunicorn = ">=21.2.0"
@@ -21,7 +21,7 @@ poethepoet = ">=0.25.0"
 python = ">=3.12,<4.0"
 typer = { extras = ["all"], version = ">=0.12.0" }
 uvicorn = { extras = ["standard"], version = ">=0.29.0" }
-dspy-ai = "2.5.6"
+dspy-ai = "^2.5.6"
 pyperclip = "^1.9.0"
 inflection = "^0.5.1"
 jinja2-time = "^0.2.0"
@@ -38,13 +38,11 @@ wcmatch = "^10.0"
 pandasql = "^0.7.3"
 pytest = "^8.3.3"
 transitions = "^0.9.2"
-gradio = "^4.44.1"
-pypdf = "^5.0.1"
 apscheduler = "^3.10.4"
 pygithub = "^2.4.0"
 hypothesis = "^6.114.1"
 
-[tool.poetry.group.test.dependencies]  # https://python-poetry.org/docs/master/managing-dependencies/
+[tool.poetry.group.test.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
 coverage = { extras = ["toml"], version = ">=7.4.4" }
 pytest = ">=8.1.1"
 pytest-mock = ">=3.14.0"
@@ -52,25 +50,25 @@ pytest-xdist = ">=3.5.0"
 pytest-watch = ">=4.2.0"
 
 
-[tool.poetry.group.dev.dependencies]  # https://python-poetry.org/docs/master/managing-dependencies/
+[tool.poetry.group.dev.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
 cruft = ">=2.15.0"
 ipykernel = ">=6.29.4"
 ipython = ">=8.23.0"
 ipywidgets = ">=8.1.2"
 pdoc = ">=14.4.0"
 
-[tool.coverage.report]  # https://coverage.readthedocs.io/en/latest/config.html#report
+[tool.coverage.report] # https://coverage.readthedocs.io/en/latest/config.html#report
 precision = 1
 show_missing = true
 skip_covered = true
 
-[tool.coverage.run]  # https://coverage.readthedocs.io/en/latest/config.html#run
+[tool.coverage.run] # https://coverage.readthedocs.io/en/latest/config.html#run
 branch = true
 command_line = "--module pytest"
 data_file = "reports/.coverage"
 source = ["src"]
 
-[tool.coverage.xml]  # https://coverage.readthedocs.io/en/latest/config.html#xml
+[tool.coverage.xml] # https://coverage.readthedocs.io/en/latest/config.html#xml
 output = "reports/coverage.xml"
 
 #[tool.mypy]  # https://mypy.readthedocs.io/en/latest/config_file.html
@@ -83,19 +81,19 @@ output = "reports/coverage.xml"
 #show_error_context = true
 #warn_unreachable = true
 
-[tool.pytest.ini_options]  # https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
+[tool.pytest.ini_options] # https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
 addopts = "--color=yes --doctest-modules --exitfirst --failed-first --verbosity=2 --junitxml=reports/pytest.xml"
 testpaths = ["src", "tests"]
 xfail_strict = true
 
-[tool.poe.tasks]  # https://github.com/nat-n/poethepoet
+[tool.poe.tasks] # https://github.com/nat-n/poethepoet
 push = "act push --container-architecture linux/amd64 --secret-file .secrets"
 pub = "poetry publish --build"
 
 
-  [tool.poe.tasks.api]
-  help = "Serve the REST API"
-  shell = """
+[tool.poe.tasks.api]
+help = "Serve the REST API"
+shell = """
     if [ $dev ]
     then {
       uvicorn \
@@ -118,57 +116,57 @@ pub = "poetry publish --build"
     } fi
     """
 
-    [[tool.poe.tasks.api.args]]
-    help = "Bind socket to this host (default: 0.0.0.0)"
-    name = "host"
-    options = ["--host"]
-    default = "0.0.0.0"
+[[tool.poe.tasks.api.args]]
+help = "Bind socket to this host (default: 0.0.0.0)"
+name = "host"
+options = ["--host"]
+default = "0.0.0.0"
 
-    [[tool.poe.tasks.api.args]]
-    help = "Bind socket to this port (default: 8000)"
-    name = "port"
-    options = ["--port"]
-    default = "8000"
+[[tool.poe.tasks.api.args]]
+help = "Bind socket to this port (default: 8000)"
+name = "port"
+options = ["--port"]
+default = "8000"
 
-    [[tool.poe.tasks.api.args]]
-    help = "Enable development mode"
-    type = "boolean"
-    name = "dev"
-    options = ["--dev"]
+[[tool.poe.tasks.api.args]]
+help = "Enable development mode"
+type = "boolean"
+name = "dev"
+options = ["--dev"]
 
-  [tool.poe.tasks.docs]
-  help = "Generate this app's docs"
-  cmd = """
+[tool.poe.tasks.docs]
+help = "Generate this app's docs"
+cmd = """
     pdoc
       --docformat $docformat
       --output-directory $outputdirectory
       dslmodel
     """
 
-    [[tool.poe.tasks.docs.args]]
-    help = "The docstring style (default: numpy)"
-    name = "docformat"
-    options = ["--docformat"]
-    default = "numpy"
+[[tool.poe.tasks.docs.args]]
+help = "The docstring style (default: numpy)"
+name = "docformat"
+options = ["--docformat"]
+default = "numpy"
 
-    [[tool.poe.tasks.docs.args]]
-    help = "The output directory (default: docs)"
-    name = "outputdirectory"
-    options = ["--output-directory"]
-    default = "docs"
+[[tool.poe.tasks.docs.args]]
+help = "The output directory (default: docs)"
+name = "outputdirectory"
+options = ["--output-directory"]
+default = "docs"
 
-  [tool.poe.tasks.test]
-  help = "Test this app"
+[tool.poe.tasks.test]
+help = "Test this app"
 
-    [[tool.poe.tasks.test.sequence]]
-    cmd = "coverage run"
+[[tool.poe.tasks.test.sequence]]
+cmd = "coverage run"
 
-    [[tool.poe.tasks.test.sequence]]
-    cmd = "coverage report"
+[[tool.poe.tasks.test.sequence]]
+cmd = "coverage report"
 
-    [[tool.poe.tasks.test.sequence]]
-    cmd = "coverage xml"
+[[tool.poe.tasks.test.sequence]]
+cmd = "coverage xml"
 
-  [tool.poe.tasks.test-watch]
-  help = "Watch for changes and rerun tests"
-  cmd = """poetry run ptw --onfail="notify-send 'Tests failed!'" --clear --runner="pytest --tb=short --maxfail=1 --color=yes --doctest-modules --junitxml=reports/pytest.xml --failed-first --exitfirst --verbosity=2" """
+[tool.poe.tasks.test-watch]
+help = "Watch for changes and rerun tests"
+cmd = """poetry run ptw --onfail="notify-send 'Tests failed!'" --clear --runner="pytest --tb=short --maxfail=1 --color=yes --doctest-modules --junitxml=reports/pytest.xml --failed-first --exitfirst --verbosity=2" """

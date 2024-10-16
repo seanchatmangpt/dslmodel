@@ -85,7 +85,7 @@ class GHActionsDocument(DSLModel):
 
 
 # Split the prompt into smaller parts
-trigger_prompt = """Create a GitHub Actions workflow that triggers on push and pull_request events for the main and develop branches."""
+trigger_prompt = """Create a GitHub Actions workflow that schedules on push and pull_request events for the main and develop branches."""
 
 job_prompt = """The workflow should run on ubuntu-latest and have a single job named CI."""
 

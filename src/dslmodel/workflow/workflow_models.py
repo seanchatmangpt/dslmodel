@@ -16,7 +16,7 @@ Features:
 - Modular Design: Encourages the modular composition of workflows into jobs and actions, promoting reuse and simplifying maintenance.
 
 Usage:
-The module is designed to be used programmatically within the DSLModel framework. Users define their workflows in YAML format, detailing the jobs, actions, conditions, and triggers that constitute the automated process. The DSLModel engine then interprets and executes these workflows, handling the orchestration of jobs, the evaluation of conditions, and the execution of actions as defined.
+The module is designed to be used programmatically within the DSLModel framework. Users define their workflows in YAML format, detailing the jobs, actions, conditions, and schedules that constitute the automated process. The DSLModel engine then interprets and executes these workflows, handling the orchestration of jobs, the evaluation of conditions, and the execution of actions as defined.
 
 Intended for data scientists, developers, and analysts, this module simplifies the automation of complex data processing and analysis tasks, enabling users to focus on insights and innovation rather than the intricacies of workflow management.
 """
@@ -118,25 +118,25 @@ class Job(DSLModel):
     )
 
 
-class CronTrigger(DSLModel):
+class CronSchedule(DSLModel):
     type: str = Field("cron")
     cron: str = Field(..., description="Cron-like schedule for workflow triggering")
 
 
-class DateTrigger(DSLModel):
+class DateSchedule(DSLModel):
     type: str = Field("date")
     run_date: str | datetime = Field(
         ..., description="Date and time to run the workflow, or 'now' for immediate execution"
     )
 
 
-Trigger = Union[CronTrigger, DateTrigger]
+Schedule = Union[CronSchedule, DateSchedule]
 
 
 class Workflow(DSLModel):
     """
     The top-level container for defining a sequence of operations, organized into jobs, to be executed
-    when certain triggers occur. Workflows orchestrate the execution of jobs based on defined triggers,
+    when certain schedules occur. Workflows orchestrate the execution of jobs based on defined schedules,
     managing dependencies between jobs and ensuring the correct execution environments.
 
     This class serves as the blueprint for automating complex processes, linking together various
@@ -145,8 +145,8 @@ class Workflow(DSLModel):
 
     name: str = Field(..., description="The unique name of the workflow.")
     description: str | None = Field(None, description="A brief description of the workflow.")
-    triggers: list[CronTrigger | DateTrigger] = Field(
-        [], description="List of triggers for the workflow execution."
+    schedules: list[CronSchedule | DateSchedule] = Field(
+        [], description="List of schedules for the workflow execution."
     )
     jobs: list[Job] = Field(
         ..., description="A collection of jobs that are defined within the workflow."

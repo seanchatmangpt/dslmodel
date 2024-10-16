@@ -5,7 +5,7 @@ import dspy
 # import ebooklib
 # from ebooklib import epub
 # from docx import Document
-from pypdf import PdfReader
+# from pypdf import PdfReader
 
 
 def clean_text(text):
@@ -30,10 +30,11 @@ def extract_texts_from_epub(file_name):
 
 def read_text_from_pdf(file_path):
     text = ""
-    reader = PdfReader(file_path)
-    for page in reader.pages:
-        text += page.extract_text() or ""
-    return clean_text(text)
+    raise NotImplementedError("No pdf support for now")
+    # reader = PdfReader(file_path)
+    # for page in reader.pages:
+    #     text += page.extract_text() or ""
+    # return clean_text(text)
 
 
 def read_text_file(file_path):

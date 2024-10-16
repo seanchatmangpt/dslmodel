@@ -167,33 +167,33 @@ for i, result in enumerate(results):
 Define and execute complex workflows using `Workflow`, `Job`, and `Action`.
 
 ```python
-from dslmodel.workflow import Workflow, Job, Action, Condition, CronTrigger
+from dslmodel.workflow import Workflow, Job, Action, Condition, CronSchedule
 
 condition = Condition(expr="len(participants) > 3")
 
 action1 = Action(
-    name="Generate Participants",
-    code="participants.extend([Participant() for _ in range(5)])"
+  name="Generate Participants",
+  code="participants.extend([Participant() for _ in range(5)])"
 )
 
 action2 = Action(
-    name="Notify Organizer",
-    code="print('Organizer notified.')",
-    cond=condition
+  name="Notify Organizer",
+  code="print('Organizer notified.')",
+  cond=condition
 )
 
 job = Job(
-    name="Setup Meeting",
-    steps=[action1, action2]
+  name="Setup Meeting",
+  steps=[action1, action2]
 )
 
-trigger = CronTrigger(cron="0 9 * * MON")  # Every Monday at 9 AM
+trigger = CronSchedule(cron="0 9 * * MON")  # Every Monday at 9 AM
 
 workflow = Workflow(
-    name="Weekly Meeting Setup",
-    triggers=[trigger],
-    jobs=[job],
-    context={"participants": []}
+  name="Weekly Meeting Setup",
+  triggers=[trigger],
+  jobs=[job],
+  context={"participants": []}
 )
 
 workflow.execute()
@@ -205,7 +205,7 @@ workflow.execute()
 workflow:
   name: "Weekly Meeting Setup"
   triggers:
-    - type: "CronTrigger"
+    - type: "CronSchedule"
       cron: "0 9 * * MON"  # Every Monday at 9 AM
   context:
     participants: []
@@ -403,8 +403,8 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## Contact
 
-- **Project Link:** [https://github.com/your-username/dslmodel](https://github.com/your-username/dslmodel)
-- **Issues:** [https://github.com/your-username/dslmodel/issues](https://github.com/your-username/dslmodel/issues)
+- **Project Link:** [https://github.com/seanchatmangpt/dslmodel](https://github.com/your-username/dslmodel)
+- **Issues:** [https://github.com/seanchatmangpt/dslmodel/issues](https://github.com/your-username/dslmodel/issues)
 
 ---
 

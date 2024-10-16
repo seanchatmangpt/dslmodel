@@ -1,0 +1,629 @@
+2024-10-14 21:48:59.309 | DEBUG    | test_workflow_integration:workflow_yaml:14 - Creating workflow YAML with output file: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-0/test_workflow_execution_from_y0/test_output.txt
+2024-10-14 21:48:59.309 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:42 - Starting test_workflow_execution_from_yaml
+2024-10-14 21:48:59.309 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:46 - Saved workflow YAML to: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-0/test_workflow_execution_from_y0/test_workflow.yaml
+2024-10-14 21:48:59.311 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:49 - Created workflow object: name='TestWorkflow' description=None triggers=[DateTrigger(type='date', run_date='now')] jobs=[Job(name='TestJob', depends_on=None, runner='python', steps=[Action(name='TestAction', use=None, args=None, code='print("hello world")\nwith open(\'/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-0/test_workflow_execution_from_y0/test_output.txt\', \'w\') as f:\n  f.write(\'Integration test successful\')\n', env=None, cond=None, loop=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={} env={}
+2024-10-14 21:48:59.311 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.311 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.312 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.312 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.312 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.312 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.312 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.315 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print("hello world")
+with open('/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-0/test_workflow_execution_from_y0/test_output.txt', 'w') as f:
+  f.write('Integration test successful')
+2024-10-14 21:48:59.315 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.315 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {'f': <_io.TextIOWrapper name='/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-0/test_workflow_execution_from_y0/test_output.txt' mode='w' encoding='UTF-8'>}
+2024-10-14 21:48:59.315 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.315 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {'f': <_io.TextIOWrapper name='/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-0/test_workflow_execution_from_y0/test_output.txt' mode='w' encoding='UTF-8'>}
+2024-10-14 21:48:59.315 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.315 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {'f': <_io.TextIOWrapper name='/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-0/test_workflow_execution_from_y0/test_output.txt' mode='w' encoding='UTF-8'>}
+2024-10-14 21:48:59.315 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:53 - Checking output file: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-0/test_workflow_execution_from_y0/test_output.txt
+2024-10-14 21:48:59.316 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:56 - Output file content: Integration test successful
+2024-10-14 21:48:59.316 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:58 - test_workflow_execution_from_yaml completed successfully
+2024-10-14 21:48:59.320 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:150 - Scheduling workflow: TestWorkflow
+2024-10-14 21:48:59.321 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:153 - Adding cron job for trigger: */5 * * * *
+2024-10-14 21:48:59.321 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:160 - Job added: execute_workflow (trigger: cron[month='*', day='*', day_of_week='*', hour='*', minute='*/5'], pending)
+2024-10-14 21:48:59.321 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:174 - Workflow 'TestWorkflow' scheduled successfully
+2024-10-14 21:48:59.321 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:175 - All jobs: [<Job (id=eaccfbb88b354e858df4ec1627f4f7ad name=execute_workflow)>]
+2024-10-14 21:48:59.322 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.322 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.322 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.322 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.322 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.322 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.322 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.324 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.324 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.325 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.325 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.325 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.325 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.325 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.325 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.325 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.325 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.325 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.325 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.325 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.325 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.327 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.328 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.328 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.328 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.328 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.328 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.330 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.330 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.331 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.331 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.331 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.331 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.331 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.331 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.331 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.331 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.331 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.331 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.331 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.332 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.333 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.333 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.334 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.334 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.334 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.334 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.334 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.334 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.334 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.334 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.334 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.334 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.335 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.335 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.337 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.337 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.337 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.337 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.337 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.337 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.337 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.337 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.337 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.338 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.338 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.338 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.338 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.338 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.340 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.340 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.340 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.340 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.340 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.340 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.341 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.341 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.341 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.341 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.341 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.341 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.341 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.341 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.343 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.343 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.343 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.343 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.343 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.344 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.344 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.344 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.344 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.344 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.344 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.344 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.344 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.344 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.346 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.346 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.346 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.346 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.347 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.347 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.347 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.347 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.347 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.347 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.347 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.347 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.347 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.347 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.349 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.349 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.350 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.350 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.350 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.350 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.350 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.350 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.350 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.350 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.350 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.350 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.350 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.351 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.352 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.352 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.353 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.353 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.353 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.353 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.353 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.353 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.353 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.353 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.353 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.353 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.353 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.354 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.356 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.356 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.356 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.356 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.356 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.356 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.357 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.357 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-14 21:48:59.357 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.357 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob
+2024-10-14 21:48:59.357 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-14 21:48:59.357 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction
+2024-10-14 21:48:59.357 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-14 21:48:59.357 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-14 21:48:59.359 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job executed')
+2024-10-14 21:48:59.359 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-14 21:48:59.359 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-14 21:48:59.359 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction
+2024-10-14 21:48:59.359 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-14 21:48:59.360 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob
+2024-10-14 21:48:59.360 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.361 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:150 - Scheduling workflow: DailyWorkflow
+2024-10-14 21:48:59.361 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:153 - Adding cron job for trigger: 0 12 * * *
+2024-10-14 21:48:59.361 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:160 - Job added: execute_workflow (trigger: cron[month='*', day='*', day_of_week='*', hour='12', minute='0'], pending)
+2024-10-14 21:48:59.361 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:174 - Workflow 'DailyWorkflow' scheduled successfully
+2024-10-14 21:48:59.361 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:175 - All jobs: [<Job (id=ef27cf37488747f886257bb4bc805a97 name=execute_workflow)>]
+2024-10-14 21:48:59.362 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: DailyWorkflow
+2024-10-14 21:48:59.362 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.362 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: DailyJob
+2024-10-14 21:48:59.362 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: DailyJob
+2024-10-14 21:48:59.362 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: DailyAction
+2024-10-14 21:48:59.362 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: DailyAction
+2024-10-14 21:48:59.362 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'DailyAction'
+2024-10-14 21:48:59.364 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Daily job executed')
+2024-10-14 21:48:59.364 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'DailyAction' completed successfully
+2024-10-14 21:48:59.364 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'DailyAction' completed. Updated context: {}
+2024-10-14 21:48:59.364 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: DailyAction
+2024-10-14 21:48:59.364 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job DailyJob completed. Updated context: {}
+2024-10-14 21:48:59.364 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: DailyJob
+2024-10-14 21:48:59.365 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'DailyWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.365 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: DailyWorkflow
+2024-10-14 21:48:59.365 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.365 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: DailyJob
+2024-10-14 21:48:59.365 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: DailyJob
+2024-10-14 21:48:59.365 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: DailyAction
+2024-10-14 21:48:59.365 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: DailyAction
+2024-10-14 21:48:59.365 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'DailyAction'
+2024-10-14 21:48:59.367 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Daily job executed')
+2024-10-14 21:48:59.367 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'DailyAction' completed successfully
+2024-10-14 21:48:59.367 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'DailyAction' completed. Updated context: {}
+2024-10-14 21:48:59.367 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: DailyAction
+2024-10-14 21:48:59.368 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job DailyJob completed. Updated context: {}
+2024-10-14 21:48:59.368 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: DailyJob
+2024-10-14 21:48:59.368 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'DailyWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.368 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: DailyWorkflow
+2024-10-14 21:48:59.368 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.368 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: DailyJob
+2024-10-14 21:48:59.368 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: DailyJob
+2024-10-14 21:48:59.368 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: DailyAction
+2024-10-14 21:48:59.368 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: DailyAction
+2024-10-14 21:48:59.368 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'DailyAction'
+2024-10-14 21:48:59.370 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Daily job executed')
+2024-10-14 21:48:59.370 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'DailyAction' completed successfully
+2024-10-14 21:48:59.370 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'DailyAction' completed. Updated context: {}
+2024-10-14 21:48:59.370 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: DailyAction
+2024-10-14 21:48:59.370 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job DailyJob completed. Updated context: {}
+2024-10-14 21:48:59.371 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: DailyJob
+2024-10-14 21:48:59.371 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'DailyWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.371 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: DailyWorkflow
+2024-10-14 21:48:59.371 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.371 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: DailyJob
+2024-10-14 21:48:59.371 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: DailyJob
+2024-10-14 21:48:59.371 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: DailyAction
+2024-10-14 21:48:59.371 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: DailyAction
+2024-10-14 21:48:59.371 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'DailyAction'
+2024-10-14 21:48:59.373 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Daily job executed')
+2024-10-14 21:48:59.373 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'DailyAction' completed successfully
+2024-10-14 21:48:59.373 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'DailyAction' completed. Updated context: {}
+2024-10-14 21:48:59.373 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: DailyAction
+2024-10-14 21:48:59.374 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job DailyJob completed. Updated context: {}
+2024-10-14 21:48:59.374 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: DailyJob
+2024-10-14 21:48:59.374 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'DailyWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.374 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: DailyWorkflow
+2024-10-14 21:48:59.374 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.374 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: DailyJob
+2024-10-14 21:48:59.374 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: DailyJob
+2024-10-14 21:48:59.374 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: DailyAction
+2024-10-14 21:48:59.374 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: DailyAction
+2024-10-14 21:48:59.374 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'DailyAction'
+2024-10-14 21:48:59.376 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Daily job executed')
+2024-10-14 21:48:59.376 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'DailyAction' completed successfully
+2024-10-14 21:48:59.377 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'DailyAction' completed. Updated context: {}
+2024-10-14 21:48:59.377 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: DailyAction
+2024-10-14 21:48:59.377 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job DailyJob completed. Updated context: {}
+2024-10-14 21:48:59.377 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: DailyJob
+2024-10-14 21:48:59.377 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'DailyWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.378 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:150 - Scheduling workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.378 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:153 - Adding cron job for trigger: 0 */2 * * *
+2024-10-14 21:48:59.378 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:160 - Job added: execute_workflow (trigger: cron[month='*', day='*', day_of_week='*', hour='*/2', minute='0'], pending)
+2024-10-14 21:48:59.378 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:153 - Adding cron job for trigger: 30 * * * *
+2024-10-14 21:48:59.379 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:160 - Job added: execute_workflow (trigger: cron[month='*', day='*', day_of_week='*', hour='*', minute='30'], pending)
+2024-10-14 21:48:59.379 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:174 - Workflow 'MultiTriggerWorkflow' scheduled successfully
+2024-10-14 21:48:59.379 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:175 - All jobs: [<Job (id=f44efd0a257b46d2936050658149022a name=execute_workflow)>, <Job (id=0df0d54404c9437097d86fe6a31b41c2 name=execute_workflow)>]
+2024-10-14 21:48:59.379 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.379 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.379 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.379 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.380 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.380 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.380 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.382 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.382 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.382 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.382 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.382 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.382 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.382 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.382 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.382 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.382 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.382 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.383 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.383 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.383 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.385 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.385 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.385 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.385 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.385 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.385 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.385 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.385 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.385 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.385 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.386 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.386 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.386 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.386 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.388 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.388 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.388 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.388 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.388 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.388 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.388 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.388 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.388 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.389 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.389 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.389 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.389 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.389 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.391 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.391 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.391 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.391 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.391 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.391 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.391 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.391 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.391 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.391 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.392 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.392 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.392 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.392 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.394 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.394 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.394 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.394 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.394 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.394 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.394 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.395 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.395 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.395 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.395 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.395 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.395 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.395 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.397 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.397 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.397 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.397 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.397 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.398 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.398 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.398 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.398 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.398 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.398 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.398 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.398 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.398 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.400 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.400 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.400 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.400 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.401 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.401 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.401 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.401 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.401 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.401 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.401 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.401 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.402 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.402 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.403 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.404 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.404 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.404 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.404 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.405 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.406 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.407 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.407 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.407 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.407 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.407 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.407 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.407 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.407 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.407 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.408 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.408 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.408 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.408 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.410 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.410 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.410 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.410 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.410 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.410 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.410 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.410 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.410 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.411 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.411 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.411 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.411 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.411 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.413 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.413 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.413 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.413 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.413 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.413 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.413 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.413 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.414 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.414 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.414 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.414 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.414 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.414 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.416 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.416 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.416 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.416 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.416 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.416 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.416 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.416 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.416 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.417 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.417 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.417 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.417 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.417 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.419 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.419 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.419 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.419 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.419 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.419 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.419 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.420 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.420 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.420 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.420 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.420 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.420 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.420 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.423 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.423 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.423 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.423 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.423 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.423 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.423 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.423 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.423 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.423 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.424 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.424 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.424 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.424 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.425 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.426 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.426 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.426 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.426 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.426 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.426 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.426 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.426 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.426 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.426 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.426 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.427 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.427 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.428 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.428 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.429 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.429 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.429 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.429 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.429 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.429 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.429 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.429 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.429 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.429 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.430 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.430 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.431 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.431 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.431 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.432 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.432 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.432 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.432 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.432 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.432 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.432 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.432 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.432 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.432 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.432 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.434 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.434 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.434 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.435 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.435 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.435 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.435 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.435 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.435 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.435 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.435 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.435 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.435 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.435 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.437 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.437 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.437 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.437 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.437 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.438 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.438 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.438 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.438 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.438 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.438 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.438 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.438 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.438 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.440 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.440 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.440 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.441 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.441 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.441 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.441 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.441 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.441 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.441 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.441 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.441 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.441 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.442 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.443 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.444 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.444 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.444 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.444 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.444 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.444 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.444 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.444 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.444 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.444 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.445 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.445 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.445 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.447 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.447 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.447 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.447 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.447 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.447 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.447 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.447 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.447 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.448 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.448 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.448 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.448 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.448 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.450 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.450 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.450 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.450 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.450 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.450 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.450 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.450 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: MultiTriggerWorkflow
+2024-10-14 21:48:59.450 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-14 21:48:59.450 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: MultiTriggerJob
+2024-10-14 21:48:59.451 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: MultiTriggerJob
+2024-10-14 21:48:59.451 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.451 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: MultiTriggerAction
+2024-10-14 21:48:59.451 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'MultiTriggerAction'
+2024-10-14 21:48:59.453 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Multi-trigger job executed')
+2024-10-14 21:48:59.453 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'MultiTriggerAction' completed successfully
+2024-10-14 21:48:59.453 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'MultiTriggerAction' completed. Updated context: {}
+2024-10-14 21:48:59.453 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: MultiTriggerAction
+2024-10-14 21:48:59.453 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job MultiTriggerJob completed. Updated context: {}
+2024-10-14 21:48:59.453 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: MultiTriggerJob
+2024-10-14 21:48:59.453 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'MultiTriggerWorkflow' completed. Final context: {}
+2024-10-14 21:48:59.455 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:150 - Scheduling workflow: WeeklyWorkflow
+2024-10-14 21:48:59.455 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:153 - Adding cron job for trigger: 0 9 * * 1
+2024-10-14 21:48:59.455 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:160 - Job added: execute_workflow (trigger: cron[month='*', day='*', day_of_week='1', hour='9', minute='0'], pending)
+2024-10-14 21:48:59.455 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:174 - Workflow 'WeeklyWorkflow' scheduled successfully
+2024-10-14 21:48:59.455 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:175 - All jobs: [<Job (id=f3a7dc829b48438bb9cc619bed1febb7 name=execute_workflow)>]
+2024-10-15 14:08:02.497 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:150 - Scheduling workflow: WeeklyWorkflow
+2024-10-15 14:08:02.497 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:153 - Adding cron job for trigger: 0 9 * * 1
+2024-10-15 14:08:02.498 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:160 - Job added: execute_workflow (trigger: cron[month='*', day='*', day_of_week='1', hour='9', minute='0'], pending)
+2024-10-15 14:08:02.498 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:174 - Workflow 'WeeklyWorkflow' scheduled successfully
+2024-10-15 14:08:02.498 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:175 - All jobs: [<Job (id=0a98e380b397441fa406becfdbec8cbd name=execute_workflow)>]
+2024-10-15 16:35:05.597 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:150 - Scheduling workflow: WeeklyWorkflow
+2024-10-15 16:35:05.598 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:153 - Adding cron job for trigger: 0 9 * * 1
+2024-10-15 16:35:05.598 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:160 - Job added: execute_workflow (trigger: cron[month='*', day='*', day_of_week='1', hour='9', minute='0'], pending)
+2024-10-15 16:35:05.598 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:174 - Workflow 'WeeklyWorkflow' scheduled successfully
+2024-10-15 16:35:05.598 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:175 - All jobs: [<Job (id=9652f15dfb8b4b978acb657db5d80f47 name=execute_workflow)>]

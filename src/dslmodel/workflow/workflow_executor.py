@@ -10,7 +10,7 @@ from apscheduler.triggers.date import DateTrigger as APSchedulerDateTrigger
 from loguru import logger
 
 from dslmodel.template import render
-from dslmodel.workflow import *
+from dslmodel.workflow import Job, Action, Workflow, CronSchedule, DateSchedule
 
 # Configure logger with timestamp and log level
 logger.remove()  # Remove default handler
@@ -148,8 +148,8 @@ def execute_workflow(workflow: Workflow, init_ctx: dict[str, Any] | None = None)
 def schedule_workflow(workflow: Workflow, scheduler: BaseScheduler):
     """Schedules a workflow using the provided scheduler."""
     logger.info(f"Scheduling workflow: {workflow.name}")
-    for trigger in workflow.triggers:
-        if isinstance(trigger, CronTrigger):
+    for trigger in workflow.schedules:
+        if isinstance(trigger, CronSchedule):
             logger.debug(f"Adding cron job for trigger: {trigger.cron}")
             job = scheduler.add_job(
                 execute_workflow,
@@ -158,7 +158,7 @@ def schedule_workflow(workflow: Workflow, scheduler: BaseScheduler):
                 timezone=pytz.UTC,
             )
             logger.debug(f"Job added: {job!s}")
-        elif isinstance(trigger, DateTrigger):
+        elif isinstance(trigger, DateSchedule):
             logger.debug(f"Adding date job for trigger: {trigger.run_date}")
             run_date = trigger.run_date if trigger.run_date != "now" else datetime.now(pytz.UTC)
             job = scheduler.add_job(

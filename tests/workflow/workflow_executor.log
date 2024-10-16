@@ -30,3 +30,53 @@ with open('/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sa
 2024-10-09 17:06:06.911 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:52 - Checking output file: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_output.txt
 2024-10-09 17:06:06.911 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:55 - Output file content: Integration test successful
 2024-10-09 17:06:06.911 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:57 - test_workflow_execution_from_yaml completed successfully
+2024-10-15 16:44:24.006 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:150 - Scheduling workflow: MainWorkflow
+2024-10-15 16:44:24.007 | ERROR    | dslmodel.workflow.workflow_executor:schedule_workflow:172 - Unknown trigger type: <class 'src.dslmodel.workflow.workflow_models.DateTrigger'>
+2024-10-15 16:44:24.007 | INFO     | dslmodel.workflow.workflow_executor:schedule_workflow:174 - Workflow 'MainWorkflow' scheduled successfully
+2024-10-15 16:44:24.007 | DEBUG    | dslmodel.workflow.workflow_executor:schedule_workflow:175 - All jobs: []
+2024-10-15 16:51:25.771 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction
+2024-10-15 16:51:25.771 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction'
+2024-10-15 16:51:25.780 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Hello, World!')
+2024-10-15 16:51:25.780 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction' completed successfully
+2024-10-15 16:51:25.780 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction' completed. Updated context: {}
+2024-10-15 16:51:25.781 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob
+2024-10-15 16:51:25.781 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction1
+2024-10-15 16:51:25.781 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction1
+2024-10-15 16:51:25.781 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction1'
+2024-10-15 16:51:25.783 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Action 1')
+2024-10-15 16:51:25.783 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction1' completed successfully
+2024-10-15 16:51:25.783 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction1' completed. Updated context: {}
+2024-10-15 16:51:25.783 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction1
+2024-10-15 16:51:25.783 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction2
+2024-10-15 16:51:25.783 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction2
+2024-10-15 16:51:25.783 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction2'
+2024-10-15 16:51:25.784 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Action 2')
+2024-10-15 16:51:25.784 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction2' completed successfully
+2024-10-15 16:51:25.784 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction2' completed. Updated context: {}
+2024-10-15 16:51:25.784 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction2
+2024-10-15 16:51:25.784 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob completed. Updated context: {}
+2024-10-15 16:51:25.785 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:127 - Executing workflow: TestWorkflow
+2024-10-15 16:51:25.785 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:32 - Initializing context with: None
+2024-10-15 16:51:25.785 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob1
+2024-10-15 16:51:25.785 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob1
+2024-10-15 16:51:25.785 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction1
+2024-10-15 16:51:25.785 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction1
+2024-10-15 16:51:25.785 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction1'
+2024-10-15 16:51:25.787 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job 1, Action 1')
+2024-10-15 16:51:25.787 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction1' completed successfully
+2024-10-15 16:51:25.787 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction1' completed. Updated context: {}
+2024-10-15 16:51:25.787 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction1
+2024-10-15 16:51:25.787 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob1 completed. Updated context: {}
+2024-10-15 16:51:25.787 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob1
+2024-10-15 16:51:25.787 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:134 - Starting execution of job: TestJob2
+2024-10-15 16:51:25.787 | INFO     | dslmodel.workflow.workflow_executor:execute_job:84 - Executing job: TestJob2
+2024-10-15 16:51:25.787 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing action: TestAction2
+2024-10-15 16:51:25.787 | INFO     | dslmodel.workflow.workflow_executor:execute_action:101 - Executing action: TestAction2
+2024-10-15 16:51:25.787 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:111 - Executing code for action 'TestAction2'
+2024-10-15 16:51:25.788 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:113 - Rendered code: print('Job 2, Action 1')
+2024-10-15 16:51:25.788 | INFO     | dslmodel.workflow.workflow_executor:execute_action:116 - Code execution for action 'TestAction2' completed successfully
+2024-10-15 16:51:25.788 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:121 - Action 'TestAction2' completed. Updated context: {}
+2024-10-15 16:51:25.788 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Finished executing action: TestAction2
+2024-10-15 16:51:25.788 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:95 - Job TestJob2 completed. Updated context: {}
+2024-10-15 16:51:25.788 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:137 - Finished execution of job: TestJob2
+2024-10-15 16:51:25.789 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:144 - Workflow 'TestWorkflow' completed. Final context: {}

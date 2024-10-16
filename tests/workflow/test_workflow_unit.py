@@ -1,11 +1,11 @@
-from dspygen.workflow.workflow_executor import execute_action, execute_job, execute_workflow
-from dspygen.workflow.workflow_models import Action, CronTrigger, Job, Workflow
+from dslmodel.workflow import *
+from dslmodel.workflow.workflow_executor import execute_action, execute_job
 
 
 def test_workflow_creation():
     workflow = Workflow(
         name="TestWorkflow",
-        triggers=[CronTrigger(cron="0 0 * * *")],
+        schedules=[CronSchedule(cron="0 0 * * *")],
         jobs=[
             Job(
                 name="TestJob",
@@ -15,9 +15,9 @@ def test_workflow_creation():
         ],
     )
     assert workflow.name == "TestWorkflow"
-    assert len(workflow.triggers) == 1
-    assert isinstance(workflow.triggers[0], CronTrigger)
-    assert workflow.triggers[0].cron == "0 0 * * *"
+    assert len(workflow.schedules) == 1
+    assert isinstance(workflow.schedules[0], CronSchedule)
+    assert workflow.schedules[0].cron == "0 0 * * *"
     assert len(workflow.jobs) == 1
 
 
@@ -50,7 +50,7 @@ def test_execute_job(capsys):
 def test_execute_workflow(capsys):
     workflow = Workflow(
         name="TestWorkflow",
-        triggers=[CronTrigger(cron="0 0 * * *")],
+        schedules=[CronSchedule(cron="0 0 * * *")],
         jobs=[
             Job(
                 name="TestJob1",
