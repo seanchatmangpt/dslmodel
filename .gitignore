@@ -23,7 +23,6 @@ data/
 .hypothesis/
 
 # Jupyter
-*.ipynb
 .ipynb_checkpoints/
 notebooks/
 
@@ -66,3 +65,7 @@ __pycache__/
 local_cache/
 
 .lh/
+
+.netrc
+
+.secrets

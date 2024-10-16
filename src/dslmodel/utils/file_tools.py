@@ -1,13 +1,12 @@
 import json
-import tiktoken
-import anyio
-import yaml
-
-from pathlib import Path
-from fnmatch import fnmatch
-
 import tempfile
 from contextlib import contextmanager
+from fnmatch import fnmatch
+from pathlib import Path
+
+import anyio
+import tiktoken
+import yaml
 
 
 def extract_code(text: str) -> str:
@@ -18,9 +17,7 @@ def extract_code(text: str) -> str:
         return text
 
     # Concatenate all the code blocks together with double newline separators.
-    concatenated_code = "\n\n".join(
-        [code[code.index("\n") + 1:] for code in text_code]
-    )
+    concatenated_code = "\n\n".join([code[code.index("\n") + 1 :] for code in text_code])
 
     return concatenated_code
 
@@ -122,7 +119,7 @@ def dsl_dir(path_str="") -> Path:
 
 def get_source(filename):
     # Read the source code from the file
-    with open(filename, 'r') as file:
+    with open(filename) as file:
         source_code = file.read().replace(" ", "")
 
     return source_code
@@ -149,19 +146,19 @@ async def read(filename, to_type=None):
 
 
 async def write(
-        contents=None,
-        *,
-        filename=None,
-        mode="w+",
-        extension="txt",
-        time_stamp=False,
-        path="",
+    contents=None,
+    *,
+    filename=None,
+    mode="w+",
+    extension="txt",
+    time_stamp=False,
+    path="",
 ):
-    # if extension == "yaml" or extension == "yml":
+    # if extensions == "yaml" or extensions == "yml":
     #     contents = yaml.dump(
     #         contents, default_style="", default_flow_style=False, width=1000
     #     )
-    # elif extension == "json":
+    # elif extensions == "json":
     #     contents = json.dumps(contents)
 
     async with await anyio.open_file(path + filename, mode=mode) as f:
@@ -170,7 +167,7 @@ async def write(
 
 
 @contextmanager
-def tmp_file(content, mode='w+', delete=True):
+def tmp_file(content, mode="w+", delete=True):
     """
     Creates a temp file with content, yielding its path.
 
@@ -179,12 +176,13 @@ def tmp_file(content, mode='w+', delete=True):
         mode (str): File mode ('w+' for text, 'wb+' for binary).
         delete (bool): Delete file on exit (default True).
 
-    Yields:
+    Yields
+    ------
         str: The path to the temporary file.
     """
     with tempfile.NamedTemporaryFile(mode=mode, delete=delete) as tmp:
         # Write the content based on the mode
-        if 'b' in mode:
+        if "b" in mode:
             # Ensure content is bytes if in binary mode
             if isinstance(content, str):
                 content = content.encode()  # Convert to bytes
@@ -205,8 +203,6 @@ def main():
     print(project_dir())
 
 
-
-
 def parse_gitignore(gitignore_path):
     if not gitignore_path.exists():
         return set()
@@ -224,11 +220,12 @@ def is_ignored(file_path, ignore_patterns):
 
 def match_gitignore_pattern(relative_path, pattern):
     if pattern.startswith("/"):
-        if fnmatch(str(relative_path), pattern[1:]) or fnmatch(str(relative_path.parent), pattern[1:]):
+        if fnmatch(str(relative_path), pattern[1:]) or fnmatch(
+            str(relative_path.parent), pattern[1:]
+        ):
             return True
-    else:
-        if any(fnmatch(str(path), pattern) for path in [relative_path, *relative_path.parents]):
-            return True
+    elif any(fnmatch(str(path), pattern) for path in [relative_path, *relative_path.parents]):
+        return True
     return False
 
 
@@ -236,7 +233,7 @@ def is_binary(file_path):
     try:
         with open(file_path, "rb") as file:
             return b"\x00" in file.read(1024)
-    except IOError:
+    except OSError:
         return False
 
 

@@ -3,9 +3,6 @@ from pathlib import Path
 import inflection
 from pydantic import Field
 
-import dspy
-from dspy import InputField, OutputField, Signature
-
 from dslmodel import DSLModel
 from dslmodel.template import render
 
@@ -90,6 +87,7 @@ class DSLModelClassTemplateSpecificationModel(DSLModel):
     # )
     #
 
+
 class_template_str = '''from pydantic import Field, validator, root_validator, EmailStr
 from typing import List, Optional
 from datetime import datetime
@@ -99,7 +97,7 @@ from dslmodel import DSLModel
 class {{ model.class_name }}(DSLModel):
     """{{ model.description }}"""
     {% for field in model.fields %}
-    {{ field.field_name | underscore }}: {{ field.field_type }} = Field(default={{ field.default_value }}, title="{{ field.title }}", description="{{ field.description }}"{% if field.constraints %}, {{ field.constraints }}{% endif %})
+    {{ field.field_name | underscore }}: {{ field.field_type }} = Field(default={{ field.default_value }}, alias: "{{ field.field_name }}", title="{{ field.title }}", description="{{ field.description }}"{% if field.constraints %}, {{ field.constraints }}{% endif %})
     {% endfor %}
 
     {% if model.validators|length > 0 %}
@@ -126,17 +124,21 @@ def write_pydantic_class_to_file(class_str, filename):
 
 # Example usage
 def main():
-    from dslmodel.utils.dspy_tools import init_lm, init_instant
+    from dslmodel.utils.dspy_tools import init_instant
+
     # init_lm()
     init_instant()
 
-    model_prompt = ("I need a verbose contact model named ContactModel from the friend of a friend ontology with 20 "
-                    "fields")
-
-    from dslmodel.generators import gen_list
+    model_prompt = (
+        "I need a verbose contact model named ContactModel from the friend of a friend ontology with 20 "
+        "fields"
+    )
 
     # start timer
     import time
+
+    from dslmodel.generators import gen_list
+
     start_time = time.time()
     fields = gen_list(f"{model_prompt}\nOnly list the field names.")
     # time the generation of fields
@@ -144,7 +146,14 @@ def main():
     print(f"Time taken to generate fields: {end_time - start_time} seconds")
 
     from dslmodel.utils.model_tools import run_dsls
-    tasks = [(FieldTemplateSpecificationModel, f"Generate a field named {field} with a useful description") for field in fields]
+
+    tasks = [
+        (
+            FieldTemplateSpecificationModel,
+            f"Generate a field named {field} with a useful description",
+        )
+        for field in fields
+    ]
     results = run_dsls(tasks, 10)
 
     model_inst = DSLModelClassTemplateSpecificationModel.from_prompt(model_prompt, True)
@@ -173,7 +182,6 @@ icalendar_entities = {
 }
 
 
-
 # def generate_icalendar_models():
 #     for entity, description in icalendar_entities.items():
 #         # Define a Pydantic class dynamically for each entity
@@ -200,11 +208,37 @@ icalendar_entities = {
 #         print(f"{model_inst.class_name} written to {model_inst.class_name}.py")
 
 
-from pydantic import BaseModel, Field
+from pydantic import Field
+
+swagger_data = {
+    "x-swagger-router-model": "io.swagger.petstore.model.Order",
+    "properties": {
+        "id": {"type": "integer", "format": "int64", "example": 10},
+        "petId": {"type": "integer", "format": "int64", "example": 198772},
+        "quantity": {"type": "integer", "format": "int32", "example": 7},
+        "shipDate": {"type": "string", "format": "date-time"},
+        "status": {
+            "type": "string",
+            "description": "Order Status",
+            "enum": ["placed", "approved", "delivered"],
+            "example": "approved",
+        },
+        "complete": {"type": "boolean"},
+    },
+    "xml": {"name": "order"},
+    "type": "object",
+}
 
 
-if __name__ == "__main__":
-    main()
+def create_dslmodel_from_swagger(swagger: dict):
+    jinja_template = """I need a DSLModel called {{ swagger['x-swagger-router-model'].split('.')[-1] }} with the following fields:
+{% for field_name, field_info in swagger['properties'].items() %}
+    {{ field_name }}: {{ field_info['type'] }} = Field(..., description="{{ field_info.get('description', '') }}")
+{% endfor %}
+"""
+    prompt = render(jinja_template, swagger=swagger)
+    print(prompt)
+    return DSLModel.from_prompt(prompt)
 
 
 def generate_and_save_dslmodel(prompt: str, output_dir: Path, file_format: str, config: Path):
@@ -214,14 +248,19 @@ def generate_and_save_dslmodel(prompt: str, output_dir: Path, file_format: str, 
     """
     # Step 1: Generate field list from the prompt
     from dslmodel.generators import gen_list
+
     fields = gen_list(f"{prompt}\nOnly list the field names.")
 
     # Step 2: Generate field descriptions using run_dsls
     tasks = [
-        (FieldTemplateSpecificationModel, f"Generate a field named {field} with a useful description")
+        (
+            FieldTemplateSpecificationModel,
+            f"Generate a field named {field} with a useful description",
+        )
         for field in fields
     ]
     from dslmodel.utils.model_tools import run_dsls
+
     results = run_dsls(tasks)
 
     # Step 3: Instantiate DSLModelClassTemplateSpecificationModel from the prompt
@@ -239,3 +278,8 @@ def generate_and_save_dslmodel(prompt: str, output_dir: Path, file_format: str, 
 
     # Step 7: Write the class to the file
     write_pydantic_class_to_file(rendered_class_str, output_path)
+
+
+if __name__ == "__main__":
+    # main()
+    create_dslmodel_from_swagger(swagger_data)

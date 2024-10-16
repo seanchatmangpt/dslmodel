@@ -1,0 +1,32 @@
+2024-10-09 17:01:28.202 | DEBUG    | test_workflow_integration:workflow_yaml:15 - Creating workflow YAML with output file: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-2/test_workflow_execution_from_y0/test_output.txt
+2024-10-09 17:01:28.202 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:42 - Starting test_workflow_execution_from_yaml
+2024-10-09 17:01:28.202 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:46 - Saved workflow YAML to: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-2/test_workflow_execution_from_y0/test_workflow.yaml
+2024-10-09 17:01:54.818 | DEBUG    | test_workflow_integration:workflow_yaml:15 - Creating workflow YAML with output file: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-3/test_workflow_execution_from_y0/test_output.txt
+2024-10-09 17:01:54.818 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:41 - Starting test_workflow_execution_from_yaml
+2024-10-09 17:01:54.819 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:45 - Saved workflow YAML to: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-3/test_workflow_execution_from_y0/test_workflow.yaml
+2024-10-09 17:02:25.609 | DEBUG    | test_workflow_integration:workflow_yaml:15 - Creating workflow YAML with output file: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-4/test_workflow_execution_from_y0/test_output.txt
+2024-10-09 17:02:25.610 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:41 - Starting test_workflow_execution_from_yaml
+2024-10-09 17:02:25.610 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:45 - Saved workflow YAML to: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-4/test_workflow_execution_from_y0/test_workflow.yaml
+2024-10-09 17:06:06.892 | DEBUG    | test_workflow_integration:workflow_yaml:15 - Creating workflow YAML with output file: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_output.txt
+2024-10-09 17:06:06.893 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:41 - Starting test_workflow_execution_from_yaml
+2024-10-09 17:06:06.893 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:45 - Saved workflow YAML to: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_workflow.yaml
+2024-10-09 17:06:06.893 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:48 - Created workflow object: name='TestWorkflow' description=None triggers=[DateTrigger(type='date', run_date='now')] jobs=[Job(name='TestJob', depends_on=None, runner='python', steps=[Action(name='TestAction', use=None, args=None, code='print("hello world")\nwith open(\'/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_output.txt\', \'w\') as f:\n  f.write(\'Integration test successful\')\n', env=None, cond=None, loop=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={} env={}
+2024-10-09 17:06:06.893 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:122 - Executing workflow: TestWorkflow
+2024-10-09 17:06:06.893 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:29 - Initializing context with: None
+2024-10-09 17:06:06.894 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:129 - Starting execution of job: TestJob
+2024-10-09 17:06:06.894 | INFO     | dslmodel.workflow.workflow_executor:execute_job:79 - Executing job: TestJob
+2024-10-09 17:06:06.894 | INFO     | dslmodel.workflow.workflow_executor:execute_job:83 - Executing action: TestAction
+2024-10-09 17:06:06.894 | INFO     | dslmodel.workflow.workflow_executor:execute_action:96 - Executing action: TestAction
+2024-10-09 17:06:06.894 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:106 - Executing code for action 'TestAction'
+2024-10-09 17:06:06.911 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:108 - Rendered code: print("hello world")
+with open('/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_output.txt', 'w') as f:
+  f.write('Integration test successful')
+2024-10-09 17:06:06.911 | INFO     | dslmodel.workflow.workflow_executor:execute_action:111 - Code execution for action 'TestAction' completed successfully
+2024-10-09 17:06:06.911 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:116 - Action 'TestAction' completed. Updated context: {'f': <_io.TextIOWrapper name='/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_output.txt' mode='w' encoding='UTF-8'>}
+2024-10-09 17:06:06.911 | INFO     | dslmodel.workflow.workflow_executor:execute_job:86 - Finished executing action: TestAction
+2024-10-09 17:06:06.911 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:90 - Job TestJob completed. Updated context: {'f': <_io.TextIOWrapper name='/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_output.txt' mode='w' encoding='UTF-8'>}
+2024-10-09 17:06:06.911 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:132 - Finished execution of job: TestJob
+2024-10-09 17:06:06.911 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:139 - Workflow 'TestWorkflow' completed. Final context: {'f': <_io.TextIOWrapper name='/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_output.txt' mode='w' encoding='UTF-8'>}
+2024-10-09 17:06:06.911 | DEBUG    | test_workflow_integration:test_workflow_execution_from_yaml:52 - Checking output file: /private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sac/pytest-5/test_workflow_execution_from_y0/test_output.txt
+2024-10-09 17:06:06.911 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:55 - Output file content: Integration test successful
+2024-10-09 17:06:06.911 | INFO     | test_workflow_integration:test_workflow_execution_from_yaml:57 - test_workflow_execution_from_yaml completed successfully

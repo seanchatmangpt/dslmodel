@@ -4,8 +4,7 @@ from typing import Any
 
 from jinja2 import FileSystemLoader
 
-from dslmodel.template.environment import CustomEnvironment
-from dslmodel.template.environment import CustomNativeEnvironment
+from dslmodel.template.environments import CustomEnvironment, CustomNativeEnvironment
 
 
 def render(tmpl_str_or_path: str | Path, to: str = "", **kwargs) -> str:
@@ -56,7 +55,7 @@ def render_native(tmpl_str_or_path: str | Path, to: str = "", **kwargs) -> Any:
 
     # Check if tmpl_str_or_path is a file path
     if os.path.exists(tmpl_str_or_path) and Path(tmpl_str_or_path).is_file():
-        with open(tmpl_str_or_path, 'r') as file:
+        with open(tmpl_str_or_path) as file:
             template_content = file.read()
     else:
         template_content = str(tmpl_str_or_path)
@@ -94,5 +93,6 @@ def main():
     native_rendered_list = render_native(template_list)
     print(native_rendered_list)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

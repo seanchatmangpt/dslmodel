@@ -1,8 +1,9 @@
 from pathlib import Path
 
-from dslmodel.readers.data_reader import DataReader
-from dslmodel import DSLModel
 from pydantic import Field
+
+from dslmodel import DSLModel
+from dslmodel.readers.data_reader import DataReader
 
 
 class Person(DSLModel):
@@ -18,7 +19,10 @@ class PandasSQLModel(DSLModel):
         input: Select all
         output: SELECT * FROM df
     """
-    sqldf_query: str = Field(..., description="SQL query to be applied to the `df` table only. That is the only table.")
+
+    sqldf_query: str = Field(
+        ..., description="SQL query to be applied to the `df` table only. That is the only table."
+    )
 
 
 class DSLSpreadsheet:
@@ -50,14 +54,13 @@ class DSLSpreadsheet:
 
     def ask(self, prompt: str):
         return self.from_prompt(prompt)
-    
+
     def __getitem__(self, item):
         if isinstance(item, int):
             return self.results[item]
-        elif isinstance(item, str):
+        if isinstance(item, str):
             return [row[item] for row in self.results]
-        else:
-            raise KeyError(f"Invalid key type: {type(item)}")
+        raise KeyError(f"Invalid key type: {type(item)}")
 
     def __iter__(self):
         return iter(self.results)
@@ -67,7 +70,7 @@ class DSLSpreadsheet:
 
 
 def main():
-    from dslmodel import init_instant, init_text
+    from dslmodel import init_text
     from dslmodel.utils.file_tools import data_dir
 
     init_text()

@@ -6,8 +6,7 @@ def init_lm(
     model: str = f"openai/{GPT_DEFAULT_MODEL}",
     experimental: bool = True,
     adapter: dspy.ChatAdapter | None = None,
-    **kwargs
-) -> dspy.LM:
+    **kwargs) -> dspy.LM:
     """
     Initialize a language model using the new DSPy 2.5 setup.
 
@@ -24,7 +23,8 @@ def init_lm(
             - model_type (str): Specify the model type, such as 'text' for text-based predictions.
             - stop (list): Tokens or strings to stop generating at.
 
-    Returns:
+    Returns
+    -------
         dspy.LM: Configured LM object.
     """
     # Default configuration
@@ -39,7 +39,7 @@ def init_lm(
         "stop": None,
         # "experimental": True,
     }
-
+    
     # Update default config with user-provided kwargs
     lm_config = {**default_config, **kwargs}
     
@@ -55,13 +55,13 @@ def init_lm(
 
 # Presets for different use cases
 
-def init_o1(**kwargs):
-    """Initialize a reasoning model designed to solve hard problems across domains."""
-    return init_lm("openai/gpt-o1-preview", temperature=0.2, max_tokens=12000, model_type="chat", **kwargs)
+# def init_o1(**kwargs):
+#     """Initialize a reasoning model designed to solve hard problems across domains."""
+#     return init_lm("openai/gpt-o1-preview", temperature=0.2, max_tokens=12000, model_type="chat", **kwargs)
 
-def init_o1_mini(**kwargs):
-    """Initialize a model optimized for complex tasks, coding and problem-solving."""
-    return init_lm("openai/gpt-o1-mini", temperature=0.2, max_tokens=8000, model_type="chat", **kwargs)
+# def init_o1_mini(**kwargs):
+#     """Initialize a model optimized for complex tasks, coding and problem-solving."""
+#     return init_lm("openai/gpt-o1-mini", temperature=0.2, max_tokens=8000, model_type="chat", **kwargs)
 
 
 
@@ -77,22 +77,22 @@ def init_text(**kwargs):
     """Initialize the text preview version of the model for advanced text processing."""
     return init_lm("groq/llama-3.2-90b-text-preview", model_type="chat", max_tokens=8000, **kwargs)
 
-def init_creative(**kwargs):
-    """Initialize a model optimized for creative writing tasks."""
-    return init_lm("openai/gpt-4o-mini", temperature=0.9, max_tokens=2000, model_type="chat", **kwargs)
+# def init_creative(**kwargs):
+#     """Initialize a model optimized for creative writing tasks."""
+#     return init_lm("openai/gpt-4o-mini", temperature=0.9, max_tokens=2000, model_type="chat", **kwargs)
 
-def init_analytical(**kwargs):
-    """Initialize a model optimized for analytical tasks and problem-solving."""
-    return init_lm("openai/gpt-4o", temperature=0.2, max_tokens=4000, model_type="chat", **kwargs)
+# def init_analytical(**kwargs):
+#     """Initialize a model optimized for analytical tasks and problem-solving."""
+#     return init_lm("openai/gpt-4o", temperature=0.2, max_tokens=4000, model_type="chat", **kwargs)
 
-def init_coding(**kwargs):
-    """Initialize a model optimized for code generation and analysis."""
-    return init_lm("openai/gpt-4o", temperature=0.3, max_tokens=8000, model_type="chat", stop=["\n\n"], **kwargs)
+# def init_coding(**kwargs):
+#     """Initialize a model optimized for code generation and analysis."""
+#     return init_lm("openai/gpt-4o", temperature=0.3, max_tokens=8000, model_type="chat", stop=["\n\n"], **kwargs)
 
-def init_summarization(**kwargs):
-    """Initialize a model optimized for text summarization tasks."""
-    return init_lm("openai/gpt-4-turbo", temperature=0.5, max_tokens=150, model_type="chat", **kwargs)
+# def init_summarization(**kwargs):
+#     """Initialize a model optimized for text summarization tasks."""
+#     return init_lm("openai/gpt-4-turbo", temperature=0.5, max_tokens=150, model_type="chat", **kwargs)
 
-def init_qa(**kwargs):
-    """Initialize a model optimized for question-answering tasks."""
-    return init_lm("openai/gpt-4o-mini", temperature=0.4, max_tokens=1000, model_type="chat", **kwargs)
+# def init_qa(**kwargs):
+#     """Initialize a model optimized for question-answering tasks."""
+#     return init_lm("openai/gpt-4o-mini", temperature=0.4, max_tokens=1000, model_type="chat", **kwargs)

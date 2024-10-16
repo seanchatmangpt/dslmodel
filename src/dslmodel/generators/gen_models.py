@@ -1,5 +1,6 @@
-from dslmodel import DSLModel
 from pydantic import Field
+
+from dslmodel import DSLModel
 
 
 class FieldTemplateSpecificationModel(DSLModel):
@@ -72,3 +73,12 @@ class DSLModelClassTemplateSpecificationModel(DSLModel):
         ...,
         description="A detailed description of the DSLModel's purpose and usage.",
     )
+
+
+class UserModel(DSLModel):
+    """A detailed description of the UserModel's purpose and usage."""
+
+    username: str = Field(
+        default=None, description="A username is a unique identifier for a user in a system."
+    )
+    email: str = Field(default=None, description="A field to store email addresses.")

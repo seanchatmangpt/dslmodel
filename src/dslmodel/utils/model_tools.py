@@ -1,11 +1,11 @@
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
-from typing import List, Tuple
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 from dslmodel import DSLModel  # Assuming DSLModel is defined
 from dslmodel.utils.dspy_tools import init_instant
 
 
-def run_dsls(tasks: List[Tuple[type(DSLModel), str]], max_workers=5) -> List[DSLModel]:
+def run_dsls(tasks: list[tuple[type(DSLModel), str]], max_workers=5) -> list[DSLModel]:
     """
     Execute a list of (DSLModel subclass, prompt) tuples concurrently and return the results in the same order.
     """
@@ -13,7 +13,7 @@ def run_dsls(tasks: List[Tuple[type(DSLModel), str]], max_workers=5) -> List[DSL
     if not logger.handlers:
         logging.basicConfig(level=logging.INFO)
 
-    def run_task(index: int, model_class: type(DSLModel), prompt: str) -> Tuple[int, DSLModel]:
+    def run_task(index: int, model_class: type(DSLModel), prompt: str) -> tuple[int, DSLModel]:
         """Generate model instance from prompt, return result along with task index."""
         logger.debug(f"Starting task {index} with prompt: {prompt}")
         try:
@@ -26,9 +26,12 @@ def run_dsls(tasks: List[Tuple[type(DSLModel), str]], max_workers=5) -> List[DSL
 
     # Use a ThreadPoolExecutor to run tasks concurrently
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = {executor.submit(run_task, i, model_class, prompt): i for i, (model_class, prompt) in enumerate(tasks)}
+        futures = {
+            executor.submit(run_task, i, model_class, prompt): i
+            for i, (model_class, prompt) in enumerate(tasks)
+        }
 
-        results: List[DSLModel | None] = [None] * len(tasks)
+        results: list[DSLModel | None] = [None] * len(tasks)
 
         for future in as_completed(futures):
             try:
@@ -48,7 +51,8 @@ def main():
     init_instant()
     # Prepare tasks with the same model but dynamically varying prompt using f-string
     tasks = [
-        (ModelA, f"Generate a model for task {i} for the user login feature.") for i in range(1, 6)  # Running the same prompt with varying index
+        (ModelA, f"Generate a model for task {i} for the user login feature.")
+        for i in range(1, 20)  # Running the same prompt with varying index
     ]
 
     # Run tasks concurrently and get results in order
@@ -58,5 +62,5 @@ def main():
         print(f"Result {i}: {result}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

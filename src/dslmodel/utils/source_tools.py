@@ -1,9 +1,9 @@
 import inspect
-from typing import Any, Set, get_args, get_origin, List, Union, Literal, Optional
 from enum import Enum
+from typing import Any, Literal, Optional, Union, get_args, get_origin
 
 
-def collect_class_sources(cls: Any, collected_sources: Set[str]) -> None:
+def collect_class_sources(cls: Any, collected_sources: set[str]) -> None:
     """
     Recursively collect source code for the given class and all related classes
     (based on fields' type annotations) that inherit from DSLModel, including Enums.
@@ -16,14 +16,14 @@ def collect_class_sources(cls: Any, collected_sources: Set[str]) -> None:
     try:
         source_code = inspect.getsource(cls)
         collected_sources.add(source_code)  # Add the source code as a string, not the class object
-    except (TypeError, OSError) as e:
+    except (TypeError, OSError):
         source_code = str(cls.schema())
         collected_sources.add(source_code)  # Add the source code as a string, not the class object
 
     # Now process the fields of the class
-    if hasattr(cls, 'model_fields'):  # Pydantic v2
+    if hasattr(cls, "model_fields"):  # Pydantic v2
         fields = cls.model_fields
-    elif hasattr(cls, '__fields__'):  # Pydantic v1
+    elif hasattr(cls, "__fields__"):  # Pydantic v1
         fields = cls.__fields__
     else:
         print(f"{cls.__name__} does not appear to be a Pydantic model.")
@@ -37,7 +37,7 @@ def collect_class_sources(cls: Any, collected_sources: Set[str]) -> None:
         handle_complex_type(field_type, collected_sources)
 
 
-def handle_complex_type(field_type: Any, collected_sources: Set[str]) -> None:
+def handle_complex_type(field_type: Any, collected_sources: set[str]) -> None:
     """
     Handles complex types like List, Union, Optional, Literal, Enum, etc., and recursively collects
     source code for any referenced classes that inherit from DSLModel or are Enums.
@@ -46,11 +46,12 @@ def handle_complex_type(field_type: Any, collected_sources: Set[str]) -> None:
     args = get_args(field_type)  # Get the inner types (e.g., for Union or List)
 
     # If it's a List, Union, or Optional, process its inner types recursively
-    if origin_type in (list, List, Union, Optional):
+    if origin_type in (list, list, Union, Optional):
         for arg in args:
             if arg is not type(None):  # Skip 'NoneType' from Optional or Union
-                if hasattr(arg, '__bases__'):
+                if hasattr(arg, "__bases__"):
                     from dslmodel import DSLModel
+
                     if issubclass(arg, DSLModel):
                         collect_class_sources(arg, collected_sources)
                     elif issubclass(arg, Enum):
@@ -61,15 +62,16 @@ def handle_complex_type(field_type: Any, collected_sources: Set[str]) -> None:
         pass
 
     # If it's directly a DSLModel or Enum, collect its source
-    elif hasattr(field_type, '__bases__'):
+    elif hasattr(field_type, "__bases__"):
         from dslmodel import DSLModel
+
         if issubclass(field_type, DSLModel):
             collect_class_sources(field_type, collected_sources)
         elif issubclass(field_type, Enum):
             collect_enum_sources(field_type, collected_sources)
 
 
-def collect_enum_sources(enum_cls: Enum, collected_sources: Set[str]) -> None:
+def collect_enum_sources(enum_cls: Enum, collected_sources: set[str]) -> None:
     """
     Collects the source code for an Enum class.
     """
@@ -81,7 +83,7 @@ def collect_enum_sources(enum_cls: Enum, collected_sources: Set[str]) -> None:
         source_code = inspect.getsource(enum_cls)
         collected_sources.add(source_code)
     except (TypeError, OSError) as e:
-        print(f"Unable to retrieve source for {enum_cls.__name__}: {str(e)}")
+        print(f"Unable to retrieve source for {enum_cls.__name__}: {e!s}")
 
 
 def collect_all_sources_as_string(cls: Any) -> str:
@@ -110,5 +112,5 @@ def main():
     # print(all_sources_string)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

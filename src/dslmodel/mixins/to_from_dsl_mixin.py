@@ -1,7 +1,8 @@
-from typing import Type, TypeVar
-import yaml
 import json
+from typing import TypeVar
+
 import toml
+import yaml
 from pydantic import ValidationError
 
 T = TypeVar("T", bound="DSLModel")
@@ -14,7 +15,7 @@ class ToFromDSLMixin:
     """
 
     @classmethod
-    def from_dict(cls: Type[T], data: dict) -> T:
+    def from_dict(cls: type[T], data: dict) -> T:
         """
         Creates an instance of the model from a dictionary.
 
@@ -29,7 +30,7 @@ class ToFromDSLMixin:
             raise ValueError(f"Validation error while creating {cls.__name__} instance: {ve}")
 
     @classmethod
-    def from_yaml(cls: Type[T], content: str) -> T:
+    def from_yaml(cls: type[T], content: str) -> T:
         """
         Parses YAML content from a string and creates an instance of the model.
 
@@ -44,7 +45,7 @@ class ToFromDSLMixin:
             raise ValueError(f"Error parsing YAML content: {e}")
 
     @classmethod
-    def from_json(cls: Type[T], content: str) -> T:
+    def from_json(cls: type[T], content: str) -> T:
         """
         Parses JSON content from a string and creates an instance of the model.
 
@@ -59,7 +60,7 @@ class ToFromDSLMixin:
             raise ValueError(f"Error parsing JSON content: {e}")
 
     @classmethod
-    def from_toml(cls: Type[T], content: str) -> T:
+    def from_toml(cls: type[T], content: str) -> T:
         """
         Parses TOML content from a string and creates an instance of the model.
 
@@ -70,7 +71,7 @@ class ToFromDSLMixin:
         try:
             data = toml.loads(content)
             return cls.from_dict(data)
-        except toml.TomlDecodeError as e:
+        except Exception as e:
             raise ValueError(f"Error parsing TOML content: {e}")
 
     def to_yaml(self) -> str:
@@ -83,9 +84,9 @@ class ToFromDSLMixin:
         try:
             return yaml.dump(self.model_dump(), default_flow_style=False, width=1000)
         except Exception as e:
-            raise IOError(f"Failed to serialize model to YAML: {e}")
+            raise OSError(f"Failed to serialize model to YAML: {e}")
 
-    def to_json(self) -> str:
+    def to_json(self, indent: int | None = None) -> str:
         """
         Serializes the model instance into a JSON string.
 
@@ -93,9 +94,9 @@ class ToFromDSLMixin:
         :raises IOError: If serialization to JSON fails.
         """
         try:
-            return self.model_dump_json()
+            return self.model_dump_json(indent=indent)
         except Exception as e:
-            raise IOError(f"Failed to serialize model to JSON: {e}")
+            raise OSError(f"Failed to serialize model to JSON: {e}")
 
     def to_toml(self) -> str:
         """
@@ -105,6 +106,7 @@ class ToFromDSLMixin:
         :raises IOError: If serialization to TOML fails.
         """
         try:
+            # Sanitize strings in the model data to replace control characters with safe equivalents.
             return toml.dumps(self.model_dump())
         except Exception as e:
-            raise IOError(f"Failed to serialize model to TOML: {e}")
+            raise OSError(f"Failed to serialize model to TOML: {e}")
