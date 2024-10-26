@@ -6,6 +6,8 @@
 pip install dslmodel
 ```
 
+## Intro Video: [Welcome to DSLModel](https://www.loom.com/share/67dd1db910ae424eb89e249e676bbaf0)
+
 ## Custom GPT: [DSLModel Assistant v2024.10.10](https://chatgpt.com/g/g-vmfFW8Xgk-dslmodel-assistant-v2024-10-10)
 
 ## Overview
