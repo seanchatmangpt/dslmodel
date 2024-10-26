@@ -52,8 +52,8 @@ class ToolMixin:
     ignore_list: list[str] = []
 
     def __init__(self):
-        if "call" not in self.ignore_list:
-            self.ignore_list.append("call")
+        if "forward" not in self.ignore_list:
+            self.ignore_list.append("forward")
 
         # gather the source code of each def not starting with __
         for name, obj in inspect.getmembers(self):
@@ -78,10 +78,10 @@ class ToolMixin:
             except Exception as e:
                 print(e)
 
-    def __call__(self, *args: Any, **kwds: Any) -> Any:
-        return self.call(*args, **kwds)
+    def __call__(self, prompt, verbose=False, **kwargs: Any) -> Any:
+        return self.forward(prompt, verbose, **kwargs)
 
-    def call(self, prompt: str, verbose: bool = False, **kwargs: Any) -> Any:
+    def forward(self, prompt: str, verbose: bool = False, **kwargs: Any) -> Any:
         """Process a call from a prompt."""
         import textwrap
 
@@ -94,9 +94,9 @@ class ToolMixin:
         Attributes: {{ tool.attributes }}
         {% endfor %}
 
-        Choose a def to use: {{ prompt }}""")
+        Choose a def to use: {{ prompt }} {{ kwargs }}""")
 
-        chose = ChosenTool.from_template(template, prompt=prompt, tools=self.tools, verbose=verbose)
+        chose = ChosenTool.from_template(template, prompt=prompt, tools=self.tools, verbose=verbose, kwargs=str(kwargs))
         result = getattr(self, chose.def_name)(**chose.kwargs)
         return result
 

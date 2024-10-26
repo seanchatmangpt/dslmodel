@@ -65,7 +65,7 @@ def init_lm(
 # Presets for different use cases
 
 
-def init_instant(**kwargs):
+def init_instant(model_type="chat", max_tokens=8000, **kwargs):
     """
     Initialize the instant version of the model for quick responses.
 
@@ -74,7 +74,7 @@ def init_instant(**kwargs):
     :rtype: dspy.LM
     """
     return init_lm(
-        "groq/llama-3.1-8b-instant", model_type="chat", max_tokens=8000, **kwargs
+        "groq/llama-3.1-8b-instant", model_type=model_type, max_tokens=max_tokens, **kwargs
     )
 
 
@@ -91,7 +91,7 @@ def init_versatile(**kwargs):
     )
 
 
-def init_text(**kwargs):
+def init_text(model_type="chat", max_tokens=8000, **kwargs):
     """
     Initialize the text preview version of the model for advanced text processing.
 
@@ -100,7 +100,8 @@ def init_text(**kwargs):
     :rtype: dspy.LM
     """
     return init_lm(
-        "groq/llama-3.2-90b-text-preview", model_type="chat", max_tokens=8000, **kwargs
+        "groq/llama-3.2-90b-text-preview", model_type=model_type,
+        max_tokens=max_tokens, **kwargs
     )
 
 # Presets for different use cases

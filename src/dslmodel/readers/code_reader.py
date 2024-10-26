@@ -86,7 +86,7 @@ def get_files_from_directory(directory, query, gitignore=None, max_depth=None):
 
 def main(directory: str, query: str, gitignore: str = None, max_depth: int = None):
     # Initialize OpenAI LLM and DSPy settings
-    init_ol(model="phi3", max_tokens=2000)
+    init_instant()
 
     # Instantiate CodeReader
     code_retriever = CodeReader(directory, gitignore, max_depth)

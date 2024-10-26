@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry] # https://python-poetry.org/docs/pyproject/
 name = "dslmodel"
-version = "2024.10.13"
+version = "2024.10.18"
 description = "Pydantic + DSPy instances from prompts and Jinja."
 authors = ["Sean Chatman <info@chatmangpt.com>"]
 readme = "README.md"
@@ -12,6 +12,7 @@ repository = "https://github.com/seanchatmangpt/dslmodel"
 
 [tool.poetry.scripts] # https://python-poetry.org/docs/pyproject/#scripts
 dsl = "dslmodel.cli:app"
+jygen = "jygen.cli:app"
 
 [tool.poetry.dependencies] # https://python-poetry.org/docs/dependency-specification/
 coloredlogs = ">=15.0.1"
@@ -89,6 +90,7 @@ xfail_strict = true
 [tool.poe.tasks] # https://github.com/nat-n/poethepoet
 push = "act push --container-architecture linux/amd64 --secret-file .secrets"
 pub = "poetry publish --build"
+pipe = "pip install -e ."
 
 
 [tool.poe.tasks.api]

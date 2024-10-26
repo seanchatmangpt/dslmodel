@@ -1,4 +1,5 @@
 # Coverage.py
+codebase.md
 htmlcov/
 reports/
 
@@ -69,3 +70,5 @@ local_cache/
 .netrc
 
 .secrets
+
+*.log

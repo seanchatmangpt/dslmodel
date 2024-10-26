@@ -22,7 +22,7 @@ Intended for data scientists, developers, and analysts, this module simplifies t
 """
 
 from datetime import datetime
-from typing import Any, Union
+from typing import Any, Union, Callable
 
 from pydantic import Field
 
@@ -80,6 +80,9 @@ class Action(DSLModel):
         None, description="Condition required to be true for the action to be executed."
     )
     loop: Loop | None = Field(None, description="Loop control to iterate over a set of actions.")
+    callable: Callable[[dict[str, Any]], Any] | None = Field(
+        None, description="A callable function that is executed when the action runs."
+    )
 
 
 class Job(DSLModel):
@@ -92,13 +95,13 @@ class Job(DSLModel):
     Jobs specify where they run, allowing for flexibility in execution environments.
     """
 
-    name: str = Field(..., description="The unique name of the job.")
+    name: str = Field("default", description="The unique name of the job.")
     depends_on: list[str] | None = Field(
         None,
         description="List of job names that this job depends on to complete before it starts.",
     )
     runner: str = Field(
-        ...,
+        "local",
         description="Specification of where the job will run, such as a machine or container identifier.",
     )
     steps: list[Action] = Field(

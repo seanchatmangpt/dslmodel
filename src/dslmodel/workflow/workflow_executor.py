@@ -26,6 +26,17 @@ logger.add(
     rotation="1 MB",
 )
 
+# Custom log handler to collect log messages
+class LogCollector:
+    def __init__(self):
+        self.messages = []
+
+    def write(self, message):
+        if message.strip():  # Avoid empty messages
+            self.messages.append(message.strip())
+
+    def flush(self):
+        pass  # Required for file-like objects
 
 def initialize_context(init_ctx: dict[str, Any] | None = None) -> dict[str, Any]:
     """Initializes the workflow context."""
@@ -35,8 +46,6 @@ def initialize_context(init_ctx: dict[str, Any] | None = None) -> dict[str, Any]
 
 def update_context(context: dict[str, Any], updates: dict[str, Any]) -> dict[str, Any]:
     """Updates the workflow context with new values."""
-    # logger.debug(f"Updating context. Current: {context}, Updates: {updates}")
-    # Create a copy of context with only python primitives
     new_context = {
         k: v for k, v in context.items() if isinstance(v, (int, float, str, bool, list, dict))
     }
@@ -51,18 +60,13 @@ def update_context(context: dict[str, Any], updates: dict[str, Any]) -> dict[str
     rendered_context = {}
     for arg, value in new_context.items():
         if "{{" in str(value):
-            # Render the string value with Jinja2
             rendered_context[arg] = render(value, **new_context)
-
-            # Convert the rendered string to a native Python type
             try:
                 rendered_context[arg] = eval(rendered_context[arg])
             except Exception as e:
                 logger.error(f"Error converting rendered value to native Python type: {e}")
         else:
-            # Non-string values are added to the context unchanged
             rendered_context[arg] = value
-    # logger.debug(f"Updated context: {rendered_context}")
     return rendered_context
 
 
@@ -100,12 +104,11 @@ def execute_action(action: Action, context: dict[str, Any]) -> dict[str, Any]:
     """Executes a single action, updating the context accordingly."""
     logger.info(f"Executing action: {action.name}")
 
-    # Check for conditional execution
     if action.cond and not evaluate_condition(action.cond.expr, context):
         logger.info(f"Condition for action '{action.name}' not met, skipping.")
-        return context  # Skip the action if condition not met
+        return context
 
-    action_context = update_context(context, {})  # Isolate context for the action
+    action_context = update_context(context, {})
 
     if action.code:
         logger.debug(f"Executing code for action '{action.name}'")
@@ -116,32 +119,51 @@ def execute_action(action: Action, context: dict[str, Any]) -> dict[str, Any]:
             logger.info(f"Code execution for action '{action.name}' completed successfully")
         except Exception as e:
             logger.error(f"Error executing code for action '{action.name}': {e!s}")
-        context = update_context(context, action_context)  # Update global context with changes
+        context = update_context(context, action_context)
+
+    # Execute a callable function if provided
+    if action.callable:
+        logger.debug(f"Executing callable for action '{action.name}'")
+        try:
+            result = action.callable()
+            logger.debug(f"Callable result for action '{action.name}': {result}")
+            if isinstance(result, dict):
+                action_context.update(result)  # Update context if the callable returns a dict
+        except Exception as e:
+            logger.error(f"Error executing callable for action '{action.name}': {e!s}")
+        context = update_context(context, action_context)
 
     logger.debug(f"Action '{action.name}' completed. Updated context: {context}")
     return context
 
 
-def execute_workflow(workflow: Workflow, init_ctx: dict[str, Any] | None = None) -> dict[str, Any]:
+def execute_workflow(workflow: Workflow, init_ctx: dict[str, Any] | None = None, verbose: bool = False) -> dict[str, Any]:
     """Executes all jobs defined in a workflow."""
     logger.info(f"Executing workflow: {workflow.name}")
-    global_context = initialize_context(init_ctx)  # Initialize global context
+    global_context = initialize_context(init_ctx)
 
     workflow.process_imports()
     workflow.topological_sort()
 
+    log_collector = LogCollector()
+    logger.add(log_collector, level="DEBUG")
+
     for job in workflow.jobs:
         logger.info(f"Starting execution of job: {job.name}")
         try:
-            global_context = execute_job(job, global_context)  # Execute each job
+            global_context = execute_job(job, global_context)
             logger.info(f"Finished execution of job: {job.name}")
         except Exception as e:
             logger.error(f"Error executing job {job.name}: {e!s}")
 
     if "__builtins__" in global_context:
-        del global_context["__builtins__"]  # Remove builtins from context
+        del global_context["__builtins__"]
 
     logger.info(f"Workflow '{workflow.name}' completed. Final context: {global_context}")
+
+    if verbose:
+        global_context['log_messages'] = log_collector.messages
+
     return global_context
 
 
@@ -186,7 +208,6 @@ if __name__ == "__main__":
     schedule_workflow(workflow, scheduler)
 
     try:
-        # Keep the script running
         while True:
             pass
     except (KeyboardInterrupt, SystemExit):

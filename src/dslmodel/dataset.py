@@ -5,7 +5,7 @@ from typing import Optional, List, Type
 from dspy.datasets.dataset import Dataset
 from dslmodel import DSLModel
 from dslmodel.readers.data_reader import DataReader
-from pydantic import ValidationError
+from pydantic import ValidationError, Field
 
 from dslmodel.spreadsheet import PandasSQLModel
 
@@ -101,6 +101,81 @@ class DSLDataset(Dataset):
     def __iter__(self):
         """Iterate over the dataset."""
         return iter(self.data)
+
+
+class MLE_Bench_CompetitionReport(DSLModel):
+    """
+    A report summarizing the results of a submission in the MLE-bench competition.
+    This model tracks medals, scores, and leaderboard positions.
+
+    Visit the official MLE-bench repository for details:
+    https://github.com/openai/mle-bench
+    """
+
+    competition_id: str = Field(
+        "{{ fake_uuid4() }}",
+        description="Unique identifier for the competition. Each corresponds to an MLE-bench challenge."
+    )
+    score: float = Field(
+        "{{ fake_pyfloat(left_digits=1, right_digits=5, positive=True) }}",
+        description="Performance score of the submission, where lower or higher is better based on task (Section 2.3)."
+    )
+    gold_threshold: float = Field(
+        "{{ fake_pyfloat(left_digits=1, right_digits=5, positive=True) }}",
+        description="Score required to earn a gold medal (Kaggle-like thresholds, see Table 1)."
+    )
+    silver_threshold: float = Field(
+        "{{ fake_pyfloat(left_digits=1, right_digits=5, positive=True) }}",
+        description="Score required to earn a silver medal."
+    )
+    bronze_threshold: float = Field(
+        "{{ fake_pyfloat(left_digits=1, right_digits=5, positive=True) }}",
+        description="Score required to earn a bronze medal."
+    )
+    median_threshold: float = Field(
+        "{{ fake_pyfloat(left_digits=1, right_digits=5, positive=True) }}",
+        description="Median score of the leaderboard (benchmarking agent performance)."
+    )
+    any_medal: bool = Field(
+        "{{ fake_boolean() }}",
+        description="True if any medal (gold, silver, or bronze) was awarded."
+    )
+    gold_medal: bool = Field(
+        "{{ fake_boolean() }}",
+        description="True if the submission achieved a gold medal."
+    )
+    silver_medal: bool = Field(
+        "{{ fake_boolean() }}",
+        description="True if the submission achieved a silver medal."
+    )
+    bronze_medal: bool = Field(
+        "{{ fake_boolean() }}",
+        description="True if the submission achieved a bronze medal."
+    )
+    above_median: bool = Field(
+        "{{ fake_boolean() }}",
+        description="True if the submission is above the leaderboard median."
+    )
+    submission_exists: bool = Field(
+        "{{ fake_boolean() }}",
+        description="True if the submission file exists."
+    )
+    valid_submission: bool = Field(
+        "{{ fake_boolean() }}",
+        description="True if the submission passed MLE-bench validation."
+    )
+    is_lower_better: bool = Field(
+        "{{ fake_boolean() }}",
+        description="True if lower scores indicate better performance (e.g., RMSE)."
+    )
+    created_at: str = Field(
+        "{{ fake_date_time_this_year() }}",
+        description="Timestamp when the report was generated."
+    )
+    submission_path: str = Field(
+        "{{ fake_file_path(extension='csv') }}",
+        description="File path of the submission file."
+    )
 
 
 # Example Usage
