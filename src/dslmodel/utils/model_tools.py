@@ -106,8 +106,88 @@ def from_prompt_chain(initial_prompt: str, models: List[type[DSLModel]]) -> List
     return results
 
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Iterable, List, Type, Tuple
+import logging
 
+from dslmodel import DSLModel
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+
+
+def run_dsl_matrix(
+        x_prompts: Iterable[str],
+        y_prompts: Iterable[str],
+        model_class: Type[DSLModel],
+        max_workers: int = 5
+) -> List[Tuple[str, str, DSLModel]]:
+    """
+    Executes DSLModel instances in a matrix combination format. Combines each item in x_prompts with
+    each item in y_prompts, generating a model for each combination.
+
+    Args:
+        x_prompts (Iterable[str]): The first set of prompts.
+        y_prompts (Iterable[str]): The second set of prompts.
+        model_class (Type[DSLModel]): The DSLModel class to instantiate for each prompt combination.
+        max_workers (int): The maximum number of concurrent workers for execution.
+
+    Returns:
+        List[Tuple[str, str, DSLModel]]: A list of tuples containing (x_prompt, y_prompt, model_instance).
+    """
+
+    # Prepare a list to collect results
+    results = []
+
+    # Define the task function to generate a model instance
+    def task(x_prompt: str, y_prompt: str) -> Tuple[str, str, DSLModel]:
+        prompt = f"{x_prompt} {y_prompt}"
+        try:
+            # Instantiate the model based on the combined prompt
+            model_instance = model_class.from_prompt(prompt)
+            logger.info(f"Generated model for: {prompt}")
+            return (x_prompt, y_prompt, model_instance)
+        except Exception as e:
+            logger.error(f"Error generating model for prompt '{prompt}': {e}")
+            raise
+
+    # Generate all combinations of x_prompts and y_prompts
+    prompt_combinations = [(x, y) for x in x_prompts for y in y_prompts]
+
+    # Execute tasks concurrently
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_prompt = {executor.submit(task, x, y): (x, y) for x, y in prompt_combinations}
+
+        for future in as_completed(future_to_prompt):
+            x_prompt, y_prompt = future_to_prompt[future]
+            try:
+                result = future.result()
+                results.append(result)
+            except Exception as e:
+                logger.error(f"Failed task for prompts ({x_prompt}, {y_prompt}): {e}")
+
+    return results
+
+
+# Example usage
 def main():
+    init_instant()
+    # Example prompt lists and model class
+    x_prompts = ["Create a function for", "Define a class for"]
+    y_prompts = ["sorting an array", "finding the max value"]
+
+    # Assume ExampleModel is a DSLModel class you've defined
+    class ExampleModel(DSLModel):
+        source_code: str
+
+    # Running the matrix function
+    results = run_dsl_matrix(x_prompts, y_prompts, ExampleModel)
+
+    for x, y, model in results:
+        print(f"Model generated for '{x} {y}': {model}")
+
+
+def main2():
     init_text(temperature=1)
 
     class Perspective(DSLModel):

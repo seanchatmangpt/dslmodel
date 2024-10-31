@@ -12,28 +12,22 @@ from dslmodel.template import render
 app = typer.Typer()
 
 
-@app.command()
-def fire(name: str = "Chell") -> None:
-    """Fire portal gun."""
-    print(f"[bold red]Alert![/bold red] {name} fired [green]portal gun[/green] :boom:")
-
-
 @app.command("gen")
 def generate_class(
-    prompt: str = typer.Argument(
-        ..., help="A natural language description of the model(s) to generate."
-    ),
-    output_dir: Path = typer.Option(
-        Path.cwd(),
-        "--output-dir",
-        help="The directory to save the generated class files. Defaults to the current directory.",
-    ),
-    file_format: str = typer.Option(
-        "py",
-        "--file-format",
-        help="The file format for saving the generated models. Defaults to 'py'.",
-    ),
-    config: Path = typer.Option(None, "--config", help="Path to a custom configuration file."),
+        prompt: str = typer.Argument(
+            ..., help="A natural language description of the model(s) to generate."
+        ),
+        output_dir: Path = typer.Option(
+            Path.cwd(),
+            "--output-dir",
+            help="The directory to save the generated class files. Defaults to the current directory.",
+        ),
+        file_format: str = typer.Option(
+            "py",
+            "--file-format",
+            help="The file format for saving the generated models. Defaults to 'py'.",
+        ),
+        config: Path = typer.Option(None, "--config", help="Path to a custom configuration file."),
 ):
     """
     Generate DSLModel-based classes from a natural language prompt.

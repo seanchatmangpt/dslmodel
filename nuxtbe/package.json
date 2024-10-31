@@ -19,8 +19,13 @@
     "@nuxt/image": "^1.8.1",
     "@nuxt/ui-pro": "^1.4.4",
     "@vueuse/nuxt": "^11.1.0",
+    "annyang": "^2.6.1",
+    "install": "^0.13.0",
+    "npm": "^10.9.0",
     "nuxt": "^3.13.2",
-    "nuxt-og-image": "^3.0.6"
+    "nuxt-og-image": "^3.0.6",
+    "pinia": "^2.2.4",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.6.0",

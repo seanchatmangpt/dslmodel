@@ -793,3 +793,28 @@ with open('/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sa
 2024-10-18 16:35:06.833 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:99 - Job TestJob2 completed. Updated context: {}
 2024-10-18 16:35:06.833 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:143 - Finished execution of job: TestJob2
 2024-10-18 16:35:06.833 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:150 - Workflow 'TestWorkflow' completed. Final context: {}
+2024-10-30 22:41:28.403 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:142 - Executing workflow: Multi-Agent Financial Backtest
+2024-10-30 22:41:28.404 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:43 - Initializing context with: None
+2024-10-30 22:41:28.410 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:152 - Starting execution of job: Fetch Financial Data
+2024-10-30 22:41:28.410 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing job: Fetch Financial Data
+2024-10-30 22:41:28.411 | INFO     | dslmodel.workflow.workflow_executor:execute_job:92 - Executing action: Agent 1 Fetch Data
+2024-10-30 22:41:28.411 | INFO     | dslmodel.workflow.workflow_executor:execute_action:105 - Executing action: Agent 1 Fetch Data
+2024-10-30 22:41:28.411 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:114 - Executing code for action 'Agent 1 Fetch Data'
+2024-10-30 22:41:28.413 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:116 - Rendered code: print('data = fetch_financial_data()')
+2024-10-30 22:41:28.413 | INFO     | dslmodel.workflow.workflow_executor:execute_action:119 - Code execution for action 'Agent 1 Fetch Data' completed successfully
+2024-10-30 22:41:28.413 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:136 - Action 'Agent 1 Fetch Data' completed. Updated context: {}
+2024-10-30 22:41:28.413 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Finished executing action: Agent 1 Fetch Data
+2024-10-30 22:41:28.413 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:99 - Job Fetch Financial Data completed. Updated context: {}
+2024-10-30 22:41:28.413 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:155 - Finished execution of job: Fetch Financial Data
+2024-10-30 22:41:28.414 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:152 - Starting execution of job: Run Backtest
+2024-10-30 22:41:28.414 | INFO     | dslmodel.workflow.workflow_executor:execute_job:88 - Executing job: Run Backtest
+2024-10-30 22:41:28.414 | INFO     | dslmodel.workflow.workflow_executor:execute_job:92 - Executing action: Agent 2 Run Backtest
+2024-10-30 22:41:28.414 | INFO     | dslmodel.workflow.workflow_executor:execute_action:105 - Executing action: Agent 2 Run Backtest
+2024-10-30 22:41:28.414 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:114 - Executing code for action 'Agent 2 Run Backtest'
+2024-10-30 22:41:28.416 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:116 - Rendered code: print('results = run_backtest(data)')
+2024-10-30 22:41:28.416 | INFO     | dslmodel.workflow.workflow_executor:execute_action:119 - Code execution for action 'Agent 2 Run Backtest' completed successfully
+2024-10-30 22:41:28.416 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:136 - Action 'Agent 2 Run Backtest' completed. Updated context: {}
+2024-10-30 22:41:28.416 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Finished executing action: Agent 2 Run Backtest
+2024-10-30 22:41:28.416 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:99 - Job Run Backtest completed. Updated context: {}
+2024-10-30 22:41:28.416 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:155 - Finished execution of job: Run Backtest
+2024-10-30 22:41:28.416 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:162 - Workflow 'Multi-Agent Financial Backtest' completed. Final context: {}

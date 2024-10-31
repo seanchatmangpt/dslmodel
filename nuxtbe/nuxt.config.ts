@@ -33,12 +33,21 @@ export default defineNuxtConfig({
         '/docs'
       ],
       crawlLinks: true
+    },
+    storage: {
+      // Define Redis storage
+      sharedData: {
+        driver: 'redis',
+        base: 'nuxt-shared',
+        host: 'localhost',
+        port: 6379
+      }
     }
   },
 
   routeRules: {
-    '/api/search.json': { prerender: true },
-    '/docs': { redirect: '/docs/getting-started', prerender: false }
+    '/api/search.json': {prerender: true},
+    '/docs': {redirect: '/docs/getting-started', prerender: false}
   },
 
   devtools: {
@@ -59,6 +68,13 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+
+  runtimeConfig: {
+    public: {
+      FASTAPI_URL: process.env.FASTAPI_URL,
+      SOCKET_URL: process.env.SOCKET_URL
     }
   },
 
