@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['@nuxt/ui-pro'],
+  extends: ['@nuxt/ui-pro', 'nuxt-socket-io'],
 
   modules: [
     '@nuxt/content',
@@ -21,6 +21,7 @@ export default defineNuxtConfig({
       globals.forEach(c => c.global = true)
     }
   },
+
 
   colorMode: {
     disableTransition: true
