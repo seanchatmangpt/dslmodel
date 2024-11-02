@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['@nuxt/ui-pro', 'nuxt-socket-io'],
+  extends: ['@nuxt/ui-pro'],
 
   modules: [
+    '@pinia/nuxt',
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
@@ -10,22 +11,36 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxthq/studio',
     '@vueuse/nuxt',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    'pinia-plugin-persistedstate/nuxt'
+
   ],
 
-  hooks: {
-    // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
-    'components:extend': (components) => {
-      const globals = components.filter(c => ['UButton'].includes(c.pascalName))
-
-      globals.forEach(c => c.global = true)
-    }
+  devtools: {
+    enabled: true
   },
-
 
   colorMode: {
     disableTransition: true
   },
+
+  runtimeConfig: {
+    public: {
+      FASTAPI_URL: process.env.FASTAPI_URL,
+      SOCKET_URL: process.env.SOCKET_URL
+    }
+  },
+
+  routeRules: {
+    '/api/search.json': { prerender: true },
+    '/docs': { redirect: '/docs/getting-started', prerender: false }
+  },
+
+  future: {
+    compatibilityVersion: 4
+  },
+
+  compatibilityDate: '2024-07-11',
 
   nitro: {
     prerender: {
@@ -46,21 +61,23 @@ export default defineNuxtConfig({
     }
   },
 
-  routeRules: {
-    '/api/search.json': {prerender: true},
-    '/docs': {redirect: '/docs/getting-started', prerender: false}
-  },
-
-  devtools: {
-    enabled: true
+  vite: {
+    ssr: {
+      noExternal: ['rxjs'] // Ensure Vite includes rxjs in the bundle instead of treating it as external
+    }
   },
 
   typescript: {
     strict: false
   },
 
-  future: {
-    compatibilityVersion: 4
+  hooks: {
+    // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
+    'components:extend': (components) => {
+      const globals = components.filter(c => ['UButton'].includes(c.pascalName))
+
+      globals.forEach(c => c.global = true)
+    }
   },
 
   eslint: {
@@ -70,14 +87,5 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
-  },
-
-  runtimeConfig: {
-    public: {
-      FASTAPI_URL: process.env.FASTAPI_URL,
-      SOCKET_URL: process.env.SOCKET_URL
-    }
-  },
-
-  compatibilityDate: '2024-07-11'
+  }
 })

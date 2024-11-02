@@ -1,43 +1,56 @@
 // plugins/socketio.js
-
-import {io} from 'socket.io-client'
-import {defineNuxtPlugin, useRuntimeConfig} from '#app'
+import { io } from 'socket.io-client'
+import { Subject } from 'rxjs'
+import { defineNuxtPlugin, useRuntimeConfig } from '#app'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  // Access runtime configuration if needed
   const config = useRuntimeConfig()
-  const socketUrl = config.public.SOCKET_URL || 'http://localhost:8000' // Ensure it matches your server URL
+  const socketUrl = config.public.SOCKET_URL || 'http://localhost:8000'
 
   // Initialize Socket.IO client
   const socket = io(socketUrl, {
-    autoConnect: false, // Prevent auto-connect; connect manually later
+    autoConnect: false
   })
 
-  // Connect when the app is mounted
+  // RxJS subjects to emit socket events as observables
+  const connectSubject = new Subject()
+  const disconnectSubject = new Subject()
+  const messageSubject = new Subject()
+
+  // Socket.IO connection events
+  socket.on('connect', () => {
+    console.log('Socket.IO connected:', socket.id)
+    connectSubject.next(socket.id)
+  })
+
+  socket.on('disconnect', () => {
+    console.log('Socket.IO disconnected')
+    disconnectSubject.next()
+  })
+
+  // Generic message handler
+  socket.on('message', (data) => {
+    console.log('Message received:', data)
+    messageSubject.next(data)
+  })
+
+  // Connect the socket when the app is mounted
   nuxtApp.hook('app:mounted', () => {
     socket.connect()
   })
 
-  // Disconnect when the app is unmounted
+  // Disconnect the socket when the app is unmounted
   nuxtApp.hook('app:beforeUnmount', () => {
     if (socket.connected) {
       socket.disconnect()
     }
   })
 
-  // Provide the socket instance to the whole app
+  // Provide socket and RxJS observables to the entire app
   nuxtApp.provide('socket', socket)
-
-  // Example connection and error logging
-  socket.on('connect', () => {
-    console.log('Socket.IO connected:', socket.id)
-  })
-
-  socket.on('disconnect', () => {
-    console.log('Socket.IO disconnected')
-  })
-
-  socket.on('connect_error', (error) => {
-    console.error('Socket.IO connection error:', error)
+  nuxtApp.provide('socketObservables', {
+    connect$: connectSubject.asObservable(),
+    disconnect$: disconnectSubject.asObservable(),
+    message$: messageSubject.asObservable()
   })
 })

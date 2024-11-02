@@ -1,5 +1,9 @@
-from inflection import underscore
+import inflection
 
 
 def pythonic_str(value):
-    return underscore(str(value).replace(" ", "_"))
+    return inflection.underscore(str(value).replace(" ", "_"))
+
+
+def dasherize(value):
+    return inflection.dasherize(pythonic_str(value))

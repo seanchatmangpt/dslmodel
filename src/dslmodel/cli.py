@@ -8,8 +8,11 @@ from rich import print
 from dslmodel import init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
 from dslmodel.template import render
+from dslmodel.commands import asyncapi
 
 app = typer.Typer()
+
+app.add_typer(name="asyncapi", typer_instance=asyncapi.app)
 
 
 @app.command("gen")

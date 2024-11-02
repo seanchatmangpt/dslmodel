@@ -30,7 +30,7 @@ class ToFromDSLMixin:
             raise ValueError(f"Validation error while creating {cls.__name__} instance: {ve}")
 
     @classmethod
-    def from_yaml(cls: type[T], content: str) -> T:
+    def from_yaml(cls: type[T], content: str = "", file_path: str = "") -> T:
         """
         Parses YAML content from a string and creates an instance of the model.
 
@@ -38,14 +38,21 @@ class ToFromDSLMixin:
         :return: An instance of the model populated with data from the YAML string.
         :raises ValueError: If there is a parsing or validation error.
         """
-        try:
-            data = yaml.safe_load(content)
-            return cls.from_dict(data)
-        except yaml.YAMLError as e:
-            raise ValueError(f"Error parsing YAML content: {e}")
+        if not content and not file_path:
+            raise ValueError("Either content or file_path must be provided")
+        if content:
+            try:
+                data = yaml.safe_load(content)
+                return cls.from_dict(data)
+            except yaml.YAMLError as e:
+                raise ValueError(f"Error parsing YAML content: {e}")
+        else:
+            with open(file_path, 'r') as f:
+                content = f.read()
+            return cls.from_yaml(content)
 
     @classmethod
-    def from_json(cls: type[T], content: str) -> T:
+    def from_json(cls: type[T], content: str = "", file_path: str = "") -> T:
         """
         Parses JSON content from a string and creates an instance of the model.
 
@@ -53,14 +60,21 @@ class ToFromDSLMixin:
         :return: An instance of the model populated with data from the JSON string.
         :raises ValueError: If there is a parsing or validation error.
         """
-        try:
-            data = json.loads(content)
-            return cls.from_dict(data)
-        except json.JSONDecodeError as e:
-            raise ValueError(f"Error parsing JSON content: {e}")
+        if not content and not file_path:
+            raise ValueError("Either content or file_path must be provided")
+        if content:
+            try:
+                data = json.loads(content)
+                return cls.from_dict(data)
+            except json.JSONDecodeError as e:
+                raise ValueError(f"Error parsing JSON content: {e}")
+        else:
+            with open(file_path, 'r') as f:
+                content = f.read()
+            return cls.from_json(content)
 
     @classmethod
-    def from_toml(cls: type[T], content: str) -> T:
+    def from_toml(cls: type[T], content: str = "", file_path: str = "") -> T:
         """
         Parses TOML content from a string and creates an instance of the model.
 
@@ -68,11 +82,18 @@ class ToFromDSLMixin:
         :return: An instance of the model populated with data from the TOML string.
         :raises ValueError: If there is a parsing or validation error.
         """
-        try:
-            data = toml.loads(content)
-            return cls.from_dict(data)
-        except Exception as e:
-            raise ValueError(f"Error parsing TOML content: {e}")
+        if not content and not file_path:
+            raise ValueError("Either content or file_path must be provided")
+        if content:
+            try:
+                data = toml.loads(content)
+                return cls.from_dict(data)
+            except Exception as e:
+                raise ValueError(f"Error parsing TOML content: {e}")
+        else:
+            with open(file_path, 'r') as f:
+                content = f.read()
+            return cls.from_toml(content)
 
     def to_yaml(self) -> str:
         """

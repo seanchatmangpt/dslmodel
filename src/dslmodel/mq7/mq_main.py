@@ -5,15 +5,21 @@ from pydantic import BaseModel, ValidationError
 import socketio
 import inspect
 from loguru import logger
+import inflection  # Import inflection for converting snake_case to camelCase
 
 # Initialize Socket.IO server
-sio = socketio.AsyncServer(async_mode='aiohttp')
+sio = socketio.AsyncServer(async_mode='aiohttp', logger=True, engineio_logger=True, cors_allowed_origins=[
+    'http://localhost:3000',
+    'https://admin.socket.io',
+])
 
 # Configure Loguru Logger
 logger.add("logs/debug.log", rotation="1 MB", level="DEBUG", retention="10 days")
 
 
 # Step 1: Data Validation Function
+
+
 def validate_data(func: Callable, data: Any) -> Any:
     type_hints = get_type_hints(func)
     model = type_hints.get('data', None)
@@ -69,8 +75,9 @@ def create_event_wrapper(event_name: str, func: Callable) -> Callable:
 
 # Step 4: Register Individual Event Handler
 def register_event_handler(module_name: str, func: Callable) -> None:
-    event_name = module_name  # Use the filename (module_name) as the event name
-    logger.debug(f"Registering event handler for module '{module_name}'")
+    # Convert the snake_case module name to camelCase for the event name
+    event_name = inflection.camelize(module_name, uppercase_first_letter=False)
+    logger.debug(f"Registering event handler for module '{module_name}' as event '{event_name}'")
     create_event_wrapper(event_name, func)
 
 
@@ -79,21 +86,22 @@ def register_events(event_directory: str = "events"):
     logger.info(f"Registering events from directory '{event_directory}'")
     for filename in os.listdir(event_directory):
         if filename.endswith(".py"):
-            module_name = filename[:-3]
+            module_name = filename[:-3]  # Remove the ".py" extension
             logger.debug(f"Importing module '{module_name}' from directory '{event_directory}'")
 
             try:
+                # Dynamically import the module
                 module = importlib.import_module(f"{event_directory}.{module_name}")
             except Exception as e:
                 logger.error(f"Failed to import module '{module_name}': {str(e)}")
                 continue
 
-            # Specifically look for a function named 'handle_event' in the module
+            # Look for a function named 'handle_event' in the module
             if hasattr(module, 'handle_event'):
                 handle_event_func = getattr(module, 'handle_event')
                 if callable(handle_event_func) and inspect.iscoroutinefunction(handle_event_func):
                     logger.debug(f"Found 'handle_event' function in module '{module_name}'")
-                    # Register the 'handle_event' function for the module
+                    # Register the 'handle_event' function for the module with converted event name
                     register_event_handler(module_name, handle_event_func)
                 else:
                     logger.warning(f"'handle_event' in module '{module_name}' is not a coroutine function")
@@ -108,7 +116,7 @@ register_events()
 if __name__ == "__main__":
     import aiohttp.web
 
-    logger.info("Starting the AioHTTP server on port 5000")
+    logger.info("Starting the AioHTTP server on port 4000")
     app = aiohttp.web.Application()
     sio.attach(app)
-    aiohttp.web.run_app(app, port=4000)
+    aiohttp.web.run_app(app, port=8000)
