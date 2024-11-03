@@ -1,12 +1,15 @@
 import pytest
 from fastapi import FastAPI, APIRouter, Body, HTTPException
 from fastapi.testclient import TestClient
-from dslmodel.workflow import Workflow, Job, Action, execute_workflow  # Replace with the correct import path
+
+from dslmodel.workflow import execute_workflow
+from dslmodel.workflow.workflow_models import Workflow, Job, Action
 
 app = FastAPI()
 
 # Simulating the existing OpenAPIToolMixin functionality
 router = APIRouter()
+
 
 @app.post("/execute_workflow")
 async def _execute_workflow(workflow_yaml: dict = Body(...)):
@@ -21,10 +24,12 @@ async def _execute_workflow(workflow_yaml: dict = Body(...)):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+
 # Add router to the app
 app.include_router(router)
 
 client = TestClient(app)
+
 
 def mock_gpt_action_request(user_prompt):
     """
@@ -49,27 +54,28 @@ def mock_gpt_action_request(user_prompt):
         return workflow_yaml
     return None
 
+
 @pytest.mark.parametrize("user_prompt, expected_workflow", [
     (
-        "A multi-agent system that can run backtests on financial data",
-        Workflow(
-            name="Multi-Agent Financial Backtest",
-            context={"agents": []},
-            jobs=[
-                Job(
-                    name="Fetch Financial Data",
-                    steps=[
-                        Action(name="Agent 1 Fetch Data", code="print('data = fetch_financial_data()')")
-                    ]
-                ),
-                Job(
-                    name="Run Backtest",
-                    steps=[
-                        Action(name="Agent 2 Run Backtest", code="print('results = run_backtest(data)')")
-                    ]
-                )
-            ]
-        )
+            "A multi-agent system that can run backtests on financial data",
+            Workflow(
+                name="Multi-Agent Financial Backtest",
+                context={"agents": []},
+                jobs=[
+                    Job(
+                        name="Fetch Financial Data",
+                        steps=[
+                            Action(name="Agent 1 Fetch Data", code="print('data = fetch_financial_data()')")
+                        ]
+                    ),
+                    Job(
+                        name="Run Backtest",
+                        steps=[
+                            Action(name="Agent 2 Run Backtest", code="print('results = run_backtest(data)')")
+                        ]
+                    )
+                ]
+            )
     ),
 ])
 def test_custom_gpt_multi_agent_backtest(user_prompt, expected_workflow):

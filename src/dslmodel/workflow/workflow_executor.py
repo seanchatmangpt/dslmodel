@@ -10,7 +10,7 @@ from apscheduler.triggers.date import DateTrigger as APSchedulerDateTrigger
 from loguru import logger
 
 from dslmodel.template import render
-from dslmodel.workflow import Job, Action, Workflow, CronSchedule, DateSchedule
+from dslmodel.workflow.workflow_models import Job, Action, Workflow, CronSchedule, DateSchedule
 
 # Configure logger with timestamp and log level
 logger.remove()  # Remove default handler
@@ -26,6 +26,7 @@ logger.add(
     rotation="1 MB",
 )
 
+
 # Custom log handler to collect log messages
 class LogCollector:
     def __init__(self):
@@ -37,6 +38,7 @@ class LogCollector:
 
     def flush(self):
         pass  # Required for file-like objects
+
 
 def initialize_context(init_ctx: dict[str, Any] | None = None) -> dict[str, Any]:
     """Initializes the workflow context."""
@@ -137,7 +139,8 @@ def execute_action(action: Action, context: dict[str, Any]) -> dict[str, Any]:
     return context
 
 
-def execute_workflow(workflow: Workflow, init_ctx: dict[str, Any] | None = None, verbose: bool = False) -> dict[str, Any]:
+def execute_workflow(workflow: Workflow, init_ctx: dict[str, Any] | None = None, verbose: bool = False) -> dict[
+    str, Any]:
     """Executes all jobs defined in a workflow."""
     logger.info(f"Executing workflow: {workflow.name}")
     global_context = initialize_context(init_ctx)

@@ -1,6 +1,7 @@
 import pytest
-from dslmodel.workflow import Workflow, Job, Action  # Replace with the correct import path
-from dslmodel.workflow import Condition  # If you use conditions in your workflow
+
+from dslmodel.workflow.workflow_models import Workflow, Job, Action  # Replace with the correct import path
+
 
 def mock_gpt_action_request(user_prompt):
     """
@@ -28,25 +29,25 @@ def mock_gpt_action_request(user_prompt):
 
 @pytest.mark.parametrize("user_prompt, expected_workflow", [
     (
-        "A multi-agent system that can run backtests on financial data",
-        Workflow(
-            name="Multi-Agent Financial Backtest",
-            context={"agents": []},
-            jobs=[
-                Job(
-                    name="Fetch Financial Data",
-                    steps=[
-                        Action(name="Agent 1 Fetch Data", code="data = fetch_financial_data()")
-                    ]
-                ),
-                Job(
-                    name="Run Backtest",
-                    steps=[
-                        Action(name="Agent 2 Run Backtest", code="results = run_backtest(data)")
-                    ]
-                )
-            ]
-        )
+            "A multi-agent system that can run backtests on financial data",
+            Workflow(
+                name="Multi-Agent Financial Backtest",
+                context={"agents": []},
+                jobs=[
+                    Job(
+                        name="Fetch Financial Data",
+                        steps=[
+                            Action(name="Agent 1 Fetch Data", code="data = fetch_financial_data()")
+                        ]
+                    ),
+                    Job(
+                        name="Run Backtest",
+                        steps=[
+                            Action(name="Agent 2 Run Backtest", code="results = run_backtest(data)")
+                        ]
+                    )
+                ]
+            )
     ),
 ])
 def test_custom_gpt_multi_agent_backtest(user_prompt, expected_workflow):

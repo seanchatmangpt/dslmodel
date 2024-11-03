@@ -2,7 +2,8 @@ import pytest
 from apscheduler.schedulers.background import BackgroundScheduler
 from loguru import logger
 
-from dslmodel.workflow import Workflow, execute_workflow
+from dslmodel.workflow import execute_workflow
+from dslmodel.workflow.workflow_models import Workflow
 
 # Add this at the beginning of the file to set up verbose logging
 logger.add("test_workflow_integration.log", level="DEBUG", rotation="1 MB")

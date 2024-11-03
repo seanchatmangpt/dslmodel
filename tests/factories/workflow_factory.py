@@ -1,6 +1,8 @@
 # tests/factories/workflow_factory.py
 import factory
-from src.dslmodel.workflow import Workflow, Job, Action, DateSchedule
+
+from src.dslmodel.workflow.workflow_models import Workflow, Job, Action, DateSchedule
+
 
 class ActionFactory(factory.Factory):
     class Meta:
@@ -9,6 +11,7 @@ class ActionFactory(factory.Factory):
     name = factory.Faker('word')
     code = factory.Faker('sentence')
 
+
 class JobFactory(factory.Factory):
     class Meta:
         model = Job
@@ -16,6 +19,7 @@ class JobFactory(factory.Factory):
     name = factory.Faker('word')
     runner = "python"
     steps = factory.List([factory.SubFactory(ActionFactory)])
+
 
 class WorkflowFactory(factory.Factory):
     class Meta:

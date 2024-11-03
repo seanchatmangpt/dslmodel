@@ -29,34 +29,6 @@ from pydantic import Field
 from dslmodel import DSLModel
 
 
-class Condition(DSLModel):
-    """
-    Represents a conditional expression that can be evaluated to determine whether
-    certain actions within a workflow should be executed. This class allows the
-    definition of dynamic behavior based on the context of the workflow execution.
-
-    The expression should be a valid Python expression that returns a Boolean value.
-    """
-
-    expr: str = Field(..., description="A Python expression as a string to evaluate the condition.")
-
-
-class Loop(DSLModel):
-    """
-    Defines a loop structure for iterating over a collection of items within a workflow.
-    This allows actions to be repeated over each item in a specified iterable, enabling
-    batch processing or repeated execution logic based on dynamic data.
-
-    The 'over' attribute specifies the iterable to loop over, while 'var' indicates the
-    variable name assigned to each item during iteration.
-    """
-
-    over: str = Field(..., description="A Python expression resulting in an iterable for looping.")
-    var: str = Field(
-        ..., description="The variable name that each iteration's value is assigned to."
-    )
-
-
 class Action(DSLModel):
     """
     Describes an individual unit of work or operation to be performed as part of a job in the workflow.
@@ -76,10 +48,6 @@ class Action(DSLModel):
         None,
         description="Environment variables accessible during the action's execution.",
     )
-    cond: Condition | None = Field(
-        None, description="Condition required to be true for the action to be executed."
-    )
-    loop: Loop | None = Field(None, description="Loop control to iterate over a set of actions.")
     callable: Callable[[dict[str, Any]], Any] | None = Field(
         None, description="A callable function that is executed when the action runs."
     )
