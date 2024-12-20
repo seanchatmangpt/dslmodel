@@ -1,0 +1,14 @@
+kebab_name: hello-world
+nuxt_path: ''
+pascal_name: HelloWorld
+props:
+- default: World
+  name: name
+  type: String
+setup: '<script setup>
+
+  </script>'
+style: '<style scoped>
+
+  </style>'
+template: "<template>\n  <p>Hello, {{ name }}!</p>\n</template>"

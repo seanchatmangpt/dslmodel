@@ -1,0 +1,15 @@
+app_name = "AwesomeApp"
+version = "1.0"
+
+[settings]
+debug = true
+
+[settings.db]
+host = "localhost"
+port = 5432
+username = "admin"
+password = "password"
+
+[settings.MS_API_keys]
+key1 = "value1"
+key2 = "value2"

@@ -29,6 +29,18 @@ from pydantic import Field
 from dslmodel import DSLModel
 
 
+class Condition(DSLModel):
+    """
+    Represents a conditional expression that can be evaluated to determine whether
+    certain actions within a workflow should be executed. This class allows the
+    definition of dynamic behavior based on the context of the workflow execution.
+
+    The expression should be a valid Python expression that returns a Boolean value.
+    """
+
+    expr: str = Field(..., description="A Python expression as a string to evaluate the condition.")
+
+
 class Action(DSLModel):
     """
     Describes an individual unit of work or operation to be performed as part of a job in the workflow.
@@ -48,9 +60,14 @@ class Action(DSLModel):
         None,
         description="Environment variables accessible during the action's execution.",
     )
+    cond: Condition | None = Field(
+        None, description="Condition required to be true for the action to be executed."
+    )
     callable: Callable[[dict[str, Any]], Any] | None = Field(
         None, description="A callable function that is executed when the action runs."
     )
+    shell: str | None = Field(None, description="Shell command to be executed directly.")
+
 
 
 class Job(DSLModel):
@@ -181,3 +198,12 @@ class Workflow(DSLModel):
             raise ValueError("There is a cycle in the job dependencies.")
 
         self.jobs = sorted_jobs
+
+    def run(self):
+        """Run the workflow."""
+        from dslmodel.workflow.workflow_executor import schedule_workflow
+
+        if not self.schedules:
+            self.schedules = [DateSchedule(run_date="now")]
+
+        schedule_workflow(self)

@@ -2,6 +2,7 @@ import ast
 import logging
 
 from dspy import Assert, ChainOfThought, InputField, OutputField, Signature
+from pydantic import BaseModel, Field
 
 from dslmodel.utils.dspy_tools import init_instant
 
@@ -140,11 +141,11 @@ class GenPrimitiveModule:
     """A generic module for generating and validating primitive types from prompts."""
 
     def __init__(
-        self,
-        primitive_type,
-        generate_sig: type[Signature],
-        error_sig: type[Signature],
-        verbose=False,
+            self,
+            primitive_type,
+            generate_sig: type[Signature],
+            error_sig: type[Signature],
+            verbose=False,
     ):
         """
         Initialize the module with the expected primitive type and the relevant DSPy signatures.
@@ -189,6 +190,9 @@ class GenPrimitiveModule:
         # Generate initial output
         generated_output = self.generate(prompt=prompt)
         output = generated_output.get(self.output_key)
+
+        if self.primitive_type == str:
+            return output
 
         # Attempt to evaluate the output to the expected primitive type
         evaluated_output = self.eval_output(output)
@@ -291,7 +295,7 @@ class GenListModule(GenPrimitiveModule):
         start_index = output.index("[")
         # find ]
         end_index = output.index("]")
-        list_part = output[start_index : end_index + 1]
+        list_part = output[start_index: end_index + 1]
         return eval_output_str(list_part)
 
 
@@ -336,16 +340,45 @@ def gen_dict(prompt: str):
     return GenDictModule()(prompt)
 
 
-# Example Usage:
+from typing import Type
+
+
+def genai(type_: Type, prompt: str):
+    if type_ == int:
+        return gen_int(prompt)
+    elif type_ == str:
+        return gen_str(prompt)
+    elif type_ == bool:
+        return gen_bool(prompt)
+    elif type_ == list:
+        return gen_list(prompt)
+    elif type_ == dict:
+        return gen_dict(prompt)
+    elif type_ == float:
+        return gen_float(prompt)
+    elif issubclass(type_, BaseModel):
+        from dslmodel.dspy_modules.gen_pydantic_instance import gen_instance
+        return gen_instance(type_, prompt)
+
+
+class Question(BaseModel):
+    """Answer the question in the programming language."""
+    answer: str
+    python: str
+    csharp: str
+    javascript: str
+
 
 if __name__ == "__main__":
-    init_instant()
-    # Example: Generate an integer
-    prompt = "How many planets are in the solar system?"
-    result = gen_int(prompt)
-    print(f"Generated Integer: {result}")
+    print(genai(Question, "What does 'Hello World' mean?"))
 
-    # Example: Generate a list
-    prompt = "List the planets in the solar system."
-    result = gen_list(prompt)
-    print(f"Generated List: {result}")
+    # init_instant()
+    # # Example: Generate an integer
+    # prompt = "How many planets are in the solar system?"
+    # result = gen_int(prompt)
+    # print(f"Generated Integer: {result}")
+    #
+    # # Example: Generate a list
+    # prompt = "List the planets in the solar system."
+    # result = gen_list(prompt)
+    # print(f"Generated List: {result}")

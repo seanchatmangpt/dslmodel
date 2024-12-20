@@ -1,10 +1,11 @@
 from pathlib import Path
 
-import inflection
 from pydantic import Field
 
 from dslmodel import DSLModel
 from dslmodel.template import render
+from dslmodel.utils.str_tools import pythonic_str
+from loguru import logger
 
 
 class FieldTemplateSpecificationModel(DSLModel):
@@ -94,10 +95,10 @@ from datetime import datetime
 from dslmodel import DSLModel
 
 
-class {{ model.class_name }}(DSLModel):
+class {{ model.class_name | camelize }}(DSLModel):
     """{{ model.description }}"""
     {% for field in model.fields %}
-    {{ field.field_name | underscore }}: {{ field.field_type }} = Field(default={{ field.default_value }}, alias: "{{ field.field_name }}", title="{{ field.title }}", description="{{ field.description }}"{% if field.constraints %}, {{ field.constraints }}{% endif %})
+    {{ field.field_name | pythonic_str }}: {{ field.field_type }} = Field(default={{ field.default_value }}, alias: "{{ field.field_name | camelize_lower  }}", title="{{ field.title }}", description="{{ field.description }}"{% if field.constraints %}, {{ field.constraints }}{% endif %})
     {% endfor %}
 
     {% if model.validators|length > 0 %}
@@ -154,7 +155,7 @@ def main():
         )
         for field in fields
     ]
-    results = run_dsls(tasks, 10)
+    results = run_dsls(tasks, 5)
 
     model_inst = DSLModelClassTemplateSpecificationModel.from_prompt(model_prompt, True)
 
@@ -165,7 +166,7 @@ def main():
 
     # Write the rendered class to a Python file
     write_pydantic_class_to_file(
-        rendered_class_str, f"{inflection.underscore(model_inst.class_name)}.py"
+        rendered_class_str, f"{pythonic_str(model_inst.class_name)}.py"
     )
     end_time = time.time()
     print(f"Time taken to generate and save DSLModel: {end_time - start_time} seconds")
@@ -241,13 +242,14 @@ def create_dslmodel_from_swagger(swagger: dict):
     return DSLModel.from_prompt(prompt)
 
 
-def generate_and_save_dslmodel(prompt: str, output_dir: Path, file_format: str, config: Path):
+def generate_and_save_dslmodel(prompt: str, output_dir: Path, file_format: str, config: Path) -> tuple[str, Path]:
     """
     Core function to generate and save a DSLModel class based on the provided prompt.
     Handles template rendering, field extraction, and file saving.
     """
     # Step 1: Generate field list from the prompt
     from dslmodel.generators import gen_list
+    logger.info(f"Generating fields from prompt: {prompt}...")
 
     fields = gen_list(f"{prompt}\nOnly list the field names.")
 
@@ -271,13 +273,17 @@ def generate_and_save_dslmodel(prompt: str, output_dir: Path, file_format: str, 
 
     # Step 5: Render the Pydantic class from the specification template
     rendered_class_str = render(class_template_str, model=template_data)
+    
+    logger.info(f"Generated class:\n{rendered_class_str}")
 
     # Step 6: Determine the file path
-    class_filename = f"{inflection.underscore(model_inst.class_name)}.{file_format}"
+    class_filename = f"{pythonic_str(model_inst.class_name)}_model.{file_format}"
     output_path = output_dir / class_filename if output_dir else Path.cwd() / class_filename
 
     # Step 7: Write the class to the file
     write_pydantic_class_to_file(rendered_class_str, output_path)
+    
+    return rendered_class_str, output_path
 
 
 if __name__ == "__main__":

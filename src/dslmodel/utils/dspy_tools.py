@@ -2,10 +2,10 @@ import dspy
 
 
 def init_lm(
-    model: str = "openai/gpt-4o-mini",
-    experimental: bool = True,
-    adapter: dspy.ChatAdapter | None = None,
-    **kwargs
+        model: str = "openai/gpt-4o-mini",
+        experimental: bool = True,
+        adapter: dspy.ChatAdapter | None = None,
+        **kwargs
 ) -> dspy.LM:
     """
     Initialize a language model using the new DSPy 2.5 setup.
@@ -100,7 +100,7 @@ def init_text(model_type="chat", max_tokens=8000, **kwargs):
     :rtype: dspy.LM
     """
     return init_lm(
-        "groq/llama-3.2-90b-text-preview", model_type=model_type,
+        "groq/llama3-groq-70b-8192-tool-use-preview", model_type=model_type,
         max_tokens=max_tokens, **kwargs
     )
 

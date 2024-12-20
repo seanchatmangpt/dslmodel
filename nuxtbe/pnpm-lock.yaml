@@ -59,6 +59,9 @@ importers:
       pinia-plugin-persistedstate:
         specifier: ^4.1.2
         version: 4.1.2(@pinia/nuxt@0.6.1(magicast@0.3.5)(rollup@4.24.3)(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3)))(magicast@0.3.5)(pinia@2.2.5(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3)))(rollup@4.24.3)
+      pythonia:
+        specifier: ^1.2.1
+        version: 1.2.1(ws@8.18.0)
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
@@ -2099,6 +2102,9 @@ packages:
   cache-content-type@1.0.1:
     resolution: {integrity: sha512-IKufZ1o4Ut42YUrZSo8+qnMTrFuKkvyoLXUywKz9GJ5BrhOFGhLdkx9sG4KAnVvbY6kEcSFjLQul+DVmBm2bgA==}
     engines: {node: '>= 6.0.0'}
+
+  caller@1.1.0:
+    resolution: {integrity: sha512-n+21IZC3j06YpCWaxmUy5AnVqhmCIM2bQtqQyy00HJlmStRt6kwDX5F9Z97pqwAB+G/tgSz6q/kUBbNyQzIubw==}
 
   callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
@@ -4521,6 +4527,11 @@ packages:
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
+
+  pythonia@1.2.1:
+    resolution: {integrity: sha512-DNZ3rR6SYT9nDiSHOdkhnXCg7+xoMmxbgWVJ1+y38uQG2VJvzbwV8KygQWHnjOOtYHE5UoQP2QyVC33cpUyGNQ==}
+    peerDependencies:
+      ws: ^7.5.1
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -8023,6 +8034,8 @@ snapshots:
       mime-types: 2.1.35
       ylru: 1.4.0
 
+  caller@1.1.0: {}
+
   callsites@3.1.0: {}
 
   camelcase-css@2.0.1: {}
@@ -10984,6 +10997,12 @@ snapshots:
     optional: true
 
   punycode@2.3.1: {}
+
+  pythonia@1.2.1(ws@8.18.0):
+    dependencies:
+      caller: 1.1.0
+      chalk: 4.1.2
+      ws: 8.18.0
 
   queue-microtask@1.2.3: {}
 

@@ -1,5 +1,6 @@
 from dslmodel.workflow import *
 from dslmodel.workflow.workflow_executor import execute_action, execute_job
+from dslmodel.workflow.workflow_models import Workflow, CronSchedule, Job, Action
 
 
 def test_workflow_creation():
@@ -22,6 +23,15 @@ def test_workflow_creation():
 
 
 def test_execute_action(capsys):
+    action = Action(name="TestAction", code="print('Hello, World!')")
+    context = {}
+    new_context = execute_action(action, context)
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "Hello, World!"
+    assert new_context == {}
+
+
+def test_execute_agent_model(capsys):
     action = Action(name="TestAction", code="print('Hello, World!')")
     context = {}
     new_context = execute_action(action, context)

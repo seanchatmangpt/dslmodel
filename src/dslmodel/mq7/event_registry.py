@@ -1,3 +1,5 @@
+# src/fastsocket/event_registry.py
+
 import importlib
 import inspect
 import os
@@ -8,11 +10,10 @@ import reactivex as rx
 from loguru import logger
 from pydantic import BaseModel, ValidationError
 
-from dslmodel.mq7.mq7_v1 import sio
+from fas import sio
 
-# Subject to act as a bridge for event streams
+# Dictionary to store event subjects
 event_subjects = {}
-
 
 def validate_data(func: Callable, data: Any) -> Any:
     type_hints = get_type_hints(func)
@@ -28,8 +29,6 @@ def validate_data(func: Callable, data: Any) -> Any:
             return e.errors()
     return data
 
-
-# Step 3: Event Wrapper
 def create_event_wrapper(event_name: str, func: Callable) -> Callable:
     if event_name not in event_subjects:
         event_subjects[event_name] = rx.Subject()
@@ -37,7 +36,7 @@ def create_event_wrapper(event_name: str, func: Callable) -> Callable:
     async def wrapper(sid: str, data: Any, *args, **kwargs) -> Any:
         logger.info(f"Handling event '{event_name}' from sid '{sid}' with data: {data}")
 
-        # Step 3.1: Validate data
+        # Validate data
         validated_data_or_error = validate_data(func, data)
 
         # If validation fails, emit an error and return early
@@ -48,7 +47,7 @@ def create_event_wrapper(event_name: str, func: Callable) -> Callable:
 
         validated_data = validated_data_or_error
 
-        # Step 3.2: Create and populate the 'injectable' dictionary
+        # Create and populate the 'injectable' dictionary
         injectable = {
             'sid': sid,
             'event_name': event_name,
@@ -57,11 +56,11 @@ def create_event_wrapper(event_name: str, func: Callable) -> Callable:
             'data': validated_data
         }
 
-        # Step 3.3: Filter injectable parameters based on function signature
+        # Filter injectable parameters based on function signature
         func_signature = inspect.signature(func)
         filtered_injectable = {k: v for k, v in injectable.items() if k in func_signature.parameters}
 
-        # Step 3.4: Call the original function with filtered 'injectable'
+        # Call the original function with filtered 'injectable'
         logger.debug(
             f"Calling function '{func.__name__}' for event '{event_name}' with injectable: {filtered_injectable}")
         return await func(*args, **kwargs, **filtered_injectable)
@@ -70,28 +69,28 @@ def create_event_wrapper(event_name: str, func: Callable) -> Callable:
     sio.on(event_name, wrapper)
     logger.info(f"Registered event '{event_name}' with function '{func.__name__}'")
 
-
-# Step 4: Register Individual Event Handler
 def register_event_handler(module_name: str, func: Callable) -> None:
     # Convert the snake_case module name to camelCase for the event name
     event_name = inflection.camelize(module_name, uppercase_first_letter=False)
     logger.debug(f"Registering event handler for module '{module_name}' as event '{event_name}'")
     create_event_wrapper(event_name, func)
 
-
-# Step 5: Discover and Register Event Handlers from Filesystem
-def register_events(event_directory: str = "events"):
-    logger.info(f"Registering events from directory '{event_directory}'")
+async def register_events(event_directory: str = "src/fastsocket/events", reload: bool = False):
+    """Register or reload event handlers from a directory."""
+    logger.info(f"Registering events from directory '{event_directory}' (reload={reload})")
     for filename in os.listdir(event_directory):
-        if filename.endswith(".py"):
-            module_name = filename[:-3]  # Remove the ".py" extension
-            logger.debug(f"Importing module '{module_name}' from directory '{event_directory}'")
+        if filename.endswith(".py") and not filename.startswith("__"):
+            module_name = filename[:-3]
+            module_path = f"fastsocket.events.{module_name}"
+            logger.debug(f"Loading module '{module_name}' from '{event_directory}'")
 
             try:
-                # Dynamically import the module
-                module = importlib.import_module(f"{event_directory}.{module_name}")
+                # Reload the module if reload is True
+                module = importlib.import_module(module_path)
+                if reload:
+                    module = importlib.reload(module)
             except Exception as e:
-                logger.error(f"Failed to import module '{module_name}': {str(e)}")
+                logger.error(f"Failed to load or reload module '{module_name}': {str(e)}")
                 continue
 
             # Look for a function named 'handle_event' in the module

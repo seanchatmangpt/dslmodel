@@ -1,6 +1,7 @@
 import copy
 import sys
 from datetime import datetime
+from subprocess import Popen, PIPE
 from typing import Any
 
 import pytz
@@ -123,6 +124,25 @@ def execute_action(action: Action, context: dict[str, Any]) -> dict[str, Any]:
             logger.error(f"Error executing code for action '{action.name}': {e!s}")
         context = update_context(context, action_context)
 
+    if action.shell:
+        logger.debug(f"Executing shell command for action '{action.name}': {action.shell}")
+        try:
+            process = Popen(action.shell, shell=True, stdout=PIPE, stderr=PIPE, env=action.env or None)
+            stdout, stderr = process.communicate()
+
+            if process.returncode == 0:
+                logger.info(f"Shell command executed successfully. Output:\n{stdout.decode().strip()}")
+            else:
+                logger.error(f"Shell command failed with error:\n{stderr.decode().strip()}")
+
+            # Optionally, capture the output in the context if needed
+            action_context["shell_output"] = stdout.decode().strip()
+            action_context["shell_error"] = stderr.decode().strip() if stderr else None
+
+        except Exception as e:
+            logger.error(f"Error executing shell command for action '{action.name}': {e!s}")
+        context = update_context(context, action_context)
+
     # Execute a callable function if provided
     if action.callable:
         logger.debug(f"Executing callable for action '{action.name}'")
@@ -195,19 +215,25 @@ def schedule_workflow(workflow: Workflow, scheduler: BaseScheduler):
             logger.debug(f"Job added: {job!s}")
         else:
             logger.error(f"Unknown trigger type: {type(trigger)}")
+            
+    scheduler.start()
 
     logger.info(f"Workflow '{workflow.name}' scheduled successfully")
     logger.debug(f"All jobs: {scheduler.get_jobs()}")
     return scheduler
 
 
+def default_scheduler():
+    """Returns a default scheduler."""
+    return BackgroundScheduler()
+
+
 if __name__ == "__main__":
     from apscheduler.schedulers.background import BackgroundScheduler
 
     workflow = Workflow.from_yaml("path/to/your/workflow.yaml")
-    scheduler = BackgroundScheduler()
-    scheduler.start()
-
+    scheduler = default_scheduler()
+    
     schedule_workflow(workflow, scheduler)
 
     try:

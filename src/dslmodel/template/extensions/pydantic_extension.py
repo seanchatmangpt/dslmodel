@@ -23,7 +23,7 @@ class PydanticExtension(ext.Extension):
         if "enum" in field:
             return f'Literal{tuple(field["enum"])}'
 
-        return type_mapping.get(field, "Any")
+        return type_mapping.get(field, field)
 
     @staticmethod
     def pydantic_imports():

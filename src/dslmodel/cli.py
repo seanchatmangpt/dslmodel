@@ -2,17 +2,20 @@
 
 from pathlib import Path
 
+from dslmodel.utils.dspy_tools import init_lm
 import typer
 from rich import print
+from typing_extensions import Annotated
 
 from dslmodel import init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
 from dslmodel.template import render
-from dslmodel.commands import asyncapi
+from dslmodel.commands import asyncapi, slidev
 
 app = typer.Typer()
 
 app.add_typer(name="asyncapi", typer_instance=asyncapi.app)
+app.add_typer(name="slidev", typer_instance=slidev.app)
 
 
 @app.command("gen")
@@ -31,6 +34,7 @@ def generate_class(
             help="The file format for saving the generated models. Defaults to 'py'.",
         ),
         config: Path = typer.Option(None, "--config", help="Path to a custom configuration file."),
+        model: Annotated[str, "model to use."] = "groq/llama-3.2-90b-text-preview",
 ):
     """
     Generate DSLModel-based classes from a natural language prompt.
@@ -40,17 +44,17 @@ def generate_class(
     typer.echo(f"Generating class from prompt: '{prompt}'")
     from dslmodel.utils.dspy_tools import init_instant
 
-    # init_lm()
-    init_instant()
+    init_lm(model=model)
+    # init_instant()
 
     # Delegate the core logic to the generate_and_save_dslmodel function
     try:
-        generate_and_save_dslmodel(prompt, output_dir, file_format, config)
+        _, output_file = generate_and_save_dslmodel(prompt, output_dir, file_format, config)
     except Exception as e:
         typer.echo(f"Error generating class: {e}")
         raise typer.Exit(code=1)
 
-    typer.echo(f"Class generated successfully! Saved in: {output_dir}")
+    typer.echo(f"Class generated successfully! Saved in: {output_file}.")
 
 
 import json
@@ -60,7 +64,7 @@ import typer
 import yaml
 
 
-@app.command("openapi")
+@app.command("openapi", help="Generate Pydantic models from an OpenAPI schema.")
 def generate_models(openapi_file: Path = Path("openapi.yaml"), output_dir: Path = Path(".")):
     # Ensure the output directory exists
     output_dir.mkdir(parents=True, exist_ok=True)
