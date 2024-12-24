@@ -3,12 +3,12 @@ import asyncio
 from types import NoneType
 
 from pydantic import BaseModel, Field
-from pydantic_ai.dependencies import AgentDeps
 from typing import Sequence, Type, Optional
 
 from pydantic_ai import Agent, RunContext
 from pydantic_ai.models import Model, KnownModelName
 from pydantic_ai.result import ResultData
+from pydantic_ai.tools import AgentDeps
 
 # DEFAULT_MODEL = "groq:llama-3.2-3b-preview"
 # DEFAULT_MODEL = "groq:llama-3.1-70b-versatile"

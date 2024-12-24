@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry] # https://python-poetry.org/docs/pyproject/
 name = "dslmodel"
-version = "2024.11.19"
+version = "2024.12.22.2"
 description = "Pydantic + DSPy instances from prompts and Jinja."
 authors = ["Sean Chatman <info@chatmangpt.com>"]
 readme = "README.md"
@@ -38,13 +38,15 @@ apscheduler = "^3.10.4"
 pygithub = "^2.4.0"
 hypothesis = "^6.114.1"
 reactivex = "^4.0.4"
-pyd4all = "^2024.10.29"
 toml = "^0.10.2"
 python-socketio = { extras = ["asyncio-client"], version = "^5.11.4" }
 injector = "^0.22.0"
 mcp = "^1.0.0"
-pydantic-ai = {extras = ["logfire"], version = "^0.0.8"}
 nest-asyncio = "^1.6.0"
+cloudpickle = "^3.1.0"
+aiofiles = "^24.1.0"
+pydantic-ai = "^0.0.14"
+
 
 [tool.poetry.group.test.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
 coverage = { extras = ["toml"], version = ">=7.4.4" }
