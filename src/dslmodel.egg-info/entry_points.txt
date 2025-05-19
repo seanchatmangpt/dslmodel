@@ -1,0 +1,3 @@
+[console_scripts]
+dsl = dslmodel.cli:app
+jygen = jygen.cli:app

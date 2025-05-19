@@ -1,8 +1,8 @@
 from typing import Any, Dict, List
 from pydantic import BaseModel, Field
-from pydantic_ai import RunContext
+from pydantic_ai import Agent
 
-from dslmodel.utils.pydantic_ai_tools import get_agent
+from dslmodel.utils.pydantic_ai_tools import instance, run_agent
 
 
 # ------------------------------------------
@@ -34,39 +34,55 @@ class WorkflowResult(BaseModel):
 # Workflow Agent Setup
 # ------------------------------------------
 
-workflow_agent = get_agent(
-    system_prompt="You are a workflow manager. Execute tasks in sequence. "
-                  "Always return a JSON object with keys 'task' and 'result'.",
-    deps_type=WorkflowDeps,
-    result_type=Dict[str, Any],  # Ensure JSON-compatible result structure
-    retries=0,  # No retries
-)
+async def get_workflow_agent() -> Agent[Dict[str, Any]]:
+    """Create a workflow agent.
+    
+    Returns:
+        An agent configured for workflow tasks
+    """
+    return Agent(
+        "groq:llama-3.1-8b-instant",
+        output_type=Dict[str, Any],
+        system_prompt="You are a workflow manager. Execute tasks in sequence. "
+                     "Always return a JSON object with keys 'task' and 'result'.",
+        retries=0,  # No retries
+    )
 
 
 # ------------------------------------------
 # Workflow Tools (Tasks)
 # ------------------------------------------
 
-@workflow_agent.tool
-async def task_1(ctx: RunContext[WorkflowDeps]) -> Dict[str, Any]:
+async def task_1(deps: WorkflowDeps) -> Dict[str, Any]:
     """
     Task 1: Processes user input and updates the shared state.
+    
+    Args:
+        deps: The workflow dependencies
+        
+    Returns:
+        The task result
     """
-    user_input = ctx.deps.user_input
+    user_input = deps.user_input
     result = f"Processed '{user_input}' in Task 1."
-    ctx.deps.task_1_result = result
+    deps.task_1_result = result
     return WorkflowResult(task="Task 1", result=result).model_dump()
 
 
-@workflow_agent.tool
-async def task_2(ctx: RunContext[WorkflowDeps]) -> Dict[str, Any]:
+async def task_2(deps: WorkflowDeps) -> Dict[str, Any]:
     """
     Task 2: Builds on Task 1's result and updates the shared state.
+    
+    Args:
+        deps: The workflow dependencies
+        
+    Returns:
+        The task result
     """
-    if not ctx.deps.task_1_result:
+    if not deps.task_1_result:
         raise ValueError("Task 1 result is missing.")
-    result = f"Task 2 received: {ctx.deps.task_1_result}."
-    ctx.deps.task_2_result = result
+    result = f"Task 2 received: {deps.task_1_result}."
+    deps.task_2_result = result
     return WorkflowResult(task="Task 2", result=result).model_dump()
 
 
@@ -80,17 +96,30 @@ class Workflow:
     """
 
     def __init__(self, prompts: List[str], initial_state: WorkflowDeps):
+        """Initialize the workflow.
+        
+        Args:
+            prompts: List of prompts to execute
+            initial_state: Initial workflow state
+        """
         self.prompts = prompts
         self.state = initial_state
+        self.agent = None
 
     async def run(self) -> WorkflowDeps:
         """
         Executes all tasks sequentially.
+        
+        Returns:
+            The final workflow state
         """
+        if self.agent is None:
+            self.agent = await get_workflow_agent()
+            
         for prompt in self.prompts:
             try:
-                result = await workflow_agent.run(prompt, deps=self.state)
-                print(f"Prompt '{prompt}' completed. Result: {result.data}")
+                result = await run_agent(self.agent, prompt, deps=self.state)
+                print(f"Prompt '{prompt}' completed. Result: {result}")
             except Exception as e:
                 print(f"Error during prompt '{prompt}': {e}")
                 raise

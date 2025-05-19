@@ -1,0 +1,64 @@
+# .cursorrules
+#
+# Cursor AI must follow these rules when generating code or shell commands
+# in this repository.  They standardize on **uv** as the single tool for
+# dependency, environment, and Python-version management.
+
+## General
+- Assume “happy path” only—omit error handling, logging, or CLI arg
+  validation (the human will add those later).  
+- Never mention or produce commands that call **pip**, **pip-tools**,
+  **poetry**, **virtualenv**, or `python -m venv`.  
+- Prefer concise, executable examples over explanations.  
+
+## Dependency management
+- Add runtime deps with `uv add <package>`; add dev/test deps with  
+  `uv add --group dev <package>`.  
+- After every add/remove, run `uv lock` to update **uv.lock** and
+  commit the file.  Do **not** hand-edit `pyproject.toml`. :contentReference[oaicite:0]{index=0}
+- For legacy ecosystems that require `requirements.txt`, generate it
+  with  
+  `uv pip compile pyproject.toml -o requirements.txt`. :contentReference[oaicite:1]{index=1}
+
+## Environments
+- Create the local project venv with `uv venv`; the folder **.venv/**
+  is ignored by VCS.  
+- Run any command inside the project with `uv run <cmd …>`; this
+  implicitly syncs the venv first. :contentReference[oaicite:2]{index=2}
+- For single-file scripts, embed inline metadata (`# requires: requests`)
+  and execute via `uv run script.py`.
+
+## Python versions
+- Pin the interpreter per repo with  
+  `uv python pin <major.minor>`; commit the generated **.python-version**
+  file. :contentReference[oaicite:3]{index=3}
+- Never rely on the system Python.
+
+## CI / Deployment
+- Restore the `~/.cache/uv` directory between CI jobs to avoid
+  re-downloading wheels.  
+- Recreate the environment with `uv sync --production` (installs only
+  non-dev deps) followed by `uv run --no-editable python -m your_app`.
+  :contentReference[oaicite:4]{index=4}
+- Inside Docker, copy the static uv binary from the official
+  `ghcr.io/astral-sh/uv@sha256:<digest>` image for fully reproducible
+  builds. :contentReference[oaicite:5]{index=5}
+
+## Project layout (enforced)
+```
+
+myproj/
+├── pyproject.toml      # created by `uv init`
+├── uv.lock             # always committed
+├── .python-version     # pinned via `uv python pin`
+├── .venv/              # local venv, ignored in VCS
+└── src/
+└── myproj/**init**.py
+
+```
+
+## Commit etiquette
+- Commit the updated **pyproject.toml** and **uv.lock** together.
+- Keep diffs minimal and feature-scoped.
+
+ALWAYS USE THE PYTHON IN THE .venv when running tests

@@ -1,7 +1,7 @@
 import ast
 import logging
 
-from dspy import Assert, ChainOfThought, InputField, OutputField, Signature
+from dspy import ChainOfThought, InputField, OutputField, Signature
 from pydantic import BaseModel, Field
 
 from dslmodel.utils.dspy_tools import init_instant
@@ -178,9 +178,6 @@ class GenPrimitiveModule:
         Validates whether the output matches the expected primitive type.
         """
         is_valid = isinstance(output, self.primitive_type)
-        Assert(
-            is_valid, f"Expected {self.primitive_type.__name__}, but got {type(output).__name__}."
-        )
         return is_valid
 
     def forward(self, prompt: str):
@@ -211,10 +208,6 @@ class GenPrimitiveModule:
         corrected_evaluated_output = self.eval_output(corrected_output.get(self.output_key))
 
         # Validate corrected output
-        Assert(
-            self.validate_output(corrected_evaluated_output),
-            f"Correction failed to generate valid {self.primitive_type.__name__}.",
-        )
         return corrected_evaluated_output
 
     def __call__(self, prompt: str):

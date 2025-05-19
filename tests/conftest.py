@@ -5,6 +5,8 @@ from pathlib import Path
 import pytest
 from apscheduler.schedulers.background import BackgroundScheduler
 import pytz
+import httpx
+from unittest.mock import AsyncMock
 
 # Mock Clock Fixture Example
 class MockClock:
@@ -40,3 +42,25 @@ def captured_output():
 
 # Ensure the project root is on the path
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+@pytest.fixture(autouse=True)
+def mock_groq_api(monkeypatch):
+    async def fake_post(self, url, *args, **kwargs):
+        # Simulate a plausible Groq API response
+        # The structure should match what litellm/pydantic_ai expects
+        class FakeResponse:
+            status_code = 200
+            def json(self):
+                # Return a plausible LLM completion structure
+                return {
+                    "choices": [
+                        {"message": {"content": '{"next_trigger": "start", "explanation": "Mocked explanation.", "task": "Task 1", "result": "Mocked result."}'}}
+                    ]
+                }
+            async def aread(self):
+                return b''
+            async def aclose(self):
+                pass
+        return FakeResponse()
+
+    monkeypatch.setattr(httpx.AsyncClient, "post", fake_post)

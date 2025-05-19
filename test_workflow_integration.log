@@ -818,3 +818,196 @@ with open('/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sa
 2024-10-30 22:41:28.416 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:99 - Job Run Backtest completed. Updated context: {}
 2024-10-30 22:41:28.416 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:155 - Finished execution of job: Run Backtest
 2024-10-30 22:41:28.416 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:162 - Workflow 'Multi-Agent Financial Backtest' completed. Final context: {}
+2025-05-18 18:33:02.407 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Multi-Agent Financial Backtest
+2025-05-18 18:33:02.407 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: None
+2025-05-18 18:33:02.410 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Fetch Financial Data
+2025-05-18 18:33:02.410 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Fetch Financial Data
+2025-05-18 18:33:02.410 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:33:02.411 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:33:02.411 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 1 Fetch Data'
+2025-05-18 18:33:02.412 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('data = fetch_financial_data()')
+2025-05-18 18:33:02.412 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 1 Fetch Data' completed successfully
+2025-05-18 18:33:02.412 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 1 Fetch Data' completed. Updated context: {}
+2025-05-18 18:33:02.412 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 1 Fetch Data
+2025-05-18 18:33:02.412 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Fetch Financial Data completed. Updated context: {}
+2025-05-18 18:33:02.412 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Fetch Financial Data
+2025-05-18 18:33:02.412 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Run Backtest
+2025-05-18 18:33:02.412 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Run Backtest
+2025-05-18 18:33:02.412 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:33:02.413 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:33:02.413 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 2 Run Backtest'
+2025-05-18 18:33:02.414 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('results = run_backtest(data)')
+2025-05-18 18:33:02.414 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 2 Run Backtest' completed successfully
+2025-05-18 18:33:02.414 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 2 Run Backtest' completed. Updated context: {}
+2025-05-18 18:33:02.414 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 2 Run Backtest
+2025-05-18 18:33:02.414 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Run Backtest completed. Updated context: {}
+2025-05-18 18:33:02.414 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Run Backtest
+2025-05-18 18:33:02.414 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Workflow 'Multi-Agent Financial Backtest' completed. Final context: {}
+2025-05-18 18:33:46.913 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Multi-Agent Financial Backtest
+2025-05-18 18:33:46.913 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: None
+2025-05-18 18:33:46.916 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Fetch Financial Data
+2025-05-18 18:33:46.916 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Fetch Financial Data
+2025-05-18 18:33:46.917 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:33:46.917 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:33:46.917 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 1 Fetch Data'
+2025-05-18 18:33:46.918 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('data = fetch_financial_data()')
+2025-05-18 18:33:46.918 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 1 Fetch Data' completed successfully
+2025-05-18 18:33:46.918 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 1 Fetch Data' completed. Updated context: {}
+2025-05-18 18:33:46.918 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 1 Fetch Data
+2025-05-18 18:33:46.918 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Fetch Financial Data completed. Updated context: {}
+2025-05-18 18:33:46.918 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Fetch Financial Data
+2025-05-18 18:33:46.918 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Run Backtest
+2025-05-18 18:33:46.918 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Run Backtest
+2025-05-18 18:33:46.918 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:33:46.918 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:33:46.918 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 2 Run Backtest'
+2025-05-18 18:33:46.920 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('results = run_backtest(data)')
+2025-05-18 18:33:46.920 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 2 Run Backtest' completed successfully
+2025-05-18 18:33:46.920 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 2 Run Backtest' completed. Updated context: {}
+2025-05-18 18:33:46.920 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 2 Run Backtest
+2025-05-18 18:33:46.920 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Run Backtest completed. Updated context: {}
+2025-05-18 18:33:46.920 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Run Backtest
+2025-05-18 18:33:46.920 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Workflow 'Multi-Agent Financial Backtest' completed. Final context: {}
+2025-05-18 18:34:27.004 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Multi-Agent Financial Backtest
+2025-05-18 18:34:27.004 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: None
+2025-05-18 18:34:27.007 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Fetch Financial Data
+2025-05-18 18:34:27.007 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Fetch Financial Data
+2025-05-18 18:34:27.007 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:34:27.007 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:34:27.007 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 1 Fetch Data'
+2025-05-18 18:34:27.009 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('data = fetch_financial_data()')
+2025-05-18 18:34:27.009 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 1 Fetch Data' completed successfully
+2025-05-18 18:34:27.009 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 1 Fetch Data' completed. Updated context: {}
+2025-05-18 18:34:27.009 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 1 Fetch Data
+2025-05-18 18:34:27.009 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Fetch Financial Data completed. Updated context: {}
+2025-05-18 18:34:27.009 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Fetch Financial Data
+2025-05-18 18:34:27.009 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Run Backtest
+2025-05-18 18:34:27.009 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Run Backtest
+2025-05-18 18:34:27.009 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:34:27.009 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:34:27.009 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 2 Run Backtest'
+2025-05-18 18:34:27.010 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('results = run_backtest(data)')
+2025-05-18 18:34:27.010 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 2 Run Backtest' completed successfully
+2025-05-18 18:34:27.010 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 2 Run Backtest' completed. Updated context: {}
+2025-05-18 18:34:27.010 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 2 Run Backtest
+2025-05-18 18:34:27.010 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Run Backtest completed. Updated context: {}
+2025-05-18 18:34:27.010 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Run Backtest
+2025-05-18 18:34:27.010 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Workflow 'Multi-Agent Financial Backtest' completed. Final context: {}
+2025-05-18 18:41:43.631 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Multi-Agent Financial Backtest
+2025-05-18 18:41:43.631 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: None
+2025-05-18 18:41:43.634 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Fetch Financial Data
+2025-05-18 18:41:43.634 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Fetch Financial Data
+2025-05-18 18:41:43.634 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:41:43.634 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:41:43.634 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 1 Fetch Data'
+2025-05-18 18:41:43.636 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('data = fetch_financial_data()')
+2025-05-18 18:41:43.636 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 1 Fetch Data' completed successfully
+2025-05-18 18:41:43.636 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 1 Fetch Data' completed. Updated context: {}
+2025-05-18 18:41:43.636 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 1 Fetch Data
+2025-05-18 18:41:43.636 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Fetch Financial Data completed. Updated context: {}
+2025-05-18 18:41:43.636 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Fetch Financial Data
+2025-05-18 18:41:43.636 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Run Backtest
+2025-05-18 18:41:43.636 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Run Backtest
+2025-05-18 18:41:43.636 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:41:43.636 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:41:43.636 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 2 Run Backtest'
+2025-05-18 18:41:43.637 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('results = run_backtest(data)')
+2025-05-18 18:41:43.638 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 2 Run Backtest' completed successfully
+2025-05-18 18:41:43.638 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 2 Run Backtest' completed. Updated context: {}
+2025-05-18 18:41:43.638 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 2 Run Backtest
+2025-05-18 18:41:43.638 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Run Backtest completed. Updated context: {}
+2025-05-18 18:41:43.638 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Run Backtest
+2025-05-18 18:41:43.638 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Workflow 'Multi-Agent Financial Backtest' completed. Final context: {}
+2025-05-18 18:43:17.226 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Multi-Agent Financial Backtest
+2025-05-18 18:43:17.226 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: None
+2025-05-18 18:43:17.229 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Fetch Financial Data
+2025-05-18 18:43:17.229 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Fetch Financial Data
+2025-05-18 18:43:17.230 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:43:17.230 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:43:17.230 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 1 Fetch Data'
+2025-05-18 18:43:17.231 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('data = fetch_financial_data()')
+2025-05-18 18:43:17.231 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 1 Fetch Data' completed successfully
+2025-05-18 18:43:17.231 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 1 Fetch Data' completed. Updated context: {}
+2025-05-18 18:43:17.231 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 1 Fetch Data
+2025-05-18 18:43:17.231 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Fetch Financial Data completed. Updated context: {}
+2025-05-18 18:43:17.232 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Fetch Financial Data
+2025-05-18 18:43:17.232 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Run Backtest
+2025-05-18 18:43:17.232 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Run Backtest
+2025-05-18 18:43:17.232 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:43:17.232 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:43:17.232 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 2 Run Backtest'
+2025-05-18 18:43:17.233 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('results = run_backtest(data)')
+2025-05-18 18:43:17.233 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 2 Run Backtest' completed successfully
+2025-05-18 18:43:17.233 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 2 Run Backtest' completed. Updated context: {}
+2025-05-18 18:43:17.233 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 2 Run Backtest
+2025-05-18 18:43:17.233 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Run Backtest completed. Updated context: {}
+2025-05-18 18:43:17.233 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Run Backtest
+2025-05-18 18:43:17.233 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Workflow 'Multi-Agent Financial Backtest' completed. Final context: {}
+2025-05-18 18:50:18.882 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Multi-Agent Financial Backtest
+2025-05-18 18:50:18.883 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: None
+2025-05-18 18:50:18.886 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Fetch Financial Data
+2025-05-18 18:50:18.886 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Fetch Financial Data
+2025-05-18 18:50:18.886 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:50:18.886 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 1 Fetch Data
+2025-05-18 18:50:18.886 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 1 Fetch Data'
+2025-05-18 18:50:18.888 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('data = fetch_financial_data()')
+2025-05-18 18:50:18.888 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 1 Fetch Data' completed successfully
+2025-05-18 18:50:18.888 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 1 Fetch Data' completed. Updated context: {}
+2025-05-18 18:50:18.888 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 1 Fetch Data
+2025-05-18 18:50:18.888 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Fetch Financial Data completed. Updated context: {}
+2025-05-18 18:50:18.888 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Fetch Financial Data
+2025-05-18 18:50:18.888 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Run Backtest
+2025-05-18 18:50:18.888 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Run Backtest
+2025-05-18 18:50:18.888 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:50:18.888 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Agent 2 Run Backtest
+2025-05-18 18:50:18.888 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Agent 2 Run Backtest'
+2025-05-18 18:50:18.889 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: print('results = run_backtest(data)')
+2025-05-18 18:50:18.889 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Agent 2 Run Backtest' completed successfully
+2025-05-18 18:50:18.889 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Agent 2 Run Backtest' completed. Updated context: {}
+2025-05-18 18:50:18.889 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Agent 2 Run Backtest
+2025-05-18 18:50:18.889 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Run Backtest completed. Updated context: {}
+2025-05-18 18:50:18.889 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:178 - Finished execution of job: Run Backtest
+2025-05-18 18:50:18.889 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Workflow 'Multi-Agent Financial Backtest' completed. Final context: {}
+2025-05-18 18:50:18.916 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:50:18.917 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Weekly Meeting Setup
+2025-05-18 18:50:18.917 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:50:18.919 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:175 - Starting execution of job: Setup Meeting
+2025-05-18 18:50:18.920 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Setup Meeting
+2025-05-18 18:50:18.920 | ERROR    | dslmodel.workflow.workflow_executor:execute_workflow:180 - Error executing job Setup Meeting: 'Workflow' object has no attribute 'items'
+2025-05-18 18:50:18.920 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Workflow 'Weekly Meeting Setup' completed. Final context: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:51:51.378 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:51:51.379 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Weekly Meeting Setup
+2025-05-18 18:51:51.379 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:52:15.814 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:52:15.814 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Weekly Meeting Setup
+2025-05-18 18:52:15.814 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:52:39.420 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:52:39.420 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Weekly Meeting Setup
+2025-05-18 18:52:39.420 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: name='Weekly Meeting Setup' description=None schedules=[CronSchedule(type='cron', cron='0 9 * * MON')] jobs=[Job(name='Setup Meeting', depends_on=None, runner='local', steps=[Action(name='Generate Participants', use=None, args=None, code='participants.extend([1, 2, 3, 4])', env=None, cond=None, callable=None, shell=None), Action(name='Notify Organizer', use=None, args=None, code="context['notified'] = True", env=None, cond=Condition(expr='len(participants) > 3'), callable=None, shell=None)], env=None, max_retries=None, retry_delay_seconds=None, sla_seconds=None)] imports=[] context={'participants': []} env={}
+2025-05-18 18:52:53.439 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: {'participants': []}
+2025-05-18 18:52:53.439 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Weekly Meeting Setup
+2025-05-18 18:52:53.439 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: {'participants': []}
+2025-05-18 18:53:10.944 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: {'participants': []}
+2025-05-18 18:53:10.944 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:165 - Executing workflow: Weekly Meeting Setup
+2025-05-18 18:53:10.944 | DEBUG    | dslmodel.workflow.workflow_executor:initialize_context:46 - Initializing context with: {'participants': []}
+2025-05-18 18:53:10.947 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:182 - Starting execution of job: Setup Meeting
+2025-05-18 18:53:10.947 | INFO     | dslmodel.workflow.workflow_executor:execute_job:91 - Executing job: Setup Meeting
+2025-05-18 18:53:10.947 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Generate Participants
+2025-05-18 18:53:10.947 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Generate Participants
+2025-05-18 18:53:10.948 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Generate Participants'
+2025-05-18 18:53:10.950 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: participants.extend([1, 2, 3, 4])
+2025-05-18 18:53:10.950 | INFO     | dslmodel.workflow.workflow_executor:execute_action:122 - Code execution for action 'Generate Participants' completed successfully
+2025-05-18 18:53:10.950 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Generate Participants' completed. Updated context: {'participants': [1, 2, 3, 4]}
+2025-05-18 18:53:10.950 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Generate Participants
+2025-05-18 18:53:10.950 | INFO     | dslmodel.workflow.workflow_executor:execute_job:95 - Executing action: Notify Organizer
+2025-05-18 18:53:10.950 | INFO     | dslmodel.workflow.workflow_executor:execute_action:108 - Executing action: Notify Organizer
+2025-05-18 18:53:10.950 | DEBUG    | dslmodel.workflow.workflow_executor:evaluate_condition:78 - Evaluating condition: 'len(participants) > 3' with context: {'participants': [1, 2, 3, 4]}
+2025-05-18 18:53:10.950 | DEBUG    | dslmodel.workflow.workflow_executor:evaluate_condition:82 - Condition result: True
+2025-05-18 18:53:10.950 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:117 - Executing code for action 'Notify Organizer'
+2025-05-18 18:53:10.952 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:119 - Rendered code: context['notified'] = True
+2025-05-18 18:53:10.952 | ERROR    | dslmodel.workflow.workflow_executor:execute_action:124 - Error executing code for action 'Notify Organizer': name 'context' is not defined
+2025-05-18 18:53:10.952 | DEBUG    | dslmodel.workflow.workflow_executor:execute_action:158 - Action 'Notify Organizer' completed. Updated context: {'participants': [1, 2, 3, 4]}
+2025-05-18 18:53:10.952 | INFO     | dslmodel.workflow.workflow_executor:execute_job:98 - Finished executing action: Notify Organizer
+2025-05-18 18:53:10.952 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Setup Meeting completed. Updated context: {'participants': [1, 2, 3, 4]}
+2025-05-18 18:53:10.952 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Finished execution of job: Setup Meeting
+2025-05-18 18:53:10.952 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:192 - Workflow 'Weekly Meeting Setup' completed. Final context: {'participants': [1, 2, 3, 4]}

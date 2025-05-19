@@ -10,8 +10,6 @@ services:
         PYTHON_VERSION: ${PYTHON_VERSION:-3.12}
         UID: ${UID:-1000}
         GID: ${GID:-1000}
-    environment:
-      - POETRY_PYPI_TOKEN_PYPI
     volumes:
       - ..:/workspaces
       - command-history-volume:/home/user/.history/
@@ -25,10 +23,9 @@ services:
       [
         "sh",
         "-c",
-        "sudo chown user $$SSH_AUTH_SOCK && cp --update /opt/build/poetry/poetry.lock /workspaces/dslmodel/ && mkdir -p /workspaces/dslmodel/.git/hooks/ && cp --update /opt/build/git/* /workspaces/dslmodel/.git/hooks/ && zsh"
+        "sudo chown user $$SSH_AUTH_SOCK && mkdir -p /workspaces/dslmodel/.git/hooks/ && cp --update /opt/build/git/* /workspaces/dslmodel/.git/hooks/ && zsh"
       ]
     environment:
-      - POETRY_PYPI_TOKEN_PYPI
       - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
     ports:
       - "8000"

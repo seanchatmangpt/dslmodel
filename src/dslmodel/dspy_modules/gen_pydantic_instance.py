@@ -75,7 +75,7 @@ import logging
 from typing import TypeVar
 
 import dspy
-from dspy import Assert, ChainOfThought, InputField, OutputField, Signature
+from dspy import ChainOfThought, InputField, OutputField, Signature
 from pydantic import BaseModel
 
 from dslmodel.utils.source_tools import collect_all_sources_as_string
@@ -141,11 +141,12 @@ class GenPydanticInstance(dspy.Module):
 
     def validate_output(self, output: str) -> T:
         """Validates the generated output and returns the model instance if successful."""
-        Assert(
-            self.validate_root_model(output),
-            f"You need to create a kwargs dict for {self.model.__name__}\nValidation error:\n{self.validation_error}",
-        )
-        return self.model.model_validate(eval_dict_str(output))
+        try:
+            return self.model.model_validate(eval_dict_str(output))
+        except (ValidationError, ValueError, TypeError, SyntaxError) as error:
+            self.validation_error = error
+            logger.debug(f"Validation error: {error}")
+            return self.handle_correction(prompt, output)
 
     def handle_correction(self, prompt: str, output: str) -> T:
         """Attempts to correct the generated output based on errors."""
@@ -213,3 +214,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def reward_fn(input_kwargs, prediction):
+    return float(len(prediction.field1) == len(prediction.field1))

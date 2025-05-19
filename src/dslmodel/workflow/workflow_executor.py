@@ -164,6 +164,13 @@ def execute_workflow(workflow: Workflow, init_ctx: dict[str, Any] | None = None,
     """Executes all jobs defined in a workflow."""
     logger.info(f"Executing workflow: {workflow.name}")
     global_context = initialize_context(init_ctx)
+    
+    # Merge workflow's context into global context
+    if workflow.context:
+        if hasattr(workflow.context, "model_dump"):
+            global_context.update(workflow.context.model_dump())
+        else:
+            global_context.update(workflow.context)
 
     workflow.process_imports()
     workflow.topological_sort()

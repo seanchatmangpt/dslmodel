@@ -1,14 +1,23 @@
 from typing import Type, Callable, Any, Dict
-
 import typer
 from pydantic import BaseModel, Field
+import inspect
+import makefun
 
 app = typer.Typer()
 
 
 # Utility to extract CLI metadata from a field
 def extract_cli_metadata(field_name: str, field_info: Any) -> Dict[str, Any]:
-    # Extract metadata from `json_schema_extra` in Pydantic v2
+    """Extract CLI metadata from a Pydantic field.
+    
+    Args:
+        field_name: The name of the field
+        field_info: The Pydantic field info
+        
+    Returns:
+        A dictionary of CLI metadata
+    """
     metadata = field_info.json_schema_extra or {}
     return {
         "help": metadata.get("cli_help", f"{field_name} ({field_info.annotation.__name__})"),
@@ -18,63 +27,56 @@ def extract_cli_metadata(field_name: str, field_info: Any) -> Dict[str, Any]:
     }
 
 
-# Function to generate CLI arguments/options for each model field
-def generate_cli_options(model: Type[BaseModel]) -> Dict[str, Any]:
-    options = {}
+# Function to create a Typer command from a Pydantic model
+def register_model_command(app: typer.Typer, model: Type[BaseModel], handler: Callable[[BaseModel], None]):
+    """Register a Typer command from a Pydantic model.
+    
+    Args:
+        app: The Typer app to register the command with
+        model: The Pydantic model to create the command from
+        handler: The function to handle the command
+    """
+    params = []
     for field_name, field_info in model.model_fields.items():
         cli_metadata = extract_cli_metadata(field_name, field_info)
-        if cli_metadata["default"] is ...:
-            options[field_name] = typer.Argument(
-                cli_metadata["default"],
-                help=cli_metadata["help"],
-                show_default=False
+        param_type = cli_metadata["type"]
+        default = cli_metadata["default"]
+        help_text = cli_metadata["help"]
+        alias = cli_metadata["alias"]
+        
+        if default is ...:
+            param = inspect.Parameter(
+                field_name,
+                inspect.Parameter.POSITIONAL_OR_KEYWORD,
+                annotation=param_type,
             )
         else:
-            # Use the alias as a part of the option, without dynamic keyword arguments
-            options[field_name] = typer.Option(
-                cli_metadata["default"],
-                help=cli_metadata["help"],
-                show_default=True,
-                # Apply the alias here
-                param_decls=[cli_metadata["alias"]],
-                type=cli_metadata["type"]
+            param = inspect.Parameter(
+                field_name,
+                inspect.Parameter.KEYWORD_ONLY,
+                default=typer.Option(default, help=help_text),
+                annotation=param_type,
             )
-    return options
+        params.append(param)
 
+    def command_template(**kwargs):
+        instance = model(**kwargs)
+        return handler(instance)
 
-# Function to create a command function that Typer can register
-def create_command_function(model: Type[BaseModel], handler: Callable[[BaseModel], None]) -> Callable:
-    def command_function(**kwargs):
-        try:
-            model_instance = model(**kwargs)
-        except Exception as e:
-            typer.echo(f"Error creating model instance: {e}", err=True)
-            raise typer.Exit(code=1)
-
-        # Call the handler with the model instance
-        return handler(model_instance)
-
-    return command_function
-
-
-# Function to register a model and handler as a command in a Typer app
-def typer_command(app: typer.Typer, model: Type[BaseModel], handler: Callable[[BaseModel], None]):
-    """
-    Registers a Pydantic model as a CLI command in Typer, using a separate handler function.
-    """
-    command_function = create_command_function(model, handler)
-    cli_options = generate_cli_options(model)
-
-    # Wrap the command function with Typer options dynamically
-    for option_name, option in cli_options.items():
-        command_function = option(command_function)
-
-    # Register the command in the Typer app
-    app.command()(command_function)
+    func_signature = inspect.Signature(params)
+    func_impl = command_template
+    
+    command = makefun.create_function(
+        func_signature=func_signature,
+        func_impl=func_impl,
+        func_name=f"{model.__name__.lower()}_command"
+    )
+    app.command()(command)
 
 
 # Define a sample model with CLI-specific metadata
 class UserInput(BaseModel):
+    """Sample model with CLI-specific metadata."""
     name: str = Field(..., json_schema_extra={"cli_help": "The user's name"})
     age: int = Field(30, json_schema_extra={"cli_help": "The user's age", "cli_alias": "--user-age"})
     active: bool = Field(True, json_schema_extra={"cli_help": "Is the user active?", "cli_default": False})
@@ -82,11 +84,16 @@ class UserInput(BaseModel):
 
 # Define the handler function for the UserInput model
 def handle_user_input(user_input: UserInput):
+    """Handle the user input command.
+    
+    Args:
+        user_input: The user input model instance
+    """
     typer.echo(f"name={user_input.name}, age={user_input.age}, active={user_input.active}")
 
 
 # Register the command in Typer
-typer_command(app, model=UserInput, handler=handle_user_input)
+register_model_command(app, model=UserInput, handler=handle_user_input)
 
 if __name__ == "__main__":
     app()

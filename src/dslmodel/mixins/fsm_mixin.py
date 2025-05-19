@@ -69,8 +69,10 @@ class FSMMixin:
         self.prompts = []
         self.machine = None
         self.state = None
+        self.state_enum = None  # Store the Enum class
 
     def setup_fsm(self, state_enum, initial=None):
+        self.state_enum = state_enum  # Save the Enum class
         self.states = [State(state.name) for state in state_enum]
 
         if initial is None:
@@ -123,6 +125,12 @@ class FSMMixin:
     def forward(self, prompt, **kwargs):
         self.prompts.append(prompt)
         return fsm_trigger_call(prompt, self, **kwargs)
+
+    @property
+    def state_enum_value(self):
+        if self.state_enum is not None and self.state is not None:
+            return self.state_enum[self.state]
+        return None
 
 
 def state_transition_possibilities(fsm):

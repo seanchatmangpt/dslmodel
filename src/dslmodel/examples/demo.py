@@ -1,8 +1,17 @@
 import dspy
 import asyncio
+from typing import Dict, Any, Tuple
 
-async def analyze_topic_async(topic: str):
-    # Define the categories and their corresponding output fields.
+async def analyze_topic_async(topic: str) -> Dict[str, Any]:
+    """Analyze a topic across multiple categories using DSPy.
+    
+    Args:
+        topic: The topic to analyze
+        
+    Returns:
+        A dictionary mapping categories to their analyses
+    """
+    # Define the categories and their corresponding output fields
     analyses = dict(
         tech="overview, state_of_the_art, future_directions",
         business="market_analysis, competition, strategy",
@@ -11,29 +20,31 @@ async def analyze_topic_async(topic: str):
         competitive_intelligence="competitors, market_share, trends"
     )
 
-    # Worker function to process a single category asynchronously.
-    async def analyze_category(category, outputs):
-        chain = dspy.ChainOfThought(f"topic -> {outputs}")
-        return category, chain(topic=topic)
+    # Worker function to process a single category asynchronously
+    async def analyze_category(category: str, outputs: str) -> Tuple[str, Any]:
+        try:
+            chain = dspy.ChainOfThought(f"topic -> {outputs}")
+            result = chain(topic=topic)
+            return category, result
+        except Exception as e:
+            return category, f"Error: {str(e)}"
 
-    # Run all analyses concurrently using asyncio.gather.
+    # Run all analyses concurrently using asyncio.gather
     results = await asyncio.gather(
-        *(analyze_category(category, outputs) for category, outputs in analyses.items()),
-        return_exceptions=True
+        *(analyze_category(category, outputs) for category, outputs in analyses.items())
     )
 
-    # Process results: handle exceptions gracefully.
-    return {category: result if not isinstance(result, Exception) else f"Error: {result}"
-            for category, result in results}
+    # Convert results to dictionary
+    return dict(results)
 
-# Example usage.
 async def main():
+    """Run the demo analysis."""
     results = await analyze_topic_async("Microsoft Copilots")
     for category, analysis in results.items():
         print(f"Category: {category}")
         print(f"Analysis: {analysis}")
         print("-" * 50)
 
-# Run the async function.
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
 

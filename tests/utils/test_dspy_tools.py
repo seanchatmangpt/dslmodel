@@ -8,6 +8,7 @@ from dslmodel.utils.dspy_tools import (
     init_versatile,
     init_text,
 )
+import dspy
 
 
 # Fixtures for mocking
@@ -25,7 +26,7 @@ def mock_dspy_settings_configure():
     """
     Fixture to mock the `dspy.settings.configure` method.
     """
-    with patch("dslmodel.utils.dspy_tools.dspy.settings.configure") as mock_configure:
+    with patch("dspy.dsp.utils.settings.Settings.configure") as mock_configure:
         yield mock_configure
 
 
@@ -36,6 +37,10 @@ def mock_dspy_ChatAdapter():
     """
     with patch("dslmodel.utils.dspy_tools.dspy.ChatAdapter") as mock_Adapter:
         yield mock_Adapter
+
+
+def test_print_dspy_settings_dir():
+    print('dspy.settings dir:', dir(dspy.settings))
 
 
 # Tests for init_lm

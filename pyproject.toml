@@ -1,103 +1,98 @@
-[build-system] # https://python-poetry.org/docs/pyproject/#poetry-and-pep-517
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry] # https://python-poetry.org/docs/pyproject/
+[project]
 name = "dslmodel"
 version = "2024.12.22.2"
 description = "Pydantic + DSPy instances from prompts and Jinja."
-authors = ["Sean Chatman <info@chatmangpt.com>"]
+authors = [{ name = "Sean Chatman", email = "info@chatmangpt.com" }]
 readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+  "aiofiles>=24.1.0",
+  "apscheduler>=3.11.0",
+  "coloredlogs>=15.0.1",
+  "dspy>=2.6.24",
+  "dspy-ai>=2.6.24",
+  "factory-boy>=3.3.3",
+  "hypothesis>=6.131.18",
+  "ijson>=3.4.0",
+  "inflection>=0.5.1",
+  "inject>=5.2.1",
+  "injector>=0.22.0",
+  "jinja2-ext>=0.1",
+  "jinja2-time>=0.2.0",
+  "jupyter>=1.1.1",
+  "loguru>=0.7.3",
+  "mcp>=1.9.0",
+  "munch>=4.0.0",
+  "nest-asyncio>=1.6.0",
+  "pandasql>=0.7.3",
+  "poethepoet>=0.34.0",
+  "pygithub>=2.6.1",
+  "pyperclip>=1.9.0",
+  "python-socketio[asyncio-client]>=5.13.0",
+  "reactivex>=4.0.4",
+  "toml>=0.10.2",
+  "transitions>=0.9.2",
+  "cloudpickle>=3.1.1",
+  "pydantic-ai>=0.2.4",
+  "wcmatch>=10.0",
+  "typer>=0.15.4",
+  "makefun>=1.16.0",
+  "email-validator>=2.1.0.post1",
+]
+
+[project.urls]
 repository = "https://github.com/seanchatmangpt/dslmodel"
 
-[tool.poetry.scripts] # https://python-poetry.org/docs/pyproject/#scripts
+[project.optional-dependencies]
+test = [
+  "coverage[toml]>=7.8.0",
+  "pytest>=8.3.5",
+  "pytest-mock>=3.14.0",
+  "pytest-xdist>=3.6.1",
+  "pytest-watch>=4.2.0",
+  "pytest-asyncio>=0.26.0",
+  "hypothesis>=6.131.18",
+  "fastapi>=0.115.12",
+]
+dev = [
+  "cruft>=2.16.0",
+  "ipykernel>=6.29.5",
+  "ipython>=9.2.0",
+  "ipywidgets>=8.1.7",
+  "pdoc>=15.0.3",
+]
+
+[project.scripts]
 dsl = "dslmodel.cli:app"
 jygen = "jygen.cli:app"
 
-[tool.poetry.dependencies] # https://python-poetry.org/docs/dependency-specification/
-coloredlogs = ">=15.0.1"
-poethepoet = ">=0.25.0"
-python = ">=3.12,<4.0"
-dspy-ai = "^2.5.6"
-pyperclip = "^1.9.0"
-inflection = "^0.5.1"
-jinja2-time = "^0.2.0"
-jinja2-ext = "^0.1"
-loguru = "^0.7.2"
-munch = "^4.0.0"
-ijson = "^3.3.0"
-factory-boy = "^3.3.1"
-inject = "^5.2.1"
-pytest-xdist = "^3.6.1"
-jupyter = "^1.1.1"
-wcmatch = "^10.0"
-pandasql = "^0.7.3"
-pytest = "^8.3.3"
-transitions = "^0.9.2"
-apscheduler = "^3.10.4"
-pygithub = "^2.4.0"
-hypothesis = "^6.114.1"
-reactivex = "^4.0.4"
-toml = "^0.10.2"
-python-socketio = { extras = ["asyncio-client"], version = "^5.11.4" }
-injector = "^0.22.0"
-mcp = "^1.0.0"
-nest-asyncio = "^1.6.0"
-cloudpickle = "^3.1.0"
-aiofiles = "^24.1.0"
-pydantic-ai = "^0.0.14"
-
-
-[tool.poetry.group.test.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
-coverage = { extras = ["toml"], version = ">=7.4.4" }
-pytest = ">=8.1.1"
-pytest-mock = ">=3.14.0"
-pytest-xdist = ">=3.5.0"
-pytest-watch = ">=4.2.0"
-
-
-[tool.poetry.group.dev.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
-cruft = ">=2.15.0"
-ipykernel = ">=6.29.4"
-ipython = ">=8.23.0"
-ipywidgets = ">=8.1.2"
-pdoc = ">=14.4.0"
-pytest-asyncio = "^0.24.0"
-
-[tool.coverage.report] # https://coverage.readthedocs.io/en/latest/config.html#report
+[tool.coverage.report]
 precision = 1
 show_missing = true
 skip_covered = true
 
-[tool.coverage.run] # https://coverage.readthedocs.io/en/latest/config.html#run
+[tool.coverage.run]
 branch = true
 command_line = "--module pytest"
 data_file = "reports/.coverage"
 source = ["src"]
 
-[tool.coverage.xml] # https://coverage.readthedocs.io/en/latest/config.html#xml
+[tool.coverage.xml]
 output = "reports/coverage.xml"
 
-#[tool.mypy]  # https://mypy.readthedocs.io/en/latest/config_file.html
-#junit_xml = "reports/mypy.xml"
-#plugins = "pydantic.mypy"
-#ignore_missing_imports = true
-#pretty = true
-#show_column_numbers = true
-#show_error_codes = true
-#show_error_context = true
-#warn_unreachable = true
-
-[tool.pytest.ini_options] # https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
-addopts = "--color=yes --doctest-modules --exitfirst --failed-first --verbosity=2 --junitxml=reports/pytest.xml --asyncio-mode=auto"
+[tool.pytest.ini_options]
+addopts = "--color=yes --doctest-modules --exitfirst --failed-first --verbosity=2 --junitxml=reports/pytest.xml"
 testpaths = ["src", "tests"]
 xfail_strict = true
 
-[tool.poe.tasks] # https://github.com/nat-n/poethepoet
+[tool.poe.tasks]
 push = "act push --container-architecture linux/amd64 --secret-file .secrets"
-pub = "poetry publish --build"
+pub = "python -m build && python -m twine upload dist/*"
 pipe = "pip install -e ."
-
 
 [tool.poe.tasks.api]
 help = "Serve the REST API"
@@ -177,4 +172,17 @@ cmd = "coverage xml"
 
 [tool.poe.tasks.test-watch]
 help = "Watch for changes and rerun tests"
-cmd = """poetry run ptw --onfail="notify-send 'Tests failed!'" --clear --runner="pytest --tb=short --maxfail=1 --color=yes --doctest-modules --junitxml=reports/pytest.xml --failed-first --exitfirst --verbosity=2" """
+cmd = """ptw --onfail="notify-send 'Tests failed!'" --clear --runner="pytest --tb=short --maxfail=1 --color=yes --doctest-modules --junitxml=reports/pytest.xml --failed-first --exitfirst --verbosity=2" """
+
+[dependency-groups]
+dev = [
+    "coverage[toml]>=7.8.0",
+    "fastapi>=0.115.12",
+    "hypothesis>=6.131.18",
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.26.0",
+    "pytest-cov>=6.1.1",
+    "pytest-mock>=3.14.0",
+    "pytest-watch>=4.2.0",
+    "pytest-xdist>=3.6.1",
+]

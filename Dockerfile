@@ -22,19 +22,13 @@ RUN python -m venv $VIRTUAL_ENV
 # Set the working directory.
 WORKDIR /workspaces/dslmodel/
 
-
-
-FROM base as poetry
+FROM base as builder
 
 USER root
 
-# Install Poetry in separate venv so it doesn't pollute the main venv.
-ENV POETRY_VERSION 1.8.0
-ENV POETRY_VIRTUAL_ENV /opt/poetry-env
+# Install uv
 RUN --mount=type=cache,target=/root/.cache/pip/ \
-    python -m venv $POETRY_VIRTUAL_ENV && \
-    $POETRY_VIRTUAL_ENV/bin/pip install poetry~=$POETRY_VERSION && \
-    ln -s $POETRY_VIRTUAL_ENV/bin/poetry /usr/local/bin/poetry
+    curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install compilers that may be required for certain packages or platforms.
 RUN --mount=type=cache,target=/var/cache/apt/ \
@@ -45,15 +39,11 @@ RUN --mount=type=cache,target=/var/cache/apt/ \
 USER user
 
 # Install the run time Python dependencies in the virtual environments.
-COPY --chown=user:user poetry.lock* pyproject.toml /workspaces/dslmodel/
-RUN mkdir -p /home/user/.cache/pypoetry/ && mkdir -p /home/user/.config/pypoetry/ && \
-    mkdir -p src/dslmodel/ && touch src/dslmodel/__init__.py && touch README.md
-RUN --mount=type=cache,uid=$UID,gid=$GID,target=/home/user/.cache/pypoetry/ \
-    poetry install --only main --all-extras --no-interaction
+COPY --chown=user:user requirements.txt pyproject.toml /workspaces/dslmodel/
+RUN mkdir -p src/dslmodel/ && touch src/dslmodel/__init__.py && touch README.md
+RUN uv pip install -r requirements.txt
 
-
-
-FROM poetry as dev
+FROM builder as dev
 
 # Install development tools: curl, git, gpg, ssh, starship, sudo, vim, and zsh.
 USER root
@@ -68,13 +58,11 @@ RUN git config --system --add safe.directory '*'
 USER user
 
 # Install the development Python dependencies in the virtual environments.
-RUN --mount=type=cache,uid=$UID,gid=$GID,target=/home/user/.cache/pypoetry/ \
-    poetry install --all-extras --no-interaction
+RUN uv pip install -e ".[dev,test]"
 
 # Persist output generated during docker build so that we can restore it in the dev container.
 COPY --chown=user:user .pre-commit-config.yaml /workspaces/dslmodel/
-RUN mkdir -p /opt/build/poetry/ && cp poetry.lock /opt/build/poetry/ && \
-    git init && pre-commit install --install-hooks && \
+RUN git init && pre-commit install --install-hooks && \
     mkdir -p /opt/build/git/ && cp .git/hooks/commit-msg .git/hooks/pre-commit /opt/build/git/
 
 # Configure the non-root user's shell.
@@ -94,12 +82,10 @@ RUN git clone --branch v$ANTIDOTE_VERSION --depth=1 https://github.com/mattmc3/a
     mkdir ~/.history/ && \
     zsh -c 'source ~/.zshrc'
 
-
-
 FROM base AS app
 
-# Copy the virtual environments from the poetry stage.
-COPY --from=poetry $VIRTUAL_ENV $VIRTUAL_ENV
+# Copy the virtual environments from the builder stage.
+COPY --from=builder $VIRTUAL_ENV $VIRTUAL_ENV
 
 # Copy the app source code to the working directory.
 COPY --chown=user:user . .
