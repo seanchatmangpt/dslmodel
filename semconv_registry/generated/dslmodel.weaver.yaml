@@ -1,0 +1,159 @@
+groups:
+- id: swarmsh.e2e.feature_planning
+  brief: Automated feature planning from telemetry specs
+  type: span
+  span_kind: internal
+  prefix: swarmsh.e2e
+  attributes:
+  - id: feature_name
+    type: string
+    brief: Name of the feature being generated
+    requirement_level: required
+  - id: spec_source
+    type: string
+    brief: Source telemetry specification module
+    requirement_level: required
+  - id: generated_components
+    type: string[]
+    brief: List of components to be generated
+    requirement_level: recommended
+  - id: planning_duration_ms
+    type: int
+    brief: Time taken for planning phase
+    requirement_level: opt_in
+- id: swarmsh.e2e.code_generation
+  brief: Automatic code generation from telemetry
+  type: span
+  span_kind: internal
+  prefix: swarmsh.e2e
+  attributes:
+  - id: generation_type
+    type: string
+    brief: Type of code being generated (cli, api, model, test)
+    requirement_level: required
+  - id: target_file
+    type: string
+    brief: Target file path for generated code
+    requirement_level: required
+  - id: spans_implemented
+    type: int
+    brief: Number of telemetry spans implemented
+    requirement_level: recommended
+  - id: model_used
+    type: string
+    brief: LLM model used for generation
+    requirement_level: opt_in
+- id: swarmsh.e2e.validation
+  brief: Validation of generated feature implementation
+  type: span
+  span_kind: internal
+  prefix: swarmsh.e2e
+  attributes:
+  - id: validation_type
+    type: string
+    brief: Type of validation (syntax, semantic, telemetry)
+    requirement_level: required
+  - id: validation_result
+    type: string
+    brief: Result of validation (passed, failed, warnings)
+    requirement_level: required
+  - id: errors
+    type: string[]
+    brief: List of validation errors if any
+    requirement_level: opt_in
+  - id: otel_compliant
+    type: boolean
+    brief: Whether generated code is OTEL compliant
+    requirement_level: recommended
+- id: swarmsh.e2e.integration
+  brief: Integration of generated feature into codebase
+  type: span
+  span_kind: internal
+  prefix: swarmsh.e2e
+  attributes:
+  - id: integration_type
+    type: string
+    brief: Type of integration (cli, api, module)
+    requirement_level: required
+  - id: files_modified
+    type: int
+    brief: Number of files modified during integration
+    requirement_level: recommended
+  - id: tests_added
+    type: int
+    brief: Number of tests added
+    requirement_level: opt_in
+  - id: documentation_updated
+    type: boolean
+    brief: Whether documentation was updated
+    requirement_level: opt_in
+- id: swarmsh.e2e.testing
+  brief: Automated testing of generated feature
+  type: span
+  span_kind: internal
+  prefix: swarmsh.e2e
+  attributes:
+  - id: test_type
+    type: string
+    brief: Type of test (unit, integration, e2e)
+    requirement_level: required
+  - id: tests_passed
+    type: int
+    brief: Number of tests that passed
+    requirement_level: required
+  - id: tests_failed
+    type: int
+    brief: Number of tests that failed
+    requirement_level: required
+  - id: coverage_percent
+    type: double
+    brief: Code coverage percentage
+    requirement_level: opt_in
+- id: swarmsh.e2e.deployment
+  brief: Feature deployment and activation
+  type: span
+  span_kind: internal
+  prefix: swarmsh.e2e
+  attributes:
+  - id: deployment_status
+    type: string
+    brief: Status of deployment (success, failed, partial)
+    requirement_level: required
+  - id: feature_enabled
+    type: boolean
+    brief: Whether feature is enabled after deployment
+    requirement_level: required
+  - id: telemetry_active
+    type: boolean
+    brief: Whether telemetry is being emitted
+    requirement_level: required
+  - id: rollback_available
+    type: boolean
+    brief: Whether rollback is available
+    requirement_level: opt_in
+- id: swarmsh.e2e.complete_cycle
+  brief: Complete E2E feature development cycle
+  type: span
+  span_kind: internal
+  prefix: swarmsh.e2e
+  attributes:
+  - id: feature_name
+    type: string
+    brief: Name of the completed feature
+    requirement_level: required
+  - id: total_duration_ms
+    type: int
+    brief: Total time for E2E cycle
+    requirement_level: required
+  - id: phases_completed
+    type: int
+    brief: Number of phases completed successfully
+    requirement_level: required
+  - id: automation_success
+    type: boolean
+    brief: Whether E2E automation succeeded
+    requirement_level: required
+  - id: human_intervention_required
+    type: boolean
+    brief: Whether human intervention was needed
+    requirement_level: opt_in

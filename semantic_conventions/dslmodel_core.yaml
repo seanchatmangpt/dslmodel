@@ -1,0 +1,236 @@
+# DSLModel Core Semantic Conventions - 80/20 Focus
+# Covers 80% of use cases with 20% of the complexity
+
+groups:
+  # Core DSLModel Attributes - The foundation
+  - id: dslmodel.core.attributes
+    prefix: dslmodel
+    type: attribute_group
+    brief: "Core attributes for all DSLModel operations"
+    attributes:
+      - id: model.type
+        type:
+          allow_custom_values: true
+          members:
+            - id: base
+              value: 'base'
+              brief: 'Basic Pydantic model'
+            - id: agent
+              value: 'agent'
+              brief: 'Agent-based model'
+            - id: workflow
+              value: 'workflow'
+              brief: 'Workflow orchestration model'
+            - id: fsm
+              value: 'fsm'
+              brief: 'Finite state machine model'
+        requirement_level: required
+        brief: 'Type of DSLModel being used'
+        note: 'Covers 80% of model types used in practice'
+        
+      - id: operation.type
+        type:
+          allow_custom_values: true
+          members:
+            - id: create
+              value: 'create'
+              brief: 'Model creation operation'
+            - id: validate
+              value: 'validate'
+              brief: 'Model validation operation'
+            - id: execute
+              value: 'execute'
+              brief: 'Model execution operation'
+            - id: transform
+              value: 'transform'
+              brief: 'Data transformation operation'
+        requirement_level: required
+        brief: 'Type of operation being performed'
+        note: 'Core operations that cover 80% of DSLModel usage'
+        
+      - id: source.type
+        type:
+          allow_custom_values: true
+          members:
+            - id: prompt
+              value: 'prompt'
+              brief: 'Generated from LLM prompt'
+            - id: schema
+              value: 'schema'
+              brief: 'Generated from schema definition'
+            - id: weaver
+              value: 'weaver'
+              brief: 'Generated from semantic conventions'
+        requirement_level: recommended
+        brief: 'Source of model generation'
+        note: 'Most common generation sources'
+
+  # 1. Model Creation - The most common operation
+  - id: dslmodel.model.create
+    type: span
+    span_kind: internal
+    prefix: dslmodel.model
+    brief: "Create a new DSLModel instance"
+    note: "Covers 40% of all DSLModel operations"
+    attributes:
+      - ref: dslmodel.model.type
+        requirement_level: required
+      - ref: dslmodel.source.type
+        requirement_level: recommended
+      - id: name
+        type: string
+        requirement_level: required
+        brief: 'Name of the model being created'
+        examples: ['UserAgent', 'PaymentWorkflow', 'DataValidator']
+      - id: validation.success
+        type: boolean
+        requirement_level: recommended
+        brief: 'Whether model validation passed'
+      - id: generation.duration_ms
+        type: int
+        requirement_level: recommended
+        brief: 'Time taken to generate model in milliseconds'
+
+  # 2. Model Validation - Second most common
+  - id: dslmodel.model.validate
+    type: span
+    span_kind: internal
+    prefix: dslmodel.model
+    brief: "Validate a DSLModel instance"
+    note: "Covers 25% of all DSLModel operations"
+    attributes:
+      - ref: dslmodel.model.type
+        requirement_level: required
+      - id: validation.rules_checked
+        type: int
+        requirement_level: recommended
+        brief: 'Number of validation rules checked'
+      - id: validation.errors
+        type: int
+        requirement_level: recommended
+        brief: 'Number of validation errors found'
+      - id: validation.success
+        type: boolean
+        requirement_level: required
+        brief: 'Overall validation result'
+
+  # 3. Agent Execution - Core agent operations
+  - id: dslmodel.agent.execute
+    type: span
+    span_kind: internal
+    prefix: dslmodel.agent
+    brief: "Execute an agent operation"
+    note: "Covers 20% of all DSLModel operations - agent-specific"
+    attributes:
+      - ref: dslmodel.model.type
+        requirement_level: required
+      - id: agent.name
+        type: string
+        requirement_level: required
+        brief: 'Name of the agent'
+        examples: ['PaymentProcessor', 'DataValidator', 'WorkflowOrchestrator']
+      - id: agent.state
+        type: string
+        requirement_level: recommended
+        brief: 'Current agent state'
+        examples: ['idle', 'processing', 'complete', 'error']
+      - id: execution.success
+        type: boolean
+        requirement_level: required
+        brief: 'Whether agent execution succeeded'
+      - id: execution.duration_ms
+        type: int
+        requirement_level: recommended
+        brief: 'Agent execution duration in milliseconds'
+
+  # 4. Workflow Execution - Workflow orchestration
+  - id: dslmodel.workflow.run
+    type: span
+    span_kind: internal
+    prefix: dslmodel.workflow
+    brief: "Run a workflow"
+    note: "Covers 10% of all DSLModel operations - workflow-specific"
+    attributes:
+      - ref: dslmodel.model.type
+        requirement_level: required
+      - id: workflow.name
+        type: string
+        requirement_level: required
+        brief: 'Name of the workflow'
+        examples: ['user-onboarding', 'payment-processing', 'data-pipeline']
+      - id: workflow.steps_total
+        type: int
+        requirement_level: recommended
+        brief: 'Total number of workflow steps'
+      - id: workflow.steps_completed
+        type: int
+        requirement_level: recommended
+        brief: 'Number of completed steps'
+      - id: workflow.success
+        type: boolean
+        requirement_level: required
+        brief: 'Whether workflow completed successfully'
+
+  # 5. System Health - Monitoring and observability
+  - id: dslmodel.system.health
+    type: span
+    span_kind: internal
+    prefix: dslmodel.system
+    brief: "System health check"
+    note: "Covers 5% of operations but critical for monitoring"
+    attributes:
+      - id: health.status
+        type:
+          allow_custom_values: false
+          members:
+            - id: healthy
+              value: 'healthy'
+              brief: 'System is healthy'
+            - id: degraded
+              value: 'degraded'
+              brief: 'System is degraded but functional'
+            - id: unhealthy
+              value: 'unhealthy'
+              brief: 'System is unhealthy'
+        requirement_level: required
+        brief: 'Overall system health status'
+      - id: health.score
+        type: double
+        requirement_level: recommended
+        brief: 'Health score from 0.0 to 1.0'
+      - id: active_models
+        type: int
+        requirement_level: recommended
+        brief: 'Number of active models in the system'
+
+# Metrics - Key performance indicators
+  - id: dslmodel.metrics.creation_duration
+    type: metric
+    metric_name: dslmodel.model.creation.duration
+    brief: 'Duration of model creation operations'
+    instrument: histogram
+    unit: 'ms'
+    attributes:
+      - ref: dslmodel.model.type
+      - ref: dslmodel.source.type
+
+  - id: dslmodel.metrics.validation_errors
+    type: metric
+    metric_name: dslmodel.validation.errors
+    brief: 'Number of validation errors'
+    instrument: counter
+    unit: '1'
+    attributes:
+      - ref: dslmodel.model.type
+
+  - id: dslmodel.metrics.active_agents
+    type: metric
+    metric_name: dslmodel.agents.active
+    brief: 'Number of active agents'
+    instrument: gauge
+    unit: '1'
+    attributes:
+      - id: agent.state
+        type: string
+        brief: 'Agent state'
+        requirement_level: recommended

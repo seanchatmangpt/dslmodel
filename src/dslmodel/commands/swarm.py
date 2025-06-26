@@ -644,5 +644,95 @@ def initialize_swarm():
     show_status()
 
 
+@app.command("full-cycle")
+def run_full_cycle(
+    cycles: int = typer.Option(3, "--cycles", "-c", help="Number of execution cycles"),
+    cleanup: bool = typer.Option(True, "--cleanup/--no-cleanup", help="Clean up after demo"),
+    domain: str = typer.Option("auto", "--domain", "-d", help="Domain to generate models for")
+):
+    """Run the complete full cycle generation demo"""
+    
+    rprint("[bold cyan]🚀 Full Cycle Generation Demo[/bold cyan]")
+    rprint("=" * 60)
+    rprint("Demonstrating end-to-end automated generation, execution, and evolution")
+    rprint()
+    
+    demo = FullCycleDemo()
+    
+    try:
+        # Execute all phases
+        models = demo.generate_domain_models()
+        agents = demo.generate_agents(models)
+        work_items = demo.generate_work_items(models)
+        
+        demo.initialize_monitoring()
+        demo.execute_work_cycles(cycles)
+        demo.analyze_and_evolve()
+        demo.generate_final_report()
+        
+        if cleanup:
+            demo.cleanup()
+            
+    except KeyboardInterrupt:
+        rprint("\n[yellow]Demo interrupted by user[/yellow]")
+        demo.generate_final_report()
+        if cleanup:
+            demo.cleanup()
+    except Exception as e:
+        rprint(f"\n[red]Demo failed: {e}[/red]")
+        raise typer.Exit(code=1)
+
+
+@app.command("full-cycle-status")
+def show_demo_status():
+    """Show status of full cycle demo data"""
+    
+    data_dir = Path("./full_cycle_data")
+    if not data_dir.exists():
+        rprint("[yellow]No demo data found. Run 'dsl swarm full-cycle' first.[/yellow]")
+        return
+    
+    # Show available reports
+    reports = list(data_dir.glob("report_*.json"))
+    
+    if reports:
+        table = Table(title="Full Cycle Demo Reports")
+        table.add_column("Report ID", style="cyan")
+        table.add_column("Timestamp", style="green")
+        table.add_column("Efficiency", style="yellow")
+        table.add_column("Tasks Completed", style="magenta")
+        
+        for report_path in sorted(reports, reverse=True)[:5]:
+            try:
+                with open(report_path) as f:
+                    report = json.load(f)
+                
+                table.add_row(
+                    report["demo_id"],
+                    report["timestamp"][:19],
+                    f"{report['metrics']['efficiency_score']:.1f}%",
+                    str(report["metrics"]["work_completed"])
+                )
+            except:
+                pass
+        
+        console.print(table)
+    else:
+        rprint("[yellow]No reports found in demo data directory.[/yellow]")
+
+
+@app.command("full-cycle-clean")
+def clean_demo_data():
+    """Clean all full cycle demo data"""
+    
+    data_dir = Path("./full_cycle_data")
+    if data_dir.exists():
+        import shutil
+        shutil.rmtree(data_dir)
+        rprint("[green]✓ Cleaned full cycle demo data[/green]")
+    else:
+        rprint("[yellow]No demo data to clean[/yellow]")
+
+
 if __name__ == "__main__":
     app()

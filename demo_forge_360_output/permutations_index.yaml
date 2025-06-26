@@ -1,0 +1,91 @@
+total_permutations: 360
+generated_at: '2025-06-26T06:16:39.149449'
+matrix_dimensions:
+  span_types:
+  - http
+  - database
+  - messaging
+  - rpc
+  - faas
+  - graphql
+  - grpc
+  - websocket
+  - batch
+  - stream
+  attribute_sets:
+  - minimal
+  - standard
+  - extended
+  - custom
+  metric_types:
+  - counter
+  - gauge
+  - histogram
+  languages:
+  - python
+  - rust
+  - typescript
+  - go
+  - java
+  frameworks:
+    python:
+    - pydantic
+    - dataclass
+    rust:
+    - serde
+    - prost
+    typescript:
+    - class
+    - interface
+    go:
+    - struct
+    - protobuf
+    java:
+    - pojo
+    - record
+permutations_by_language:
+  python:
+    count: 72
+    frameworks:
+    - dataclass
+    - pydantic
+    span_types:
+    - messaging
+    - database
+    - http
+  rust:
+    count: 72
+    frameworks:
+    - prost
+    - serde
+    span_types:
+    - messaging
+    - database
+    - http
+  typescript:
+    count: 72
+    frameworks:
+    - interface
+    - class
+    span_types:
+    - messaging
+    - database
+    - http
+  go:
+    count: 72
+    frameworks:
+    - protobuf
+    - struct
+    span_types:
+    - messaging
+    - database
+    - http
+  java:
+    count: 72
+    frameworks:
+    - record
+    - pojo
+    span_types:
+    - messaging
+    - database
+    - http

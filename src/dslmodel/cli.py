@@ -3,6 +3,7 @@
 from pathlib import Path
 
 from dslmodel.utils.dspy_tools import init_lm
+from dslmodel.utils.json_output import set_json_mode, json_command
 import typer
 from rich import print
 from typing_extensions import Annotated
@@ -10,7 +11,12 @@ from typing_extensions import Annotated
 from dslmodel import init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
 from dslmodel.template import render
-from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo
+from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree
+try:
+    from dslmodel.commands import pqc
+    PQC_AVAILABLE = True
+except ImportError:
+    PQC_AVAILABLE = False
 try:
     from dslmodel.commands import otel_coordination_cli
     OTEL_AVAILABLE = True
@@ -19,9 +25,30 @@ except ImportError:
 
 app = typer.Typer()
 
+# Global JSON flag callback
+def json_callback(value: bool):
+    if value:
+        set_json_mode(True)
+
+# Add global --json option
+@app.callback()
+def main(
+    json_output: bool = typer.Option(
+        False,
+        "--json",
+        help="Output results in JSON format",
+        callback=json_callback,
+        is_eager=True
+    )
+):
+    """DSLModel CLI - Telemetry-driven development platform."""
+    pass
+
 # app.add_typer(name="asyncapi", typer_instance=asyncapi.app)
 app.add_typer(name="slidev", typer_instance=slidev.app)
 # app.add_typer(name="coord", typer_instance=coordination_cli.app, help="Agent coordination system")
+if PQC_AVAILABLE:
+    app.add_typer(name="pqc", typer_instance=pqc.app, help="Post-Quantum Cryptography commands")
 if OTEL_AVAILABLE:
     app.add_typer(name="otel", typer_instance=otel_coordination_cli.app, help="OTEL-enhanced coordination system")
 app.add_typer(name="forge", typer_instance=forge.app, help="Weaver Forge workflow commands")
@@ -29,6 +56,17 @@ app.add_typer(name="auto", typer_instance=autonomous.app, help="Autonomous Decis
 app.add_typer(name="swarm", typer_instance=swarm.app, help="SwarmAgent coordination and management")
 app.add_typer(name="thesis", typer_instance=thesis_cli.app, help="SwarmSH thesis implementation and demo")
 app.add_typer(name="demo", typer_instance=demo.app, help="Automated full cycle demonstrations")
+app.add_typer(name="capability", typer_instance=capability_map.app, help="SwarmAgent capability mapping and visualization")
+app.add_typer(name="validate", typer_instance=validate_otel.app, help="Concurrent OpenTelemetry validation and testing")
+app.add_typer(name="validate-weaver", typer_instance=validate_weaver.app, help="Weaver-first OpenTelemetry validation using semantic conventions")
+app.add_typer(name="validation-loop", typer_instance=validation_loop.app, help="Continuous SwarmAgent validation loop with auto-remediation")
+app.add_typer(name="ollama", typer_instance=ollama_validate.app, help="Ollama configuration validation and management")
+app.add_typer(name="weaver", typer_instance=weaver.app, help="Weaver-first auto-generation from semantic conventions")
+app.add_typer(name="weaver-health", typer_instance=weaver_health_check.app, help="Weaver global health checks with Ollama validation")
+app.add_typer(name="worktree", typer_instance=worktree.app, help="Git worktree management for exclusive worktree development")
+# app.add_typer(name="swarm-worktree", typer_instance=swarm_worktree.app, help="SwarmAgent worktree coordination with OTEL telemetry")
+app.add_typer(name="telemetry", typer_instance=telemetry_cli.app, help="Real-time telemetry, auto-remediation, and security monitoring")
+app.add_typer(name="redteam", typer_instance=redteam.app, help="Automated red team security testing and vulnerability assessment")
 
 
 @app.command("gen")
@@ -54,20 +92,28 @@ def generate_class(
 
     The generated classes are saved to the specified directory in the chosen format.
     """
-    typer.echo(f"Generating class from prompt: '{prompt}'")
-    from dslmodel.utils.dspy_tools import init_instant
+    with json_command("gen") as formatter:
+        formatter.add_data("prompt", prompt)
+        formatter.add_data("output_dir", str(output_dir))
+        formatter.add_data("file_format", file_format)
+        formatter.add_data("model", model)
+        
+        formatter.print(f"Generating class from prompt: '{prompt}'")
+        from dslmodel.utils.dspy_tools import init_instant
 
-    init_lm(model=model)
-    # init_instant()
+        init_lm(model=model)
+        # init_instant()
 
-    # Delegate the core logic to the generate_and_save_dslmodel function
-    try:
-        _, output_file = generate_and_save_dslmodel(prompt, output_dir, file_format, config)
-    except Exception as e:
-        typer.echo(f"Error generating class: {e}")
-        raise typer.Exit(code=1)
-
-    typer.echo(f"Class generated successfully! Saved in: {output_file}.")
+        # Delegate the core logic to the generate_and_save_dslmodel function
+        try:
+            _, output_file = generate_and_save_dslmodel(prompt, output_dir, file_format, config)
+            formatter.add_data("output_file", str(output_file))
+            formatter.add_data("generation_successful", True)
+            formatter.print(f"Class generated successfully! Saved in: {output_file}.")
+        except Exception as e:
+            formatter.add_error(f"Error generating class: {e}")
+            formatter.print(f"Error generating class: {e}", level="error")
+            raise typer.Exit(code=1)
 
 
 import json

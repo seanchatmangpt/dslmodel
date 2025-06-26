@@ -1,0 +1,32 @@
+{
+  "framework": "PCI-DSS",
+  "export_timestamp": "2025-06-26T05:59:30.224944",
+  "total_events": 1,
+  "compliance_rate": "100%",
+  "events": [
+    {
+      "timestamp": "2025-06-26T05:59:28.382692",
+      "event_id": "evt_1750942768382",
+      "operation": "payment_processing",
+      "agent_id": "payment_agent",
+      "trace_id": "trace_209683",
+      "span_id": "span_540741",
+      "user_id": "user_456",
+      "resource_id": "payment_card",
+      "action": "PROCESS",
+      "outcome": "COMPLIANT",
+      "evidence_hash": "110c3f39d2c4a57e68df3e68bb078612bbd7c843f2697102a007c4844f7d3940",
+      "compliance_frameworks": [
+        "PCI-DSS"
+      ],
+      "risk_level": "HIGH",
+      "automated_controls": [
+        "real_time_monitoring",
+        "cryptographic_hashing",
+        "trace_correlation",
+        "automated_evidence_collection"
+      ],
+      "manual_review_required": true
+    }
+  ]
+}

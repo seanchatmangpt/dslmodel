@@ -1,0 +1,41 @@
+[
+  {
+    "attack_type": "timing_attack",
+    "target_function": "password_verification",
+    "timing_difference_ms": 0.5808338290080428,
+    "vulnerable": true,
+    "timing_results": [
+      {
+        "input": "correct_pa...",
+        "duration_ms": 1.16770900785923,
+        "is_correct": true
+      },
+      {
+        "input": "wrong_pass...",
+        "duration_ms": 0.5933339707553387,
+        "is_correct": false
+      },
+      {
+        "input": "aaaaaaaaaa...",
+        "duration_ms": 0.5881249671801925,
+        "is_correct": false
+      },
+      {
+        "input": "xxxxxxxxxx...",
+        "duration_ms": 0.5850000306963921,
+        "is_correct": false
+      },
+      {
+        "input": "",
+        "duration_ms": 0.5835419287905097,
+        "is_correct": false
+      },
+      {
+        "input": "admin",
+        "duration_ms": 0.5843749968335032,
+        "is_correct": false
+      }
+    ],
+    "recommendation": "Use constant-time comparison functions"
+  }
+]

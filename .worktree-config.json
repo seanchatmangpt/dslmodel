@@ -1,0 +1,7 @@
+{
+  "worktree_root": "worktrees",
+  "main_repo": ".",
+  "workflow": "exclusive_worktree",
+  "auto_cleanup": true,
+  "default_base": "main"
+}

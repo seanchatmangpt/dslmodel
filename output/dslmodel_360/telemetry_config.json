@@ -1,0 +1,5047 @@
+{
+  "service_name": "dslmodel_360",
+  "spans": {
+    "dslmodel.permutation.base_none_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_none_prompt"
+      },
+      "description": "Permutation: base with none from prompt"
+    },
+    "dslmodel.permutation.base_none_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_none_schema"
+      },
+      "description": "Permutation: base with none from schema"
+    },
+    "dslmodel.permutation.base_none_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_none_api"
+      },
+      "description": "Permutation: base with none from api"
+    },
+    "dslmodel.permutation.base_none_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_none_template"
+      },
+      "description": "Permutation: base with none from template"
+    },
+    "dslmodel.permutation.base_none_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_none_weaver"
+      },
+      "description": "Permutation: base with none from weaver"
+    },
+    "dslmodel.permutation.base_none_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_none_manual"
+      },
+      "description": "Permutation: base with none from manual"
+    },
+    "dslmodel.permutation.base_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_jinja_prompt"
+      },
+      "description": "Permutation: base with jinja from prompt"
+    },
+    "dslmodel.permutation.base_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_jinja_schema"
+      },
+      "description": "Permutation: base with jinja from schema"
+    },
+    "dslmodel.permutation.base_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_jinja_api"
+      },
+      "description": "Permutation: base with jinja from api"
+    },
+    "dslmodel.permutation.base_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_jinja_template"
+      },
+      "description": "Permutation: base with jinja from template"
+    },
+    "dslmodel.permutation.base_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_jinja_weaver"
+      },
+      "description": "Permutation: base with jinja from weaver"
+    },
+    "dslmodel.permutation.base_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_jinja_manual"
+      },
+      "description": "Permutation: base with jinja from manual"
+    },
+    "dslmodel.permutation.base_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_tool_prompt"
+      },
+      "description": "Permutation: base with tool from prompt"
+    },
+    "dslmodel.permutation.base_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_tool_schema"
+      },
+      "description": "Permutation: base with tool from schema"
+    },
+    "dslmodel.permutation.base_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_tool_api"
+      },
+      "description": "Permutation: base with tool from api"
+    },
+    "dslmodel.permutation.base_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_tool_template"
+      },
+      "description": "Permutation: base with tool from template"
+    },
+    "dslmodel.permutation.base_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_tool_weaver"
+      },
+      "description": "Permutation: base with tool from weaver"
+    },
+    "dslmodel.permutation.base_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_tool_manual"
+      },
+      "description": "Permutation: base with tool from manual"
+    },
+    "dslmodel.permutation.base_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_file_prompt"
+      },
+      "description": "Permutation: base with file from prompt"
+    },
+    "dslmodel.permutation.base_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_file_schema"
+      },
+      "description": "Permutation: base with file from schema"
+    },
+    "dslmodel.permutation.base_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_file_api"
+      },
+      "description": "Permutation: base with file from api"
+    },
+    "dslmodel.permutation.base_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_file_template"
+      },
+      "description": "Permutation: base with file from template"
+    },
+    "dslmodel.permutation.base_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_file_weaver"
+      },
+      "description": "Permutation: base with file from weaver"
+    },
+    "dslmodel.permutation.base_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_file_manual"
+      },
+      "description": "Permutation: base with file from manual"
+    },
+    "dslmodel.permutation.base_jinja_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_jinja_tool_prompt"
+      },
+      "description": "Permutation: base with jinja_tool from prompt"
+    },
+    "dslmodel.permutation.base_jinja_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_jinja_tool_schema"
+      },
+      "description": "Permutation: base with jinja_tool from schema"
+    },
+    "dslmodel.permutation.base_jinja_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_jinja_tool_api"
+      },
+      "description": "Permutation: base with jinja_tool from api"
+    },
+    "dslmodel.permutation.base_jinja_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_jinja_tool_template"
+      },
+      "description": "Permutation: base with jinja_tool from template"
+    },
+    "dslmodel.permutation.base_jinja_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_jinja_tool_weaver"
+      },
+      "description": "Permutation: base with jinja_tool from weaver"
+    },
+    "dslmodel.permutation.base_jinja_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_jinja_tool_manual"
+      },
+      "description": "Permutation: base with jinja_tool from manual"
+    },
+    "dslmodel.permutation.base_jinja_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_jinja_file_prompt"
+      },
+      "description": "Permutation: base with jinja_file from prompt"
+    },
+    "dslmodel.permutation.base_jinja_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_jinja_file_schema"
+      },
+      "description": "Permutation: base with jinja_file from schema"
+    },
+    "dslmodel.permutation.base_jinja_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_jinja_file_api"
+      },
+      "description": "Permutation: base with jinja_file from api"
+    },
+    "dslmodel.permutation.base_jinja_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_jinja_file_template"
+      },
+      "description": "Permutation: base with jinja_file from template"
+    },
+    "dslmodel.permutation.base_jinja_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_jinja_file_weaver"
+      },
+      "description": "Permutation: base with jinja_file from weaver"
+    },
+    "dslmodel.permutation.base_jinja_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_jinja_file_manual"
+      },
+      "description": "Permutation: base with jinja_file from manual"
+    },
+    "dslmodel.permutation.base_tool_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_tool_file_prompt"
+      },
+      "description": "Permutation: base with tool_file from prompt"
+    },
+    "dslmodel.permutation.base_tool_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_tool_file_schema"
+      },
+      "description": "Permutation: base with tool_file from schema"
+    },
+    "dslmodel.permutation.base_tool_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_tool_file_api"
+      },
+      "description": "Permutation: base with tool_file from api"
+    },
+    "dslmodel.permutation.base_tool_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_tool_file_template"
+      },
+      "description": "Permutation: base with tool_file from template"
+    },
+    "dslmodel.permutation.base_tool_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_tool_file_weaver"
+      },
+      "description": "Permutation: base with tool_file from weaver"
+    },
+    "dslmodel.permutation.base_tool_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_tool_file_manual"
+      },
+      "description": "Permutation: base with tool_file from manual"
+    },
+    "dslmodel.permutation.base_all_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_all_prompt"
+      },
+      "description": "Permutation: base with all from prompt"
+    },
+    "dslmodel.permutation.base_all_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_all_schema"
+      },
+      "description": "Permutation: base with all from schema"
+    },
+    "dslmodel.permutation.base_all_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_all_api"
+      },
+      "description": "Permutation: base with all from api"
+    },
+    "dslmodel.permutation.base_all_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_all_template"
+      },
+      "description": "Permutation: base with all from template"
+    },
+    "dslmodel.permutation.base_all_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_all_weaver"
+      },
+      "description": "Permutation: base with all from weaver"
+    },
+    "dslmodel.permutation.base_all_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_all_manual"
+      },
+      "description": "Permutation: base with all from manual"
+    },
+    "dslmodel.permutation.base_fsm_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_fsm_jinja_prompt"
+      },
+      "description": "Permutation: base with fsm_jinja from prompt"
+    },
+    "dslmodel.permutation.base_fsm_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_fsm_jinja_schema"
+      },
+      "description": "Permutation: base with fsm_jinja from schema"
+    },
+    "dslmodel.permutation.base_fsm_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_fsm_jinja_api"
+      },
+      "description": "Permutation: base with fsm_jinja from api"
+    },
+    "dslmodel.permutation.base_fsm_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_fsm_jinja_template"
+      },
+      "description": "Permutation: base with fsm_jinja from template"
+    },
+    "dslmodel.permutation.base_fsm_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_fsm_jinja_weaver"
+      },
+      "description": "Permutation: base with fsm_jinja from weaver"
+    },
+    "dslmodel.permutation.base_fsm_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_fsm_jinja_manual"
+      },
+      "description": "Permutation: base with fsm_jinja from manual"
+    },
+    "dslmodel.permutation.base_fsm_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "base_fsm_tool_prompt"
+      },
+      "description": "Permutation: base with fsm_tool from prompt"
+    },
+    "dslmodel.permutation.base_fsm_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "base_fsm_tool_schema"
+      },
+      "description": "Permutation: base with fsm_tool from schema"
+    },
+    "dslmodel.permutation.base_fsm_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "base_fsm_tool_api"
+      },
+      "description": "Permutation: base with fsm_tool from api"
+    },
+    "dslmodel.permutation.base_fsm_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "base_fsm_tool_template"
+      },
+      "description": "Permutation: base with fsm_tool from template"
+    },
+    "dslmodel.permutation.base_fsm_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "base_fsm_tool_weaver"
+      },
+      "description": "Permutation: base with fsm_tool from weaver"
+    },
+    "dslmodel.permutation.base_fsm_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "base",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "base_fsm_tool_manual"
+      },
+      "description": "Permutation: base with fsm_tool from manual"
+    },
+    "dslmodel.permutation.fsm_none_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_none_prompt"
+      },
+      "description": "Permutation: fsm with none from prompt"
+    },
+    "dslmodel.permutation.fsm_none_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_none_schema"
+      },
+      "description": "Permutation: fsm with none from schema"
+    },
+    "dslmodel.permutation.fsm_none_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_none_api"
+      },
+      "description": "Permutation: fsm with none from api"
+    },
+    "dslmodel.permutation.fsm_none_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_none_template"
+      },
+      "description": "Permutation: fsm with none from template"
+    },
+    "dslmodel.permutation.fsm_none_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_none_weaver"
+      },
+      "description": "Permutation: fsm with none from weaver"
+    },
+    "dslmodel.permutation.fsm_none_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_none_manual"
+      },
+      "description": "Permutation: fsm with none from manual"
+    },
+    "dslmodel.permutation.fsm_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_jinja_prompt"
+      },
+      "description": "Permutation: fsm with jinja from prompt"
+    },
+    "dslmodel.permutation.fsm_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_jinja_schema"
+      },
+      "description": "Permutation: fsm with jinja from schema"
+    },
+    "dslmodel.permutation.fsm_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_jinja_api"
+      },
+      "description": "Permutation: fsm with jinja from api"
+    },
+    "dslmodel.permutation.fsm_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_jinja_template"
+      },
+      "description": "Permutation: fsm with jinja from template"
+    },
+    "dslmodel.permutation.fsm_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_jinja_weaver"
+      },
+      "description": "Permutation: fsm with jinja from weaver"
+    },
+    "dslmodel.permutation.fsm_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_jinja_manual"
+      },
+      "description": "Permutation: fsm with jinja from manual"
+    },
+    "dslmodel.permutation.fsm_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_tool_prompt"
+      },
+      "description": "Permutation: fsm with tool from prompt"
+    },
+    "dslmodel.permutation.fsm_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_tool_schema"
+      },
+      "description": "Permutation: fsm with tool from schema"
+    },
+    "dslmodel.permutation.fsm_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_tool_api"
+      },
+      "description": "Permutation: fsm with tool from api"
+    },
+    "dslmodel.permutation.fsm_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_tool_template"
+      },
+      "description": "Permutation: fsm with tool from template"
+    },
+    "dslmodel.permutation.fsm_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_tool_weaver"
+      },
+      "description": "Permutation: fsm with tool from weaver"
+    },
+    "dslmodel.permutation.fsm_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_tool_manual"
+      },
+      "description": "Permutation: fsm with tool from manual"
+    },
+    "dslmodel.permutation.fsm_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_file_prompt"
+      },
+      "description": "Permutation: fsm with file from prompt"
+    },
+    "dslmodel.permutation.fsm_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_file_schema"
+      },
+      "description": "Permutation: fsm with file from schema"
+    },
+    "dslmodel.permutation.fsm_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_file_api"
+      },
+      "description": "Permutation: fsm with file from api"
+    },
+    "dslmodel.permutation.fsm_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_file_template"
+      },
+      "description": "Permutation: fsm with file from template"
+    },
+    "dslmodel.permutation.fsm_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_file_weaver"
+      },
+      "description": "Permutation: fsm with file from weaver"
+    },
+    "dslmodel.permutation.fsm_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_file_manual"
+      },
+      "description": "Permutation: fsm with file from manual"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_jinja_tool_prompt"
+      },
+      "description": "Permutation: fsm with jinja_tool from prompt"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_jinja_tool_schema"
+      },
+      "description": "Permutation: fsm with jinja_tool from schema"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_jinja_tool_api"
+      },
+      "description": "Permutation: fsm with jinja_tool from api"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_jinja_tool_template"
+      },
+      "description": "Permutation: fsm with jinja_tool from template"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_jinja_tool_weaver"
+      },
+      "description": "Permutation: fsm with jinja_tool from weaver"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_jinja_tool_manual"
+      },
+      "description": "Permutation: fsm with jinja_tool from manual"
+    },
+    "dslmodel.permutation.fsm_jinja_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_jinja_file_prompt"
+      },
+      "description": "Permutation: fsm with jinja_file from prompt"
+    },
+    "dslmodel.permutation.fsm_jinja_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_jinja_file_schema"
+      },
+      "description": "Permutation: fsm with jinja_file from schema"
+    },
+    "dslmodel.permutation.fsm_jinja_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_jinja_file_api"
+      },
+      "description": "Permutation: fsm with jinja_file from api"
+    },
+    "dslmodel.permutation.fsm_jinja_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_jinja_file_template"
+      },
+      "description": "Permutation: fsm with jinja_file from template"
+    },
+    "dslmodel.permutation.fsm_jinja_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_jinja_file_weaver"
+      },
+      "description": "Permutation: fsm with jinja_file from weaver"
+    },
+    "dslmodel.permutation.fsm_jinja_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_jinja_file_manual"
+      },
+      "description": "Permutation: fsm with jinja_file from manual"
+    },
+    "dslmodel.permutation.fsm_tool_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_tool_file_prompt"
+      },
+      "description": "Permutation: fsm with tool_file from prompt"
+    },
+    "dslmodel.permutation.fsm_tool_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_tool_file_schema"
+      },
+      "description": "Permutation: fsm with tool_file from schema"
+    },
+    "dslmodel.permutation.fsm_tool_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_tool_file_api"
+      },
+      "description": "Permutation: fsm with tool_file from api"
+    },
+    "dslmodel.permutation.fsm_tool_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_tool_file_template"
+      },
+      "description": "Permutation: fsm with tool_file from template"
+    },
+    "dslmodel.permutation.fsm_tool_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_tool_file_weaver"
+      },
+      "description": "Permutation: fsm with tool_file from weaver"
+    },
+    "dslmodel.permutation.fsm_tool_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_tool_file_manual"
+      },
+      "description": "Permutation: fsm with tool_file from manual"
+    },
+    "dslmodel.permutation.fsm_all_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_all_prompt"
+      },
+      "description": "Permutation: fsm with all from prompt"
+    },
+    "dslmodel.permutation.fsm_all_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_all_schema"
+      },
+      "description": "Permutation: fsm with all from schema"
+    },
+    "dslmodel.permutation.fsm_all_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_all_api"
+      },
+      "description": "Permutation: fsm with all from api"
+    },
+    "dslmodel.permutation.fsm_all_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_all_template"
+      },
+      "description": "Permutation: fsm with all from template"
+    },
+    "dslmodel.permutation.fsm_all_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_all_weaver"
+      },
+      "description": "Permutation: fsm with all from weaver"
+    },
+    "dslmodel.permutation.fsm_all_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_all_manual"
+      },
+      "description": "Permutation: fsm with all from manual"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_fsm_jinja_prompt"
+      },
+      "description": "Permutation: fsm with fsm_jinja from prompt"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_fsm_jinja_schema"
+      },
+      "description": "Permutation: fsm with fsm_jinja from schema"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_fsm_jinja_api"
+      },
+      "description": "Permutation: fsm with fsm_jinja from api"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_fsm_jinja_template"
+      },
+      "description": "Permutation: fsm with fsm_jinja from template"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_fsm_jinja_weaver"
+      },
+      "description": "Permutation: fsm with fsm_jinja from weaver"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_fsm_jinja_manual"
+      },
+      "description": "Permutation: fsm with fsm_jinja from manual"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "fsm_fsm_tool_prompt"
+      },
+      "description": "Permutation: fsm with fsm_tool from prompt"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "fsm_fsm_tool_schema"
+      },
+      "description": "Permutation: fsm with fsm_tool from schema"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "fsm_fsm_tool_api"
+      },
+      "description": "Permutation: fsm with fsm_tool from api"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "fsm_fsm_tool_template"
+      },
+      "description": "Permutation: fsm with fsm_tool from template"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "fsm_fsm_tool_weaver"
+      },
+      "description": "Permutation: fsm with fsm_tool from weaver"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "fsm",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "fsm_fsm_tool_manual"
+      },
+      "description": "Permutation: fsm with fsm_tool from manual"
+    },
+    "dslmodel.permutation.workflow_none_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_none_prompt"
+      },
+      "description": "Permutation: workflow with none from prompt"
+    },
+    "dslmodel.permutation.workflow_none_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_none_schema"
+      },
+      "description": "Permutation: workflow with none from schema"
+    },
+    "dslmodel.permutation.workflow_none_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_none_api"
+      },
+      "description": "Permutation: workflow with none from api"
+    },
+    "dslmodel.permutation.workflow_none_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_none_template"
+      },
+      "description": "Permutation: workflow with none from template"
+    },
+    "dslmodel.permutation.workflow_none_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_none_weaver"
+      },
+      "description": "Permutation: workflow with none from weaver"
+    },
+    "dslmodel.permutation.workflow_none_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_none_manual"
+      },
+      "description": "Permutation: workflow with none from manual"
+    },
+    "dslmodel.permutation.workflow_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_jinja_prompt"
+      },
+      "description": "Permutation: workflow with jinja from prompt"
+    },
+    "dslmodel.permutation.workflow_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_jinja_schema"
+      },
+      "description": "Permutation: workflow with jinja from schema"
+    },
+    "dslmodel.permutation.workflow_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_jinja_api"
+      },
+      "description": "Permutation: workflow with jinja from api"
+    },
+    "dslmodel.permutation.workflow_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_jinja_template"
+      },
+      "description": "Permutation: workflow with jinja from template"
+    },
+    "dslmodel.permutation.workflow_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_jinja_weaver"
+      },
+      "description": "Permutation: workflow with jinja from weaver"
+    },
+    "dslmodel.permutation.workflow_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_jinja_manual"
+      },
+      "description": "Permutation: workflow with jinja from manual"
+    },
+    "dslmodel.permutation.workflow_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_tool_prompt"
+      },
+      "description": "Permutation: workflow with tool from prompt"
+    },
+    "dslmodel.permutation.workflow_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_tool_schema"
+      },
+      "description": "Permutation: workflow with tool from schema"
+    },
+    "dslmodel.permutation.workflow_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_tool_api"
+      },
+      "description": "Permutation: workflow with tool from api"
+    },
+    "dslmodel.permutation.workflow_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_tool_template"
+      },
+      "description": "Permutation: workflow with tool from template"
+    },
+    "dslmodel.permutation.workflow_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_tool_weaver"
+      },
+      "description": "Permutation: workflow with tool from weaver"
+    },
+    "dslmodel.permutation.workflow_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_tool_manual"
+      },
+      "description": "Permutation: workflow with tool from manual"
+    },
+    "dslmodel.permutation.workflow_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_file_prompt"
+      },
+      "description": "Permutation: workflow with file from prompt"
+    },
+    "dslmodel.permutation.workflow_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_file_schema"
+      },
+      "description": "Permutation: workflow with file from schema"
+    },
+    "dslmodel.permutation.workflow_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_file_api"
+      },
+      "description": "Permutation: workflow with file from api"
+    },
+    "dslmodel.permutation.workflow_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_file_template"
+      },
+      "description": "Permutation: workflow with file from template"
+    },
+    "dslmodel.permutation.workflow_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_file_weaver"
+      },
+      "description": "Permutation: workflow with file from weaver"
+    },
+    "dslmodel.permutation.workflow_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_file_manual"
+      },
+      "description": "Permutation: workflow with file from manual"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_jinja_tool_prompt"
+      },
+      "description": "Permutation: workflow with jinja_tool from prompt"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_jinja_tool_schema"
+      },
+      "description": "Permutation: workflow with jinja_tool from schema"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_jinja_tool_api"
+      },
+      "description": "Permutation: workflow with jinja_tool from api"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_jinja_tool_template"
+      },
+      "description": "Permutation: workflow with jinja_tool from template"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_jinja_tool_weaver"
+      },
+      "description": "Permutation: workflow with jinja_tool from weaver"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_jinja_tool_manual"
+      },
+      "description": "Permutation: workflow with jinja_tool from manual"
+    },
+    "dslmodel.permutation.workflow_jinja_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_jinja_file_prompt"
+      },
+      "description": "Permutation: workflow with jinja_file from prompt"
+    },
+    "dslmodel.permutation.workflow_jinja_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_jinja_file_schema"
+      },
+      "description": "Permutation: workflow with jinja_file from schema"
+    },
+    "dslmodel.permutation.workflow_jinja_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_jinja_file_api"
+      },
+      "description": "Permutation: workflow with jinja_file from api"
+    },
+    "dslmodel.permutation.workflow_jinja_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_jinja_file_template"
+      },
+      "description": "Permutation: workflow with jinja_file from template"
+    },
+    "dslmodel.permutation.workflow_jinja_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_jinja_file_weaver"
+      },
+      "description": "Permutation: workflow with jinja_file from weaver"
+    },
+    "dslmodel.permutation.workflow_jinja_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_jinja_file_manual"
+      },
+      "description": "Permutation: workflow with jinja_file from manual"
+    },
+    "dslmodel.permutation.workflow_tool_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_tool_file_prompt"
+      },
+      "description": "Permutation: workflow with tool_file from prompt"
+    },
+    "dslmodel.permutation.workflow_tool_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_tool_file_schema"
+      },
+      "description": "Permutation: workflow with tool_file from schema"
+    },
+    "dslmodel.permutation.workflow_tool_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_tool_file_api"
+      },
+      "description": "Permutation: workflow with tool_file from api"
+    },
+    "dslmodel.permutation.workflow_tool_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_tool_file_template"
+      },
+      "description": "Permutation: workflow with tool_file from template"
+    },
+    "dslmodel.permutation.workflow_tool_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_tool_file_weaver"
+      },
+      "description": "Permutation: workflow with tool_file from weaver"
+    },
+    "dslmodel.permutation.workflow_tool_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_tool_file_manual"
+      },
+      "description": "Permutation: workflow with tool_file from manual"
+    },
+    "dslmodel.permutation.workflow_all_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_all_prompt"
+      },
+      "description": "Permutation: workflow with all from prompt"
+    },
+    "dslmodel.permutation.workflow_all_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_all_schema"
+      },
+      "description": "Permutation: workflow with all from schema"
+    },
+    "dslmodel.permutation.workflow_all_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_all_api"
+      },
+      "description": "Permutation: workflow with all from api"
+    },
+    "dslmodel.permutation.workflow_all_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_all_template"
+      },
+      "description": "Permutation: workflow with all from template"
+    },
+    "dslmodel.permutation.workflow_all_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_all_weaver"
+      },
+      "description": "Permutation: workflow with all from weaver"
+    },
+    "dslmodel.permutation.workflow_all_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_all_manual"
+      },
+      "description": "Permutation: workflow with all from manual"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_fsm_jinja_prompt"
+      },
+      "description": "Permutation: workflow with fsm_jinja from prompt"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_fsm_jinja_schema"
+      },
+      "description": "Permutation: workflow with fsm_jinja from schema"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_fsm_jinja_api"
+      },
+      "description": "Permutation: workflow with fsm_jinja from api"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_fsm_jinja_template"
+      },
+      "description": "Permutation: workflow with fsm_jinja from template"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_fsm_jinja_weaver"
+      },
+      "description": "Permutation: workflow with fsm_jinja from weaver"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_fsm_jinja_manual"
+      },
+      "description": "Permutation: workflow with fsm_jinja from manual"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "workflow_fsm_tool_prompt"
+      },
+      "description": "Permutation: workflow with fsm_tool from prompt"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "workflow_fsm_tool_schema"
+      },
+      "description": "Permutation: workflow with fsm_tool from schema"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "workflow_fsm_tool_api"
+      },
+      "description": "Permutation: workflow with fsm_tool from api"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "workflow_fsm_tool_template"
+      },
+      "description": "Permutation: workflow with fsm_tool from template"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "workflow_fsm_tool_weaver"
+      },
+      "description": "Permutation: workflow with fsm_tool from weaver"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "workflow",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "workflow_fsm_tool_manual"
+      },
+      "description": "Permutation: workflow with fsm_tool from manual"
+    },
+    "dslmodel.permutation.agent_none_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_none_prompt"
+      },
+      "description": "Permutation: agent with none from prompt"
+    },
+    "dslmodel.permutation.agent_none_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_none_schema"
+      },
+      "description": "Permutation: agent with none from schema"
+    },
+    "dslmodel.permutation.agent_none_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_none_api"
+      },
+      "description": "Permutation: agent with none from api"
+    },
+    "dslmodel.permutation.agent_none_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_none_template"
+      },
+      "description": "Permutation: agent with none from template"
+    },
+    "dslmodel.permutation.agent_none_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_none_weaver"
+      },
+      "description": "Permutation: agent with none from weaver"
+    },
+    "dslmodel.permutation.agent_none_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_none_manual"
+      },
+      "description": "Permutation: agent with none from manual"
+    },
+    "dslmodel.permutation.agent_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_jinja_prompt"
+      },
+      "description": "Permutation: agent with jinja from prompt"
+    },
+    "dslmodel.permutation.agent_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_jinja_schema"
+      },
+      "description": "Permutation: agent with jinja from schema"
+    },
+    "dslmodel.permutation.agent_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_jinja_api"
+      },
+      "description": "Permutation: agent with jinja from api"
+    },
+    "dslmodel.permutation.agent_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_jinja_template"
+      },
+      "description": "Permutation: agent with jinja from template"
+    },
+    "dslmodel.permutation.agent_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_jinja_weaver"
+      },
+      "description": "Permutation: agent with jinja from weaver"
+    },
+    "dslmodel.permutation.agent_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_jinja_manual"
+      },
+      "description": "Permutation: agent with jinja from manual"
+    },
+    "dslmodel.permutation.agent_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_tool_prompt"
+      },
+      "description": "Permutation: agent with tool from prompt"
+    },
+    "dslmodel.permutation.agent_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_tool_schema"
+      },
+      "description": "Permutation: agent with tool from schema"
+    },
+    "dslmodel.permutation.agent_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_tool_api"
+      },
+      "description": "Permutation: agent with tool from api"
+    },
+    "dslmodel.permutation.agent_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_tool_template"
+      },
+      "description": "Permutation: agent with tool from template"
+    },
+    "dslmodel.permutation.agent_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_tool_weaver"
+      },
+      "description": "Permutation: agent with tool from weaver"
+    },
+    "dslmodel.permutation.agent_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_tool_manual"
+      },
+      "description": "Permutation: agent with tool from manual"
+    },
+    "dslmodel.permutation.agent_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_file_prompt"
+      },
+      "description": "Permutation: agent with file from prompt"
+    },
+    "dslmodel.permutation.agent_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_file_schema"
+      },
+      "description": "Permutation: agent with file from schema"
+    },
+    "dslmodel.permutation.agent_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_file_api"
+      },
+      "description": "Permutation: agent with file from api"
+    },
+    "dslmodel.permutation.agent_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_file_template"
+      },
+      "description": "Permutation: agent with file from template"
+    },
+    "dslmodel.permutation.agent_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_file_weaver"
+      },
+      "description": "Permutation: agent with file from weaver"
+    },
+    "dslmodel.permutation.agent_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_file_manual"
+      },
+      "description": "Permutation: agent with file from manual"
+    },
+    "dslmodel.permutation.agent_jinja_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_jinja_tool_prompt"
+      },
+      "description": "Permutation: agent with jinja_tool from prompt"
+    },
+    "dslmodel.permutation.agent_jinja_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_jinja_tool_schema"
+      },
+      "description": "Permutation: agent with jinja_tool from schema"
+    },
+    "dslmodel.permutation.agent_jinja_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_jinja_tool_api"
+      },
+      "description": "Permutation: agent with jinja_tool from api"
+    },
+    "dslmodel.permutation.agent_jinja_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_jinja_tool_template"
+      },
+      "description": "Permutation: agent with jinja_tool from template"
+    },
+    "dslmodel.permutation.agent_jinja_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_jinja_tool_weaver"
+      },
+      "description": "Permutation: agent with jinja_tool from weaver"
+    },
+    "dslmodel.permutation.agent_jinja_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_jinja_tool_manual"
+      },
+      "description": "Permutation: agent with jinja_tool from manual"
+    },
+    "dslmodel.permutation.agent_jinja_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_jinja_file_prompt"
+      },
+      "description": "Permutation: agent with jinja_file from prompt"
+    },
+    "dslmodel.permutation.agent_jinja_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_jinja_file_schema"
+      },
+      "description": "Permutation: agent with jinja_file from schema"
+    },
+    "dslmodel.permutation.agent_jinja_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_jinja_file_api"
+      },
+      "description": "Permutation: agent with jinja_file from api"
+    },
+    "dslmodel.permutation.agent_jinja_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_jinja_file_template"
+      },
+      "description": "Permutation: agent with jinja_file from template"
+    },
+    "dslmodel.permutation.agent_jinja_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_jinja_file_weaver"
+      },
+      "description": "Permutation: agent with jinja_file from weaver"
+    },
+    "dslmodel.permutation.agent_jinja_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_jinja_file_manual"
+      },
+      "description": "Permutation: agent with jinja_file from manual"
+    },
+    "dslmodel.permutation.agent_tool_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_tool_file_prompt"
+      },
+      "description": "Permutation: agent with tool_file from prompt"
+    },
+    "dslmodel.permutation.agent_tool_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_tool_file_schema"
+      },
+      "description": "Permutation: agent with tool_file from schema"
+    },
+    "dslmodel.permutation.agent_tool_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_tool_file_api"
+      },
+      "description": "Permutation: agent with tool_file from api"
+    },
+    "dslmodel.permutation.agent_tool_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_tool_file_template"
+      },
+      "description": "Permutation: agent with tool_file from template"
+    },
+    "dslmodel.permutation.agent_tool_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_tool_file_weaver"
+      },
+      "description": "Permutation: agent with tool_file from weaver"
+    },
+    "dslmodel.permutation.agent_tool_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_tool_file_manual"
+      },
+      "description": "Permutation: agent with tool_file from manual"
+    },
+    "dslmodel.permutation.agent_all_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_all_prompt"
+      },
+      "description": "Permutation: agent with all from prompt"
+    },
+    "dslmodel.permutation.agent_all_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_all_schema"
+      },
+      "description": "Permutation: agent with all from schema"
+    },
+    "dslmodel.permutation.agent_all_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_all_api"
+      },
+      "description": "Permutation: agent with all from api"
+    },
+    "dslmodel.permutation.agent_all_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_all_template"
+      },
+      "description": "Permutation: agent with all from template"
+    },
+    "dslmodel.permutation.agent_all_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_all_weaver"
+      },
+      "description": "Permutation: agent with all from weaver"
+    },
+    "dslmodel.permutation.agent_all_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_all_manual"
+      },
+      "description": "Permutation: agent with all from manual"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_fsm_jinja_prompt"
+      },
+      "description": "Permutation: agent with fsm_jinja from prompt"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_fsm_jinja_schema"
+      },
+      "description": "Permutation: agent with fsm_jinja from schema"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_fsm_jinja_api"
+      },
+      "description": "Permutation: agent with fsm_jinja from api"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_fsm_jinja_template"
+      },
+      "description": "Permutation: agent with fsm_jinja from template"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_fsm_jinja_weaver"
+      },
+      "description": "Permutation: agent with fsm_jinja from weaver"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_fsm_jinja_manual"
+      },
+      "description": "Permutation: agent with fsm_jinja from manual"
+    },
+    "dslmodel.permutation.agent_fsm_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "agent_fsm_tool_prompt"
+      },
+      "description": "Permutation: agent with fsm_tool from prompt"
+    },
+    "dslmodel.permutation.agent_fsm_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "agent_fsm_tool_schema"
+      },
+      "description": "Permutation: agent with fsm_tool from schema"
+    },
+    "dslmodel.permutation.agent_fsm_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "agent_fsm_tool_api"
+      },
+      "description": "Permutation: agent with fsm_tool from api"
+    },
+    "dslmodel.permutation.agent_fsm_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "agent_fsm_tool_template"
+      },
+      "description": "Permutation: agent with fsm_tool from template"
+    },
+    "dslmodel.permutation.agent_fsm_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "agent_fsm_tool_weaver"
+      },
+      "description": "Permutation: agent with fsm_tool from weaver"
+    },
+    "dslmodel.permutation.agent_fsm_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "agent",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "agent_fsm_tool_manual"
+      },
+      "description": "Permutation: agent with fsm_tool from manual"
+    },
+    "dslmodel.permutation.event_none_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_none_prompt"
+      },
+      "description": "Permutation: event with none from prompt"
+    },
+    "dslmodel.permutation.event_none_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_none_schema"
+      },
+      "description": "Permutation: event with none from schema"
+    },
+    "dslmodel.permutation.event_none_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_none_api"
+      },
+      "description": "Permutation: event with none from api"
+    },
+    "dslmodel.permutation.event_none_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_none_template"
+      },
+      "description": "Permutation: event with none from template"
+    },
+    "dslmodel.permutation.event_none_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_none_weaver"
+      },
+      "description": "Permutation: event with none from weaver"
+    },
+    "dslmodel.permutation.event_none_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_none_manual"
+      },
+      "description": "Permutation: event with none from manual"
+    },
+    "dslmodel.permutation.event_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_jinja_prompt"
+      },
+      "description": "Permutation: event with jinja from prompt"
+    },
+    "dslmodel.permutation.event_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_jinja_schema"
+      },
+      "description": "Permutation: event with jinja from schema"
+    },
+    "dslmodel.permutation.event_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_jinja_api"
+      },
+      "description": "Permutation: event with jinja from api"
+    },
+    "dslmodel.permutation.event_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_jinja_template"
+      },
+      "description": "Permutation: event with jinja from template"
+    },
+    "dslmodel.permutation.event_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_jinja_weaver"
+      },
+      "description": "Permutation: event with jinja from weaver"
+    },
+    "dslmodel.permutation.event_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_jinja_manual"
+      },
+      "description": "Permutation: event with jinja from manual"
+    },
+    "dslmodel.permutation.event_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_tool_prompt"
+      },
+      "description": "Permutation: event with tool from prompt"
+    },
+    "dslmodel.permutation.event_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_tool_schema"
+      },
+      "description": "Permutation: event with tool from schema"
+    },
+    "dslmodel.permutation.event_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_tool_api"
+      },
+      "description": "Permutation: event with tool from api"
+    },
+    "dslmodel.permutation.event_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_tool_template"
+      },
+      "description": "Permutation: event with tool from template"
+    },
+    "dslmodel.permutation.event_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_tool_weaver"
+      },
+      "description": "Permutation: event with tool from weaver"
+    },
+    "dslmodel.permutation.event_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_tool_manual"
+      },
+      "description": "Permutation: event with tool from manual"
+    },
+    "dslmodel.permutation.event_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_file_prompt"
+      },
+      "description": "Permutation: event with file from prompt"
+    },
+    "dslmodel.permutation.event_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_file_schema"
+      },
+      "description": "Permutation: event with file from schema"
+    },
+    "dslmodel.permutation.event_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_file_api"
+      },
+      "description": "Permutation: event with file from api"
+    },
+    "dslmodel.permutation.event_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_file_template"
+      },
+      "description": "Permutation: event with file from template"
+    },
+    "dslmodel.permutation.event_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_file_weaver"
+      },
+      "description": "Permutation: event with file from weaver"
+    },
+    "dslmodel.permutation.event_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_file_manual"
+      },
+      "description": "Permutation: event with file from manual"
+    },
+    "dslmodel.permutation.event_jinja_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_jinja_tool_prompt"
+      },
+      "description": "Permutation: event with jinja_tool from prompt"
+    },
+    "dslmodel.permutation.event_jinja_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_jinja_tool_schema"
+      },
+      "description": "Permutation: event with jinja_tool from schema"
+    },
+    "dslmodel.permutation.event_jinja_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_jinja_tool_api"
+      },
+      "description": "Permutation: event with jinja_tool from api"
+    },
+    "dslmodel.permutation.event_jinja_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_jinja_tool_template"
+      },
+      "description": "Permutation: event with jinja_tool from template"
+    },
+    "dslmodel.permutation.event_jinja_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_jinja_tool_weaver"
+      },
+      "description": "Permutation: event with jinja_tool from weaver"
+    },
+    "dslmodel.permutation.event_jinja_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_jinja_tool_manual"
+      },
+      "description": "Permutation: event with jinja_tool from manual"
+    },
+    "dslmodel.permutation.event_jinja_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_jinja_file_prompt"
+      },
+      "description": "Permutation: event with jinja_file from prompt"
+    },
+    "dslmodel.permutation.event_jinja_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_jinja_file_schema"
+      },
+      "description": "Permutation: event with jinja_file from schema"
+    },
+    "dslmodel.permutation.event_jinja_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_jinja_file_api"
+      },
+      "description": "Permutation: event with jinja_file from api"
+    },
+    "dslmodel.permutation.event_jinja_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_jinja_file_template"
+      },
+      "description": "Permutation: event with jinja_file from template"
+    },
+    "dslmodel.permutation.event_jinja_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_jinja_file_weaver"
+      },
+      "description": "Permutation: event with jinja_file from weaver"
+    },
+    "dslmodel.permutation.event_jinja_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_jinja_file_manual"
+      },
+      "description": "Permutation: event with jinja_file from manual"
+    },
+    "dslmodel.permutation.event_tool_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_tool_file_prompt"
+      },
+      "description": "Permutation: event with tool_file from prompt"
+    },
+    "dslmodel.permutation.event_tool_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_tool_file_schema"
+      },
+      "description": "Permutation: event with tool_file from schema"
+    },
+    "dslmodel.permutation.event_tool_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_tool_file_api"
+      },
+      "description": "Permutation: event with tool_file from api"
+    },
+    "dslmodel.permutation.event_tool_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_tool_file_template"
+      },
+      "description": "Permutation: event with tool_file from template"
+    },
+    "dslmodel.permutation.event_tool_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_tool_file_weaver"
+      },
+      "description": "Permutation: event with tool_file from weaver"
+    },
+    "dslmodel.permutation.event_tool_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_tool_file_manual"
+      },
+      "description": "Permutation: event with tool_file from manual"
+    },
+    "dslmodel.permutation.event_all_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_all_prompt"
+      },
+      "description": "Permutation: event with all from prompt"
+    },
+    "dslmodel.permutation.event_all_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_all_schema"
+      },
+      "description": "Permutation: event with all from schema"
+    },
+    "dslmodel.permutation.event_all_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_all_api"
+      },
+      "description": "Permutation: event with all from api"
+    },
+    "dslmodel.permutation.event_all_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_all_template"
+      },
+      "description": "Permutation: event with all from template"
+    },
+    "dslmodel.permutation.event_all_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_all_weaver"
+      },
+      "description": "Permutation: event with all from weaver"
+    },
+    "dslmodel.permutation.event_all_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_all_manual"
+      },
+      "description": "Permutation: event with all from manual"
+    },
+    "dslmodel.permutation.event_fsm_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_fsm_jinja_prompt"
+      },
+      "description": "Permutation: event with fsm_jinja from prompt"
+    },
+    "dslmodel.permutation.event_fsm_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_fsm_jinja_schema"
+      },
+      "description": "Permutation: event with fsm_jinja from schema"
+    },
+    "dslmodel.permutation.event_fsm_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_fsm_jinja_api"
+      },
+      "description": "Permutation: event with fsm_jinja from api"
+    },
+    "dslmodel.permutation.event_fsm_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_fsm_jinja_template"
+      },
+      "description": "Permutation: event with fsm_jinja from template"
+    },
+    "dslmodel.permutation.event_fsm_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_fsm_jinja_weaver"
+      },
+      "description": "Permutation: event with fsm_jinja from weaver"
+    },
+    "dslmodel.permutation.event_fsm_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_fsm_jinja_manual"
+      },
+      "description": "Permutation: event with fsm_jinja from manual"
+    },
+    "dslmodel.permutation.event_fsm_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "event_fsm_tool_prompt"
+      },
+      "description": "Permutation: event with fsm_tool from prompt"
+    },
+    "dslmodel.permutation.event_fsm_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "event_fsm_tool_schema"
+      },
+      "description": "Permutation: event with fsm_tool from schema"
+    },
+    "dslmodel.permutation.event_fsm_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "event_fsm_tool_api"
+      },
+      "description": "Permutation: event with fsm_tool from api"
+    },
+    "dslmodel.permutation.event_fsm_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "event_fsm_tool_template"
+      },
+      "description": "Permutation: event with fsm_tool from template"
+    },
+    "dslmodel.permutation.event_fsm_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "event_fsm_tool_weaver"
+      },
+      "description": "Permutation: event with fsm_tool from weaver"
+    },
+    "dslmodel.permutation.event_fsm_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "event",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "event_fsm_tool_manual"
+      },
+      "description": "Permutation: event with fsm_tool from manual"
+    },
+    "dslmodel.permutation.template_none_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_none_prompt"
+      },
+      "description": "Permutation: template with none from prompt"
+    },
+    "dslmodel.permutation.template_none_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_none_schema"
+      },
+      "description": "Permutation: template with none from schema"
+    },
+    "dslmodel.permutation.template_none_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_none_api"
+      },
+      "description": "Permutation: template with none from api"
+    },
+    "dslmodel.permutation.template_none_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_none_template"
+      },
+      "description": "Permutation: template with none from template"
+    },
+    "dslmodel.permutation.template_none_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_none_weaver"
+      },
+      "description": "Permutation: template with none from weaver"
+    },
+    "dslmodel.permutation.template_none_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "none",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_none_manual"
+      },
+      "description": "Permutation: template with none from manual"
+    },
+    "dslmodel.permutation.template_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_jinja_prompt"
+      },
+      "description": "Permutation: template with jinja from prompt"
+    },
+    "dslmodel.permutation.template_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_jinja_schema"
+      },
+      "description": "Permutation: template with jinja from schema"
+    },
+    "dslmodel.permutation.template_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_jinja_api"
+      },
+      "description": "Permutation: template with jinja from api"
+    },
+    "dslmodel.permutation.template_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_jinja_template"
+      },
+      "description": "Permutation: template with jinja from template"
+    },
+    "dslmodel.permutation.template_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_jinja_weaver"
+      },
+      "description": "Permutation: template with jinja from weaver"
+    },
+    "dslmodel.permutation.template_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_jinja_manual"
+      },
+      "description": "Permutation: template with jinja from manual"
+    },
+    "dslmodel.permutation.template_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_tool_prompt"
+      },
+      "description": "Permutation: template with tool from prompt"
+    },
+    "dslmodel.permutation.template_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_tool_schema"
+      },
+      "description": "Permutation: template with tool from schema"
+    },
+    "dslmodel.permutation.template_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_tool_api"
+      },
+      "description": "Permutation: template with tool from api"
+    },
+    "dslmodel.permutation.template_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_tool_template"
+      },
+      "description": "Permutation: template with tool from template"
+    },
+    "dslmodel.permutation.template_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_tool_weaver"
+      },
+      "description": "Permutation: template with tool from weaver"
+    },
+    "dslmodel.permutation.template_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_tool_manual"
+      },
+      "description": "Permutation: template with tool from manual"
+    },
+    "dslmodel.permutation.template_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_file_prompt"
+      },
+      "description": "Permutation: template with file from prompt"
+    },
+    "dslmodel.permutation.template_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_file_schema"
+      },
+      "description": "Permutation: template with file from schema"
+    },
+    "dslmodel.permutation.template_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_file_api"
+      },
+      "description": "Permutation: template with file from api"
+    },
+    "dslmodel.permutation.template_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_file_template"
+      },
+      "description": "Permutation: template with file from template"
+    },
+    "dslmodel.permutation.template_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_file_weaver"
+      },
+      "description": "Permutation: template with file from weaver"
+    },
+    "dslmodel.permutation.template_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_file_manual"
+      },
+      "description": "Permutation: template with file from manual"
+    },
+    "dslmodel.permutation.template_jinja_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_jinja_tool_prompt"
+      },
+      "description": "Permutation: template with jinja_tool from prompt"
+    },
+    "dslmodel.permutation.template_jinja_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_jinja_tool_schema"
+      },
+      "description": "Permutation: template with jinja_tool from schema"
+    },
+    "dslmodel.permutation.template_jinja_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_jinja_tool_api"
+      },
+      "description": "Permutation: template with jinja_tool from api"
+    },
+    "dslmodel.permutation.template_jinja_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_jinja_tool_template"
+      },
+      "description": "Permutation: template with jinja_tool from template"
+    },
+    "dslmodel.permutation.template_jinja_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_jinja_tool_weaver"
+      },
+      "description": "Permutation: template with jinja_tool from weaver"
+    },
+    "dslmodel.permutation.template_jinja_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_jinja_tool_manual"
+      },
+      "description": "Permutation: template with jinja_tool from manual"
+    },
+    "dslmodel.permutation.template_jinja_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_jinja_file_prompt"
+      },
+      "description": "Permutation: template with jinja_file from prompt"
+    },
+    "dslmodel.permutation.template_jinja_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_jinja_file_schema"
+      },
+      "description": "Permutation: template with jinja_file from schema"
+    },
+    "dslmodel.permutation.template_jinja_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_jinja_file_api"
+      },
+      "description": "Permutation: template with jinja_file from api"
+    },
+    "dslmodel.permutation.template_jinja_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_jinja_file_template"
+      },
+      "description": "Permutation: template with jinja_file from template"
+    },
+    "dslmodel.permutation.template_jinja_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_jinja_file_weaver"
+      },
+      "description": "Permutation: template with jinja_file from weaver"
+    },
+    "dslmodel.permutation.template_jinja_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "jinja_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_jinja_file_manual"
+      },
+      "description": "Permutation: template with jinja_file from manual"
+    },
+    "dslmodel.permutation.template_tool_file_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_tool_file_prompt"
+      },
+      "description": "Permutation: template with tool_file from prompt"
+    },
+    "dslmodel.permutation.template_tool_file_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_tool_file_schema"
+      },
+      "description": "Permutation: template with tool_file from schema"
+    },
+    "dslmodel.permutation.template_tool_file_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_tool_file_api"
+      },
+      "description": "Permutation: template with tool_file from api"
+    },
+    "dslmodel.permutation.template_tool_file_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_tool_file_template"
+      },
+      "description": "Permutation: template with tool_file from template"
+    },
+    "dslmodel.permutation.template_tool_file_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_tool_file_weaver"
+      },
+      "description": "Permutation: template with tool_file from weaver"
+    },
+    "dslmodel.permutation.template_tool_file_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "tool_file",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_tool_file_manual"
+      },
+      "description": "Permutation: template with tool_file from manual"
+    },
+    "dslmodel.permutation.template_all_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_all_prompt"
+      },
+      "description": "Permutation: template with all from prompt"
+    },
+    "dslmodel.permutation.template_all_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_all_schema"
+      },
+      "description": "Permutation: template with all from schema"
+    },
+    "dslmodel.permutation.template_all_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_all_api"
+      },
+      "description": "Permutation: template with all from api"
+    },
+    "dslmodel.permutation.template_all_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_all_template"
+      },
+      "description": "Permutation: template with all from template"
+    },
+    "dslmodel.permutation.template_all_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_all_weaver"
+      },
+      "description": "Permutation: template with all from weaver"
+    },
+    "dslmodel.permutation.template_all_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "all",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_all_manual"
+      },
+      "description": "Permutation: template with all from manual"
+    },
+    "dslmodel.permutation.template_fsm_jinja_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_fsm_jinja_prompt"
+      },
+      "description": "Permutation: template with fsm_jinja from prompt"
+    },
+    "dslmodel.permutation.template_fsm_jinja_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_fsm_jinja_schema"
+      },
+      "description": "Permutation: template with fsm_jinja from schema"
+    },
+    "dslmodel.permutation.template_fsm_jinja_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_fsm_jinja_api"
+      },
+      "description": "Permutation: template with fsm_jinja from api"
+    },
+    "dslmodel.permutation.template_fsm_jinja_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_fsm_jinja_template"
+      },
+      "description": "Permutation: template with fsm_jinja from template"
+    },
+    "dslmodel.permutation.template_fsm_jinja_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_fsm_jinja_weaver"
+      },
+      "description": "Permutation: template with fsm_jinja from weaver"
+    },
+    "dslmodel.permutation.template_fsm_jinja_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_jinja",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_fsm_jinja_manual"
+      },
+      "description": "Permutation: template with fsm_jinja from manual"
+    },
+    "dslmodel.permutation.template_fsm_tool_prompt": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "prompt",
+        "dslmodel.permutation.id": "template_fsm_tool_prompt"
+      },
+      "description": "Permutation: template with fsm_tool from prompt"
+    },
+    "dslmodel.permutation.template_fsm_tool_schema": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "schema",
+        "dslmodel.permutation.id": "template_fsm_tool_schema"
+      },
+      "description": "Permutation: template with fsm_tool from schema"
+    },
+    "dslmodel.permutation.template_fsm_tool_api": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "api",
+        "dslmodel.permutation.id": "template_fsm_tool_api"
+      },
+      "description": "Permutation: template with fsm_tool from api"
+    },
+    "dslmodel.permutation.template_fsm_tool_template": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "template",
+        "dslmodel.permutation.id": "template_fsm_tool_template"
+      },
+      "description": "Permutation: template with fsm_tool from template"
+    },
+    "dslmodel.permutation.template_fsm_tool_weaver": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "weaver",
+        "dslmodel.permutation.id": "template_fsm_tool_weaver"
+      },
+      "description": "Permutation: template with fsm_tool from weaver"
+    },
+    "dslmodel.permutation.template_fsm_tool_manual": {
+      "attributes": {
+        "dslmodel.model_type": "template",
+        "dslmodel.mixin.combination": "fsm_tool",
+        "dslmodel.generation.source": "manual",
+        "dslmodel.permutation.id": "template_fsm_tool_manual"
+      },
+      "description": "Permutation: template with fsm_tool from manual"
+    }
+  },
+  "metrics": {
+    "dslmodel.permutation.base_none_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_none_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_none_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_none_schema permutation usage"
+    },
+    "dslmodel.permutation.base_none_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_none_api permutation usage"
+    },
+    "dslmodel.permutation.base_none_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_none_template permutation usage"
+    },
+    "dslmodel.permutation.base_none_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_none_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_none_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_none_manual permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.base_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.base_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_api permutation usage"
+    },
+    "dslmodel.permutation.base_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_template permutation usage"
+    },
+    "dslmodel.permutation.base_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.base_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_file_schema permutation usage"
+    },
+    "dslmodel.permutation.base_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_file_api permutation usage"
+    },
+    "dslmodel.permutation.base_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_file_template permutation usage"
+    },
+    "dslmodel.permutation.base_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_file_manual permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_tool_api permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_tool_template permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_file_schema permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_file_api permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_file_template permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_jinja_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_jinja_file_manual permutation usage"
+    },
+    "dslmodel.permutation.base_tool_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_tool_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_file_schema permutation usage"
+    },
+    "dslmodel.permutation.base_tool_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_file_api permutation usage"
+    },
+    "dslmodel.permutation.base_tool_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_file_template permutation usage"
+    },
+    "dslmodel.permutation.base_tool_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_tool_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_tool_file_manual permutation usage"
+    },
+    "dslmodel.permutation.base_all_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_all_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_all_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_all_schema permutation usage"
+    },
+    "dslmodel.permutation.base_all_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_all_api permutation usage"
+    },
+    "dslmodel.permutation.base_all_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_all_template permutation usage"
+    },
+    "dslmodel.permutation.base_all_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_all_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_all_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_all_manual permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_tool_api permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_tool_template permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.base_fsm_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of base_fsm_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_none_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_none_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_none_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_none_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_none_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_none_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_none_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_none_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_none_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_none_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_none_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_none_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_file_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_file_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_file_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_file_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_tool_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_tool_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_file_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_file_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_file_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_jinja_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_jinja_file_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_file_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_file_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_file_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_tool_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_tool_file_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_all_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_all_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_all_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_all_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_all_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_all_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_all_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_all_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_all_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_all_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_all_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_all_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_tool_api permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_tool_template permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.fsm_fsm_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of fsm_fsm_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_none_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_none_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_none_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_none_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_none_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_none_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_none_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_none_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_none_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_none_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_none_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_none_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_file_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_file_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_file_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_file_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_tool_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_tool_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_file_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_file_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_file_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_jinja_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_jinja_file_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_file_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_file_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_file_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_tool_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_tool_file_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_all_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_all_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_all_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_all_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_all_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_all_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_all_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_all_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_all_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_all_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_all_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_all_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_tool_api permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_tool_template permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.workflow_fsm_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of workflow_fsm_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_none_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_none_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_none_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_none_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_none_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_none_api permutation usage"
+    },
+    "dslmodel.permutation.agent_none_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_none_template permutation usage"
+    },
+    "dslmodel.permutation.agent_none_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_none_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_none_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_none_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_api permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_template permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_file_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_file_api permutation usage"
+    },
+    "dslmodel.permutation.agent_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_file_template permutation usage"
+    },
+    "dslmodel.permutation.agent_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_file_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_tool_api permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_tool_template permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_file_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_file_api permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_file_template permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_jinja_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_jinja_file_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_file_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_file_api permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_file_template permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_tool_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_tool_file_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_all_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_all_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_all_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_all_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_all_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_all_api permutation usage"
+    },
+    "dslmodel.permutation.agent_all_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_all_template permutation usage"
+    },
+    "dslmodel.permutation.agent_all_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_all_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_all_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_all_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_tool_api permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_tool_template permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.agent_fsm_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of agent_fsm_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.event_none_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_none_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_none_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_none_schema permutation usage"
+    },
+    "dslmodel.permutation.event_none_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_none_api permutation usage"
+    },
+    "dslmodel.permutation.event_none_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_none_template permutation usage"
+    },
+    "dslmodel.permutation.event_none_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_none_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_none_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_none_manual permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.event_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.event_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_api permutation usage"
+    },
+    "dslmodel.permutation.event_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_template permutation usage"
+    },
+    "dslmodel.permutation.event_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.event_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_file_schema permutation usage"
+    },
+    "dslmodel.permutation.event_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_file_api permutation usage"
+    },
+    "dslmodel.permutation.event_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_file_template permutation usage"
+    },
+    "dslmodel.permutation.event_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_file_manual permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_tool_api permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_tool_template permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_file_schema permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_file_api permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_file_template permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_jinja_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_jinja_file_manual permutation usage"
+    },
+    "dslmodel.permutation.event_tool_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_tool_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_file_schema permutation usage"
+    },
+    "dslmodel.permutation.event_tool_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_file_api permutation usage"
+    },
+    "dslmodel.permutation.event_tool_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_file_template permutation usage"
+    },
+    "dslmodel.permutation.event_tool_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_tool_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_tool_file_manual permutation usage"
+    },
+    "dslmodel.permutation.event_all_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_all_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_all_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_all_schema permutation usage"
+    },
+    "dslmodel.permutation.event_all_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_all_api permutation usage"
+    },
+    "dslmodel.permutation.event_all_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_all_template permutation usage"
+    },
+    "dslmodel.permutation.event_all_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_all_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_all_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_all_manual permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_tool_api permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_tool_template permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.event_fsm_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of event_fsm_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.template_none_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_none_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_none_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_none_schema permutation usage"
+    },
+    "dslmodel.permutation.template_none_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_none_api permutation usage"
+    },
+    "dslmodel.permutation.template_none_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_none_template permutation usage"
+    },
+    "dslmodel.permutation.template_none_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_none_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_none_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_none_manual permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.template_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.template_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_api permutation usage"
+    },
+    "dslmodel.permutation.template_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_template permutation usage"
+    },
+    "dslmodel.permutation.template_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.template_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_file_schema permutation usage"
+    },
+    "dslmodel.permutation.template_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_file_api permutation usage"
+    },
+    "dslmodel.permutation.template_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_file_template permutation usage"
+    },
+    "dslmodel.permutation.template_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_file_manual permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_tool_api permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_tool_template permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_tool_manual permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_file_schema permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_file_api permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_file_template permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_jinja_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_jinja_file_manual permutation usage"
+    },
+    "dslmodel.permutation.template_tool_file_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_file_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_tool_file_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_file_schema permutation usage"
+    },
+    "dslmodel.permutation.template_tool_file_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_file_api permutation usage"
+    },
+    "dslmodel.permutation.template_tool_file_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_file_template permutation usage"
+    },
+    "dslmodel.permutation.template_tool_file_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_file_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_tool_file_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_tool_file_manual permutation usage"
+    },
+    "dslmodel.permutation.template_all_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_all_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_all_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_all_schema permutation usage"
+    },
+    "dslmodel.permutation.template_all_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_all_api permutation usage"
+    },
+    "dslmodel.permutation.template_all_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_all_template permutation usage"
+    },
+    "dslmodel.permutation.template_all_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_all_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_all_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_all_manual permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_jinja_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_jinja_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_jinja_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_jinja_schema permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_jinja_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_jinja_api permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_jinja_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_jinja_template permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_jinja_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_jinja_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_jinja_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_jinja_manual permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_tool_prompt.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_tool_prompt permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_tool_schema.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_tool_schema permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_tool_api.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_tool_api permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_tool_template.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_tool_template permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_tool_weaver.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_tool_weaver permutation usage"
+    },
+    "dslmodel.permutation.template_fsm_tool_manual.count": {
+      "type": "counter",
+      "unit": "1",
+      "description": "Count of template_fsm_tool_manual permutation usage"
+    }
+  }
+}

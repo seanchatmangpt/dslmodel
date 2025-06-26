@@ -5,6 +5,7 @@ def init_lm(
         model: str = "ollama/qwen3",
         experimental: bool = True,
         adapter: dspy.ChatAdapter | None = None,
+        validate_ollama: bool = True,
         **kwargs
 ) -> dspy.LM:
     """
@@ -19,6 +20,9 @@ def init_lm(
     :param adapter: DSPy Adapter to manage input/output formatting.
                     Defaults to `None`.
     :type adapter: dspy.ChatAdapter or None, optional
+    :param validate_ollama: Whether to validate Ollama models before initialization.
+                           Defaults to `True`.
+    :type validate_ollama: bool, optional
     :param kwargs: Additional keyword arguments to pass to `dspy.LM`.
                    Supported kwargs include:
                    - `api_key` (str): API key for authentication, if required.
@@ -37,6 +41,21 @@ def init_lm(
     :return: Configured LM object.
     :rtype: dspy.LM
     """
+    # Validate Ollama models if enabled and model starts with "ollama/"
+    if validate_ollama and model.startswith("ollama/"):
+        try:
+            from .ollama_validator import safe_init_ollama
+            success, validated_lm, message = safe_init_ollama(model, experimental=experimental, adapter=adapter, **kwargs)
+            if success:
+                return validated_lm
+            else:
+                # Fallback to standard initialization with warning
+                import warnings
+                warnings.warn(f"Ollama validation failed ({message}), proceeding with standard initialization")
+        except ImportError:
+            # Validator not available, proceed normally
+            pass
+
     # Default configuration with 'model' parameter
     default_config = {
         "model": model,  # Use the 'model' parameter here

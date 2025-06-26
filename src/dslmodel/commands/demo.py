@@ -596,25 +596,17 @@ def thesis_quick(
     console.print("🎓 [bold blue]SwarmSH Thesis Demo[/bold blue]")
     
     try:
-        # Import and run thesis CLI commands
-        from dslmodel.commands.thesis_cli import app as thesis_app
-        import typer
-        
-        runner = typer.testing.CliRunner()
+        # Import and run thesis CLI commands directly
+        from dslmodel.commands.thesis_cli import generate_thesis, demo_feedback_loop
         
         # Generate thesis
         console.print("📝 Generating thesis...")
-        result = runner.invoke(thesis_app, ['generate', '--model', model])
-        if result.exit_code != 0:
-            console.print(f"❌ Thesis generation failed")
-            raise typer.Exit(1)
+        from pathlib import Path
+        generate_thesis(output_dir=Path.cwd(), format="json", model=model)
         
         # Run demo
         console.print("🔄 Running feedback loop demo...")
-        result = runner.invoke(thesis_app, ['demo', '--iterations', str(iterations), '--model', model])
-        if result.exit_code != 0:
-            console.print(f"❌ Demo failed")
-            raise typer.Exit(1)
+        demo_feedback_loop(iterations=iterations, model=model)
         
         console.print("✅ [green]Thesis demo completed![/green]")
         

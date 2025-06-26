@@ -1,0 +1,5068 @@
+validation_tests:
+- permutation_id: http_minimal_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_minimal_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_minimal_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_minimal_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_minimal_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_minimal_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_minimal_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_minimal_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_minimal_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_minimal_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_minimal_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_minimal_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_minimal_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_minimal_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_minimal_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_minimal_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_minimal_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_minimal_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_minimal_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_minimal_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_minimal_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_minimal_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_minimal_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_minimal_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_minimal_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_minimal_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_minimal_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_minimal_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_minimal_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_minimal_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_standard_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_standard_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_standard_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_standard_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_standard_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_standard_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_standard_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_standard_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_standard_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_standard_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_standard_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_standard_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_standard_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_standard_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_standard_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_standard_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_standard_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_standard_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_standard_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_standard_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_standard_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_standard_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_standard_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_standard_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_standard_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_standard_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_standard_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_standard_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_standard_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_standard_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_extended_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_extended_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_extended_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_extended_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_extended_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_extended_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_extended_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_extended_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_extended_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_extended_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_extended_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_extended_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_extended_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_extended_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_extended_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_extended_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_extended_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_extended_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_extended_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_extended_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_extended_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_extended_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_extended_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_extended_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_extended_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_extended_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_extended_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_extended_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_extended_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_extended_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_custom_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_custom_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_custom_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_custom_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_custom_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_custom_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_custom_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_custom_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_custom_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_custom_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_custom_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_custom_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_custom_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_custom_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_custom_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_custom_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_custom_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_custom_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_custom_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_custom_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_custom_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_custom_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: http_custom_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_custom_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: http_custom_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_custom_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: http_custom_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_custom_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: http_custom_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: http_custom_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_minimal_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_minimal_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_minimal_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_minimal_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_minimal_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_minimal_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_minimal_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_minimal_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_minimal_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_minimal_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_minimal_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_minimal_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_minimal_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_minimal_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_minimal_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_minimal_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_minimal_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_minimal_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_minimal_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_minimal_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_minimal_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_minimal_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_minimal_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_minimal_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_minimal_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_minimal_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_minimal_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_minimal_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_minimal_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_minimal_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_standard_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_standard_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_standard_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_standard_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_standard_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_standard_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_standard_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_standard_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_standard_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_standard_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_standard_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_standard_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_standard_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_standard_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_standard_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_standard_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_standard_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_standard_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_standard_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_standard_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_standard_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_standard_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_standard_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_standard_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_standard_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_standard_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_standard_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_standard_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_standard_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_standard_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_extended_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_extended_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_extended_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_extended_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_extended_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_extended_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_extended_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_extended_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_extended_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_extended_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_extended_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_extended_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_extended_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_extended_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_extended_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_extended_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_extended_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_extended_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_extended_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_extended_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_extended_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_extended_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_extended_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_extended_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_extended_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_extended_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_extended_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_extended_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_extended_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_extended_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_custom_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_custom_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_custom_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_custom_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_custom_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_custom_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_custom_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_custom_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_custom_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_custom_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_custom_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_custom_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_custom_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_custom_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_custom_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_custom_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_custom_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_custom_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_custom_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_custom_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_custom_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_custom_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: database_custom_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_custom_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: database_custom_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_custom_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: database_custom_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_custom_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: database_custom_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: database_custom_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_minimal_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_minimal_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_minimal_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_minimal_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_minimal_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_minimal_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_minimal_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_minimal_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_minimal_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_minimal_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_minimal_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_minimal_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_minimal_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_minimal_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_minimal_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_minimal_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_minimal_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_minimal_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_minimal_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_minimal_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_minimal_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_minimal_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_minimal_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_minimal_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_minimal_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_minimal_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_minimal_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_minimal_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_minimal_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_minimal_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_minimal_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_standard_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_standard_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_standard_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_standard_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_standard_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_standard_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_standard_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_standard_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_standard_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_standard_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_standard_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_standard_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_standard_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_standard_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_standard_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_standard_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_standard_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_standard_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_standard_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_standard_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_standard_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_standard_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_standard_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_standard_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_standard_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_standard_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_standard_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_standard_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_standard_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_standard_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_standard_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_extended_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_extended_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_extended_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_extended_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_extended_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_extended_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_extended_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_extended_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_extended_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_extended_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_extended_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_extended_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_extended_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_extended_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_extended_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_extended_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_extended_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_extended_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_extended_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_extended_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_extended_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_extended_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_extended_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_extended_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_extended_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_extended_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_extended_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_extended_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_extended_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_extended_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_extended_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_custom_counter_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_custom_counter_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_custom_counter_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_custom_counter_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_custom_counter_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_custom_counter_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_custom_counter_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_custom_counter_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_custom_counter_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_custom_counter_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_counter_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_custom_gauge_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_custom_gauge_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_custom_gauge_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_custom_gauge_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_custom_gauge_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_custom_gauge_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_custom_gauge_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_custom_gauge_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_custom_gauge_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_custom_gauge_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_gauge_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_custom_histogram_python_pydantic
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_custom_histogram_python_dataclass
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_python
+    expected: true
+- permutation_id: messaging_custom_histogram_rust_serde
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_custom_histogram_rust_prost
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_rust
+    expected: true
+- permutation_id: messaging_custom_histogram_typescript_class
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_custom_histogram_typescript_interface
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_typescript
+    expected: true
+- permutation_id: messaging_custom_histogram_go_struct
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_custom_histogram_go_protobuf
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_go
+    expected: true
+- permutation_id: messaging_custom_histogram_java_pojo
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+- permutation_id: messaging_custom_histogram_java_record
+  validations:
+  - type: schema_validation
+    check: valid_semconv_structure
+    expected: true
+  - type: attribute_count
+    check: has_custom_attributes
+    expected: true
+  - type: metric_presence
+    check: has_histogram_metric
+    expected: true
+  - type: language_compatibility
+    check: compatible_with_java
+    expected: true
+coverage_matrix:
+  span_types:
+    http: 120
+    database: 120
+    messaging: 120
+    rpc: 0
+    faas: 0
+    graphql: 0
+    grpc: 0
+    websocket: 0
+    batch: 0
+    stream: 0
+  attribute_sets:
+    minimal: 90
+    standard: 90
+    extended: 90
+    custom: 90
+  metric_types:
+    counter: 120
+    gauge: 120
+    histogram: 120
+  languages:
+    python: 72
+    rust: 72
+    typescript: 72
+    go: 72
+    java: 72

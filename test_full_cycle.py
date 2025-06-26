@@ -19,7 +19,7 @@ def test_imports():
         return False
     
     try:
-        from dslmodel.commands.full_cycle_demo import FullCycleDemo
+        from dslmodel.commands.swarm import FullCycleDemo
         print("  ✓ FullCycleDemo imported successfully")
     except Exception as e:
         print(f"  ❌ FullCycleDemo import failed: {e}")
@@ -34,7 +34,8 @@ def test_swarm_coordinator():
     try:
         from dslmodel.commands.swarm import SwarmCoordinator
         
-        coordinator = SwarmCoordinator(data_dir="./test_swarm_data")
+        from pathlib import Path
+        coordinator = SwarmCoordinator(data_dir=Path("./test_swarm_data"))
         print("  ✓ SwarmCoordinator created")
         
         # Test creating an agent
@@ -64,7 +65,7 @@ def test_full_cycle_components():
     print("\n🔄 Testing FullCycleDemo components...")
     
     try:
-        from dslmodel.commands.full_cycle_demo import FullCycleDemo
+        from dslmodel.commands.swarm import FullCycleDemo
         
         demo = FullCycleDemo()
         print("  ✓ FullCycleDemo created")
@@ -134,11 +135,15 @@ def main():
     
     print("\n✅ All tests passed! Full cycle demo is ready to use.")
     print("\n📋 Available poe tasks:")
-    print("  poe demo-full          - Run complete demo (3 cycles)")
-    print("  poe demo-full-fast     - Run quick demo (1 cycle)")  
-    print("  poe demo-full-extended - Run extended demo (5 cycles)")
-    print("  poe demo-status        - Show demo status")
-    print("  poe demo-clean         - Clean demo data")
+    print("  poe swarm-full-cycle          - Run complete demo (3 cycles)")
+    print("  poe swarm-full-cycle-fast     - Run quick demo (1 cycle)")  
+    print("  poe swarm-full-cycle-extended - Run extended demo (5 cycles)")
+    print("  poe swarm-full-cycle-status   - Show demo status")
+    print("  poe swarm-full-cycle-clean    - Clean demo data")
+    print("\n📋 CLI commands:")
+    print("  dsl swarm full-cycle --cycles 3")
+    print("  dsl swarm full-cycle-status")
+    print("  dsl swarm full-cycle-clean")
     
     return True
 

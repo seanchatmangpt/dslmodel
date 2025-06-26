@@ -1,0 +1,6159 @@
+{
+  "timestamp": "2025-06-26T06:23:44.093071",
+  "total_permutations": 360,
+  "tested_permutations": 360,
+  "metrics": {
+    "total_permutations_tested": 360,
+    "successful_permutations": 146,
+    "failed_permutations": 214,
+    "model_type_breakdown": {
+      "base": 26,
+      "fsm": 28,
+      "workflow": 24,
+      "agent": 24,
+      "event": 24,
+      "template": 20
+    },
+    "mixin_combo_breakdown": {
+      "none": 35,
+      "jinja": 29,
+      "tool": 30,
+      "file": 34,
+      "all": 18
+    },
+    "generation_source_breakdown": {
+      "prompt": 22,
+      "schema": 26,
+      "api": 25,
+      "template": 23,
+      "weaver": 27,
+      "manual": 23
+    },
+    "avg_duration_ms": 30.008892218271892,
+    "total_spans_created": 1800,
+    "traces_created": 360,
+    "throughput_per_second": 33.323456018516985
+  },
+  "results": [
+    {
+      "permutation_id": "base_none_prompt",
+      "model_type": "base",
+      "mixin_combo": "none",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 13.514995574951172,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000001",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_none_schema",
+      "model_type": "base",
+      "mixin_combo": "none",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 26.897192001342773,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000002",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_none_api",
+      "model_type": "base",
+      "mixin_combo": "none",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 32.75895118713379,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000003",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_none_template",
+      "model_type": "base",
+      "mixin_combo": "none",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 32.341957092285156,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000004",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_none_weaver",
+      "model_type": "base",
+      "mixin_combo": "none",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 18.373727798461914,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000005",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_none_manual",
+      "model_type": "base",
+      "mixin_combo": "none",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 29.640913009643555,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000006",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_prompt",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 46.05889320373535,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000007",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_schema",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 48.8126277923584,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000008",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_api",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 44.60787773132324,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000009",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_template",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 12.428045272827148,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000000a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_weaver",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 37.37187385559082,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000000b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_manual",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 36.553382873535156,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000000c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_prompt",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 45.25303840637207,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000000d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_schema",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 25.767803192138672,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000000e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_api",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 45.641183853149414,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000000f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_template",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 43.33782196044922,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000010",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_weaver",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "weaver",
+      "success": false,
+      "duration_ms": 49.53885078430176,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000011",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_manual",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 28.98406982421875,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000012",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_file_prompt",
+      "model_type": "base",
+      "mixin_combo": "file",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 45.53413391113281,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000013",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_file_schema",
+      "model_type": "base",
+      "mixin_combo": "file",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 46.52714729309082,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000014",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_file_api",
+      "model_type": "base",
+      "mixin_combo": "file",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 48.06017875671387,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000015",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_file_template",
+      "model_type": "base",
+      "mixin_combo": "file",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 19.49286460876465,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000016",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_file_weaver",
+      "model_type": "base",
+      "mixin_combo": "file",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 28.97810935974121,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000017",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_file_manual",
+      "model_type": "base",
+      "mixin_combo": "file",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 25.712966918945312,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000018",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_tool_prompt",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 42.276859283447266,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000019",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_tool_schema",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 24.079084396362305,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000001a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_tool_api",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 19.790172576904297,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000001b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_tool_template",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 18.55635643005371,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000001c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_tool_weaver",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 30.65800666809082,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000001d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_tool_manual",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 39.684295654296875,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000001e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_file_prompt",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 11.243104934692383,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000001f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_file_schema",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 31.270980834960938,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000020",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_file_api",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 49.71814155578613,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000021",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_file_template",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 42.938232421875,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000022",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_file_weaver",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 45.17817497253418,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000023",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_jinja_file_manual",
+      "model_type": "base",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 29.835939407348633,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000024",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_file_prompt",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 13.313055038452148,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000025",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_file_schema",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 37.543296813964844,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000026",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_file_api",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 11.029958724975586,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000027",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_file_template",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 17.155170440673828,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000028",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_file_weaver",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 43.69473457336426,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000029",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_tool_file_manual",
+      "model_type": "base",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 16.433238983154297,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000002a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_all_prompt",
+      "model_type": "base",
+      "mixin_combo": "all",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 29.284000396728516,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000002b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_all_schema",
+      "model_type": "base",
+      "mixin_combo": "all",
+      "generation_source": "schema",
+      "success": false,
+      "duration_ms": 22.302865982055664,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000002c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_all_api",
+      "model_type": "base",
+      "mixin_combo": "all",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 14.674186706542969,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000002d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_all_template",
+      "model_type": "base",
+      "mixin_combo": "all",
+      "generation_source": "template",
+      "success": false,
+      "duration_ms": 34.16609764099121,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000002e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_all_weaver",
+      "model_type": "base",
+      "mixin_combo": "all",
+      "generation_source": "weaver",
+      "success": false,
+      "duration_ms": 18.00394058227539,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000002f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_all_manual",
+      "model_type": "base",
+      "mixin_combo": "all",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 24.82914924621582,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000030",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_jinja_prompt",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 29.670000076293945,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000031",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_jinja_schema",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 36.98110580444336,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000032",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_jinja_api",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 26.964902877807617,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000033",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_jinja_template",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 28.74898910522461,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000034",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_jinja_weaver",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 13.875007629394531,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000035",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_jinja_manual",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 17.935991287231445,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000036",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_tool_prompt",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 30.253887176513672,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000037",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_tool_schema",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 31.46982192993164,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000038",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_tool_api",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 30.431032180786133,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000039",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_tool_template",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 11.090993881225586,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000003a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_tool_weaver",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 46.58985137939453,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000003b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "base_fsm_tool_manual",
+      "model_type": "base",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 12.354850769042969,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000003c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_none_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "none",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 38.279056549072266,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000003d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_none_schema",
+      "model_type": "fsm",
+      "mixin_combo": "none",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 42.31715202331543,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000003e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_none_api",
+      "model_type": "fsm",
+      "mixin_combo": "none",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 47.30987548828125,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000003f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_none_template",
+      "model_type": "fsm",
+      "mixin_combo": "none",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 25.596141815185547,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000040",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_none_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "none",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 37.29987144470215,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000041",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_none_manual",
+      "model_type": "fsm",
+      "mixin_combo": "none",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 42.83785820007324,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000042",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "prompt",
+      "success": false,
+      "duration_ms": 37.796974182128906,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000043",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_schema",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 36.299943923950195,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000044",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_api",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 15.791893005371094,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000045",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_template",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 26.729106903076172,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000046",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 43.05410385131836,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000047",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_manual",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 44.47221755981445,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000048",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 26.66187286376953,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000049",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_schema",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 33.857107162475586,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000004a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_api",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 38.09618949890137,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000004b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_template",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 36.44990921020508,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000004c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 42.26517677307129,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000004d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_manual",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 29.977083206176758,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000004e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_file_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "file",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 21.456003189086914,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000004f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_file_schema",
+      "model_type": "fsm",
+      "mixin_combo": "file",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 39.77799415588379,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000050",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_file_api",
+      "model_type": "fsm",
+      "mixin_combo": "file",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 44.5859432220459,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000051",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_file_template",
+      "model_type": "fsm",
+      "mixin_combo": "file",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 34.768104553222656,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000052",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_file_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "file",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 26.359081268310547,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000053",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_file_manual",
+      "model_type": "fsm",
+      "mixin_combo": "file",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 26.509761810302734,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000054",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_tool_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 26.01909637451172,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000055",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_tool_schema",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 15.353918075561523,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000056",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_tool_api",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 10.63394546508789,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000057",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_tool_template",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 46.894073486328125,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000058",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_tool_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 19.900798797607422,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000059",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_tool_manual",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 28.156042098999023,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000005a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_file_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 36.82279586791992,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000005b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_file_schema",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 33.538103103637695,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000005c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_file_api",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 38.224220275878906,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000005d",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_file_template",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 27.555227279663086,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000005e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_file_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 24.61695671081543,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000005f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_jinja_file_manual",
+      "model_type": "fsm",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 11.295795440673828,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000060",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_file_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 42.88601875305176,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000061",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_file_schema",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 19.76919174194336,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000062",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_file_api",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 37.11414337158203,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000063",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_file_template",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 29.67691421508789,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000064",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_file_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 22.98283576965332,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000065",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_tool_file_manual",
+      "model_type": "fsm",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 38.970947265625,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000066",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_all_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "all",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 31.383991241455078,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000067",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_all_schema",
+      "model_type": "fsm",
+      "mixin_combo": "all",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 19.35410499572754,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000068",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_all_api",
+      "model_type": "fsm",
+      "mixin_combo": "all",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 17.86208152770996,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000069",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_all_template",
+      "model_type": "fsm",
+      "mixin_combo": "all",
+      "generation_source": "template",
+      "success": false,
+      "duration_ms": 41.34416580200195,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000006a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_all_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "all",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 42.50502586364746,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000006b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_all_manual",
+      "model_type": "fsm",
+      "mixin_combo": "all",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 38.185834884643555,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000006c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_jinja_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 28.21516990661621,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000006d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_jinja_schema",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 11.51585578918457,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000006e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_jinja_api",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 40.36092758178711,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000006f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_jinja_template",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 46.97918891906738,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000070",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_jinja_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 21.00992202758789,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000071",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_jinja_manual",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 16.5712833404541,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000072",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_tool_prompt",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 26.414871215820312,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000073",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_tool_schema",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 29.023408889770508,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000074",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_tool_api",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 14.194011688232422,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000075",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_tool_template",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 41.76735877990723,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000076",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_tool_weaver",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 29.76083755493164,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000077",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "fsm_fsm_tool_manual",
+      "model_type": "fsm",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 26.011228561401367,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000078",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_none_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "none",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 45.90606689453125,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000079",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_none_schema",
+      "model_type": "workflow",
+      "mixin_combo": "none",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 29.780149459838867,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000007a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_none_api",
+      "model_type": "workflow",
+      "mixin_combo": "none",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 27.512073516845703,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000007b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_none_template",
+      "model_type": "workflow",
+      "mixin_combo": "none",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 13.076066970825195,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000007c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_none_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "none",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 49.58295822143555,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000007d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_none_manual",
+      "model_type": "workflow",
+      "mixin_combo": "none",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 16.528844833374023,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000007e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "prompt",
+      "success": false,
+      "duration_ms": 42.03009605407715,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000007f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_schema",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "schema",
+      "success": false,
+      "duration_ms": 49.585819244384766,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000080",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_api",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 45.15576362609863,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000081",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_template",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 38.659095764160156,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000082",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 32.18507766723633,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000083",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_manual",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 45.883893966674805,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000084",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 34.1649055480957,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000085",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_schema",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 43.68901252746582,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000086",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_api",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 40.22693634033203,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000087",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_template",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 17.141103744506836,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000088",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 19.542932510375977,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000089",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_manual",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 20.158767700195312,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000008a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_file_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "file",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 35.11214256286621,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000008b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_file_schema",
+      "model_type": "workflow",
+      "mixin_combo": "file",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 23.273944854736328,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000008c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_file_api",
+      "model_type": "workflow",
+      "mixin_combo": "file",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 34.16109085083008,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000008d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_file_template",
+      "model_type": "workflow",
+      "mixin_combo": "file",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 29.68430519104004,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000008e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_file_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "file",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 19.213199615478516,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000008f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_file_manual",
+      "model_type": "workflow",
+      "mixin_combo": "file",
+      "generation_source": "manual",
+      "success": false,
+      "duration_ms": 27.489185333251953,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000090",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_tool_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 16.569137573242188,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000091",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_tool_schema",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 49.28398132324219,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000092",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_tool_api",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 27.504920959472656,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000093",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_tool_template",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 37.70804405212402,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000094",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_tool_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 30.328035354614258,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000095",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_tool_manual",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 31.892061233520508,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000096",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_file_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 48.58589172363281,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000097",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_file_schema",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 45.01223564147949,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000098",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_file_api",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 11.636972427368164,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000099",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_file_template",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 35.69197654724121,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000009a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_file_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 18.609046936035156,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000009b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_jinja_file_manual",
+      "model_type": "workflow",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 11.579751968383789,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000009c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_file_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 24.554014205932617,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000009d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_file_schema",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 27.325153350830078,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000009e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_file_api",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 22.651195526123047,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000009f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_file_template",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 18.117189407348633,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a0",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_file_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 21.886348724365234,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a1",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_tool_file_manual",
+      "model_type": "workflow",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 19.502878189086914,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a2",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_all_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "all",
+      "generation_source": "prompt",
+      "success": false,
+      "duration_ms": 43.17188262939453,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a3",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_all_schema",
+      "model_type": "workflow",
+      "mixin_combo": "all",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 38.31195831298828,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a4",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_all_api",
+      "model_type": "workflow",
+      "mixin_combo": "all",
+      "generation_source": "api",
+      "success": false,
+      "duration_ms": 44.44313049316406,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a5",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_all_template",
+      "model_type": "workflow",
+      "mixin_combo": "all",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 17.489194869995117,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a6",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_all_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "all",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 38.92207145690918,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a7",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_all_manual",
+      "model_type": "workflow",
+      "mixin_combo": "all",
+      "generation_source": "manual",
+      "success": false,
+      "duration_ms": 23.43297004699707,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a8",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_jinja_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 45.62687873840332,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000a9",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_jinja_schema",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 22.309064865112305,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000aa",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_jinja_api",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 22.485017776489258,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ab",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_jinja_template",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 16.176223754882812,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ac",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_jinja_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 46.991825103759766,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ad",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_jinja_manual",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 12.855768203735352,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ae",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_tool_prompt",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 41.17894172668457,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000af",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_tool_schema",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 48.71797561645508,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b0",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_tool_api",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 15.908241271972656,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b1",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_tool_template",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 41.413068771362305,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b2",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_tool_weaver",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 24.185895919799805,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b3",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "workflow_fsm_tool_manual",
+      "model_type": "workflow",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 45.21608352661133,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b4",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_none_prompt",
+      "model_type": "agent",
+      "mixin_combo": "none",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 15.065908432006836,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b5",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_none_schema",
+      "model_type": "agent",
+      "mixin_combo": "none",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 12.542009353637695,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b6",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_none_api",
+      "model_type": "agent",
+      "mixin_combo": "none",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 21.569013595581055,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b7",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_none_template",
+      "model_type": "agent",
+      "mixin_combo": "none",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 40.71927070617676,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b8",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_none_weaver",
+      "model_type": "agent",
+      "mixin_combo": "none",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 12.508869171142578,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000b9",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_none_manual",
+      "model_type": "agent",
+      "mixin_combo": "none",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 29.011964797973633,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ba",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_prompt",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 34.04808044433594,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000bb",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_schema",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 13.787031173706055,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000bc",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_api",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 37.500858306884766,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000bd",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_template",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "template",
+      "success": false,
+      "duration_ms": 28.98097038269043,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000be",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_weaver",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 38.001298904418945,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000bf",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_manual",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 42.569875717163086,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c0",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_prompt",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "prompt",
+      "success": false,
+      "duration_ms": 47.24717140197754,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c1",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_schema",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 25.99620819091797,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c2",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_api",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "api",
+      "success": false,
+      "duration_ms": 13.377189636230469,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c3",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_template",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 46.871185302734375,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c4",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_weaver",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "weaver",
+      "success": false,
+      "duration_ms": 39.939165115356445,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c5",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_manual",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 26.28612518310547,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c6",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_file_prompt",
+      "model_type": "agent",
+      "mixin_combo": "file",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 37.178754806518555,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c7",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_file_schema",
+      "model_type": "agent",
+      "mixin_combo": "file",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 32.608985900878906,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c8",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_file_api",
+      "model_type": "agent",
+      "mixin_combo": "file",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 13.473033905029297,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000c9",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_file_template",
+      "model_type": "agent",
+      "mixin_combo": "file",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 33.86807441711426,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ca",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_file_weaver",
+      "model_type": "agent",
+      "mixin_combo": "file",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 25.77805519104004,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000cb",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_file_manual",
+      "model_type": "agent",
+      "mixin_combo": "file",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 18.28789710998535,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000cc",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_tool_prompt",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 25.4058837890625,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000cd",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_tool_schema",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 12.54892349243164,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ce",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_tool_api",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 20.814895629882812,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000cf",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_tool_template",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 35.42304039001465,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d0",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_tool_weaver",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 22.229909896850586,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d1",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_tool_manual",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 49.01409149169922,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d2",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_file_prompt",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 10.931253433227539,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d3",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_file_schema",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 19.832134246826172,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d4",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_file_api",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 42.173147201538086,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d5",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_file_template",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 43.75505447387695,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d6",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_file_weaver",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 23.358821868896484,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d7",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_jinja_file_manual",
+      "model_type": "agent",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 30.057191848754883,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d8",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_file_prompt",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 28.983116149902344,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000d9",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_file_schema",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 17.31705665588379,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000da",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_file_api",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 27.27031707763672,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000db",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_file_template",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 12.70604133605957,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000dc",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_file_weaver",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 33.516883850097656,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000dd",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_tool_file_manual",
+      "model_type": "agent",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 33.49614143371582,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000de",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_all_prompt",
+      "model_type": "agent",
+      "mixin_combo": "all",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 14.256954193115234,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000df",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_all_schema",
+      "model_type": "agent",
+      "mixin_combo": "all",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 30.36189079284668,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e0",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_all_api",
+      "model_type": "agent",
+      "mixin_combo": "all",
+      "generation_source": "api",
+      "success": false,
+      "duration_ms": 30.371904373168945,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e1",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_all_template",
+      "model_type": "agent",
+      "mixin_combo": "all",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 16.858339309692383,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e2",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_all_weaver",
+      "model_type": "agent",
+      "mixin_combo": "all",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 18.459081649780273,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e3",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_all_manual",
+      "model_type": "agent",
+      "mixin_combo": "all",
+      "generation_source": "manual",
+      "success": false,
+      "duration_ms": 30.66110610961914,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e4",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_jinja_prompt",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 43.60389709472656,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e5",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_jinja_schema",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 27.806758880615234,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e6",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_jinja_api",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 38.93709182739258,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e7",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_jinja_template",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 27.011871337890625,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e8",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_jinja_weaver",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 50.78697204589844,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000e9",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_jinja_manual",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 29.040098190307617,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ea",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_tool_prompt",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 17.05169677734375,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000eb",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_tool_schema",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 46.44179344177246,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ec",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_tool_api",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 21.791934967041016,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ed",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_tool_template",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 31.29410743713379,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ee",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_tool_weaver",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 13.149023056030273,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ef",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "agent_fsm_tool_manual",
+      "model_type": "agent",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 34.48224067687988,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f0",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_none_prompt",
+      "model_type": "event",
+      "mixin_combo": "none",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 15.567779541015625,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f1",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_none_schema",
+      "model_type": "event",
+      "mixin_combo": "none",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 16.530990600585938,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f2",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_none_api",
+      "model_type": "event",
+      "mixin_combo": "none",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 30.45487403869629,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f3",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_none_template",
+      "model_type": "event",
+      "mixin_combo": "none",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 34.850120544433594,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f4",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_none_weaver",
+      "model_type": "event",
+      "mixin_combo": "none",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 17.848968505859375,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f5",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_none_manual",
+      "model_type": "event",
+      "mixin_combo": "none",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 33.55693817138672,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f6",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_prompt",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 22.701025009155273,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f7",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_schema",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 15.692949295043945,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f8",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_api",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "api",
+      "success": false,
+      "duration_ms": 41.9161319732666,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000f9",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_template",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 30.839204788208008,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000fa",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_weaver",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 43.49088668823242,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000fb",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_manual",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 11.250734329223633,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000fc",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_prompt",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 34.117937088012695,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000fd",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_schema",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 32.90963172912598,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000fe",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_api",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 30.398845672607422,
+      "span_count": 5,
+      "trace_id": "000000000000000000000000000000ff",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_template",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 36.624908447265625,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000100",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_weaver",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 24.17588233947754,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000101",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_manual",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "manual",
+      "success": false,
+      "duration_ms": 11.37995719909668,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000102",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_file_prompt",
+      "model_type": "event",
+      "mixin_combo": "file",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 19.560813903808594,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000103",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_file_schema",
+      "model_type": "event",
+      "mixin_combo": "file",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 36.59868240356445,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000104",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_file_api",
+      "model_type": "event",
+      "mixin_combo": "file",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 16.765117645263672,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000105",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_file_template",
+      "model_type": "event",
+      "mixin_combo": "file",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 43.68305206298828,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000106",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_file_weaver",
+      "model_type": "event",
+      "mixin_combo": "file",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 22.626876831054688,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000107",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_file_manual",
+      "model_type": "event",
+      "mixin_combo": "file",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 11.18612289428711,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000108",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_tool_prompt",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 26.157855987548828,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000109",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_tool_schema",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 39.52980041503906,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000010a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_tool_api",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 33.15877914428711,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000010b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_tool_template",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 21.3470458984375,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000010c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_tool_weaver",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 34.7440242767334,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000010d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_tool_manual",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 29.8769474029541,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000010e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_file_prompt",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 18.883228302001953,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000010f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_file_schema",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 26.625871658325195,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000110",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_file_api",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 24.363040924072266,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000111",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_file_template",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 39.832115173339844,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000112",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_file_weaver",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 41.895151138305664,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000113",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_jinja_file_manual",
+      "model_type": "event",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 43.71500015258789,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000114",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_file_prompt",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 29.315948486328125,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000115",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_file_schema",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 38.36631774902344,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000116",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_file_api",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 17.495155334472656,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000117",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_file_template",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 21.430015563964844,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000118",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_file_weaver",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 33.79511833190918,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000119",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_tool_file_manual",
+      "model_type": "event",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 39.589881896972656,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000011a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_all_prompt",
+      "model_type": "event",
+      "mixin_combo": "all",
+      "generation_source": "prompt",
+      "success": false,
+      "duration_ms": 35.32600402832031,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000011b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_all_schema",
+      "model_type": "event",
+      "mixin_combo": "all",
+      "generation_source": "schema",
+      "success": false,
+      "duration_ms": 16.904830932617188,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000011c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_all_api",
+      "model_type": "event",
+      "mixin_combo": "all",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 36.99302673339844,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000011d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_all_template",
+      "model_type": "event",
+      "mixin_combo": "all",
+      "generation_source": "template",
+      "success": false,
+      "duration_ms": 46.02193832397461,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000011e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_all_weaver",
+      "model_type": "event",
+      "mixin_combo": "all",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 45.430898666381836,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000011f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_all_manual",
+      "model_type": "event",
+      "mixin_combo": "all",
+      "generation_source": "manual",
+      "success": false,
+      "duration_ms": 41.1829948425293,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000120",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_jinja_prompt",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 11.919021606445312,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000121",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_jinja_schema",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 33.1730842590332,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000122",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_jinja_api",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 18.179893493652344,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000123",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_jinja_template",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 32.195091247558594,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000124",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_jinja_weaver",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 49.653053283691406,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000125",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_jinja_manual",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 22.078990936279297,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000126",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_tool_prompt",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 47.12724685668945,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000127",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_tool_schema",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 20.34783363342285,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000128",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_tool_api",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 29.147863388061523,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000129",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_tool_template",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 39.36171531677246,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000012a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_tool_weaver",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 11.746883392333984,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000012b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "event_fsm_tool_manual",
+      "model_type": "event",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 38.938045501708984,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000012c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_none_prompt",
+      "model_type": "template",
+      "mixin_combo": "none",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 25.02894401550293,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000012d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_none_schema",
+      "model_type": "template",
+      "mixin_combo": "none",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 41.455984115600586,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000012e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_none_api",
+      "model_type": "template",
+      "mixin_combo": "none",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 39.920806884765625,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000012f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_none_template",
+      "model_type": "template",
+      "mixin_combo": "none",
+      "generation_source": "template",
+      "success": false,
+      "duration_ms": 41.094064712524414,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000130",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_none_weaver",
+      "model_type": "template",
+      "mixin_combo": "none",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 27.52995491027832,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000131",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_none_manual",
+      "model_type": "template",
+      "mixin_combo": "none",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 11.677980422973633,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000132",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_prompt",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "prompt",
+      "success": true,
+      "duration_ms": 28.892993927001953,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000133",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_schema",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 42.29092597961426,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000134",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_api",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 11.922359466552734,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000135",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_template",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "template",
+      "success": false,
+      "duration_ms": 43.554067611694336,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000136",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_weaver",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 11.272907257080078,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000137",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_manual",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "manual",
+      "success": false,
+      "duration_ms": 35.45117378234863,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000138",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_prompt",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "prompt",
+      "success": false,
+      "duration_ms": 23.796796798706055,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000139",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_schema",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 42.85073280334473,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000013a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_api",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 26.44181251525879,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000013b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_template",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 40.12799263000488,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000013c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_weaver",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 39.77322578430176,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000013d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_manual",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 28.00893783569336,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000013e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_file_prompt",
+      "model_type": "template",
+      "mixin_combo": "file",
+      "generation_source": "prompt",
+      "success": false,
+      "duration_ms": 15.092134475708008,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000013f",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_file_schema",
+      "model_type": "template",
+      "mixin_combo": "file",
+      "generation_source": "schema",
+      "success": true,
+      "duration_ms": 25.686979293823242,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000140",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_file_api",
+      "model_type": "template",
+      "mixin_combo": "file",
+      "generation_source": "api",
+      "success": true,
+      "duration_ms": 32.9742431640625,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000141",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_file_template",
+      "model_type": "template",
+      "mixin_combo": "file",
+      "generation_source": "template",
+      "success": true,
+      "duration_ms": 21.043062210083008,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000142",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_file_weaver",
+      "model_type": "template",
+      "mixin_combo": "file",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 13.248205184936523,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000143",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_file_manual",
+      "model_type": "template",
+      "mixin_combo": "file",
+      "generation_source": "manual",
+      "success": true,
+      "duration_ms": 23.577213287353516,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000144",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_tool_prompt",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 23.586750030517578,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000145",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_tool_schema",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 14.478921890258789,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000146",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_tool_api",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 49.77917671203613,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000147",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": false
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_tool_template",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 17.178773880004883,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000148",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_tool_weaver",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 35.01391410827637,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000149",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_tool_manual",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 38.16699981689453,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000014a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_file_prompt",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 13.677120208740234,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000014b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_file_schema",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 35.29191017150879,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000014c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_file_api",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 47.20902442932129,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000014d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_file_template",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 37.258148193359375,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000014e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_file_weaver",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 14.783859252929688,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000014f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_jinja_file_manual",
+      "model_type": "template",
+      "mixin_combo": "jinja",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 22.97210693359375,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000150",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_file_prompt",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 46.59605026245117,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000151",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_file_schema",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 19.820213317871094,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000152",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_file_api",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 45.23015022277832,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000153",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_file_template",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 46.74220085144043,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000154",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_file_weaver",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 32.19795227050781,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000155",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_tool_file_manual",
+      "model_type": "template",
+      "mixin_combo": "tool",
+      "generation_source": "file",
+      "success": false,
+      "duration_ms": 27.51898765563965,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000156",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_all_prompt",
+      "model_type": "template",
+      "mixin_combo": "all",
+      "generation_source": "prompt",
+      "success": false,
+      "duration_ms": 23.614168167114258,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000157",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_all_schema",
+      "model_type": "template",
+      "mixin_combo": "all",
+      "generation_source": "schema",
+      "success": false,
+      "duration_ms": 29.8922061920166,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000158",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_all_api",
+      "model_type": "template",
+      "mixin_combo": "all",
+      "generation_source": "api",
+      "success": false,
+      "duration_ms": 15.286922454833984,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000159",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_all_template",
+      "model_type": "template",
+      "mixin_combo": "all",
+      "generation_source": "template",
+      "success": false,
+      "duration_ms": 45.55916786193848,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000015a",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_all_weaver",
+      "model_type": "template",
+      "mixin_combo": "all",
+      "generation_source": "weaver",
+      "success": true,
+      "duration_ms": 27.336835861206055,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000015b",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_all_manual",
+      "model_type": "template",
+      "mixin_combo": "all",
+      "generation_source": "manual",
+      "success": false,
+      "duration_ms": 32.74798393249512,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000015c",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": false,
+        "generation_source_valid": true,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_jinja_prompt",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 32.95016288757324,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000015d",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_jinja_schema",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 34.70110893249512,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000015e",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_jinja_api",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 22.53890037536621,
+      "span_count": 5,
+      "trace_id": "0000000000000000000000000000015f",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_jinja_template",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 35.56704521179199,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000160",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_jinja_weaver",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 42.48213768005371,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000161",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_jinja_manual",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "jinja",
+      "success": false,
+      "duration_ms": 27.440786361694336,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000162",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_tool_prompt",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 27.580976486206055,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000163",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_tool_schema",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 22.508621215820312,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000164",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_tool_api",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 48.914194107055664,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000165",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_tool_template",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 18.526077270507812,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000166",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_tool_weaver",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 10.49494743347168,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000167",
+      "validation_details": {
+        "instantiation": true,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    },
+    {
+      "permutation_id": "template_fsm_tool_manual",
+      "model_type": "template",
+      "mixin_combo": "fsm",
+      "generation_source": "tool",
+      "success": false,
+      "duration_ms": 21.19612693786621,
+      "span_count": 5,
+      "trace_id": "00000000000000000000000000000168",
+      "validation_details": {
+        "instantiation": false,
+        "mixin_compatibility": true,
+        "generation_source_valid": false,
+        "telemetry_valid": true
+      },
+      "error": null
+    }
+  ]
+}

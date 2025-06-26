@@ -1,0 +1,77 @@
+"""
+Test suite for {{ convention_name|title }}
+Auto-generated from semantic convention - DO NOT EDIT MANUALLY
+"""
+
+import pytest
+from unittest.mock import Mock, patch
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+from opentelemetry.sdk.trace.export.in_memory_span_exporter import InMemorySpanExporter
+
+from ..models.{{ convention_name }} import *
+
+
+class Test{{ convention_name|title }}:
+    """Auto-generated test suite for {{ convention_name }}"""
+    
+    def setup_method(self):
+        """Setup test environment with in-memory span collection"""
+        self.span_exporter = InMemorySpanExporter()
+        tracer_provider = TracerProvider()
+        tracer_provider.add_span_processor(SimpleSpanProcessor(self.span_exporter))
+        trace.set_tracer_provider(tracer_provider)
+    
+    {% for group in groups %}
+    {% if group.type == 'span' %}
+    def test_{{ group.id|replace('.', '_')|replace('-', '_') }}_model_creation(self):
+        """Test {{ group.id }} model can be created"""
+        model = {{ group.id|replace('.', '_')|replace('-', '_')|title }}(
+            {% for attr in group.attributes %}
+            {% if attr.requirement_level == 'required' %}
+            {{ attr.id|replace('.', '_') }}="test_value",
+            {% endif %}
+            {% endfor %}
+        )
+        
+        assert model is not None
+        {% for attr in group.attributes %}
+        {% if attr.requirement_level == 'required' %}
+        assert model.{{ attr.id|replace('.', '_') }} == "test_value"
+        {% endif %}
+        {% endfor %}
+    
+    def test_{{ group.id|replace('.', '_')|replace('-', '_') }}_telemetry_emission(self):
+        """Test {{ group.id }} emits correct telemetry"""
+        model = {{ group.id|replace('.', '_')|replace('-', '_')|title }}(
+            {% for attr in group.attributes %}
+            {% if attr.requirement_level == 'required' %}
+            {{ attr.id|replace('.', '_') }}="test_value",
+            {% endif %}
+            {% endfor %}
+        )
+        
+        # Clear previous spans
+        self.span_exporter.clear()
+        
+        # Emit telemetry
+        trace_id = model.emit_telemetry()
+        
+        # Verify span was created
+        spans = self.span_exporter.get_finished_spans()
+        assert len(spans) == 1
+        
+        span = spans[0]
+        assert span.name == "{{ group.id }}"
+        
+        # Verify attributes
+        {% for attr in group.attributes %}
+        {% if attr.requirement_level == 'required' %}
+        assert "{{ group.prefix or group.id }}.{{ attr.id }}" in span.attributes
+        assert span.attributes["{{ group.prefix or group.id }}.{{ attr.id }}"] == "test_value"
+        {% endif %}
+        {% endfor %}
+    
+    {% endif %}
+    {% endfor %}

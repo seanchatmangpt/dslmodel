@@ -1,0 +1,2882 @@
+[
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "none",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "none",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "json_schema",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "typescript",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "yaml",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "jinja_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "tool_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "all",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "all",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "all",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "all",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "all",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "base",
+    "mixin_combination": "all",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "jinja_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "tool_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "all",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "all",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "all",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "all",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "all",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "all",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "jinja_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "tool_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "all",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "all",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "all",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "all",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "all",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "workflow",
+    "mixin_combination": "all",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "jinja_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "tool_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "all",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "all",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "all",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "all",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "all",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "agent",
+    "mixin_combination": "all",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "jinja_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "tool_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "all",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "all",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "all",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "all",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "all",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "event",
+    "mixin_combination": "all",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "jinja_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool_file",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool_file",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool_file",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool_file",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool_file",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "tool_file",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "all",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "all",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "all",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "all",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "all",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "template",
+    "mixin_combination": "all",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_jinja",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_jinja",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_jinja",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_jinja",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_jinja",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_jinja",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_tool",
+    "generation_source": "prompt",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_tool",
+    "generation_source": "schema",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_tool",
+    "generation_source": "api",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_tool",
+    "generation_source": "template",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_tool",
+    "generation_source": "weaver",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  },
+  {
+    "model_type": "fsm",
+    "mixin_combination": "fsm_tool",
+    "generation_source": "manual",
+    "validation_enabled": true,
+    "output_format": "python",
+    "template_engine": "jinja2"
+  }
+]

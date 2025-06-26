@@ -1,0 +1,49 @@
+[
+  {
+    "id": "work_ae9e8b3a",
+    "description": "Analyze system logs",
+    "priority": "medium",
+    "team": null,
+    "status": "completed",
+    "created": "2025-06-26T05:59:58.076486",
+    "assigned_to": "agent_1750942798074315000",
+    "completed": "2025-06-26T05:59:58.081573"
+  },
+  {
+    "id": "work_e9652e8e",
+    "description": "Generate performance report",
+    "priority": "medium",
+    "team": null,
+    "status": "completed",
+    "created": "2025-06-26T05:59:58.077062",
+    "assigned_to": "agent_1750942798075143000",
+    "completed": "2025-06-26T05:59:58.082318"
+  },
+  {
+    "id": "work_349b560f",
+    "description": "Optimize database queries",
+    "priority": "medium",
+    "team": null,
+    "status": "in_progress",
+    "created": "2025-06-26T05:59:58.077659",
+    "assigned_to": "agent_1750942798075706000"
+  },
+  {
+    "id": "work_51462fa9",
+    "description": "Update documentation",
+    "priority": "medium",
+    "team": null,
+    "status": "pending",
+    "created": "2025-06-26T05:59:58.078193",
+    "assigned_to": null
+  },
+  {
+    "id": "work_2273f05b",
+    "description": "Review code changes",
+    "priority": "medium",
+    "team": null,
+    "status": "pending",
+    "created": "2025-06-26T05:59:58.078737",
+    "assigned_to": null
+  }
+]

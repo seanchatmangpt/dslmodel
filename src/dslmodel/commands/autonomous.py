@@ -11,6 +11,7 @@ from rich.panel import Panel
 from loguru import logger
 
 from ..agents.autonomous_decision_engine import AutonomousDecisionEngine, SystemHealth
+from ..utils.json_output import json_command, get_formatter, format_system_status
 
 app = typer.Typer(help="Autonomous Decision Engine commands")
 console = Console()
@@ -81,24 +82,31 @@ def status(
 ):
     """Show current system status without making changes."""
     
-    engine = AutonomousDecisionEngine(coordination_dir)
-    status_data = engine.status()
-    
-    # Create status display
-    health_state = status_data["health_state"]
-    metrics = status_data["metrics"]
-    
-    # Color code based on health
-    health_colors = {
-        "critical": "red",
-        "degraded": "yellow",
-        "healthy": "green",
-        "optimal": "bright_green"
-    }
-    health_color = health_colors.get(health_state, "white")
-    
-    # Status panel
-    status_text = f"""
+    with json_command("auto-status") as formatter:
+        formatter.add_data("coordination_dir", str(coordination_dir))
+        
+        engine = AutonomousDecisionEngine(coordination_dir)
+        status_data = engine.status()
+        
+        # Add status data to JSON output
+        formatter.add_data("status", format_system_status(status_data["metrics"]))
+        formatter.add_data("health_state", status_data["health_state"])
+        
+        # Create status display for non-JSON mode
+        health_state = status_data["health_state"]
+        metrics = status_data["metrics"]
+        
+        # Color code based on health
+        health_colors = {
+            "critical": "red",
+            "degraded": "yellow", 
+            "healthy": "green",
+            "optimal": "bright_green"
+        }
+        health_color = health_colors.get(health_state, "white")
+        
+        # Status panel
+        status_text = f"""
 [bold]System Health:[/bold] [{health_color}]{health_state.upper()}[/{health_color}]
 [bold]Health Score:[/bold] {metrics['health_score']:.2f}/1.0
 [bold]Active Agents:[/bold] {metrics['active_agents']}
@@ -107,12 +115,12 @@ def status(
 [bold]Telemetry Volume:[/bold] {metrics['telemetry_volume']} items
 [bold]Last Updated:[/bold] {metrics['timestamp']}
 """
-    
-    console.print(Panel(
-        status_text,
-        title="🤖 Autonomous System Status",
-        border_style=health_color
-    ))
+        
+        formatter.print(Panel(
+            status_text,
+            title="🤖 Autonomous System Status",
+            border_style=health_color
+        ))
 
 
 @app.command()

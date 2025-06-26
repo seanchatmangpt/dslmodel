@@ -1,0 +1,36 @@
+groups:
+- attributes:
+  - brief: Type of transformation agent
+    examples:
+    - roberts_rules
+    - scrum_scale
+    - lean_six_sigma
+    id: agent.type
+    requirement_level: required
+    type: string
+  - brief: Current workflow phase
+    examples:
+    - governance
+    - agile_scaling
+    - process_optimization
+    id: workflow.phase
+    requirement_level: required
+    type: string
+  - brief: Defect rate as decimal
+    examples:
+    - 0.147
+    - 0.05
+    id: quality.defect_rate
+    requirement_level: recommended
+    type: double
+  - brief: Return on investment multiplier
+    examples:
+    - 2.5
+    - 3.4
+    id: financial.roi
+    requirement_level: recommended
+    type: double
+  brief: Organizational transformation telemetry
+  id: transformation
+  prefix: transformation
+  type: span

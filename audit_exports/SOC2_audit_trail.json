@@ -1,0 +1,85 @@
+{
+  "framework": "SOC2",
+  "export_timestamp": "2025-06-26T05:59:30.224046",
+  "total_events": 3,
+  "compliance_rate": "100%",
+  "events": [
+    {
+      "timestamp": "2025-06-26T05:59:28.178253",
+      "event_id": "evt_1750942768178",
+      "operation": "user_data_access",
+      "agent_id": "backend_agent",
+      "trace_id": "trace_131144",
+      "span_id": "span_038457",
+      "user_id": "user_123",
+      "resource_id": "customer_data",
+      "action": "SELECT",
+      "outcome": "COMPLIANT",
+      "evidence_hash": "22ff96474f9f7385dcc0d8cd33652ada155ff4c995e67fdd007d18ef430c0cad",
+      "compliance_frameworks": [
+        "GDPR",
+        "HIPAA",
+        "SOC2",
+        "ISO27001"
+      ],
+      "risk_level": "HIGH",
+      "automated_controls": [
+        "real_time_monitoring",
+        "cryptographic_hashing",
+        "trace_correlation",
+        "automated_evidence_collection"
+      ],
+      "manual_review_required": true
+    },
+    {
+      "timestamp": "2025-06-26T05:59:28.790523",
+      "event_id": "evt_1750942768790",
+      "operation": "security_scan",
+      "agent_id": "security_agent",
+      "trace_id": "trace_948180",
+      "span_id": "span_576691",
+      "user_id": "system",
+      "resource_id": "infrastructure",
+      "action": "SCAN",
+      "outcome": "COMPLIANT",
+      "evidence_hash": "16c6308693e7e632f192ee0d7464141e2b0598eca88f9a282e53f6e96d3e577e",
+      "compliance_frameworks": [
+        "SOC2",
+        "ISO27001"
+      ],
+      "risk_level": "MEDIUM",
+      "automated_controls": [
+        "real_time_monitoring",
+        "cryptographic_hashing",
+        "trace_correlation",
+        "automated_evidence_collection"
+      ],
+      "manual_review_required": false
+    },
+    {
+      "timestamp": "2025-06-26T05:59:29.200133",
+      "event_id": "evt_1750942769200",
+      "operation": "access_control_update",
+      "agent_id": "auth_agent",
+      "trace_id": "trace_335013",
+      "span_id": "span_636369",
+      "user_id": "admin_101",
+      "resource_id": "user_permissions",
+      "action": "UPDATE",
+      "outcome": "COMPLIANT",
+      "evidence_hash": "9f7850b8c44918afb16699aaa76fb8559d109417ee9deb196dd699dd1b62de46",
+      "compliance_frameworks": [
+        "SOC2",
+        "ISO27001"
+      ],
+      "risk_level": "MEDIUM",
+      "automated_controls": [
+        "real_time_monitoring",
+        "cryptographic_hashing",
+        "trace_correlation",
+        "automated_evidence_collection"
+      ],
+      "manual_review_required": false
+    }
+  ]
+}

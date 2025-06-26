@@ -140,3 +140,21 @@ def is_otel_configured() -> bool:
         (os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT") is not None or 
          os.getenv("OTEL_SDK_DISABLED") != "true")
     )
+
+def setup_otel_ecosystem(service_name: str = "dslmodel-coordination"):
+    """Setup the complete OTEL ecosystem with fallbacks"""
+    tracer, meter = setup_otel(service_name)
+    
+    print(f"🔧 OTEL Ecosystem Setup:")
+    print(f"   Service: {service_name}")
+    print(f"   OTEL Available: {OTEL_AVAILABLE}")
+    print(f"   OTLP Available: {OTLP_AVAILABLE}")
+    print(f"   Configured: {is_otel_configured()}")
+    
+    return {
+        "tracer": tracer,
+        "meter": meter,
+        "otel_available": OTEL_AVAILABLE,
+        "otlp_available": OTLP_AVAILABLE,
+        "configured": is_otel_configured()
+    }

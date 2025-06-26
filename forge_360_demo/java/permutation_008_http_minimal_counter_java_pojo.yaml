@@ -1,0 +1,44 @@
+metadata:
+  generated_at: '2025-06-26T06:18:41.654097'
+  generator_version: 1.0.0
+  permutation_index: 0
+configuration:
+  span_type: http
+  attribute_set: minimal
+  metric_type: counter
+  language: java
+  framework: pojo
+  template_config:
+    getters_setters: true
+    builder_pattern: true
+semconv:
+  groups:
+  - id: dslmodel.http
+    type: span
+    prefix: dslmodel.http
+    brief: DSLModel http span attributes
+    attributes:
+    - id: http.method
+      type: string
+      requirement_level: required
+      brief: The http method
+      examples:
+      - http_get
+      - http_post
+    - id: http.status_code
+      type: int
+      requirement_level: recommended
+      brief: The http response status code
+      examples:
+      - 200
+      - 404
+      - 500
+  - id: http.counter
+    type: metric
+    metric_name: http.operations.counter
+    brief: Tracks http operations using counter
+    instrument: counter
+    unit: '1'
+    attributes:
+    - ref: http.method
+    - ref: http.status_code

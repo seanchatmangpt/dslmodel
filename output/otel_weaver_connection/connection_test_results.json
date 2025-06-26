@@ -1,0 +1,151 @@
+{
+  "timestamp": "2025-06-26T06:43:17.220397",
+  "test_summary": {
+    "total_tests": 5,
+    "passed_tests": 5,
+    "average_score": 0.8400000000000001,
+    "total_time_ms": 18637.15887069702
+  },
+  "connection_tests": [
+    {
+      "test_name": "semconv_to_span_mapping",
+      "success": true,
+      "response_time_ms": 7.76982307434082,
+      "validation_score": 0.5,
+      "details": {
+        "spans_found": 5,
+        "span_mappings": {
+          "dslmodel.model.create": {
+            "name": "dslmodel.model.create",
+            "required_attributes": 2,
+            "total_attributes": 5,
+            "has_brief": true,
+            "has_prefix": true
+          },
+          "dslmodel.model.validate": {
+            "name": "dslmodel.model.validate",
+            "required_attributes": 2,
+            "total_attributes": 4,
+            "has_brief": true,
+            "has_prefix": true
+          },
+          "dslmodel.agent.execute": {
+            "name": "dslmodel.agent.execute",
+            "required_attributes": 3,
+            "total_attributes": 5,
+            "has_brief": true,
+            "has_prefix": true
+          },
+          "dslmodel.workflow.run": {
+            "name": "dslmodel.workflow.run",
+            "required_attributes": 3,
+            "total_attributes": 5,
+            "has_brief": true,
+            "has_prefix": true
+          },
+          "dslmodel.system.health": {
+            "name": "dslmodel.system.health",
+            "required_attributes": 1,
+            "total_attributes": 3,
+            "has_brief": true,
+            "has_prefix": true
+          }
+        },
+        "semconv_groups": 9
+      },
+      "timestamp": "2025-06-26T06:42:58.586657"
+    },
+    {
+      "test_name": "weaver_code_generation",
+      "success": true,
+      "response_time_ms": 0.9980201721191406,
+      "validation_score": 1.0,
+      "details": {
+        "files_generated": 3,
+        "files_expected": 3,
+        "content_checks": {
+          "generated_models.py": {
+            "has_imports": true,
+            "has_classes": true,
+            "has_telemetry": true,
+            "size_bytes": 8465,
+            "has_docstrings": true
+          },
+          "generated_cli.py": {
+            "has_imports": true,
+            "has_classes": false,
+            "has_telemetry": true,
+            "size_bytes": 6523,
+            "has_docstrings": true
+          },
+          "generated_tests.py": {
+            "has_imports": true,
+            "has_classes": true,
+            "has_telemetry": true,
+            "size_bytes": 4300,
+            "has_docstrings": true
+          }
+        },
+        "files_status": {
+          "generated_models.py": true,
+          "generated_cli.py": true,
+          "generated_tests.py": true
+        }
+      },
+      "timestamp": "2025-06-26T06:42:58.588114"
+    },
+    {
+      "test_name": "otel_span_emission",
+      "success": true,
+      "response_time_ms": 0.00286102294921875,
+      "validation_score": 1.0,
+      "details": {
+        "span_structure_valid": true,
+        "naming_convention_valid": true,
+        "required_attributes_present": true,
+        "span_sample": {
+          "name": "dslmodel.model.create",
+          "trace_id": "12345678901234567890123456789012",
+          "span_id": "1234567890123456",
+          "attributes": {
+            "dslmodel.model.type": "agent",
+            "dslmodel.operation.type": "create"
+          },
+          "start_time": 1750945378.588429,
+          "status": "OK"
+        },
+        "attribute_count": 2
+      },
+      "timestamp": "2025-06-26T06:42:58.588434"
+    },
+    {
+      "test_name": "cli_telemetry_integration",
+      "success": true,
+      "response_time_ms": 0.44417381286621094,
+      "validation_score": 0.75,
+      "details": {
+        "cli_exists": true,
+        "has_telemetry_imports": true,
+        "has_span_creation": true,
+        "has_otel_integration": false,
+        "command_count": 8,
+        "file_size": 12624
+      },
+      "timestamp": "2025-06-26T06:42:58.589106"
+    },
+    {
+      "test_name": "ollama_validation",
+      "success": true,
+      "response_time_ms": 18627.943992614746,
+      "validation_score": 0.95,
+      "details": {
+        "ollama_model": "qwen3",
+        "validation_result": "true",
+        "confidence_score": 0.95,
+        "key_issue": "None identified",
+        "llm_available": true
+      },
+      "timestamp": "2025-06-26T06:43:17.217281"
+    }
+  ]
+}

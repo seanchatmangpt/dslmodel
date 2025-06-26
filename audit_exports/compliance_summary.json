@@ -1,0 +1,16 @@
+{
+  "organization": "SwarmSH Demo Company",
+  "assessment_period": "2025-05-27 05:59:30.225248 to 2025-06-26 05:59:30.225259",
+  "frameworks_assessed": [
+    "GDPR",
+    "HIPAA",
+    "SOC2",
+    "ISO27001",
+    "PCI-DSS",
+    "FedRAMP"
+  ],
+  "overall_compliance_rate": "100%",
+  "automated_controls": 48,
+  "audit_ready_frameworks": [],
+  "next_assessment": "2025-09-24T05:59:30.225265"
+}

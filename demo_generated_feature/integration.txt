@@ -1,0 +1,11 @@
+# Integration code for auto_decision
+
+# Add to main CLI app
+from .auto_decision_cli import app as auto_decision_app
+main_app.add_typer(auto_decision_app, name="auto-decision")
+
+# Add to __init__.py
+from .auto_decision import AutoDecision
+
+# Export in __all__
+__all__ = ["AutoDecision"]

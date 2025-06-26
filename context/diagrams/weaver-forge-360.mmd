@@ -1,0 +1,112 @@
+graph TB
+    %% Weaver Forge + DSLModel 360° Architecture
+    
+    subgraph "Input Layer - Semantic Conventions"
+        YC[YAML Conventions<br/>semconv_registry/]
+        PC[Python Conventions<br/>src/dslmodel/weaver/]
+        SC[Schema Definitions<br/>OpenTelemetry Standards]
+    end
+    
+    subgraph "Generation Layer - Weaver Forge"
+        WF[Weaver Forge Engine<br/>Code Generation]
+        VAL[Convention Validator<br/>Type Safety]
+        TPL[Template Engine<br/>Jinja2 Templates]
+        GEN[Model Generator<br/>Multi-Language]
+    end
+    
+    subgraph "Model Layer - Generated Code"
+        PM[Pydantic Models<br/>Type-Safe Attributes]
+        FSM[FSM Models<br/>State Machines]
+        OTEL[OTEL Models<br/>Telemetry Attributes]
+        COMP[Composite Models<br/>Business Logic]
+    end
+    
+    subgraph "Application Layer - DSLModel"
+        WO[Workflow Orchestrator<br/>FSM + OTEL + DSL]
+        AI[AI Enhancement<br/>DSPy + LLM]
+        MIX[Rich Mixins<br/>File, Template, Tool]
+        EXP[Export Capabilities<br/>JSON/YAML/JSONL]
+    end
+    
+    subgraph "Runtime Layer - Execution"
+        EXEC[Workflow Execution<br/>Business Logic]
+        STATE[State Management<br/>Transitions + Guards]
+        TELEM[Telemetry Generation<br/>Spans + Metrics]
+        VALID[Runtime Validation<br/>Type + Business Rules]
+    end
+    
+    subgraph "Observability Layer - OpenTelemetry"
+        TRACES[Distributed Traces<br/>Jaeger/Zipkin]
+        METRICS[Metrics Collection<br/>Prometheus]
+        LOGS[Correlated Logs<br/>Structured Logging]
+        DASH[Dashboards<br/>Grafana]
+    end
+    
+    subgraph "Intelligence Layer - AI/ML"
+        PRED[Predictive Analytics<br/>Workflow Optimization]
+        ANOM[Anomaly Detection<br/>Pattern Recognition]
+        OPT[Auto-Optimization<br/>Performance Tuning]
+        DEC[Decision Engine<br/>Next Best Action]
+    end
+    
+    %% Flow connections
+    YC --> WF
+    PC --> WF
+    SC --> VAL
+    
+    WF --> TPL
+    VAL --> GEN
+    TPL --> GEN
+    
+    GEN --> PM
+    GEN --> FSM
+    GEN --> OTEL
+    
+    PM --> COMP
+    FSM --> COMP
+    OTEL --> COMP
+    
+    COMP --> WO
+    WO --> AI
+    WO --> MIX
+    WO --> EXP
+    
+    WO --> EXEC
+    EXEC --> STATE
+    EXEC --> TELEM
+    EXEC --> VALID
+    
+    TELEM --> TRACES
+    TELEM --> METRICS
+    TELEM --> LOGS
+    
+    TRACES --> DASH
+    METRICS --> DASH
+    LOGS --> DASH
+    
+    DASH --> PRED
+    PRED --> ANOM
+    ANOM --> OPT
+    OPT --> DEC
+    
+    %% Feedback loops
+    DEC -.-> WO
+    OPT -.-> WF
+    ANOM -.-> VAL
+    
+    %% Styling
+    classDef input fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef generation fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef model fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef application fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef runtime fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef observability fill:#e0f2f1,stroke:#004d40,stroke-width:2px
+    classDef intelligence fill:#ede7f6,stroke:#311b92,stroke-width:2px
+    
+    class YC,PC,SC input
+    class WF,VAL,TPL,GEN generation
+    class PM,FSM,OTEL,COMP model
+    class WO,AI,MIX,EXP application
+    class EXEC,STATE,TELEM,VALID runtime
+    class TRACES,METRICS,LOGS,DASH observability
+    class PRED,ANOM,OPT,DEC intelligence

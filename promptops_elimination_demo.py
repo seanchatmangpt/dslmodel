@@ -128,8 +128,7 @@ class PromptOpsEliminationDemo:
         self.console.print(f"\n📋 Example Workflow: [bold]{example_workflow}[/bold]")
         
         # Traditional prompt approach
-        prompt_approach = Panel(
-            """
+        prompt_content = '''
 PROMPT: "You are a customer support agent. Classify the following ticket into one of these categories: 
 - Technical Issue
 - Billing Question  
@@ -141,8 +140,10 @@ Please analyze the ticket carefully and provide only the category name.
 
 Ticket: {ticket_text}
 
-Category:"""
-            """,
+Category:"'''
+        
+        prompt_approach = Panel(
+            prompt_content,
             title="❌ Traditional Prompt Approach",
             border_style="red"
         )
@@ -165,8 +166,7 @@ Category:"""
             sample_ticket = "My payment was charged twice this month and I need a refund"
             result = classifier(ticket_content=sample_ticket)
             
-            swarmsh_approach = Panel(
-                f"""
+            swarmsh_content = f"""
 STRUCTURAL SIGNATURE:
 - Input: ticket_content (validated)
 - Outputs: category, confidence, reasoning
@@ -178,14 +178,15 @@ RESULT:
 - Confidence: {result.confidence}
 - Reasoning: {result.reasoning}
 - Trace ID: auto-generated
-- Performance: tracked automatically
-            """,
-            title="✅ SwarmSH Structural Approach",
-            border_style="green"
-        )
-        else:
+- Performance: tracked automatically"""
+            
             swarmsh_approach = Panel(
-                """
+                swarmsh_content,
+                title="✅ SwarmSH Structural Approach",
+                border_style="green"
+            )
+        else:
+            swarmsh_content = """
 STRUCTURAL SIGNATURE:
 - Input: ticket_content (validated)
 - Outputs: category, confidence, reasoning  
@@ -197,8 +198,10 @@ BENEFITS:
 - Automatic telemetry
 - Model-agnostic
 - Type-safe inputs/outputs
-- Built-in tracing
-                """,
+- Built-in tracing"""
+            
+            swarmsh_approach = Panel(
+                swarmsh_content,
                 title="✅ SwarmSH Structural Approach", 
                 border_style="green"
             )

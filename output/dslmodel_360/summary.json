@@ -1,0 +1,45 @@
+{
+  "total_permutations": 360,
+  "model_types": [
+    "base",
+    "fsm",
+    "workflow",
+    "agent",
+    "event",
+    "template"
+  ],
+  "mixin_combinations": [
+    "none",
+    "jinja",
+    "tool",
+    "file",
+    "jinja_tool",
+    "jinja_file",
+    "tool_file",
+    "all",
+    "fsm_jinja",
+    "fsm_tool"
+  ],
+  "generation_sources": [
+    "prompt",
+    "schema",
+    "api",
+    "template",
+    "weaver",
+    "manual"
+  ],
+  "permutations": [
+    "base_none_prompt",
+    "base_none_schema",
+    "base_none_api",
+    "base_none_template",
+    "base_none_weaver",
+    "base_none_manual",
+    "base_jinja_prompt",
+    "base_jinja_schema",
+    "base_jinja_api",
+    "base_jinja_template",
+    "..."
+  ],
+  "matrix": "6 x 10 x 6 = 360"
+}

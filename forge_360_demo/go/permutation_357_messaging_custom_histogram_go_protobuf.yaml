@@ -1,0 +1,53 @@
+metadata:
+  generated_at: '2025-06-26T06:18:41.657668'
+  generator_version: 1.0.0
+  permutation_index: 0
+configuration:
+  span_type: messaging
+  attribute_set: custom
+  metric_type: histogram
+  language: go
+  framework: protobuf
+  template_config:
+    imports:
+    - google.golang.org/protobuf/proto
+    message_options: true
+semconv:
+  groups:
+  - id: dslmodel.messaging
+    type: span
+    prefix: dslmodel.messaging
+    brief: DSLModel messaging span attributes
+    attributes:
+    - id: messaging.method
+      type: string
+      requirement_level: required
+      brief: The messaging method
+      examples:
+      - messaging_get
+      - messaging_post
+    - id: messaging.status_code
+      type: int
+      requirement_level: recommended
+      brief: The messaging response status code
+      examples:
+      - 200
+      - 404
+      - 500
+    - id: messaging.custom_field
+      type: string
+      requirement_level: optional
+      brief: Custom field for messaging domain
+    - id: messaging.custom_metric
+      type: double
+      requirement_level: optional
+      brief: Custom metric for messaging monitoring
+  - id: messaging.histogram
+    type: metric
+    metric_name: messaging.operations.histogram
+    brief: Tracks messaging operations using histogram
+    instrument: histogram
+    unit: ms
+    attributes:
+    - ref: messaging.method
+    - ref: messaging.status_code

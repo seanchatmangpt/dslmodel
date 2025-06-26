@@ -1,0 +1,4333 @@
+groups:
+- attributes:
+  - brief: Unique identifier for the permutation
+    examples:
+    - base_none_prompt
+    - fsm_jinja_api
+    id: id
+    requirement_level: required
+    type: string
+  brief: Attributes for DSLModel 360 permutations
+  id: dslmodel.permutation.attributes
+  prefix: dslmodel.permutation
+  type: attribute_group
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with none mixins from prompt'
+  id: dslmodel.permutation.base_none_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with none mixins from schema'
+  id: dslmodel.permutation.base_none_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with none mixins from api'
+  id: dslmodel.permutation.base_none_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with none mixins from template'
+  id: dslmodel.permutation.base_none_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with none mixins from weaver'
+  id: dslmodel.permutation.base_none_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with none mixins from manual'
+  id: dslmodel.permutation.base_none_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja mixins from prompt'
+  id: dslmodel.permutation.base_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja mixins from schema'
+  id: dslmodel.permutation.base_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja mixins from api'
+  id: dslmodel.permutation.base_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja mixins from template'
+  id: dslmodel.permutation.base_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja mixins from weaver'
+  id: dslmodel.permutation.base_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja mixins from manual'
+  id: dslmodel.permutation.base_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool mixins from prompt'
+  id: dslmodel.permutation.base_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool mixins from schema'
+  id: dslmodel.permutation.base_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool mixins from api'
+  id: dslmodel.permutation.base_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool mixins from template'
+  id: dslmodel.permutation.base_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool mixins from weaver'
+  id: dslmodel.permutation.base_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool mixins from manual'
+  id: dslmodel.permutation.base_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with file mixins from prompt'
+  id: dslmodel.permutation.base_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with file mixins from schema'
+  id: dslmodel.permutation.base_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with file mixins from api'
+  id: dslmodel.permutation.base_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with file mixins from template'
+  id: dslmodel.permutation.base_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with file mixins from weaver'
+  id: dslmodel.permutation.base_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with file mixins from manual'
+  id: dslmodel.permutation.base_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_tool mixins from prompt'
+  id: dslmodel.permutation.base_jinja_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_tool mixins from schema'
+  id: dslmodel.permutation.base_jinja_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_tool mixins from api'
+  id: dslmodel.permutation.base_jinja_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_tool mixins from template'
+  id: dslmodel.permutation.base_jinja_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_tool mixins from weaver'
+  id: dslmodel.permutation.base_jinja_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_tool mixins from manual'
+  id: dslmodel.permutation.base_jinja_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_file mixins from prompt'
+  id: dslmodel.permutation.base_jinja_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_file mixins from schema'
+  id: dslmodel.permutation.base_jinja_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_file mixins from api'
+  id: dslmodel.permutation.base_jinja_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_file mixins from template'
+  id: dslmodel.permutation.base_jinja_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_file mixins from weaver'
+  id: dslmodel.permutation.base_jinja_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with jinja_file mixins from manual'
+  id: dslmodel.permutation.base_jinja_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool_file mixins from prompt'
+  id: dslmodel.permutation.base_tool_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool_file mixins from schema'
+  id: dslmodel.permutation.base_tool_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool_file mixins from api'
+  id: dslmodel.permutation.base_tool_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool_file mixins from template'
+  id: dslmodel.permutation.base_tool_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool_file mixins from weaver'
+  id: dslmodel.permutation.base_tool_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with tool_file mixins from manual'
+  id: dslmodel.permutation.base_tool_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with all mixins from prompt'
+  id: dslmodel.permutation.base_all_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with all mixins from schema'
+  id: dslmodel.permutation.base_all_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with all mixins from api'
+  id: dslmodel.permutation.base_all_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with all mixins from template'
+  id: dslmodel.permutation.base_all_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with all mixins from weaver'
+  id: dslmodel.permutation.base_all_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with all mixins from manual'
+  id: dslmodel.permutation.base_all_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_jinja mixins from prompt'
+  id: dslmodel.permutation.base_fsm_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_jinja mixins from schema'
+  id: dslmodel.permutation.base_fsm_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_jinja mixins from api'
+  id: dslmodel.permutation.base_fsm_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_jinja mixins from template'
+  id: dslmodel.permutation.base_fsm_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_jinja mixins from weaver'
+  id: dslmodel.permutation.base_fsm_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_jinja mixins from manual'
+  id: dslmodel.permutation.base_fsm_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_tool mixins from prompt'
+  id: dslmodel.permutation.base_fsm_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_tool mixins from schema'
+  id: dslmodel.permutation.base_fsm_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_tool mixins from api'
+  id: dslmodel.permutation.base_fsm_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_tool mixins from template'
+  id: dslmodel.permutation.base_fsm_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_tool mixins from weaver'
+  id: dslmodel.permutation.base_fsm_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: base with fsm_tool mixins from manual'
+  id: dslmodel.permutation.base_fsm_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with none mixins from prompt'
+  id: dslmodel.permutation.fsm_none_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with none mixins from schema'
+  id: dslmodel.permutation.fsm_none_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with none mixins from api'
+  id: dslmodel.permutation.fsm_none_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with none mixins from template'
+  id: dslmodel.permutation.fsm_none_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with none mixins from weaver'
+  id: dslmodel.permutation.fsm_none_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with none mixins from manual'
+  id: dslmodel.permutation.fsm_none_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja mixins from prompt'
+  id: dslmodel.permutation.fsm_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja mixins from schema'
+  id: dslmodel.permutation.fsm_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja mixins from api'
+  id: dslmodel.permutation.fsm_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja mixins from template'
+  id: dslmodel.permutation.fsm_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja mixins from weaver'
+  id: dslmodel.permutation.fsm_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja mixins from manual'
+  id: dslmodel.permutation.fsm_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool mixins from prompt'
+  id: dslmodel.permutation.fsm_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool mixins from schema'
+  id: dslmodel.permutation.fsm_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool mixins from api'
+  id: dslmodel.permutation.fsm_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool mixins from template'
+  id: dslmodel.permutation.fsm_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool mixins from weaver'
+  id: dslmodel.permutation.fsm_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool mixins from manual'
+  id: dslmodel.permutation.fsm_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with file mixins from prompt'
+  id: dslmodel.permutation.fsm_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with file mixins from schema'
+  id: dslmodel.permutation.fsm_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with file mixins from api'
+  id: dslmodel.permutation.fsm_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with file mixins from template'
+  id: dslmodel.permutation.fsm_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with file mixins from weaver'
+  id: dslmodel.permutation.fsm_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with file mixins from manual'
+  id: dslmodel.permutation.fsm_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_tool mixins from prompt'
+  id: dslmodel.permutation.fsm_jinja_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_tool mixins from schema'
+  id: dslmodel.permutation.fsm_jinja_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_tool mixins from api'
+  id: dslmodel.permutation.fsm_jinja_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_tool mixins from template'
+  id: dslmodel.permutation.fsm_jinja_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_tool mixins from weaver'
+  id: dslmodel.permutation.fsm_jinja_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_tool mixins from manual'
+  id: dslmodel.permutation.fsm_jinja_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_file mixins from prompt'
+  id: dslmodel.permutation.fsm_jinja_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_file mixins from schema'
+  id: dslmodel.permutation.fsm_jinja_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_file mixins from api'
+  id: dslmodel.permutation.fsm_jinja_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_file mixins from template'
+  id: dslmodel.permutation.fsm_jinja_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_file mixins from weaver'
+  id: dslmodel.permutation.fsm_jinja_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with jinja_file mixins from manual'
+  id: dslmodel.permutation.fsm_jinja_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool_file mixins from prompt'
+  id: dslmodel.permutation.fsm_tool_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool_file mixins from schema'
+  id: dslmodel.permutation.fsm_tool_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool_file mixins from api'
+  id: dslmodel.permutation.fsm_tool_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool_file mixins from template'
+  id: dslmodel.permutation.fsm_tool_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool_file mixins from weaver'
+  id: dslmodel.permutation.fsm_tool_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with tool_file mixins from manual'
+  id: dslmodel.permutation.fsm_tool_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with all mixins from prompt'
+  id: dslmodel.permutation.fsm_all_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with all mixins from schema'
+  id: dslmodel.permutation.fsm_all_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with all mixins from api'
+  id: dslmodel.permutation.fsm_all_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with all mixins from template'
+  id: dslmodel.permutation.fsm_all_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with all mixins from weaver'
+  id: dslmodel.permutation.fsm_all_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with all mixins from manual'
+  id: dslmodel.permutation.fsm_all_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_jinja mixins from prompt'
+  id: dslmodel.permutation.fsm_fsm_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_jinja mixins from schema'
+  id: dslmodel.permutation.fsm_fsm_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_jinja mixins from api'
+  id: dslmodel.permutation.fsm_fsm_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_jinja mixins from template'
+  id: dslmodel.permutation.fsm_fsm_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_jinja mixins from weaver'
+  id: dslmodel.permutation.fsm_fsm_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_jinja mixins from manual'
+  id: dslmodel.permutation.fsm_fsm_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_tool mixins from prompt'
+  id: dslmodel.permutation.fsm_fsm_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_tool mixins from schema'
+  id: dslmodel.permutation.fsm_fsm_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_tool mixins from api'
+  id: dslmodel.permutation.fsm_fsm_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_tool mixins from template'
+  id: dslmodel.permutation.fsm_fsm_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_tool mixins from weaver'
+  id: dslmodel.permutation.fsm_fsm_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: fsm with fsm_tool mixins from manual'
+  id: dslmodel.permutation.fsm_fsm_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with none mixins from prompt'
+  id: dslmodel.permutation.workflow_none_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with none mixins from schema'
+  id: dslmodel.permutation.workflow_none_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with none mixins from api'
+  id: dslmodel.permutation.workflow_none_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with none mixins from template'
+  id: dslmodel.permutation.workflow_none_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with none mixins from weaver'
+  id: dslmodel.permutation.workflow_none_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with none mixins from manual'
+  id: dslmodel.permutation.workflow_none_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja mixins from prompt'
+  id: dslmodel.permutation.workflow_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja mixins from schema'
+  id: dslmodel.permutation.workflow_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja mixins from api'
+  id: dslmodel.permutation.workflow_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja mixins from template'
+  id: dslmodel.permutation.workflow_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja mixins from weaver'
+  id: dslmodel.permutation.workflow_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja mixins from manual'
+  id: dslmodel.permutation.workflow_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool mixins from prompt'
+  id: dslmodel.permutation.workflow_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool mixins from schema'
+  id: dslmodel.permutation.workflow_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool mixins from api'
+  id: dslmodel.permutation.workflow_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool mixins from template'
+  id: dslmodel.permutation.workflow_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool mixins from weaver'
+  id: dslmodel.permutation.workflow_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool mixins from manual'
+  id: dslmodel.permutation.workflow_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with file mixins from prompt'
+  id: dslmodel.permutation.workflow_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with file mixins from schema'
+  id: dslmodel.permutation.workflow_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with file mixins from api'
+  id: dslmodel.permutation.workflow_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with file mixins from template'
+  id: dslmodel.permutation.workflow_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with file mixins from weaver'
+  id: dslmodel.permutation.workflow_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with file mixins from manual'
+  id: dslmodel.permutation.workflow_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_tool mixins from prompt'
+  id: dslmodel.permutation.workflow_jinja_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_tool mixins from schema'
+  id: dslmodel.permutation.workflow_jinja_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_tool mixins from api'
+  id: dslmodel.permutation.workflow_jinja_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_tool mixins from template'
+  id: dslmodel.permutation.workflow_jinja_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_tool mixins from weaver'
+  id: dslmodel.permutation.workflow_jinja_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_tool mixins from manual'
+  id: dslmodel.permutation.workflow_jinja_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_file mixins from prompt'
+  id: dslmodel.permutation.workflow_jinja_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_file mixins from schema'
+  id: dslmodel.permutation.workflow_jinja_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_file mixins from api'
+  id: dslmodel.permutation.workflow_jinja_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_file mixins from template'
+  id: dslmodel.permutation.workflow_jinja_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_file mixins from weaver'
+  id: dslmodel.permutation.workflow_jinja_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with jinja_file mixins from manual'
+  id: dslmodel.permutation.workflow_jinja_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool_file mixins from prompt'
+  id: dslmodel.permutation.workflow_tool_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool_file mixins from schema'
+  id: dslmodel.permutation.workflow_tool_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool_file mixins from api'
+  id: dslmodel.permutation.workflow_tool_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool_file mixins from template'
+  id: dslmodel.permutation.workflow_tool_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool_file mixins from weaver'
+  id: dslmodel.permutation.workflow_tool_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with tool_file mixins from manual'
+  id: dslmodel.permutation.workflow_tool_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with all mixins from prompt'
+  id: dslmodel.permutation.workflow_all_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with all mixins from schema'
+  id: dslmodel.permutation.workflow_all_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with all mixins from api'
+  id: dslmodel.permutation.workflow_all_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with all mixins from template'
+  id: dslmodel.permutation.workflow_all_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with all mixins from weaver'
+  id: dslmodel.permutation.workflow_all_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with all mixins from manual'
+  id: dslmodel.permutation.workflow_all_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_jinja mixins from prompt'
+  id: dslmodel.permutation.workflow_fsm_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_jinja mixins from schema'
+  id: dslmodel.permutation.workflow_fsm_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_jinja mixins from api'
+  id: dslmodel.permutation.workflow_fsm_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_jinja mixins from template'
+  id: dslmodel.permutation.workflow_fsm_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_jinja mixins from weaver'
+  id: dslmodel.permutation.workflow_fsm_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_jinja mixins from manual'
+  id: dslmodel.permutation.workflow_fsm_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_tool mixins from prompt'
+  id: dslmodel.permutation.workflow_fsm_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_tool mixins from schema'
+  id: dslmodel.permutation.workflow_fsm_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_tool mixins from api'
+  id: dslmodel.permutation.workflow_fsm_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_tool mixins from template'
+  id: dslmodel.permutation.workflow_fsm_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_tool mixins from weaver'
+  id: dslmodel.permutation.workflow_fsm_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: workflow with fsm_tool mixins from manual'
+  id: dslmodel.permutation.workflow_fsm_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with none mixins from prompt'
+  id: dslmodel.permutation.agent_none_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with none mixins from schema'
+  id: dslmodel.permutation.agent_none_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with none mixins from api'
+  id: dslmodel.permutation.agent_none_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with none mixins from template'
+  id: dslmodel.permutation.agent_none_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with none mixins from weaver'
+  id: dslmodel.permutation.agent_none_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with none mixins from manual'
+  id: dslmodel.permutation.agent_none_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja mixins from prompt'
+  id: dslmodel.permutation.agent_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja mixins from schema'
+  id: dslmodel.permutation.agent_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja mixins from api'
+  id: dslmodel.permutation.agent_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja mixins from template'
+  id: dslmodel.permutation.agent_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja mixins from weaver'
+  id: dslmodel.permutation.agent_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja mixins from manual'
+  id: dslmodel.permutation.agent_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool mixins from prompt'
+  id: dslmodel.permutation.agent_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool mixins from schema'
+  id: dslmodel.permutation.agent_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool mixins from api'
+  id: dslmodel.permutation.agent_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool mixins from template'
+  id: dslmodel.permutation.agent_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool mixins from weaver'
+  id: dslmodel.permutation.agent_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool mixins from manual'
+  id: dslmodel.permutation.agent_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with file mixins from prompt'
+  id: dslmodel.permutation.agent_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with file mixins from schema'
+  id: dslmodel.permutation.agent_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with file mixins from api'
+  id: dslmodel.permutation.agent_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with file mixins from template'
+  id: dslmodel.permutation.agent_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with file mixins from weaver'
+  id: dslmodel.permutation.agent_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with file mixins from manual'
+  id: dslmodel.permutation.agent_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_tool mixins from prompt'
+  id: dslmodel.permutation.agent_jinja_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_tool mixins from schema'
+  id: dslmodel.permutation.agent_jinja_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_tool mixins from api'
+  id: dslmodel.permutation.agent_jinja_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_tool mixins from template'
+  id: dslmodel.permutation.agent_jinja_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_tool mixins from weaver'
+  id: dslmodel.permutation.agent_jinja_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_tool mixins from manual'
+  id: dslmodel.permutation.agent_jinja_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_file mixins from prompt'
+  id: dslmodel.permutation.agent_jinja_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_file mixins from schema'
+  id: dslmodel.permutation.agent_jinja_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_file mixins from api'
+  id: dslmodel.permutation.agent_jinja_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_file mixins from template'
+  id: dslmodel.permutation.agent_jinja_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_file mixins from weaver'
+  id: dslmodel.permutation.agent_jinja_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with jinja_file mixins from manual'
+  id: dslmodel.permutation.agent_jinja_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool_file mixins from prompt'
+  id: dslmodel.permutation.agent_tool_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool_file mixins from schema'
+  id: dslmodel.permutation.agent_tool_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool_file mixins from api'
+  id: dslmodel.permutation.agent_tool_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool_file mixins from template'
+  id: dslmodel.permutation.agent_tool_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool_file mixins from weaver'
+  id: dslmodel.permutation.agent_tool_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with tool_file mixins from manual'
+  id: dslmodel.permutation.agent_tool_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with all mixins from prompt'
+  id: dslmodel.permutation.agent_all_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with all mixins from schema'
+  id: dslmodel.permutation.agent_all_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with all mixins from api'
+  id: dslmodel.permutation.agent_all_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with all mixins from template'
+  id: dslmodel.permutation.agent_all_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with all mixins from weaver'
+  id: dslmodel.permutation.agent_all_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with all mixins from manual'
+  id: dslmodel.permutation.agent_all_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_jinja mixins from prompt'
+  id: dslmodel.permutation.agent_fsm_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_jinja mixins from schema'
+  id: dslmodel.permutation.agent_fsm_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_jinja mixins from api'
+  id: dslmodel.permutation.agent_fsm_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_jinja mixins from template'
+  id: dslmodel.permutation.agent_fsm_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_jinja mixins from weaver'
+  id: dslmodel.permutation.agent_fsm_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_jinja mixins from manual'
+  id: dslmodel.permutation.agent_fsm_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_tool mixins from prompt'
+  id: dslmodel.permutation.agent_fsm_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_tool mixins from schema'
+  id: dslmodel.permutation.agent_fsm_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_tool mixins from api'
+  id: dslmodel.permutation.agent_fsm_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_tool mixins from template'
+  id: dslmodel.permutation.agent_fsm_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_tool mixins from weaver'
+  id: dslmodel.permutation.agent_fsm_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: agent with fsm_tool mixins from manual'
+  id: dslmodel.permutation.agent_fsm_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with none mixins from prompt'
+  id: dslmodel.permutation.event_none_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with none mixins from schema'
+  id: dslmodel.permutation.event_none_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with none mixins from api'
+  id: dslmodel.permutation.event_none_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with none mixins from template'
+  id: dslmodel.permutation.event_none_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with none mixins from weaver'
+  id: dslmodel.permutation.event_none_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with none mixins from manual'
+  id: dslmodel.permutation.event_none_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja mixins from prompt'
+  id: dslmodel.permutation.event_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja mixins from schema'
+  id: dslmodel.permutation.event_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja mixins from api'
+  id: dslmodel.permutation.event_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja mixins from template'
+  id: dslmodel.permutation.event_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja mixins from weaver'
+  id: dslmodel.permutation.event_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja mixins from manual'
+  id: dslmodel.permutation.event_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool mixins from prompt'
+  id: dslmodel.permutation.event_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool mixins from schema'
+  id: dslmodel.permutation.event_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool mixins from api'
+  id: dslmodel.permutation.event_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool mixins from template'
+  id: dslmodel.permutation.event_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool mixins from weaver'
+  id: dslmodel.permutation.event_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool mixins from manual'
+  id: dslmodel.permutation.event_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with file mixins from prompt'
+  id: dslmodel.permutation.event_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with file mixins from schema'
+  id: dslmodel.permutation.event_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with file mixins from api'
+  id: dslmodel.permutation.event_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with file mixins from template'
+  id: dslmodel.permutation.event_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with file mixins from weaver'
+  id: dslmodel.permutation.event_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with file mixins from manual'
+  id: dslmodel.permutation.event_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_tool mixins from prompt'
+  id: dslmodel.permutation.event_jinja_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_tool mixins from schema'
+  id: dslmodel.permutation.event_jinja_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_tool mixins from api'
+  id: dslmodel.permutation.event_jinja_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_tool mixins from template'
+  id: dslmodel.permutation.event_jinja_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_tool mixins from weaver'
+  id: dslmodel.permutation.event_jinja_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_tool mixins from manual'
+  id: dslmodel.permutation.event_jinja_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_file mixins from prompt'
+  id: dslmodel.permutation.event_jinja_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_file mixins from schema'
+  id: dslmodel.permutation.event_jinja_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_file mixins from api'
+  id: dslmodel.permutation.event_jinja_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_file mixins from template'
+  id: dslmodel.permutation.event_jinja_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_file mixins from weaver'
+  id: dslmodel.permutation.event_jinja_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with jinja_file mixins from manual'
+  id: dslmodel.permutation.event_jinja_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool_file mixins from prompt'
+  id: dslmodel.permutation.event_tool_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool_file mixins from schema'
+  id: dslmodel.permutation.event_tool_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool_file mixins from api'
+  id: dslmodel.permutation.event_tool_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool_file mixins from template'
+  id: dslmodel.permutation.event_tool_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool_file mixins from weaver'
+  id: dslmodel.permutation.event_tool_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with tool_file mixins from manual'
+  id: dslmodel.permutation.event_tool_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with all mixins from prompt'
+  id: dslmodel.permutation.event_all_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with all mixins from schema'
+  id: dslmodel.permutation.event_all_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with all mixins from api'
+  id: dslmodel.permutation.event_all_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with all mixins from template'
+  id: dslmodel.permutation.event_all_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with all mixins from weaver'
+  id: dslmodel.permutation.event_all_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with all mixins from manual'
+  id: dslmodel.permutation.event_all_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_jinja mixins from prompt'
+  id: dslmodel.permutation.event_fsm_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_jinja mixins from schema'
+  id: dslmodel.permutation.event_fsm_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_jinja mixins from api'
+  id: dslmodel.permutation.event_fsm_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_jinja mixins from template'
+  id: dslmodel.permutation.event_fsm_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_jinja mixins from weaver'
+  id: dslmodel.permutation.event_fsm_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_jinja mixins from manual'
+  id: dslmodel.permutation.event_fsm_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_tool mixins from prompt'
+  id: dslmodel.permutation.event_fsm_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_tool mixins from schema'
+  id: dslmodel.permutation.event_fsm_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_tool mixins from api'
+  id: dslmodel.permutation.event_fsm_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_tool mixins from template'
+  id: dslmodel.permutation.event_fsm_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_tool mixins from weaver'
+  id: dslmodel.permutation.event_fsm_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: event with fsm_tool mixins from manual'
+  id: dslmodel.permutation.event_fsm_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with none mixins from prompt'
+  id: dslmodel.permutation.template_none_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with none mixins from schema'
+  id: dslmodel.permutation.template_none_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with none mixins from api'
+  id: dslmodel.permutation.template_none_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with none mixins from template'
+  id: dslmodel.permutation.template_none_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with none mixins from weaver'
+  id: dslmodel.permutation.template_none_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with none mixins from manual'
+  id: dslmodel.permutation.template_none_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja mixins from prompt'
+  id: dslmodel.permutation.template_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja mixins from schema'
+  id: dslmodel.permutation.template_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja mixins from api'
+  id: dslmodel.permutation.template_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja mixins from template'
+  id: dslmodel.permutation.template_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja mixins from weaver'
+  id: dslmodel.permutation.template_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja mixins from manual'
+  id: dslmodel.permutation.template_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool mixins from prompt'
+  id: dslmodel.permutation.template_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool mixins from schema'
+  id: dslmodel.permutation.template_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool mixins from api'
+  id: dslmodel.permutation.template_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool mixins from template'
+  id: dslmodel.permutation.template_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool mixins from weaver'
+  id: dslmodel.permutation.template_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool mixins from manual'
+  id: dslmodel.permutation.template_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with file mixins from prompt'
+  id: dslmodel.permutation.template_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with file mixins from schema'
+  id: dslmodel.permutation.template_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with file mixins from api'
+  id: dslmodel.permutation.template_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with file mixins from template'
+  id: dslmodel.permutation.template_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with file mixins from weaver'
+  id: dslmodel.permutation.template_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with file mixins from manual'
+  id: dslmodel.permutation.template_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_tool mixins from prompt'
+  id: dslmodel.permutation.template_jinja_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_tool mixins from schema'
+  id: dslmodel.permutation.template_jinja_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_tool mixins from api'
+  id: dslmodel.permutation.template_jinja_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_tool mixins from template'
+  id: dslmodel.permutation.template_jinja_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_tool mixins from weaver'
+  id: dslmodel.permutation.template_jinja_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_tool mixins from manual'
+  id: dslmodel.permutation.template_jinja_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_file mixins from prompt'
+  id: dslmodel.permutation.template_jinja_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_file mixins from schema'
+  id: dslmodel.permutation.template_jinja_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_file mixins from api'
+  id: dslmodel.permutation.template_jinja_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_file mixins from template'
+  id: dslmodel.permutation.template_jinja_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_file mixins from weaver'
+  id: dslmodel.permutation.template_jinja_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with jinja_file mixins from manual'
+  id: dslmodel.permutation.template_jinja_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool_file mixins from prompt'
+  id: dslmodel.permutation.template_tool_file_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool_file mixins from schema'
+  id: dslmodel.permutation.template_tool_file_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool_file mixins from api'
+  id: dslmodel.permutation.template_tool_file_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool_file mixins from template'
+  id: dslmodel.permutation.template_tool_file_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool_file mixins from weaver'
+  id: dslmodel.permutation.template_tool_file_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with tool_file mixins from manual'
+  id: dslmodel.permutation.template_tool_file_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with all mixins from prompt'
+  id: dslmodel.permutation.template_all_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with all mixins from schema'
+  id: dslmodel.permutation.template_all_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with all mixins from api'
+  id: dslmodel.permutation.template_all_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with all mixins from template'
+  id: dslmodel.permutation.template_all_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with all mixins from weaver'
+  id: dslmodel.permutation.template_all_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with all mixins from manual'
+  id: dslmodel.permutation.template_all_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_jinja mixins from prompt'
+  id: dslmodel.permutation.template_fsm_jinja_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_jinja mixins from schema'
+  id: dslmodel.permutation.template_fsm_jinja_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_jinja mixins from api'
+  id: dslmodel.permutation.template_fsm_jinja_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_jinja mixins from template'
+  id: dslmodel.permutation.template_fsm_jinja_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_jinja mixins from weaver'
+  id: dslmodel.permutation.template_fsm_jinja_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_jinja mixins from manual'
+  id: dslmodel.permutation.template_fsm_jinja_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_tool mixins from prompt'
+  id: dslmodel.permutation.template_fsm_tool_prompt
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_tool mixins from schema'
+  id: dslmodel.permutation.template_fsm_tool_schema
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_tool mixins from api'
+  id: dslmodel.permutation.template_fsm_tool_api
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_tool mixins from template'
+  id: dslmodel.permutation.template_fsm_tool_template
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_tool mixins from weaver'
+  id: dslmodel.permutation.template_fsm_tool_weaver
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span
+- attributes:
+  - ref: dslmodel.model_type
+    requirement_level: required
+  - ref: dslmodel.mixin.combination
+    requirement_level: required
+  - ref: dslmodel.generation.source
+    requirement_level: required
+  brief: 'DSLModel permutation: template with fsm_tool mixins from manual'
+  id: dslmodel.permutation.template_fsm_tool_manual
+  prefix: dslmodel.permutation
+  span_kind: internal
+  type: span

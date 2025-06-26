@@ -18,7 +18,6 @@ jygen = "jygen.cli:app"
 coloredlogs = ">=15.0.1"
 poethepoet = ">=0.25.0"
 python = ">=3.12,<4.0"
-dspy-ai = "^2.5.6"
 pyperclip = "^1.9.0"
 inflection = "^0.5.1"
 jinja2-time = "^0.2.0"
@@ -57,6 +56,7 @@ opentelemetry-sdk = { version = "^1.20.0", optional = true }
 opentelemetry-exporter-otlp = { version = "^1.20.0", optional = true }
 opentelemetry-instrumentation = { version = "^0.41b0", optional = true }
 opentelemetry-semantic-conventions = { version = "^0.41b0", optional = true }
+dspy-ai = "^2.6.27"
 
 [tool.poetry.extras]
 otel = [
@@ -283,25 +283,25 @@ help = "Install OpenTelemetry dependencies"
 cmd = "pip install dslmodel[otel]"
 
 # Full cycle demo tasks using integrated CLI
-[tool.poe.tasks.demo-full]
+[tool.poe.tasks.swarm-full-cycle]
 help = "Run complete automated full cycle generation demo"
-cmd = "dsl demo run --cycles 3"
+cmd = "dsl swarm full-cycle --cycles 3"
 
-[tool.poe.tasks.demo-full-fast]
+[tool.poe.tasks.swarm-full-cycle-fast]
 help = "Run quick full cycle demo (1 cycle)"
-cmd = "dsl demo run --cycles 1"
+cmd = "dsl swarm full-cycle --cycles 1"
 
-[tool.poe.tasks.demo-full-extended]
+[tool.poe.tasks.swarm-full-cycle-extended]
 help = "Run extended full cycle demo (5 cycles)"
-cmd = "dsl demo run --cycles 5 --no-cleanup"
+cmd = "dsl swarm full-cycle --cycles 5 --no-cleanup"
 
-[tool.poe.tasks.demo-status]
+[tool.poe.tasks.swarm-full-cycle-status]
 help = "Show full cycle demo status and reports"
-cmd = "dsl demo status"
+cmd = "dsl swarm full-cycle-status"
 
-[tool.poe.tasks.demo-clean]
+[tool.poe.tasks.swarm-full-cycle-clean]
 help = "Clean full cycle demo data"
-cmd = "dsl demo clean"
+cmd = "dsl swarm full-cycle-clean"
 
 [tool.poe.tasks.swarm-integrated]
 help = "Run integrated swarm demo"
@@ -314,3 +314,255 @@ cmd = "dsl swarm init"
 [tool.poe.tasks.swarm-integrated-status]
 help = "Show integrated swarm status"
 cmd = "dsl swarm status"
+
+# Capability mapping tasks
+[tool.poe.tasks.capability-map]
+help = "Show SwarmAgent capability map"
+cmd = "dsl capability show"
+
+[tool.poe.tasks.capability-map-triggers]
+help = "Show trigger dependency map"
+cmd = "dsl capability show --triggers"
+
+[tool.poe.tasks.capability-validate]
+help = "Validate system capabilities"
+cmd = "dsl capability validate"
+
+[tool.poe.tasks.capability-export]
+help = "Export capability map"
+cmd = "dsl capability export swarm_capabilities.json"
+
+[tool.poe.tasks.capability-agent]
+help = "Show Roberts agent details"
+cmd = "dsl capability agent roberts"
+
+# Concurrent OTEL validation tasks
+[tool.poe.tasks.validate-otel]
+help = "Validate SwarmAgent telemetry spans"
+cmd = "python -m dslmodel.commands.validate_otel check"
+
+[tool.poe.tasks.validate-otel-quick]
+help = "Quick validation of 10 spans"
+cmd = "python -m dslmodel.commands.validate_otel check --limit 10"
+
+[tool.poe.tasks.validate-test-governance]
+help = "Test governance workflow"
+cmd = "python -m dslmodel.commands.validate_otel test --scenario governance"
+
+[tool.poe.tasks.validate-test-quality]
+help = "Test quality optimization workflow"
+cmd = "python -m dslmodel.commands.validate_otel test --scenario quality"
+
+[tool.poe.tasks.validate-test-full]
+help = "Test complete coordination cycle"
+cmd = "python -m dslmodel.commands.validate_otel test --scenario full_cycle"
+
+[tool.poe.tasks.validate-benchmark]
+help = "Run concurrent validation benchmark"
+cmd = "python -m dslmodel.commands.validate_otel benchmark --spans 500"
+
+[tool.poe.tasks.validate-monitor]
+help = "Monitor telemetry validation in real-time"
+cmd = "python -m dslmodel.commands.validate_otel monitor --interval 3"
+
+[tool.poe.tasks.validate-report]
+help = "Generate validation report"
+cmd = "python -m dslmodel.commands.validate_otel report --format markdown"
+
+# Ollama validation tasks
+[tool.poe.tasks.ollama-check]
+help = "Check Ollama server and model availability"
+cmd = "dsl ollama check"
+
+[tool.poe.tasks.ollama-check-verbose]
+help = "Detailed Ollama configuration check"
+cmd = "dsl ollama check --verbose"
+
+[tool.poe.tasks.ollama-models]
+help = "List available Ollama models"
+cmd = "dsl ollama models"
+
+[tool.poe.tasks.ollama-models-recommended]
+help = "Show recommended models for DSLModel"
+cmd = "dsl ollama models --recommended"
+
+[tool.poe.tasks.ollama-test]
+help = "Test Ollama with qwen3 model"
+cmd = "dsl ollama test qwen3 --prompt 'Generate a simple Python function'"
+
+[tool.poe.tasks.ollama-test-qwen3]
+help = "Test qwen3 model performance"
+cmd = "dsl ollama test qwen3"
+
+[tool.poe.tasks.ollama-test-phi4]
+help = "Test phi4 model (if available)"
+cmd = "dsl ollama test phi4-reasoning:plus"
+
+[tool.poe.tasks.ollama-config]
+help = "Show current Ollama configuration"
+cmd = "dsl ollama config"
+
+[tool.poe.tasks.ollama-config-env]
+help = "Create Ollama environment template"
+cmd = "dsl ollama config --create-env --output .env.ollama"
+
+[tool.poe.tasks.ollama-benchmark]
+help = "Benchmark Ollama model performance"
+cmd = "dsl ollama benchmark --model qwen3 --iterations 3"
+
+[tool.poe.tasks.ollama-fix]
+help = "Auto-fix common Ollama issues"
+cmd = "dsl ollama fix"
+
+# Weaver health check tasks
+[tool.poe.tasks.weaver-health]
+help = "Run comprehensive Weaver health check"
+cmd = "dsl weaver-health check"
+
+[tool.poe.tasks.weaver-health-detailed]
+help = "Run detailed Weaver health check with full diagnostics"
+cmd = "dsl weaver-health check --detailed"
+
+[tool.poe.tasks.weaver-health-json]
+help = "Run Weaver health check with JSON output"
+cmd = "dsl weaver-health check --json"
+
+[tool.poe.tasks.weaver-health-save]
+help = "Run Weaver health check and save report"
+cmd = "dsl weaver-health check --detailed --save"
+
+[tool.poe.tasks.weaver-health-monitor]
+help = "Monitor Weaver health continuously"
+cmd = "dsl weaver-health monitor --interval 60"
+
+[tool.poe.tasks.weaver-validate-llm]
+help = "Use LLM to validate semantic conventions"
+cmd = "dsl weaver-health validate --model qwen3"
+
+[tool.poe.tasks.weaver-validate-all]
+help = "Run all Weaver validation checks"
+sequence = [
+    { cmd = "dsl weaver-health check --detailed" },
+    { cmd = "dsl weaver-health validate --model qwen3" },
+    { cmd = "dsl ollama check" }
+]
+
+# Integration test tasks
+[tool.poe.tasks.test-weaver-integration]
+help = "Run Weaver + OTEL integration tests"
+cmd = "pytest tests/test_weaver_otel_integration.py -v"
+
+[tool.poe.tasks.test-weaver-integration-full]
+help = "Run comprehensive Weaver integration tests"
+cmd = "pytest tests/test_weaver_otel_integration.py -v --tb=long"
+
+# Organizational Transformation CLI tasks
+[tool.poe.tasks.transform-init]
+help = "Initialize transformation workspace"
+cmd = "python src/dslmodel/commands/transformation_cli.py init"
+
+[tool.poe.tasks.transform-run]
+help = "Run complete organizational transformation demo"
+cmd = "python src/dslmodel/commands/transformation_cli.py run"
+
+[tool.poe.tasks.transform-run-e2e]
+help = "Run E2E 360 demo only"
+cmd = "python src/dslmodel/commands/transformation_cli.py run --mode e2e"
+
+[tool.poe.tasks.transform-run-telemetry]
+help = "Run telemetry orchestration demo only"
+cmd = "python src/dslmodel/commands/transformation_cli.py run --mode telemetry"
+
+[tool.poe.tasks.transform-validate]
+help = "Validate transformation results with Weaver"
+cmd = "python src/dslmodel/commands/transformation_cli.py validate"
+
+[tool.poe.tasks.transform-status]
+help = "Show 80/20 definition of done status"
+cmd = "python src/dslmodel/commands/transformation_cli.py status"
+
+[tool.poe.tasks.transform-report]
+help = "Generate transformation report"
+cmd = "python src/dslmodel/commands/transformation_cli.py report"
+
+[tool.poe.tasks.transform-report-json]
+help = "Generate JSON transformation report"
+cmd = "python src/dslmodel/commands/transformation_cli.py report --format json"
+
+[tool.poe.tasks.transform-clean]
+help = "Clean transformation outputs"
+cmd = "python src/dslmodel/commands/transformation_cli.py clean"
+
+# Quick transformation workflows
+[tool.poe.tasks.transform-8020]
+help = "Run 80/20 transformation workflow"
+sequence = [
+    { cmd = "python src/dslmodel/commands/transformation_cli.py init" },
+    { cmd = "python src/dslmodel/commands/transformation_cli.py run" },
+    { cmd = "python src/dslmodel/commands/transformation_cli.py status" }
+]
+
+[tool.poe.tasks.transform-validate-full]
+help = "Full validation with tests and reports"
+sequence = [
+    { cmd = "python src/dslmodel/commands/transformation_cli.py validate" },
+    { cmd = "poetry run pytest tests/test_otel_validation.py -v" },
+    { cmd = "python src/dslmodel/commands/transformation_cli.py report" }
+]
+
+# Git Auto DX tasks
+[tool.poe.tasks.git-status]
+help = "Enhanced git status with smart suggestions"
+cmd = "python src/dslmodel/commands/git_auto_cli.py status"
+
+[tool.poe.tasks.git-add]
+help = "Smart git add with validation"
+cmd = "python src/dslmodel/commands/git_auto_cli.py add"
+
+[tool.poe.tasks.git-add-interactive]
+help = "Interactive file selection for git add"
+cmd = "python src/dslmodel/commands/git_auto_cli.py add --interactive"
+
+[tool.poe.tasks.git-commit]
+help = "Smart git commit with auto-generated messages"
+cmd = "python src/dslmodel/commands/git_auto_cli.py commit"
+
+[tool.poe.tasks.git-commit-manual]
+help = "Git commit with manual message"
+cmd = "python src/dslmodel/commands/git_auto_cli.py commit --no-auto-message"
+
+[tool.poe.tasks.git-push]
+help = "Smart git push with conflict resolution"
+cmd = "python src/dslmodel/commands/git_auto_cli.py push"
+
+[tool.poe.tasks.git-push-force]
+help = "Force push with safety checks"
+cmd = "python src/dslmodel/commands/git_auto_cli.py push --force"
+
+[tool.poe.tasks.git-auto]
+help = "Complete automated git workflow: add + commit + push"
+cmd = "python src/dslmodel/commands/git_auto_cli.py auto --push"
+
+[tool.poe.tasks.git-auto-safe]
+help = "Automated add + commit (no push)"
+cmd = "python src/dslmodel/commands/git_auto_cli.py auto --no-push"
+
+[tool.poe.tasks.git-config]
+help = "Show git auto configuration"
+cmd = "python src/dslmodel/commands/git_auto_cli.py config --show"
+
+# Quick git workflows
+[tool.poe.tasks.git-8020]
+help = "80/20 git workflow: status -> auto commit/push"
+sequence = [
+    { cmd = "python src/dslmodel/commands/git_auto_cli.py status" },
+    { cmd = "python src/dslmodel/commands/git_auto_cli.py auto --push" }
+]
+
+[tool.poe.tasks.git-safe]
+help = "Safe git workflow: add + commit (manual review for push)"
+sequence = [
+    { cmd = "python src/dslmodel/commands/git_auto_cli.py add" },
+    { cmd = "python src/dslmodel/commands/git_auto_cli.py commit" },
+    { cmd = "python src/dslmodel/commands/git_auto_cli.py status" }
+]

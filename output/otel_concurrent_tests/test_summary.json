@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-06-26T06:22:04.293970",
+  "total_scenarios": 3,
+  "total_tests": 108,
+  "overall_success_rate": 0.7037037037037037,
+  "scenarios": [
+    {
+      "name": "High Concurrency Async",
+      "type": "async",
+      "success_rate": 0.9259259259259259,
+      "throughput": 74.92861396279446
+    },
+    {
+      "name": "Moderate Concurrency Sync",
+      "type": "sync",
+      "success_rate": 0.8148148148148148,
+      "throughput": 201.95525627330588
+    },
+    {
+      "name": "Stress Test Async",
+      "type": "async",
+      "success_rate": 0.5370370370370371,
+      "throughput": 103.52656470901205
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+[
+  {
+    "contradiction_type": "performance",
+    "triz_principle": 35,
+    "triz_name": "Parameter Change",
+    "rationale": "Applying TRIZ Principle 35 (Parameter Change) to resolve ContradictionType.PERFORMANCE. The proposed attributes will reduce the issue by providing better observability and control mechanisms.",
+    "new_attributes": [
+      {
+        "id": "sampling_priority",
+        "type": "int",
+        "brief": "Sampling priority (0-100) for performance-sensitive spans",
+        "requirement_level": "conditionally_required",
+        "examples": [
+          0,
+          50,
+          100
+        ]
+      },
+      {
+        "id": "performance_budget_ms",
+        "type": "int",
+        "brief": "Expected performance budget in milliseconds",
+        "requirement_level": "recommended",
+        "examples": [
+          100,
+          500,
+          1000
+        ]
+      }
+    ]
+  },
+  {
+    "contradiction_type": "retry_storm",
+    "triz_principle": 25,
+    "triz_name": "Self-Service",
+    "rationale": "Applying TRIZ Principle 25 (Self-Service) to resolve ContradictionType.RETRY_STORM. The proposed attributes will prevent the issue by providing better observability and control mechanisms.",
+    "new_attributes": [
+      {
+        "id": "circuit_breaker.state",
+        "type": "string",
+        "brief": "Circuit breaker state",
+        "requirement_level": "recommended",
+        "examples": [
+          "open",
+          "closed",
+          "half_open"
+        ]
+      },
+      {
+        "id": "circuit_breaker.failure_threshold",
+        "type": "int",
+        "brief": "Number of failures before opening circuit",
+        "requirement_level": "recommended",
+        "examples": [
+          5,
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "contradiction_type": "missing_span",
+    "triz_principle": 10,
+    "triz_name": "Preliminary Action",
+    "rationale": "Applying TRIZ Principle 10 (Preliminary Action) to resolve ContradictionType.MISSING_SPAN. The proposed attributes will prevent the issue by providing better observability and control mechanisms.",
+    "new_attributes": [
+      {
+        "id": "telemetry_as_system",
+        "type": "boolean",
+        "brief": "Indicates swarmsh.thesis.telemetry_as_system was executed",
+        "requirement_level": "required",
+        "examples": []
+      }
+    ]
+  },
+  {
+    "contradiction_type": "performance",
+    "triz_principle": 35,
+    "triz_name": "Parameter Change",
+    "rationale": "Applying TRIZ Principle 35 (Parameter Change) to resolve ContradictionType.PERFORMANCE. The proposed attributes will reduce the issue by providing better observability and control mechanisms.",
+    "new_attributes": [
+      {
+        "id": "sampling_priority",
+        "type": "int",
+        "brief": "Sampling priority (0-100) for performance-sensitive spans",
+        "requirement_level": "conditionally_required",
+        "examples": [
+          0,
+          50,
+          100
+        ]
+      },
+      {
+        "id": "performance_budget_ms",
+        "type": "int",
+        "brief": "Expected performance budget in milliseconds",
+        "requirement_level": "recommended",
+        "examples": [
+          100,
+          500,
+          1000
+        ]
+      }
+    ]
+  },
+  {
+    "contradiction_type": "retry_storm",
+    "triz_principle": 25,
+    "triz_name": "Self-Service",
+    "rationale": "Applying TRIZ Principle 25 (Self-Service) to resolve ContradictionType.RETRY_STORM. The proposed attributes will prevent the issue by providing better observability and control mechanisms.",
+    "new_attributes": [
+      {
+        "id": "circuit_breaker.state",
+        "type": "string",
+        "brief": "Circuit breaker state",
+        "requirement_level": "recommended",
+        "examples": [
+          "open",
+          "closed",
+          "half_open"
+        ]
+      },
+      {
+        "id": "circuit_breaker.failure_threshold",
+        "type": "int",
+        "brief": "Number of failures before opening circuit",
+        "requirement_level": "recommended",
+        "examples": [
+          5,
+          10
+        ]
+      }
+    ]
+  },
+  {
+    "contradiction_type": "missing_span",
+    "triz_principle": 10,
+    "triz_name": "Preliminary Action",
+    "rationale": "Applying TRIZ Principle 10 (Preliminary Action) to resolve ContradictionType.MISSING_SPAN. The proposed attributes will prevent the issue by providing better observability and control mechanisms.",
+    "new_attributes": [
+      {
+        "id": "telemetry_as_system",
+        "type": "boolean",
+        "brief": "Indicates swarmsh.thesis.telemetry_as_system was executed",
+        "requirement_level": "required",
+        "examples": []
+      }
+    ]
+  }
+]

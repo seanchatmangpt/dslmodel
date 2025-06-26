@@ -1,8 +1,10 @@
+import ast
 import logging
 from typing import TypeVar
 
 import yaml
-from dspy import InputField, OutputField, Predict, Signature
+import dspy
+from dspy import Predict, ChainOfThought, InputField, OutputField, Signature
 from pydantic import BaseModel, ValidationError, Field
 
 from dslmodel.template import render
@@ -75,13 +77,6 @@ class DiagnosisSignature(Signature):
 
 T = TypeVar("T", bound=BaseModel)
 
-import ast
-import logging
-from typing import TypeVar
-
-import dspy
-from dspy import ChainOfThought, InputField, OutputField, Signature
-from pydantic import BaseModel
 
 from dslmodel.utils.source_tools import collect_all_sources_as_string
 

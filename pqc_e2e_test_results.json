@@ -1,0 +1,895 @@
+{
+  "timestamp": "2025-06-26T06:27:10.806296",
+  "duration_seconds": 0.008799,
+  "test_summary": {
+    "algorithm_tests": 48,
+    "cross_regional_tests": 3,
+    "language_compatibility_tests": 10,
+    "total_tests": 61
+  },
+  "success_rates": {
+    "algorithm_tests": 83.33333333333334,
+    "cross_regional": 100.0,
+    "language_compatibility": 100.0,
+    "overall": 84.31372549019608
+  },
+  "algorithm_results": [
+    {
+      "test_name": "keygen_kyber_north_america",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "north_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "kyber-Kyber768-00d27cd43304c5e2",
+        "public_key_size": 96,
+        "private_key_size": 192,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "encrypt_kyber_north_america",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "north_america",
+      "success": false,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "plaintext_size": 69,
+        "ciphertext_size": 69,
+        "expansion_ratio": 1.0
+      }
+    },
+    {
+      "test_name": "keygen_kyber_europe",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "europe",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "kyber-Kyber768-9d0635bceb0d7c5f",
+        "public_key_size": 96,
+        "private_key_size": 192,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "encrypt_kyber_europe",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "europe",
+      "success": false,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "plaintext_size": 69,
+        "ciphertext_size": 69,
+        "expansion_ratio": 1.0
+      }
+    },
+    {
+      "test_name": "keygen_kyber_asia_pacific",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "asia_pacific",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "kyber-Kyber768-5122ac3090895324",
+        "public_key_size": 96,
+        "private_key_size": 192,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "encrypt_kyber_asia_pacific",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "asia_pacific",
+      "success": false,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "plaintext_size": 69,
+        "ciphertext_size": 69,
+        "expansion_ratio": 1.0
+      }
+    },
+    {
+      "test_name": "keygen_kyber_middle_east",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "middle_east",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "kyber-Kyber768-1c9ac10e85a78e81",
+        "public_key_size": 96,
+        "private_key_size": 192,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "encrypt_kyber_middle_east",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "middle_east",
+      "success": false,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "plaintext_size": 69,
+        "ciphertext_size": 69,
+        "expansion_ratio": 1.0
+      }
+    },
+    {
+      "test_name": "keygen_kyber_latin_america",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "latin_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "kyber-Kyber768-990f8f2f9ff8003a",
+        "public_key_size": 96,
+        "private_key_size": 192,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "encrypt_kyber_latin_america",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "latin_america",
+      "success": false,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "plaintext_size": 69,
+        "ciphertext_size": 69,
+        "expansion_ratio": 1.0
+      }
+    },
+    {
+      "test_name": "keygen_kyber_africa",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "africa",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "kyber-Kyber768-a8ad0ab8afeb7304",
+        "public_key_size": 96,
+        "private_key_size": 192,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "encrypt_kyber_africa",
+      "algorithm": "kyber",
+      "security_level": 3,
+      "region": "africa",
+      "success": false,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "plaintext_size": 69,
+        "ciphertext_size": 69,
+        "expansion_ratio": 1.0
+      }
+    },
+    {
+      "test_name": "keygen_dilithium_north_america",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "north_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-60c40841f80993a1",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_dilithium_north_america",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "north_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 3293,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_dilithium_europe",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "europe",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-bea100aae4ad6013",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_dilithium_europe",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "europe",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 3293,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_dilithium_asia_pacific",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "asia_pacific",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-637ffe735e53fc9a",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_dilithium_asia_pacific",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "asia_pacific",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 3293,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_dilithium_middle_east",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "middle_east",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-91e0796a545bad3a",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_dilithium_middle_east",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "middle_east",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 3293,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_dilithium_latin_america",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "latin_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-9321309bbe296483",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_dilithium_latin_america",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "latin_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 3293,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_dilithium_africa",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "africa",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-af375f9b48c33f85",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_dilithium_africa",
+      "algorithm": "dilithium",
+      "security_level": 3,
+      "region": "africa",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 3293,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_falcon_north_america",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "north_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-086c0a7837e5de93",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_falcon_north_america",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "north_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 1330,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_falcon_europe",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "europe",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-e08dbd4cbfa67c7d",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_falcon_europe",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "europe",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 1330,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_falcon_asia_pacific",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "asia_pacific",
+      "success": false,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-b8d9f87524802205",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": false
+      }
+    },
+    {
+      "test_name": "sign_falcon_asia_pacific",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "asia_pacific",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 1330,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_falcon_middle_east",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "middle_east",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-1a86022fc41a7c54",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_falcon_middle_east",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "middle_east",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 1330,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_falcon_latin_america",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "latin_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-eabd2d1e88d5f829",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_falcon_latin_america",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "latin_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 1330,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_falcon_africa",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "africa",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-a240221ba59350bf",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_falcon_africa",
+      "algorithm": "falcon",
+      "security_level": 3,
+      "region": "africa",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 1330,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_sphincs_plus_north_america",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "north_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-6608d90ce741a369",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_sphincs_plus_north_america",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "north_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 49856,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_sphincs_plus_europe",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "europe",
+      "success": false,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-2b0010ddb1e531e5",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": false
+      }
+    },
+    {
+      "test_name": "sign_sphincs_plus_europe",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "europe",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 49856,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_sphincs_plus_asia_pacific",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "asia_pacific",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-34bf314523d2bc15",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_sphincs_plus_asia_pacific",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "asia_pacific",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 49856,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_sphincs_plus_middle_east",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "middle_east",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-6ce7bfcb3a9c13c7",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_sphincs_plus_middle_east",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "middle_east",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 49856,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_sphincs_plus_latin_america",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "latin_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-dae8bc7985672ef3",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_sphincs_plus_latin_america",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "latin_america",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 49856,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    },
+    {
+      "test_name": "keygen_sphincs_plus_africa",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "africa",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "key_id": "dilithium-Dilithium3-40f05dc41a0defbd",
+        "public_key_size": 1952,
+        "private_key_size": 3904,
+        "compliance": true
+      }
+    },
+    {
+      "test_name": "sign_sphincs_plus_africa",
+      "algorithm": "sphincs_plus",
+      "security_level": 3,
+      "region": "africa",
+      "success": true,
+      "duration_ms": 0,
+      "error_message": null,
+      "metadata": {
+        "message_size": 62,
+        "signature_size": 49856,
+        "message_hash": "3e42245d667a834d3dddace44f275cc2ac14d21f80d818d1db72d99fdb62ae10"
+      }
+    }
+  ],
+  "cross_regional_results": [
+    {
+      "source_region": "north_america",
+      "dest_region": "europe",
+      "algorithm": "kyber",
+      "success": true,
+      "compliance_issues": []
+    },
+    {
+      "source_region": "europe",
+      "dest_region": "asia_pacific",
+      "algorithm": "kyber",
+      "success": true,
+      "compliance_issues": []
+    },
+    {
+      "source_region": "asia_pacific",
+      "dest_region": "north_america",
+      "algorithm": "kyber",
+      "success": true,
+      "compliance_issues": []
+    }
+  ],
+  "language_compatibility": [
+    {
+      "source_language": "python",
+      "dest_language": "rust",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between python and rust"
+    },
+    {
+      "source_language": "python",
+      "dest_language": "go",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between python and go"
+    },
+    {
+      "source_language": "python",
+      "dest_language": "typescript",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between python and typescript"
+    },
+    {
+      "source_language": "python",
+      "dest_language": "java",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between python and java"
+    },
+    {
+      "source_language": "rust",
+      "dest_language": "go",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between rust and go"
+    },
+    {
+      "source_language": "rust",
+      "dest_language": "typescript",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between rust and typescript"
+    },
+    {
+      "source_language": "rust",
+      "dest_language": "java",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between rust and java"
+    },
+    {
+      "source_language": "go",
+      "dest_language": "typescript",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between go and typescript"
+    },
+    {
+      "source_language": "go",
+      "dest_language": "java",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between go and java"
+    },
+    {
+      "source_language": "typescript",
+      "dest_language": "java",
+      "algorithm": "kyber",
+      "interop_success": true,
+      "notes": "Mock test between typescript and java"
+    }
+  ],
+  "performance_benchmarks": {
+    "kyber": {
+      "keygen_avg_ms": 0.0107
+    },
+    "dilithium": {
+      "keygen_avg_ms": 0.01178
+    },
+    "falcon": {
+      "keygen_avg_ms": 0.01035
+    },
+    "sphincs_plus": {
+      "keygen_avg_ms": 0.010499999999999999
+    }
+  },
+  "global_readiness": {
+    "timestamp": "2025-06-26T13:27:10.815065+00:00",
+    "global_transition_date": "2030-01-01T00:00:00+00:00",
+    "regions": {
+      "north_america": {
+        "key_count": 9,
+        "policy_defined": true,
+        "mandatory_from": "2030-01-01T00:00:00+00:00",
+        "compliance_frameworks": [
+          "nist",
+          "cnsa"
+        ],
+        "allowed_algorithms": [
+          "kyber",
+          "dilithium",
+          "falcon",
+          "sphincs_plus"
+        ],
+        "minimum_security_level": 3,
+        "is_mandatory": false
+      },
+      "europe": {
+        "key_count": 9,
+        "policy_defined": true,
+        "mandatory_from": "2029-01-01T00:00:00+00:00",
+        "compliance_frameworks": [
+          "etsi",
+          "bsi",
+          "anssi"
+        ],
+        "allowed_algorithms": [
+          "kyber",
+          "dilithium",
+          "falcon"
+        ],
+        "minimum_security_level": 3,
+        "is_mandatory": false
+      },
+      "asia_pacific": {
+        "key_count": 9,
+        "policy_defined": true,
+        "mandatory_from": "2028-01-01T00:00:00+00:00",
+        "compliance_frameworks": [
+          "iso"
+        ],
+        "allowed_algorithms": [
+          "kyber",
+          "dilithium",
+          "sphincs_plus"
+        ],
+        "minimum_security_level": 2,
+        "is_mandatory": false
+      },
+      "middle_east": {
+        "key_count": 8,
+        "policy_defined": false
+      },
+      "latin_america": {
+        "key_count": 8,
+        "policy_defined": false
+      },
+      "africa": {
+        "key_count": 8,
+        "policy_defined": false
+      },
+      "global": {
+        "key_count": 400,
+        "policy_defined": false
+      }
+    },
+    "global_readiness_percentage": 100.0
+  }
+}

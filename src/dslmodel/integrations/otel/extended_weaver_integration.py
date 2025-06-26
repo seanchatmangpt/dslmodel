@@ -5,7 +5,7 @@ from typing import Optional, List
 from loguru import logger
 
 from .weaver_integration import WeaverForgeIntegration
-from ..weaver.loader import PythonConventionLoader
+from ...weaver.loader import PythonConventionLoader
 
 
 class ExtendedWeaverForgeIntegration(WeaverForgeIntegration):

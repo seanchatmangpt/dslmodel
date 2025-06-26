@@ -1,0 +1,38 @@
+{
+  "dimensions": {
+    "model_types": 6,
+    "mixin_combinations": 10,
+    "generation_sources": 6,
+    "total_permutations": 360
+  },
+  "success_by_dimension": {
+    "model_types": {
+      "base": 26,
+      "fsm": 28,
+      "workflow": 24,
+      "agent": 24,
+      "event": 24,
+      "template": 20
+    },
+    "mixin_combinations": {
+      "none": 35,
+      "jinja": 29,
+      "tool": 30,
+      "file": 34,
+      "all": 18
+    },
+    "generation_sources": {
+      "prompt": 22,
+      "schema": 26,
+      "api": 25,
+      "template": 23,
+      "weaver": 27,
+      "manual": 23
+    }
+  },
+  "performance_metrics": {
+    "avg_duration_ms": 30.008892218271892,
+    "throughput_per_second": 33.323456018516985,
+    "spans_per_test": 5.0
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "timestamp": "2025-06-26T06:29:19.007032",
+  "semantic_conventions_source": "semantic_conventions/dslmodel_core.yaml",
+  "output_directory": "generated",
+  "generated_artifacts": {
+    "models": 5,
+    "cli_commands": 7,
+    "test_classes": 3,
+    "telemetry_spans": 5
+  },
+  "spans_coverage": [
+    {
+      "id": "dslmodel.model.create",
+      "brief": "Create a new DSLModel instance",
+      "note": "Covers 40% of all DSLModel operations"
+    },
+    {
+      "id": "dslmodel.model.validate",
+      "brief": "Validate a DSLModel instance",
+      "note": "Covers 25% of all DSLModel operations"
+    },
+    {
+      "id": "dslmodel.agent.execute",
+      "brief": "Execute an agent operation",
+      "note": "Covers 20% of all DSLModel operations - agent-specific"
+    },
+    {
+      "id": "dslmodel.workflow.run",
+      "brief": "Run a workflow",
+      "note": "Covers 10% of all DSLModel operations - workflow-specific"
+    },
+    {
+      "id": "dslmodel.system.health",
+      "brief": "System health check",
+      "note": "Covers 5% of operations but critical for monitoring"
+    }
+  ]
+}

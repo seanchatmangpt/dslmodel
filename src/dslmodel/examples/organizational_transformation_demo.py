@@ -66,8 +66,10 @@ class RobertsRulesAgent(FSMMixin):
         super().__init__()
         self.current_motion: Optional[Motion] = None
         self.meeting_minutes: List[Dict] = []
+        # Initialize FSM
+        self.setup_fsm(self.states, initial='idle')
         
-    @trigger(from_state='idle', to_state='motion_pending')
+    @trigger(source='idle', dest='motion_pending')
     def receive_motion(self, motion_data: Dict) -> Motion:
         """Receive and validate a parliamentary motion"""
         with tracer.start_as_current_span("roberts.motion.received") as span:
@@ -89,7 +91,7 @@ class RobertsRulesAgent(FSMMixin):
             
             return motion
     
-    @trigger(from_state='motion_pending', to_state='motion_seconded')
+    @trigger(source='motion_pending', dest='motion_seconded')
     def second_motion(self, seconded_by: str) -> bool:
         """Second the current motion"""
         with tracer.start_as_current_span("roberts.motion.seconded") as span:
@@ -110,7 +112,7 @@ class RobertsRulesAgent(FSMMixin):
                 return True
             return False
     
-    @trigger(from_state='motion_seconded', to_state='voting')
+    @trigger(source='motion_seconded', dest='voting')
     def open_voting(self) -> bool:
         """Open voting on the seconded motion"""
         with tracer.start_as_current_span("roberts.voting.opened") as span:
@@ -127,7 +129,7 @@ class RobertsRulesAgent(FSMMixin):
                 return True
             return False
     
-    @trigger(from_state='voting', to_state='decision_made')
+    @trigger(source='voting', dest='decision_made')
     def close_voting(self, votes_for: int, votes_against: int, abstentions: int = 0) -> Dict:
         """Close voting and determine motion outcome"""
         with tracer.start_as_current_span("roberts.voting.closed") as span:
@@ -198,8 +200,10 @@ class ScrumAtScaleAgent(FSMMixin):
         self.epics: List[Epic] = []
         self.team_capacity: Dict[str, int] = {}
         self.velocity_data: Dict[str, List[int]] = {}
+        # Initialize FSM
+        self.setup_fsm(self.states, initial='idle')
         
-    @trigger(from_state='idle', to_state='pi_planning')
+    @trigger(source='idle', dest='pi_planning')
     def initiate_pi_planning(self, governance_decision: Dict) -> Dict:
         """Initiate Program Increment planning based on governance decision"""
         with tracer.start_as_current_span("scrum.pi_planning.initiated") as span:
@@ -221,7 +225,7 @@ class ScrumAtScaleAgent(FSMMixin):
             
             return self.program_increment
     
-    @trigger(from_state='pi_planning', to_state='sprint_planning')
+    @trigger(source='pi_planning', dest='sprint_planning')
     def create_epics_from_governance(self, governance_decision: Dict) -> List[Epic]:
         """Create epics based on governance decision"""
         with tracer.start_as_current_span("scrum.epics.created") as span:
@@ -273,7 +277,7 @@ class ScrumAtScaleAgent(FSMMixin):
             
             return epics
     
-    @trigger(from_state='sprint_planning', to_state='execution')
+    @trigger(source='sprint_planning', dest='execution')
     def plan_sprints(self) -> Dict:
         """Plan sprints for the Program Increment"""
         with tracer.start_as_current_span("scrum.sprints.planned") as span:
@@ -303,7 +307,7 @@ class ScrumAtScaleAgent(FSMMixin):
             
             return sprint_plan
     
-    @trigger(from_state='execution', to_state='retrospective')
+    @trigger(source='execution', dest='retrospective')
     def execute_sprint(self, sprint_data: Dict) -> Dict:
         """Execute sprint and gather metrics"""
         with tracer.start_as_current_span("scrum.sprint.executed") as span:
@@ -341,7 +345,7 @@ class ScrumAtScaleAgent(FSMMixin):
             
             return sprint_results
     
-    @trigger(from_state='retrospective', to_state='improvement')
+    @trigger(source='retrospective', dest='improvement')
     def conduct_retrospective(self, sprint_results: Dict) -> Dict:
         """Conduct sprint retrospective and identify improvements"""
         with tracer.start_as_current_span("scrum.retrospective.conducted") as span:
@@ -404,8 +408,10 @@ class LeanSixSigmaAgent(FSMMixin):
         self.current_project: Optional[Dict] = None
         self.metrics_baseline: Dict = {}
         self.improvement_recommendations: List[Dict] = []
+        # Initialize FSM
+        self.setup_fsm(self.states, initial='idle')
         
-    @trigger(from_state='idle', to_state='define')
+    @trigger(source='idle', dest='define')
     def initiate_improvement_project(self, scrum_retrospective: Dict) -> Dict:
         """Initiate Lean Six Sigma improvement project based on Scrum retrospective"""
         with tracer.start_as_current_span("lean.project.defined") as span:
@@ -434,7 +440,7 @@ class LeanSixSigmaAgent(FSMMixin):
             
             return self.current_project
     
-    @trigger(from_state='define', to_state='measure')
+    @trigger(source='define', dest='measure')
     def establish_baseline_metrics(self) -> Dict:
         """Establish baseline measurements for current state"""
         with tracer.start_as_current_span("lean.baseline.measured") as span:
@@ -455,7 +461,7 @@ class LeanSixSigmaAgent(FSMMixin):
             
             return self.metrics_baseline
     
-    @trigger(from_state='measure', to_state='analyze')
+    @trigger(source='measure', dest='analyze')
     def analyze_root_causes(self) -> List[DefectAnalysis]:
         """Analyze root causes using Lean Six Sigma tools"""
         with tracer.start_as_current_span("lean.analysis.completed") as span:
@@ -500,7 +506,7 @@ class LeanSixSigmaAgent(FSMMixin):
             
             return defect_analyses
     
-    @trigger(from_state='analyze', to_state='improve')
+    @trigger(source='analyze', dest='improve')
     def design_improvements(self, defect_analyses: List[DefectAnalysis]) -> List[Dict]:
         """Design improvement solutions using Lean principles"""
         with tracer.start_as_current_span("lean.improvements.designed") as span:
@@ -552,7 +558,7 @@ class LeanSixSigmaAgent(FSMMixin):
             
             return improvements
     
-    @trigger(from_state='improve', to_state='control')
+    @trigger(source='improve', dest='control')
     def implement_control_plan(self) -> Dict:
         """Implement control plan to sustain improvements"""
         with tracer.start_as_current_span("lean.control.implemented") as span:

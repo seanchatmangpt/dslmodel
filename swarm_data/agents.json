@@ -1,0 +1,23 @@
+{
+  "agent_1750942798074315000": {
+    "name": "agent_0",
+    "team": "alpha_team",
+    "status": "idle",
+    "created": "2025-06-26T05:59:58.074373",
+    "work_completed": 1
+  },
+  "agent_1750942798075143000": {
+    "name": "agent_1",
+    "team": "alpha_team",
+    "status": "idle",
+    "created": "2025-06-26T05:59:58.075174",
+    "work_completed": 1
+  },
+  "agent_1750942798075706000": {
+    "name": "agent_2",
+    "team": "alpha_team",
+    "status": "working",
+    "created": "2025-06-26T05:59:58.075732",
+    "work_completed": 0
+  }
+}

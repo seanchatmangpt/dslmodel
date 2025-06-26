@@ -1,0 +1,152 @@
+{# Jinja2 template for generating DSLModel permutations #}
+"""
+Generated DSLModel with {{ model_type | to_python_class }} type
+Mixins: {{ mixin_combination | to_python_class }}
+Source: {{ generation_source }}
+"""
+
+from typing import Optional, Dict, Any, List
+from pydantic import Field, validator
+from dslmodel import DSLModel
+{%- if mixin_combination != 'none' %}
+{{ mixin_combination | to_mixin_imports }}
+{%- endif %}
+{%- if model_type == 'fsm' %}
+from transitions import Machine
+{%- endif %}
+{%- if model_type == 'workflow' %}
+from dslmodel.workflows import WorkflowMixin
+{%- endif %}
+{%- if model_type == 'agent' %}
+from dslmodel.agents import AgentMixin
+{%- endif %}
+{%- if 'opentelemetry' in groups %}
+from opentelemetry import trace, metrics
+from opentelemetry.trace import Status, StatusCode
+{%- endif %}
+
+# Generated model class
+class {{ model_name }}(
+    {%- if model_type != 'base' %}{{ model_type | to_python_class }}Model, {% endif -%}
+    {%- if mixin_combination != 'none' %}{{ mixin_combination | to_mixin_imports }}, {% endif -%}
+    DSLModel
+):
+    """
+    {{ brief }}
+    
+    Generated from {{ generation_source }} using Weaver Forge
+    OpenTelemetry Attributes:
+    - dslmodel.model.type: {{ model_type }}
+    - dslmodel.mixin.combination: {{ mixin_combination }}
+    - dslmodel.generation.source: {{ generation_source }}
+    """
+    
+    # Core fields based on model type
+    {%- if model_type == 'base' %}
+    name: str = Field(..., description="Model name")
+    description: Optional[str] = Field(None, description="Model description")
+    {%- elif model_type == 'fsm' %}
+    state: str = Field("initial", description="Current state")
+    transitions: List[Dict[str, Any]] = Field(default_factory=list, description="State transitions")
+    {%- elif model_type == 'workflow' %}
+    workflow_id: str = Field(..., description="Workflow identifier")
+    steps: List[Dict[str, Any]] = Field(default_factory=list, description="Workflow steps")
+    status: str = Field("pending", description="Workflow status")
+    {%- elif model_type == 'agent' %}
+    agent_id: str = Field(..., description="Agent identifier")
+    agent_type: str = Field(..., description="Type of agent")
+    capabilities: List[str] = Field(default_factory=list, description="Agent capabilities")
+    {%- elif model_type == 'event' %}
+    event_type: str = Field(..., description="Type of event")
+    event_data: Dict[str, Any] = Field(default_factory=dict, description="Event payload")
+    timestamp: str = Field(..., description="Event timestamp")
+    {%- elif model_type == 'template' %}
+    template_name: str = Field(..., description="Template name")
+    template_vars: Dict[str, Any] = Field(default_factory=dict, description="Template variables")
+    rendered: Optional[str] = Field(None, description="Rendered output")
+    {%- endif %}
+    
+    # Mixin-specific fields
+    {%- if 'jinja' in mixin_combination %}
+    template_string: Optional[str] = Field(None, description="Jinja2 template")
+    {%- endif %}
+    {%- if 'tool' in mixin_combination %}
+    tools: List[str] = Field(default_factory=list, description="Available tools")
+    {%- endif %}
+    {%- if 'file' in mixin_combination %}
+    file_path: Optional[str] = Field(None, description="Associated file path")
+    {%- endif %}
+    
+    # Metadata fields
+    _model_type: str = "{{ model_type }}"
+    _mixin_combination: str = "{{ mixin_combination }}"
+    _generation_source: str = "{{ generation_source }}"
+    
+    {%- if validation_enabled %}
+    # Validation methods
+    @validator('name', 'agent_id', 'workflow_id', check_fields=False)
+    def validate_identifier(cls, v):
+        if v and not v.strip():
+            raise ValueError("Identifier cannot be empty")
+        return v
+    {%- endif %}
+    
+    {%- if 'opentelemetry' in groups %}
+    def trace_operation(self, operation: str) -> Dict[str, Any]:
+        """Trace model operation with OpenTelemetry"""
+        tracer = trace.get_tracer("dslmodel", "1.0.0")
+        
+        with tracer.start_as_current_span(
+            f"dslmodel.{operation}",
+            attributes={
+                "dslmodel.model.type": self._model_type,
+                "dslmodel.mixin.combination": self._mixin_combination,
+                "dslmodel.generation.source": self._generation_source,
+                "dslmodel.model.name": getattr(self, 'name', self.__class__.__name__)
+            }
+        ) as span:
+            try:
+                result = {"status": "success", "operation": operation}
+                span.set_status(Status(StatusCode.OK))
+                return result
+            except Exception as e:
+                span.record_exception(e)
+                span.set_status(Status(StatusCode.ERROR, str(e)))
+                raise
+    {%- endif %}
+    
+    {%- if model_type == 'fsm' %}
+    def setup_state_machine(self):
+        """Initialize FSM state machine"""
+        self.machine = Machine(
+            model=self,
+            states=['initial', 'processing', 'completed', 'failed'],
+            initial='initial'
+        )
+        # Add transitions from self.transitions
+        for transition in self.transitions:
+            self.machine.add_transition(**transition)
+    {%- endif %}
+    
+    {%- if model_type == 'workflow' %}
+    def execute_workflow(self):
+        """Execute workflow steps"""
+        self.status = "running"
+        for step in self.steps:
+            # Execute step logic
+            pass
+        self.status = "completed"
+    {%- endif %}
+    
+    {%- if model_type == 'agent' %}
+    async def process_message(self, message: Dict[str, Any]):
+        """Process incoming message"""
+        # Agent-specific message processing
+        return {"response": f"Processed by {self.agent_type}"}
+    {%- endif %}
+    
+    def __repr__(self):
+        return f"<{self.__class__.__name__}({self._model_type}, {self._mixin_combination})>"
+
+# Export generated model
+__all__ = ["{{ model_name }}"]

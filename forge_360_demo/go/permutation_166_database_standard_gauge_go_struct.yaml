@@ -1,0 +1,54 @@
+metadata:
+  generated_at: '2025-06-26T06:18:41.656723'
+  generator_version: 1.0.0
+  permutation_index: 0
+configuration:
+  span_type: database
+  attribute_set: standard
+  metric_type: gauge
+  language: go
+  framework: struct
+  template_config:
+    tags:
+    - json
+    - yaml
+    pointer_optionals: true
+semconv:
+  groups:
+  - id: dslmodel.database
+    type: span
+    prefix: dslmodel.database
+    brief: DSLModel database span attributes
+    attributes:
+    - id: database.method
+      type: string
+      requirement_level: required
+      brief: The database method
+      examples:
+      - database_get
+      - database_post
+    - id: database.status_code
+      type: int
+      requirement_level: recommended
+      brief: The database response status code
+      examples:
+      - 200
+      - 404
+      - 500
+    - id: database.duration_ms
+      type: int
+      requirement_level: recommended
+      brief: Duration of database operation in milliseconds
+    - id: database.retry_count
+      type: int
+      requirement_level: optional
+      brief: Number of retries for database operation
+  - id: database.gauge
+    type: metric
+    metric_name: database.operations.gauge
+    brief: Tracks database operations using gauge
+    instrument: gauge
+    unit: ms
+    attributes:
+    - ref: database.method
+    - ref: database.status_code

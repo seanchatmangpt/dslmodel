@@ -1,0 +1,52 @@
+file_format: 0.1.0
+
+# Weaver configuration for DSLModel 360 permutations
+# Generates type-safe models from semantic conventions
+
+templates:
+  - pattern: 'python/dslmodel_*.j2'
+    filter: 'dslmodel'
+    application_mode: each
+
+  - pattern: 'docs/dslmodel_*.j2'
+    filter: 'dslmodel'
+    application_mode: single
+
+  - pattern: 'metrics/dslmodel_*.j2'
+    filter: 'dslmodel.metrics'
+    application_mode: single
+
+text_maps:
+  model_type:
+    base: "Base"
+    fsm: "FSM"
+    workflow: "Workflow"
+    agent: "Agent"
+    event: "Event"
+    template: "Template"
+    
+  mixin_combination:
+    none: "No Mixins"
+    jinja: "JinjaMixin"
+    tool: "ToolMixin"
+    file: "FileHandlerMixin"
+    jinja_tool: "Jinja + Tool"
+    jinja_file: "Jinja + FileHandler"
+    tool_file: "Tool + FileHandler"
+    all: "All Mixins"
+    fsm_jinja: "FSM + Jinja"
+    fsm_tool: "FSM + Tool"
+
+  generation_source:
+    prompt: "Natural Language Prompt"
+    schema: "JSON/YAML Schema"
+    api: "API Specification"
+    template: "Template-based"
+    weaver: "Weaver Forge"
+    manual: "Manual Creation"
+
+# Custom filters for template processing
+filters:
+  to_python_class: 'dslmodel.weaver.filters.to_python_class'
+  to_mixin_imports: 'dslmodel.weaver.filters.to_mixin_imports'
+  to_span_name: 'dslmodel.weaver.filters.to_span_name'

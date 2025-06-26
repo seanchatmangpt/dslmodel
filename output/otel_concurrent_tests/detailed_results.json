@@ -1,0 +1,1283 @@
+[
+  {
+    "scenario": "High Concurrency Async",
+    "type": "async",
+    "duration_seconds": 0.36034297943115234,
+    "total_tests": 27,
+    "successful": 25,
+    "failed": 2,
+    "success_rate": 0.9259259259259259,
+    "avg_duration_ms": 169.98072023744936,
+    "throughput_per_second": 74.92861396279446,
+    "results": [
+      {
+        "permutation_id": "base_none_prompt",
+        "trace_id": "00000000000000000000000000000001",
+        "success": true,
+        "duration_ms": 149.95193481445312,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "base_none_schema",
+        "trace_id": "00000000000000000000000000000002",
+        "success": true,
+        "duration_ms": 160.18915176391602,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "base_none_api",
+        "trace_id": "00000000000000000000000000000003",
+        "success": true,
+        "duration_ms": 218.31583976745605,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "base_jinja_prompt",
+        "trace_id": "00000000000000000000000000000004",
+        "success": true,
+        "duration_ms": 179.0921688079834,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "base_jinja_schema",
+        "trace_id": "00000000000000000000000000000005",
+        "success": true,
+        "duration_ms": 226.54223442077637,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "base_jinja_api",
+        "trace_id": "00000000000000000000000000000006",
+        "success": true,
+        "duration_ms": 168.7617301940918,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "base_tool_prompt",
+        "trace_id": "00000000000000000000000000000007",
+        "success": true,
+        "duration_ms": 164.55698013305664,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "base_tool_schema",
+        "trace_id": "00000000000000000000000000000008",
+        "success": true,
+        "duration_ms": 87.37993240356445,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "base_tool_api",
+        "trace_id": "00000000000000000000000000000009",
+        "success": true,
+        "duration_ms": 168.91121864318848,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_none_prompt",
+        "trace_id": "0000000000000000000000000000000a",
+        "success": true,
+        "duration_ms": 132.4939727783203,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_none_schema",
+        "trace_id": "0000000000000000000000000000000b",
+        "success": true,
+        "duration_ms": 233.428955078125,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_none_api",
+        "trace_id": "0000000000000000000000000000000c",
+        "success": true,
+        "duration_ms": 152.36616134643555,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_jinja_prompt",
+        "trace_id": "0000000000000000000000000000000d",
+        "success": true,
+        "duration_ms": 187.67905235290527,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_jinja_schema",
+        "trace_id": "0000000000000000000000000000000e",
+        "success": true,
+        "duration_ms": 204.61106300354004,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_jinja_api",
+        "trace_id": "0000000000000000000000000000000f",
+        "success": true,
+        "duration_ms": 181.02717399597168,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_tool_prompt",
+        "trace_id": "00000000000000000000000000000010",
+        "success": true,
+        "duration_ms": 260.4689598083496,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_tool_schema",
+        "trace_id": "00000000000000000000000000000011",
+        "success": true,
+        "duration_ms": 131.41918182373047,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "fsm_tool_api",
+        "trace_id": "00000000000000000000000000000012",
+        "success": true,
+        "duration_ms": 161.30781173706055,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_none_prompt",
+        "trace_id": "00000000000000000000000000000013",
+        "success": true,
+        "duration_ms": 163.78116607666016,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_none_schema",
+        "trace_id": "00000000000000000000000000000014",
+        "success": true,
+        "duration_ms": 94.2680835723877,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_none_api",
+        "trace_id": "00000000000000000000000000000015",
+        "success": true,
+        "duration_ms": 79.51927185058594,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_jinja_prompt",
+        "trace_id": "00000000000000000000000000000016",
+        "success": true,
+        "duration_ms": 152.95100212097168,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_jinja_schema",
+        "trace_id": "00000000000000000000000000000017",
+        "success": true,
+        "duration_ms": 163.6648178100586,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_jinja_api",
+        "trace_id": "00000000000000000000000000000018",
+        "success": true,
+        "duration_ms": 226.45187377929688,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_tool_prompt",
+        "trace_id": "00000000000000000000000000000019",
+        "success": true,
+        "duration_ms": 188.33088874816895,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_tool_schema",
+        "trace_id": "0000000000000000000000000000001a",
+        "success": false,
+        "duration_ms": 183.64477157592773,
+        "validation_results": {
+          "schema": true,
+          "syntax": false,
+          "compatibility": true
+        },
+        "span_count": 4
+      },
+      {
+        "permutation_id": "workflow_tool_api",
+        "trace_id": "0000000000000000000000000000001b",
+        "success": false,
+        "duration_ms": 168.3640480041504,
+        "validation_results": {
+          "schema": true,
+          "syntax": false,
+          "compatibility": true
+        },
+        "span_count": 4
+      }
+    ]
+  },
+  {
+    "scenario": "Moderate Concurrency Sync",
+    "type": "sync",
+    "duration_seconds": 0.13369297981262207,
+    "total_tests": 27,
+    "successful": 22,
+    "failed": 5,
+    "success_rate": 0.8148148148148148,
+    "avg_duration_ms": 34.79320914657028,
+    "throughput_per_second": 201.95525627330588,
+    "results": [
+      {
+        "permutation_id": "base_none_api",
+        "trace_id": "0000000000000000000000000000001e",
+        "success": true,
+        "duration_ms": 24.28412437438965
+      },
+      {
+        "permutation_id": "base_tool_prompt",
+        "trace_id": "00000000000000000000000000000022",
+        "success": true,
+        "duration_ms": 32.315969467163086
+      },
+      {
+        "permutation_id": "base_jinja_prompt",
+        "trace_id": "0000000000000000000000000000001f",
+        "success": true,
+        "duration_ms": 34.09910202026367
+      },
+      {
+        "permutation_id": "base_tool_schema",
+        "trace_id": "00000000000000000000000000000023",
+        "success": false,
+        "duration_ms": 36.82398796081543
+      },
+      {
+        "permutation_id": "base_none_prompt",
+        "trace_id": "0000000000000000000000000000001c",
+        "success": true,
+        "duration_ms": 46.35906219482422
+      },
+      {
+        "permutation_id": "base_jinja_schema",
+        "trace_id": "00000000000000000000000000000020",
+        "success": true,
+        "duration_ms": 47.85013198852539
+      },
+      {
+        "permutation_id": "base_jinja_api",
+        "trace_id": "00000000000000000000000000000021",
+        "success": true,
+        "duration_ms": 47.833919525146484
+      },
+      {
+        "permutation_id": "base_none_schema",
+        "trace_id": "0000000000000000000000000000001d",
+        "success": true,
+        "duration_ms": 49.156904220581055
+      },
+      {
+        "permutation_id": "fsm_jinja_api",
+        "trace_id": "0000000000000000000000000000002a",
+        "success": true,
+        "duration_ms": 14.685869216918945
+      },
+      {
+        "permutation_id": "fsm_none_schema",
+        "trace_id": "00000000000000000000000000000026",
+        "success": true,
+        "duration_ms": 32.56964683532715
+      },
+      {
+        "permutation_id": "fsm_none_prompt",
+        "trace_id": "00000000000000000000000000000025",
+        "success": true,
+        "duration_ms": 35.48789024353027
+      },
+      {
+        "permutation_id": "base_tool_api",
+        "trace_id": "00000000000000000000000000000024",
+        "success": true,
+        "duration_ms": 45.858144760131836
+      },
+      {
+        "permutation_id": "fsm_tool_prompt",
+        "trace_id": "0000000000000000000000000000002b",
+        "success": true,
+        "duration_ms": 30.119895935058594
+      },
+      {
+        "permutation_id": "fsm_jinja_prompt",
+        "trace_id": "00000000000000000000000000000028",
+        "success": false,
+        "duration_ms": 32.9740047454834
+      },
+      {
+        "permutation_id": "fsm_jinja_schema",
+        "trace_id": "00000000000000000000000000000029",
+        "success": true,
+        "duration_ms": 32.07588195800781
+      },
+      {
+        "permutation_id": "fsm_tool_api",
+        "trace_id": "0000000000000000000000000000002d",
+        "success": true,
+        "duration_ms": 13.967037200927734
+      },
+      {
+        "permutation_id": "fsm_none_api",
+        "trace_id": "00000000000000000000000000000027",
+        "success": true,
+        "duration_ms": 43.94793510437012
+      },
+      {
+        "permutation_id": "fsm_tool_schema",
+        "trace_id": "0000000000000000000000000000002c",
+        "success": false,
+        "duration_ms": 24.1391658782959
+      },
+      {
+        "permutation_id": "workflow_jinja_prompt",
+        "trace_id": "00000000000000000000000000000031",
+        "success": true,
+        "duration_ms": 11.792182922363281
+      },
+      {
+        "permutation_id": "workflow_none_prompt",
+        "trace_id": "0000000000000000000000000000002e",
+        "success": false,
+        "duration_ms": 31.29291534423828
+      },
+      {
+        "permutation_id": "workflow_tool_api",
+        "trace_id": "00000000000000000000000000000036",
+        "success": false,
+        "duration_ms": 11.046171188354492
+      },
+      {
+        "permutation_id": "workflow_none_schema",
+        "trace_id": "0000000000000000000000000000002f",
+        "success": true,
+        "duration_ms": 36.273956298828125
+      },
+      {
+        "permutation_id": "workflow_jinja_schema",
+        "trace_id": "00000000000000000000000000000032",
+        "success": true,
+        "duration_ms": 41.407108306884766
+      },
+      {
+        "permutation_id": "workflow_jinja_api",
+        "trace_id": "00000000000000000000000000000033",
+        "success": true,
+        "duration_ms": 42.74630546569824
+      },
+      {
+        "permutation_id": "workflow_tool_prompt",
+        "trace_id": "00000000000000000000000000000034",
+        "success": true,
+        "duration_ms": 43.13993453979492
+      },
+      {
+        "permutation_id": "workflow_none_api",
+        "trace_id": "00000000000000000000000000000030",
+        "success": true,
+        "duration_ms": 52.367210388183594
+      },
+      {
+        "permutation_id": "workflow_tool_schema",
+        "trace_id": "00000000000000000000000000000035",
+        "success": true,
+        "duration_ms": 44.802188873291016
+      }
+    ]
+  },
+  {
+    "scenario": "Stress Test Async",
+    "type": "async",
+    "duration_seconds": 0.5216052532196045,
+    "total_tests": 54,
+    "successful": 29,
+    "failed": 25,
+    "success_rate": 0.5370370370370371,
+    "avg_duration_ms": 283.49208390271224,
+    "throughput_per_second": 103.52656470901205,
+    "results": [
+      {
+        "permutation_id": "base_none_prompt",
+        "trace_id": "00000000000000000000000000000037",
+        "success": true,
+        "duration_ms": 267.77124404907227,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_none_schema",
+        "trace_id": "00000000000000000000000000000038",
+        "success": true,
+        "duration_ms": 217.22722053527832,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_none_api",
+        "trace_id": "00000000000000000000000000000039",
+        "success": false,
+        "duration_ms": 262.2232437133789,
+        "validation_results": {
+          "schema": false,
+          "syntax": false,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_jinja_prompt",
+        "trace_id": "0000000000000000000000000000003a",
+        "success": true,
+        "duration_ms": 305.5276870727539,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_jinja_schema",
+        "trace_id": "0000000000000000000000000000003b",
+        "success": false,
+        "duration_ms": 340.8360481262207,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": false,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_jinja_api",
+        "trace_id": "0000000000000000000000000000003c",
+        "success": false,
+        "duration_ms": 264.0237808227539,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": false,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_tool_prompt",
+        "trace_id": "0000000000000000000000000000003d",
+        "success": true,
+        "duration_ms": 245.64313888549805,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_tool_schema",
+        "trace_id": "0000000000000000000000000000003e",
+        "success": false,
+        "duration_ms": 325.4508972167969,
+        "validation_results": {
+          "schema": false,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_tool_api",
+        "trace_id": "0000000000000000000000000000003f",
+        "success": true,
+        "duration_ms": 325.3638744354248,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_none_prompt",
+        "trace_id": "00000000000000000000000000000040",
+        "success": true,
+        "duration_ms": 275.8650779724121,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_none_schema",
+        "trace_id": "00000000000000000000000000000041",
+        "success": true,
+        "duration_ms": 284.0850353240967,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_none_api",
+        "trace_id": "00000000000000000000000000000042",
+        "success": true,
+        "duration_ms": 274.74498748779297,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_jinja_prompt",
+        "trace_id": "00000000000000000000000000000043",
+        "success": false,
+        "duration_ms": 340.78478813171387,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": false,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_jinja_schema",
+        "trace_id": "00000000000000000000000000000044",
+        "success": false,
+        "duration_ms": 342.7603244781494,
+        "validation_results": {
+          "schema": true,
+          "syntax": false,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_jinja_api",
+        "trace_id": "00000000000000000000000000000045",
+        "success": true,
+        "duration_ms": 274.92308616638184,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_tool_prompt",
+        "trace_id": "00000000000000000000000000000046",
+        "success": false,
+        "duration_ms": 284.2409610748291,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_tool_schema",
+        "trace_id": "00000000000000000000000000000047",
+        "success": true,
+        "duration_ms": 250.32281875610352,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_tool_api",
+        "trace_id": "00000000000000000000000000000048",
+        "success": true,
+        "duration_ms": 325.31189918518066,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_none_prompt",
+        "trace_id": "00000000000000000000000000000049",
+        "success": true,
+        "duration_ms": 182.11722373962402,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_none_schema",
+        "trace_id": "0000000000000000000000000000004a",
+        "success": false,
+        "duration_ms": 253.11589241027832,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": false,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_none_api",
+        "trace_id": "0000000000000000000000000000004b",
+        "success": false,
+        "duration_ms": 253.95822525024414,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_jinja_prompt",
+        "trace_id": "0000000000000000000000000000004c",
+        "success": true,
+        "duration_ms": 394.0451145172119,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_jinja_schema",
+        "trace_id": "0000000000000000000000000000004d",
+        "success": true,
+        "duration_ms": 312.6788139343262,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_jinja_api",
+        "trace_id": "0000000000000000000000000000004e",
+        "success": true,
+        "duration_ms": 247.37787246704102,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_tool_prompt",
+        "trace_id": "0000000000000000000000000000004f",
+        "success": true,
+        "duration_ms": 283.07366371154785,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_tool_schema",
+        "trace_id": "00000000000000000000000000000050",
+        "success": true,
+        "duration_ms": 311.0661506652832,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_tool_api",
+        "trace_id": "00000000000000000000000000000051",
+        "success": false,
+        "duration_ms": 212.19468116760254,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": false,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_none_prompt",
+        "trace_id": "00000000000000000000000000000052",
+        "success": false,
+        "duration_ms": 340.73400497436523,
+        "validation_results": {
+          "schema": true,
+          "syntax": false,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_none_schema",
+        "trace_id": "00000000000000000000000000000053",
+        "success": false,
+        "duration_ms": 205.62195777893066,
+        "validation_results": {
+          "schema": false,
+          "syntax": false,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_none_api",
+        "trace_id": "00000000000000000000000000000054",
+        "success": false,
+        "duration_ms": 219.681978225708,
+        "validation_results": {
+          "schema": false,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_jinja_prompt",
+        "trace_id": "00000000000000000000000000000055",
+        "success": true,
+        "duration_ms": 209.9001407623291,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_jinja_schema",
+        "trace_id": "00000000000000000000000000000056",
+        "success": true,
+        "duration_ms": 250.8981227874756,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_jinja_api",
+        "trace_id": "00000000000000000000000000000057",
+        "success": false,
+        "duration_ms": 322.69811630249023,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_tool_prompt",
+        "trace_id": "00000000000000000000000000000058",
+        "success": false,
+        "duration_ms": 225.49200057983398,
+        "validation_results": {
+          "schema": true,
+          "syntax": false,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_tool_schema",
+        "trace_id": "00000000000000000000000000000059",
+        "success": true,
+        "duration_ms": 305.21178245544434,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "base_tool_api",
+        "trace_id": "0000000000000000000000000000005a",
+        "success": false,
+        "duration_ms": 296.30303382873535,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": false,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_none_prompt",
+        "trace_id": "0000000000000000000000000000005b",
+        "success": false,
+        "duration_ms": 323.1239318847656,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": false,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_none_schema",
+        "trace_id": "0000000000000000000000000000005c",
+        "success": false,
+        "duration_ms": 197.24798202514648,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_none_api",
+        "trace_id": "0000000000000000000000000000005d",
+        "success": false,
+        "duration_ms": 189.3911361694336,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_jinja_prompt",
+        "trace_id": "0000000000000000000000000000005e",
+        "success": true,
+        "duration_ms": 232.12265968322754,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_jinja_schema",
+        "trace_id": "0000000000000000000000000000005f",
+        "success": true,
+        "duration_ms": 305.1760196685791,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_jinja_api",
+        "trace_id": "00000000000000000000000000000060",
+        "success": false,
+        "duration_ms": 344.29383277893066,
+        "validation_results": {
+          "schema": false,
+          "syntax": false,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_tool_prompt",
+        "trace_id": "00000000000000000000000000000061",
+        "success": true,
+        "duration_ms": 308.3939552307129,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_tool_schema",
+        "trace_id": "00000000000000000000000000000062",
+        "success": false,
+        "duration_ms": 205.80720901489258,
+        "validation_results": {
+          "schema": true,
+          "syntax": false,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "fsm_tool_api",
+        "trace_id": "00000000000000000000000000000063",
+        "success": false,
+        "duration_ms": 332.2460651397705,
+        "validation_results": {
+          "schema": false,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_none_prompt",
+        "trace_id": "00000000000000000000000000000064",
+        "success": true,
+        "duration_ms": 291.39018058776855,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_none_schema",
+        "trace_id": "00000000000000000000000000000065",
+        "success": true,
+        "duration_ms": 289.2951965332031,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_none_api",
+        "trace_id": "00000000000000000000000000000066",
+        "success": true,
+        "duration_ms": 322.9246139526367,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_jinja_prompt",
+        "trace_id": "00000000000000000000000000000067",
+        "success": false,
+        "duration_ms": 383.8479518890381,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": false,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_jinja_schema",
+        "trace_id": "00000000000000000000000000000068",
+        "success": true,
+        "duration_ms": 387.50696182250977,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_jinja_api",
+        "trace_id": "00000000000000000000000000000069",
+        "success": true,
+        "duration_ms": 288.5019779205322,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_tool_prompt",
+        "trace_id": "0000000000000000000000000000006a",
+        "success": false,
+        "duration_ms": 276.63278579711914,
+        "validation_results": {
+          "schema": true,
+          "syntax": false,
+          "semantic": true,
+          "telemetry": true,
+          "performance": false
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_tool_schema",
+        "trace_id": "0000000000000000000000000000006b",
+        "success": true,
+        "duration_ms": 282.7920913696289,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": true,
+          "performance": true
+        },
+        "span_count": 6
+      },
+      {
+        "permutation_id": "workflow_tool_api",
+        "trace_id": "0000000000000000000000000000006c",
+        "success": false,
+        "duration_ms": 314.6030902862549,
+        "validation_results": {
+          "schema": true,
+          "syntax": true,
+          "semantic": true,
+          "telemetry": false,
+          "performance": true
+        },
+        "span_count": 6
+      }
+    ]
+  }
+]

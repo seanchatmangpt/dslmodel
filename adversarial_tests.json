@@ -1,0 +1,50 @@
+[
+  {
+    "test_id": "crypto_test_1",
+    "name": "Weak Key Generation Test",
+    "description": "Test for predictable key generation with fixed seed",
+    "attack_type": "cryptographic",
+    "category": "a02_cryptographic_failures",
+    "severity": "high",
+    "target_component": "cryptographic_functions",
+    "test_payload": "generate_key(seed=12345)",
+    "expected_outcome": "Cryptographic operations should be secure",
+    "remediation_hint": "Use cryptographically secure random number generators"
+  },
+  {
+    "test_id": "crypto_test_2",
+    "name": "Hash Collision Test",
+    "description": "Test MD5 hash collision vulnerability",
+    "attack_type": "cryptographic",
+    "category": "a02_cryptographic_failures",
+    "severity": "high",
+    "target_component": "cryptographic_functions",
+    "test_payload": "md5_hash_collision_attack",
+    "expected_outcome": "Cryptographic operations should be secure",
+    "remediation_hint": "Use SHA-256 or stronger hash functions"
+  },
+  {
+    "test_id": "crypto_test_3",
+    "name": "Timing Attack Test",
+    "description": "Test for timing side-channel vulnerabilities",
+    "attack_type": "cryptographic",
+    "category": "a02_cryptographic_failures",
+    "severity": "high",
+    "target_component": "cryptographic_functions",
+    "test_payload": "constant_time_comparison_test",
+    "expected_outcome": "Cryptographic operations should be secure",
+    "remediation_hint": "Use constant-time comparison functions"
+  },
+  {
+    "test_id": "crypto_test_4",
+    "name": "Weak Random Test",
+    "description": "Test for use of non-cryptographic random",
+    "attack_type": "cryptographic",
+    "category": "a02_cryptographic_failures",
+    "severity": "high",
+    "target_component": "cryptographic_functions",
+    "test_payload": "random.random() for key generation",
+    "expected_outcome": "Cryptographic operations should be secure",
+    "remediation_hint": "Use secrets.SystemRandom() for cryptographic purposes"
+  }
+]

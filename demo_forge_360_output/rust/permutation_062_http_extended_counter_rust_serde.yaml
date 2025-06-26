@@ -1,0 +1,65 @@
+metadata:
+  generated_at: '2025-06-26T06:16:38.789460'
+  generator_version: 1.0.0
+  permutation_index: 0
+configuration:
+  span_type: http
+  attribute_set: extended
+  metric_type: counter
+  language: rust
+  framework: serde
+  template_config:
+    derives:
+    - Serialize
+    - Deserialize
+    - Debug
+    - Clone
+    imports:
+    - use serde::{Serialize, Deserialize};
+semconv:
+  groups:
+  - id: dslmodel.http
+    type: span
+    prefix: dslmodel.http
+    brief: DSLModel http span attributes
+    attributes:
+    - id: http.method
+      type: string
+      requirement_level: required
+      brief: The http method
+      examples:
+      - http_get
+      - http_post
+    - id: http.status_code
+      type: int
+      requirement_level: recommended
+      brief: The http response status code
+      examples:
+      - 200
+      - 404
+      - 500
+    - id: http.duration_ms
+      type: int
+      requirement_level: recommended
+      brief: Duration of http operation in milliseconds
+    - id: http.retry_count
+      type: int
+      requirement_level: optional
+      brief: Number of retries for http operation
+    - id: http.request_size
+      type: int
+      requirement_level: optional
+      brief: Size of http request in bytes
+    - id: http.response_size
+      type: int
+      requirement_level: optional
+      brief: Size of http response in bytes
+  - id: http.counter
+    type: metric
+    metric_name: http.operations.counter
+    brief: Tracks http operations using counter
+    instrument: counter
+    unit: '1'
+    attributes:
+    - ref: http.method
+    - ref: http.status_code

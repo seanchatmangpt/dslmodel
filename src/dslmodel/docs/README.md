@@ -47,6 +47,7 @@ dsl swarm monitor --follow
 - **[Troubleshooting](TROUBLESHOOTING.md)** - Common issues and solutions
 
 ### Reference
+- **[Capability Map](CAPABILITY_MAP.md)** - Visual system capabilities
 - **[File Structure](SWARM_FILE_STRUCTURE.md)** - Package organization
 - **[API Reference](API_REFERENCE.md)** - Complete class/method reference
 - **[Semantic Conventions](SEMANTIC_CONVENTIONS.md)** - Span schemas and attributes

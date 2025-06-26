@@ -1,0 +1,191 @@
+groups:
+  - id: pqc
+    type: span
+    brief: 'Post-Quantum Cryptography operations'
+    prefix: pqc
+    attributes:
+      - id: algorithm
+        type:
+          allow_custom_values: false
+          members:
+            - id: kyber
+              value: 'kyber'
+              brief: 'Kyber Key Encapsulation Mechanism'
+            - id: dilithium
+              value: 'dilithium'
+              brief: 'Dilithium Digital Signature'
+            - id: falcon
+              value: 'falcon'
+              brief: 'Falcon Digital Signature'
+            - id: sphincs_plus
+              value: 'sphincs_plus'
+              brief: 'SPHINCS+ Hash-Based Signature'
+        requirement_level: required
+        brief: 'PQC algorithm used'
+        
+      - id: security_level
+        type: int
+        requirement_level: required
+        brief: 'NIST security level (1-5)'
+        examples: [1, 3, 5]
+        
+      - id: operation.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: keygen
+              value: 'keygen'
+              brief: 'Key generation'
+            - id: encrypt
+              value: 'encrypt'
+              brief: 'Encryption operation'
+            - id: decrypt
+              value: 'decrypt'
+              brief: 'Decryption operation'
+            - id: sign
+              value: 'sign'
+              brief: 'Signature creation'
+            - id: verify
+              value: 'verify'
+              brief: 'Signature verification'
+            - id: kem_encap
+              value: 'kem_encap'
+              brief: 'KEM encapsulation'
+            - id: kem_decap
+              value: 'kem_decap'
+              brief: 'KEM decapsulation'
+        requirement_level: required
+        brief: 'Type of cryptographic operation'
+        
+      - id: key.id
+        type: string
+        requirement_level: required
+        brief: 'Unique identifier for the key'
+        examples: ['kyber-768-a1b2c3d4', 'dilithium3-e5f6g7h8']
+        
+      - id: key.size
+        type: int
+        requirement_level: recommended
+        brief: 'Size of the key in bytes'
+        
+      - id: region
+        type:
+          allow_custom_values: false
+          members:
+            - id: north_america
+              value: 'north_america'
+              brief: 'North America region'
+            - id: europe
+              value: 'europe'
+              brief: 'Europe region'
+            - id: asia_pacific
+              value: 'asia_pacific'
+              brief: 'Asia Pacific region'
+            - id: middle_east
+              value: 'middle_east'
+              brief: 'Middle East region'
+            - id: latin_america
+              value: 'latin_america'
+              brief: 'Latin America region'
+            - id: africa
+              value: 'africa'
+              brief: 'Africa region'
+            - id: global
+              value: 'global'
+              brief: 'Global/Universal'
+        requirement_level: recommended
+        brief: 'Geographic region for compliance'
+        
+      - id: compliance.framework
+        type: string[]
+        requirement_level: recommended
+        brief: 'Compliance frameworks met'
+        examples: [['nist', 'cnsa'], ['etsi', 'bsi']]
+        
+      - id: hybrid.enabled
+        type: boolean
+        requirement_level: recommended
+        brief: 'Whether hybrid classical+PQC mode is used'
+        
+      - id: hybrid.classical_algorithm
+        type: string
+        requirement_level: conditional
+        brief: 'Classical algorithm in hybrid mode'
+        examples: ['rsa-2048', 'ecdsa-p256', 'ed25519']
+        
+      - id: parameter_set
+        type: string
+        requirement_level: recommended
+        brief: 'Specific parameter set used'
+        examples: ['Kyber768', 'Dilithium3', 'Falcon-512']
+        
+      - id: message.size
+        type: int
+        requirement_level: recommended
+        brief: 'Size of message/data in bytes'
+        
+      - id: signature.size
+        type: int
+        requirement_level: conditional
+        brief: 'Size of signature in bytes'
+        note: 'Only for signature operations'
+        
+      - id: ciphertext.size
+        type: int
+        requirement_level: conditional
+        brief: 'Size of ciphertext in bytes'
+        note: 'Only for encryption operations'
+
+  - id: pqc.keygen
+    type: span
+    brief: 'PQC key generation operations'
+    extends: pqc
+    span_kind: internal
+    attributes:
+      - ref: pqc.algorithm
+        requirement_level: required
+      - ref: pqc.security_level
+        requirement_level: required
+      - ref: pqc.key.id
+        requirement_level: required
+      - id: key.type
+        type:
+          allow_custom_values: false
+          members:
+            - id: signing
+              value: 'signing'
+            - id: encryption
+              value: 'encryption'
+            - id: kem
+              value: 'kem'
+        requirement_level: required
+        brief: 'Purpose of generated key'
+
+  - id: pqc.cross_region
+    type: span
+    brief: 'Cross-regional PQC operations'
+    extends: pqc
+    span_kind: client
+    attributes:
+      - ref: pqc.algorithm
+      - id: source.region
+        ref: pqc.region
+        requirement_level: required
+        brief: 'Source region'
+      - id: destination.region  
+        ref: pqc.region
+        requirement_level: required
+        brief: 'Destination region'
+      - id: compliance.conflicts
+        type: string[]
+        requirement_level: optional
+        brief: 'Compliance conflicts between regions'
+
+  - id: pqc.metrics
+    type: metric
+    brief: 'PQC performance and usage metrics'
+    attributes:
+      - ref: pqc.algorithm
+      - ref: pqc.security_level
+      - ref: pqc.region
+      - ref: pqc.operation.type

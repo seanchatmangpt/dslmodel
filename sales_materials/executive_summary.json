@@ -1,0 +1,17 @@
+{
+  "company_profile": {
+    "size": 150,
+    "industry": "Fintech",
+    "current_tech_spend": 2231400
+  },
+  "swarmsh_impact": {
+    "total_cost_savings": 1527500.0,
+    "efficiency_gain_percent": 250,
+    "compliance_risk_reduction": 85.0,
+    "time_to_value_days": 1,
+    "roi_percent": 395.0
+  },
+  "total_annual_savings": 1527500.0,
+  "net_roi_percent": 205.50000000000003,
+  "payback_months": 3.927986906710311
+}

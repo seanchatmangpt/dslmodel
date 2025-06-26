@@ -1,0 +1,52 @@
+metadata:
+  generated_at: '2025-06-26T06:16:38.790918'
+  generator_version: 1.0.0
+  permutation_index: 0
+configuration:
+  span_type: messaging
+  attribute_set: custom
+  metric_type: counter
+  language: java
+  framework: pojo
+  template_config:
+    getters_setters: true
+    builder_pattern: true
+semconv:
+  groups:
+  - id: dslmodel.messaging
+    type: span
+    prefix: dslmodel.messaging
+    brief: DSLModel messaging span attributes
+    attributes:
+    - id: messaging.method
+      type: string
+      requirement_level: required
+      brief: The messaging method
+      examples:
+      - messaging_get
+      - messaging_post
+    - id: messaging.status_code
+      type: int
+      requirement_level: recommended
+      brief: The messaging response status code
+      examples:
+      - 200
+      - 404
+      - 500
+    - id: messaging.custom_field
+      type: string
+      requirement_level: optional
+      brief: Custom field for messaging domain
+    - id: messaging.custom_metric
+      type: double
+      requirement_level: optional
+      brief: Custom metric for messaging monitoring
+  - id: messaging.counter
+    type: metric
+    metric_name: messaging.operations.counter
+    brief: Tracks messaging operations using counter
+    instrument: counter
+    unit: '1'
+    attributes:
+    - ref: messaging.method
+    - ref: messaging.status_code

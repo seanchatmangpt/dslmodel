@@ -1,7 +1,7 @@
 {
   "success": true,
   "summary": {
-    "test_timestamp": 1750925711.333782,
+    "test_timestamp": 1750942683.203404,
     "lm_model": "ollama/qwen3",
     "total_workflows": 4,
     "successful_workflows": 3,

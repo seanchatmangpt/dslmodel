@@ -1,0 +1,1712 @@
+{
+  "spans": [
+    {
+      "trace_id": "00000000000000000000000000000014",
+      "span_id": "0000000000000028",
+      "name": "validate_schema",
+      "start_time": 1750944123.275847,
+      "end_time": 1750944123.293887,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000027"
+    },
+    {
+      "trace_id": "00000000000000000000000000000002",
+      "span_id": "0000000000000004",
+      "name": "validate_schema",
+      "start_time": 1750944123.275753,
+      "end_time": 1750944123.2939079,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000003"
+    },
+    {
+      "trace_id": "00000000000000000000000000000008",
+      "span_id": "0000000000000010",
+      "name": "validate_schema",
+      "start_time": 1750944123.27579,
+      "end_time": 1750944123.2939148,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000f"
+    },
+    {
+      "trace_id": "00000000000000000000000000000008",
+      "span_id": "000000000000002b",
+      "name": "validate_syntax",
+      "start_time": 1750944123.293916,
+      "end_time": 1750944123.3050072,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000f"
+    },
+    {
+      "trace_id": "00000000000000000000000000000009",
+      "span_id": "0000000000000012",
+      "name": "validate_schema",
+      "start_time": 1750944123.275794,
+      "end_time": 1750944123.305269,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000011"
+    },
+    {
+      "trace_id": "00000000000000000000000000000006",
+      "span_id": "000000000000000c",
+      "name": "validate_schema",
+      "start_time": 1750944123.2757812,
+      "end_time": 1750944123.310477,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000b"
+    },
+    {
+      "trace_id": "00000000000000000000000000000011",
+      "span_id": "0000000000000022",
+      "name": "validate_schema",
+      "start_time": 1750944123.275828,
+      "end_time": 1750944123.310503,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000021"
+    },
+    {
+      "trace_id": "00000000000000000000000000000001",
+      "span_id": "0000000000000002",
+      "name": "validate_schema",
+      "start_time": 1750944123.275733,
+      "end_time": 1750944123.315681,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000001"
+    },
+    {
+      "trace_id": "00000000000000000000000000000014",
+      "span_id": "0000000000000029",
+      "name": "validate_syntax",
+      "start_time": 1750944123.293893,
+      "end_time": 1750944123.324666,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000027"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000d",
+      "span_id": "000000000000001a",
+      "name": "validate_schema",
+      "start_time": 1750944123.275811,
+      "end_time": 1750944123.3263638,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000019"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000c",
+      "span_id": "0000000000000018",
+      "name": "validate_schema",
+      "start_time": 1750944123.275807,
+      "end_time": 1750944123.3272011,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000017"
+    },
+    {
+      "trace_id": "00000000000000000000000000000001",
+      "span_id": "0000000000000030",
+      "name": "validate_syntax",
+      "start_time": 1750944123.315685,
+      "end_time": 1750944123.344448,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000001"
+    },
+    {
+      "trace_id": "00000000000000000000000000000005",
+      "span_id": "000000000000000a",
+      "name": "validate_schema",
+      "start_time": 1750944123.275777,
+      "end_time": 1750944123.346217,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000009"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000f",
+      "span_id": "000000000000001e",
+      "name": "validate_schema",
+      "start_time": 1750944123.275819,
+      "end_time": 1750944123.350179,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001d"
+    },
+    {
+      "trace_id": "00000000000000000000000000000011",
+      "span_id": "000000000000002f",
+      "name": "validate_syntax",
+      "start_time": 1750944123.310505,
+      "end_time": 1750944123.350282,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000021"
+    },
+    {
+      "trace_id": "00000000000000000000000000000013",
+      "span_id": "0000000000000026",
+      "name": "validate_schema",
+      "start_time": 1750944123.275841,
+      "end_time": 1750944123.350302,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000025"
+    },
+    {
+      "trace_id": "00000000000000000000000000000002",
+      "span_id": "000000000000002a",
+      "name": "validate_syntax",
+      "start_time": 1750944123.29391,
+      "end_time": 1750944123.350378,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000003"
+    },
+    {
+      "trace_id": "00000000000000000000000000000012",
+      "span_id": "0000000000000024",
+      "name": "validate_schema",
+      "start_time": 1750944123.2758348,
+      "end_time": 1750944123.350682,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000023"
+    },
+    {
+      "trace_id": "00000000000000000000000000000009",
+      "span_id": "000000000000002d",
+      "name": "validate_syntax",
+      "start_time": 1750944123.30527,
+      "end_time": 1750944123.352986,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000011"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000e",
+      "span_id": "000000000000001c",
+      "name": "validate_schema",
+      "start_time": 1750944123.275815,
+      "end_time": 1750944123.356062,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001b"
+    },
+    {
+      "trace_id": "00000000000000000000000000000004",
+      "span_id": "0000000000000008",
+      "name": "validate_schema",
+      "start_time": 1750944123.2757719,
+      "end_time": 1750944123.358654,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000007"
+    },
+    {
+      "trace_id": "00000000000000000000000000000008",
+      "span_id": "000000000000002c",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.305013,
+      "end_time": 1750944123.363164,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000f"
+    },
+    {
+      "trace_id": "00000000000000000000000000000008",
+      "span_id": "000000000000000f",
+      "name": "test_base_tool_schema",
+      "start_time": 1750944123.275789,
+      "end_time": 1750944123.363169,
+      "attributes": {
+        "permutation.id": "base_tool_schema",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "tool",
+        "generation.source": "schema",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000010",
+      "span_id": "0000000000000020",
+      "name": "validate_schema",
+      "start_time": 1750944123.275823,
+      "end_time": 1750944123.364885,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001f"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000a",
+      "span_id": "0000000000000014",
+      "name": "validate_schema",
+      "start_time": 1750944123.275799,
+      "end_time": 1750944123.36729,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000013"
+    },
+    {
+      "trace_id": "00000000000000000000000000000007",
+      "span_id": "000000000000000e",
+      "name": "validate_schema",
+      "start_time": 1750944123.275786,
+      "end_time": 1750944123.370107,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000d"
+    },
+    {
+      "trace_id": "00000000000000000000000000000014",
+      "span_id": "0000000000000031",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.3246741,
+      "end_time": 1750944123.370112,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000027"
+    },
+    {
+      "trace_id": "00000000000000000000000000000014",
+      "span_id": "0000000000000027",
+      "name": "test_workflow_none_schema",
+      "start_time": 1750944123.275846,
+      "end_time": 1750944123.370114,
+      "attributes": {
+        "permutation.id": "workflow_none_schema",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "workflow",
+        "mixin.combo": "none",
+        "generation.source": "schema",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000003",
+      "span_id": "0000000000000006",
+      "name": "validate_schema",
+      "start_time": 1750944123.275765,
+      "end_time": 1750944123.3701298,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000005"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000b",
+      "span_id": "0000000000000016",
+      "name": "validate_schema",
+      "start_time": 1750944123.2758029,
+      "end_time": 1750944123.375343,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000015"
+    },
+    {
+      "trace_id": "00000000000000000000000000000015",
+      "span_id": "000000000000003f",
+      "name": "validate_schema",
+      "start_time": 1750944123.363221,
+      "end_time": 1750944123.375809,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000003e"
+    },
+    {
+      "trace_id": "00000000000000000000000000000006",
+      "span_id": "000000000000002e",
+      "name": "validate_syntax",
+      "start_time": 1750944123.310483,
+      "end_time": 1750944123.387153,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000b"
+    },
+    {
+      "trace_id": "00000000000000000000000000000016",
+      "span_id": "0000000000000045",
+      "name": "validate_schema",
+      "start_time": 1750944123.370154,
+      "end_time": 1750944123.389538,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000044"
+    },
+    {
+      "trace_id": "00000000000000000000000000000007",
+      "span_id": "0000000000000042",
+      "name": "validate_syntax",
+      "start_time": 1750944123.370108,
+      "end_time": 1750944123.389546,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000d"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000a",
+      "span_id": "0000000000000041",
+      "name": "validate_syntax",
+      "start_time": 1750944123.367291,
+      "end_time": 1750944123.389567,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000013"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000d",
+      "span_id": "0000000000000032",
+      "name": "validate_syntax",
+      "start_time": 1750944123.326367,
+      "end_time": 1750944123.3938031,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000019"
+    },
+    {
+      "trace_id": "00000000000000000000000000000015",
+      "span_id": "0000000000000047",
+      "name": "validate_syntax",
+      "start_time": 1750944123.3758101,
+      "end_time": 1750944123.398432,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000003e"
+    },
+    {
+      "trace_id": "00000000000000000000000000000013",
+      "span_id": "0000000000000038",
+      "name": "validate_syntax",
+      "start_time": 1750944123.350302,
+      "end_time": 1750944123.398442,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000025"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000f",
+      "span_id": "0000000000000036",
+      "name": "validate_syntax",
+      "start_time": 1750944123.350181,
+      "end_time": 1750944123.3991292,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001d"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000e",
+      "span_id": "000000000000003c",
+      "name": "validate_syntax",
+      "start_time": 1750944123.356063,
+      "end_time": 1750944123.404795,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001b"
+    },
+    {
+      "trace_id": "00000000000000000000000000000011",
+      "span_id": "0000000000000037",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.350283,
+      "end_time": 1750944123.407243,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000021"
+    },
+    {
+      "trace_id": "00000000000000000000000000000011",
+      "span_id": "0000000000000021",
+      "name": "test_fsm_tool_schema",
+      "start_time": 1750944123.275827,
+      "end_time": 1750944123.407246,
+      "attributes": {
+        "permutation.id": "fsm_tool_schema",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "tool",
+        "generation.source": "schema",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000000a",
+      "span_id": "000000000000004b",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.389568,
+      "end_time": 1750944123.4082901,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000013"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000a",
+      "span_id": "0000000000000013",
+      "name": "test_fsm_none_prompt",
+      "start_time": 1750944123.275798,
+      "end_time": 1750944123.408292,
+      "attributes": {
+        "permutation.id": "fsm_none_prompt",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "none",
+        "generation.source": "prompt",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000000c",
+      "span_id": "0000000000000033",
+      "name": "validate_syntax",
+      "start_time": 1750944123.327202,
+      "end_time": 1750944123.409277,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000017"
+    },
+    {
+      "trace_id": "00000000000000000000000000000005",
+      "span_id": "0000000000000035",
+      "name": "validate_syntax",
+      "start_time": 1750944123.34622,
+      "end_time": 1750944123.414748,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000009"
+    },
+    {
+      "trace_id": "00000000000000000000000000000012",
+      "span_id": "000000000000003a",
+      "name": "validate_syntax",
+      "start_time": 1750944123.350683,
+      "end_time": 1750944123.416822,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000023"
+    },
+    {
+      "trace_id": "00000000000000000000000000000004",
+      "span_id": "000000000000003d",
+      "name": "validate_syntax",
+      "start_time": 1750944123.3586571,
+      "end_time": 1750944123.418475,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000007"
+    },
+    {
+      "trace_id": "00000000000000000000000000000016",
+      "span_id": "0000000000000049",
+      "name": "validate_syntax",
+      "start_time": 1750944123.3895411,
+      "end_time": 1750944123.4256651,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000044"
+    },
+    {
+      "trace_id": "00000000000000000000000000000001",
+      "span_id": "0000000000000034",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.344455,
+      "end_time": 1750944123.425677,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000001"
+    },
+    {
+      "trace_id": "00000000000000000000000000000001",
+      "span_id": "0000000000000001",
+      "name": "test_base_none_prompt",
+      "start_time": 1750944123.275728,
+      "end_time": 1750944123.42568,
+      "attributes": {
+        "permutation.id": "base_none_prompt",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "none",
+        "generation.source": "prompt",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000000c",
+      "span_id": "0000000000000055",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.4092789,
+      "end_time": 1750944123.428171,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000017"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000c",
+      "span_id": "0000000000000017",
+      "name": "test_fsm_none_api",
+      "start_time": 1750944123.275806,
+      "end_time": 1750944123.428172,
+      "attributes": {
+        "permutation.id": "fsm_none_api",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "none",
+        "generation.source": "api",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000002",
+      "span_id": "0000000000000039",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.350379,
+      "end_time": 1750944123.435937,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000003"
+    },
+    {
+      "trace_id": "00000000000000000000000000000002",
+      "span_id": "0000000000000003",
+      "name": "test_base_none_schema",
+      "start_time": 1750944123.2757509,
+      "end_time": 1750944123.43594,
+      "attributes": {
+        "permutation.id": "base_none_schema",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "none",
+        "generation.source": "schema",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000000b",
+      "span_id": "0000000000000046",
+      "name": "validate_syntax",
+      "start_time": 1750944123.375345,
+      "end_time": 1750944123.436395,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000015"
+    },
+    {
+      "trace_id": "00000000000000000000000000000012",
+      "span_id": "0000000000000057",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.416825,
+      "end_time": 1750944123.43714,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000023"
+    },
+    {
+      "trace_id": "00000000000000000000000000000012",
+      "span_id": "0000000000000023",
+      "name": "test_fsm_tool_api",
+      "start_time": 1750944123.2758331,
+      "end_time": 1750944123.437141,
+      "attributes": {
+        "permutation.id": "fsm_tool_api",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "tool",
+        "generation.source": "api",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000013",
+      "span_id": "000000000000004e",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.398443,
+      "end_time": 1750944123.43962,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000025"
+    },
+    {
+      "trace_id": "00000000000000000000000000000013",
+      "span_id": "0000000000000025",
+      "name": "test_workflow_none_prompt",
+      "start_time": 1750944123.27584,
+      "end_time": 1750944123.4396212,
+      "attributes": {
+        "permutation.id": "workflow_none_prompt",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "workflow",
+        "mixin.combo": "none",
+        "generation.source": "prompt",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000007",
+      "span_id": "000000000000004a",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.389547,
+      "end_time": 1750944123.440341,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000d"
+    },
+    {
+      "trace_id": "00000000000000000000000000000007",
+      "span_id": "000000000000000d",
+      "name": "test_base_tool_prompt",
+      "start_time": 1750944123.275785,
+      "end_time": 1750944123.440342,
+      "attributes": {
+        "permutation.id": "base_tool_prompt",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "tool",
+        "generation.source": "prompt",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000015",
+      "span_id": "000000000000004d",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.3984342,
+      "end_time": 1750944123.442731,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000003e"
+    },
+    {
+      "trace_id": "00000000000000000000000000000015",
+      "span_id": "000000000000003e",
+      "name": "test_workflow_none_api",
+      "start_time": 1750944123.363216,
+      "end_time": 1750944123.4427352,
+      "attributes": {
+        "permutation.id": "workflow_none_api",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "workflow",
+        "mixin.combo": "none",
+        "generation.source": "api",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000006",
+      "span_id": "0000000000000048",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.387157,
+      "end_time": 1750944123.444533,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000000b"
+    },
+    {
+      "trace_id": "00000000000000000000000000000006",
+      "span_id": "000000000000000b",
+      "name": "test_base_jinja_api",
+      "start_time": 1750944123.2757802,
+      "end_time": 1750944123.444542,
+      "attributes": {
+        "permutation.id": "base_jinja_api",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "jinja",
+        "generation.source": "api",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000009",
+      "span_id": "000000000000003b",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.3529868,
+      "end_time": 1750944123.444702,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000011"
+    },
+    {
+      "trace_id": "00000000000000000000000000000009",
+      "span_id": "0000000000000011",
+      "name": "test_base_tool_api",
+      "start_time": 1750944123.2757928,
+      "end_time": 1750944123.444704,
+      "attributes": {
+        "permutation.id": "base_tool_api",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "tool",
+        "generation.source": "api",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000010",
+      "span_id": "0000000000000040",
+      "name": "validate_syntax",
+      "start_time": 1750944123.364888,
+      "end_time": 1750944123.4470122,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001f"
+    },
+    {
+      "trace_id": "00000000000000000000000000000003",
+      "span_id": "0000000000000043",
+      "name": "validate_syntax",
+      "start_time": 1750944123.370131,
+      "end_time": 1750944123.4483771,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000005"
+    },
+    {
+      "trace_id": "00000000000000000000000000000004",
+      "span_id": "0000000000000058",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.418478,
+      "end_time": 1750944123.4548612,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000007"
+    },
+    {
+      "trace_id": "00000000000000000000000000000004",
+      "span_id": "0000000000000007",
+      "name": "test_base_jinja_prompt",
+      "start_time": 1750944123.275771,
+      "end_time": 1750944123.454863,
+      "attributes": {
+        "permutation.id": "base_jinja_prompt",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "jinja",
+        "generation.source": "prompt",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000000f",
+      "span_id": "000000000000004f",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.3991308,
+      "end_time": 1750944123.456844,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001d"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000f",
+      "span_id": "000000000000001d",
+      "name": "test_fsm_jinja_api",
+      "start_time": 1750944123.2758179,
+      "end_time": 1750944123.456845,
+      "attributes": {
+        "permutation.id": "fsm_jinja_api",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "jinja",
+        "generation.source": "api",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000001a",
+      "span_id": "000000000000005d",
+      "name": "validate_schema",
+      "start_time": 1750944123.428224,
+      "end_time": 1750944123.45717,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000005c"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000d",
+      "span_id": "000000000000004c",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.393808,
+      "end_time": 1750944123.463486,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000019"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000d",
+      "span_id": "0000000000000019",
+      "name": "test_fsm_jinja_prompt",
+      "start_time": 1750944123.27581,
+      "end_time": 1750944123.463489,
+      "attributes": {
+        "permutation.id": "fsm_jinja_prompt",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "jinja",
+        "generation.source": "prompt",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000000e",
+      "span_id": "0000000000000050",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.4048011,
+      "end_time": 1750944123.4804192,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001b"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000e",
+      "span_id": "000000000000001b",
+      "name": "test_fsm_jinja_schema",
+      "start_time": 1750944123.2758138,
+      "end_time": 1750944123.480425,
+      "attributes": {
+        "permutation.id": "fsm_jinja_schema",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "jinja",
+        "generation.source": "schema",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000001b",
+      "span_id": "000000000000005f",
+      "name": "validate_schema",
+      "start_time": 1750944123.435978,
+      "end_time": 1750944123.484886,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000005e"
+    },
+    {
+      "trace_id": "00000000000000000000000000000017",
+      "span_id": "0000000000000052",
+      "name": "validate_schema",
+      "start_time": 1750944123.40732,
+      "end_time": 1750944123.488745,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000051"
+    },
+    {
+      "trace_id": "00000000000000000000000000000019",
+      "span_id": "000000000000005b",
+      "name": "validate_schema",
+      "start_time": 1750944123.4257238,
+      "end_time": 1750944123.4894888,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000005a"
+    },
+    {
+      "trace_id": "00000000000000000000000000000018",
+      "span_id": "0000000000000054",
+      "name": "validate_schema",
+      "start_time": 1750944123.408326,
+      "end_time": 1750944123.4933681,
+      "attributes": {
+        "validation.rule": "schema",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000053"
+    },
+    {
+      "trace_id": "00000000000000000000000000000003",
+      "span_id": "0000000000000062",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.4483788,
+      "end_time": 1750944123.494074,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000005"
+    },
+    {
+      "trace_id": "00000000000000000000000000000003",
+      "span_id": "0000000000000005",
+      "name": "test_base_none_api",
+      "start_time": 1750944123.275763,
+      "end_time": 1750944123.4940789,
+      "attributes": {
+        "permutation.id": "base_none_api",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "none",
+        "generation.source": "api",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000005",
+      "span_id": "0000000000000056",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.4147499,
+      "end_time": 1750944123.502315,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000009"
+    },
+    {
+      "trace_id": "00000000000000000000000000000005",
+      "span_id": "0000000000000009",
+      "name": "test_base_jinja_schema",
+      "start_time": 1750944123.275776,
+      "end_time": 1750944123.5023181,
+      "attributes": {
+        "permutation.id": "base_jinja_schema",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "base",
+        "mixin.combo": "jinja",
+        "generation.source": "schema",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000000b",
+      "span_id": "0000000000000060",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.436397,
+      "end_time": 1750944123.5092301,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000015"
+    },
+    {
+      "trace_id": "0000000000000000000000000000000b",
+      "span_id": "0000000000000015",
+      "name": "test_fsm_none_schema",
+      "start_time": 1750944123.2758021,
+      "end_time": 1750944123.509231,
+      "attributes": {
+        "permutation.id": "fsm_none_schema",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "none",
+        "generation.source": "schema",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000016",
+      "span_id": "0000000000000059",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.4256692,
+      "end_time": 1750944123.523099,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000044"
+    },
+    {
+      "trace_id": "00000000000000000000000000000016",
+      "span_id": "0000000000000044",
+      "name": "test_workflow_jinja_prompt",
+      "start_time": 1750944123.3701499,
+      "end_time": 1750944123.5231009,
+      "attributes": {
+        "permutation.id": "workflow_jinja_prompt",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "workflow",
+        "mixin.combo": "jinja",
+        "generation.source": "prompt",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000017",
+      "span_id": "0000000000000065",
+      "name": "validate_syntax",
+      "start_time": 1750944123.488749,
+      "end_time": 1750944123.52338,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000051"
+    },
+    {
+      "trace_id": "0000000000000000000000000000001b",
+      "span_id": "0000000000000064",
+      "name": "validate_syntax",
+      "start_time": 1750944123.484891,
+      "end_time": 1750944123.530966,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": false
+      },
+      "status": "ERROR",
+      "parent_span_id": "000000000000005e"
+    },
+    {
+      "trace_id": "00000000000000000000000000000010",
+      "span_id": "0000000000000061",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.447017,
+      "end_time": 1750944123.536289,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000001f"
+    },
+    {
+      "trace_id": "00000000000000000000000000000010",
+      "span_id": "000000000000001f",
+      "name": "test_fsm_tool_prompt",
+      "start_time": 1750944123.2758222,
+      "end_time": 1750944123.5362911,
+      "attributes": {
+        "permutation.id": "fsm_tool_prompt",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "fsm",
+        "mixin.combo": "tool",
+        "generation.source": "prompt",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "0000000000000000000000000000001a",
+      "span_id": "0000000000000063",
+      "name": "validate_syntax",
+      "start_time": 1750944123.457174,
+      "end_time": 1750944123.5363042,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": false
+      },
+      "status": "ERROR",
+      "parent_span_id": "000000000000005c"
+    },
+    {
+      "trace_id": "00000000000000000000000000000018",
+      "span_id": "0000000000000067",
+      "name": "validate_syntax",
+      "start_time": 1750944123.493372,
+      "end_time": 1750944123.5377111,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000053"
+    },
+    {
+      "trace_id": "00000000000000000000000000000017",
+      "span_id": "0000000000000068",
+      "name": "validate_compatibility",
+      "start_time": 1750944123.523384,
+      "end_time": 1750944123.57097,
+      "attributes": {
+        "validation.rule": "compatibility",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "0000000000000051"
+    },
+    {
+      "trace_id": "00000000000000000000000000000017",
+      "span_id": "0000000000000051",
+      "name": "test_workflow_jinja_schema",
+      "start_time": 1750944123.407309,
+      "end_time": 1750944123.5709739,
+      "attributes": {
+        "permutation.id": "workflow_jinja_schema",
+        "test.type": "async",
+        "test.rules": [
+          "schema",
+          "syntax",
+          "compatibility"
+        ],
+        "model.type": "workflow",
+        "mixin.combo": "jinja",
+        "generation.source": "schema",
+        "validation.passed": 3,
+        "validation.total": 3
+      },
+      "status": "OK",
+      "parent_span_id": null
+    },
+    {
+      "trace_id": "00000000000000000000000000000019",
+      "span_id": "0000000000000066",
+      "name": "validate_syntax",
+      "start_time": 1750944123.48949,
+      "end_time": 1750944123.5718431,
+      "attributes": {
+        "validation.rule": "syntax",
+        "validation.result": true
+      },
+      "status": "OK",
+      "parent_span_id": "000000000000005a"
+    }
+  ],
+  "metrics": {
+    "test.duration.ms": [
+      87.37993240356445,
+      94.2680835723877,
+      131.41918182373047,
+      132.4939727783203,
+      149.95193481445312,
+      152.36616134643555,
+      160.18915176391602,
+      161.30781173706055,
+      163.78116607666016,
+      164.55698013305664,
+      79.51927185058594,
+      168.7617301940918,
+      168.91121864318848,
+      179.0921688079834,
+      181.02717399597168,
+      187.67905235290527,
+      204.61106300354004,
+      218.31583976745605,
+      226.54223442077637,
+      233.428955078125,
+      152.95100212097168,
+      260.4689598083496,
+      163.6648178100586,
+      168.3640480041504,
+      183.64477157592773,
+      188.33088874816895,
+      226.45187377929688,
+      182.11722373962402,
+      189.3911361694336,
+      197.24798202514648,
+      205.62195777893066,
+      205.80720901489258,
+      209.9001407623291,
+      212.19468116760254,
+      217.22722053527832,
+      219.681978225708,
+      225.49200057983398,
+      232.12265968322754,
+      245.64313888549805,
+      247.37787246704102,
+      250.32281875610352,
+      250.8981227874756,
+      253.11589241027832,
+      253.95822525024414,
+      262.2232437133789,
+      264.0237808227539,
+      267.77124404907227,
+      274.74498748779297,
+      274.92308616638184,
+      275.8650779724121,
+      283.07366371154785,
+      284.0850353240967,
+      284.2409610748291,
+      289.2951965332031,
+      291.39018058776855,
+      296.30303382873535,
+      305.1760196685791,
+      305.21178245544434,
+      305.5276870727539,
+      308.3939552307129,
+      311.0661506652832,
+      312.6788139343262,
+      322.69811630249023,
+      322.9246139526367,
+      323.1239318847656,
+      325.31189918518066,
+      325.3638744354248,
+      325.4508972167969,
+      332.2460651397705,
+      340.78478813171387,
+      340.8360481262207,
+      340.73400497436523,
+      342.7603244781494,
+      344.29383277893066,
+      383.8479518890381,
+      387.50696182250977,
+      394.0451145172119,
+      276.63278579711914,
+      288.5019779205322,
+      282.7920913696289,
+      314.6030902862549
+    ],
+    "test.validations.passed": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      3,
+      3,
+      5,
+      4,
+      4,
+      3,
+      4,
+      5,
+      4,
+      5,
+      3,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      4,
+      2,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      5,
+      5,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      5,
+      3,
+      5,
+      5,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      4,
+      5,
+      5,
+      3,
+      5,
+      5,
+      4
+    ]
+  },
+  "summary": {
+    "total_spans": 459,
+    "total_traces": 108,
+    "avg_spans_per_trace": 4.25,
+    "successful_spans": 392,
+    "failed_spans": 67,
+    "avg_duration_ms": 88.74656380131873,
+    "max_duration_ms": 394.0451145172119,
+    "min_duration_ms": 11.046171188354492
+  }
+}

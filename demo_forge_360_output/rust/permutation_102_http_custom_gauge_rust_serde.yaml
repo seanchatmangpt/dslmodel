@@ -1,0 +1,57 @@
+metadata:
+  generated_at: '2025-06-26T06:16:38.789786'
+  generator_version: 1.0.0
+  permutation_index: 0
+configuration:
+  span_type: http
+  attribute_set: custom
+  metric_type: gauge
+  language: rust
+  framework: serde
+  template_config:
+    derives:
+    - Serialize
+    - Deserialize
+    - Debug
+    - Clone
+    imports:
+    - use serde::{Serialize, Deserialize};
+semconv:
+  groups:
+  - id: dslmodel.http
+    type: span
+    prefix: dslmodel.http
+    brief: DSLModel http span attributes
+    attributes:
+    - id: http.method
+      type: string
+      requirement_level: required
+      brief: The http method
+      examples:
+      - http_get
+      - http_post
+    - id: http.status_code
+      type: int
+      requirement_level: recommended
+      brief: The http response status code
+      examples:
+      - 200
+      - 404
+      - 500
+    - id: http.custom_field
+      type: string
+      requirement_level: optional
+      brief: Custom field for http domain
+    - id: http.custom_metric
+      type: double
+      requirement_level: optional
+      brief: Custom metric for http monitoring
+  - id: http.gauge
+    type: metric
+    metric_name: http.operations.gauge
+    brief: Tracks http operations using gauge
+    instrument: gauge
+    unit: ms
+    attributes:
+    - ref: http.method
+    - ref: http.status_code

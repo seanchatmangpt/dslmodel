@@ -1,0 +1,37 @@
+{
+  "service": {
+    "name": "dslmodel",
+    "version": "1.0.0",
+    "namespace": "dslmodel"
+  },
+  "instrumentation": {
+    "auto_instrument": true,
+    "custom_spans": [
+      "dslmodel.model.create",
+      "dslmodel.model.validate",
+      "dslmodel.agent.execute",
+      "dslmodel.workflow.run",
+      "dslmodel.system.health"
+    ]
+  },
+  "exporters": {
+    "otlp": {
+      "endpoint": "http://localhost:4317",
+      "insecure": true
+    },
+    "console": {
+      "enabled": true
+    }
+  },
+  "resource": {
+    "attributes": {
+      "service.name": "dslmodel",
+      "service.version": "1.0.0",
+      "deployment.environment": "development"
+    }
+  },
+  "sampling": {
+    "type": "TraceIdRatioBased",
+    "ratio": 1.0
+  }
+}

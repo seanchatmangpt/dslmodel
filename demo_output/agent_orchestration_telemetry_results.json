@@ -1,0 +1,125 @@
+{
+  "validation_summary": {
+    "total_validations": 7,
+    "successful_validations": 6,
+    "success_rate": 0.8571428571428571,
+    "agent_statistics": {
+      "unknown": {
+        "total": 6,
+        "success": 5
+      },
+      "orchestrator": {
+        "total": 1,
+        "success": 1
+      }
+    },
+    "failed_validations": [
+      {
+        "span_id": "4a588a816e12b0bb",
+        "trace_id": "b0ef2e017436be4f2d1b3f07467864be",
+        "operation": "scrum.sprint.execute",
+        "agent_type": "unknown",
+        "validation_status": "failed",
+        "metrics": {
+          "transformation.agile.velocity": 85.2,
+          "transformation.quality.defect_rate": 0.147,
+          "scrum.sprint.completed_stories": 156,
+          "scrum.sprint.cycle_time": 4.8,
+          "transformation.validation.status": "failed"
+        },
+        "timestamp": "2025-06-26 06:11:40.957199",
+        "success": false,
+        "message": "transformation.quality.defect_rate above maximum: 0.147 > 0.1"
+      }
+    ]
+  },
+  "workflow_state": {
+    "current_phase": null,
+    "phase_results": {
+      "governance": {
+        "phase": "governance",
+        "motion": {
+          "id": "MOTION-2024-TRANSFORM",
+          "title": "Enterprise Digital Transformation Initiative",
+          "budget": 2500000,
+          "approval_votes": 8,
+          "against_votes": 1,
+          "approval_rate": 0.8
+        },
+        "telemetry_validations": 0,
+        "success": true
+      },
+      "agile_scaling": {
+        "phase": "agile_scaling",
+        "pi_planning": {
+          "pi_number": "PI-2024-Q4",
+          "teams": 8,
+          "capacity": 960,
+          "governance_budget": 2500000
+        },
+        "sprint_metrics": {
+          "velocity": 85.2,
+          "defect_rate": 0.147,
+          "completed_stories": 156,
+          "cycle_time": 4.8
+        },
+        "improvement_trigger": true,
+        "telemetry_validations": 0,
+        "success": true
+      },
+      "process_optimization": {
+        "phase": "process_optimization",
+        "project": {
+          "project_id": "LSS-TRANSFORM-2024",
+          "baseline_defect_rate": 0.147,
+          "target_defect_rate": 0.05,
+          "expected_savings": 850000,
+          "implementation_weeks": 21
+        },
+        "improvements": {
+          "defect_reduction": 0.68,
+          "cycle_time_improvement": 0.38,
+          "roi_estimate": 3.4,
+          "process_efficiency_gain": 0.47
+        },
+        "triggered": true,
+        "telemetry_validations": 0,
+        "success": true
+      },
+      "integration": {
+        "phase": "integration",
+        "integration_points": [
+          {
+            "from": "roberts_rules",
+            "to": "scrum_scale",
+            "mechanism": "governance_budget_to_pi_capacity",
+            "validated": true
+          },
+          {
+            "from": "scrum_scale",
+            "to": "lean_six_sigma",
+            "mechanism": "defect_threshold_trigger",
+            "validated": true
+          },
+          {
+            "from": "lean_six_sigma",
+            "to": "roberts_rules",
+            "mechanism": "savings_to_governance_reporting",
+            "validated": true
+          }
+        ],
+        "validation_summary": {
+          "total": 6,
+          "successful": 5,
+          "success_rate": 0.8333333333333334
+        },
+        "success": true
+      }
+    },
+    "integration_points": [],
+    "total_validations": 6,
+    "successful_validations": 5
+  },
+  "telemetry_validated": true,
+  "recommendation": "Needs improvement"
+}

@@ -1,0 +1,61 @@
+metadata:
+  generated_at: '2025-06-26T06:16:38.790828'
+  generator_version: 1.0.0
+  permutation_index: 0
+configuration:
+  span_type: messaging
+  attribute_set: extended
+  metric_type: gauge
+  language: go
+  framework: protobuf
+  template_config:
+    imports:
+    - google.golang.org/protobuf/proto
+    message_options: true
+semconv:
+  groups:
+  - id: dslmodel.messaging
+    type: span
+    prefix: dslmodel.messaging
+    brief: DSLModel messaging span attributes
+    attributes:
+    - id: messaging.method
+      type: string
+      requirement_level: required
+      brief: The messaging method
+      examples:
+      - messaging_get
+      - messaging_post
+    - id: messaging.status_code
+      type: int
+      requirement_level: recommended
+      brief: The messaging response status code
+      examples:
+      - 200
+      - 404
+      - 500
+    - id: messaging.duration_ms
+      type: int
+      requirement_level: recommended
+      brief: Duration of messaging operation in milliseconds
+    - id: messaging.retry_count
+      type: int
+      requirement_level: optional
+      brief: Number of retries for messaging operation
+    - id: messaging.request_size
+      type: int
+      requirement_level: optional
+      brief: Size of messaging request in bytes
+    - id: messaging.response_size
+      type: int
+      requirement_level: optional
+      brief: Size of messaging response in bytes
+  - id: messaging.gauge
+    type: metric
+    metric_name: messaging.operations.gauge
+    brief: Tracks messaging operations using gauge
+    instrument: gauge
+    unit: ms
+    attributes:
+    - ref: messaging.method
+    - ref: messaging.status_code

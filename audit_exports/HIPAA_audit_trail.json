@@ -1,0 +1,60 @@
+{
+  "framework": "HIPAA",
+  "export_timestamp": "2025-06-26T05:59:30.224584",
+  "total_events": 2,
+  "compliance_rate": "100%",
+  "events": [
+    {
+      "timestamp": "2025-06-26T05:59:28.178253",
+      "event_id": "evt_1750942768178",
+      "operation": "user_data_access",
+      "agent_id": "backend_agent",
+      "trace_id": "trace_131144",
+      "span_id": "span_038457",
+      "user_id": "user_123",
+      "resource_id": "customer_data",
+      "action": "SELECT",
+      "outcome": "COMPLIANT",
+      "evidence_hash": "22ff96474f9f7385dcc0d8cd33652ada155ff4c995e67fdd007d18ef430c0cad",
+      "compliance_frameworks": [
+        "GDPR",
+        "HIPAA",
+        "SOC2",
+        "ISO27001"
+      ],
+      "risk_level": "HIGH",
+      "automated_controls": [
+        "real_time_monitoring",
+        "cryptographic_hashing",
+        "trace_correlation",
+        "automated_evidence_collection"
+      ],
+      "manual_review_required": true
+    },
+    {
+      "timestamp": "2025-06-26T05:59:28.995403",
+      "event_id": "evt_1750942768995",
+      "operation": "data_backup",
+      "agent_id": "backup_agent",
+      "trace_id": "trace_224493",
+      "span_id": "span_973930",
+      "user_id": "system",
+      "resource_id": "database",
+      "action": "BACKUP",
+      "outcome": "COMPLIANT",
+      "evidence_hash": "c38855b8420d54043f93342e6f4d2aec66f1f446b9914638b587bbed0d48a733",
+      "compliance_frameworks": [
+        "GDPR",
+        "HIPAA"
+      ],
+      "risk_level": "MEDIUM",
+      "automated_controls": [
+        "real_time_monitoring",
+        "cryptographic_hashing",
+        "trace_correlation",
+        "automated_evidence_collection"
+      ],
+      "manual_review_required": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "demo_id": "full_cycle_1750943036",
+  "execution_time": 9.722707,
+  "metrics": {
+    "agents_generated": 5,
+    "work_items_created": 15,
+    "work_completed": 5,
+    "cycles_executed": 1,
+    "efficiency_score": 33.33333333333333,
+    "evolution_events": 2
+  },
+  "system_state": {
+    "agents": {
+      "total": 5,
+      "idle": 5,
+      "working": 0
+    },
+    "work": {
+      "total": 15,
+      "pending": 10,
+      "in_progress": 0,
+      "completed": 5
+    }
+  },
+  "telemetry_events": 27,
+  "timestamp": "2025-06-26T06:03:56.206784"
+}
