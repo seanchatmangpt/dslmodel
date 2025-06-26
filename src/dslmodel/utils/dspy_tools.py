@@ -2,7 +2,7 @@ import dspy
 
 
 def init_lm(
-        model: str = "openai/gpt-4o-mini",
+        model: str = "ollama/qwen3",
         experimental: bool = True,
         adapter: dspy.ChatAdapter | None = None,
         **kwargs
@@ -11,7 +11,7 @@ def init_lm(
     Initialize a language model using the new DSPy 2.5 setup.
 
     :param model: Model name, supporting `openai/` prefixed endpoints.
-                  Defaults to `'openai/gpt-4o-mini'`.
+                  Defaults to `'ollama/qwen3'`.
     :type model: str, optional
     :param experimental: Enable experimental DSPy settings for the LM.
                          Defaults to `True`.
@@ -87,7 +87,7 @@ def init_versatile(**kwargs):
     :rtype: dspy.LM
     """
     return init_lm(
-        "groq/llama-3.1-70b-versatile", model_type="chat", max_tokens=8000, **kwargs
+        "groq/llama-3.3-70b-versatile", model_type="chat", max_tokens=8000, **kwargs
     )
 
 

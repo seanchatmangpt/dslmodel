@@ -1,0 +1,136 @@
+flowchart TD
+    %% DSLModel Evolution Loop - "Traces Generate Code"
+    
+    subgraph "PERCEPTION Phase"
+        A1[Collect Telemetry<br/>Traces, Metrics, Logs]
+        A2[Analyze Performance<br/>Latency, Errors, Patterns]
+        A3[Detect Contradictions<br/>Slow spans, Retry storms]
+    end
+    
+    subgraph "ANALYZING Phase"
+        B1[Pattern Recognition<br/>Common failure modes]
+        B2[TRIZ Analysis<br/>Contradiction matrix]
+        B3[Root Cause Analysis<br/>System bottlenecks]
+    end
+    
+    subgraph "RESOLUTION Phase"
+        C1[Apply TRIZ Principles<br/>40 Inventive Principles]
+        C2[Generate Solutions<br/>LLM-assisted resolution]
+        C3[Semantic Convention Updates<br/>New attributes, metrics]
+    end
+    
+    subgraph "GENERATION Phase"
+        D1[WeaverForge Build<br/>Convention → Code]
+        D2[Template Updates<br/>Improved patterns]
+        D3[Agent Behavior Updates<br/>New coordination logic]
+    end
+    
+    subgraph "DEPLOYMENT Phase"
+        E1[Hot Reload<br/>Runtime updates]
+        E2[Graceful Migration<br/>Backward compatibility]
+        E3[Validation Tests<br/>Ensure improvements]
+    end
+    
+    subgraph "VALIDATION Phase"
+        F1[Performance Measurement<br/>Before/after comparison]
+        F2[Fitness Evaluation<br/>Success metrics]
+        F3[Rollback Capability<br/>If degradation detected]
+    end
+    
+    %% Flow Connections
+    A1 --> A2
+    A2 --> A3
+    A3 --> B1
+    
+    B1 --> B2
+    B2 --> B3
+    B3 --> C1
+    
+    C1 --> C2
+    C2 --> C3
+    C3 --> D1
+    
+    D1 --> D2
+    D2 --> D3
+    D3 --> E1
+    
+    E1 --> E2
+    E2 --> E3
+    E3 --> F1
+    
+    F1 --> F2
+    F2 --> F3
+    
+    %% Feedback Loops
+    F3 -->|Success| A1
+    F3 -->|Rollback| E1
+    F2 -->|Low Fitness| C1
+    A3 -->|No Contradictions| A1
+    
+    %% External Inputs
+    SpanStream[(Span Stream<br/>Real-time Events)]
+    LLMEngine[LLM Engine<br/>GPT/Groq]
+    WeaverRepo[Weaver Templates<br/>Convention Schemas]
+    AgentRuntime[Agent Runtime<br/>Live System]
+    
+    %% External Connections
+    SpanStream --> A1
+    LLMEngine --> C2
+    WeaverRepo --> D1
+    D3 --> AgentRuntime
+    AgentRuntime --> A1
+    
+    %% Key Innovation Highlights
+    subgraph "Innovation: Telemetry as Evolution Driver"
+        Innovation1[Traces Don't Just Observe<br/>They Drive System Changes]
+        Innovation2[Semantic Conventions Evolve<br/>Based on Performance Data]
+        Innovation3[Code Regenerates Automatically<br/>From Updated Conventions]
+        Innovation4[System Exhibits<br/>Computational Evolution]
+    end
+    
+    %% Specific Examples
+    subgraph "Real Examples"
+        Ex1[Slow API calls detected<br/>→ Caching strategy evolved]
+        Ex2[Agent retry storms<br/>→ Backoff patterns improved]
+        Ex3[Memory leaks in templates<br/>→ Resource management enhanced]
+        Ex4[Coordination bottlenecks<br/>→ New span patterns created]
+    end
+    
+    %% TRIZ Principles Applied
+    subgraph "TRIZ Integration"
+        T1[Principle 1: Segmentation<br/>Break down monolithic spans]
+        T2[Principle 2: Taking Out<br/>Remove unnecessary attributes]
+        T3[Principle 15: Dynamics<br/>Adaptive sampling rates]
+        T4[Principle 40: Composite<br/>Multi-layer tracing strategies]
+    end
+    
+    %% Success Metrics
+    subgraph "Fitness Metrics"
+        M1[Response Time<br/>P95 latency improvement]
+        M2[Error Rate<br/>Reduction in failures]
+        M3[Resource Usage<br/>CPU/Memory efficiency]
+        M4[Coordination Effectiveness<br/>Agent success rates]
+    end
+    
+    %% Styling
+    classDef perception fill:#e3f2fd
+    classDef analyzing fill:#f3e5f5
+    classDef resolution fill:#e8f5e8
+    classDef generation fill:#fff3e0
+    classDef deployment fill:#fce4ec
+    classDef validation fill:#f1f8e9
+    classDef innovation fill:#ffebee
+    classDef examples fill:#f9fbe7
+    classDef triz fill:#e0f2f1
+    classDef metrics fill:#fef7e0
+    
+    class A1,A2,A3 perception
+    class B1,B2,B3 analyzing
+    class C1,C2,C3 resolution
+    class D1,D2,D3 generation
+    class E1,E2,E3 deployment
+    class F1,F2,F3 validation
+    class Innovation1,Innovation2,Innovation3,Innovation4 innovation
+    class Ex1,Ex2,Ex3,Ex4 examples
+    class T1,T2,T3,T4 triz
+    class M1,M2,M3,M4 metrics

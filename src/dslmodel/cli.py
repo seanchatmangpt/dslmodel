@@ -10,12 +10,25 @@ from typing_extensions import Annotated
 from dslmodel import init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
 from dslmodel.template import render
-from dslmodel.commands import asyncapi, slidev
+from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo
+try:
+    from dslmodel.commands import otel_coordination_cli
+    OTEL_AVAILABLE = True
+except ImportError:
+    OTEL_AVAILABLE = False
 
 app = typer.Typer()
 
-app.add_typer(name="asyncapi", typer_instance=asyncapi.app)
+# app.add_typer(name="asyncapi", typer_instance=asyncapi.app)
 app.add_typer(name="slidev", typer_instance=slidev.app)
+# app.add_typer(name="coord", typer_instance=coordination_cli.app, help="Agent coordination system")
+if OTEL_AVAILABLE:
+    app.add_typer(name="otel", typer_instance=otel_coordination_cli.app, help="OTEL-enhanced coordination system")
+app.add_typer(name="forge", typer_instance=forge.app, help="Weaver Forge workflow commands")
+app.add_typer(name="auto", typer_instance=autonomous.app, help="Autonomous Decision Engine")
+app.add_typer(name="swarm", typer_instance=swarm.app, help="SwarmAgent coordination and management")
+app.add_typer(name="thesis", typer_instance=thesis_cli.app, help="SwarmSH thesis implementation and demo")
+app.add_typer(name="demo", typer_instance=demo.app, help="Automated full cycle demonstrations")
 
 
 @app.command("gen")

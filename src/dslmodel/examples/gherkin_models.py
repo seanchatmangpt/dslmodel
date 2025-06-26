@@ -168,10 +168,10 @@ class Feature(DSLModel):
     tags: list[str] = Field(
         default=[], description="Optional list of tags categorizing the feature."
     )
-    background: Background | None = Field(
-        None,
-        description="Optional Background section containing common steps for all scenarios in the feature.",
-    )
+    # background: Background | None = Field(
+    #     None,
+    #     description="Optional Background section containing common steps for all scenarios in the feature.",
+    # )
     rules: list[Rule] = Field(default=[], description="List of rules that belong to this feature.")
     scenarios: list[Scenario] = Field(
         default=[], description="List of scenarios that belong to this feature."

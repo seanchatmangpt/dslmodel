@@ -1,0 +1,18 @@
+target: python
+description: "Python model generation"
+
+templates:
+  - pattern: "pydantic_model.j2"
+    filter: "."
+    application_mode: single
+    file_name: "dslmodel_attributes.py"
+    
+  - pattern: "metric_dataclass.j2"
+    filter: "."
+    application_mode: single
+    file_name: "dslmodel_metrics.py"
+    
+  - pattern: "debug.j2"
+    filter: "."
+    application_mode: single
+    file_name: "debug.txt"

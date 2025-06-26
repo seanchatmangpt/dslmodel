@@ -1,8 +1,9 @@
 import logging
 from typing import TypeVar
 
+import yaml
 from dspy import InputField, OutputField, Predict, Signature
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, ValidationError, Field
 
 from dslmodel.template import render
 
@@ -13,6 +14,11 @@ logger.setLevel(logging.ERROR)
 def eval_dict_str(dict_str: str) -> dict:
     """Safely convert str to dict"""
     return ast.literal_eval(dict_str)
+
+
+def eval_yaml_str(yaml_str: str) -> dict:
+    """Safely convert YAML string to dict"""
+    return yaml.safe_load(yaml_str)
 
 
 class PromptToPydanticInstanceSignature(Signature):
@@ -69,7 +75,6 @@ class DiagnosisSignature(Signature):
 
 T = TypeVar("T", bound=BaseModel)
 
-
 import ast
 import logging
 from typing import TypeVar
@@ -95,16 +100,42 @@ def eval_dict_str(dict_str: str) -> dict:
 T = TypeVar("T", bound=BaseModel)
 
 
+class GenYAMLInstance(dspy.Module):
+    """A module for generating and validating Pydantic model instances based on prompts."""
+
+    def __init__(
+            self,
+            model: type[T],
+            generate_sig=PromptToPydanticInstanceSignature,
+            correct_generate_sig=PromptToPydanticInstanceErrorSignature,
+            diagnosis_sig=DiagnosisSignature,
+            verbose=False,
+    ):
+        super().__init__()
+        self.output_key = "root_model_kwargs_dict"
+        self.model = model
+        self.verbose = verbose
+
+        # Collect source code for model validation and correction logic
+        self.model_sources = collect_all_sources_as_string(model)
+
+        # Initialize DSPy ChainOfThought dspy_modules for generation, correction, and diagnosis
+        self.generate = Predict(generate_sig)
+        self.correct_generate = ChainOfThought(correct_generate_sig)
+        self.diagnosis_generate = ChainOfThought(diagnosis_sig)
+        self.validation_error = None
+
+
 class GenPydanticInstance(dspy.Module):
     """A module for generating and validating Pydantic model instances based on prompts."""
 
     def __init__(
-        self,
-        model: type[T],
-        generate_sig=PromptToPydanticInstanceSignature,
-        correct_generate_sig=PromptToPydanticInstanceErrorSignature,
-        diagnosis_sig=DiagnosisSignature,
-        verbose=False,
+            self,
+            model: type[T],
+            generate_sig=PromptToPydanticInstanceSignature,
+            correct_generate_sig=PromptToPydanticInstanceErrorSignature,
+            diagnosis_sig=DiagnosisSignature,
+            verbose=False,
     ):
         super().__init__()
         self.output_key = "root_model_kwargs_dict"
@@ -132,7 +163,7 @@ class GenPydanticInstance(dspy.Module):
     def validate_root_model(self, output: str) -> bool:
         """Validates the generated output against the root Pydantic model."""
         try:
-            model_inst = self.model.model_validate(eval_dict_str(output))
+            model_inst = self.model.model_validate(eval_yaml_str(output))
             return isinstance(model_inst, self.model)
         except (ValidationError, ValueError, TypeError, SyntaxError) as error:
             self.validation_error = error
@@ -205,11 +236,62 @@ def gen_instance(model, prompt, verbose=False):
     return model_module(prompt)
 
 
+class PromptToYAMLInstanceSignature(Signature):
+    """Synthesize the prompt into the kwargs to fit the model.
+    Do not duplicate the field descriptions. DONT BE LAZY
+    """
+
+    root_pydantic_model_class_name = InputField(
+        desc="The class name of the pydantic model to receive the kwargs"
+    )
+    pydantic_model_definitions = InputField(desc="Pydantic model class definitions as a string")
+    prompt = InputField(
+        desc="The prompt to be synthesized into data. Do not duplicate descriptions"
+    )
+    response_yaml = OutputField(
+        prefix="```yaml",
+        desc="Generate a YAML to convert to a Python dictionary. IT WILL HAVE TO VALIDATE WITHIN PYDANTIC. DO NOT BE LAZY",
+    )
+
+
 def main():
     from dslmodel import init_instant
 
     init_instant()
+
+    from dslmodel.mixins import ToFromDSLMixin
+    class ConfigModel(BaseModel, ToFromDSLMixin):
+        """
+        A configuration model that dynamically generates and validates a configuration
+        using user input and supports async serialization to various formats.
+        """
+        app_name: str = Field(..., title="The name of the application.")
+        version: str = Field(..., title="The version of the application.")
+        settings: dict = Field(..., title="Additional settings for the application.")
+
     # Example usage would go here
+    # inst = gen_instance(ConfigModel,
+    #                     "Set up a configuration for my app named 'AwesomeApp' version '1.0'. Add debug, db, MS Ecosystem API keys settings.",
+    #                     )
+    # print(inst)
+    prompt = "Set up a configuration for my app named 'AwesomeApp2' version '2.0'. Add debug, postgres url and port defaults, MS API keys settings. Fill out all values."
+
+    config = {'config': {'app_name': 'AwesomeApp', 'version': 1.0,
+                         'settings': {'debug': True, 'db': {'host': 'localhost', 'port': 5432},
+                                      'MS_API_keys': {'client_id': 'your_client_id',
+                                                      'client_secret': 'your_client_secret'}}}}
+
+    response = dspy.ChainOfThought(PromptToYAMLInstanceSignature)(
+        root_pydantic_model_class_name=ConfigModel.__name__,
+        pydantic_model_definitions=collect_all_sources_as_string(ConfigModel),
+        prompt=prompt).response_yaml
+
+    mdl = eval_yaml_str(response)
+
+    first_key = next(iter(mdl))  # Get the first key
+    first_value = mdl[first_key]  # Get the value associated with the first key
+
+    print(ConfigModel.model_validate(first_value))
 
 
 if __name__ == "__main__":

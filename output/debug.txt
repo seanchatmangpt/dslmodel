@@ -1,0 +1,172 @@
+# Debug Output
+
+## Available data in ctx:
+{
+  "groups": [
+    {
+      "attributes": [
+        {
+          "brief": "Name of the DSL workflow being executed",
+          "examples": [
+            "user-registration",
+            "payment-processing"
+          ],
+          "name": "dslmodel.workflow.name",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Current status of the workflow execution",
+          "name": "dslmodel.workflow.status",
+          "requirement_level": "required",
+          "type": {
+            "members": [
+              {
+                "brief": null,
+                "deprecated": null,
+                "id": "started",
+                "note": null,
+                "stability": null,
+                "value": "started"
+              },
+              {
+                "brief": null,
+                "deprecated": null,
+                "id": "completed",
+                "note": null,
+                "stability": null,
+                "value": "completed"
+              },
+              {
+                "brief": null,
+                "deprecated": null,
+                "id": "failed",
+                "note": null,
+                "stability": null,
+                "value": "failed"
+              }
+            ]
+          }
+        },
+        {
+          "brief": "Duration of workflow execution in milliseconds",
+          "examples": [
+            150,
+            2500
+          ],
+          "name": "dslmodel.workflow.duration_ms",
+          "requirement_level": "recommended",
+          "type": "int"
+        },
+        {
+          "brief": "Type of DSL model being used",
+          "examples": [
+            "pydantic",
+            "dataclass",
+            "custom"
+          ],
+          "name": "dslmodel.model.type",
+          "requirement_level": "recommended",
+          "type": "string"
+        }
+      ],
+      "brief": "DSLModel workflow execution attributes",
+      "events": [],
+      "id": "dslmodel",
+      "instrument": null,
+      "lineage": {
+        "provenance": {
+          "path": "semconv_registry/dslmodel.yaml",
+          "registry_id": "main"
+        }
+      },
+      "metric_name": null,
+      "name": null,
+      "prefix": "dslmodel",
+      "span_kind": null,
+      "type": "attribute_group",
+      "unit": null
+    },
+    {
+      "attributes": [
+        {
+          "brief": "Name of the DSL workflow being executed",
+          "examples": [
+            "user-registration",
+            "payment-processing"
+          ],
+          "name": "dslmodel.workflow.name",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Current status of the workflow execution",
+          "name": "dslmodel.workflow.status",
+          "requirement_level": "required",
+          "type": {
+            "members": [
+              {
+                "brief": null,
+                "deprecated": null,
+                "id": "started",
+                "note": null,
+                "stability": null,
+                "value": "started"
+              },
+              {
+                "brief": null,
+                "deprecated": null,
+                "id": "completed",
+                "note": null,
+                "stability": null,
+                "value": "completed"
+              },
+              {
+                "brief": null,
+                "deprecated": null,
+                "id": "failed",
+                "note": null,
+                "stability": null,
+                "value": "failed"
+              }
+            ]
+          }
+        }
+      ],
+      "brief": "Measures the duration of DSL workflow executions",
+      "events": [],
+      "id": "dslmodel.metrics",
+      "instrument": "histogram",
+      "lineage": {
+        "attributes": {
+          "dslmodel.workflow.name": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note",
+              "requirement_level"
+            ],
+            "source_group": "dslmodel"
+          },
+          "dslmodel.workflow.status": {
+            "inherited_fields": [
+              "brief",
+              "note",
+              "requirement_level"
+            ],
+            "source_group": "dslmodel"
+          }
+        },
+        "provenance": {
+          "path": "semconv_registry/dslmodel.yaml",
+          "registry_id": "main"
+        }
+      },
+      "metric_name": "dslmodel.workflow.duration",
+      "name": null,
+      "span_kind": null,
+      "type": "metric",
+      "unit": "ms"
+    }
+  ]
+}

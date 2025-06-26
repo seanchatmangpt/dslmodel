@@ -1,0 +1,11 @@
+
+"""Generated from {{ group.id }} semantic conventions"""
+
+from opentelemetry import trace
+
+class {{ group.id | pascal_case }}Spans:
+    """{{ group.brief }}"""
+    
+    {% for attribute in group.attributes %}
+    {{ attribute.id | screaming_snake_case }} = "{{ group.prefix }}.{{ attribute.id }}"
+    {% endfor %}

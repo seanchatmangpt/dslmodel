@@ -1,6 +1,6 @@
 # DSLModel
 
-[![Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/your-username/dslmodel) [![GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://github.com/codespaces/new/your-username/dslmodel)
+[![Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/seanchatmangpt/dslmodel) [![GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://github.com/codespaces/new/seanchatmangpt/dslmodel)
 
 ```sh
 pip install dslmodel
@@ -20,6 +20,7 @@ dynamic models with features like:
 - **Concurrent Execution:** Leverage concurrent processing to optimize performance.
 - **Workflow Management:** Define and execute complex workflows with conditional logic and loops.
 - **Finite State Machines:** Incorporate state machine patterns for managing state transitions.
+- **OpenTelemetry Integration:** Type-safe telemetry generation from semantic conventions using Weaver Forge.
 - **Data Handling Utilities:** Read from and write to various data formats seamlessly.
 - **AI-Assisted Development:** Enhance productivity with AI-driven tools for code generation.
 
@@ -37,6 +38,7 @@ dynamic models with features like:
         - [Workflow Management](#workflow-management)
         - [Workflow YAML](#workflow-yaml)
         - [Finite State Machines](#finite-state-machines)
+        - [OpenTelemetry Integration](#opentelemetry-integration)
         - [Data Handling](#data-handling)
     - [Architecture](#architecture)
         - [Core Components](#core-components)
@@ -58,10 +60,15 @@ Ensure you have Python 3.12 or higher installed. Then, install DSLModel via pip:
 pip install dslmodel
 ```
 
+**For OpenTelemetry integration:**
+```sh
+pip install dslmodel[otel]
+```
+
 Alternatively, install from source:
 
 ```sh
-git clone https://github.com/your-username/dslmodel.git
+git clone https://github.com/seanchatmangpt/dslmodel.git
 cd dslmodel
 uv venv
 source .venv/bin/activate  # or source .venv/bin/activate.fish for fish shell
@@ -290,6 +297,47 @@ if __name__ == '__main__':
     main()
 ```
 
+### OpenTelemetry Integration
+
+DSLModel integrates with OpenTelemetry using Weaver Forge to generate type-safe telemetry models from semantic conventions.
+
+**Installation with OTEL support:**
+```sh
+pip install dslmodel[otel]
+```
+
+**Basic OTEL workflow:**
+```python
+from dslmodel.integrations.otel import DslmodelAttributes
+from dslmodel.workflows import WorkflowOrchestrator
+from dslmodel.examples.otel import DSLWorkflow
+
+# Create workflow with OTEL integration
+workflow = DSLWorkflow(workflow_name="data-pipeline")
+
+# Execute with automatic telemetry
+workflow.start_processing()
+workflow.complete_successfully(duration_ms=150)
+
+# Generate telemetry span
+telemetry = workflow.get_telemetry_data()
+print(telemetry.to_json())  # OTEL-compatible span data
+```
+
+**CLI Commands:**
+```sh
+# Generate OTEL models from semantic conventions
+dsl forge build --target python
+
+# Validate generated models
+dsl forge validate
+
+# Test OTEL integration
+poetry run poe otel-test
+```
+
+**For detailed examples and integration patterns, see:** [`/src/dslmodel/integrations/otel/INTEGRATION_SUMMARY.md`](/src/dslmodel/integrations/otel/INTEGRATION_SUMMARY.md)
+
 ### Data Handling
 
 Read from and write to various data formats using `DataReader` and `DataWriter`.
@@ -317,6 +365,10 @@ data_writer.forward()
     - `FSMMixin`: Provides finite state machine functionality.
 - **Workflow Components:**
     - `Workflow`, `Job`, `Action`, `Condition`, `CronTrigger`: Orchestrate complex workflows.
+- **OpenTelemetry Integration:**
+    - `WeaverForgeIntegration`: Generates type-safe OTEL models from semantic conventions.
+    - `DslmodelAttributes`: Validated telemetry attributes for workflow tracking.
+    - `WorkflowOrchestrator`: FSM + OTEL + DSLModel combined orchestration.
 - **Data Handling Utilities:**
     - `DataReader`, `DataWriter`: Handle data ingestion and output.
 
@@ -324,6 +376,12 @@ data_writer.forward()
 
 ```
 User Inputs -> DSLModel Templates -> Generated Models -> Validation and Execution
+                                                     ↓
+                                           OTEL Telemetry Generation
+                                                     ↓
+                                           State Machine Transitions (FSM)
+                                                     ↓
+                                           Structured Output (JSON/YAML/JSONL)
 ```
 
 ## Development
@@ -333,7 +391,7 @@ User Inputs -> DSLModel Templates -> Generated Models -> Validation and Executio
 1. **Clone the Repository**
 
    ```sh
-   git clone https://github.com/your-username/dslmodel.git
+   git clone https://github.com/seanchatmangpt/dslmodel.git
    cd dslmodel
    ```
 
@@ -361,6 +419,18 @@ Run tests using `pytest`:
 poetry run pytest
 ```
 
+**Test OTEL integration:**
+```sh
+# Install OTEL dependencies
+poetry install -E otel
+
+# Run OTEL integration tests
+python src/dslmodel/integrations/otel/tests/full_loop_test.py
+
+# Test telemetry generation
+poetry run poe otel-test
+```
+
 Ensure test coverage is at least 90%.
 
 ### Contributing
@@ -385,8 +455,8 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## Contact
 
-- **Project Link:** [https://github.com/seanchatmangpt/dslmodel](https://github.com/your-username/dslmodel)
-- **Issues:** [https://github.com/seanchatmangpt/dslmodel/issues](https://github.com/your-username/dslmodel/issues)
+- **Project Link:** [https://github.com/seanchatmangpt/dslmodel](https://github.com/seanchatmangpt/dslmodel)
+- **Issues:** [https://github.com/seanchatmangpt/dslmodel/issues](https://github.com/seanchatmangpt/dslmodel/issues)
 
 ---
 

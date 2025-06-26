@@ -1,0 +1,143 @@
+# Prometheus alerting rules for Swarm Agents
+
+groups:
+  - name: swarm-agents
+    rules:
+      # Agent health alerts
+      - alert: AgentDown
+        expr: up{job="swarm-agents"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Swarm agent {{ $labels.agent_name }} is down"
+          description: "Agent {{ $labels.agent_name }} has been down for more than 30 seconds"
+
+      - alert: AgentHighErrorRate
+        expr: rate(swarm_agent_commands_executed{success="false"}[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate for agent {{ $labels.swarm_agent_name }}"
+          description: "Agent {{ $labels.swarm_agent_name }} has error rate {{ $value | humanizePercentage }}"
+
+      # Work item alerts
+      - alert: WorkItemsStuck
+        expr: swarm_work_items{status="in_progress"} > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Too many work items stuck in progress"
+          description: "{{ $value }} work items have been in progress for more than 5 minutes"
+
+      - alert: HighDefectRate
+        expr: rate(swarm_work_items{status="completed",completion_status="failed"}[1h]) / rate(swarm_work_items{status="completed"}[1h]) > 0.03
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High defect rate detected"
+          description: "Defect rate is {{ $value | humanizePercentage }}, above 3% threshold"
+
+      # State transition alerts
+      - alert: AgentStateStuck
+        expr: time() - swarm_agent_state_transitions_created > 3600
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Agent {{ $labels.swarm_agent_name }} state unchanged for 1 hour"
+          description: "Agent {{ $labels.swarm_agent_name }} has been in state {{ $labels.to_state }} for over 1 hour"
+
+  - name: infrastructure
+    rules:
+      # OTel Collector alerts
+      - alert: OTelCollectorDown
+        expr: up{job="otel-collector"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "OpenTelemetry Collector is down"
+          description: "OTel Collector has been down for more than 30 seconds"
+
+      - alert: OTelCollectorHighMemory
+        expr: container_memory_usage_bytes{name="swarm-otel-collector"} / container_spec_memory_limit_bytes > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "OTel Collector high memory usage"
+          description: "OTel Collector memory usage is {{ $value | humanizePercentage }}"
+
+      - alert: SpanDrops
+        expr: rate(otelcol_processor_dropped_spans_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "OTel Collector dropping spans"
+          description: "{{ $value }} spans/sec being dropped by processor {{ $labels.processor }}"
+
+      # Jaeger alerts
+      - alert: JaegerDown
+        expr: up{job="jaeger"} == 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Jaeger is down"
+          description: "Jaeger tracing backend is unavailable"
+
+      # Elasticsearch alerts
+      - alert: ElasticsearchDown
+        expr: elasticsearch_up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Elasticsearch is down"
+          description: "Elasticsearch cluster is unavailable"
+
+      - alert: ElasticsearchHighDiskUsage
+        expr: elasticsearch_filesystem_data_available_bytes / elasticsearch_filesystem_data_size_bytes < 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Elasticsearch disk usage high"
+          description: "Elasticsearch disk usage is {{ $value | humanizePercentage }}"
+
+  - name: business-metrics
+    rules:
+      # Governance metrics
+      - alert: MotionApprovalRate
+        expr: rate(swarm_roberts_motions{result="passed"}[1h]) / rate(swarm_roberts_motions[1h]) < 0.5
+        for: 30m
+        labels:
+          severity: info
+        annotations:
+          summary: "Low motion approval rate"
+          description: "Only {{ $value | humanizePercentage }} of motions are being approved"
+
+      # Delivery metrics
+      - alert: SprintVelocityDrop
+        expr: avg_over_time(swarm_scrum_velocity[7d]) < avg_over_time(swarm_scrum_velocity[30d]) * 0.8
+        for: 1d
+        labels:
+          severity: warning
+        annotations:
+          summary: "Sprint velocity declining"
+          description: "Average velocity has dropped {{ $value }}% over the last week"
+
+      # Optimization metrics
+      - alert: LeanProjectsStalled
+        expr: swarm_lean_projects{status="analyze"} > 5
+        for: 2d
+        labels:
+          severity: warning
+        annotations:
+          summary: "Too many Lean projects stalled in analysis"
+          description: "{{ $value }} Lean projects have been in analyze phase for over 2 days"

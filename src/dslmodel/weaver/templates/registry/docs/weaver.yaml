@@ -1,0 +1,6 @@
+target: docs
+description: "Documentation generation"
+
+templates:
+  - pattern: "*.j2"
+    application_mode: single

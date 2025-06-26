@@ -1,0 +1,7 @@
+[package]
+name = "thesis_spans_test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+opentelemetry = "0.23"

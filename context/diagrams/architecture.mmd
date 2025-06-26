@@ -1,0 +1,121 @@
+graph TB
+    %% DSLModel Framework Architecture
+    
+    subgraph "User Interface Layer"
+        CLI[CLI Framework<br/>dsl command<br/>Typer-based]
+        WebUI[Web UI<br/>Nuxt/Vue<br/>Optional]
+        API[REST API<br/>FastAPI<br/>Auto-generated]
+    end
+    
+    subgraph "Core DSL Engine"
+        DSLGen[DSL Generator<br/>Natural Language → Code]
+        DSPy[DSPy Modules<br/>Structured Prompting]
+        Pydantic[Pydantic Models<br/>Type-safe Generation]
+        Templates[Template Engine<br/>Jinja2 + Extensions]
+    end
+    
+    subgraph "Agent Swarm System"
+        SwarmCore[SwarmAgent Core<br/>FSM + OTEL Integration]
+        Roberts[Roberts Rules Agent<br/>Governance]
+        Scrum[Scrum Agent<br/>Agile Workflows]
+        Lean[Lean Agent<br/>Process Optimization]
+        Research[Research Agent<br/>Information Gathering]
+    end
+    
+    subgraph "OpenTelemetry Ecosystem"
+        OTELCore[OTEL Instrumentation<br/>Traces, Metrics, Logs]
+        WeaverForge[Weaver Forge<br/>Semantic Conventions]
+        SpanStream[Span Stream<br/>JSONL Event Bus]
+        AutoTRIZ[Auto-TRIZ<br/>Contradiction Detection]
+        EvolutionTracker[Evolution Tracker<br/>FSM Mutations]
+    end
+    
+    subgraph "Coordination Systems"
+        MQ7[MQ7 Event System<br/>Async Messaging]
+        WorkflowEngine[Workflow Engine<br/>State Management]
+        CoordCLI[Coordination CLI<br/>Work Management]
+    end
+    
+    subgraph "External Integrations"
+        OpenAI[OpenAI API<br/>GPT Models]
+        Groq[Groq API<br/>Alternative LLM]
+        GitHub[GitHub Integration<br/>Repository Management]
+        Prometheus[Prometheus<br/>Metrics Collection]
+        Jaeger[Jaeger<br/>Trace Collection]
+    end
+    
+    subgraph "Data Storage"
+        SpanFile[Telemetry Spans<br/>~/s2s/agent_coordination/]
+        WorkData[Work Items<br/>JSON Storage]
+        Templates_Store[Template Store<br/>Jinja2 Templates]
+    end
+    
+    %% User Interface Connections
+    CLI --> DSLGen
+    CLI --> SwarmCore
+    CLI --> OTELCore
+    CLI --> CoordCLI
+    WebUI --> API
+    API --> DSLGen
+    
+    %% DSL Engine Connections
+    DSLGen --> DSPy
+    DSLGen --> Templates
+    DSPy --> Pydantic
+    Templates --> Pydantic
+    
+    %% Agent System Connections
+    SwarmCore --> SpanStream
+    SwarmCore --> WorkflowEngine
+    Roberts --> SwarmCore
+    Scrum --> SwarmCore
+    Lean --> SwarmCore
+    Research --> SwarmCore
+    
+    %% OTEL Ecosystem Connections
+    OTELCore --> SpanStream
+    OTELCore --> WeaverForge
+    SpanStream --> SwarmCore
+    WeaverForge --> AutoTRIZ
+    AutoTRIZ --> EvolutionTracker
+    EvolutionTracker --> WeaverForge
+    
+    %% Coordination Connections
+    MQ7 --> SwarmCore
+    WorkflowEngine --> MQ7
+    CoordCLI --> WorkData
+    CoordCLI --> SpanStream
+    
+    %% External Connections
+    DSPy --> OpenAI
+    DSPy --> Groq
+    CoordCLI --> GitHub
+    OTELCore --> Prometheus
+    OTELCore --> Jaeger
+    
+    %% Data Storage Connections
+    SpanStream --> SpanFile
+    CoordCLI --> WorkData
+    Templates --> Templates_Store
+    
+    %% Evolution Loop (Key Innovation)
+    EvolutionTracker -.-> DSLGen
+    AutoTRIZ -.-> Templates
+    WeaverForge -.-> SwarmCore
+    
+    %% Styling
+    classDef userInterface fill:#e1f5fe
+    classDef coreEngine fill:#f3e5f5
+    classDef agentSystem fill:#e8f5e8
+    classDef otelSystem fill:#fff3e0
+    classDef coordination fill:#fce4ec
+    classDef external fill:#f1f8e9
+    classDef storage fill:#fafafa
+    
+    class CLI,WebUI,API userInterface
+    class DSLGen,DSPy,Pydantic,Templates coreEngine
+    class SwarmCore,Roberts,Scrum,Lean,Research agentSystem
+    class OTELCore,WeaverForge,SpanStream,AutoTRIZ,EvolutionTracker otelSystem
+    class MQ7,WorkflowEngine,CoordCLI coordination
+    class OpenAI,Groq,GitHub,Prometheus,Jaeger external
+    class SpanFile,WorkData,Templates_Store storage

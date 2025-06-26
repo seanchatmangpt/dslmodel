@@ -1,0 +1,270 @@
+groups:
+  # Base swarm agent attributes
+  - id: swarm.agent
+    prefix: swarm.agent
+    type: attribute_group
+    brief: 'Base attributes for swarm agent telemetry'
+    attributes:
+      - id: name
+        type: string
+        requirement_level: required
+        brief: 'Name of the swarm agent'
+        examples: ['PingAgent', 'RobertsAgent', 'ScrumAgent', 'LeanAgent']
+        
+      - id: state
+        type: string
+        requirement_level: required
+        brief: 'Current state of the agent state machine'
+        examples: ['IDLE', 'ACTIVE', 'PROCESSING', 'ERROR']
+        
+      - id: transition.from
+        type: string
+        requirement_level: recommended
+        brief: 'Source state of a state transition'
+        examples: ['IDLE', 'MOTION_OPEN']
+        
+      - id: transition.to
+        type: string
+        requirement_level: recommended
+        brief: 'Destination state of a state transition'
+        examples: ['ACTIVE', 'VOTING']
+        
+      - id: transition.trigger
+        type: string
+        requirement_level: recommended
+        brief: 'Trigger keyword that caused the transition'
+        examples: ['open', 'vote', 'review']
+
+  # Roberts Rules of Order spans
+  - id: swarmsh.roberts
+    type: span
+    span_kind: internal
+    prefix: swarmsh.roberts
+    brief: 'Roberts Rules of Order governance agent spans'
+    attributes:
+      - ref: swarm.agent.name
+        requirement_level: required
+      - ref: swarm.agent.state
+        requirement_level: required
+      - id: meeting_id
+        type: string
+        requirement_level: recommended
+        brief: 'Identifier for the meeting being conducted'
+        examples: ['board_2024_q1', 'quarterly_review']
+      - id: motion_id
+        type: string
+        requirement_level: recommended
+        brief: 'Identifier for the motion being considered'
+        examples: ['sprint_42', 'budget_approval']
+      - id: voting_method
+        type: 
+          allow_custom_values: true
+          members:
+            - id: voice_vote
+              value: 'voice_vote'
+            - id: ballot
+              value: 'ballot'
+            - id: roll_call
+              value: 'roll_call'
+        requirement_level: recommended
+        brief: 'Method used for voting on the motion'
+      - id: vote_result
+        type:
+          allow_custom_values: false
+          members:
+            - id: passed
+              value: 'passed'
+            - id: failed
+              value: 'failed'
+            - id: tabled
+              value: 'tabled'
+        requirement_level: recommended
+        brief: 'Result of the vote'
+      - id: votes_yes
+        type: int
+        requirement_level: recommended
+        brief: 'Number of yes votes'
+        examples: [7, 15]
+      - id: votes_no
+        type: int
+        requirement_level: recommended
+        brief: 'Number of no votes'
+        examples: [2, 0]
+
+  # Scrum-at-Scale spans
+  - id: swarmsh.scrum
+    type: span
+    span_kind: internal
+    prefix: swarmsh.scrum
+    brief: 'Scrum-at-Scale delivery agent spans'
+    attributes:
+      - ref: swarm.agent.name
+        requirement_level: required
+      - ref: swarm.agent.state
+        requirement_level: required
+      - id: sprint_number
+        type: string
+        requirement_level: recommended
+        brief: 'Sprint identifier or number'
+        examples: ['42', 'q4_2024']
+      - id: team_id
+        type: string
+        requirement_level: recommended
+        brief: 'Team identifier'
+        examples: ['alpha', 'platform_team']
+      - id: velocity
+        type: int
+        requirement_level: recommended
+        brief: 'Sprint velocity in story points'
+        examples: [38, 42]
+      - id: capacity
+        type: int
+        requirement_level: recommended
+        brief: 'Team capacity in story points'
+        examples: [40, 45]
+      - id: defect_rate
+        type: double
+        requirement_level: recommended
+        brief: 'Defect rate percentage'
+        examples: [2.5, 4.7]
+      - id: blockers
+        type: string[]
+        requirement_level: 
+          conditionally_required: "when daily standup has blockers"
+        brief: 'List of current blockers'
+        examples: [['db_migration', 'api_dependency']]
+      - id: customer_satisfaction
+        type: int
+        requirement_level: 
+          conditionally_required: "when conducting sprint review"
+        brief: 'Customer satisfaction score (0-100)'
+        examples: [85, 92]
+
+  # Lean Six Sigma spans
+  - id: swarmsh.lean
+    type: span
+    span_kind: internal
+    prefix: swarmsh.lean
+    brief: 'Lean Six Sigma optimization agent spans'
+    attributes:
+      - ref: swarm.agent.name
+        requirement_level: required
+      - ref: swarm.agent.state
+        requirement_level: required
+      - id: project_id
+        type: string
+        requirement_level: required
+        brief: 'Lean project identifier'
+        examples: ['defect_reduction_q4', 'cycle_time_improvement']
+      - id: problem_statement
+        type: string
+        requirement_level: recommended
+        brief: 'Problem statement for the Lean project'
+        examples: ['Defect rate exceeds 3% target', 'Cycle time 20% above SLA']
+      - id: phase
+        type:
+          allow_custom_values: false
+          members:
+            - id: define
+              value: 'DEFINE'
+            - id: measure
+              value: 'MEASURE'
+            - id: analyze
+              value: 'ANALYZE'
+            - id: improve
+              value: 'IMPROVE'
+            - id: control
+              value: 'CONTROL'
+        requirement_level: recommended
+        brief: 'Current DMAIC phase'
+      - id: sponsor
+        type: string
+        requirement_level: 
+          conditionally_required: "when project requires executive sponsorship"
+        brief: 'Project sponsor or initiator'
+        examples: ['scrum-agent', 'management']
+      - id: metrics
+        type: string[]
+        requirement_level: 
+          conditionally_required: "when in MEASURE phase"
+        brief: 'Metrics being tracked'
+        examples: [['cycle_time', 'defect_rate', 'throughput']]
+      - id: root_causes
+        type: string[]
+        requirement_level: 
+          conditionally_required: "when in ANALYZE phase"
+        brief: 'Identified root causes'
+        examples: [['manual_process', 'lack_of_automation']]
+      - id: improvements
+        type: string[]
+        requirement_level: 
+          conditionally_required: "when in IMPROVE phase"
+        brief: 'Improvements implemented'
+        examples: [['automated_testing', 'process_standardization']]
+
+  # Ping example spans
+  - id: swarmsh.ping
+    type: span
+    span_kind: internal
+    prefix: swarmsh.ping
+    brief: 'Ping-pong example agent spans'
+    attributes:
+      - ref: swarm.agent.name
+        requirement_level: required
+      - ref: swarm.agent.state
+        requirement_level: required
+      - id: source
+        type: string
+        requirement_level: 
+          conditionally_required: "when identifying ping source"
+        brief: 'Source of the ping request'
+        examples: ['test_harness', 'demo_script']
+      - id: ping_id
+        type: string
+        requirement_level: 
+          conditionally_required: "when correlating ping-pong pairs"
+        brief: 'Identifier for ping-pong correlation'
+        examples: ['span_123', 'test_456']
+
+  # Agent transition spans
+  - id: swarm.agent.transition
+    type: span
+    span_kind: internal
+    prefix: swarm.agent.transition
+    brief: 'Agent state transition spans'
+    attributes:
+      - ref: swarm.agent.name
+        requirement_level: required
+      - ref: swarm.agent.transition.from
+        requirement_level: required
+      - ref: swarm.agent.transition.to
+        requirement_level: required
+      - id: prompt
+        type: string
+        requirement_level: recommended
+        brief: 'Prompt or reason for the transition'
+        examples: ['Received ping from test_harness', 'Motion approved by vote']
+
+  # Metrics for swarm monitoring
+  - id: swarm.metrics
+    type: metric
+    metric_name: swarm.agent.transitions
+    brief: 'Count of agent state transitions'
+    instrument: counter
+    unit: '{transitions}'
+    attributes:
+      - ref: swarm.agent.name
+      - ref: swarm.agent.transition.from
+      - ref: swarm.agent.transition.to
+
+  - id: swarm.span.processing
+    type: metric
+    metric_name: swarm.span.processing.duration
+    brief: 'Time taken to process spans'
+    instrument: histogram
+    unit: 'ms'
+    attributes:
+      - ref: swarm.agent.name
+      - id: span.name
+        type: string
+        brief: 'Name of the span being processed'

@@ -1,0 +1,64 @@
+# SwarmSH Thesis Poetry Tasks
+# Add these to your pyproject.toml [tool.poe.tasks] section
+
+[tool.poe.tasks.thesis-status]
+help = "Show SwarmSH thesis implementation status"
+cmd = "poetry run python src/dslmodel/commands/thesis_cli.py status"
+
+[tool.poe.tasks.thesis-generate]
+help = "Generate complete SwarmSH thesis"
+cmd = "poetry run python src/dslmodel/commands/thesis_cli.py generate"
+
+[[tool.poe.tasks.thesis-generate.args]]
+help = "Output directory"
+name = "output"
+options = ["--output", "-o"]
+default = "./thesis_output"
+
+[[tool.poe.tasks.thesis-generate.args]]
+help = "Output format"
+name = "format"
+options = ["--format", "-f"]
+default = "both"
+
+[[tool.poe.tasks.thesis-generate.args]]
+help = "LLM model"
+name = "model"
+options = ["--model", "-m"]
+default = "ollama/qwen2.5"
+
+[tool.poe.tasks.thesis-demo]
+help = "Run SwarmSH auto-TRIZ feedback loop demo"
+cmd = "poetry run python src/dslmodel/commands/thesis_cli.py demo"
+
+[[tool.poe.tasks.thesis-demo.args]]
+help = "Number of iterations"
+name = "iterations"
+options = ["--iterations", "-i"]
+default = "3"
+
+[[tool.poe.tasks.thesis-demo.args]]
+help = "LLM model"
+name = "model"
+options = ["--model", "-m"]
+default = "ollama/qwen2.5"
+
+[tool.poe.tasks.thesis-validate]
+help = "Validate thesis file structure"
+cmd = "poetry run python src/dslmodel/commands/thesis_cli.py validate"
+
+[[tool.poe.tasks.thesis-validate.args]]
+help = "Thesis file to validate"
+name = "file"
+positional = true
+required = true
+
+# Complete thesis workflow
+[tool.poe.tasks.thesis-full]
+help = "Complete thesis generation and demo workflow"
+sequence = [
+    { cmd = "poetry run python src/dslmodel/commands/thesis_cli.py status" },
+    { cmd = "poetry run python src/dslmodel/commands/thesis_cli.py generate --output ./thesis_complete --format both --model ollama/qwen2.5" },
+    { cmd = "poetry run python src/dslmodel/commands/thesis_cli.py validate ./thesis_complete/thesis_complete.json" },
+    { cmd = "poetry run python src/dslmodel/commands/thesis_cli.py demo --iterations 2 --model ollama/qwen2.5" }
+]

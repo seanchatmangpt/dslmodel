@@ -1,0 +1,58 @@
+
+🧪 SWARMAGENT CLI TEST REPORT
+================================================================================
+
+📊 SUMMARY:
+   Total Tests: 20
+   Passed: 20 ✅
+   Failed: 0 ❌
+   Success Rate: 100.0%
+   Total Duration: 11.35s
+
+📋 DETAILED RESULTS:
+
+1️⃣  DIRECT CLI COMMANDS: 10/10 ✅
+      ✅ python swarm_cli.py --help... (0.13s)
+   ✅ python swarm_cli.py demo --scenario minimal... (0.11s)
+   ✅ python swarm_cli.py list... (0.11s)
+   ✅ python swarm_cli.py status... (0.11s)
+   ✅ python swarm_cli.py emit swarmsh.test.span --agent... (0.11s)
+   ✅ python swarm_cli.py workflow governance --dry-run... (0.11s)
+   ✅ python swarm_cli.py workflow sprint --dry-run... (0.12s)
+   ✅ python swarm_cli.py workflow improvement --dry-run... (0.11s)
+   ✅ python swarm_cli.py generate TestCLI --states INIT... (0.12s)
+   ✅ python swarm_cli.py watch --last 3... (0.11s)
+
+2️⃣  POETRY POE COMMANDS: 6/6 ✅
+      ✅ poetry run poe swarm... (0.92s)
+   ✅ poetry run poe swarm-demo... (0.87s)
+   ✅ poetry run poe swarm-status... (0.91s)
+   ✅ poetry run poe swarm-list... (0.89s)
+   ✅ poetry run poe swarm-emit... (0.87s)
+   ✅ poetry run poe swarm-watch... (0.87s)
+
+3️⃣  WORKFLOW SEQUENCES: 2/2 ✅
+      ✅ poetry run poe swarm-init... (1.17s)
+   ✅ poetry run poe swarm-cycle... (3.69s)
+
+4️⃣  TELEMETRY LOOP: ✅
+   Spans Created: 3
+   Span File Size: 9778 bytes
+   Watch Command: ✅
+
+5️⃣  AGENT GENERATION: ✅
+   File Created: ✅
+   Content Length: 500 chars
+   Agent Name: TestAgent_1750926235
+
+📁 TELEMETRY FILE INFO:
+      ✅ File exists: /Users/sac/s2s/agent_coordination/telemetry_spans.jsonl
+   📊 Total spans: 48
+   📏 File size: 9778 bytes
+
+🎯 CONCLUSION:
+   🎉 ALL TESTS PASSED!
+   
+   SwarmAgent CLI Integration: WORKING ✅
+   Poetry Integration: WORKING ✅
+   Telemetry Loop: WORKING ✅

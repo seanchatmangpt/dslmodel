@@ -1,0 +1,114 @@
+{
+  "success": true,
+  "summary": {
+    "test_timestamp": 1750925711.333782,
+    "lm_model": "ollama/qwen3",
+    "total_workflows": 4,
+    "successful_workflows": 3,
+    "failed_workflows": 1,
+    "otel_validation_passed": 4,
+    "otel_validation_failed": 0,
+    "telemetry_spans_generated": 4,
+    "integration_components": [
+      "DSLModel (Pydantic base)",
+      "OpenTelemetry Weaver models",
+      "FSM state management",
+      "LM integration (ollama/qwen3)",
+      "Type-safe telemetry validation",
+      "JSONL telemetry export"
+    ]
+  },
+  "telemetry_file": "telemetry_output.jsonl",
+  "workflows": [
+    {
+      "workflow_name": "data-pipeline",
+      "status": "completed",
+      "otel_namespace": "dslmodel",
+      "duration_ms": 50,
+      "telemetry": {
+        "workflow_name": "data-pipeline",
+        "workflow_status": "completed",
+        "workflow_duration_ms": 50,
+        "model_type": "dsl_workflow",
+        "workflow.final_status": "completed",
+        "metric.name": "dslmodel.workflow.duration",
+        "metric.instrument": "histogram",
+        "metric.unit": "ms"
+      }
+    },
+    {
+      "workflow_name": "ml-training",
+      "status": "completed",
+      "otel_namespace": "dslmodel",
+      "duration_ms": 80,
+      "telemetry": {
+        "workflow_name": "ml-training",
+        "workflow_status": "completed",
+        "workflow_duration_ms": 80,
+        "model_type": "dsl_workflow",
+        "workflow.final_status": "completed",
+        "metric.name": "dslmodel.workflow.duration",
+        "metric.instrument": "histogram",
+        "metric.unit": "ms"
+      }
+    },
+    {
+      "workflow_name": "api-validation",
+      "status": "failed",
+      "otel_namespace": "dslmodel",
+      "duration_ms": null,
+      "telemetry": {
+        "workflow_name": "api-validation",
+        "workflow_status": "failed",
+        "workflow_duration_ms": null,
+        "model_type": "dsl_workflow",
+        "workflow.final_status": "failed",
+        "metric.name": "dslmodel.workflow.duration",
+        "metric.instrument": "histogram",
+        "metric.unit": "ms"
+      }
+    },
+    {
+      "workflow_name": "report-generation",
+      "status": "completed",
+      "otel_namespace": "dslmodel",
+      "duration_ms": 140,
+      "telemetry": {
+        "workflow_name": "report-generation",
+        "workflow_status": "completed",
+        "workflow_duration_ms": 140,
+        "model_type": "dsl_workflow",
+        "workflow.final_status": "completed",
+        "metric.name": "dslmodel.workflow.duration",
+        "metric.instrument": "histogram",
+        "metric.unit": "ms"
+      }
+    }
+  ],
+  "validation_results": [
+    {
+      "workflow": "data-pipeline",
+      "valid": true,
+      "otel_namespace": "dslmodel",
+      "status": "completed"
+    },
+    {
+      "workflow": "ml-training",
+      "valid": true,
+      "otel_namespace": "dslmodel",
+      "status": "completed"
+    },
+    {
+      "workflow": "api-validation",
+      "valid": true,
+      "otel_namespace": "dslmodel",
+      "status": "failed"
+    },
+    {
+      "workflow": "report-generation",
+      "valid": true,
+      "otel_namespace": "dslmodel",
+      "status": "completed"
+    }
+  ]
+}

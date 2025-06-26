@@ -1,0 +1,91 @@
+sequenceDiagram
+    participant User
+    participant CLI as CLI Framework
+    participant DSLGen as DSL Generator
+    participant LLM as LLM Provider
+    participant OTEL as OTEL System
+    participant SpanStream as Span Stream
+    participant Agent as SwarmAgent
+    participant Weaver as WeaverForge
+    participant Evolution as Evolution Tracker
+    
+    Note over User, Evolution: DSLModel Data Flow - "Traces Generate Code"
+    
+    %% 1. Initial Generation Request
+    User->>CLI: dsl gen "Create user model"
+    CLI->>DSLGen: Process generation request
+    DSLGen->>OTEL: Start trace "dsl.generation"
+    
+    %% 2. LLM Integration
+    DSLGen->>LLM: Structured prompt via DSPy
+    LLM-->>DSLGen: Generated model code
+    DSLGen->>OTEL: Log generation metrics
+    OTEL->>SpanStream: Emit generation span
+    
+    %% 3. Agent Coordination Trigger
+    SpanStream->>Agent: Watch for span patterns
+    Agent->>Agent: Parse span attributes
+    Agent->>OTEL: Emit transition span
+    OTEL->>SpanStream: Agent state change
+    
+    %% 4. Work Coordination Flow
+    User->>CLI: dsl coord work claim task
+    CLI->>OTEL: Start work span
+    OTEL->>SpanStream: Work lifecycle event
+    SpanStream->>Agent: Trigger work assignment
+    Agent->>Agent: FSM transition (idle → working)
+    Agent->>OTEL: Emit work progress span
+    
+    %% 5. Multi-Agent Coordination
+    Note over Agent, SpanStream: Agent Coordination Pattern
+    Agent->>OTEL: Emit "scrum.defect_detected"
+    OTEL->>SpanStream: Defect span
+    SpanStream->>Agent: Lean agent triggers
+    Agent->>Agent: Process optimization
+    Agent->>OTEL: Emit "lean.process_improved"
+    
+    %% 6. Evolution Loop (Key Innovation)
+    Note over OTEL, Evolution: Auto-Evolution Through Telemetry
+    OTEL->>Evolution: Continuous trace analysis
+    Evolution->>Evolution: Detect contradictions (slow spans, retry storms)
+    Evolution->>Weaver: Request semantic convention update
+    Weaver->>Weaver: Apply TRIZ principles
+    Weaver->>Evolution: Generate new conventions
+    Evolution->>DSLGen: Update generation templates
+    
+    %% 7. Feedback Loop
+    Note over User, Evolution: System Self-Improvement
+    Evolution->>OTEL: Validate improvements
+    OTEL->>SpanStream: New performance metrics
+    SpanStream->>Agent: Updated coordination patterns
+    Agent->>User: Improved responses
+    
+    %% 8. Real-time Monitoring
+    User->>CLI: dsl swarm telemetry
+    CLI->>SpanStream: Query recent spans
+    SpanStream-->>CLI: Span history
+    CLI-->>User: Agent activity dashboard
+    
+    %% 9. Template-Driven Generation
+    User->>CLI: dsl gen with custom template
+    CLI->>DSLGen: Template + prompt
+    DSLGen->>DSLGen: Jinja2 processing
+    DSLGen->>OTEL: Template performance metrics
+    OTEL->>Evolution: Template efficiency data
+    Evolution->>Weaver: Optimize template patterns
+    
+    %% 10. Cross-Agent Workflow
+    Note over Agent, SpanStream: Roberts Rules → Scrum → Lean Flow
+    Agent->>OTEL: Roberts: "motion.approved"
+    OTEL->>SpanStream: Governance decision
+    SpanStream->>Agent: Scrum: trigger planning
+    Agent->>OTEL: Scrum: "sprint.planned"
+    OTEL->>SpanStream: Sprint initiation
+    SpanStream->>Agent: Lean: monitor velocity
+    Agent->>OTEL: Lean: "velocity.measured"
+    
+    %% Data Flow Annotations
+    Note right of SpanStream: Central Event Bus<br/>JSONL Stream<br/>Real-time Coordination
+    Note right of OTEL: Dual Purpose:<br/>1. Observability<br/>2. Coordination Driver
+    Note right of Evolution: Auto-TRIZ Loop:<br/>Contradiction Detection<br/>Semantic Evolution<br/>Code Regeneration
+    Note right of Agent: State Machine Agents<br/>Span-Driven Behavior<br/>Weaver-Validated Attributes

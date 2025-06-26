@@ -1,0 +1,343 @@
+# OpenTelemetry Collector Configuration
+# Full ecosystem setup with receivers, processors, exporters
+
+receivers:
+  # OTLP receiver for traces, metrics, logs
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+        cors:
+          allowed_origins:
+            - "http://localhost:*"
+            - "https://localhost:*"
+  
+  # Host metrics for infrastructure monitoring
+  hostmetrics:
+    collection_interval: 10s
+    scrapers:
+      cpu:
+      disk:
+      memory:
+      network:
+      load:
+      filesystem:
+      processes:
+  
+  # Prometheus receiver for scraping metrics
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: 'coordination-metrics'
+          scrape_interval: 15s
+          static_configs:
+            - targets: ['localhost:8889']
+  
+  # File-based receiver for legacy logs
+  filelog:
+    include: 
+      - /Users/sac/s2s/agent_coordination/*.jsonl
+      - /Users/sac/s2s/agent_coordination/logs/*.log
+    start_at: beginning
+    operators:
+      - type: json_parser
+        timestamp:
+          parse_from: attributes.ts
+          layout: '%Y-%m-%dT%H:%M:%S.%fZ'
+
+processors:
+  # Batch processor for efficiency
+  batch:
+    timeout: 10s
+    send_batch_size: 1024
+    send_batch_max_size: 2048
+  
+  # Memory limiter to prevent OOM
+  memory_limiter:
+    check_interval: 1s
+    limit_percentage: 75
+    spike_limit_percentage: 20
+  
+  # Resource detection for cloud environments
+  resourcedetection:
+    detectors: [env, system, docker, ec2, gcp, azure]
+    timeout: 2s
+    override: false
+  
+  # Add resource attributes
+  resource:
+    attributes:
+      - key: environment
+        value: ${ENV:development}
+        action: upsert
+      - key: service.namespace
+        value: swarmsh
+        action: insert
+      - key: deployment.type
+        value: ${DEPLOYMENT_TYPE:docker}
+        action: insert
+  
+  # Transform processor for data enrichment
+  transform:
+    metric_statements:
+      - context: metric
+        statements:
+          # Add team dimension to all metrics
+          - set(attributes["team"], attributes["work.team"]) where attributes["work.team"] != nil
+          # Calculate SLI metrics
+          - set(name, "sli.work.completion.rate") where name == "coordination.work_items.completed"
+    
+    trace_statements:
+      - context: span
+        statements:
+          # Add custom attributes
+          - set(attributes["span.kind"], "internal") where attributes["span.kind"] == nil
+          # Extract user from environment
+          - set(attributes["user.name"], "${USER}") where attributes["user.name"] == nil
+    
+    log_statements:
+      - context: log
+        statements:
+          # Standardize severity
+          - set(severity_text, "INFO") where severity_text == nil
+          # Add trace context if available
+          - set(attributes["trace.sampled"], true) where trace_id != nil
+  
+  # Tail sampling for traces
+  tail_sampling:
+    decision_wait: 10s
+    num_traces: 100000
+    expected_new_traces_per_sec: 1000
+    policies:
+      # Always sample errors
+      - name: errors
+        type: status_code
+        status_code: {status_code: ERROR}
+      # Sample high-priority work
+      - name: high-priority
+        type: string_attribute
+        string_attribute:
+          key: work.priority
+          values: ["critical", "high"]
+      # Sample slow operations
+      - name: slow-traces
+        type: latency
+        latency:
+          threshold_ms: 1000
+      # Default sampling
+      - name: probabilistic-sampler
+        type: probabilistic
+        probabilistic:
+          sampling_percentage: 10
+  
+  # Metrics generation from spans
+  spanmetrics:
+    metrics_exporter: prometheus
+    latency_histogram_buckets: [10ms, 50ms, 100ms, 250ms, 500ms, 1s, 2s, 5s]
+    dimensions:
+      - name: work.type
+      - name: work.priority
+      - name: work.team
+      - name: operation
+    dimensions_cache_size: 1000
+    aggregation_temporality: AGGREGATION_TEMPORALITY_CUMULATIVE
+  
+  # Service graph generation
+  servicegraph:
+    metrics_exporter: prometheus
+    latency_histogram_buckets: [10ms, 50ms, 100ms, 250ms, 500ms, 1s, 2s, 5s]
+    dimensions:
+      - work.team
+    store:
+      ttl: 2m
+      max_items: 1000
+
+exporters:
+  # Debug exporter for development
+  debug:
+    verbosity: detailed
+    sampling_initial: 5
+    sampling_thereafter: 100
+  
+  # OTLP exporters for production backends
+  otlp/tempo:
+    endpoint: tempo:4317
+    tls:
+      insecure: true
+    retry_on_failure:
+      enabled: true
+      initial_interval: 5s
+      max_interval: 30s
+  
+  otlp/mimir:
+    endpoint: mimir:4317
+    tls:
+      insecure: true
+  
+  otlp/loki:
+    endpoint: loki:4317
+    tls:
+      insecure: true
+  
+  # Prometheus exporter for metrics
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+    send_timestamps: true
+    enable_open_metrics: true
+    resource_to_telemetry_conversion:
+      enabled: true
+  
+  # Jaeger exporter for traces
+  jaeger:
+    endpoint: jaeger:14250
+    tls:
+      insecure: true
+  
+  # File exporter for backup
+  file:
+    path: /tmp/otel-export.json
+    rotation:
+      max_megabytes: 100
+      max_days: 7
+      max_backups: 3
+  
+  # Kafka exporter for streaming
+  kafka:
+    protocol_version: 2.0.0
+    brokers:
+      - kafka:9092
+    topic: telemetry
+    encoding: otlp_proto
+    producer:
+      compression: snappy
+  
+  # Custom webhook for alerts
+  webhook:
+    endpoint: http://localhost:8080/telemetry/webhook
+    headers:
+      X-API-Key: ${WEBHOOK_API_KEY}
+
+connectors:
+  # Forward connector for metric-to-trace correlation
+  forward:
+    traces:
+      include:
+        match_type: regexp
+        span_names:
+          - "work.*"
+    metrics:
+      include:
+        match_type: regexp
+        metric_names:
+          - "coordination.*"
+
+extensions:
+  # Health check
+  health_check:
+    endpoint: 0.0.0.0:13133
+    path: "/health"
+    check_collector_pipeline:
+      enabled: true
+      interval: 5s
+      exporter_failure_threshold: 5
+  
+  # Performance profiler
+  pprof:
+    endpoint: 0.0.0.0:1777
+  
+  # zPages for debugging
+  zpages:
+    endpoint: 0.0.0.0:55679
+  
+  # File storage for persistence
+  file_storage:
+    directory: /var/lib/otel/storage
+    timeout: 10s
+    compaction:
+      on_start: true
+      on_rebound: true
+      rebound_needed_threshold_mib: 100
+      rebound_trigger_threshold_mib: 10
+
+service:
+  # Extensions to load
+  extensions: 
+    - health_check
+    - pprof
+    - zpages
+    - file_storage
+  
+  # Pipeline definitions
+  pipelines:
+    # Trace pipeline
+    traces:
+      receivers: [otlp]
+      processors: 
+        - memory_limiter
+        - batch
+        - resourcedetection
+        - resource
+        - transform
+        - tail_sampling
+        - spanmetrics
+        - servicegraph
+      exporters: 
+        - jaeger
+        - otlp/tempo
+        - debug
+        - file
+    
+    # Metrics pipeline
+    metrics:
+      receivers: [otlp, hostmetrics, prometheus]
+      processors:
+        - memory_limiter
+        - batch
+        - resourcedetection  
+        - resource
+        - transform
+      exporters:
+        - prometheus
+        - otlp/mimir
+        - debug
+    
+    # Logs pipeline
+    logs:
+      receivers: [otlp, filelog]
+      processors:
+        - memory_limiter
+        - batch
+        - resourcedetection
+        - resource
+        - transform
+      exporters:
+        - otlp/loki
+        - debug
+        - file
+    
+    # High-priority pipeline with different processing
+    traces/high-priority:
+      receivers: [otlp]
+      processors:
+        - memory_limiter
+        - filter:
+            traces:
+              span:
+                - 'attributes["work.priority"] == "critical"'
+                - 'attributes["work.priority"] == "high"'
+        - batch:
+            timeout: 1s  # Faster processing
+      exporters:
+        - jaeger
+        - webhook  # Alert on high-priority items
+  
+  telemetry:
+    logs:
+      level: info
+      initial_fields:
+        service: otel-collector
+    metrics:
+      level: detailed
+      address: 0.0.0.0:8888

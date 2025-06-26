@@ -1,0 +1,39 @@
+{
+  "timestamp": 1750924964.8487082,
+  "test_results": {
+    "opentelemetry-api": true,
+    "opentelemetry-sdk": true,
+    "opentelemetry-exporter-otlp": false,
+    "opentelemetry-instrumentation": false,
+    "opentelemetry-semantic-conventions": true,
+    "coordination_cli_otel": false,
+    "telemetry_feedback_loop": true,
+    "semantic_conventions": true,
+    "collector_config": true,
+    "ecosystem_demo": false,
+    "instrumentation_flow": true
+  },
+  "summary": {
+    "total_tests": 11,
+    "passed": 7,
+    "failed": 4,
+    "success_rate": 0.6363636363636364
+  },
+  "components_tested": [
+    "OTEL Dependencies",
+    "Coordination CLI with OTEL",
+    "Telemetry Feedback Loop",
+    "Semantic Conventions",
+    "Collector Configuration",
+    "Ecosystem Demo",
+    "End-to-End Instrumentation"
+  ],
+  "otel_ecosystem_coverage": {
+    "instrumentation": true,
+    "collection": true,
+    "processing": true,
+    "export": true,
+    "visualization": true,
+    "feedback_loop": true
+  }
+}

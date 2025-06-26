@@ -1,0 +1,18 @@
+target: python
+description: "SwarmAgent Python model generation"
+
+templates:
+  - pattern: "swarm_attributes.j2"
+    filter: "."
+    application_mode: single
+    file_name: "swarm_attributes.py"
+    
+  - pattern: "pydantic_model.j2"
+    filter: "swarm"
+    application_mode: single  
+    file_name: "swarm_models.py"
+    
+  - pattern: "metric_dataclass.j2"
+    filter: "swarm"
+    application_mode: single
+    file_name: "swarm_metrics.py"

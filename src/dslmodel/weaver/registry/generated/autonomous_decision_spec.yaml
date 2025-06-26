@@ -1,0 +1,129 @@
+groups:
+- id: swarmsh.autonomous.system_analysis
+  brief: System state analysis and metric calculation
+  type: span
+  span_kind: internal
+  prefix: swarmsh.autonomous
+  attributes:
+  - id: completion_rate
+    type: double
+    brief: Work completion rate (0.0-1.0)
+    requirement_level: required
+  - id: active_agents
+    type: int
+    brief: Number of active agents
+    requirement_level: required
+  - id: work_queue_size
+    type: int
+    brief: Size of work queue
+    requirement_level: required
+  - id: health_score
+    type: double
+    brief: Overall system health score (0.0-1.0)
+    requirement_level: required
+  - id: health_state
+    type: string
+    brief: System health state (critical, degraded, healthy, optimal)
+    requirement_level: required
+- id: swarmsh.autonomous.decision_generation
+  brief: Autonomous decision generation based on system state
+  type: span
+  span_kind: internal
+  prefix: swarmsh.autonomous
+  attributes:
+  - id: decision_count
+    type: int
+    brief: Number of decisions generated
+    requirement_level: required
+  - id: highest_priority
+    type: int
+    brief: Priority of highest priority decision
+    requirement_level: recommended
+  - id: decision_types
+    type: string[]
+    brief: Types of decisions generated
+    requirement_level: recommended
+- id: swarmsh.autonomous.decision_execution
+  brief: Execution of autonomous decisions
+  type: span
+  span_kind: internal
+  prefix: swarmsh.autonomous
+  attributes:
+  - id: decision_id
+    type: string
+    brief: Unique decision identifier
+    requirement_level: required
+  - id: decision_type
+    type: string
+    brief: Type of decision being executed
+    requirement_level: required
+  - id: execution_result
+    type: string
+    brief: Result of decision execution
+    requirement_level: required
+  - id: confidence
+    type: double
+    brief: Decision confidence score
+    requirement_level: recommended
+- id: swarmsh.autonomous.cycle_complete
+  brief: Complete autonomous decision cycle
+  type: span
+  span_kind: internal
+  prefix: swarmsh.autonomous
+  attributes:
+  - id: cycle_duration_ms
+    type: int
+    brief: Duration of complete cycle in milliseconds
+    requirement_level: recommended
+  - id: decisions_executed
+    type: int
+    brief: Number of decisions executed
+    requirement_level: required
+  - id: decisions_failed
+    type: int
+    brief: Number of decisions that failed
+    requirement_level: required
+  - id: system_improvement
+    type: boolean
+    brief: Whether system improvement was achieved
+    requirement_level: recommended
+- id: swarmsh.autonomous.scaling_decision
+  brief: Agent scaling decision (up or down)
+  type: span
+  span_kind: internal
+  prefix: swarmsh.autonomous
+  attributes:
+  - id: scaling_direction
+    type: string
+    brief: Scaling direction (up, down)
+    requirement_level: required
+  - id: current_agents
+    type: int
+    brief: Current number of agents
+    requirement_level: required
+  - id: target_agents
+    type: int
+    brief: Target number of agents
+    requirement_level: required
+  - id: trigger_reason
+    type: string
+    brief: Reason for scaling decision
+    requirement_level: recommended
+- id: swarmsh.autonomous.coordination_improvement
+  brief: Coordination system improvement action
+  type: span
+  span_kind: internal
+  prefix: swarmsh.autonomous
+  attributes:
+  - id: improvement_type
+    type: string
+    brief: Type of coordination improvement
+    requirement_level: required
+  - id: queue_size_before
+    type: int
+    brief: Work queue size before improvement
+    requirement_level: recommended
+  - id: queue_size_after
+    type: int
+    brief: Work queue size after improvement
+    requirement_level: recommended

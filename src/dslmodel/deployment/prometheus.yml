@@ -1,0 +1,84 @@
+# Prometheus configuration for Swarm Agents
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'swarm-agents'
+    environment: 'development'
+
+rule_files:
+  - "/etc/prometheus/rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # OTel Collector metrics
+  - job_name: 'otel-collector'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['otel-collector:8889']
+    metrics_path: /metrics
+
+  # OTel Collector internal metrics
+  - job_name: 'otel-collector-internal'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['otel-collector:8888']
+
+  # Swarm Agents
+  - job_name: 'swarm-agents'
+    scrape_interval: 10s
+    static_configs:
+      - targets: 
+        - 'roberts-agent:8000'
+        - 'scrum-agent:8000'
+        - 'lean-agent:8000'
+    metrics_path: /metrics
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+      - source_labels: [__address__]
+        regex: '([^:]+):.*'
+        target_label: agent_name
+        replacement: '${1}'
+
+  # Node Exporter for system metrics
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # Jaeger metrics
+  - job_name: 'jaeger'
+    static_configs:
+      - targets: ['jaeger:14269']
+
+  # Redis metrics (if redis_exporter is used)
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+
+  # Service discovery for dynamic agents (if using Docker labels)
+  - job_name: 'docker-agents'
+    docker_sd_configs:
+      - host: unix:///var/run/docker.sock
+        refresh_interval: 5s
+    relabel_configs:
+      - source_labels: [__meta_docker_container_label_swarm_agent]
+        action: keep
+        regex: 'true'
+      - source_labels: [__meta_docker_container_label_agent_framework]
+        target_label: framework
+      - source_labels: [__meta_docker_container_name]
+        target_label: agent_name
+        regex: '/(.*)'
+        replacement: '${1}'

@@ -1,0 +1,46 @@
+groups:
+  - id: dslmodel
+    prefix: dslmodel
+    type: attribute_group
+    brief: 'DSLModel workflow execution attributes'
+    attributes:
+      - id: workflow.name
+        type: string
+        requirement_level: required
+        brief: 'Name of the DSL workflow being executed'
+        examples: ['user-registration', 'payment-processing']
+        
+      - id: workflow.status  
+        type: 
+          allow_custom_values: false
+          members:
+            - id: started
+              value: 'started'
+            - id: completed
+              value: 'completed'
+            - id: failed
+              value: 'failed'
+        requirement_level: required
+        brief: 'Current status of the workflow execution'
+        
+      - id: workflow.duration_ms
+        type: int
+        requirement_level: recommended
+        brief: 'Duration of workflow execution in milliseconds'
+        examples: [150, 2500]
+        
+      - id: model.type
+        type: string
+        requirement_level: recommended
+        brief: 'Type of DSL model being used'
+        examples: ['pydantic', 'dataclass', 'custom']
+
+  - id: dslmodel.metrics
+    type: metric
+    metric_name: dslmodel.workflow.duration
+    brief: 'Measures the duration of DSL workflow executions'
+    instrument: histogram
+    unit: 'ms'
+    attributes:
+      - ref: dslmodel.workflow.name
+      - ref: dslmodel.workflow.status

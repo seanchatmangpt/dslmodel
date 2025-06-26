@@ -1,0 +1,10 @@
+# Registry manifest for SwarmAgent semantic conventions
+name: "swarm_agents"
+version: "1.0.0"
+semconv_version: "1.28.0"
+schema_base_url: "https://opentelemetry.io/schemas/swarm"
+description: "Semantic conventions for SwarmAgent telemetry"
+
+files:
+  - swarm_agents.yaml
+  - dslmodel.yaml

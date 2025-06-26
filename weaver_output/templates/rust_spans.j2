@@ -1,0 +1,23 @@
+
+{%- import 'macros.j2' as macros -%}
+// Generated from {{ group.id }} semantic conventions
+// {{ group.brief }}
+
+use opentelemetry::{trace::Tracer, KeyValue};
+
+{% for attribute in group.attributes %}
+pub const {{ attribute.id | screaming_snake_case }}: &str = "{{ group.prefix }}.{{ attribute.id }}";
+{% endfor %}
+
+pub fn emit_thesis_spans(tracer: &dyn Tracer) {
+    {% for attribute in group.attributes %}
+    let span_{{ loop.index }} = tracer
+        .span_builder("{{ group.prefix }}.{{ attribute.id }}")
+        .with_attributes(vec![
+            KeyValue::new("brief", "{{ attribute.brief }}"),
+        ])
+        .start(tracer);
+    span_{{ loop.index }}.end();
+    
+    {% endfor %}
+}

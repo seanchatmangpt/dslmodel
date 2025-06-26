@@ -1,0 +1,43 @@
+{
+  "timestamp": "2024-01-15T10:30:00Z",
+  "total_tests": 18,
+  "passed_tests": 3,
+  "failed_tests": 15,
+  "success_rate": 0.16666666666666666,
+  "categories": {
+    "module_imports": {
+      "coordination_cli": false,
+      "otel_coordination": false,
+      "main_cli": false
+    },
+    "cli_commands": {
+      "otel_app_structure": false,
+      "work_subapp": false,
+      "work_commands": false
+    },
+    "otel_integration": {
+      "otel_setup": false,
+      "trace_context_manager": false,
+      "semantic_conventions": false,
+      "otel_available": false,
+      "context_manager_works": false
+    },
+    "pyproject_integration": {
+      "otel_dependencies": true,
+      "otel_extras": true,
+      "poe_tasks": true
+    },
+    "fallback_behavior": {
+      "tracer_available": false,
+      "meter_available": false,
+      "metrics_available": false,
+      "metrics_functional": false
+    }
+  },
+  "integration_status": {
+    "cli_integration": false,
+    "otel_ready": false,
+    "fallback_working": false,
+    "pyproject_configured": true
+  }
+}

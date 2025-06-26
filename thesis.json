@@ -1,0 +1,140 @@
+{
+  "generated_at": "2025-06-26T07:42:39.481596+00:00",
+  "span_claims": [
+    {
+      "name": "swarmsh.thesis.telemetry_as_system",
+      "brief": "Telemetry is the system, not an add-on.",
+      "attributes": {}
+    },
+    {
+      "name": "swarmsh.thesis.span_drives_code",
+      "brief": "Spans generate code & CLI.",
+      "attributes": {}
+    },
+    {
+      "name": "swarmsh.thesis.trace_to_prompt_emergence",
+      "brief": "Traces \u2192 LLM prompts (emergent).",
+      "attributes": {}
+    },
+    {
+      "name": "swarmsh.thesis.telemetry_communication_channel",
+      "brief": "Spans are the agent messaging bus.",
+      "attributes": {}
+    },
+    {
+      "name": "swarmsh.thesis.system_models_itself",
+      "brief": "Trace graph is a live self-model.",
+      "attributes": {}
+    }
+  ],
+  "inversion_matrix": [
+    {
+      "traditional": "Telemetry is optional debugging aid",
+      "swarmsh": "Telemetry is the system"
+    },
+    {
+      "traditional": "Code drives behaviour",
+      "swarmsh": "Spans drive code"
+    },
+    {
+      "traditional": "Prompts are handcrafted",
+      "swarmsh": "Prompts emerge from spans"
+    },
+    {
+      "traditional": "Agents talk via explicit messages",
+      "swarmsh": "Agents talk via structured trace"
+    },
+    {
+      "traditional": "Governance added manually",
+      "swarmsh": "Governance encoded in spans"
+    },
+    {
+      "traditional": "Self-knowledge is external",
+      "swarmsh": "Trace graph is self-model"
+    }
+  ],
+  "triz_mapping": [
+    {
+      "principle": 1,
+      "name": "Segmentation",
+      "swarmsh_mapping": "Semantic conventions isolate atomic functions"
+    },
+    {
+      "principle": 2,
+      "name": "Taking Out",
+      "swarmsh_mapping": "DLSS 80/20 extracts high-value features"
+    },
+    {
+      "principle": 3,
+      "name": "Local Quality",
+      "swarmsh_mapping": "Role-specific agents & context-local spans"
+    },
+    {
+      "principle": 5,
+      "name": "Merging",
+      "swarmsh_mapping": "OTEL + shell + Rust unified via code-gen"
+    },
+    {
+      "principle": 10,
+      "name": "Preliminary Action",
+      "swarmsh_mapping": "Pre-emit spans before error points"
+    },
+    {
+      "principle": 13,
+      "name": "The Other Way Around",
+      "swarmsh_mapping": "Start from telemetry \u2192 generate code"
+    },
+    {
+      "principle": 15,
+      "name": "Dynamics",
+      "swarmsh_mapping": "Telemetry mutates execution plans (waves)"
+    },
+    {
+      "principle": 24,
+      "name": "Intermediary",
+      "swarmsh_mapping": "Traces broker CLI \u21c4 LLM \u21c4 shell"
+    },
+    {
+      "principle": 25,
+      "name": "Self-Service",
+      "swarmsh_mapping": "Agents trigger self-healing via span patterns"
+    },
+    {
+      "principle": 28,
+      "name": "Mechanics Substitution",
+      "swarmsh_mapping": "Replace imperative logic with trace-based decisions"
+    },
+    {
+      "principle": 35,
+      "name": "Parameter Change",
+      "swarmsh_mapping": "DLSS tunes conventions per load/context"
+    },
+    {
+      "principle": 40,
+      "name": "Composite Materials",
+      "swarmsh_mapping": "Multi-layer CLI from WeaverForge (Rust+Shell+LLM)"
+    }
+  ],
+  "auto_triz_feedback_loop": [
+    {
+      "phase": "telemetry_as_perception",
+      "description": "Telemetry captures contradictions (conflicts, retries, slow spans)"
+    },
+    {
+      "phase": "llm_resolves_contradiction",
+      "description": "LLM analyses span data and proposes semantic-spec patches"
+    },
+    {
+      "phase": "weaverforge_generates",
+      "description": "WeaverForge regenerates CLI & templates from updated specs"
+    },
+    {
+      "phase": "wave_coordination_executes",
+      "description": "Wave coordination deploys changes across agents"
+    },
+    {
+      "phase": "telemetry_validates",
+      "description": "New spans confirm whether contradiction resolved; loop repeats"
+    }
+  ]
+}

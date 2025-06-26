@@ -1,98 +1,122 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+[build-system] # https://python-poetry.org/docs/pyproject/#poetry-and-pep-517
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry] # https://python-poetry.org/docs/pyproject/
 name = "dslmodel"
 version = "2024.12.22.2"
 description = "Pydantic + DSPy instances from prompts and Jinja."
-authors = [{ name = "Sean Chatman", email = "info@chatmangpt.com" }]
+authors = ["Sean Chatman <info@chatmangpt.com>"]
 readme = "README.md"
-requires-python = ">=3.12,<4.0"
-dependencies = [
-  "aiofiles>=24.1.0",
-  "apscheduler>=3.11.0",
-  "coloredlogs>=15.0.1",
-  "dspy>=2.6.24",
-  "dspy-ai>=2.6.24",
-  "factory-boy>=3.3.3",
-  "hypothesis>=6.131.18",
-  "ijson>=3.4.0",
-  "inflection>=0.5.1",
-  "inject>=5.2.1",
-  "injector>=0.22.0",
-  "jinja2-ext>=0.1",
-  "jinja2-time>=0.2.0",
-  "jupyter>=1.1.1",
-  "loguru>=0.7.3",
-  "mcp>=1.9.0",
-  "munch>=4.0.0",
-  "nest-asyncio>=1.6.0",
-  "pandasql>=0.7.3",
-  "poethepoet>=0.34.0",
-  "pygithub>=2.6.1",
-  "pyperclip>=1.9.0",
-  "python-socketio[asyncio-client]>=5.13.0",
-  "reactivex>=4.0.4",
-  "toml>=0.10.2",
-  "transitions>=0.9.2",
-  "cloudpickle>=3.1.1",
-  "pydantic-ai>=0.2.4",
-  "wcmatch>=10.0",
-  "typer>=0.15.4",
-  "makefun>=1.16.0",
-  "email-validator>=2.1.0.post1",
-]
-
-[project.urls]
 repository = "https://github.com/seanchatmangpt/dslmodel"
 
-[project.optional-dependencies]
-test = [
-  "coverage[toml]>=7.8.0",
-  "pytest>=8.3.5",
-  "pytest-mock>=3.14.0",
-  "pytest-xdist>=3.6.1",
-  "pytest-watch>=4.2.0",
-  "pytest-asyncio>=0.26.0",
-  "hypothesis>=6.131.18",
-  "fastapi>=0.115.12",
-]
-dev = [
-  "cruft>=2.16.0",
-  "ipykernel>=6.29.5",
-  "ipython>=9.2.0",
-  "ipywidgets>=8.1.7",
-  "pdoc>=15.0.3",
-]
-
-[project.scripts]
+[tool.poetry.scripts] # https://python-poetry.org/docs/pyproject/#scripts
 dsl = "dslmodel.cli:app"
 jygen = "jygen.cli:app"
 
-[tool.coverage.report]
+[tool.poetry.dependencies] # https://python-poetry.org/docs/dependency-specification/
+coloredlogs = ">=15.0.1"
+poethepoet = ">=0.25.0"
+python = ">=3.12,<4.0"
+dspy-ai = "^2.5.6"
+pyperclip = "^1.9.0"
+inflection = "^0.5.1"
+jinja2-time = "^0.2.0"
+jinja2-ext = "^0.1"
+loguru = "^0.7.2"
+munch = "^4.0.0"
+ijson = "^3.3.0"
+factory-boy = "^3.3.1"
+inject = "^5.2.1"
+pytest-xdist = "^3.6.1"
+jupyter = "^1.1.1"
+wcmatch = "^10.0"
+pandasql = "^0.7.3"
+pytest = "^8.3.3"
+transitions = "^0.9.2"
+apscheduler = "^3.10.4"
+pygithub = "^2.4.0"
+hypothesis = "^6.114.1"
+reactivex = "^4.0.4"
+toml = "^0.10.2"
+python-socketio = { extras = ["asyncio-client"], version = "^5.11.4" }
+injector = "^0.22.0"
+mcp = "^1.0.0"
+nest-asyncio = "^1.6.0"
+cloudpickle = "^3.1.0"
+aiofiles = "^24.1.0"
+pydantic-ai = "^0.0.14"
+pydantic2-schemaorg = "^0.2.0"
+typer = "^0.9.0"
+rich = "^13.7.0"
+faker = "^37.4.0"
+
+# OpenTelemetry dependencies (optional)
+opentelemetry-api = { version = "^1.20.0", optional = true }
+opentelemetry-sdk = { version = "^1.20.0", optional = true }
+opentelemetry-exporter-otlp = { version = "^1.20.0", optional = true }
+opentelemetry-instrumentation = { version = "^0.41b0", optional = true }
+opentelemetry-semantic-conventions = { version = "^0.41b0", optional = true }
+
+[tool.poetry.extras]
+otel = [
+    "opentelemetry-api",
+    "opentelemetry-sdk", 
+    "opentelemetry-exporter-otlp",
+    "opentelemetry-instrumentation",
+    "opentelemetry-semantic-conventions"
+]
+
+[tool.poetry.group.test.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
+coverage = { extras = ["toml"], version = ">=7.4.4" }
+pytest = ">=8.1.1"
+pytest-mock = ">=3.14.0"
+pytest-xdist = ">=3.5.0"
+pytest-watch = ">=4.2.0"
+
+
+[tool.poetry.group.dev.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
+cruft = ">=2.15.0"
+ipykernel = ">=6.29.4"
+ipython = ">=8.23.0"
+ipywidgets = ">=8.1.2"
+pdoc = ">=14.4.0"
+pytest-asyncio = "^0.24.0"
+
+[tool.coverage.report] # https://coverage.readthedocs.io/en/latest/config.html#report
 precision = 1
 show_missing = true
 skip_covered = true
 
-[tool.coverage.run]
+[tool.coverage.run] # https://coverage.readthedocs.io/en/latest/config.html#run
 branch = true
 command_line = "--module pytest"
 data_file = "reports/.coverage"
 source = ["src"]
 
-[tool.coverage.xml]
+[tool.coverage.xml] # https://coverage.readthedocs.io/en/latest/config.html#xml
 output = "reports/coverage.xml"
 
-[tool.pytest.ini_options]
+#[tool.mypy]  # https://mypy.readthedocs.io/en/latest/config_file.html
+#junit_xml = "reports/mypy.xml"
+#plugins = "pydantic.mypy"
+#ignore_missing_imports = true
+#pretty = true
+#show_column_numbers = true
+#show_error_codes = true
+#show_error_context = true
+#warn_unreachable = true
+
+[tool.pytest.ini_options] # https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
 addopts = "--color=yes --doctest-modules --exitfirst --failed-first --verbosity=2 --junitxml=reports/pytest.xml"
 testpaths = ["src", "tests"]
 xfail_strict = true
 
-[tool.poe.tasks]
+[tool.poe.tasks] # https://github.com/nat-n/poethepoet
 push = "act push --container-architecture linux/amd64 --secret-file .secrets"
-pub = "python -m build && python -m twine upload dist/*"
+pub = "poetry publish --build"
 pipe = "pip install -e ."
+
 
 [tool.poe.tasks.api]
 help = "Serve the REST API"
@@ -172,17 +196,121 @@ cmd = "coverage xml"
 
 [tool.poe.tasks.test-watch]
 help = "Watch for changes and rerun tests"
-cmd = """ptw --onfail="notify-send 'Tests failed!'" --clear --runner="pytest --tb=short --maxfail=1 --color=yes --doctest-modules --junitxml=reports/pytest.xml --failed-first --exitfirst --verbosity=2" """
+cmd = """poetry run ptw --onfail="notify-send 'Tests failed!'" --clear --runner="pytest --tb=short --maxfail=1 --color=yes --doctest-modules --junitxml=reports/pytest.xml --failed-first --exitfirst --verbosity=2" """
 
-[dependency-groups]
-dev = [
-  "coverage[toml]>=7.8.0",
-  "fastapi>=0.115.12",
-  "hypothesis>=6.131.18",
-  "pytest>=8.3.5",
-  "pytest-asyncio>=0.26.0",
-  "pytest-cov>=6.1.1",
-  "pytest-mock>=3.14.0",
-  "pytest-watch>=4.2.0",
-  "pytest-xdist>=3.6.1",
+# Swarm coordination tasks using standalone CLI
+[tool.poe.tasks.swarm]
+help = "Run swarm coordination CLI"
+cmd = "python swarm_cli.py --help"
+
+[tool.poe.tasks.swarm-demo]
+help = "Run swarm coordination demo"
+cmd = "python swarm_cli.py demo"
+
+[tool.poe.tasks.swarm-status]
+help = "Show swarm status"
+cmd = "python swarm_cli.py status"
+
+[tool.poe.tasks.swarm-agent]
+help = "Generate a new agent"
+cmd = "python swarm_cli.py generate"
+
+[tool.poe.tasks.swarm-emit]
+help = "Emit test span"
+cmd = "python swarm_cli.py emit swarmsh.test.example --agent test --trigger manual"
+
+[tool.poe.tasks.swarm-watch]
+help = "Watch telemetry spans"
+cmd = "python swarm_cli.py watch"
+
+[tool.poe.tasks.swarm-workflow]
+help = "Run workflow"
+cmd = "python swarm_cli.py workflow"
+
+[tool.poe.tasks.swarm-list]
+help = "List available agents"
+cmd = "python swarm_cli.py list"
+
+[tool.poe.tasks.swarm-init]
+help = "Initialize swarm with demo data"
+sequence = [
+    { cmd = "python swarm_cli.py emit swarmsh.roberts.open --agent roberts --trigger open" },
+    { cmd = "python swarm_cli.py emit swarmsh.scrum.plan --agent scrum --trigger plan" },
+    { cmd = "python swarm_cli.py status" }
 ]
+
+[tool.poe.tasks.swarm-cycle]
+help = "Run a complete swarm workflow cycle"
+sequence = [
+    { cmd = "python swarm_cli.py workflow governance" },
+    { cmd = "python swarm_cli.py workflow sprint" },
+    { cmd = "python swarm_cli.py watch --last 5" }
+]
+
+[tool.poe.tasks.swarm-clean]
+help = "Clean swarm data"
+cmd = "rm -f ~/s2s/agent_coordination/telemetry_spans.jsonl"
+
+# OTEL coordination tasks
+[tool.poe.tasks.otel-status]
+help = "Show OpenTelemetry status"
+cmd = "dsl otel otel status"
+
+[tool.poe.tasks.otel-test]
+help = "Generate test telemetry"
+cmd = "dsl otel otel test-trace"
+
+[tool.poe.tasks.otel-work]
+help = "Create work with OTEL tracing"
+cmd = "dsl otel work claim feature 'Example feature' --priority high --story-points 5"
+
+[tool.poe.tasks.otel-list]
+help = "List work items with trace info"
+cmd = "dsl otel work list --show-traces"
+
+[tool.poe.tasks.otel-demo]
+help = "Run OTEL coordination demo"
+sequence = [
+    { cmd = "dsl otel init" },
+    { cmd = "dsl otel work claim bug 'Memory leak' --priority critical --team backend" },
+    { cmd = "dsl otel work claim feature 'Dark mode' --priority medium --team frontend" },
+    { cmd = "dsl otel work list --show-traces" },
+    { cmd = "dsl otel otel status" }
+]
+
+[tool.poe.tasks.otel-install]
+help = "Install OpenTelemetry dependencies"
+cmd = "pip install dslmodel[otel]"
+
+# Full cycle demo tasks using integrated CLI
+[tool.poe.tasks.demo-full]
+help = "Run complete automated full cycle generation demo"
+cmd = "dsl demo run --cycles 3"
+
+[tool.poe.tasks.demo-full-fast]
+help = "Run quick full cycle demo (1 cycle)"
+cmd = "dsl demo run --cycles 1"
+
+[tool.poe.tasks.demo-full-extended]
+help = "Run extended full cycle demo (5 cycles)"
+cmd = "dsl demo run --cycles 5 --no-cleanup"
+
+[tool.poe.tasks.demo-status]
+help = "Show full cycle demo status and reports"
+cmd = "dsl demo status"
+
+[tool.poe.tasks.demo-clean]
+help = "Clean full cycle demo data"
+cmd = "dsl demo clean"
+
+[tool.poe.tasks.swarm-integrated]
+help = "Run integrated swarm demo"
+cmd = "dsl swarm demo"
+
+[tool.poe.tasks.swarm-integrated-init]
+help = "Initialize integrated swarm"
+cmd = "dsl swarm init"
+
+[tool.poe.tasks.swarm-integrated-status]
+help = "Show integrated swarm status"
+cmd = "dsl swarm status"

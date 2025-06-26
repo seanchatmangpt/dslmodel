@@ -1,0 +1,60 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+  attributes:
+    actions:
+    - key: swarmsh.version
+      value: 1.0.0
+      action: insert
+  filter:
+    traces:
+      span:
+      - attributes["swarmsh.thesis.enabled"] == true
+exporters:
+  logging:
+    loglevel: debug
+  jaeger:
+    endpoint: jaeger:14250
+    tls:
+      insecure: true
+  prometheus:
+    endpoint: 0.0.0.0:8889
+  file:
+    path: /var/log/swarmsh/traces.json
+    rotation:
+      max_megabytes: 100
+      max_days: 7
+      max_backups: 3
+service:
+  pipelines:
+    traces:
+      receivers:
+      - otlp
+      processors:
+      - batch
+      - attributes
+      - filter
+      exporters:
+      - logging
+      - jaeger
+      - file
+    metrics:
+      receivers:
+      - otlp
+      processors:
+      - batch
+      exporters:
+      - prometheus
+      - logging
+  extensions:
+    health_check: {}
+    pprof: {}
+    zpages: {}

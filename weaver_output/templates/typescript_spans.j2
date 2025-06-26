@@ -1,0 +1,9 @@
+
+// Generated from {{ group.id }} semantic conventions
+// {{ group.brief }}
+
+import { Tracer } from '@opentelemetry/api';
+
+{% for attribute in group.attributes %}
+export const {{ attribute.id | screaming_snake_case }} = '{{ group.prefix }}.{{ attribute.id }}';
+{% endfor %}
