@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-06-26T17:30:27.801714",
+  "target_path": "/Users/sac/dev/dslmodel",
+  "overall_score": 0.50559587456381,
+  "analyzers_run": 1,
+  "detailed_results": {
+    "quality": {
+      "analyzer_name": "QualityAnalyzer",
+      "target_path": "/Users/sac/dev/dslmodel",
+      "analysis_timestamp": "2025-06-26 17:30:27.801264",
+      "score": 0.50559587456381,
+      "findings": [
+        "Analyzed 887 Python files",
+        "Total lines of code: 195229",
+        "Functions documented: 3800/5609 (67.7%)",
+        "Test files: 148/887 (16.7%)"
+      ],
+      "recommendations": [
+        "Improve documentation coverage",
+        "Add more test files",
+        "Consider breaking large files into smaller modules"
+      ],
+      "metrics": {
+        "documentation_ratio": 0.6774826172223213,
+        "test_ratio": 0.1668545659526494,
+        "avg_file_size": 220.10033821871477,
+        "total_functions": 5609
+      }
+    }
+  }
+}

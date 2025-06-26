@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-06-26T17:29:07.437008",
+  "target_path": "src/dslmodel",
+  "overall_score": 0.7029443100620922,
+  "analyzers_run": 2,
+  "detailed_results": {
+    "quality": {
+      "analyzer_name": "QualityAnalyzer",
+      "target_path": "src/dslmodel",
+      "analysis_timestamp": "2025-06-26 17:29:07.405370",
+      "score": 0.40890976816043834,
+      "findings": [
+        "Analyzed 331 Python files",
+        "Total lines of code: 70808",
+        "Functions documented: 1387/1846 (75.1%)",
+        "Test files: 11/331 (3.3%)"
+      ],
+      "recommendations": [
+        "Improve documentation coverage",
+        "Add more test files",
+        "Consider breaking large files into smaller modules"
+      ],
+      "metrics": {
+        "documentation_ratio": 0.7513542795232936,
+        "test_ratio": 0.03323262839879154,
+        "avg_file_size": 213.9214501510574,
+        "total_functions": 1846
+      }
+    },
+    "performance": {
+      "analyzer_name": "PerformanceAnalyzer",
+      "target_path": "src/dslmodel",
+      "analysis_timestamp": "2025-06-26 17:29:07.436885",
+      "score": 0.9969788519637462,
+      "findings": [
+        "Analyzed 331 files for performance",
+        "Performance issues: 2",
+        "Optimization opportunities: 11"
+      ],
+      "recommendations": [
+        "Address identified performance anti-patterns",
+        "Consider optimization opportunities"
+      ],
+      "metrics": {
+        "performance_issues": [
+          "analyzers.py: Use enumerate() instead of range(len())",
+          "operators.py: Use enumerate() instead of range(len())"
+        ],
+        "optimization_opportunities": [
+          "weaver_engine.py: Consider list comprehension",
+          "data_writer.py: Review pandas usage for performance",
+          "reports.py: Consider list comprehension",
+          "route_tools.py: Many string concatenations - consider join()",
+          "thesis_otel_loop.py: Consider list comprehension"
+        ],
+        "issue_ratio": 0.006042296072507553
+      }
+    }
+  }
+}

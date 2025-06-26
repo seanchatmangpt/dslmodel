@@ -1,0 +1,220 @@
+groups:
+  - id: evolution.swarm.analysis
+    type: span
+    brief: "SwarmAgent evolution analysis and fitness evaluation"
+    note: "Tracks autonomous analysis of SwarmAgent systems for evolution opportunities"
+    attributes:
+      - id: evolution_id
+        type: string
+        requirement_level: required
+        brief: "Unique identifier for the evolution cycle"
+        examples: ['evo-001', 'swarm-evo-2024-001', 'auto-evo-12345']
+      - id: target_system
+        type: string
+        requirement_level: required
+        brief: "Target system being analyzed for evolution"
+        examples: ['swarm_worktree', 'coordination_engine', 'telemetry_system']
+      - id: analysis_type
+        type: string
+        requirement_level: required
+        brief: "Type of evolution analysis being performed"
+        examples: ['fitness_evaluation', 'opportunity_identification', 'baseline_assessment', 'convergence_check']
+      - id: fitness_score
+        type: double
+        requirement_level: optional
+        brief: "Overall fitness score of the current system"
+      - id: metrics_analyzed
+        type: int
+        requirement_level: optional
+        brief: "Number of fitness metrics analyzed"
+      - id: opportunities_found
+        type: int
+        requirement_level: optional
+        brief: "Number of evolution opportunities identified"
+      - id: analysis_duration_ms
+        type: int
+        requirement_level: optional
+        brief: "Time taken to complete analysis in milliseconds"
+      - id: strategy_recommended
+        type: string
+        requirement_level: optional
+        brief: "Recommended evolution strategy"
+        examples: ['performance_optimization', 'security_hardening', 'feature_enhancement', 'architecture_refinement']
+        
+  - id: evolution.swarm.generation
+    type: span
+    brief: "SwarmAgent evolution candidate generation"
+    note: "Tracks generation of evolution candidates for SwarmAgent systems"
+    attributes:
+      - id: evolution_id
+        type: string
+        requirement_level: required
+        brief: "Evolution cycle identifier"
+      - id: generation_number
+        type: int
+        requirement_level: required
+        brief: "Current generation number in evolution cycle"
+      - id: parent_candidates
+        type: int
+        requirement_level: optional
+        brief: "Number of parent candidates used for generation"
+      - id: offspring_generated
+        type: int
+        requirement_level: optional
+        brief: "Number of offspring candidates generated"
+      - id: mutation_rate
+        type: double
+        requirement_level: optional
+        brief: "Mutation rate applied during generation"
+      - id: crossover_rate
+        type: double
+        requirement_level: optional
+        brief: "Crossover rate applied during generation"
+      - id: generation_strategy
+        type: string
+        requirement_level: required
+        brief: "Strategy used for candidate generation"
+        examples: ['genetic_algorithm', 'evolutionary_strategy', 'differential_evolution', 'particle_swarm']
+      - id: fitness_improvement
+        type: double
+        requirement_level: optional
+        brief: "Average fitness improvement over previous generation"
+      - id: diversity_score
+        type: double
+        requirement_level: optional
+        brief: "Genetic diversity score of the population"
+        
+  - id: evolution.swarm.validation
+    type: span
+    brief: "SwarmAgent evolution candidate validation"
+    note: "Tracks validation of evolution candidates before deployment"
+    attributes:
+      - id: evolution_id
+        type: string
+        requirement_level: required
+        brief: "Evolution cycle identifier"
+      - id: candidate_id
+        type: string
+        requirement_level: required
+        brief: "Unique identifier for the candidate being validated"
+      - id: validation_type
+        type: string
+        requirement_level: required
+        brief: "Type of validation being performed"
+        examples: ['syntax_check', 'unit_tests', 'integration_tests', 'performance_tests', 'security_scan']
+      - id: validation_result
+        type: string
+        requirement_level: required
+        brief: "Result of the validation"
+        examples: ['passed', 'failed', 'warning', 'inconclusive']
+      - id: tests_executed
+        type: int
+        requirement_level: optional
+        brief: "Number of tests executed during validation"
+      - id: tests_passed
+        type: int
+        requirement_level: optional
+        brief: "Number of tests that passed"
+      - id: validation_score
+        type: double
+        requirement_level: optional
+        brief: "Overall validation score for the candidate"
+      - id: performance_delta
+        type: double
+        requirement_level: optional
+        brief: "Performance change relative to baseline (percentage)"
+      - id: safety_violations
+        type: int
+        requirement_level: optional
+        brief: "Number of safety rule violations detected"
+        
+  - id: evolution.swarm.deployment
+    type: span
+    brief: "SwarmAgent evolution candidate deployment"
+    note: "Tracks deployment of validated evolution candidates to production"
+    attributes:
+      - id: evolution_id
+        type: string
+        requirement_level: required
+        brief: "Evolution cycle identifier"
+      - id: candidate_id
+        type: string
+        requirement_level: required
+        brief: "Candidate being deployed"
+      - id: deployment_strategy
+        type: string
+        requirement_level: required
+        brief: "Strategy used for deployment"
+        examples: ['atomic_replacement', 'gradual_rollout', 'blue_green', 'canary', 'shadow']
+      - id: components_modified
+        type: int
+        requirement_level: optional
+        brief: "Number of system components modified"
+      - id: rollback_enabled
+        type: boolean
+        requirement_level: optional
+        brief: "Whether rollback capability is enabled"
+      - id: deployment_success
+        type: boolean
+        requirement_level: required
+        brief: "Whether deployment completed successfully"
+      - id: post_deployment_fitness
+        type: double
+        requirement_level: optional
+        brief: "System fitness score after deployment"
+      - id: user_impact
+        type: string
+        requirement_level: optional
+        brief: "Expected impact on users"
+        examples: ['none', 'minimal', 'moderate', 'significant']
+      - id: backup_created
+        type: boolean
+        requirement_level: optional
+        brief: "Whether system backup was created before deployment"
+        
+  - id: evolution.swarm.monitoring
+    type: span
+    brief: "SwarmAgent evolution monitoring and feedback"
+    note: "Tracks monitoring of deployed evolution changes and feedback collection"
+    attributes:
+      - id: evolution_id
+        type: string
+        requirement_level: required
+        brief: "Evolution cycle identifier"
+      - id: monitoring_period_ms
+        type: int
+        requirement_level: required
+        brief: "Duration of monitoring period in milliseconds"
+      - id: fitness_trend
+        type: string
+        requirement_level: optional
+        brief: "Trend in fitness metrics during monitoring"
+        examples: ['improving', 'stable', 'degrading', 'volatile']
+      - id: performance_impact
+        type: double
+        requirement_level: optional
+        brief: "Measured performance impact (percentage change)"
+      - id: error_rate_change
+        type: double
+        requirement_level: optional
+        brief: "Change in error rate (percentage)"
+      - id: user_satisfaction_score
+        type: double
+        requirement_level: optional
+        brief: "User satisfaction score (0-100)"
+      - id: rollback_triggered
+        type: boolean
+        requirement_level: optional
+        brief: "Whether automatic rollback was triggered"
+      - id: feedback_collected
+        type: int
+        requirement_level: optional
+        brief: "Number of feedback data points collected"
+      - id: next_evolution_recommended
+        type: boolean
+        requirement_level: optional
+        brief: "Whether next evolution cycle is recommended"
+      - id: convergence_detected
+        type: boolean
+        requirement_level: optional
+        brief: "Whether evolution convergence was detected"

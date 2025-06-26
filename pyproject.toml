@@ -566,3 +566,40 @@ sequence = [
     { cmd = "python src/dslmodel/commands/git_auto_cli.py commit" },
     { cmd = "python src/dslmodel/commands/git_auto_cli.py status" }
 ]
+
+# Auto Evolution tasks
+[tool.poe.tasks.evolve-analyze]
+help = "Analyze system for evolution opportunities"
+cmd = "python src/dslmodel/commands/auto_evolve_cli.py analyze"
+
+[tool.poe.tasks.evolve-apply]
+help = "Generate and apply evolution improvements"
+cmd = "python src/dslmodel/commands/auto_evolve_cli.py evolve"
+
+[tool.poe.tasks.evolve-auto]
+help = "Automatically apply safe improvements"
+cmd = "python src/dslmodel/commands/auto_evolve_cli.py evolve --auto-apply"
+
+[tool.poe.tasks.evolve-learn]
+help = "Learn from evolution history"
+cmd = "python src/dslmodel/commands/auto_evolve_cli.py learn"
+
+[tool.poe.tasks.evolve-status]
+help = "Show evolution system status"
+cmd = "python src/dslmodel/commands/auto_evolve_cli.py status"
+
+# Auto Evolution workflows
+[tool.poe.tasks.evolve-cycle]
+help = "Complete evolution cycle: analyze -> evolve -> learn"
+sequence = [
+    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py analyze" },
+    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py evolve --auto-apply" },
+    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py learn" }
+]
+
+[tool.poe.tasks.evolve-safe]
+help = "Safe evolution: analyze and show improvements (no auto-apply)"
+sequence = [
+    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py analyze" },
+    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py evolve --dry-run" }
+]

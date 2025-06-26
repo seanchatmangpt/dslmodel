@@ -11,7 +11,7 @@ from typing_extensions import Annotated
 from dslmodel import init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
 from dslmodel.template import render
-from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree
+from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree, agent_coordination_cli, evolution, auto_evolution
 try:
     from dslmodel.commands import pqc
     PQC_AVAILABLE = True
@@ -64,9 +64,12 @@ app.add_typer(name="ollama", typer_instance=ollama_validate.app, help="Ollama co
 app.add_typer(name="weaver", typer_instance=weaver.app, help="Weaver-first auto-generation from semantic conventions")
 app.add_typer(name="weaver-health", typer_instance=weaver_health_check.app, help="Weaver global health checks with Ollama validation")
 app.add_typer(name="worktree", typer_instance=worktree.app, help="Git worktree management for exclusive worktree development")
-# app.add_typer(name="swarm-worktree", typer_instance=swarm_worktree.app, help="SwarmAgent worktree coordination with OTEL telemetry")
+app.add_typer(name="swarm-worktree", typer_instance=swarm_worktree.app, help="SwarmAgent worktree coordination with OTEL telemetry")
 app.add_typer(name="telemetry", typer_instance=telemetry_cli.app, help="Real-time telemetry, auto-remediation, and security monitoring")
 app.add_typer(name="redteam", typer_instance=redteam.app, help="Automated red team security testing and vulnerability assessment")
+app.add_typer(name="agents", typer_instance=agent_coordination_cli.app, help="Agent coordination with exclusive worktrees and OTEL communication")
+app.add_typer(name="evolve", typer_instance=evolution.app, help="Autonomous evolution and self-improvement system")
+app.add_typer(name="auto-evolve", typer_instance=auto_evolution.app, help="Automatic evolution with SwarmAgent integration")
 
 
 @app.command("gen")

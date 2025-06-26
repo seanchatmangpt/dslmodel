@@ -1,0 +1,151 @@
+{
+  "timestamp": "2025-06-26T17:30:10.327726",
+  "target_path": "/Users/sac/dev/dslmodel",
+  "overall_score": 0.7018032234191185,
+  "analyzers_run": 5,
+  "detailed_results": {
+    "code": {
+      "analyzer_name": "CodeAnalyzer",
+      "target_path": "/Users/sac/dev/dslmodel",
+      "analysis_timestamp": "2025-06-26 17:30:05.552443",
+      "score": 0.6972571459515492,
+      "findings": [
+        "Analyzed 887 Python files",
+        "Total lines: 195229",
+        "Average complexity: 2.1",
+        "Functions: 5609, Classes: 2625",
+        "Issues found: 3541"
+      ],
+      "recommendations": [
+        "Address code quality issues identified"
+      ],
+      "metrics": {
+        "total_lines": 195229,
+        "avg_complexity": 2.1433410590123017,
+        "lines_per_file": 220.10033821871477,
+        "function_count": 5609,
+        "class_count": 2625,
+        "issues": [
+          "Line 150: Line too long (127 > 120)",
+          "Line 190: Line too long (127 > 120)",
+          "Missing docstring: __init__",
+          "Line 726: Line too long (138 > 120)",
+          "Missing docstring: __init__",
+          "Missing docstring: main",
+          "Line 91: Line too long (133 > 120)",
+          "Line 108: Line too long (122 > 120)",
+          "Line 258: Line too long (129 > 120)",
+          "Line 271: Line too long (122 > 120)"
+        ]
+      }
+    },
+    "performance": {
+      "analyzer_name": "PerformanceAnalyzer",
+      "target_path": "/Users/sac/dev/dslmodel",
+      "analysis_timestamp": "2025-06-26 17:30:06.090851",
+      "score": 0.9971815107102593,
+      "findings": [
+        "Analyzed 887 files for performance",
+        "Performance issues: 5",
+        "Optimization opportunities: 36"
+      ],
+      "recommendations": [
+        "Address identified performance anti-patterns",
+        "Consider optimization opportunities"
+      ],
+      "metrics": {
+        "performance_issues": [
+          "MSVSVersion.py: Use enumerate() instead of range(len())",
+          "mac_tool.py: Use enumerate() instead of range(len())",
+          "input.py: Use enumerate() instead of range(len())",
+          "analyzers.py: Use enumerate() instead of range(len())",
+          "operators.py: Use enumerate() instead of range(len())"
+        ],
+        "optimization_opportunities": [
+          "test_swarm_commands.py: Many string concatenations - consider join()",
+          "tags.py: Consider list comprehension",
+          "version.py: Consider list comprehension",
+          "utils.py: Consider list comprehension",
+          "_manylinux.py: Consider list comprehension"
+        ],
+        "issue_ratio": 0.005636978579481398
+      }
+    },
+    "security": {
+      "analyzer_name": "SecurityAnalyzer",
+      "target_path": "/Users/sac/dev/dslmodel",
+      "analysis_timestamp": "2025-06-26 17:30:07.011556",
+      "score": 0.9756482525366403,
+      "findings": [
+        "Scanned 887 files for security issues",
+        "Security vulnerabilities found: 72"
+      ],
+      "recommendations": [
+        "Address identified security vulnerabilities",
+        "Implement input validation and sanitization",
+        "Use secure cryptographic functions"
+      ],
+      "metrics": {
+        "security_issues": [
+          "dslmodel_360_otel_integration_test.py: Weak randomness for crypto",
+          "otel_concurrent_validator.py: Weak randomness for crypto",
+          "otel_concurrent_test_runner.py: Weak randomness for crypto",
+          "test_coordination_cli.py: Command injection risk: shell=True",
+          "otel_ecosystem_demo.py: Weak randomness for crypto",
+          "coordination_cli.py: Weak randomness for crypto",
+          "mock_llm_coordination_agent.py: Weak randomness for crypto",
+          "infinite_coordination_demo.py: Weak randomness for crypto",
+          "test_dslmodel_integration.py: Command injection risk: shell=True",
+          "weaver_forge_360_demo.py: Weak randomness for crypto"
+        ],
+        "issue_ratio": 0.08117249154453213,
+        "critical_count": 36
+      }
+    },
+    "quality": {
+      "analyzer_name": "QualityAnalyzer",
+      "target_path": "/Users/sac/dev/dslmodel",
+      "analysis_timestamp": "2025-06-26 17:30:08.616482",
+      "score": 0.50559587456381,
+      "findings": [
+        "Analyzed 887 Python files",
+        "Total lines of code: 195229",
+        "Functions documented: 3800/5609 (67.7%)",
+        "Test files: 148/887 (16.7%)"
+      ],
+      "recommendations": [
+        "Improve documentation coverage",
+        "Add more test files",
+        "Consider breaking large files into smaller modules"
+      ],
+      "metrics": {
+        "documentation_ratio": 0.6774826172223213,
+        "test_ratio": 0.1668545659526494,
+        "avg_file_size": 220.10033821871477,
+        "total_functions": 5609
+      }
+    },
+    "architecture": {
+      "analyzer_name": "ArchitectureAnalyzer",
+      "target_path": "/Users/sac/dev/dslmodel",
+      "analysis_timestamp": "2025-06-26 17:30:10.327264",
+      "score": 0.3333333333333333,
+      "findings": [
+        "Analyzed 887 files across 72 modules",
+        "Total imports: 460 (external: 460, internal: 0)",
+        "Classes: 2625, Average inheritance depth: 0.9"
+      ],
+      "recommendations": [
+        "Consider reducing external dependencies"
+      ],
+      "metrics": {
+        "modules": 72,
+        "unique_imports": 460,
+        "external_deps": 460,
+        "internal_deps": 0,
+        "class_count": 2625,
+        "avg_inheritance": 0.8830476190476191
+      }
+    }
+  }
+}
