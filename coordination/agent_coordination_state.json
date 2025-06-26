@@ -1,7 +1,27 @@
 {
-  "agents": {},
+  "agents": {
+    "agent-python-001": {
+      "agent_id": "agent-python-001",
+      "state": "working",
+      "current_feature": "user-authentication",
+      "worktree_path": "/Users/sac/dev/worktrees/worktree-agent-python-001-2a1382",
+      "branch_name": "feature/user-authentication-agent-python-001",
+      "last_activity": 1750960772.714318
+    },
+    "agent-frontend-001": {
+      "agent_id": "agent-frontend-001",
+      "state": "working",
+      "current_feature": "dashboard-ui",
+      "worktree_path": "/Users/sac/dev/worktrees/worktree-agent-frontend-001-941aeb",
+      "branch_name": "feature/dashboard-ui-agent-frontend-001",
+      "last_activity": 1750960772.7143612
+    }
+  },
   "feature_queue": [],
-  "active_features": [],
+  "active_features": [
+    "user-authentication",
+    "dashboard-ui"
+  ],
   "completed_features": [],
-  "timestamp": 1750960752.642263
+  "timestamp": 1750960773.716127
 }

@@ -11,7 +11,7 @@ from typing_extensions import Annotated
 from dslmodel import init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
 from dslmodel.template import render
-from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree, agent_coordination_cli, evolution, auto_evolution, evolution_worktree, complete_8020_validation
+from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree, agent_coordination_cli, evolution, auto_evolution, evolution_worktree, complete_8020_validation, unified_evolution_cli, unified_8020_evolution, consolidated_cli
 try:
     from dslmodel.commands import pqc
     PQC_AVAILABLE = True
@@ -68,10 +68,103 @@ app.add_typer(name="swarm-worktree", typer_instance=swarm_worktree.app, help="Sw
 app.add_typer(name="telemetry", typer_instance=telemetry_cli.app, help="Real-time telemetry, auto-remediation, and security monitoring")
 app.add_typer(name="redteam", typer_instance=redteam.app, help="Automated red team security testing and vulnerability assessment")
 app.add_typer(name="agents", typer_instance=agent_coordination_cli.app, help="Agent coordination with exclusive worktrees and OTEL communication")
-app.add_typer(name="evolve", typer_instance=evolution.app, help="Autonomous evolution and self-improvement system")
+# ============================================================================
+# NEW: Consolidated 8020 CLI Structure (5 commands replace 20+)
+# ============================================================================
+# Remove the confusing nested structure - integrate directly into main CLI
+# New clean commands at top level
+app.add_typer(name="evolve-ultimate", typer_instance=consolidated_cli.evolve_app, help="🧬 Ultimate evolution system - all capabilities")
+app.add_typer(name="validate-all", typer_instance=consolidated_cli.validate_app, help="✅ All validation systems - OTEL, Weaver, 8020")
+app.add_typer(name="generate-all", typer_instance=consolidated_cli.generate_app, help="🔧 All generation systems - DSL, Weaver, OpenAPI")
+app.add_typer(name="agents-all", typer_instance=consolidated_cli.agents_app, help="🤖 All agent systems - Swarm, coordination, worktree")
+app.add_typer(name="security-all", typer_instance=consolidated_cli.security_app, help="🔒 All security systems - RedTeam, PQC, monitoring")
+
+# ============================================================================
+# LEGACY: Keep for backward compatibility (will be deprecated)
+# ============================================================================
+app.add_typer(name="evolve", typer_instance=unified_8020_evolution.app, help="Ultimate 8020 Evolution System - Evolution + Validation + Learning")
+app.add_typer(name="evolve-unified", typer_instance=unified_evolution_cli.app, help="Unified Evolution System - All capabilities in one interface") 
+app.add_typer(name="evolve-legacy", typer_instance=evolution.app, help="Legacy autonomous evolution system")
 app.add_typer(name="auto-evolve", typer_instance=auto_evolution.app, help="Automatic evolution with SwarmAgent integration")
 app.add_typer(name="evolve-worktree", typer_instance=evolution_worktree.app, help="Worktree-based evolution with OTEL telemetry")
 app.add_typer(name="8020", typer_instance=complete_8020_validation.app, help="Complete 8020 SwarmAgent feature validation and demonstration")
+
+
+# ============================================================================  
+# CONSOLIDATION HELPER COMMANDS
+# ============================================================================
+
+@app.command("consolidation")
+def show_consolidation_info():
+    """Show information about the new consolidated CLI structure"""
+    from rich.console import Console
+    from rich.panel import Panel
+    
+    console = Console()
+    console.print("🧬 DSLModel CLI Consolidation")
+    console.print("=" * 35)
+    
+    console.print(Panel(
+        "🎯 **New Consolidated Structure**:\n\n"
+        "Use `dsl dsl <command>` for consolidated interface:\n"
+        "• `dsl dsl status` - Show consolidated CLI status\n"
+        "• `dsl dsl core gen` - Generate models\n"
+        "• `dsl dsl core evolve ultimate` - Ultimate evolution\n"
+        "• `dsl dsl core agent coordinate` - Agent coordination\n"
+        "• `dsl dsl core validate 8020` - 8020 validation\n"
+        "• `dsl dsl core dev forge` - Development tools\n"
+        "• `dsl dsl migrate` - See full migration guide\n\n"
+        "**Benefits**: 25+ commands → 6 core commands\n"
+        "**Principle**: 80/20 usage optimization",
+        title="📊 Consolidated CLI",
+        border_style="blue"
+    ))
+
+
+@app.command("migrate")  
+def show_migration_guide():
+    """Show migration guide to consolidated commands"""
+    from rich.console import Console
+    from rich.table import Table
+    from rich.panel import Panel
+    
+    console = Console()
+    console.print("🔄 Command Migration Guide")
+    console.print("=" * 30)
+    
+    migration_table = Table(title="📋 Old → New Command Mapping")
+    migration_table.add_column("Current Command", style="red")
+    migration_table.add_column("New Consolidated Command", style="green")
+    migration_table.add_column("Category", style="yellow")
+    
+    migrations = [
+        ("dsl gen", "dsl dsl core gen", "Generation"),
+        ("dsl evolve", "dsl dsl core evolve ultimate", "Evolution"),
+        ("dsl agents", "dsl dsl core agent coordinate", "Agents"),
+        ("dsl validate", "dsl dsl core validate otel", "Validation"),
+        ("dsl 8020", "dsl dsl core validate 8020", "Validation"),
+        ("dsl forge", "dsl dsl core dev forge", "Development"),
+        ("dsl weaver", "dsl dsl core dev weaver", "Development"),
+        ("dsl worktree", "dsl dsl core dev worktree", "Development"),
+        ("dsl demo", "dsl dsl core demo full-cycle", "Demo"),
+        ("dsl redteam", "dsl dsl advanced security redteam", "Security"),
+        ("dsl telemetry", "dsl dsl advanced telemetry monitor", "Monitoring"),
+        ("dsl thesis", "dsl dsl advanced research thesis", "Research")
+    ]
+    
+    for old, new, category in migrations:
+        migration_table.add_row(old, new, category)
+    
+    console.print(migration_table)
+    
+    console.print(Panel(
+        "💡 **Quick Access**:\n"
+        "• Use `dsl dsl --help` to see all consolidated options\n"
+        "• Use `dsl consolidation` for structure overview\n"
+        "• Legacy commands still work but are deprecated",
+        title="🚀 Getting Started",
+        border_style="green"
+    ))
 
 
 @app.command("gen")
