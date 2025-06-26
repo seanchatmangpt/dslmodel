@@ -1,0 +1,379 @@
+#!/usr/bin/env python3
+"""
+Worktree Pipeline - Generated from Semantic Conventions
+Implements agent coordination pipeline using OTEL weaver patterns
+"""
+
+import asyncio
+import subprocess
+import tempfile
+from pathlib import Path
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass
+from datetime import datetime
+from contextlib import asynccontextmanager
+
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter
+from opentelemetry.sdk.resources import Resource
+
+# Import generated models
+from .worktree_models import (
+    WorktreeSpanFactory,
+    {%- for group in groups %}
+    {%- if group.type == "span" %}
+    {{ group.id | replace(".", "_") | title }}Span,
+    {%- endif %}
+    {%- endfor %}
+)
+
+@dataclass
+class AgentConfig:
+    """Configuration for agent in worktree pipeline"""
+    agent_id: str
+    capabilities: List[str]
+    workspace_template: Optional[str] = None
+    max_concurrent_tasks: int = 1
+
+@dataclass
+class FeatureConfig:
+    """Configuration for feature development"""
+    feature_id: str
+    description: str
+    target_branch: str = "main"
+    integration_strategy: str = "sequential" 
+    assigned_agents: List[str] = None
+
+class WorktreePipeline:
+    """OTEL weaver-first worktree coordination pipeline"""
+    
+    def __init__(self, project_root: Path, service_name: str = "worktree_pipeline"):
+        self.project_root = project_root
+        self.service_name = service_name
+        self.active_worktrees: Dict[str, Dict[str, Any]] = {}
+        self.active_features: Dict[str, FeatureConfig] = {}
+        self.agent_configs: Dict[str, AgentConfig] = {}
+        
+        # Initialize OTEL
+        self._init_telemetry()
+        self.tracer = trace.get_tracer(__name__)
+    
+    def _init_telemetry(self):
+        """Initialize OpenTelemetry with weaver patterns"""
+        resource = Resource.create({
+            "service.name": self.service_name,
+            "service.version": "1.0.0"
+        })
+        
+        provider = TracerProvider(resource=resource)
+        provider.add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
+        trace.set_tracer_provider(provider)
+    
+    async def register_agent(self, config: AgentConfig):
+        """Register agent in pipeline"""
+        self.agent_configs[config.agent_id] = config
+        
+        # Create agent registration span
+        with self.tracer.start_as_current_span(
+            "agent.registration",
+            attributes={
+                "agent.id": config.agent_id,
+                "agent.capabilities": config.capabilities,
+                "pipeline.registration": True
+            }
+        ):
+            print(f"✅ Registered agent: {config.agent_id} with capabilities: {config.capabilities}")
+    
+    async def create_feature_coordination(self, config: FeatureConfig) -> str:
+        """Create feature coordination with agent worktrees"""
+        
+        # Use generated span for feature integration start
+        integration_span = FeatureIntegrationStartSpan(
+            feature_id=config.feature_id,
+            contributing_agents=config.assigned_agents or [],
+            integration_strategy=config.integration_strategy
+        )
+        
+        with integration_span.start_span() as span:
+            self.active_features[config.feature_id] = config
+            
+            # Create worktrees for assigned agents
+            for agent_id in config.assigned_agents or []:
+                await self._create_agent_worktree(agent_id, config.feature_id)
+            
+            span.add_event("feature_coordination_created", {
+                "feature_id": config.feature_id,
+                "agents_count": len(config.assigned_agents or [])
+            })
+            
+            print(f"🚀 Created feature coordination: {config.feature_id}")
+            return config.feature_id
+    
+    async def _create_agent_worktree(self, agent_id: str, feature_id: str):
+        """Create isolated worktree for agent"""
+        
+        # Generate paths
+        branch_name = f"feature/{feature_id}/{agent_id}"
+        worktree_path = self.project_root / "worktrees" / f"{agent_id}_{feature_id}"
+        
+        # Use generated span for worktree creation
+        worktree_span = AgentWorktreeCreateSpan(
+            agent_id=agent_id,
+            worktree_path=str(worktree_path),
+            feature_id=feature_id,
+            branch_name=branch_name,
+            worktree_startup_duration_ms=0.0
+        )
+        
+        start_time = datetime.now()
+        
+        with worktree_span.start_span() as span:
+            try:
+                # Ensure worktrees directory exists
+                worktree_path.parent.mkdir(exist_ok=True)
+                
+                # Create branch and worktree (mock for demo)
+                print(f"📁 Creating worktree for {agent_id}: {worktree_path}")
+                
+                # Store worktree info
+                self.active_worktrees[f"{agent_id}_{feature_id}"] = {
+                    "agent_id": agent_id,
+                    "feature_id": feature_id,
+                    "worktree_path": worktree_path,
+                    "branch_name": branch_name,
+                    "created_at": start_time.isoformat(),
+                    "status": "active"
+                }
+                
+                # Update span with duration
+                duration = (datetime.now() - start_time).total_seconds() * 1000
+                span.set_attribute("worktree.startup.duration_ms", duration)
+                
+                span.add_event("worktree_created", {
+                    "worktree_path": str(worktree_path),
+                    "branch_name": branch_name
+                })
+                
+            except Exception as e:
+                worktree_span.end_span(span, success=False, error=str(e))
+                raise
+    
+    async def activate_agent_in_worktree(self, agent_id: str, feature_id: str) -> str:
+        """Activate agent in assigned worktree"""
+        
+        agent_config = self.agent_configs.get(agent_id)
+        if not agent_config:
+            raise ValueError(f"Agent {agent_id} not registered")
+        
+        worktree_key = f"{agent_id}_{feature_id}"
+        worktree_info = self.active_worktrees.get(worktree_key)
+        if not worktree_info:
+            raise ValueError(f"No worktree found for {agent_id} on {feature_id}")
+        
+        # Use generated span for activation
+        activation_span = AgentWorktreeActivateSpan(
+            agent_id=agent_id,
+            worktree_path=worktree_info["worktree_path"],
+            capabilities=agent_config.capabilities
+        )
+        
+        with activation_span.start_span() as span:
+            # Update worktree status
+            worktree_info["status"] = "active"
+            worktree_info["activated_at"] = datetime.now().isoformat()
+            
+            span.add_event("agent_activated", {
+                "agent_id": agent_id,
+                "worktree_path": worktree_info["worktree_path"]
+            })
+            
+            print(f"🤖 Activated {agent_id} in worktree: {worktree_info['worktree_path']}")
+            return worktree_key
+    
+    async def start_agent_task(self, agent_id: str, feature_id: str, task_description: str, estimated_duration_ms: float = 3600000.0) -> str:
+        """Start agent task with telemetry"""
+        
+        task_id = f"task_{agent_id}_{int(datetime.now().timestamp())}"
+        
+        # Use generated span for task start
+        task_span = AgentTaskStartSpan(
+            agent_id=agent_id,
+            task_id=task_id,
+            task_description=task_description,
+            estimated_duration_ms=estimated_duration_ms
+        )
+        
+        with task_span.start_span() as span:
+            span.add_event("task_started", {
+                "task_id": task_id,
+                "agent_id": agent_id,
+                "description": task_description
+            })
+            
+            print(f"🔧 {agent_id} started task: {task_description}")
+            return task_id
+    
+    async def report_agent_progress(self, agent_id: str, task_id: str, percentage: float, activity: str, files_modified: List[str] = None):
+        """Report agent progress with telemetry"""
+        
+        # Use generated span for progress
+        progress_span = AgentTaskProgressSpan(
+            agent_id=agent_id,
+            task_id=task_id,
+            progress_percentage=percentage,
+            current_activity=activity,
+            files_modified=files_modified or []
+        )
+        
+        with progress_span.start_span() as span:
+            span.add_event("progress_reported", {
+                "agent_id": agent_id,
+                "task_id": task_id,
+                "percentage": percentage,
+                "activity": activity
+            })
+            
+            print(f"📊 {agent_id}: {percentage:.0f}% - {activity}")
+    
+    async def complete_agent_task(self, agent_id: str, task_id: str, status: str = "success", duration_ms: float = None, files_created: List[str] = None):
+        """Complete agent task with telemetry"""
+        
+        # Use generated span for completion
+        completion_span = AgentTaskCompleteSpan(
+            agent_id=agent_id,
+            task_id=task_id,
+            completion_status=status,
+            actual_duration_ms=duration_ms or 0.0,
+            files_created=files_created or []
+        )
+        
+        with completion_span.start_span() as span:
+            span.add_event("task_completed", {
+                "agent_id": agent_id,
+                "task_id": task_id,
+                "status": status,
+                "files_created": len(files_created or [])
+            })
+            
+            print(f"✅ {agent_id} completed task: {task_id} with status: {status}")
+    
+    async def request_coordination(self, requesting_agent: str, target_agents: List[str], reason: str, feature_id: str):
+        """Request coordination between agents"""
+        
+        coordination_channel = f"feature.{feature_id}.coordination"
+        
+        # Use generated span for coordination request
+        coord_span = AgentCoordinationRequestSpan(
+            requesting_agent=requesting_agent,
+            target_agents=target_agents,
+            coordination_reason=reason,
+            coordination_channel=coordination_channel
+        )
+        
+        with coord_span.start_span() as span:
+            span.add_event("coordination_requested", {
+                "requesting_agent": requesting_agent,
+                "target_agents": target_agents,
+                "reason": reason
+            })
+            
+            print(f"🔄 {requesting_agent} requesting coordination with {target_agents}: {reason}")
+            
+            # Simulate coordination response
+            await self._handle_coordination_response(target_agents[0], requesting_agent, "accept")
+    
+    async def _handle_coordination_response(self, responding_agent: str, requesting_agent: str, response_type: str):
+        """Handle coordination response"""
+        
+        # Use generated span for coordination response
+        response_span = AgentCoordinationResponseSpan(
+            responding_agent=responding_agent,
+            requesting_agent=requesting_agent,
+            response_type=response_type
+        )
+        
+        with response_span.start_span() as span:
+            span.add_event("coordination_response", {
+                "responding_agent": responding_agent,
+                "requesting_agent": requesting_agent,
+                "response": response_type
+            })
+            
+            print(f"💬 {responding_agent} responded to {requesting_agent}: {response_type}")
+    
+    async def integrate_feature(self, feature_id: str) -> bool:
+        """Integrate completed feature work"""
+        
+        feature_config = self.active_features.get(feature_id)
+        if not feature_config:
+            raise ValueError(f"Feature {feature_id} not found")
+        
+        # Use generated span for integration
+        integration_span = FeatureIntegrationCompleteSpan(
+            feature_id=feature_id,
+            integration_duration_ms=5000.0,
+            agents_successful=feature_config.assigned_agents or [],
+            agents_failed=[],
+            final_status="success"
+        )
+        
+        with integration_span.start_span() as span:
+            # Simulate integration process
+            for agent_id in feature_config.assigned_agents or []:
+                await self._merge_agent_work(agent_id, feature_id)
+            
+            span.add_event("feature_integrated", {
+                "feature_id": feature_id,
+                "agents": feature_config.assigned_agents or []
+            })
+            
+            print(f"🎉 Feature {feature_id} integrated successfully!")
+            return True
+    
+    async def _merge_agent_work(self, agent_id: str, feature_id: str):
+        """Merge individual agent work"""
+        
+        source_branch = f"feature/{feature_id}/{agent_id}"
+        target_branch = f"feature/{feature_id}"
+        
+        # Use generated span for merge
+        merge_span = FeatureIntegrationMergeSpan(
+            agent_id=agent_id,
+            source_branch=source_branch,
+            target_branch=target_branch,
+            merge_conflicts=0,
+            merge_strategy="merge"
+        )
+        
+        with merge_span.start_span() as span:
+            span.add_event("agent_work_merged", {
+                "agent_id": agent_id,
+                "source_branch": source_branch,
+                "target_branch": target_branch
+            })
+            
+            print(f"  🔀 Merged {agent_id}'s work: {source_branch} → {target_branch}")
+    
+    def get_pipeline_status(self) -> Dict[str, Any]:
+        """Get current pipeline status"""
+        return {
+            "active_features": len(self.active_features),
+            "active_worktrees": len(self.active_worktrees),
+            "registered_agents": len(self.agent_configs),
+            "features": list(self.active_features.keys()),
+            "agents": list(self.agent_configs.keys())
+        }
+
+# Pipeline factory function
+def create_worktree_pipeline(project_root: Path, service_name: str = "worktree_pipeline") -> WorktreePipeline:
+    """Create configured worktree pipeline"""
+    return WorktreePipeline(project_root, service_name)
+
+# Export main classes
+__all__ = [
+    "WorktreePipeline",
+    "AgentConfig", 
+    "FeatureConfig",
+    "create_worktree_pipeline"
+]

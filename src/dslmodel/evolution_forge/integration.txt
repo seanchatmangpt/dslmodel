@@ -1,0 +1,11 @@
+# Integration code for evolution_system
+
+# Add to main CLI app
+from .evolution_system_cli import app as evolution_system_app
+main_app.add_typer(evolution_system_app, name="evolution-system")
+
+# Add to __init__.py
+from .evolution_system import EvolutionSystem
+
+# Export in __all__
+__all__ = ["EvolutionSystem"]

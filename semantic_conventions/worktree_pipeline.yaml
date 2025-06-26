@@ -1,0 +1,356 @@
+groups:
+  # Core worktree operations
+  - id: agent.worktree.create
+    type: span
+    brief: "Create isolated agent worktree for feature development"
+    note: "Creates git worktree for agent to work in isolation"
+    attributes:
+      - id: agent.id
+        type: string
+        brief: "Unique identifier of the agent"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent", "ml_agent"]
+      
+      - id: worktree.path
+        type: string
+        brief: "Filesystem path to the worktree"
+        requirement_level: required
+        examples: ["/tmp/worktrees/agent_frontend_feature123"]
+      
+      - id: feature.id
+        type: string
+        brief: "Feature identifier being worked on"
+        requirement_level: required
+        examples: ["user_dashboard", "payment_integration", "auth_system"]
+      
+      - id: branch.name
+        type: string
+        brief: "Git branch name for this worktree"
+        requirement_level: required
+        examples: ["feature/user_dashboard/frontend_agent"]
+      
+      - id: worktree.startup.duration_ms
+        type: double
+        brief: "Time to create worktree in milliseconds"
+        requirement_level: recommended
+        examples: [1200.5, 2400.0, 500.3]
+
+  - id: agent.worktree.activate
+    type: span
+    brief: "Activate agent in assigned worktree"
+    note: "Agent begins work in isolated worktree environment"
+    attributes:
+      - id: agent.id
+        type: string
+        brief: "Agent being activated"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent"]
+      
+      - id: worktree.path
+        type: string
+        brief: "Path to agent's worktree"
+        requirement_level: required
+        examples: ["/tmp/worktrees/agent_frontend_feature123"]
+      
+      - id: capabilities
+        type: string[]
+        brief: "Agent capabilities for this task"
+        requirement_level: recommended
+        examples: [["react", "typescript"], ["python", "api"]]
+
+  # Agent coordination operations
+  - id: agent.coordination.request
+    type: span
+    brief: "Agent requests coordination with other agents"
+    note: "Coordinates work between agents on shared features"
+    attributes:
+      - id: requesting.agent
+        type: string
+        brief: "Agent requesting coordination"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent"]
+      
+      - id: target.agents
+        type: string[]
+        brief: "Agents being coordinated with"
+        requirement_level: required
+        examples: [["backend_agent"], ["frontend_agent", "test_agent"]]
+      
+      - id: coordination.reason
+        type: string
+        brief: "Reason for coordination request"
+        requirement_level: required
+        examples: ["dependency_conflict", "api_interface_change", "shared_config"]
+      
+      - id: coordination.channel
+        type: string
+        brief: "Communication channel for coordination"
+        requirement_level: required
+        examples: ["feature.user_dashboard.coordination", "global.agent.sync"]
+
+  - id: agent.coordination.response
+    type: span
+    brief: "Agent responds to coordination request"
+    note: "Response to coordination from other agents"
+    attributes:
+      - id: responding.agent
+        type: string
+        brief: "Agent responding to coordination"
+        requirement_level: required
+        examples: ["backend_agent", "test_agent"]
+      
+      - id: requesting.agent
+        type: string
+        brief: "Original requesting agent"
+        requirement_level: required
+        examples: ["frontend_agent", "ml_agent"]
+      
+      - id: response.type
+        type:
+          members:
+            - id: accept
+              value: "accept"
+              brief: "Agent accepts coordination request"
+            - id: modify
+              value: "modify"
+              brief: "Agent suggests modifications"
+            - id: reject
+              value: "reject"
+              brief: "Agent rejects coordination request"
+        brief: "Type of coordination response"
+        requirement_level: required
+        examples: ["accept", "modify", "reject"]
+
+  # Feature work operations
+  - id: agent.task.start
+    type: span
+    brief: "Agent starts work on assigned task"
+    note: "Tracks when agent begins task execution"
+    attributes:
+      - id: agent.id
+        type: string
+        brief: "Agent starting work"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent"]
+      
+      - id: task.id
+        type: string
+        brief: "Unique task identifier"
+        requirement_level: required
+        examples: ["task_123", "implement_auth_ui"]
+      
+      - id: task.description
+        type: string
+        brief: "Task description"
+        requirement_level: recommended
+        examples: ["Implement login UI", "Create API endpoints"]
+      
+      - id: estimated.duration_ms
+        type: double
+        brief: "Estimated task duration"
+        requirement_level: recommended
+        examples: [3600000.0, 7200000.0, 1800000.0]
+
+  - id: agent.task.progress
+    type: span
+    brief: "Agent reports task progress"
+    note: "Periodic progress updates from working agents"
+    attributes:
+      - id: agent.id
+        type: string
+        brief: "Agent reporting progress"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent"]
+      
+      - id: task.id
+        type: string
+        brief: "Task being worked on"
+        requirement_level: required
+        examples: ["task_123", "implement_auth_ui"]
+      
+      - id: progress.percentage
+        type: double
+        brief: "Completion percentage (0-100)"
+        requirement_level: required
+        examples: [25.0, 50.5, 75.0, 100.0]
+      
+      - id: current.activity
+        type: string
+        brief: "Current work activity"
+        requirement_level: recommended
+        examples: ["implementing_component", "writing_tests", "reviewing_code"]
+      
+      - id: files.modified
+        type: string[]
+        brief: "Files modified in this progress update"
+        requirement_level: recommended
+        examples: [["src/login.tsx"], ["api/auth.py", "tests/test_auth.py"]]
+
+  - id: agent.task.complete
+    type: span
+    brief: "Agent completes assigned task"
+    note: "Marks task completion and commits work"
+    attributes:
+      - id: agent.id
+        type: string
+        brief: "Agent completing task"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent"]
+      
+      - id: task.id
+        type: string
+        brief: "Completed task identifier"
+        requirement_level: required
+        examples: ["task_123", "implement_auth_ui"]
+      
+      - id: completion.status
+        type:
+          members:
+            - id: success
+              value: "success"
+              brief: "Task completed successfully"
+            - id: partial
+              value: "partial"
+              brief: "Task partially completed"
+            - id: failed
+              value: "failed"
+              brief: "Task failed to complete"
+        brief: "Task completion status"
+        requirement_level: required
+        examples: ["success", "partial", "failed"]
+      
+      - id: actual.duration_ms
+        type: double
+        brief: "Actual time spent on task"
+        requirement_level: recommended
+        examples: [3300000.0, 7800000.0, 1500000.0]
+      
+      - id: files.created
+        type: string[]
+        brief: "Files created during task"
+        requirement_level: recommended
+        examples: [["src/login.tsx", "src/auth.ts"], ["api/users.py"]]
+
+  # Feature integration operations
+  - id: feature.integration.start
+    type: span
+    brief: "Start integrating agent work into feature"
+    note: "Begins process of merging agent work"
+    attributes:
+      - id: feature.id
+        type: string
+        brief: "Feature being integrated"
+        requirement_level: required
+        examples: ["user_dashboard", "payment_system"]
+      
+      - id: contributing.agents
+        type: string[]
+        brief: "Agents whose work is being integrated"
+        requirement_level: required
+        examples: [["frontend_agent", "backend_agent"], ["ml_agent", "data_agent"]]
+      
+      - id: integration.strategy
+        type:
+          members:
+            - id: sequential
+              value: "sequential"
+              brief: "Integrate agent work sequentially"
+            - id: parallel
+              value: "parallel"
+              brief: "Integrate agent work in parallel"
+            - id: staged
+              value: "staged"
+              brief: "Integrate in multiple stages"
+        brief: "Integration strategy being used"
+        requirement_level: required
+        examples: ["sequential", "parallel", "staged"]
+
+  - id: feature.integration.merge
+    type: span
+    brief: "Merge agent worktree into main branch"
+    note: "Git merge operation for agent's work"
+    attributes:
+      - id: agent.id
+        type: string
+        brief: "Agent whose work is being merged"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent"]
+      
+      - id: source.branch
+        type: string
+        brief: "Source branch being merged"
+        requirement_level: required
+        examples: ["feature/user_dashboard/frontend_agent"]
+      
+      - id: target.branch
+        type: string
+        brief: "Target branch for merge"
+        requirement_level: required
+        examples: ["feature/user_dashboard", "main", "develop"]
+      
+      - id: merge.conflicts
+        type: int
+        brief: "Number of merge conflicts"
+        requirement_level: recommended
+        examples: [0, 3, 10]
+      
+      - id: merge.strategy
+        type:
+          members:
+            - id: merge
+              value: "merge"
+              brief: "Standard git merge"
+            - id: rebase
+              value: "rebase"
+              brief: "Rebase and merge"
+            - id: squash
+              value: "squash"
+              brief: "Squash and merge"
+        brief: "Git merge strategy used"
+        requirement_level: recommended
+        examples: ["merge", "rebase", "squash"]
+
+  - id: feature.integration.complete
+    type: span
+    brief: "Complete feature integration process"
+    note: "Final step of feature integration with all agents"
+    attributes:
+      - id: feature.id
+        type: string
+        brief: "Feature that was integrated"
+        requirement_level: required
+        examples: ["user_dashboard", "payment_system"]
+      
+      - id: integration.duration_ms
+        type: double
+        brief: "Total integration time"
+        requirement_level: recommended
+        examples: [30000.0, 120000.0, 300000.0]
+      
+      - id: agents.successful
+        type: string[]
+        brief: "Agents whose work was successfully integrated"
+        requirement_level: recommended
+        examples: [["frontend_agent", "backend_agent"], ["ml_agent"]]
+      
+      - id: agents.failed
+        type: string[]
+        brief: "Agents whose work failed integration"
+        requirement_level: recommended
+        examples: [[], ["test_agent"], ["data_agent"]]
+      
+      - id: final.status
+        type:
+          members:
+            - id: success
+              value: "success"
+              brief: "Integration completed successfully"
+            - id: partial
+              value: "partial"
+              brief: "Integration partially completed"
+            - id: failed
+              value: "failed"
+              brief: "Integration failed"
+        brief: "Final integration status"
+        requirement_level: required
+        examples: ["success", "partial", "failed"]

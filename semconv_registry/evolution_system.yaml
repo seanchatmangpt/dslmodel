@@ -1,0 +1,188 @@
+groups:
+  - id: trace.evolution
+    type: span
+    brief: Autonomous evolution and self-improvement system telemetry
+    note: >
+      Defines telemetry for the autonomous evolution system including
+      analysis, generation, validation, and learning cycles.
+    stability: experimental
+    spans:
+      - id: evolution.analysis.start
+        brief: Evolution analysis initiated
+        note: Emitted when evolution analysis begins
+        attributes:
+          - id: analysis.id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the analysis run
+            examples: ["analysis_1734567890123"]
+          - id: analysis.target
+            type: string
+            requirement_level: required
+            brief: Target path being analyzed
+            examples: ["/Users/dev/project", "./src"]
+          - id: analysis.strategy
+            type: string
+            requirement_level: optional
+            brief: Evolution strategy being used
+            examples: ["performance", "security", "quality", "architecture"]
+            enum: ["performance", "security", "quality", "features", "architecture"]
+      
+      - id: evolution.opportunity.detected
+        brief: Evolution opportunity identified
+        note: Emitted when an improvement opportunity is found
+        attributes:
+          - id: opportunity.id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the opportunity
+            examples: ["opp_a1b2c3d4"]
+          - id: opportunity.type
+            type: string
+            requirement_level: required
+            brief: Type of improvement opportunity
+            examples: ["performance_optimization", "code_quality", "security_fix"]
+          - id: opportunity.priority
+            type: string
+            requirement_level: required
+            brief: Priority level of the opportunity
+            enum: ["high", "medium", "low"]
+          - id: opportunity.confidence
+            type: double
+            requirement_level: optional
+            brief: Confidence score (0.0-1.0)
+            examples: [0.85, 0.92]
+      
+      - id: evolution.generation.start
+        brief: Evolution generation cycle started
+        note: Emitted when generation of improvements begins
+        attributes:
+          - id: generation.id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the generation
+            examples: ["gen_1734567890123"]
+          - id: generation.number
+            type: int
+            requirement_level: required
+            brief: Generation number in evolution cycle
+            examples: [1, 2, 5]
+          - id: population.size
+            type: int
+            requirement_level: optional
+            brief: Population size for this generation
+            examples: [4, 8, 16]
+      
+      - id: evolution.candidate.created
+        brief: Evolution candidate created
+        note: Emitted when a new improvement candidate is generated
+        attributes:
+          - id: candidate.id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the candidate
+            examples: ["cand_xyz789"]
+          - id: candidate.type
+            type: string
+            requirement_level: required
+            brief: Type of improvement candidate
+            examples: ["code_refactor", "performance_optimization", "feature_addition"]
+          - id: candidate.worktree
+            type: string
+            requirement_level: optional
+            brief: Worktree path for isolated testing
+            examples: ["worktrees/evolution/cand_xyz789"]
+      
+      - id: evolution.validation.complete
+        brief: Evolution validation completed
+        note: Emitted when candidate validation finishes
+        attributes:
+          - id: candidate.id
+            type: string
+            requirement_level: required
+            brief: Candidate being validated
+            examples: ["cand_xyz789"]
+          - id: validation.result
+            type: string
+            requirement_level: required
+            brief: Validation outcome
+            enum: ["success", "failure", "partial"]
+          - id: fitness.score
+            type: double
+            requirement_level: optional
+            brief: Overall fitness score (0.0-1.0)
+            examples: [0.75, 0.91]
+          - id: improvement.percentage
+            type: double
+            requirement_level: optional
+            brief: Percentage improvement achieved
+            examples: [15.5, 23.8]
+      
+      - id: evolution.integration.complete
+        brief: Evolution integrated into main branch
+        note: Emitted when successful evolution is merged
+        attributes:
+          - id: candidate.id
+            type: string
+            requirement_level: required
+            brief: Candidate that was integrated
+            examples: ["cand_xyz789"]
+          - id: integration.method
+            type: string
+            requirement_level: optional
+            brief: Integration method used
+            examples: ["merge", "rebase", "cherry-pick"]
+          - id: files.modified
+            type: int
+            requirement_level: optional
+            brief: Number of files modified
+            examples: [5, 12, 3]
+      
+      - id: evolution.learning.update
+        brief: Evolution learning system updated
+        note: Emitted when system learns from evolution results
+        attributes:
+          - id: pattern.type
+            type: string
+            requirement_level: required
+            brief: Type of pattern learned
+            examples: ["success_pattern", "failure_pattern", "optimization_rule"]
+          - id: confidence.adjustment
+            type: double
+            requirement_level: optional
+            brief: Confidence adjustment applied
+            examples: [0.05, -0.1, 0.15]
+          - id: knowledge.base.size
+            type: int
+            requirement_level: optional
+            brief: Size of knowledge base after update
+            examples: [150, 200, 325]
+
+  - id: metrics.evolution
+    type: metric
+    brief: Evolution system performance metrics
+    note: Metrics for monitoring evolution effectiveness
+    metrics:
+      - id: evolution.success.rate
+        type: gauge
+        unit: ratio
+        brief: Success rate of evolution attempts
+        note: Ratio of successful evolutions to total attempts
+        
+      - id: evolution.improvement.score
+        type: gauge
+        unit: ratio
+        brief: Average improvement score achieved
+        note: Average fitness improvement across all evolutions
+        
+      - id: evolution.generation.duration
+        type: histogram
+        unit: ms
+        brief: Duration of generation cycles
+        note: Time taken for each generation cycle
+        
+      - id: evolution.candidates.generated
+        type: counter
+        unit: "{candidates}"
+        brief: Total number of candidates generated
+        note: Cumulative count of evolution candidates created

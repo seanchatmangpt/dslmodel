@@ -1,0 +1,257 @@
+groups:
+  - id: evolution.worktree.experiment
+    type: span
+    brief: "Evolution experiment in isolated worktree"
+    note: "Tracks evolution experiments conducted in isolated Git worktrees for safe testing"
+    attributes:
+      - id: experiment_id
+        type: string
+        requirement_level: required
+        brief: "Unique identifier for the evolution experiment"
+        examples: ['exp-001', 'evolution-2024-001', 'candidate-12345']
+      - id: worktree_path
+        type: string
+        requirement_level: required
+        brief: "Path to the isolated worktree for this experiment"
+        examples: ['/worktrees/evolution_exp_001', '/worktrees/candidate_perf_opt']
+      - id: branch_name
+        type: string
+        requirement_level: required
+        brief: "Git branch for the evolution experiment"
+        examples: ['evolution/exp-001', 'candidate/perf-optimization', 'experiment/feature-enhancement']
+      - id: base_commit
+        type: string
+        requirement_level: required
+        brief: "Base commit SHA from which evolution started"
+      - id: evolution_strategy
+        type: string
+        requirement_level: required
+        brief: "Strategy used for this evolution experiment"
+        examples: ['performance', 'security', 'features', 'quality', 'architecture']
+      - id: fitness_before
+        type: double
+        requirement_level: optional
+        brief: "System fitness score before evolution"
+      - id: target_fitness
+        type: double
+        requirement_level: optional
+        brief: "Target fitness score for this experiment"
+      - id: generation_number
+        type: int
+        requirement_level: optional
+        brief: "Generation number in evolution cycle"
+        
+  - id: evolution.worktree.mutation
+    type: span
+    brief: "Code mutation applied in worktree"
+    note: "Tracks specific code mutations applied during evolution experiments"
+    attributes:
+      - id: experiment_id
+        type: string
+        requirement_level: required
+        brief: "Associated evolution experiment"
+      - id: mutation_id
+        type: string
+        requirement_level: required
+        brief: "Unique identifier for this mutation"
+      - id: mutation_type
+        type: string
+        requirement_level: required
+        brief: "Type of mutation being applied"
+        examples: ['refactor', 'optimize', 'parallelize', 'cache_add', 'algorithm_change']
+      - id: target_file
+        type: string
+        requirement_level: required
+        brief: "File being mutated"
+      - id: target_function
+        type: string
+        requirement_level: optional
+        brief: "Function or class being mutated"
+      - id: mutation_description
+        type: string
+        requirement_level: optional
+        brief: "Human-readable description of the mutation"
+      - id: risk_level
+        type: string
+        requirement_level: optional
+        brief: "Risk level of the mutation"
+        examples: ['low', 'medium', 'high', 'critical']
+      - id: rollback_capable
+        type: boolean
+        requirement_level: optional
+        brief: "Whether mutation can be rolled back"
+        
+  - id: evolution.worktree.validation
+    type: span
+    brief: "Validation of evolution changes in worktree"
+    note: "Tracks validation and testing of evolution experiments"
+    attributes:
+      - id: experiment_id
+        type: string
+        requirement_level: required
+        brief: "Evolution experiment being validated"
+      - id: worktree_path
+        type: string
+        requirement_level: required
+        brief: "Worktree containing changes to validate"
+      - id: validation_type
+        type: string
+        requirement_level: required
+        brief: "Type of validation being performed"
+        examples: ['unit_tests', 'integration_tests', 'performance_tests', 'security_scan', 'fitness_evaluation']
+      - id: tests_total
+        type: int
+        requirement_level: optional
+        brief: "Total number of tests executed"
+      - id: tests_passed
+        type: int
+        requirement_level: optional
+        brief: "Number of tests that passed"
+      - id: fitness_score
+        type: double
+        requirement_level: optional
+        brief: "Measured fitness score after changes"
+      - id: performance_impact
+        type: double
+        requirement_level: optional
+        brief: "Performance impact percentage"
+      - id: validation_passed
+        type: boolean
+        requirement_level: required
+        brief: "Whether validation passed overall"
+      - id: blocking_issues
+        type: int
+        requirement_level: optional
+        brief: "Number of blocking issues found"
+        
+  - id: evolution.worktree.merge
+    type: span
+    brief: "Merge successful evolution back to main branch"
+    note: "Tracks merging of validated evolution improvements"
+    attributes:
+      - id: experiment_id
+        type: string
+        requirement_level: required
+        brief: "Evolution experiment being merged"
+      - id: source_worktree
+        type: string
+        requirement_level: required
+        brief: "Source worktree path"
+      - id: source_branch
+        type: string
+        requirement_level: required
+        brief: "Branch being merged"
+      - id: target_branch
+        type: string
+        requirement_level: required
+        brief: "Target branch for merge"
+        examples: ['main', 'develop', 'evolution/stable']
+      - id: fitness_improvement
+        type: double
+        requirement_level: required
+        brief: "Fitness improvement achieved"
+      - id: mutations_merged
+        type: int
+        requirement_level: optional
+        brief: "Number of mutations being merged"
+      - id: pr_number
+        type: string
+        requirement_level: optional
+        brief: "Pull request number if applicable"
+      - id: merge_strategy
+        type: string
+        requirement_level: optional
+        brief: "Strategy used for merging"
+        examples: ['merge', 'squash', 'rebase']
+      - id: rollback_plan
+        type: string
+        requirement_level: optional
+        brief: "Rollback plan if issues arise"
+      - id: merge_success
+        type: boolean
+        requirement_level: required
+        brief: "Whether merge completed successfully"
+        
+  - id: evolution.worktree.monitoring
+    type: span
+    brief: "Monitor deployed evolution in production"
+    note: "Tracks production monitoring of merged evolution changes"
+    attributes:
+      - id: experiment_id
+        type: string
+        requirement_level: required
+        brief: "Original evolution experiment"
+      - id: deployment_id
+        type: string
+        requirement_level: required
+        brief: "Deployment identifier"
+      - id: monitoring_duration_ms
+        type: int
+        requirement_level: required
+        brief: "Duration of monitoring period"
+      - id: fitness_trend
+        type: string
+        requirement_level: optional
+        brief: "Trend in fitness metrics"
+        examples: ['improving', 'stable', 'degrading', 'volatile']
+      - id: performance_metrics
+        type: string
+        requirement_level: optional
+        brief: "JSON string of performance metrics"
+      - id: error_rate
+        type: double
+        requirement_level: optional
+        brief: "Error rate percentage"
+      - id: rollback_triggered
+        type: boolean
+        requirement_level: optional
+        brief: "Whether rollback was triggered"
+      - id: user_impact
+        type: string
+        requirement_level: optional
+        brief: "Impact on users"
+        examples: ['positive', 'neutral', 'negative', 'none']
+      - id: learning_captured
+        type: boolean
+        requirement_level: optional
+        brief: "Whether learnings were captured for future evolution"
+        
+  - id: evolution.worktree.coordination
+    type: span
+    brief: "SwarmAgent coordination of evolution worktrees"
+    note: "Tracks how SwarmAgents coordinate evolution experiments across worktrees"
+    attributes:
+      - id: agent_id
+        type: string
+        requirement_level: required
+        brief: "SwarmAgent coordinating evolution"
+        examples: ['evolution-agent-001', 'darwin-bot', 'fitness-optimizer']
+      - id: coordination_action
+        type: string
+        requirement_level: required
+        brief: "Coordination action being performed"
+        examples: ['assign_experiment', 'evaluate_fitness', 'select_candidates', 'merge_improvements']
+      - id: active_experiments
+        type: int
+        requirement_level: optional
+        brief: "Number of active evolution experiments"
+      - id: worktrees_managed
+        type: int
+        requirement_level: optional
+        brief: "Number of worktrees being managed"
+      - id: fitness_baseline
+        type: double
+        requirement_level: optional
+        brief: "Current system fitness baseline"
+      - id: improvement_target
+        type: double
+        requirement_level: optional
+        brief: "Target improvement percentage"
+      - id: strategy_distribution
+        type: string
+        requirement_level: optional
+        brief: "JSON string of strategy distribution across experiments"
+      - id: convergence_detected
+        type: boolean
+        requirement_level: optional
+        brief: "Whether evolution convergence was detected"

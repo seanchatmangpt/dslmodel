@@ -10,7 +10,7 @@ import subprocess
 import json
 import time
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, ClassVar
 from dataclasses import dataclass, field
 from enum import Enum
 
@@ -55,9 +55,9 @@ class WorktreeAgent(DSLModel, FSMMixin):
     worktree_path: Optional[str] = None
     coordination_layer: Optional[Any] = None
     
-    # FSM states
-    states = [state.value for state in WorktreeState]
-    initial = WorktreeState.IDLE.value
+    # FSM states (ClassVar to avoid Pydantic validation)
+    states: ClassVar[List[str]] = [state.value for state in WorktreeState]
+    initial: ClassVar[str] = WorktreeState.IDLE.value
     
     def __init__(self, **data):
         super().__init__(**data)

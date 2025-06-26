@@ -1,0 +1,56 @@
+{
+  "experiment_id": "docs-upgrade-weaver-2025-001",
+  "validation_time": "2025-06-26T10:44:27.554836",
+  "weaver_approach": true,
+  "files_validated": [
+    {
+      "file": "README.md",
+      "exists": true,
+      "size": 31702,
+      "has_evidence": true,
+      "has_honest_assessment": true,
+      "production_ready": true,
+      "weaver_semantic_conventions": true
+    },
+    {
+      "file": "PRODUCTION_READINESS_GUIDE.md",
+      "exists": true,
+      "size": 9343,
+      "has_evidence": true,
+      "has_honest_assessment": true,
+      "production_ready": true,
+      "weaver_semantic_conventions": true
+    },
+    {
+      "file": "context/README.md",
+      "exists": true,
+      "size": 10250,
+      "has_evidence": true,
+      "has_honest_assessment": true,
+      "production_ready": true,
+      "weaver_semantic_conventions": true
+    },
+    {
+      "file": "context/index.md",
+      "exists": true,
+      "size": 11203,
+      "has_evidence": true,
+      "has_honest_assessment": true,
+      "production_ready": true,
+      "weaver_semantic_conventions": true
+    },
+    {
+      "file": "docs_semantic_conventions.yaml",
+      "exists": true,
+      "size": 1073,
+      "has_evidence": true,
+      "has_honest_assessment": true,
+      "production_ready": true,
+      "weaver_semantic_conventions": false
+    }
+  ],
+  "evidence_based": true,
+  "production_ready": true,
+  "honest_assessment": true,
+  "weaver_conventions_applied": true
+}

@@ -1,0 +1,349 @@
+groups:
+  # Core worktree operations
+  - id: agent.worktree
+    type: span
+    brief: "Agent worktree operations for feature isolation"
+    note: "Tracks git worktree creation and lifecycle for agent isolation"
+    prefix: agent.worktree
+    attributes:
+      - id: agent.id
+        type: string
+        brief: "Unique identifier of the agent"
+        note: "Agent name or ID that owns the worktree"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent", "ml_agent"]
+      
+      - id: worktree.path
+        type: string
+        brief: "Filesystem path to the worktree"
+        note: "Absolute path where agent's isolated workspace is located"
+        requirement_level: required
+        examples: ["/tmp/worktrees/agent_frontend_feature123"]
+      
+      - id: feature.id
+        type: string
+        brief: "Feature identifier being worked on"
+        note: "Unique ID of the feature this worktree is for"
+        requirement_level: required
+        examples: ["user_dashboard", "payment_integration", "auth_system"]
+      
+      - id: branch.name
+        type: string
+        brief: "Git branch name for this worktree"
+        note: "Branch created for agent's isolated work"
+        requirement_level: required
+        examples: ["feature/user_dashboard/frontend_agent"]
+      
+      - id: worktree.pool.enabled
+        type: boolean
+        brief: "Whether worktree pooling is enabled"
+        note: "Indicates if worktree was allocated from pool"
+        requirement_level: recommended
+        examples: [true, false]
+      
+      - id: worktree.startup.duration_ms
+        type: double
+        brief: "Time to create/allocate worktree in milliseconds"
+        note: "Measures worktree startup performance"
+        requirement_level: recommended
+        examples: [1200.5, 2400.0, 500.3]
+
+  # Agent coordination operations
+  - id: agent.coordination
+    type: span
+    brief: "Cross-agent coordination and communication"
+    note: "Tracks coordination events between agents working on features"
+    prefix: agent.coordination
+    attributes:
+      - id: coordination.type
+        type:
+          members:
+            - id: sync
+              value: "sync"
+              brief: "Synchronous coordination request"
+              note: "Agent needs immediate coordination"
+            - id: async
+              value: "async"
+              brief: "Asynchronous coordination notification"
+              note: "Agent notifies others of state change"
+            - id: conflict
+              value: "conflict"
+              brief: "Conflict resolution required"
+              note: "Agents have conflicting changes"
+            - id: merge
+              value: "merge"
+              brief: "Merge coordination"
+              note: "Coordinating feature integration"
+        brief: "Type of coordination event"
+        note: "Categorizes the coordination interaction"
+        requirement_level: required
+        examples: ["sync", "async", "conflict"]
+      
+      - id: coordination.agents
+        type: string[]
+        brief: "List of agents involved in coordination"
+        note: "All agent IDs participating in this coordination"
+        requirement_level: required
+        examples: [["frontend_agent", "backend_agent"], ["ml_agent", "data_agent"]]
+      
+      - id: coordination.channel
+        type: string
+        brief: "Coordination channel identifier"
+        note: "Named channel for agent communication"
+        requirement_level: required
+        examples: ["feature.user_dashboard.coordination", "global.agent.sync"]
+      
+      - id: coordination.priority
+        type:
+          members:
+            - id: low
+              value: "low"
+              brief: "Low priority coordination"
+              note: "Can be delayed if needed"
+            - id: medium
+              value: "medium"
+              brief: "Medium priority coordination"
+              note: "Should be handled soon"
+            - id: high
+              value: "high"
+              brief: "High priority coordination"
+              note: "Needs immediate attention"
+            - id: critical
+              value: "critical"
+              brief: "Critical coordination"
+              note: "Blocking other agents"
+        brief: "Priority level of coordination"
+        note: "Determines handling urgency"
+        requirement_level: recommended
+        examples: ["high", "medium", "low"]
+
+  # Feature work operations
+  - id: agent.feature.work
+    type: span
+    brief: "Agent work on assigned features"
+    note: "Tracks agent progress and task execution"
+    prefix: agent.feature
+    attributes:
+      - id: agent.id
+        type: string
+        brief: "Agent performing the work"
+        note: "Unique identifier of the working agent"
+        requirement_level: required
+        examples: ["frontend_agent", "backend_agent"]
+      
+      - id: task.id
+        type: string
+        brief: "Unique task identifier"
+        note: "ID of the specific task being worked on"
+        requirement_level: required
+        examples: ["task_123", "implement_auth_ui"]
+      
+      - id: task.description
+        type: string
+        brief: "Human-readable task description"
+        note: "What the agent is working on"
+        requirement_level: recommended
+        examples: ["Implement login UI", "Create API endpoints"]
+      
+      - id: work.progress.percentage
+        type: double
+        brief: "Work completion percentage"
+        note: "0-100 indicating task progress"
+        requirement_level: recommended
+        examples: [0.0, 50.5, 100.0]
+      
+      - id: work.status
+        type:
+          members:
+            - id: planning
+              value: "planning"
+              brief: "Agent is planning approach"
+              note: "Initial task analysis phase"
+            - id: implementing
+              value: "implementing"
+              brief: "Agent is implementing solution"
+              note: "Active development phase"
+            - id: testing
+              value: "testing"
+              brief: "Agent is testing implementation"
+              note: "Validation phase"
+            - id: complete
+              value: "complete"
+              brief: "Work is complete"
+              note: "Task finished successfully"
+            - id: blocked
+              value: "blocked"
+              brief: "Agent is blocked"
+              note: "Waiting for dependencies or coordination"
+        brief: "Current work status"
+        note: "Agent's current phase of work"
+        requirement_level: required
+        examples: ["implementing", "testing", "complete"]
+      
+      - id: files.modified
+        type: string[]
+        brief: "Files modified by agent"
+        note: "List of files changed during work"
+        requirement_level: recommended
+        examples: [["src/login.tsx", "src/api.ts"], ["models/user.py"]]
+
+  # Evolution and optimization operations
+  - id: evolution.analysis
+    type: span
+    brief: "Automatic evolution pattern analysis"
+    note: "Analyzes telemetry for optimization opportunities"
+    prefix: evolution
+    attributes:
+      - id: evolution.cycle
+        type: int
+        brief: "Evolution cycle number"
+        note: "Sequential count of evolution iterations"
+        requirement_level: required
+        examples: [1, 5, 42]
+      
+      - id: telemetry.data_points
+        type: int
+        brief: "Number of telemetry spans analyzed"
+        note: "Size of data set for pattern analysis"
+        requirement_level: required
+        examples: [100, 1000, 5000]
+      
+      - id: patterns.discovered
+        type: int
+        brief: "Number of patterns identified"
+        note: "Count of optimization opportunities found"
+        requirement_level: required
+        examples: [3, 5, 10]
+      
+      - id: pattern.types
+        type: string[]
+        brief: "Types of patterns discovered"
+        note: "Categories of optimization opportunities"
+        requirement_level: recommended
+        examples: [["coordination_bottleneck", "worktree_delay"], ["agent_idle_time"]]
+
+  - id: evolution.optimization
+    type: span
+    brief: "Automatic optimization execution"
+    note: "Applies discovered optimizations to improve system"
+    prefix: evolution.optimization
+    attributes:
+      - id: optimization.id
+        type: string
+        brief: "Unique optimization identifier"
+        note: "ID for tracking optimization lifecycle"
+        requirement_level: required
+        examples: ["opt_worktree_pooling_v1", "opt_coordination_batching"]
+      
+      - id: optimization.type
+        type:
+          members:
+            - id: performance
+              value: "performance"
+              brief: "Performance optimization"
+              note: "Improves speed or efficiency"
+            - id: resource
+              value: "resource"
+              brief: "Resource optimization"
+              note: "Reduces resource consumption"
+            - id: reliability
+              value: "reliability"
+              brief: "Reliability optimization"
+              note: "Improves system stability"
+            - id: scalability
+              value: "scalability"
+              brief: "Scalability optimization"
+              note: "Improves handling of load"
+        brief: "Category of optimization"
+        note: "Type of improvement being applied"
+        requirement_level: required
+        examples: ["performance", "resource", "reliability"]
+      
+      - id: expected.improvement
+        type: double
+        brief: "Expected improvement percentage"
+        note: "Predicted performance gain from optimization"
+        requirement_level: recommended
+        examples: [25.5, 40.0, 15.3]
+      
+      - id: actual.improvement
+        type: double
+        brief: "Actual improvement percentage"
+        note: "Measured performance gain after application"
+        requirement_level: recommended
+        examples: [23.2, 38.5, 16.0]
+      
+      - id: risk.level
+        type:
+          members:
+            - id: low
+              value: "low"
+              brief: "Low risk optimization"
+              note: "Safe to apply automatically"
+            - id: medium
+              value: "medium"
+              brief: "Medium risk optimization"
+              note: "May need monitoring"
+            - id: high
+              value: "high"
+              brief: "High risk optimization"
+              note: "Requires careful validation"
+        brief: "Risk level of optimization"
+        note: "Potential impact if optimization fails"
+        requirement_level: recommended
+        examples: ["low", "medium", "high"]
+
+  # Feature integration operations
+  - id: feature.integration
+    type: span
+    brief: "Feature integration and merging"
+    note: "Tracks integration of agent work into main branch"
+    prefix: feature.integration
+    attributes:
+      - id: feature.id
+        type: string
+        brief: "Feature being integrated"
+        note: "Unique identifier of the feature"
+        requirement_level: required
+        examples: ["user_dashboard", "payment_system"]
+      
+      - id: integration.method
+        type:
+          members:
+            - id: merge
+              value: "merge"
+              brief: "Git merge integration"
+              note: "Standard git merge process"
+            - id: rebase
+              value: "rebase"
+              brief: "Git rebase integration"
+              note: "Rebase onto target branch"
+            - id: squash
+              value: "squash"
+              brief: "Squash and merge"
+              note: "Combine commits then merge"
+        brief: "Integration method used"
+        note: "How agent work is integrated"
+        requirement_level: required
+        examples: ["merge", "rebase", "squash"]
+      
+      - id: agents.contributing
+        type: string[]
+        brief: "Agents whose work is being integrated"
+        note: "List of all agents who contributed"
+        requirement_level: required
+        examples: [["frontend_agent", "backend_agent", "test_agent"]]
+      
+      - id: conflicts.count
+        type: int
+        brief: "Number of merge conflicts"
+        note: "Count of conflicts requiring resolution"
+        requirement_level: recommended
+        examples: [0, 3, 10]
+      
+      - id: integration.duration_ms
+        type: double
+        brief: "Time to complete integration"
+        note: "Total time for integration process"
+        requirement_level: recommended
+        examples: [5000.0, 12000.5, 30000.0]

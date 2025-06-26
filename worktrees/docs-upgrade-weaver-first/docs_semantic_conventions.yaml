@@ -1,0 +1,47 @@
+groups:
+- attributes:
+  - brief: Type of documentation operation
+    examples:
+    - upgrade
+    - validate
+    - generate
+    - deploy
+    - evolution
+    id: docs.operation.type
+    requirement_level: required
+    type: string
+  - brief: Documentation target component
+    examples:
+    - context
+    - readme
+    - production_guide
+    - usage_examples
+    - template_guide
+    id: docs.target.component
+    requirement_level: required
+    type: string
+  - brief: Validation status of documentation
+    examples:
+    - validated
+    - partial
+    - needs_work
+    - production_ready
+    id: docs.validation.status
+    requirement_level: recommended
+    type: string
+  - brief: Whether evidence was provided for claims
+    id: docs.evidence.provided
+    requirement_level: recommended
+    type: boolean
+  - brief: Honesty level of assessment
+    examples:
+    - 85%
+    - 90%
+    - partial
+    - complete
+    id: docs.honesty.assessment
+    requirement_level: recommended
+    type: string
+  brief: Documentation operation spans
+  id: dslmodel.docs.operation
+  type: span

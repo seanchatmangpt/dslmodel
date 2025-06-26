@@ -162,11 +162,11 @@ None,
 None,
         description="Number of tests that passed"
     )
-    validation_score: Optional[str] = Field(
+    validation_score: Optional[float] = Field(
 None,
         description="Overall validation score for the candidate"
     )
-    performance_delta: Optional[str] = Field(
+    performance_delta: Optional[float] = Field(
 None,
         description="Performance change relative to baseline (percentage)"
     )
@@ -228,7 +228,7 @@ None,
 ...,
         description="Whether deployment completed successfully"
     )
-    post_deployment_fitness: Optional[str] = Field(
+    post_deployment_fitness: Optional[float] = Field(
 None,
         description="System fitness score after deployment"
     )
@@ -282,15 +282,15 @@ class Evolution_swarm_monitoring(DSLModel):
 None,
         description="Trend in fitness metrics during monitoring"
 , examples=['improving', 'stable', 'degrading', 'volatile']    )
-    performance_impact: Optional[str] = Field(
+    performance_impact: Optional[float] = Field(
 None,
         description="Measured performance impact (percentage change)"
     )
-    error_rate_change: Optional[str] = Field(
+    error_rate_change: Optional[float] = Field(
 None,
         description="Change in error rate (percentage)"
     )
-    user_satisfaction_score: Optional[str] = Field(
+    user_satisfaction_score: Optional[float] = Field(
 None,
         description="User satisfaction score (0-100)"
     )

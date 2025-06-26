@@ -1,0 +1,224 @@
+groups:
+  # Evolution System Core
+  - id: evolution
+    type: span
+    brief: Evolution system telemetry for autonomous improvement
+    stability: experimental
+    attributes:
+      - ref: evolution.generation.id
+        requirement_level: required
+      - ref: evolution.strategy
+        requirement_level: required
+      - ref: evolution.fitness.score
+        requirement_level: recommended
+      - ref: evolution.experiment.id
+        requirement_level: required
+      - ref: evolution.worktree.path
+        requirement_level: required
+  
+  # Worktree Agent Operations
+  - id: evolution.worktree
+    type: span
+    brief: Worktree agent operations for isolated experiments
+    stability: experimental
+    attributes:
+      - ref: evolution.worktree.agent.id
+        requirement_level: required
+      - ref: evolution.worktree.branch
+        requirement_level: required
+      - ref: evolution.worktree.state
+        requirement_level: required
+      - ref: evolution.experiment.type
+        requirement_level: required
+      - ref: evolution.experiment.status
+  
+  # Evolution Validation
+  - id: evolution.validation
+    type: metric
+    brief: Validation metrics for evolution experiments
+    stability: experimental
+    attributes:
+      - ref: evolution.validation.type
+        requirement_level: required
+      - ref: evolution.validation.score
+        requirement_level: required
+      - ref: evolution.validation.tests.passed
+      - ref: evolution.validation.tests.total
+      - ref: evolution.performance.delta
+  
+  # Evolution Deployment
+  - id: evolution.deployment
+    type: span
+    brief: Deployment of successful evolution candidates
+    stability: experimental  
+    attributes:
+      - ref: evolution.deployment.strategy
+        requirement_level: required
+      - ref: evolution.deployment.success
+        requirement_level: required
+      - ref: evolution.rollback.enabled
+        requirement_level: recommended
+      - ref: evolution.fitness.improvement
+
+attributes:
+  # Core Evolution Attributes
+  - id: evolution.generation.id
+    type: string
+    brief: Unique identifier for evolution generation
+    examples: ["gen-2024-06-26-001", "gen-2024-06-26-002"]
+    stability: experimental
+
+  - id: evolution.strategy
+    type:
+      allow_custom_values: true
+      members:
+        - id: performance_optimization
+          value: "performance_optimization"
+          brief: Optimize for performance metrics
+        - id: coordination_improvement  
+          value: "coordination_improvement"
+          brief: Improve agent coordination patterns
+        - id: feature_enhancement
+          value: "feature_enhancement"
+          brief: Enhance system features
+        - id: reliability_improvement
+          value: "reliability_improvement"
+          brief: Improve system reliability
+    brief: Evolution strategy being applied
+    stability: experimental
+
+  - id: evolution.fitness.score
+    type: double
+    brief: Current fitness score (0.0 to 1.0)
+    examples: [0.75, 0.82, 0.91]
+    stability: experimental
+
+  - id: evolution.experiment.id
+    type: string
+    brief: Unique identifier for evolution experiment
+    examples: ["exp-coord-001", "exp-perf-002"]
+    stability: experimental
+
+  - id: evolution.worktree.path
+    type: string
+    brief: Git worktree path for isolated experiment
+    examples: ["/Users/dev/evolution-worktrees/exp-001"]
+    stability: experimental
+
+  # Worktree Agent Attributes
+  - id: evolution.worktree.agent.id
+    type: string
+    brief: Identifier of worktree agent
+    examples: ["agent-alpha", "agent-beta", "agent-gamma"]
+    stability: experimental
+
+  - id: evolution.worktree.branch
+    type: string
+    brief: Git branch for evolution experiment
+    examples: ["evolution/perf-opt-001", "evolution/coord-imp-002"]
+    stability: experimental
+
+  - id: evolution.worktree.state
+    type:
+      allow_custom_values: false
+      members:
+        - id: idle
+          value: "idle"
+        - id: initializing
+          value: "initializing"
+        - id: experimenting
+          value: "experimenting"
+        - id: validating
+          value: "validating"
+        - id: integrating
+          value: "integrating"
+        - id: completed
+          value: "completed"
+        - id: failed
+          value: "failed"
+    brief: Current state of worktree agent
+    stability: experimental
+
+  - id: evolution.experiment.type
+    type: string
+    brief: Type of evolution experiment
+    examples: ["ai_reasoning", "coordination_pattern", "performance_tuning"]
+    stability: experimental
+
+  - id: evolution.experiment.status
+    type:
+      allow_custom_values: false
+      members:
+        - id: pending
+          value: "pending"
+        - id: running
+          value: "running"
+        - id: success
+          value: "success"
+        - id: failed
+          value: "failed"
+    brief: Status of evolution experiment
+    stability: experimental
+
+  # Validation Attributes
+  - id: evolution.validation.type
+    type: string
+    brief: Type of validation performed
+    examples: ["unit_tests", "integration_tests", "performance_benchmarks", "telemetry_analysis"]
+    stability: experimental
+
+  - id: evolution.validation.score
+    type: double
+    brief: Validation score (0.0 to 1.0)
+    examples: [0.95, 0.88, 0.76]
+    stability: experimental
+
+  - id: evolution.validation.tests.passed
+    type: int
+    brief: Number of tests passed
+    examples: [42, 95, 128]
+    stability: experimental
+
+  - id: evolution.validation.tests.total
+    type: int
+    brief: Total number of tests run
+    examples: [45, 100, 130]
+    stability: experimental
+
+  - id: evolution.performance.delta
+    type: double
+    brief: Performance change percentage
+    examples: [15.5, -2.3, 28.7]
+    stability: experimental
+
+  # Deployment Attributes
+  - id: evolution.deployment.strategy
+    type:
+      allow_custom_values: true
+      members:
+        - id: gradual_rollout
+          value: "gradual_rollout"
+        - id: canary
+          value: "canary"
+        - id: blue_green
+          value: "blue_green"
+        - id: immediate
+          value: "immediate"
+    brief: Deployment strategy for evolution
+    stability: experimental
+
+  - id: evolution.deployment.success
+    type: boolean
+    brief: Whether deployment was successful
+    stability: experimental
+
+  - id: evolution.rollback.enabled
+    type: boolean
+    brief: Whether rollback is enabled for this deployment
+    stability: experimental
+
+  - id: evolution.fitness.improvement
+    type: double
+    brief: Fitness improvement from evolution (percentage)
+    examples: [12.5, 8.3, 25.7]
+    stability: experimental

@@ -1,0 +1,163 @@
+#!/usr/bin/env python3
+"""
+Agent Worktree Models - Generated from Semantic Conventions
+Auto-generated from semantic conventions using weaver
+"""
+
+from dataclasses import dataclass, field
+from typing import List, Dict, Any, Optional
+from datetime import datetime
+from opentelemetry import trace
+from opentelemetry.trace import Status, StatusCode
+
+# Initialize tracer
+tracer = trace.get_tracer(__name__)
+
+{% for group in groups %}
+{%- if group.type == "span" %}
+
+@dataclass
+class {{ group.id | replace(".", "_") | title }}Span:
+    """{{ group.brief }}"""
+    
+    {% if group.note -%}
+    # {{ group.note }}
+    {% endif -%}
+    
+    # Span attributes
+    {%- for attr in group.attributes %}
+    {{ attr.id | replace(".", "_") }}: {% if attr.type == "string" %}str{% elif attr.type == "int" %}int{% elif attr.type == "double" %}float{% elif attr.type == "boolean" %}bool{% elif attr.type == "string[]" %}List[str]{% else %}Any{% endif %}{% if attr.requirement_level != "required" %} = None{% endif %}
+    {%- endfor %}
+    
+    # Span metadata
+    span_name: str = "{{ group.id }}"
+    trace_id: Optional[str] = None
+    span_id: Optional[str] = None
+    parent_span_id: Optional[str] = None
+    
+    def start_span(self) -> trace.Span:
+        """Start OpenTelemetry span with attributes"""
+        span = tracer.start_span(self.span_name)
+        
+        # Set span attributes
+        {%- for attr in group.attributes %}
+        if self.{{ attr.id | replace(".", "_") }} is not None:
+            span.set_attribute("{{ attr.id }}", self.{{ attr.id | replace(".", "_") }})
+        {%- endfor %}
+        
+        # Store span context
+        span_context = span.get_span_context()
+        self.trace_id = f"{span_context.trace_id:032x}"
+        self.span_id = f"{span_context.span_id:016x}"
+        
+        return span
+    
+    def end_span(self, span: trace.Span, success: bool = True, error: Optional[str] = None):
+        """End span with status"""
+        if success:
+            span.set_status(Status(StatusCode.OK))
+        else:
+            span.set_status(Status(StatusCode.ERROR, error or "Operation failed"))
+            if error:
+                span.record_exception(Exception(error))
+        
+        span.end()
+    
+    @classmethod
+    def from_attributes(cls, **kwargs) -> "{{ group.id | replace(".", "_") | title }}Span":
+        """Create span from attribute dictionary"""
+        # Filter to only valid attributes
+        valid_attrs = {}
+        {%- for attr in group.attributes %}
+        if "{{ attr.id | replace(".", "_") }}" in kwargs:
+            valid_attrs["{{ attr.id | replace(".", "_") }}"] = kwargs["{{ attr.id | replace(".", "_") }}"]
+        {%- endfor %}
+        
+        return cls(**valid_attrs)
+
+{% endif -%}
+{% endfor %}
+
+# Span factory for creating spans by name
+class WorktreeSpanFactory:
+    """Factory for creating worktree coordination spans"""
+    
+    _span_classes = {
+        {%- for group in groups %}
+        {%- if group.type == "span" %}
+        "{{ group.id }}": {{ group.id | replace(".", "_") | title }}Span,
+        {%- endif %}
+        {%- endfor %}
+    }
+    
+    @classmethod
+    def create_span(cls, span_name: str, **attributes) -> Any:
+        """Create span instance by name"""
+        if span_name not in cls._span_classes:
+            raise ValueError(f"Unknown span type: {span_name}")
+        
+        span_class = cls._span_classes[span_name]
+        return span_class.from_attributes(**attributes)
+    
+    @classmethod
+    def get_available_spans(cls) -> List[str]:
+        """Get list of available span types"""
+        return list(cls._span_classes.keys())
+
+# Convenience functions for common operations
+def create_worktree_span(agent_id: str, worktree_path: str, feature_id: str, branch_name: str) -> trace.Span:
+    """Create agent worktree with telemetry"""
+    span_data = AgentWorktreeCreateSpan(
+        agent_id=agent_id,
+        worktree_path=worktree_path,
+        feature_id=feature_id,
+        branch_name=branch_name,
+        worktree_startup_duration_ms=0.0  # Will be updated
+    )
+    return span_data.start_span()
+
+def create_coordination_request(requesting_agent: str, target_agents: List[str], reason: str, channel: str) -> trace.Span:
+    """Create coordination request with telemetry"""
+    span_data = AgentCoordinationRequestSpan(
+        requesting_agent=requesting_agent,
+        target_agents=target_agents,
+        coordination_reason=reason,
+        coordination_channel=channel
+    )
+    return span_data.start_span()
+
+def create_task_progress(agent_id: str, task_id: str, percentage: float, activity: str, files: List[str] = None) -> trace.Span:
+    """Create task progress update with telemetry"""
+    span_data = AgentTaskProgressSpan(
+        agent_id=agent_id,
+        task_id=task_id,
+        progress_percentage=percentage,
+        current_activity=activity,
+        files_modified=files or []
+    )
+    return span_data.start_span()
+
+def create_integration_merge(agent_id: str, source_branch: str, target_branch: str, conflicts: int = 0) -> trace.Span:
+    """Create integration merge with telemetry"""
+    span_data = FeatureIntegrationMergeSpan(
+        agent_id=agent_id,
+        source_branch=source_branch,
+        target_branch=target_branch,
+        merge_conflicts=conflicts,
+        merge_strategy="merge"
+    )
+    return span_data.start_span()
+
+# Export all span classes
+__all__ = [
+    "WorktreeSpanFactory",
+    {%- for group in groups %}
+    {%- if group.type == "span" %}
+    "{{ group.id | replace(".", "_") | title }}Span",
+    {%- endif %}
+    {%- endfor %}
+    "create_worktree_span",
+    "create_coordination_request", 
+    "create_task_progress",
+    "create_integration_merge",
+]

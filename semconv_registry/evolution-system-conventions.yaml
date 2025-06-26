@@ -1,0 +1,179 @@
+groups:
+  - id: trace.dslmodel.evolution
+    type: span
+    brief: DSLModel automatic evolution system telemetry
+    note: >
+      Defines telemetry for DSLModel automatic evolution system including
+      issue detection, improvement generation, application tracking, and learning.
+    spans:
+      - id: dslmodel.evolution.analyze
+        stability: experimental
+        brief: Evolution system analysis phase
+        note: Emitted when the evolution system analyzes codebase for improvement opportunities
+        attributes:
+          - id: evolution.session_id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the evolution session
+            examples: ["evo_1671234567890123456"]
+          - id: evolution.analysis_type
+            type: string
+            requirement_level: required
+            brief: Type of analysis being performed
+            examples: ["test_failures", "performance_metrics", "code_quality"]
+            enum: ["test_failures", "performance_metrics", "code_quality", "full_analysis"]
+          - id: evolution.issues_found
+            type: int
+            requirement_level: required
+            brief: Number of issues discovered during analysis
+            examples: [0, 3, 12]
+          - id: evolution.analysis_duration_ms
+            type: int
+            requirement_level: optional
+            brief: Duration of analysis phase in milliseconds
+            examples: [1500, 3200, 850]
+
+      - id: dslmodel.evolution.generate
+        stability: experimental
+        brief: Evolution improvement generation
+        note: Emitted when the evolution system generates improvement recommendations
+        attributes:
+          - id: evolution.session_id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the evolution session
+            examples: ["evo_1671234567890123456"]
+          - id: evolution.improvement_id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the generated improvement
+            examples: ["imp_perf_1671234567", "imp_refactor_1671234568"]
+          - id: evolution.improvement_type
+            type: string
+            requirement_level: required
+            brief: Type of improvement generated
+            examples: ["performance_optimization", "code_fix", "refactoring"]
+            enum: ["performance_optimization", "code_fix", "refactoring", "security_fix", "dependency_update"]
+          - id: evolution.confidence_score
+            type: double
+            requirement_level: required
+            brief: Confidence score for the improvement (0.0 to 1.0)
+            examples: [0.9, 0.7, 0.6]
+          - id: evolution.estimated_effort_hours
+            type: int
+            requirement_level: optional
+            brief: Estimated effort to implement the improvement in hours
+            examples: [2, 4, 8]
+          - id: evolution.priority
+            type: string
+            requirement_level: required
+            brief: Priority level of the improvement
+            examples: ["high", "medium", "low"]
+            enum: ["critical", "high", "medium", "low"]
+
+      - id: dslmodel.evolution.apply
+        stability: experimental
+        brief: Evolution improvement application
+        note: Emitted when the evolution system applies an improvement
+        attributes:
+          - id: evolution.session_id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the evolution session
+            examples: ["evo_1671234567890123456"]
+          - id: evolution.improvement_id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the applied improvement
+            examples: ["imp_perf_1671234567", "imp_refactor_1671234568"]
+          - id: evolution.application_mode
+            type: string
+            requirement_level: required
+            brief: Mode of improvement application
+            examples: ["automatic", "manual", "dry_run"]
+            enum: ["automatic", "manual", "dry_run", "assisted"]
+          - id: evolution.application_result
+            type: string
+            requirement_level: required
+            brief: Result of the improvement application
+            examples: ["success", "failed", "partial"]
+            enum: ["success", "failed", "partial", "skipped"]
+          - id: evolution.files_modified
+            type: string[]
+            requirement_level: optional
+            brief: List of files modified during improvement application
+            examples: [["src/test.py", "tests/test_performance.py"]]
+          - id: evolution.application_duration_ms
+            type: int
+            requirement_level: optional
+            brief: Duration of improvement application in milliseconds
+            examples: [5000, 12000, 30000]
+
+      - id: dslmodel.evolution.learn
+        stability: experimental
+        brief: Evolution system learning phase
+        note: Emitted when the evolution system learns from historical data
+        attributes:
+          - id: evolution.session_id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the evolution session
+            examples: ["evo_1671234567890123456"]
+          - id: evolution.patterns_analyzed
+            type: int
+            requirement_level: required
+            brief: Number of historical patterns analyzed
+            examples: [10, 25, 100]
+          - id: evolution.success_rate
+            type: double
+            requirement_level: required
+            brief: Overall success rate from historical data (0.0 to 1.0)
+            examples: [0.85, 0.92, 0.73]
+          - id: evolution.patterns_updated
+            type: int
+            requirement_level: optional
+            brief: Number of improvement patterns updated based on learning
+            examples: [3, 7, 12]
+          - id: evolution.confidence_adjustments
+            type: int
+            requirement_level: optional
+            brief: Number of confidence score adjustments made
+            examples: [2, 5, 8]
+
+      - id: dslmodel.evolution.validate
+        stability: experimental
+        brief: Evolution improvement validation
+        note: Emitted when validating applied improvements
+        attributes:
+          - id: evolution.session_id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the evolution session
+            examples: ["evo_1671234567890123456"]
+          - id: evolution.improvement_id
+            type: string
+            requirement_level: required
+            brief: Unique identifier for the validated improvement
+            examples: ["imp_perf_1671234567", "imp_refactor_1671234568"]
+          - id: evolution.validation_type
+            type: string
+            requirement_level: required
+            brief: Type of validation performed
+            examples: ["test_execution", "performance_benchmark", "security_scan"]
+            enum: ["test_execution", "performance_benchmark", "security_scan", "integration_test", "user_acceptance"]
+          - id: evolution.validation_result
+            type: string
+            requirement_level: required
+            brief: Result of the validation
+            examples: ["passed", "failed", "warning"]
+            enum: ["passed", "failed", "warning", "inconclusive"]
+          - id: evolution.metrics_before
+            type: string
+            requirement_level: optional
+            brief: JSON string of metrics before improvement
+            examples: ['{"test_duration": 94.3, "file_size": 1200}']
+          - id: evolution.metrics_after
+            type: string
+            requirement_level: optional
+            brief: JSON string of metrics after improvement
+            examples: ['{"test_duration": 15.2, "file_size": 800}']

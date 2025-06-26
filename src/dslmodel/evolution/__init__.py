@@ -8,7 +8,10 @@ from .core import (
     EvolutionaryFitness,
     EvolutionStrategy,
     EvolutionResult,
-    EvolutionConfig
+    EvolutionConfig,
+    EvolutionCandidate,
+    EvolutionPhase,
+    FitnessMetric
 )
 
 from .analyzers import (
@@ -50,6 +53,9 @@ __all__ = [
     "EvolutionStrategy", 
     "EvolutionResult",
     "EvolutionConfig",
+    "EvolutionCandidate",
+    "EvolutionPhase",
+    "FitnessMetric",
     
     # Analysis components
     "CodeAnalyzer",
