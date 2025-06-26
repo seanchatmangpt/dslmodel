@@ -1,0 +1,4 @@
+schema_base_url: https://opentelemetry.io/schemas/
+name: dslmodel-evolution
+version: 1.0.0
+semconv_version: 1.0.0

@@ -1,0 +1,438 @@
+# Autonomous Evolution System Semantic Conventions
+# Comprehensive semantic conventions for evolution lifecycle, strategies, and telemetry
+
+groups:
+  # 1. Evolution Analysis Spans
+  - id: evolution.analysis.start
+    type: span
+    span_kind: internal
+    brief: "Analyze system for evolution opportunities"
+    stability: experimental
+    attributes:
+      - id: lifecycle.stage
+        stability: experimental
+        type:
+          allow_custom_values: false
+          members:
+            - id: analysis
+              value: 'analysis'
+              brief: 'Analyzing current system state'
+              stability: experimental
+            - id: generation
+              value: 'generation'
+              brief: 'Generating evolution candidates'
+              stability: experimental
+            - id: validation
+              value: 'validation'
+              brief: 'Validating candidate fitness'
+              stability: experimental
+            - id: deployment
+              value: 'deployment'
+              brief: 'Deploying candidate to production'
+              stability: experimental
+            - id: monitoring
+              value: 'monitoring'
+              brief: 'Monitoring deployed evolution'
+              stability: experimental
+            - id: rollback
+              value: 'rollback'
+              brief: 'Rolling back failed evolution'
+              stability: experimental
+        requirement_level: required
+        brief: 'Current stage in the evolution lifecycle'
+      
+      - id: strategy.type
+        stability: experimental
+        type:
+          allow_custom_values: true
+          members:
+            - id: performance
+              value: 'performance'
+              brief: 'Performance optimization strategy'
+              stability: experimental
+            - id: security
+              value: 'security'
+              brief: 'Security enhancement strategy'
+              stability: experimental
+            - id: quality
+              value: 'quality'
+              brief: 'Code quality improvement strategy'
+              stability: experimental
+            - id: features
+              value: 'features'
+              brief: 'Feature addition strategy'
+              stability: experimental
+            - id: architecture
+              value: 'architecture'
+              brief: 'Architectural improvement strategy'
+              stability: experimental
+        requirement_level: required
+        brief: 'Type of evolution strategy being applied'
+      
+      - id: candidate.id
+        type: string
+        stability: experimental
+        requirement_level: required
+        brief: 'Unique identifier for the evolution candidate'
+        examples: ['evo-2024-01-15-perf-001', 'evo-security-patch-002']
+        
+      - id: candidate.generation
+        type: int
+        stability: experimental
+        requirement_level: required
+        brief: 'Generation number of the candidate in evolution lineage'
+        
+      - id: worktree.id
+        type: string
+        stability: experimental
+        requirement_level: required
+        brief: 'Git worktree ID where experiment is conducted'
+        examples: ['worktree-evo-perf-001', 'worktree-security-002']
+        
+      - id: fitness.score
+        type: double
+        stability: experimental
+        requirement_level: required
+        brief: 'Overall fitness score (0.0 to 1.0)'
+        
+      - id: evolution.success
+        type: boolean
+        stability: experimental
+        requirement_level: required
+        brief: 'Whether the evolution operation succeeded'
+        
+      - id: target.component
+        type: string
+        stability: experimental
+        requirement_level: required
+        brief: 'Component being analyzed for evolution'
+        examples: ['auth-service', 'data-pipeline', 'api-gateway']
+      
+      - id: metrics.collected
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Number of metrics collected for analysis'
+      
+      - id: opportunities.found
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Number of evolution opportunities identified'
+      
+      - id: analysis.duration_ms
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Duration of analysis in milliseconds'
+
+  # 2. Candidate Generation Spans
+  - id: evolution.candidate.generate
+    type: span
+    span_kind: internal
+    brief: "Generate evolution candidates"
+    stability: experimental
+    extends: evolution.analysis.start
+    attributes:
+      - id: llm.model
+        type: string
+        stability: experimental
+        requirement_level: recommended
+        brief: 'LLM model used for generation'
+        examples: ['gpt-4', 'claude-3', 'llama-2']
+      
+      - id: mutations.applied
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Number of mutations applied'
+      
+      - id: generation.method
+        stability: experimental
+        type:
+          allow_custom_values: true
+          members:
+            - id: llm_prompt
+              value: 'llm_prompt'
+              brief: 'Generated via LLM prompting'
+              stability: experimental
+            - id: genetic_algorithm
+              value: 'genetic_algorithm'
+              brief: 'Generated via genetic algorithm'
+              stability: experimental
+            - id: rule_based
+              value: 'rule_based'
+              brief: 'Generated via rule-based system'
+              stability: experimental
+            - id: hybrid
+              value: 'hybrid'
+              brief: 'Generated via hybrid approach'
+              stability: experimental
+        requirement_level: recommended
+        brief: 'Method used to generate candidate'
+
+  # 3. Validation and Testing Spans
+  - id: evolution.validation.run
+    type: span
+    span_kind: internal
+    brief: "Validate evolution candidate"
+    stability: experimental
+    extends: evolution.analysis.start
+    attributes:
+      - id: performance.score
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Performance fitness score (0.0 to 1.0)'
+        
+      - id: security.score
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Security fitness score (0.0 to 1.0)'
+        
+      - id: quality.score
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Code quality fitness score (0.0 to 1.0)'
+        
+      - id: test.coverage
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Test coverage percentage (0.0 to 100.0)'
+        
+      - id: test.pass_rate
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Test pass rate percentage (0.0 to 100.0)'
+      
+      - id: validation.checks_passed
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Number of validation checks passed'
+      
+      - id: validation.checks_total
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Total number of validation checks'
+      
+      - id: validation.duration_ms
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Duration of validation in milliseconds'
+
+  # 4. Deployment Spans
+  - id: evolution.deployment.execute
+    type: span
+    span_kind: internal
+    brief: "Deploy evolution candidate"
+    stability: experimental
+    extends: evolution.analysis.start
+    attributes:
+      - id: deployment.strategy
+        stability: experimental
+        type:
+          allow_custom_values: true
+          members:
+            - id: blue_green
+              value: 'blue_green'
+              brief: 'Blue-green deployment'
+              stability: experimental
+            - id: canary
+              value: 'canary'
+              brief: 'Canary deployment'
+              stability: experimental
+            - id: rolling
+              value: 'rolling'
+              brief: 'Rolling deployment'
+              stability: experimental
+            - id: immediate
+              value: 'immediate'
+              brief: 'Immediate deployment'
+              stability: experimental
+        requirement_level: recommended
+        brief: 'Deployment strategy used'
+      
+      - id: deployment.environment
+        type: string
+        stability: experimental
+        requirement_level: required
+        brief: 'Target deployment environment'
+        examples: ['production', 'staging', 'test']
+      
+      - id: deployment.duration_ms
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Duration of deployment in milliseconds'
+      
+      - id: rollback.triggered
+        type: boolean
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Whether rollback was triggered'
+
+  # 5. Monitoring and Feedback Spans
+  - id: evolution.monitoring.collect
+    type: span
+    span_kind: internal
+    brief: "Monitor deployed evolution"
+    stability: experimental
+    extends: evolution.analysis.start
+    attributes:
+      - id: monitoring.duration_ms
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Duration of monitoring window in milliseconds'
+      
+      - id: metrics.performance.latency_p99
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: '99th percentile latency in milliseconds'
+      
+      - id: metrics.performance.throughput
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Throughput in requests per second'
+      
+      - id: metrics.reliability.error_rate
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Error rate percentage (0.0 to 100.0)'
+      
+      - id: metrics.reliability.uptime
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Uptime percentage (0.0 to 100.0)'
+      
+      - id: feedback.score
+        type: double
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Overall feedback score (0.0 to 1.0)'
+
+  # 6. Rollback Spans
+  - id: evolution.rollback.execute
+    type: span
+    span_kind: internal
+    brief: "Rollback failed evolution"
+    stability: experimental
+    extends: evolution.analysis.start
+    attributes:
+      - id: rollback.reason
+        stability: experimental
+        type:
+          allow_custom_values: true
+          members:
+            - id: performance_degradation
+              value: 'performance_degradation'
+              brief: 'Performance degraded below threshold'
+              stability: experimental
+            - id: test_failure
+              value: 'test_failure'
+              brief: 'Tests failed after deployment'
+              stability: experimental
+            - id: error_rate_spike
+              value: 'error_rate_spike'
+              brief: 'Error rate exceeded threshold'
+              stability: experimental
+            - id: security_issue
+              value: 'security_issue'
+              brief: 'Security vulnerability detected'
+              stability: experimental
+            - id: manual_trigger
+              value: 'manual_trigger'
+              brief: 'Manually triggered rollback'
+              stability: experimental
+        requirement_level: required
+        brief: 'Reason for rollback'
+      
+      - id: rollback.duration_ms
+        type: int
+        stability: experimental
+        requirement_level: recommended
+        brief: 'Duration of rollback in milliseconds'
+
+# Metrics for Evolution System
+  - id: evolution.metrics.candidate_fitness
+    type: metric
+    metric_name: evolution.candidate.fitness
+    brief: 'Fitness score of evolution candidates'
+    instrument: histogram
+    unit: '1'
+    value_type: double
+    stability: experimental
+
+  - id: evolution.metrics.generation_duration
+    type: metric
+    metric_name: evolution.generation.duration
+    brief: 'Duration of candidate generation'
+    instrument: histogram
+    unit: 'ms'
+    value_type: double
+    stability: experimental
+
+  - id: evolution.metrics.validation_duration
+    type: metric
+    metric_name: evolution.validation.duration
+    brief: 'Duration of candidate validation'
+    instrument: histogram
+    unit: 'ms'
+    value_type: double
+    stability: experimental
+
+  - id: evolution.metrics.deployment_success_rate
+    type: metric
+    metric_name: evolution.deployment.success_rate
+    brief: 'Success rate of evolution deployments'
+    instrument: gauge
+    unit: '1'
+    value_type: double
+    stability: experimental
+
+  - id: evolution.metrics.active_experiments
+    type: metric
+    metric_name: evolution.experiments.active
+    brief: 'Number of active evolution experiments'
+    instrument: gauge
+    unit: '1'
+    value_type: int
+    stability: experimental
+
+  - id: evolution.metrics.rollback_rate
+    type: metric
+    metric_name: evolution.rollback.rate
+    brief: 'Rate of evolution rollbacks'
+    instrument: counter
+    unit: '1'
+    value_type: int
+    stability: experimental
+
+  - id: evolution.metrics.fitness_improvement
+    type: metric
+    metric_name: evolution.fitness.improvement
+    brief: 'Fitness improvement over generations'
+    instrument: histogram
+    unit: '1'
+    value_type: double
+    stability: experimental
+
+  - id: evolution.metrics.worktree_utilization
+    type: metric
+    metric_name: evolution.worktree.utilization
+    brief: 'Number of worktrees in use for experiments'
+    instrument: gauge
+    unit: '1'
+    value_type: int
+    stability: experimental

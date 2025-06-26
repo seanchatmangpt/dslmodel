@@ -24,24 +24,24 @@ class Evolution_swarm_analysis(DSLModel):
 ...,
         description="Type of evolution analysis being performed"
 , examples=['fitness_evaluation', 'opportunity_identification', 'baseline_assessment', 'convergence_check']    )
-    fitness_score: Optional[float] = Field(
+    fitness_score: Optional[str] = Field(
         None,
         description="Overall fitness score of the current system"
     )
     metrics_analyzed: Optional[int] = Field(
-None,
+        None,
         description="Number of fitness metrics analyzed"
     )
     opportunities_found: Optional[int] = Field(
-None,
+        None,
         description="Number of evolution opportunities identified"
     )
     analysis_duration_ms: Optional[int] = Field(
-None,
+        None,
         description="Time taken to complete analysis in milliseconds"
     )
     strategy_recommended: Optional[str] = Field(
-None,
+        None,
         description="Recommended evolution strategy"
 , examples=['performance_optimization', 'security_hardening', 'feature_enhancement', 'architecture_refinement']    )
     
@@ -81,31 +81,31 @@ class Evolution_swarm_generation(DSLModel):
         description="Current generation number in evolution cycle"
     )
     parent_candidates: Optional[int] = Field(
-None,
+        None,
         description="Number of parent candidates used for generation"
     )
     offspring_generated: Optional[int] = Field(
-None,
+        None,
         description="Number of offspring candidates generated"
     )
-    mutation_rate: Optional[float] = Field(
-None,
+    mutation_rate: Optional[str] = Field(
+        None,
         description="Mutation rate applied during generation"
     )
-    crossover_rate: Optional[float] = Field(
-None,
+    crossover_rate: Optional[str] = Field(
+        None,
         description="Crossover rate applied during generation"
     )
     generation_strategy: str = Field(
 ...,
         description="Strategy used for candidate generation"
 , examples=['genetic_algorithm', 'evolutionary_strategy', 'differential_evolution', 'particle_swarm']    )
-    fitness_improvement: Optional[float] = Field(
-None,
+    fitness_improvement: Optional[str] = Field(
+        None,
         description="Average fitness improvement over previous generation"
     )
-    diversity_score: Optional[float] = Field(
-None,
+    diversity_score: Optional[str] = Field(
+        None,
         description="Genetic diversity score of the population"
     )
     
@@ -155,23 +155,23 @@ class Evolution_swarm_validation(DSLModel):
         description="Result of the validation"
 , examples=['passed', 'failed', 'warning', 'inconclusive']    )
     tests_executed: Optional[int] = Field(
-None,
+        None,
         description="Number of tests executed during validation"
     )
     tests_passed: Optional[int] = Field(
-None,
+        None,
         description="Number of tests that passed"
     )
     validation_score: Optional[str] = Field(
-None,
+        None,
         description="Overall validation score for the candidate"
     )
     performance_delta: Optional[str] = Field(
-None,
+        None,
         description="Performance change relative to baseline (percentage)"
     )
     safety_violations: Optional[int] = Field(
-None,
+        None,
         description="Number of safety rule violations detected"
     )
     
@@ -217,11 +217,11 @@ class Evolution_swarm_deployment(DSLModel):
         description="Strategy used for deployment"
 , examples=['atomic_replacement', 'gradual_rollout', 'blue_green', 'canary', 'shadow']    )
     components_modified: Optional[int] = Field(
-None,
+        None,
         description="Number of system components modified"
     )
     rollback_enabled: Optional[bool] = Field(
-None,
+        None,
         description="Whether rollback capability is enabled"
     )
     deployment_success: bool = Field(
@@ -229,15 +229,15 @@ None,
         description="Whether deployment completed successfully"
     )
     post_deployment_fitness: Optional[str] = Field(
-None,
+        None,
         description="System fitness score after deployment"
     )
     user_impact: Optional[str] = Field(
-None,
+        None,
         description="Expected impact on users"
 , examples=['none', 'minimal', 'moderate', 'significant']    )
     backup_created: Optional[bool] = Field(
-None,
+        None,
         description="Whether system backup was created before deployment"
     )
     
@@ -279,35 +279,35 @@ class Evolution_swarm_monitoring(DSLModel):
         description="Duration of monitoring period in milliseconds"
     )
     fitness_trend: Optional[str] = Field(
-None,
+        None,
         description="Trend in fitness metrics during monitoring"
 , examples=['improving', 'stable', 'degrading', 'volatile']    )
     performance_impact: Optional[str] = Field(
-None,
+        None,
         description="Measured performance impact (percentage change)"
     )
     error_rate_change: Optional[str] = Field(
-None,
+        None,
         description="Change in error rate (percentage)"
     )
     user_satisfaction_score: Optional[str] = Field(
-None,
+        None,
         description="User satisfaction score (0-100)"
     )
     rollback_triggered: Optional[bool] = Field(
-None,
+        None,
         description="Whether automatic rollback was triggered"
     )
     feedback_collected: Optional[int] = Field(
-None,
+        None,
         description="Number of feedback data points collected"
     )
     next_evolution_recommended: Optional[bool] = Field(
-None,
+        None,
         description="Whether next evolution cycle is recommended"
     )
     convergence_detected: Optional[bool] = Field(
-None,
+        None,
         description="Whether evolution convergence was detected"
     )
     
