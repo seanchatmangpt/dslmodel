@@ -1,0 +1,261 @@
+layer_type: domain
+version: 1.0.0
+extends: base_layer
+dependencies:
+- base_layer
+metadata:
+  description: Semantic conventions for file system operations
+  domain: file_system
+  maintainer: DSLModel Core Team
+groups:
+- id: file.read
+  type: span
+  span_kind: internal
+  brief: File read operation telemetry
+  extends: base.span
+  attributes:
+  - ref: base.operation
+  - ref: file.path
+    requirement_level: required
+  - ref: file.size_bytes
+    requirement_level: recommended
+  - ref: file.encoding
+    requirement_level: optional
+  - id: read.offset
+    type: int
+    requirement_level: optional
+    brief: Starting byte offset for partial reads
+    examples:
+    - 0
+    - 1024
+    - 5120
+  - id: read.length
+    type: int
+    requirement_level: optional
+    brief: Number of bytes to read
+    examples:
+    - 1024
+    - 4096
+    - -1
+  - ref: operation.name
+    requirement_level: required
+- id: file.write
+  type: span
+  span_kind: internal
+  brief: File write operation telemetry
+  extends: base.span
+  attributes:
+  - ref: base.operation
+  - ref: file.path
+    requirement_level: required
+  - ref: file.size_bytes
+    requirement_level: recommended
+  - ref: file.encoding
+    requirement_level: optional
+  - ref: file.backup_created
+    requirement_level: optional
+  - id: write.mode
+    type: string
+    requirement_level: recommended
+    brief: Write mode used
+    examples:
+    - overwrite
+    - append
+    - create
+  - id: write.bytes_written
+    type: int
+    requirement_level: recommended
+    brief: Number of bytes actually written
+    examples:
+    - 1024
+    - 5120
+    - 0
+  - ref: operation.name
+    requirement_level: required
+- id: file.edit
+  type: span
+  span_kind: internal
+  brief: File edit operation telemetry
+  extends: base.span
+  attributes:
+  - ref: base.operation
+  - ref: file.path
+    requirement_level: required
+  - ref: file.lines_affected
+    requirement_level: recommended
+  - ref: file.backup_created
+    requirement_level: optional
+  - id: edit.type
+    type: string
+    requirement_level: recommended
+    brief: Type of edit operation
+    examples:
+    - replace
+    - insert
+    - delete
+    - multi_edit
+  - id: edit.search_pattern
+    type: string
+    requirement_level: optional
+    brief: Pattern being searched for in replace operations
+    examples:
+    - def.*function
+    - TODO.*
+    - class\s+\w+
+  - id: edit.replacement_count
+    type: int
+    requirement_level: optional
+    brief: Number of replacements made
+    examples:
+    - 1
+    - 5
+    - 0
+  - ref: operation.name
+    requirement_level: required
+- id: file.delete
+  type: span
+  span_kind: internal
+  brief: File deletion operation telemetry
+  extends: base.span
+  attributes:
+  - ref: base.operation
+  - ref: file.path
+    requirement_level: required
+  - ref: file.size_bytes
+    requirement_level: recommended
+  - id: delete.force
+    type: boolean
+    requirement_level: optional
+    brief: Whether deletion was forced
+    examples:
+    - true
+    - false
+  - id: delete.backup_created
+    type: boolean
+    requirement_level: optional
+    brief: Whether a backup was created before deletion
+    examples:
+    - true
+    - false
+  - ref: operation.name
+    requirement_level: required
+- id: file.copy
+  type: span
+  span_kind: internal
+  brief: File copy operation telemetry
+  extends: base.span
+  attributes:
+  - ref: base.operation
+  - ref: file.path
+    requirement_level: required
+  - id: copy.destination_path
+    type: string
+    requirement_level: required
+    brief: Destination path for the copy operation
+    examples:
+    - /backup/main.py
+    - /tmp/config.yaml.bak
+  - ref: file.size_bytes
+    requirement_level: recommended
+  - id: copy.preserve_permissions
+    type: boolean
+    requirement_level: optional
+    brief: Whether file permissions were preserved
+    examples:
+    - true
+    - false
+  - ref: operation.name
+    requirement_level: required
+- id: file.move
+  type: span
+  span_kind: internal
+  brief: File move/rename operation telemetry
+  extends: base.span
+  attributes:
+  - ref: base.operation
+  - ref: file.path
+    requirement_level: required
+  - id: move.destination_path
+    type: string
+    requirement_level: required
+    brief: Destination path for the move operation
+    examples:
+    - /new/location/main.py
+    - /renamed_config.yaml
+  - ref: file.size_bytes
+    requirement_level: recommended
+  - ref: operation.name
+    requirement_level: required
+attributes:
+- id: file.path
+  type: string
+  requirement_level: required
+  brief: Absolute path to the file being operated on
+  examples:
+  - /Users/dev/project/main.py
+  - /etc/config.yaml
+  - C:\Program Files\app\config.json
+- id: file.name
+  type: string
+  requirement_level: recommended
+  brief: Name of the file without path
+  examples:
+  - main.py
+  - config.yaml
+  - README.md
+- id: file.extension
+  type: string
+  requirement_level: optional
+  brief: File extension without the dot
+  examples:
+  - py
+  - yaml
+  - md
+  - json
+- id: file.size_bytes
+  type: int
+  requirement_level: recommended
+  brief: Size of the file in bytes
+  examples:
+  - 1024
+  - 5242880
+  - 0
+- id: file.permissions
+  type: string
+  requirement_level: optional
+  brief: File permissions in octal or symbolic notation
+  examples:
+  - '755'
+  - rw-r--r--
+  - '644'
+- id: file.encoding
+  type: string
+  requirement_level: optional
+  brief: Character encoding of the file
+  examples:
+  - utf-8
+  - ascii
+  - iso-8859-1
+- id: file.lines_count
+  type: int
+  requirement_level: optional
+  brief: Total number of lines in the file
+  examples:
+  - 10
+  - 250
+  - 1000
+- id: file.lines_affected
+  type: int
+  requirement_level: recommended
+  brief: Number of lines affected by the operation
+  examples:
+  - 1
+  - 10
+  - 100
+- id: file.backup_created
+  type: boolean
+  requirement_level: optional
+  brief: Whether a backup was created before modification
+  examples:
+  - true
+  - false

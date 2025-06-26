@@ -7,6 +7,7 @@ import asyncio
 import uuid
 import subprocess
 import shutil
+import time
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime, timedelta
@@ -301,35 +302,55 @@ class WorktreeEvolutionEngine:
         
         with self.tracer.start_as_current_span("evolution.mutation.apply") as span:
             worktree_path = Path(experiment.worktree_path)
+            mutation_start_time = time.time()
+            mutation_success = False
             
-            # Find Python files to mutate
-            python_files = list(worktree_path.rglob("*.py"))
-            if not python_files:
-                return
-            
-            target_file = random.choice(python_files)
-            relative_path = target_file.relative_to(worktree_path)
-            
-            # Create mutation model
-            mutation = Evolution_worktree_mutation(
-                experiment_id=experiment.experiment_id,
-                mutation_id=mutation_id,
-                mutation_type=mutation_type,
-                target_file=str(relative_path),
-                target_function=None,  # Would analyze AST to find functions
-                mutation_description=f"Applied {mutation_type} to {relative_path}",
-                risk_level="low",
-                rollback_capable=True
-            )
-            
-            # Apply actual mutation based on type
-            await self._execute_mutation(target_file, mutation_type)
-            
-            # Emit telemetry
-            mutation.emit_telemetry()
-            
-            span.set_attribute("mutation.type", mutation_type)
-            span.set_attribute("mutation.target_file", str(relative_path))
+            try:
+                # Find Python files to mutate
+                python_files = list(worktree_path.rglob("*.py"))
+                if not python_files:
+                    span.set_attribute("mutation.error", "no_python_files_found")
+                    return
+                
+                target_file = random.choice(python_files)
+                relative_path = target_file.relative_to(worktree_path)
+                
+                # Create mutation model
+                mutation = Evolution_worktree_mutation(
+                    experiment_id=experiment.experiment_id,
+                    mutation_id=mutation_id,
+                    mutation_type=mutation_type,
+                    target_file=str(relative_path),
+                    target_function=None,  # Would analyze AST to find functions
+                    mutation_description=f"Applied {mutation_type} to {relative_path}",
+                    risk_level="low",
+                    rollback_capable=True
+                )
+                
+                # Apply actual mutation based on type
+                await self._execute_mutation(target_file, mutation_type)
+                mutation_success = True
+                
+                # Emit telemetry
+                mutation.emit_telemetry()
+                
+                # Comprehensive telemetry attributes
+                span.set_attribute("mutation.type", mutation_type)
+                span.set_attribute("mutation.target_file", str(relative_path))
+                span.set_attribute("mutation.experiment_id", experiment.experiment_id)
+                span.set_attribute("mutation.mutation_id", mutation_id)
+                span.set_attribute("mutation.success", mutation_success)
+                span.set_attribute("mutation.duration_ms", int((time.time() - mutation_start_time) * 1000))
+                span.set_attribute("mutation.file_size_bytes", target_file.stat().st_size if target_file.exists() else 0)
+                span.set_attribute("mutation.risk_level", "low")
+                span.set_attribute("mutation.rollback_capable", True)
+                span.set_attribute("mutation.strategy", experiment.evolution_strategy)
+                span.set_attribute("mutation.generation", experiment.generation_number or 0)
+                
+            except Exception as e:
+                span.set_attribute("mutation.error", str(e))
+                span.set_attribute("mutation.success", False)
+                raise
     
     async def _execute_mutation(self, target_file: Path, mutation_type: str):
         """Execute the actual code mutation"""
@@ -394,22 +415,29 @@ class WorktreeEvolutionEngine:
         
         with self.tracer.start_as_current_span("evolution.fitness.evaluate") as span:
             worktree_path = Path(experiment.worktree_path)
+            evaluation_start_time = time.time()
+            
+            # Simulate test execution
+            tests_total = 10
+            tests_passed = random.randint(7, 10)
+            performance_impact = random.uniform(-5, 15)
             
             # Create validation model
             validation = Evolution_worktree_validation(
                 experiment_id=experiment.experiment_id,
                 worktree_path=str(worktree_path),
                 validation_type="fitness_evaluation",
-                tests_total=10,  # Would run actual tests
-                tests_passed=random.randint(7, 10),  # Simulate test results
+                tests_total=tests_total,
+                tests_passed=tests_passed,
                 fitness_score="0.75",
-                performance_impact=f"{random.uniform(-5, 15):.1f}%",
+                performance_impact=f"{performance_impact:.1f}%",
                 validation_passed=True,
                 blocking_issues=0
             )
             
             # Simulate fitness calculation
             base_fitness = 0.7
+            baseline_fitness = float(experiment.fitness_before)
             
             # Strategy-specific fitness bonuses
             strategy_bonus = {
@@ -422,12 +450,30 @@ class WorktreeEvolutionEngine:
             
             bonus = strategy_bonus.get(experiment.evolution_strategy, 0.1)
             fitness = min(base_fitness + bonus + random.uniform(-0.1, 0.1), 1.0)
+            improvement = ((fitness - baseline_fitness) / baseline_fitness) * 100
+            
+            evaluation_duration = int((time.time() - evaluation_start_time) * 1000)
             
             # Emit telemetry
             validation.emit_telemetry()
             
+            # Comprehensive telemetry attributes
             span.set_attribute("fitness.score", fitness)
+            span.set_attribute("fitness.baseline", baseline_fitness)
+            span.set_attribute("fitness.improvement_percentage", improvement)
+            span.set_attribute("fitness.evaluation_duration_ms", evaluation_duration)
             span.set_attribute("experiment.strategy", experiment.evolution_strategy)
+            span.set_attribute("experiment.experiment_id", experiment.experiment_id)
+            span.set_attribute("experiment.generation", experiment.generation_number or 0)
+            span.set_attribute("experiment.worktree_path", str(worktree_path))
+            span.set_attribute("tests.total", tests_total)
+            span.set_attribute("tests.passed", tests_passed)
+            span.set_attribute("tests.success_rate", (tests_passed / tests_total) * 100)
+            span.set_attribute("performance.impact_percentage", performance_impact)
+            span.set_attribute("validation.passed", True)
+            span.set_attribute("validation.blocking_issues", 0)
+            span.set_attribute("fitness.target", float(experiment.target_fitness))
+            span.set_attribute("fitness.meets_target", fitness >= float(experiment.target_fitness))
             
             return max(fitness, 0.0)
     

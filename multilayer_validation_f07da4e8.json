@@ -1,0 +1,122 @@
+{
+  "validation_summary": {
+    "session_id": "f07da4e8",
+    "total_layers": 9,
+    "successful_layers": 8,
+    "layer_efficiency": 0.8888888888888888,
+    "total_duration_seconds": 0.8319721221923828,
+    "avg_layer_duration_ms": 1.8888888888888888,
+    "total_validations": 108,
+    "total_patterns_discovered": 72
+  },
+  "feedback_summary": {
+    "total_feedback_items": 9,
+    "applied_feedback": 4,
+    "application_rate": 0.4444444444444444,
+    "feedback_by_type": {
+      "schema_improvement": 2,
+      "pattern_discovery": 1,
+      "workflow_improvement": 2,
+      "security_hardening": 1,
+      "threat_detection": 1,
+      "compliance_enhancement": 1,
+      "autonomous_learning": 1
+    },
+    "unique_feedback_types": 7
+  },
+  "layer_results": [
+    {
+      "layer": "semantic",
+      "success": false,
+      "duration_ms": 17,
+      "validations": 12,
+      "patterns": 10,
+      "feedback_count": 1,
+      "has_improvements": true
+    },
+    {
+      "layer": "pattern",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 25,
+      "feedback_count": 2,
+      "has_improvements": false
+    },
+    {
+      "layer": "integration",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 9,
+      "feedback_count": 0,
+      "has_improvements": false
+    },
+    {
+      "layer": "performance",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 7,
+      "feedback_count": 0,
+      "has_improvements": false
+    },
+    {
+      "layer": "meta_learning",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 0,
+      "feedback_count": 0,
+      "has_improvements": false
+    },
+    {
+      "layer": "business_logic",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 10,
+      "feedback_count": 1,
+      "has_improvements": false
+    },
+    {
+      "layer": "security",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 1,
+      "feedback_count": 3,
+      "has_improvements": false
+    },
+    {
+      "layer": "cross_span",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 9,
+      "feedback_count": 1,
+      "has_improvements": false
+    },
+    {
+      "layer": "autonomous",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 1,
+      "feedback_count": 1,
+      "has_improvements": false
+    }
+  ],
+  "learning_metrics": {
+    "patterns_learned": 3,
+    "feedback_history_size": 9,
+    "performance_history_size": 1,
+    "schema_evolution_cycles": 0
+  },
+  "system_health": {
+    "multilayer_efficiency": 0.8888888888888888,
+    "feedback_effectiveness": 0.4444444444444444,
+    "learning_velocity": 86.54136127814981,
+    "overall_score": 0.6666666666666666
+  }
+}

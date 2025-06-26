@@ -1,0 +1,303 @@
+groups:
+  - id: claude_code
+    type: span
+    span_kind: internal
+    prefix: claude_code
+    brief: Claude Code tool telemetry for comprehensive observability
+    attributes:
+      - id: tool.name
+        type: string
+        requirement_level: required
+        brief: Name of the Claude Code tool being used
+        examples: ['Read', 'Write', 'Bash', 'Grep', 'WebFetch', 'Task', 'TodoWrite']
+      - id: tool.category
+        type: string
+        requirement_level: required
+        brief: Category of Claude Code tool
+        examples: ['file', 'bash', 'search', 'web', 'agent', 'todo', 'notebook']
+      - id: session.id
+        type: string
+        requirement_level: recommended
+        brief: Unique identifier for the Claude Code session
+        examples: ['session_1234567890']
+      - id: user.request
+        type: string
+        requirement_level: recommended
+        brief: The user's original request that triggered the tool use
+        examples: ['Read the main.py file', 'Run tests', 'Search for TODO comments']
+
+  - id: claude_code.file
+    type: span
+    span_kind: internal
+    extends: claude_code
+    prefix: claude_code.file
+    brief: File operation telemetry (Read, Write, Edit, MultiEdit)
+    attributes:
+      - ref: claude_code.tool.name
+      - ref: claude_code.tool.category
+      - ref: claude_code.session.id
+      - ref: claude_code.user.request
+      - id: path
+        type: string
+        requirement_level: required
+        brief: Absolute path to the file being operated on
+        examples: ['/Users/dev/project/main.py', '/etc/config.yaml']
+      - id: operation
+        type: string
+        requirement_level: required
+        brief: Type of file operation
+        examples: ['read', 'write', 'edit', 'multi_edit', 'delete']
+      - id: size_bytes
+        type: int
+        requirement_level: recommended
+        brief: Size of the file in bytes
+        examples: [1024, 5242880]
+      - id: lines_affected
+        type: int
+        requirement_level: recommended
+        brief: Number of lines affected by the operation
+        examples: [10, 250]
+
+  - id: claude_code.bash
+    type: span
+    extends: claude_code
+    brief: Bash command execution telemetry
+    attributes:
+      - ref: claude_code.bash.command
+        requirement_level: required
+      - ref: claude_code.bash.exit_code
+        requirement_level: required
+      - ref: claude_code.bash.duration_ms
+        requirement_level: recommended
+      - ref: claude_code.bash.timeout_ms
+        requirement_level: recommended
+
+  - id: claude_code.search
+    type: span
+    extends: claude_code
+    brief: Search operation telemetry (Grep, Glob, LS)
+    attributes:
+      - ref: claude_code.search.pattern
+        requirement_level: required
+      - ref: claude_code.search.path
+        requirement_level: recommended
+      - ref: claude_code.search.results_count
+        requirement_level: recommended
+      - ref: claude_code.search.duration_ms
+        requirement_level: recommended
+
+  - id: claude_code.web
+    type: span
+    extends: claude_code
+    brief: Web operation telemetry (WebFetch, WebSearch)
+    attributes:
+      - ref: claude_code.web.url
+        requirement_level: required
+      - ref: claude_code.web.operation
+        requirement_level: required
+      - ref: claude_code.web.response_size_bytes
+        requirement_level: recommended
+      - ref: claude_code.web.cache_hit
+        requirement_level: recommended
+
+  - id: claude_code.agent
+    type: span
+    extends: claude_code
+    brief: Agent task telemetry
+    attributes:
+      - ref: claude_code.agent.id
+        requirement_level: required
+      - ref: claude_code.agent.task
+        requirement_level: required
+      - ref: claude_code.agent.status
+        requirement_level: required
+      - ref: claude_code.agent.progress_percent
+        requirement_level: recommended
+
+attributes:
+  - id: claude_code.tool.name
+    type: string
+    brief: Name of the Claude Code tool being used
+    examples: ['Read', 'Write', 'Bash', 'Grep', 'WebFetch', 'Task', 'TodoWrite']
+    stability: experimental
+
+  - id: claude_code.tool.category
+    type:
+      members:
+        - id: file
+          value: "file"
+          brief: File operations
+        - id: bash
+          value: "bash"
+          brief: Command execution
+        - id: search
+          value: "search"
+          brief: Search operations
+        - id: web
+          value: "web"
+          brief: Web operations
+        - id: agent
+          value: "agent"
+          brief: Agent tasks
+        - id: todo
+          value: "todo"
+          brief: Todo management
+        - id: notebook
+          value: "notebook"
+          brief: Notebook operations
+    brief: Category of Claude Code tool
+    stability: experimental
+
+  - id: claude_code.session.id
+    type: string
+    brief: Unique identifier for the Claude Code session
+    examples: ['session_1234567890']
+    stability: experimental
+
+  - id: claude_code.user.request
+    type: string
+    brief: The user's original request that triggered the tool use
+    examples: ['Read the main.py file', 'Run tests', 'Search for TODO comments']
+    stability: experimental
+
+  - id: claude_code.file.path
+    type: string
+    brief: Absolute path to the file being operated on
+    examples: ['/Users/dev/project/main.py', '/etc/config.yaml']
+    stability: experimental
+
+  - id: claude_code.file.operation
+    type:
+      members:
+        - id: read
+          value: "read"
+        - id: write
+          value: "write"
+        - id: edit
+          value: "edit"
+        - id: multi_edit
+          value: "multi_edit"
+        - id: delete
+          value: "delete"
+    brief: Type of file operation
+    stability: experimental
+
+  - id: claude_code.file.size_bytes
+    type: int
+    brief: Size of the file in bytes
+    examples: [1024, 5242880]
+    stability: experimental
+
+  - id: claude_code.file.lines_affected
+    type: int
+    brief: Number of lines affected by the operation
+    examples: [10, 250]
+    stability: experimental
+
+  - id: claude_code.bash.command
+    type: string
+    brief: The bash command being executed
+    examples: ['ls -la', 'npm test', 'git status']
+    stability: experimental
+
+  - id: claude_code.bash.exit_code
+    type: int
+    brief: Exit code of the bash command
+    examples: [0, 1, 127]
+    stability: experimental
+
+  - id: claude_code.bash.duration_ms
+    type: double
+    brief: Duration of command execution in milliseconds
+    examples: [100.5, 2500.0]
+    stability: experimental
+
+  - id: claude_code.bash.timeout_ms
+    type: double
+    brief: Timeout setting for the command in milliseconds
+    examples: [120000.0, 600000.0]
+    stability: experimental
+
+  - id: claude_code.search.pattern
+    type: string
+    brief: Search pattern or glob expression
+    examples: ['*.py', 'TODO.*', 'class.*Model']
+    stability: experimental
+
+  - id: claude_code.search.path
+    type: string
+    brief: Directory path being searched
+    examples: ['/Users/dev/project', './src']
+    stability: experimental
+
+  - id: claude_code.search.results_count
+    type: int
+    brief: Number of results found
+    examples: [0, 10, 100]
+    stability: experimental
+
+  - id: claude_code.search.duration_ms
+    type: double
+    brief: Duration of search operation in milliseconds
+    examples: [50.0, 500.0]
+    stability: experimental
+
+  - id: claude_code.web.url
+    type: string
+    brief: URL being accessed
+    examples: ['https://api.example.com', 'https://docs.python.org']
+    stability: experimental
+
+  - id: claude_code.web.operation
+    type:
+      members:
+        - id: fetch
+          value: "fetch"
+        - id: search
+          value: "search"
+    brief: Type of web operation
+    stability: experimental
+
+  - id: claude_code.web.response_size_bytes
+    type: int
+    brief: Size of the response in bytes
+    examples: [1024, 102400]
+    stability: experimental
+
+  - id: claude_code.web.cache_hit
+    type: boolean
+    brief: Whether the response was served from cache
+    examples: [true, false]
+    stability: experimental
+
+  - id: claude_code.agent.id
+    type: string
+    brief: Unique identifier for the agent
+    examples: ['agent_123', 'research_agent']
+    stability: experimental
+
+  - id: claude_code.agent.task
+    type: string
+    brief: Description of the agent's task
+    examples: ['Search for configuration files', 'Analyze code structure']
+    stability: experimental
+
+  - id: claude_code.agent.status
+    type:
+      members:
+        - id: started
+          value: "started"
+        - id: running
+          value: "running"
+        - id: completed
+          value: "completed"
+        - id: failed
+          value: "failed"
+    brief: Current status of the agent task
+    stability: experimental
+
+  - id: claude_code.agent.progress_percent
+    type: double
+    brief: Progress percentage of the agent task
+    examples: [0.0, 50.0, 100.0]
+    stability: experimental

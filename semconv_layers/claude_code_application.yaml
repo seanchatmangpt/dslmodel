@@ -1,0 +1,426 @@
+layer_type: application
+version: 1.0.0
+extends: base_layer
+dependencies:
+- base_layer
+- file_domain
+- web_domain
+metadata:
+  description: Semantic conventions for Claude Code AI assistant tool operations
+  application: claude_code
+  maintainer: Anthropic
+  otel_version: 1.21.0
+groups:
+- id: claude_code.file
+  type: span
+  span_kind: internal
+  brief: Claude Code file operation telemetry (Read, Write, Edit, MultiEdit)
+  extends: file.read
+  attributes:
+  - ref: claude_code.tool.name
+    requirement_level: required
+  - ref: claude_code.tool.category
+    requirement_level: required
+  - ref: claude_code.user.request
+    requirement_level: recommended
+  - ref: claude_code.context.conversation_id
+    requirement_level: optional
+  - ref: claude_code.context.turn_number
+    requirement_level: optional
+  - id: file.validation_performed
+    type: boolean
+    requirement_level: optional
+    brief: Whether content validation was performed
+    examples:
+    - true
+    - false
+  - id: file.syntax_errors
+    type: int
+    requirement_level: optional
+    brief: Number of syntax errors detected
+    examples:
+    - 0
+    - 2
+    - 5
+  - ref: operation.name
+    requirement_level: required
+- id: claude_code.bash
+  type: span
+  span_kind: internal
+  brief: Claude Code bash command execution telemetry
+  extends: base.span
+  attributes:
+  - ref: claude_code.tool.name
+    requirement_level: required
+  - ref: claude_code.tool.category
+    requirement_level: required
+  - ref: claude_code.user.request
+    requirement_level: recommended
+  - id: bash.command
+    type: string
+    requirement_level: required
+    brief: The bash command being executed
+    examples:
+    - ls -la
+    - npm test
+    - git status
+    - python script.py
+  - id: bash.exit_code
+    type: int
+    requirement_level: required
+    brief: Exit code of the bash command
+    examples:
+    - 0
+    - 1
+    - 127
+    - 2
+  - id: bash.working_directory
+    type: string
+    requirement_level: optional
+    brief: Working directory where command was executed
+    examples:
+    - /Users/dev/project
+    - /tmp
+    - /home/user
+  - id: bash.timeout_ms
+    type: double
+    requirement_level: recommended
+    brief: Timeout setting for the command in milliseconds
+    examples:
+    - 120000.0
+    - 600000.0
+    - 30000.0
+  - id: bash.output_size_bytes
+    type: int
+    requirement_level: optional
+    brief: Size of command output in bytes
+    examples:
+    - 256
+    - 4096
+    - 0
+  - ref: operation.name
+    requirement_level: required
+- id: claude_code.search
+  type: span
+  span_kind: internal
+  brief: Claude Code search operation telemetry (Grep, Glob, LS)
+  extends: base.span
+  attributes:
+  - ref: claude_code.tool.name
+    requirement_level: required
+  - ref: claude_code.tool.category
+    requirement_level: required
+  - ref: claude_code.user.request
+    requirement_level: recommended
+  - id: search.pattern
+    type: string
+    requirement_level: required
+    brief: Search pattern or glob expression
+    examples:
+    - '*.py'
+    - TODO.*
+    - class.*Model
+    - function\s+\w+
+  - id: search.path
+    type: string
+    requirement_level: recommended
+    brief: Directory path being searched
+    examples:
+    - /Users/dev/project
+    - ./src
+    - /
+  - id: search.recursive
+    type: boolean
+    requirement_level: optional
+    brief: Whether search was recursive
+    examples:
+    - true
+    - false
+  - id: search.case_sensitive
+    type: boolean
+    requirement_level: optional
+    brief: Whether search was case sensitive
+    examples:
+    - true
+    - false
+  - id: search.results_count
+    type: int
+    requirement_level: recommended
+    brief: Number of results found
+    examples:
+    - 0
+    - 10
+    - 100
+    - 250
+  - id: search.files_scanned
+    type: int
+    requirement_level: optional
+    brief: Number of files scanned during search
+    examples:
+    - 1
+    - 50
+    - 1000
+  - ref: operation.name
+    requirement_level: required
+- id: claude_code.web
+  type: span
+  span_kind: client
+  brief: Claude Code web operation telemetry (WebFetch, WebSearch)
+  extends: web.fetch
+  attributes:
+  - ref: claude_code.tool.name
+    requirement_level: required
+  - ref: claude_code.tool.category
+    requirement_level: required
+  - ref: claude_code.user.request
+    requirement_level: recommended
+  - id: web.ai_processing
+    type: boolean
+    requirement_level: optional
+    brief: Whether AI processing was applied to the content
+    examples:
+    - true
+    - false
+  - id: web.content_extraction
+    type: string
+    requirement_level: optional
+    brief: Type of content extraction performed
+    examples:
+    - text_only
+    - markdown
+    - structured_data
+    - raw
+  - id: web.prompt
+    type: string
+    requirement_level: optional
+    brief: AI prompt used for content processing
+    examples:
+    - Extract key information
+    - Summarize the content
+    - Find code examples
+  - ref: operation.name
+    requirement_level: required
+- id: claude_code.agent
+  type: span
+  span_kind: internal
+  brief: Claude Code agent task telemetry
+  extends: base.span
+  attributes:
+  - ref: claude_code.tool.name
+    requirement_level: required
+  - ref: claude_code.tool.category
+    requirement_level: required
+  - ref: claude_code.user.request
+    requirement_level: recommended
+  - ref: claude_code.agent.id
+    requirement_level: required
+  - ref: claude_code.agent.task
+    requirement_level: required
+  - ref: claude_code.agent.status
+    requirement_level: required
+  - ref: claude_code.agent.progress_percent
+    requirement_level: optional
+  - id: agent.tools_used
+    type: string[]
+    requirement_level: optional
+    brief: List of tools used by the agent
+    examples:
+    - - Read
+      - Grep
+    - - WebFetch
+      - Write
+    - - Bash
+      - TodoWrite
+  - id: agent.sub_tasks
+    type: int
+    requirement_level: optional
+    brief: Number of sub-tasks created
+    examples:
+    - 0
+    - 3
+    - 10
+  - id: agent.artifacts_created
+    type: int
+    requirement_level: optional
+    brief: Number of artifacts created by the agent
+    examples:
+    - 0
+    - 1
+    - 5
+  - ref: operation.name
+    requirement_level: required
+- id: claude_code.todo
+  type: span
+  span_kind: internal
+  brief: Claude Code todo/task management telemetry
+  extends: base.span
+  attributes:
+  - ref: claude_code.tool.name
+    requirement_level: required
+  - ref: claude_code.tool.category
+    requirement_level: required
+  - ref: claude_code.user.request
+    requirement_level: recommended
+  - id: todo.operation
+    type: string
+    requirement_level: required
+    brief: Type of todo operation
+    examples:
+    - create
+    - read
+    - update
+    - delete
+    - complete
+  - id: todo.total_items
+    type: int
+    requirement_level: recommended
+    brief: Total number of todo items
+    examples:
+    - 0
+    - 5
+    - 20
+  - id: todo.completed_items
+    type: int
+    requirement_level: recommended
+    brief: Number of completed todo items
+    examples:
+    - 0
+    - 3
+    - 15
+  - id: todo.priority_distribution
+    type: string
+    requirement_level: optional
+    brief: Distribution of todo items by priority
+    examples:
+    - high:2,medium:3,low:1
+    - high:0,medium:5,low:2
+  - ref: operation.name
+    requirement_level: required
+- id: claude_code.notebook
+  type: span
+  span_kind: internal
+  brief: Claude Code Jupyter notebook operation telemetry
+  extends: file.read
+  attributes:
+  - ref: claude_code.tool.name
+    requirement_level: required
+  - ref: claude_code.tool.category
+    requirement_level: required
+  - ref: claude_code.user.request
+    requirement_level: recommended
+  - id: notebook.cell_count
+    type: int
+    requirement_level: recommended
+    brief: Number of cells in the notebook
+    examples:
+    - 1
+    - 10
+    - 50
+  - id: notebook.cell_type
+    type: string
+    requirement_level: optional
+    brief: Type of cell being operated on
+    examples:
+    - code
+    - markdown
+    - raw
+  - id: notebook.execution_count
+    type: int
+    requirement_level: optional
+    brief: Execution count of the cell
+    examples:
+    - 1
+    - 5
+    - null
+  - id: notebook.has_outputs
+    type: boolean
+    requirement_level: optional
+    brief: Whether the notebook has execution outputs
+    examples:
+    - true
+    - false
+  - ref: operation.name
+    requirement_level: required
+attributes:
+- id: claude_code.tool.name
+  type: string
+  requirement_level: required
+  brief: Name of the Claude Code tool being used
+  examples:
+  - Read
+  - Write
+  - Edit
+  - Bash
+  - Grep
+  - WebFetch
+  - Task
+  - TodoWrite
+- id: claude_code.tool.category
+  type: string
+  requirement_level: required
+  brief: Category of Claude Code tool
+  examples:
+  - file
+  - bash
+  - search
+  - web
+  - agent
+  - todo
+  - notebook
+- id: claude_code.user.request
+  type: string
+  requirement_level: recommended
+  brief: The original request from the user that triggered the tool use
+  examples:
+  - Read the main.py file
+  - Run tests
+  - Search for TODO comments
+- id: claude_code.context.conversation_id
+  type: string
+  requirement_level: optional
+  brief: Unique identifier for the conversation context
+  examples:
+  - conv_1234567890
+  - chat_abc123
+- id: claude_code.context.turn_number
+  type: int
+  requirement_level: optional
+  brief: Turn number in the conversation
+  examples:
+  - 1
+  - 5
+  - 42
+- id: claude_code.agent.id
+  type: string
+  requirement_level: required
+  brief: Unique identifier for the agent executing tasks
+  examples:
+  - agent_123
+  - research_agent
+  - main_agent
+- id: claude_code.agent.task
+  type: string
+  requirement_level: required
+  brief: Description of the agent task being performed
+  examples:
+  - Search for configuration files
+  - Analyze code structure
+  - Generate documentation
+- id: claude_code.agent.status
+  type: string
+  requirement_level: required
+  brief: Current status of the agent task
+  examples:
+  - started
+  - running
+  - completed
+  - failed
+  - cancelled
+- id: claude_code.agent.progress_percent
+  type: double
+  requirement_level: optional
+  brief: Progress percentage of the agent task (0-100)
+  examples:
+  - 0.0
+  - 50.0
+  - 100.0

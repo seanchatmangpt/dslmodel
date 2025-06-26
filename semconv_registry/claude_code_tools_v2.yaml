@@ -1,0 +1,210 @@
+groups:
+  # Base claude_code attributes
+  - id: claude_code
+    prefix: claude_code
+    type: attribute_group
+    brief: 'Base attributes for Claude Code tool telemetry'
+    attributes:
+      - id: tool.name
+        type: string
+        requirement_level: required
+        brief: 'Name of the Claude Code tool being used'
+        examples: ['Read', 'Write', 'Bash', 'Grep', 'WebFetch', 'Task', 'TodoWrite']
+        
+      - id: tool.category
+        type: string
+        requirement_level: required
+        brief: 'Category of Claude Code tool'
+        examples: ['file', 'bash', 'search', 'web', 'agent', 'todo', 'notebook']
+        
+      - id: session.id
+        type: string
+        requirement_level: recommended
+        brief: 'Unique identifier for the Claude Code session'
+        examples: ['session_1234567890']
+        
+      - id: user.request
+        type: string
+        requirement_level: recommended
+        brief: 'The original request from the user that triggered the tool use'
+        examples: ['Read the main.py file', 'Run tests', 'Search for TODO comments']
+
+  # File operation spans
+  - id: claude_code.file
+    type: span
+    span_kind: internal
+    prefix: claude_code.file
+    brief: 'File operation telemetry (Read, Write, Edit, MultiEdit)'
+    attributes:
+      - ref: claude_code.tool.name
+        requirement_level: required
+      - ref: claude_code.tool.category
+        requirement_level: required
+      - ref: claude_code.session.id
+        requirement_level: recommended
+      - ref: claude_code.user.request
+        requirement_level: recommended
+      - id: path
+        type: string
+        requirement_level: required
+        brief: 'Absolute path to the file being operated on'
+        examples: ['/Users/dev/project/main.py', '/etc/config.yaml']
+      - id: operation
+        type: string
+        requirement_level: required
+        brief: 'Type of file operation'
+        examples: ['read', 'write', 'edit', 'multi_edit', 'delete']
+      - id: size_bytes
+        type: int
+        requirement_level: recommended
+        brief: 'Size of the file in bytes'
+        examples: [1024, 5242880]
+      - id: lines_affected
+        type: int
+        requirement_level: recommended
+        brief: 'Number of lines affected by the operation'
+        examples: [10, 250]
+
+  # Bash command spans
+  - id: claude_code.bash
+    type: span
+    span_kind: internal
+    prefix: claude_code.bash
+    brief: 'Bash command execution telemetry'
+    attributes:
+      - ref: claude_code.tool.name
+        requirement_level: required
+      - ref: claude_code.tool.category
+        requirement_level: required
+      - ref: claude_code.session.id
+        requirement_level: recommended
+      - ref: claude_code.user.request
+        requirement_level: recommended
+      - id: command
+        type: string
+        requirement_level: required
+        brief: 'The bash command being executed'
+        examples: ['ls -la', 'npm test', 'git status']
+      - id: exit_code
+        type: int
+        requirement_level: required
+        brief: 'Exit code of the bash command'
+        examples: [0, 1, 127]
+      - id: duration_ms
+        type: double
+        requirement_level: recommended
+        brief: 'Duration of command execution in milliseconds'
+        examples: [100.5, 2500.0]
+      - id: timeout_ms
+        type: double
+        requirement_level: recommended
+        brief: 'Timeout setting for the command in milliseconds'
+        examples: [120000.0, 600000.0]
+
+  # Search operation spans
+  - id: claude_code.search
+    type: span
+    span_kind: internal
+    prefix: claude_code.search
+    brief: 'Search operation telemetry (Grep, Glob, LS)'
+    attributes:
+      - ref: claude_code.tool.name
+        requirement_level: required
+      - ref: claude_code.tool.category
+        requirement_level: required
+      - ref: claude_code.session.id
+        requirement_level: recommended
+      - ref: claude_code.user.request
+        requirement_level: recommended
+      - id: pattern
+        type: string
+        requirement_level: required
+        brief: 'Search pattern or glob expression'
+        examples: ['*.py', 'TODO.*', 'class.*Model']
+      - id: path
+        type: string
+        requirement_level: recommended
+        brief: 'Directory path being searched'
+        examples: ['/Users/dev/project', './src']
+      - id: results_count
+        type: int
+        requirement_level: recommended
+        brief: 'Number of results found'
+        examples: [0, 10, 100]
+      - id: duration_ms
+        type: double
+        requirement_level: recommended
+        brief: 'Duration of search operation in milliseconds'
+        examples: [50.0, 500.0]
+
+  # Web operation spans
+  - id: claude_code.web
+    type: span
+    span_kind: client
+    prefix: claude_code.web
+    brief: 'Web operation telemetry (WebFetch, WebSearch)'
+    attributes:
+      - ref: claude_code.tool.name
+        requirement_level: required
+      - ref: claude_code.tool.category
+        requirement_level: required
+      - ref: claude_code.session.id
+        requirement_level: recommended
+      - ref: claude_code.user.request
+        requirement_level: recommended
+      - id: url
+        type: string
+        requirement_level: required
+        brief: 'URL being accessed'
+        examples: ['https://api.example.com', 'https://docs.python.org']
+      - id: operation
+        type: string
+        requirement_level: required
+        brief: 'Type of web operation'
+        examples: ['fetch', 'search']
+      - id: response_size_bytes
+        type: int
+        requirement_level: recommended
+        brief: 'Size of the response in bytes'
+        examples: [1024, 102400]
+      - id: cache_hit
+        type: boolean
+        requirement_level: recommended
+        brief: 'Whether the response was served from cache'
+        examples: [true, false]
+
+  # Agent task spans
+  - id: claude_code.agent
+    type: span
+    span_kind: internal
+    prefix: claude_code.agent
+    brief: 'Agent task telemetry'
+    attributes:
+      - ref: claude_code.tool.name
+        requirement_level: required
+      - ref: claude_code.tool.category
+        requirement_level: required
+      - ref: claude_code.session.id
+        requirement_level: recommended
+      - ref: claude_code.user.request
+        requirement_level: recommended
+      - id: id
+        type: string
+        requirement_level: required
+        brief: 'Unique identifier for the agent'
+        examples: ['agent_123', 'research_agent']
+      - id: task
+        type: string
+        requirement_level: required
+        brief: 'Description of the agent task'
+        examples: ['Search for configuration files', 'Analyze code structure']
+      - id: status
+        type: string
+        requirement_level: required
+        brief: 'Current status of the agent task'
+        examples: ['started', 'running', 'completed', 'failed']
+      - id: progress_percent
+        type: double
+        requirement_level: recommended
+        brief: 'Progress percentage of the agent task'
+        examples: [0.0, 50.0, 100.0]

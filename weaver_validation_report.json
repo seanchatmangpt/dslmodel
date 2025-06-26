@@ -1,0 +1,224 @@
+{
+  "validation_summary": {
+    "total_layers": 5,
+    "total_issues": 19,
+    "layer_health": {
+      "base_layer": {
+        "issues": 1,
+        "errors": 0,
+        "health_score": 90
+      },
+      "file_domain": {
+        "issues": 6,
+        "errors": 0,
+        "health_score": 40
+      },
+      "web_domain": {
+        "issues": 5,
+        "errors": 0,
+        "health_score": 50
+      },
+      "claude_code_application": {
+        "issues": 7,
+        "errors": 0,
+        "health_score": 30
+      },
+      "validation_rules": {
+        "issues": 0,
+        "errors": 0,
+        "health_score": 100
+      }
+    }
+  },
+  "detailed_results": [
+    {
+      "level": "info",
+      "message": "Span group base.span missing recommended attributes: {'span.kind'}",
+      "layer": "base_layer",
+      "group_id": "base.span",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group file.read missing recommended attributes: {'span.kind'}",
+      "layer": "file_domain",
+      "group_id": "file.read",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group file.write missing recommended attributes: {'span.kind'}",
+      "layer": "file_domain",
+      "group_id": "file.write",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group file.edit missing recommended attributes: {'span.kind'}",
+      "layer": "file_domain",
+      "group_id": "file.edit",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group file.delete missing recommended attributes: {'span.kind'}",
+      "layer": "file_domain",
+      "group_id": "file.delete",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group file.copy missing recommended attributes: {'span.kind'}",
+      "layer": "file_domain",
+      "group_id": "file.copy",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group file.move missing recommended attributes: {'span.kind'}",
+      "layer": "file_domain",
+      "group_id": "file.move",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group web.fetch missing recommended attributes: {'span.kind'}",
+      "layer": "web_domain",
+      "group_id": "web.fetch",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group web.search missing recommended attributes: {'span.kind'}",
+      "layer": "web_domain",
+      "group_id": "web.search",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group web.download missing recommended attributes: {'span.kind'}",
+      "layer": "web_domain",
+      "group_id": "web.download",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group web.upload missing recommended attributes: {'span.kind'}",
+      "layer": "web_domain",
+      "group_id": "web.upload",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group web.api_call missing recommended attributes: {'span.kind'}",
+      "layer": "web_domain",
+      "group_id": "web.api_call",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group claude_code.file missing recommended attributes: {'span.kind'}",
+      "layer": "claude_code_application",
+      "group_id": "claude_code.file",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group claude_code.bash missing recommended attributes: {'span.kind'}",
+      "layer": "claude_code_application",
+      "group_id": "claude_code.bash",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group claude_code.search missing recommended attributes: {'span.kind'}",
+      "layer": "claude_code_application",
+      "group_id": "claude_code.search",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group claude_code.web missing recommended attributes: {'span.kind'}",
+      "layer": "claude_code_application",
+      "group_id": "claude_code.web",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group claude_code.agent missing recommended attributes: {'span.kind'}",
+      "layer": "claude_code_application",
+      "group_id": "claude_code.agent",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group claude_code.todo missing recommended attributes: {'span.kind'}",
+      "layer": "claude_code_application",
+      "group_id": "claude_code.todo",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    },
+    {
+      "level": "info",
+      "message": "Span group claude_code.notebook missing recommended attributes: {'span.kind'}",
+      "layer": "claude_code_application",
+      "group_id": "claude_code.notebook",
+      "attribute_id": null,
+      "suggestion": "Consider adding standard OTEL span attributes"
+    }
+  ],
+  "improvement_feedback": {
+    "summary": {
+      "total_issues": 19,
+      "errors": 0,
+      "warnings": 0,
+      "suggestions": 0
+    },
+    "layer_health": {
+      "base_layer": {
+        "issues": 1,
+        "errors": 0,
+        "health_score": 90
+      },
+      "file_domain": {
+        "issues": 6,
+        "errors": 0,
+        "health_score": 40
+      },
+      "web_domain": {
+        "issues": 5,
+        "errors": 0,
+        "health_score": 50
+      },
+      "claude_code_application": {
+        "issues": 7,
+        "errors": 0,
+        "health_score": 30
+      },
+      "validation_rules": {
+        "issues": 0,
+        "errors": 0,
+        "health_score": 100
+      }
+    },
+    "improvement_suggestions": [],
+    "auto_fixes": []
+  }
+}

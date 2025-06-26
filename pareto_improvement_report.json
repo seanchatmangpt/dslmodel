@@ -1,0 +1,67 @@
+{
+  "timestamp": "2024-01-01T00:00:00Z",
+  "pareto_opportunities": [
+    {
+      "pattern": "missing_attribute_operation.name",
+      "frequency": 18,
+      "impact_score": 124.73684210526315,
+      "effort_score": 1.0,
+      "pareto_ratio": 124.73684210526315,
+      "affected_layers": [
+        "claude_code_application",
+        "web_domain",
+        "file_domain"
+      ],
+      "suggested_fix": "Add operation.name attribute to all span groups",
+      "automation_possible": true
+    },
+    {
+      "pattern": "missing_attribute_'span.kind",
+      "frequency": 18,
+      "impact_score": 124.73684210526315,
+      "effort_score": 1.0,
+      "pareto_ratio": 124.73684210526315,
+      "affected_layers": [
+        "claude_code_application",
+        "web_domain",
+        "file_domain"
+      ],
+      "suggested_fix": "Address missing_attribute_'span.kind across 3 layers",
+      "automation_possible": false
+    },
+    {
+      "pattern": "missing_attribute_span.kind",
+      "frequency": 1,
+      "impact_score": 15.263157894736842,
+      "effort_score": 1.0,
+      "pareto_ratio": 15.263157894736842,
+      "affected_layers": [
+        "base_layer"
+      ],
+      "suggested_fix": "Add span.kind attribute to all span groups with appropriate values",
+      "automation_possible": true
+    }
+  ],
+  "improvements_applied": [
+    {
+      "pattern": "missing_attribute_operation.name",
+      "issues_fixed": 0,
+      "health_improvement": 0,
+      "success": true,
+      "before_health": {
+        "claude_code_application": 30,
+        "web_domain": 50,
+        "validation_rules": 100,
+        "base_layer": 90,
+        "file_domain": 40
+      },
+      "after_health": {
+        "claude_code_application": 30,
+        "web_domain": 50,
+        "validation_rules": 100,
+        "base_layer": 90,
+        "file_domain": 40
+      }
+    }
+  ]
+}

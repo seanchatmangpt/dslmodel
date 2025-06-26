@@ -1,0 +1,248 @@
+# Validation Rules Layer
+# Defines validation rules and constraints for semantic conventions
+
+layer_type: validation
+version: "1.0.0"
+dependencies: ["base_layer", "file_domain", "web_domain", "claude_code_application"]
+metadata:
+  description: "Validation rules and constraints for semantic convention layers"
+  validator_version: "1.0.0"
+  maintainer: "DSLModel Core Team"
+
+# Validation rules for attributes
+validation_rules:
+  # Global attribute rules
+  attribute_rules:
+    - rule_id: "attr_id_format"
+      description: "Attribute IDs must use dot notation"
+      pattern: "^[a-z][a-z0-9]*(?:\\.[a-z][a-z0-9]*)*$"
+      applies_to: ["id"]
+      severity: "error"
+      examples:
+        valid: ["operation.name", "file.path", "http.status_code"]
+        invalid: ["OperationName", "file_path", "http-status-code"]
+
+    - rule_id: "attr_type_valid"
+      description: "Attribute types must be from allowed list"
+      allowed_values: ["string", "int", "double", "boolean", "string[]", "int[]", "double[]", "boolean[]"]
+      applies_to: ["type"]
+      severity: "error"
+
+    - rule_id: "attr_requirement_valid"
+      description: "Requirement levels must be valid"
+      allowed_values: ["required", "recommended", "optional"]
+      applies_to: ["requirement_level"]
+      severity: "error"
+
+    - rule_id: "attr_brief_present"
+      description: "All attributes should have brief descriptions"
+      required_field: "brief"
+      severity: "warning"
+      min_length: 10
+      max_length: 100
+
+    - rule_id: "attr_examples_present"
+      description: "Attributes should have examples"
+      required_field: "examples"
+      severity: "info"
+      min_count: 1
+      max_count: 5
+
+  # Group validation rules
+  group_rules:
+    - rule_id: "group_id_format"
+      description: "Group IDs must use dot notation"
+      pattern: "^[a-z][a-z0-9]*(?:\\.[a-z][a-z0-9]*)*$"
+      applies_to: ["id"]
+      severity: "error"
+
+    - rule_id: "group_type_valid"
+      description: "Group types must be from allowed list"
+      allowed_values: ["span", "metric", "attribute_group", "event"]
+      applies_to: ["type"]
+      severity: "error"
+
+    - rule_id: "span_kind_valid"
+      description: "Span kinds must be valid for span groups"
+      condition: "type == 'span'"
+      allowed_values: ["internal", "server", "client", "producer", "consumer"]
+      applies_to: ["span_kind"]
+      severity: "error"
+
+    - rule_id: "group_brief_present"
+      description: "All groups must have brief descriptions"
+      required_field: "brief"
+      severity: "error"
+      min_length: 20
+      max_length: 200
+
+    - rule_id: "group_attributes_present"
+      description: "Groups should have at least one attribute"
+      required_field: "attributes"
+      severity: "warning"
+      min_count: 1
+
+  # Layer validation rules
+  layer_rules:
+    - rule_id: "layer_version_format"
+      description: "Layer versions must follow semantic versioning"
+      pattern: "^\\d+\\.\\d+\\.\\d+(?:-[a-zA-Z0-9-]+)?$"
+      applies_to: ["version"]
+      severity: "error"
+      examples:
+        valid: ["1.0.0", "2.1.3", "1.0.0-beta"]
+        invalid: ["1.0", "v1.0.0", "1.0.0.0"]
+
+    - rule_id: "layer_dependencies_exist"
+      description: "All layer dependencies must exist"
+      dependency_check: true
+      severity: "error"
+
+    - rule_id: "layer_circular_deps"
+      description: "Layers must not have circular dependencies"
+      circular_dependency_check: true
+      severity: "error"
+
+    - rule_id: "layer_metadata_present"
+      description: "Layers should have metadata"
+      required_field: "metadata"
+      severity: "warning"
+      required_subfields: ["description", "maintainer"]
+
+  # Cross-layer consistency rules
+  consistency_rules:
+    - rule_id: "consistent_attribute_types"
+      description: "Same attribute IDs must have consistent types across layers"
+      check_type: "attribute_type_consistency"
+      severity: "error"
+      scope: "global"
+
+    - rule_id: "consistent_group_types"
+      description: "Same group IDs must have consistent types across layers"
+      check_type: "group_type_consistency"
+      severity: "error"
+      scope: "global"
+
+    - rule_id: "valid_attribute_references"
+      description: "All attribute references must point to existing attributes"
+      check_type: "reference_validity"
+      severity: "error"
+      scope: "global"
+
+    - rule_id: "inheritance_validity"
+      description: "Groups extending other groups must be compatible"
+      check_type: "inheritance_compatibility"
+      severity: "error"
+      scope: "global"
+
+  # OTEL compliance rules
+  otel_compliance_rules:
+    - rule_id: "otel_naming_convention"
+      description: "Span names should follow OpenTelemetry naming conventions"
+      condition: "type == 'span'"
+      pattern: "^[a-z][a-z0-9]*(?:\\.[a-z][a-z0-9]*)*$"
+      applies_to: ["id"]
+      severity: "warning"
+
+    - rule_id: "otel_span_attributes"
+      description: "Spans should include standard OTEL attributes"
+      condition: "type == 'span'"
+      recommended_attributes: ["operation.name", "span.kind"]
+      severity: "info"
+
+    - rule_id: "otel_attribute_naming"
+      description: "Attributes should follow OTEL naming conventions"
+      patterns:
+        - "^[a-z][a-z0-9]*(?:\\.[a-z][a-z0-9]*)*$"  # Dot notation
+      forbidden_patterns:
+        - ".*[A-Z].*"  # No uppercase
+        - ".*_.*"      # No underscores
+        - ".*-.*"      # No hyphens
+      severity: "warning"
+
+    - rule_id: "otel_semantic_conventions"
+      description: "Should align with OTEL semantic conventions where applicable"
+      standard_attributes:
+        http: ["http.method", "http.status_code", "http.url"]
+        file: ["file.path", "file.name"]
+        operation: ["operation.name", "operation.type"]
+      severity: "info"
+
+# Validation thresholds and metrics
+validation_metrics:
+  quality_thresholds:
+    excellent: 95    # 95% or higher passing validation
+    good: 80        # 80-94% passing validation
+    acceptable: 60  # 60-79% passing validation
+    poor: 40        # 40-59% passing validation
+    failing: 0      # Below 40% passing validation
+
+  error_weights:
+    error: 10       # Errors count as 10 points
+    warning: 3      # Warnings count as 3 points
+    info: 1         # Info issues count as 1 point
+    suggestion: 0.5 # Suggestions count as 0.5 points
+
+  coverage_requirements:
+    brief_coverage: 90      # 90% of items should have brief descriptions
+    example_coverage: 70    # 70% of attributes should have examples
+    documentation_coverage: 80  # 80% should have adequate documentation
+
+# Auto-fix capabilities
+auto_fix_rules:
+  - fix_id: "add_missing_brief"
+    description: "Automatically add brief descriptions for missing ones"
+    applies_to: ["groups", "attributes"]
+    pattern: "missing brief"
+    action: "generate_brief"
+    confidence: "medium"
+    requires_review: true
+
+  - fix_id: "standardize_naming"
+    description: "Convert naming to standard dot notation"
+    applies_to: ["id"]
+    pattern: "invalid naming"
+    action: "convert_to_dot_notation"
+    confidence: "high"
+    requires_review: false
+
+  - fix_id: "add_requirement_level"
+    description: "Add missing requirement levels with defaults"
+    applies_to: ["attributes"]
+    pattern: "missing requirement_level"
+    action: "set_default_requirement"
+    default_value: "optional"
+    confidence: "high"
+    requires_review: false
+
+  - fix_id: "generate_examples"
+    description: "Generate example values for attributes"
+    applies_to: ["attributes"]
+    pattern: "missing examples"
+    action: "generate_examples"
+    confidence: "low"
+    requires_review: true
+
+# Feedback generation rules
+feedback_rules:
+  improvement_suggestions:
+    - pattern: "multiple_missing_brief"
+      threshold: 3
+      suggestion: "Consider creating a documentation template to ensure all items have descriptions"
+      
+    - pattern: "inconsistent_naming"
+      threshold: 2
+      suggestion: "Establish and document naming conventions for the project"
+      
+    - pattern: "missing_examples"
+      threshold: 5
+      suggestion: "Add example generation to the development workflow"
+
+  trend_analysis:
+    - metric: "error_rate"
+      trend_window: "30_days"
+      alert_threshold: "increase_10_percent"
+      
+    - metric: "coverage_score"
+      trend_window: "7_days"
+      alert_threshold: "decrease_5_percent"

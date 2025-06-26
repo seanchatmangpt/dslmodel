@@ -1011,3 +1011,11 @@ with open('/private/var/folders/s6/jqyw48zs39z38b_3f6f_x2sc0000gn/T/pytest-of-sa
 2025-05-18 18:53:10.952 | DEBUG    | dslmodel.workflow.workflow_executor:execute_job:102 - Job Setup Meeting completed. Updated context: {'participants': [1, 2, 3, 4]}
 2025-05-18 18:53:10.952 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:185 - Finished execution of job: Setup Meeting
 2025-05-18 18:53:10.952 | INFO     | dslmodel.workflow.workflow_executor:execute_workflow:192 - Workflow 'Weekly Meeting Setup' completed. Final context: {'participants': [1, 2, 3, 4]}
+2025-06-26 16:08:48.028 | INFO     | dslmodel.examples.enterprise_demo_minimal:<module>:14 - Initializing Qwen3 for Enterprise Coordination Demo...
+2025-06-26 16:08:48.030 | SUCCESS  | dslmodel.utils.llm_init:init_lm:57 - Initialized DSPy with ollama/qwen3:latest
+2025-06-26 16:08:48.030 | INFO     | dslmodel.utils.llm_init:init_lm:58 - Temperature: 0.3, Max tokens: 2048
+2025-06-26 16:08:48.030 | DEBUG    | dslmodel.utils.llm_init:init_lm:59 - Test response length: 335 chars
+2025-06-26 16:09:17.456 | INFO     | dslmodel.examples.enterprise_demo_minimal:<module>:14 - Initializing Qwen3 for Enterprise Coordination Demo...
+2025-06-26 16:09:17.457 | SUCCESS  | dslmodel.utils.llm_init:init_lm:57 - Initialized DSPy with ollama/qwen3:latest
+2025-06-26 16:09:17.457 | INFO     | dslmodel.utils.llm_init:init_lm:58 - Temperature: 0.3, Max tokens: 2048
+2025-06-26 16:09:17.457 | DEBUG    | dslmodel.utils.llm_init:init_lm:59 - Test response length: 335 chars

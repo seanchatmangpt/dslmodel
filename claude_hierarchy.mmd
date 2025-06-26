@@ -1,0 +1,23 @@
+graph TD
+    ROOT[Semantic Conventions]
+    claude_code["claude_code<br/>attribute_group<br/>Base attributes for Claude Code tool telemetry"]
+    ROOT --> claude_code
+    claude_code_file["claude_code.file<br/>span<br/>File operation telemetry (Read, Write, Edit, Multi..."]
+    claude_code --> claude_code_file
+    claude_code_bash["claude_code.bash<br/>span<br/>Bash command execution telemetry"]
+    claude_code --> claude_code_bash
+    claude_code_search["claude_code.search<br/>span<br/>Search operation telemetry (Grep, Glob, LS)"]
+    claude_code --> claude_code_search
+    claude_code_web["claude_code.web<br/>span<br/>Web operation telemetry (WebFetch, WebSearch)"]
+    claude_code --> claude_code_web
+    claude_code_agent["claude_code.agent<br/>span<br/>Agent task telemetry"]
+    claude_code --> claude_code_agent
+    style ROOT fill:#f9f,stroke:#333,stroke-width:4px
+    classDef span fill:#bbf,stroke:#333,stroke-width:2px
+    classDef attribute_group fill:#bfb,stroke:#333,stroke-width:2px
+    class claude_code attribute_group
+    class claude_code_file span
+    class claude_code_bash span
+    class claude_code_search span
+    class claude_code_web span
+    class claude_code_agent span

@@ -1,0 +1,867 @@
+# Debug Output
+
+## Available data in ctx:
+{
+  "groups": [
+    {
+      "attributes": [
+        {
+          "brief": "Name of the Claude Code tool being used",
+          "examples": [
+            "Read",
+            "Write",
+            "Bash",
+            "Grep",
+            "WebFetch",
+            "Task",
+            "TodoWrite"
+          ],
+          "name": "claude_code.tool.name",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Category of Claude Code tool",
+          "examples": [
+            "file",
+            "bash",
+            "search",
+            "web",
+            "agent",
+            "todo",
+            "notebook"
+          ],
+          "name": "claude_code.tool.category",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Unique identifier for the Claude Code session",
+          "examples": [
+            "session_1234567890"
+          ],
+          "name": "claude_code.session.id",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "The original request from the user that triggered the tool use",
+          "examples": [
+            "Read the main.py file",
+            "Run tests",
+            "Search for TODO comments"
+          ],
+          "name": "claude_code.user.request",
+          "requirement_level": "recommended",
+          "type": "string"
+        }
+      ],
+      "brief": "Base attributes for Claude Code tool telemetry",
+      "events": [],
+      "id": "claude_code",
+      "instrument": null,
+      "lineage": {
+        "provenance": {
+          "path": "/tmp/claude_registry/claude_code_tools.yaml",
+          "registry_id": "claude_code_tools"
+        }
+      },
+      "metric_name": null,
+      "name": null,
+      "prefix": "claude_code",
+      "span_kind": null,
+      "type": "attribute_group",
+      "unit": null
+    },
+    {
+      "attributes": [
+        {
+          "brief": "Name of the Claude Code tool being used",
+          "examples": [
+            "Read",
+            "Write",
+            "Bash",
+            "Grep",
+            "WebFetch",
+            "Task",
+            "TodoWrite"
+          ],
+          "name": "claude_code.tool.name",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Category of Claude Code tool",
+          "examples": [
+            "file",
+            "bash",
+            "search",
+            "web",
+            "agent",
+            "todo",
+            "notebook"
+          ],
+          "name": "claude_code.tool.category",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Unique identifier for the Claude Code session",
+          "examples": [
+            "session_1234567890"
+          ],
+          "name": "claude_code.session.id",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "The original request from the user that triggered the tool use",
+          "examples": [
+            "Read the main.py file",
+            "Run tests",
+            "Search for TODO comments"
+          ],
+          "name": "claude_code.user.request",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "Absolute path to the file being operated on",
+          "examples": [
+            "/Users/dev/project/main.py",
+            "/etc/config.yaml"
+          ],
+          "name": "claude_code.file.path",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Type of file operation",
+          "examples": [
+            "read",
+            "write",
+            "edit",
+            "multi_edit",
+            "delete"
+          ],
+          "name": "claude_code.file.operation",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Size of the file in bytes",
+          "examples": [
+            1024,
+            5242880
+          ],
+          "name": "claude_code.file.size_bytes",
+          "requirement_level": "recommended",
+          "type": "int"
+        },
+        {
+          "brief": "Number of lines affected by the operation",
+          "examples": [
+            10,
+            250
+          ],
+          "name": "claude_code.file.lines_affected",
+          "requirement_level": "recommended",
+          "type": "int"
+        }
+      ],
+      "brief": "File operation telemetry (Read, Write, Edit, MultiEdit)",
+      "events": [],
+      "id": "claude_code.file",
+      "instrument": null,
+      "lineage": {
+        "attributes": {
+          "claude_code.session.id": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.category": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.name": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.user.request": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          }
+        },
+        "provenance": {
+          "path": "/tmp/claude_registry/claude_code_tools.yaml",
+          "registry_id": "claude_code_tools"
+        }
+      },
+      "metric_name": null,
+      "name": null,
+      "prefix": "claude_code.file",
+      "span_kind": "internal",
+      "type": "span",
+      "unit": null
+    },
+    {
+      "attributes": [
+        {
+          "brief": "Name of the Claude Code tool being used",
+          "examples": [
+            "Read",
+            "Write",
+            "Bash",
+            "Grep",
+            "WebFetch",
+            "Task",
+            "TodoWrite"
+          ],
+          "name": "claude_code.tool.name",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Category of Claude Code tool",
+          "examples": [
+            "file",
+            "bash",
+            "search",
+            "web",
+            "agent",
+            "todo",
+            "notebook"
+          ],
+          "name": "claude_code.tool.category",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Unique identifier for the Claude Code session",
+          "examples": [
+            "session_1234567890"
+          ],
+          "name": "claude_code.session.id",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "The original request from the user that triggered the tool use",
+          "examples": [
+            "Read the main.py file",
+            "Run tests",
+            "Search for TODO comments"
+          ],
+          "name": "claude_code.user.request",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "The bash command being executed",
+          "examples": [
+            "ls -la",
+            "npm test",
+            "git status"
+          ],
+          "name": "claude_code.bash.command",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Exit code of the bash command",
+          "examples": [
+            0,
+            1,
+            127
+          ],
+          "name": "claude_code.bash.exit_code",
+          "requirement_level": "required",
+          "type": "int"
+        },
+        {
+          "brief": "Duration of command execution in milliseconds",
+          "examples": [
+            100.5,
+            2500.0
+          ],
+          "name": "claude_code.bash.duration_ms",
+          "requirement_level": "recommended",
+          "type": "double"
+        },
+        {
+          "brief": "Timeout setting for the command in milliseconds",
+          "examples": [
+            120000.0,
+            600000.0
+          ],
+          "name": "claude_code.bash.timeout_ms",
+          "requirement_level": "recommended",
+          "type": "double"
+        }
+      ],
+      "brief": "Bash command execution telemetry",
+      "events": [],
+      "id": "claude_code.bash",
+      "instrument": null,
+      "lineage": {
+        "attributes": {
+          "claude_code.session.id": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.category": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.name": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.user.request": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          }
+        },
+        "provenance": {
+          "path": "/tmp/claude_registry/claude_code_tools.yaml",
+          "registry_id": "claude_code_tools"
+        }
+      },
+      "metric_name": null,
+      "name": null,
+      "prefix": "claude_code.bash",
+      "span_kind": "internal",
+      "type": "span",
+      "unit": null
+    },
+    {
+      "attributes": [
+        {
+          "brief": "Name of the Claude Code tool being used",
+          "examples": [
+            "Read",
+            "Write",
+            "Bash",
+            "Grep",
+            "WebFetch",
+            "Task",
+            "TodoWrite"
+          ],
+          "name": "claude_code.tool.name",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Category of Claude Code tool",
+          "examples": [
+            "file",
+            "bash",
+            "search",
+            "web",
+            "agent",
+            "todo",
+            "notebook"
+          ],
+          "name": "claude_code.tool.category",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Unique identifier for the Claude Code session",
+          "examples": [
+            "session_1234567890"
+          ],
+          "name": "claude_code.session.id",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "The original request from the user that triggered the tool use",
+          "examples": [
+            "Read the main.py file",
+            "Run tests",
+            "Search for TODO comments"
+          ],
+          "name": "claude_code.user.request",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "Search pattern or glob expression",
+          "examples": [
+            "*.py",
+            "TODO.*",
+            "class.*Model"
+          ],
+          "name": "claude_code.search.pattern",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Directory path being searched",
+          "examples": [
+            "/Users/dev/project",
+            "./src"
+          ],
+          "name": "claude_code.search.path",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "Number of results found",
+          "examples": [
+            0,
+            10,
+            100
+          ],
+          "name": "claude_code.search.results_count",
+          "requirement_level": "recommended",
+          "type": "int"
+        },
+        {
+          "brief": "Duration of search operation in milliseconds",
+          "examples": [
+            50.0,
+            500.0
+          ],
+          "name": "claude_code.search.duration_ms",
+          "requirement_level": "recommended",
+          "type": "double"
+        }
+      ],
+      "brief": "Search operation telemetry (Grep, Glob, LS)",
+      "events": [],
+      "id": "claude_code.search",
+      "instrument": null,
+      "lineage": {
+        "attributes": {
+          "claude_code.session.id": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.category": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.name": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.user.request": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          }
+        },
+        "provenance": {
+          "path": "/tmp/claude_registry/claude_code_tools.yaml",
+          "registry_id": "claude_code_tools"
+        }
+      },
+      "metric_name": null,
+      "name": null,
+      "prefix": "claude_code.search",
+      "span_kind": "internal",
+      "type": "span",
+      "unit": null
+    },
+    {
+      "attributes": [
+        {
+          "brief": "Name of the Claude Code tool being used",
+          "examples": [
+            "Read",
+            "Write",
+            "Bash",
+            "Grep",
+            "WebFetch",
+            "Task",
+            "TodoWrite"
+          ],
+          "name": "claude_code.tool.name",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Category of Claude Code tool",
+          "examples": [
+            "file",
+            "bash",
+            "search",
+            "web",
+            "agent",
+            "todo",
+            "notebook"
+          ],
+          "name": "claude_code.tool.category",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Unique identifier for the Claude Code session",
+          "examples": [
+            "session_1234567890"
+          ],
+          "name": "claude_code.session.id",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "The original request from the user that triggered the tool use",
+          "examples": [
+            "Read the main.py file",
+            "Run tests",
+            "Search for TODO comments"
+          ],
+          "name": "claude_code.user.request",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "URL being accessed",
+          "examples": [
+            "https://api.example.com",
+            "https://docs.python.org"
+          ],
+          "name": "claude_code.web.url",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Type of web operation",
+          "examples": [
+            "fetch",
+            "search"
+          ],
+          "name": "claude_code.web.operation",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Size of the response in bytes",
+          "examples": [
+            1024,
+            102400
+          ],
+          "name": "claude_code.web.response_size_bytes",
+          "requirement_level": "recommended",
+          "type": "int"
+        },
+        {
+          "brief": "Whether the response was served from cache",
+          "examples": [
+            true,
+            false
+          ],
+          "name": "claude_code.web.cache_hit",
+          "requirement_level": "recommended",
+          "type": "boolean"
+        }
+      ],
+      "brief": "Web operation telemetry (WebFetch, WebSearch)",
+      "events": [],
+      "id": "claude_code.web",
+      "instrument": null,
+      "lineage": {
+        "attributes": {
+          "claude_code.session.id": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.category": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.name": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.user.request": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          }
+        },
+        "provenance": {
+          "path": "/tmp/claude_registry/claude_code_tools.yaml",
+          "registry_id": "claude_code_tools"
+        }
+      },
+      "metric_name": null,
+      "name": null,
+      "prefix": "claude_code.web",
+      "span_kind": "client",
+      "type": "span",
+      "unit": null
+    },
+    {
+      "attributes": [
+        {
+          "brief": "Name of the Claude Code tool being used",
+          "examples": [
+            "Read",
+            "Write",
+            "Bash",
+            "Grep",
+            "WebFetch",
+            "Task",
+            "TodoWrite"
+          ],
+          "name": "claude_code.tool.name",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Category of Claude Code tool",
+          "examples": [
+            "file",
+            "bash",
+            "search",
+            "web",
+            "agent",
+            "todo",
+            "notebook"
+          ],
+          "name": "claude_code.tool.category",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Unique identifier for the Claude Code session",
+          "examples": [
+            "session_1234567890"
+          ],
+          "name": "claude_code.session.id",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "The original request from the user that triggered the tool use",
+          "examples": [
+            "Read the main.py file",
+            "Run tests",
+            "Search for TODO comments"
+          ],
+          "name": "claude_code.user.request",
+          "requirement_level": "recommended",
+          "type": "string"
+        },
+        {
+          "brief": "Unique identifier for the agent",
+          "examples": [
+            "agent_123",
+            "research_agent"
+          ],
+          "name": "claude_code.agent.id",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Description of the agent task",
+          "examples": [
+            "Search for configuration files",
+            "Analyze code structure"
+          ],
+          "name": "claude_code.agent.task",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Current status of the agent task",
+          "examples": [
+            "started",
+            "running",
+            "completed",
+            "failed"
+          ],
+          "name": "claude_code.agent.status",
+          "requirement_level": "required",
+          "type": "string"
+        },
+        {
+          "brief": "Progress percentage of the agent task",
+          "examples": [
+            0.0,
+            50.0,
+            100.0
+          ],
+          "name": "claude_code.agent.progress_percent",
+          "requirement_level": "recommended",
+          "type": "double"
+        }
+      ],
+      "brief": "Agent task telemetry",
+      "events": [],
+      "id": "claude_code.agent",
+      "instrument": null,
+      "lineage": {
+        "attributes": {
+          "claude_code.session.id": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.category": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.tool.name": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          },
+          "claude_code.user.request": {
+            "inherited_fields": [
+              "brief",
+              "examples",
+              "note"
+            ],
+            "locally_overridden_fields": [
+              "requirement_level"
+            ],
+            "source_group": "claude_code"
+          }
+        },
+        "provenance": {
+          "path": "/tmp/claude_registry/claude_code_tools.yaml",
+          "registry_id": "claude_code_tools"
+        }
+      },
+      "metric_name": null,
+      "name": null,
+      "prefix": "claude_code.agent",
+      "span_kind": "internal",
+      "type": "span",
+      "unit": null
+    }
+  ]
+}

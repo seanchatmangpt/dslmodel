@@ -1,0 +1,17 @@
+graph TD
+    ROOT[Semantic Conventions]
+    base_operation["base.operation<br/>attribute_group<br/>Base attributes for any operation"]
+    base --> base_operation
+    base_error["base.error<br/>attribute_group<br/>Base attributes for error reporting"]
+    base --> base_error
+    base_performance["base.performance<br/>attribute_group<br/>Base attributes for performance monitoring"]
+    base --> base_performance
+    base_span["base.span<br/>span<br/>Base span for all operations"]
+    base --> base_span
+    style ROOT fill:#f9f,stroke:#333,stroke-width:4px
+    classDef span fill:#bbf,stroke:#333,stroke-width:2px
+    classDef attribute_group fill:#bfb,stroke:#333,stroke-width:2px
+    class base_operation attribute_group
+    class base_error attribute_group
+    class base_performance attribute_group
+    class base_span span

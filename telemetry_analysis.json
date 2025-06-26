@@ -1,0 +1,878 @@
+{
+  "timestamp": "2025-06-26T16:03:26.475507",
+  "spans_captured": 52,
+  "issues_found": 1,
+  "issues": [
+    "evolution.merge: Only 2.0 avg attributes"
+  ],
+  "spans": [
+    {
+      "name": "autonomous.evolution.scheduler",
+      "duration_ms": 0.034,
+      "attributes": {
+        "autonomous.evolution.scheduler.scheduler_id": "autonomous-20e0aa77",
+        "autonomous.evolution.scheduler.schedule_interval_minutes": 10,
+        "autonomous.evolution.scheduler.scheduler_state": "starting",
+        "autonomous.evolution.scheduler.total_cycles_completed": 0,
+        "autonomous.evolution.scheduler.uptime_minutes": 0,
+        "autonomous.evolution.scheduler.meaningful_work_threshold": 0.05,
+        "autonomous.evolution.scheduler.resource_limits": "{\"cpu\": 80.0, \"memory\": 85.0, \"max_experiments\": 3}"
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "autonomous.evolution.resource_management",
+      "duration_ms": 0.03,
+      "attributes": {
+        "autonomous.evolution.resource_management.scheduler_id": "autonomous-20e0aa77",
+        "autonomous.evolution.resource_management.resource_type": "system_check",
+        "autonomous.evolution.resource_management.current_usage": 74.8,
+        "autonomous.evolution.resource_management.usage_limit": 85.0,
+        "autonomous.evolution.resource_management.resource_action": "check",
+        "autonomous.evolution.resource_management.resource_health_score": 1.0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "autonomous.evolution.strategy_selection",
+      "duration_ms": 0.035,
+      "attributes": {
+        "autonomous.evolution.strategy_selection.cycle_id": "cycle-0001-a096a8",
+        "autonomous.evolution.strategy_selection.telemetry_analysis_duration_ms": 1004,
+        "autonomous.evolution.strategy_selection.available_strategies": "[\"performance\", \"quality\", \"security\", \"features\", \"architecture\"]",
+        "autonomous.evolution.strategy_selection.strategy_scores": "{\"performance\": 0.2885, \"quality\": 0.262, \"security\": 0.27749999999999997, \"features\": 0.224, \"architecture\": 0.21300000000000002}",
+        "autonomous.evolution.strategy_selection.selected_strategy": "performance",
+        "autonomous.evolution.strategy_selection.selection_confidence": 0.22806324110671936,
+        "autonomous.evolution.strategy_selection.historical_performance": "{\"performance\": [], \"quality\": [], \"security\": [], \"features\": [], \"architecture\": []}",
+        "autonomous.evolution.strategy_selection.system_needs_priority": "performance"
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.coordination",
+      "duration_ms": 0.017,
+      "attributes": {
+        "evolution.worktree.coordination.agent_id": "evolution-engine-main",
+        "evolution.worktree.coordination.coordination_action": "start_evolution_cycle",
+        "evolution.worktree.coordination.active_experiments": 0,
+        "evolution.worktree.coordination.worktrees_managed": 0,
+        "evolution.worktree.coordination.fitness_baseline": "0.75",
+        "evolution.worktree.coordination.improvement_target": "0.85",
+        "evolution.worktree.coordination.strategy_distribution": "{\"performance\": 3}"
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.042,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_exp_000",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_000",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_exp_000",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.mutation",
+      "duration_ms": 0.054,
+      "attributes": {
+        "evolution.worktree.mutation.experiment_id": "evo_cee9c377_exp_000",
+        "evolution.worktree.mutation.mutation_id": "evo_cee9c377_exp_000_mut_0",
+        "evolution.worktree.mutation.mutation_type": "optimize",
+        "evolution.worktree.mutation.target_file": "tests/readme_examples/test_fsm.py",
+        "evolution.worktree.mutation.mutation_description": "Applied optimize to tests/readme_examples/test_fsm.py",
+        "evolution.worktree.mutation.risk_level": "low",
+        "evolution.worktree.mutation.rollback_capable": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.mutation.apply",
+      "duration_ms": 265.839,
+      "attributes": {
+        "mutation.type": "optimize",
+        "mutation.target_file": "tests/readme_examples/test_fsm.py",
+        "mutation.experiment_id": "evo_cee9c377_exp_000",
+        "mutation.mutation_id": "evo_cee9c377_exp_000_mut_0",
+        "mutation.success": true,
+        "mutation.duration_ms": 265,
+        "mutation.file_size_bytes": 1399,
+        "mutation.risk_level": "low",
+        "mutation.rollback_capable": true,
+        "mutation.strategy": "performance",
+        "mutation.generation": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.mutation",
+      "duration_ms": 0.048,
+      "attributes": {
+        "evolution.worktree.mutation.experiment_id": "evo_cee9c377_exp_000",
+        "evolution.worktree.mutation.mutation_id": "evo_cee9c377_exp_000_mut_1",
+        "evolution.worktree.mutation.mutation_type": "algorithm_change",
+        "evolution.worktree.mutation.target_file": "src/dslmodel/workflows/workflow_orchestrator.py",
+        "evolution.worktree.mutation.mutation_description": "Applied algorithm_change to src/dslmodel/workflows/workflow_orchestrator.py",
+        "evolution.worktree.mutation.risk_level": "low",
+        "evolution.worktree.mutation.rollback_capable": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.mutation.apply",
+      "duration_ms": 149.215,
+      "attributes": {
+        "mutation.type": "algorithm_change",
+        "mutation.target_file": "src/dslmodel/workflows/workflow_orchestrator.py",
+        "mutation.experiment_id": "evo_cee9c377_exp_000",
+        "mutation.mutation_id": "evo_cee9c377_exp_000_mut_1",
+        "mutation.success": true,
+        "mutation.duration_ms": 149,
+        "mutation.file_size_bytes": 8993,
+        "mutation.risk_level": "low",
+        "mutation.rollback_capable": true,
+        "mutation.strategy": "performance",
+        "mutation.generation": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.mutation",
+      "duration_ms": 0.044,
+      "attributes": {
+        "evolution.worktree.mutation.experiment_id": "evo_cee9c377_exp_000",
+        "evolution.worktree.mutation.mutation_id": "evo_cee9c377_exp_000_mut_2",
+        "evolution.worktree.mutation.mutation_type": "optimize",
+        "evolution.worktree.mutation.target_file": "demo_generated_feature/auto_decision.py",
+        "evolution.worktree.mutation.mutation_description": "Applied optimize to demo_generated_feature/auto_decision.py",
+        "evolution.worktree.mutation.risk_level": "low",
+        "evolution.worktree.mutation.rollback_capable": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.mutation.apply",
+      "duration_ms": 43.523,
+      "attributes": {
+        "mutation.type": "optimize",
+        "mutation.target_file": "demo_generated_feature/auto_decision.py",
+        "mutation.experiment_id": "evo_cee9c377_exp_000",
+        "mutation.mutation_id": "evo_cee9c377_exp_000_mut_2",
+        "mutation.success": true,
+        "mutation.duration_ms": 43,
+        "mutation.file_size_bytes": 4690,
+        "mutation.risk_level": "low",
+        "mutation.rollback_capable": true,
+        "mutation.strategy": "performance",
+        "mutation.generation": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.068,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_exp_001",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_001",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_exp_001",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.mutation",
+      "duration_ms": 0.047,
+      "attributes": {
+        "evolution.worktree.mutation.experiment_id": "evo_cee9c377_exp_001",
+        "evolution.worktree.mutation.mutation_id": "evo_cee9c377_exp_001_mut_0",
+        "evolution.worktree.mutation.mutation_type": "optimize",
+        "evolution.worktree.mutation.target_file": "src/dslmodel/evolution_weaver/cli/evolution_worktree_cli.py",
+        "evolution.worktree.mutation.mutation_description": "Applied optimize to src/dslmodel/evolution_weaver/cli/evolution_worktree_cli.py",
+        "evolution.worktree.mutation.risk_level": "low",
+        "evolution.worktree.mutation.rollback_capable": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.mutation.apply",
+      "duration_ms": 267.572,
+      "attributes": {
+        "mutation.type": "optimize",
+        "mutation.target_file": "src/dslmodel/evolution_weaver/cli/evolution_worktree_cli.py",
+        "mutation.experiment_id": "evo_cee9c377_exp_001",
+        "mutation.mutation_id": "evo_cee9c377_exp_001_mut_0",
+        "mutation.success": true,
+        "mutation.duration_ms": 267,
+        "mutation.file_size_bytes": 10064,
+        "mutation.risk_level": "low",
+        "mutation.rollback_capable": true,
+        "mutation.strategy": "performance",
+        "mutation.generation": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.mutation",
+      "duration_ms": 0.05,
+      "attributes": {
+        "evolution.worktree.mutation.experiment_id": "evo_cee9c377_exp_001",
+        "evolution.worktree.mutation.mutation_id": "evo_cee9c377_exp_001_mut_1",
+        "evolution.worktree.mutation.mutation_type": "parallelize",
+        "evolution.worktree.mutation.target_file": "tests/readme_examples/test_workflow.py",
+        "evolution.worktree.mutation.mutation_description": "Applied parallelize to tests/readme_examples/test_workflow.py",
+        "evolution.worktree.mutation.risk_level": "low",
+        "evolution.worktree.mutation.rollback_capable": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.mutation.apply",
+      "duration_ms": 266.386,
+      "attributes": {
+        "mutation.type": "parallelize",
+        "mutation.target_file": "tests/readme_examples/test_workflow.py",
+        "mutation.experiment_id": "evo_cee9c377_exp_001",
+        "mutation.mutation_id": "evo_cee9c377_exp_001_mut_1",
+        "mutation.success": true,
+        "mutation.duration_ms": 266,
+        "mutation.file_size_bytes": 1015,
+        "mutation.risk_level": "low",
+        "mutation.rollback_capable": true,
+        "mutation.strategy": "performance",
+        "mutation.generation": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.042,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_exp_002",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_002",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_exp_002",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.mutation",
+      "duration_ms": 0.042,
+      "attributes": {
+        "evolution.worktree.mutation.experiment_id": "evo_cee9c377_exp_002",
+        "evolution.worktree.mutation.mutation_id": "evo_cee9c377_exp_002_mut_0",
+        "evolution.worktree.mutation.mutation_type": "optimize",
+        "evolution.worktree.mutation.target_file": "src/dslmodel/mq7/events/example_event.py",
+        "evolution.worktree.mutation.mutation_description": "Applied optimize to src/dslmodel/mq7/events/example_event.py",
+        "evolution.worktree.mutation.risk_level": "low",
+        "evolution.worktree.mutation.rollback_capable": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.mutation.apply",
+      "duration_ms": 260.686,
+      "attributes": {
+        "mutation.type": "optimize",
+        "mutation.target_file": "src/dslmodel/mq7/events/example_event.py",
+        "mutation.experiment_id": "evo_cee9c377_exp_002",
+        "mutation.mutation_id": "evo_cee9c377_exp_002_mut_0",
+        "mutation.success": true,
+        "mutation.duration_ms": 260,
+        "mutation.file_size_bytes": 394,
+        "mutation.risk_level": "low",
+        "mutation.rollback_capable": true,
+        "mutation.strategy": "performance",
+        "mutation.generation": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.019,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_exp_000",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_000",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 7,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "3.4%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.212,
+      "attributes": {
+        "fitness.score": 0.765897274523672,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": 2.119636603156261,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_exp_000",
+        "experiment.generation": 0,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_000",
+        "tests.total": 10,
+        "tests.passed": 7,
+        "tests.success_rate": 70.0,
+        "performance.impact_percentage": 3.4399481031730534,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": false
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.013,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_exp_001",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_001",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 8,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "-3.2%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.08,
+      "attributes": {
+        "fitness.score": 0.8139020882635424,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": 8.520278435138984,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_exp_001",
+        "experiment.generation": 0,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_001",
+        "tests.total": 10,
+        "tests.passed": 8,
+        "tests.success_rate": 80.0,
+        "performance.impact_percentage": -3.165331244591829,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": false
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.01,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_exp_002",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_002",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 8,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "13.0%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.06,
+      "attributes": {
+        "fitness.score": 0.8831999151073322,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": 17.759988680977624,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_exp_002",
+        "experiment.generation": 0,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_exp_002",
+        "tests.total": 10,
+        "tests.passed": 8,
+        "tests.success_rate": 80.0,
+        "performance.impact_percentage": 12.99531313909138,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.046,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_gen1_exp_919",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_919",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_gen1_exp_919",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 1
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.049,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_gen1_exp_748",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_748",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_gen1_exp_748",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 1
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.043,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_gen1_exp_444",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_444",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_gen1_exp_444",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 1
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.028,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_gen1_exp_919",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_919",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 10,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "0.6%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.39,
+      "attributes": {
+        "fitness.score": 0.9012163002506305,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": 20.162173366750732,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_gen1_exp_919",
+        "experiment.generation": 1,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_919",
+        "tests.total": 10,
+        "tests.passed": 10,
+        "tests.success_rate": 100.0,
+        "performance.impact_percentage": 0.6082383782155727,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.011,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_gen1_exp_748",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_748",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 10,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "-0.7%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.082,
+      "attributes": {
+        "fitness.score": 0.8697039355410944,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": 15.960524738812584,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_gen1_exp_748",
+        "experiment.generation": 1,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_748",
+        "tests.total": 10,
+        "tests.passed": 10,
+        "tests.success_rate": 100.0,
+        "performance.impact_percentage": -0.6795576946072028,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.009,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_gen1_exp_444",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_444",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 9,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "-3.2%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.067,
+      "attributes": {
+        "fitness.score": 0.8272301682817613,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": 10.297355770901511,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_gen1_exp_444",
+        "experiment.generation": 1,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen1_exp_444",
+        "tests.total": 10,
+        "tests.passed": 9,
+        "tests.success_rate": 90.0,
+        "performance.impact_percentage": -3.183739370771179,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": false
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.042,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_gen2_exp_366",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_366",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_gen2_exp_366",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 2
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.043,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_gen2_exp_408",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_408",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_gen2_exp_408",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 2
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.mutation",
+      "duration_ms": 0.045,
+      "attributes": {
+        "evolution.worktree.mutation.experiment_id": "evo_cee9c377_gen2_exp_408",
+        "evolution.worktree.mutation.mutation_id": "evo_cee9c377_gen2_exp_408_mut_0",
+        "evolution.worktree.mutation.mutation_type": "algorithm_change",
+        "evolution.worktree.mutation.target_file": "src/dslmodel/mq7/events/on_light_measured.py",
+        "evolution.worktree.mutation.mutation_description": "Applied algorithm_change to src/dslmodel/mq7/events/on_light_measured.py",
+        "evolution.worktree.mutation.risk_level": "low",
+        "evolution.worktree.mutation.rollback_capable": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.mutation.apply",
+      "duration_ms": 267.329,
+      "attributes": {
+        "mutation.type": "algorithm_change",
+        "mutation.target_file": "src/dslmodel/mq7/events/on_light_measured.py",
+        "mutation.experiment_id": "evo_cee9c377_gen2_exp_408",
+        "mutation.mutation_id": "evo_cee9c377_gen2_exp_408_mut_0",
+        "mutation.success": true,
+        "mutation.duration_ms": 267,
+        "mutation.file_size_bytes": 685,
+        "mutation.risk_level": "low",
+        "mutation.rollback_capable": true,
+        "mutation.strategy": "performance",
+        "mutation.generation": 2
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.experiment",
+      "duration_ms": 0.04,
+      "attributes": {
+        "evolution.worktree.experiment.experiment_id": "evo_cee9c377_gen2_exp_293",
+        "evolution.worktree.experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_293",
+        "evolution.worktree.experiment.branch_name": "evolution/evo_cee9c377_gen2_exp_293",
+        "evolution.worktree.experiment.base_commit": "ef5d2a6b17941a1423ad941a77bd88c05218c2a7",
+        "evolution.worktree.experiment.evolution_strategy": "performance",
+        "evolution.worktree.experiment.fitness_before": "0.75",
+        "evolution.worktree.experiment.target_fitness": "0.85",
+        "evolution.worktree.experiment.generation_number": 2
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.mutation",
+      "duration_ms": 0.043,
+      "attributes": {
+        "evolution.worktree.mutation.experiment_id": "evo_cee9c377_gen2_exp_293",
+        "evolution.worktree.mutation.mutation_id": "evo_cee9c377_gen2_exp_293_mut_0",
+        "evolution.worktree.mutation.mutation_type": "parallelize",
+        "evolution.worktree.mutation.target_file": "src/dslmodel/clis/gen_cmd_func.py",
+        "evolution.worktree.mutation.mutation_description": "Applied parallelize to src/dslmodel/clis/gen_cmd_func.py",
+        "evolution.worktree.mutation.risk_level": "low",
+        "evolution.worktree.mutation.rollback_capable": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.mutation.apply",
+      "duration_ms": 272.247,
+      "attributes": {
+        "mutation.type": "parallelize",
+        "mutation.target_file": "src/dslmodel/clis/gen_cmd_func.py",
+        "mutation.experiment_id": "evo_cee9c377_gen2_exp_293",
+        "mutation.mutation_id": "evo_cee9c377_gen2_exp_293_mut_0",
+        "mutation.success": true,
+        "mutation.duration_ms": 272,
+        "mutation.file_size_bytes": 3379,
+        "mutation.risk_level": "low",
+        "mutation.rollback_capable": true,
+        "mutation.strategy": "performance",
+        "mutation.generation": 2
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.024,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_gen2_exp_366",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_366",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 7,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "-1.9%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.364,
+      "attributes": {
+        "fitness.score": 0.8473714537439481,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": 12.982860499193075,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_gen2_exp_366",
+        "experiment.generation": 2,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_366",
+        "tests.total": 10,
+        "tests.passed": 7,
+        "tests.success_rate": 70.0,
+        "performance.impact_percentage": -1.9084626769689672,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": false
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.01,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_gen2_exp_408",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_408",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 7,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "-3.0%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.08,
+      "attributes": {
+        "fitness.score": 0.7393213344930503,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": -1.423822067593298,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_gen2_exp_408",
+        "experiment.generation": 2,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_408",
+        "tests.total": 10,
+        "tests.passed": 7,
+        "tests.success_rate": 70.0,
+        "performance.impact_percentage": -3.0392303311090085,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": false
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.validation",
+      "duration_ms": 0.01,
+      "attributes": {
+        "evolution.worktree.validation.experiment_id": "evo_cee9c377_gen2_exp_293",
+        "evolution.worktree.validation.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_293",
+        "evolution.worktree.validation.validation_type": "fitness_evaluation",
+        "evolution.worktree.validation.tests_total": 10,
+        "evolution.worktree.validation.tests_passed": 9,
+        "evolution.worktree.validation.fitness_score": "0.75",
+        "evolution.worktree.validation.performance_impact": "4.3%",
+        "evolution.worktree.validation.validation_passed": true,
+        "evolution.worktree.validation.blocking_issues": 0
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.fitness.evaluate",
+      "duration_ms": 0.063,
+      "attributes": {
+        "fitness.score": 0.8193954226065308,
+        "fitness.baseline": 0.75,
+        "fitness.improvement_percentage": 9.2527230142041,
+        "fitness.evaluation_duration_ms": 0,
+        "experiment.strategy": "performance",
+        "experiment.experiment_id": "evo_cee9c377_gen2_exp_293",
+        "experiment.generation": 2,
+        "experiment.worktree_path": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_293",
+        "tests.total": 10,
+        "tests.passed": 9,
+        "tests.success_rate": 90.0,
+        "performance.impact_percentage": 4.258349573911207,
+        "validation.passed": true,
+        "validation.blocking_issues": 0,
+        "fitness.target": 0.85,
+        "fitness.meets_target": false
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.worktree.merge",
+      "duration_ms": 0.022,
+      "attributes": {
+        "evolution.worktree.merge.experiment_id": "evo_cee9c377_gen2_exp_366",
+        "evolution.worktree.merge.source_worktree": "/Users/sac/dev/dslmodel/evolution_worktrees/evo_cee9c377_gen2_exp_366",
+        "evolution.worktree.merge.source_branch": "evolution/evo_cee9c377_gen2_exp_366",
+        "evolution.worktree.merge.target_branch": "main",
+        "evolution.worktree.merge.fitness_improvement": "0.901",
+        "evolution.worktree.merge.mutations_merged": 3,
+        "evolution.worktree.merge.merge_strategy": "merge",
+        "evolution.worktree.merge.rollback_plan": "git revert if issues detected",
+        "evolution.worktree.merge.merge_success": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.merge",
+      "duration_ms": 0.082,
+      "attributes": {
+        "merge.success": true,
+        "merge.fitness_improvement": 0.9012163002506305
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "evolution.cycle.start",
+      "duration_ms": 8345.271,
+      "attributes": {
+        "evolution.id": "evo_cee9c377",
+        "evolution.strategy": "performance",
+        "evolution.population_size": 3,
+        "evolution.best_fitness": 0.9012163002506305,
+        "evolution.merge_success": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "autonomous.evolution.meaningful_work",
+      "duration_ms": 0.027,
+      "attributes": {
+        "autonomous.evolution.meaningful_work.cycle_id": "cycle-0001-a096a8",
+        "autonomous.evolution.meaningful_work.assessment_type": "fitness_threshold",
+        "autonomous.evolution.meaningful_work.baseline_fitness": 0.75,
+        "autonomous.evolution.meaningful_work.achieved_fitness": 0.9012163002506305,
+        "autonomous.evolution.meaningful_work.improvement_percentage": 15.121630025063048,
+        "autonomous.evolution.meaningful_work.meaningful_threshold": 5.0,
+        "autonomous.evolution.meaningful_work.work_classification": "highly_meaningful",
+        "autonomous.evolution.meaningful_work.impact_areas": "[\"performance\"]",
+        "autonomous.evolution.meaningful_work.deployment_recommended": true
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    },
+    {
+      "name": "autonomous.evolution.cycle",
+      "duration_ms": 0.041,
+      "attributes": {
+        "autonomous.evolution.cycle.cycle_id": "cycle-0001-a096a8",
+        "autonomous.evolution.cycle.scheduler_id": "autonomous-20e0aa77",
+        "autonomous.evolution.cycle.cycle_number": 1,
+        "autonomous.evolution.cycle.selected_strategy": "performance",
+        "autonomous.evolution.cycle.cycle_duration_ms": 11369,
+        "autonomous.evolution.cycle.experiments_created": 3,
+        "autonomous.evolution.cycle.fitness_improvement": 0.1512163002506305,
+        "autonomous.evolution.cycle.meaningful_work_achieved": true,
+        "autonomous.evolution.cycle.resource_usage": "{\"cpu\": 50.8, \"memory\": 75.5, \"disk\": 3.0, \"worktrees\": 0}",
+        "autonomous.evolution.cycle.next_cycle_recommendation": "performance"
+      },
+      "status": "<opentelemetry.trace.status.Status object at 0x100b29550>"
+    }
+  ]
+}

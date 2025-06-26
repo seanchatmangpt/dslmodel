@@ -1,0 +1,81 @@
+{
+  "validation_summary": {
+    "session_id": "079f74b6",
+    "total_layers": 5,
+    "successful_layers": 4,
+    "layer_efficiency": 0.8,
+    "total_duration_seconds": 0.02064824104309082,
+    "avg_layer_duration_ms": 3.4,
+    "total_validations": 60,
+    "total_patterns_discovered": 31
+  },
+  "feedback_summary": {
+    "total_feedback_items": 2,
+    "applied_feedback": 0,
+    "application_rate": 0.0,
+    "feedback_by_type": {
+      "schema_improvement": 1,
+      "pattern_discovery": 1
+    },
+    "unique_feedback_types": 2
+  },
+  "layer_results": [
+    {
+      "layer": "semantic",
+      "success": false,
+      "duration_ms": 17,
+      "validations": 12,
+      "patterns": 4,
+      "feedback_count": 1,
+      "has_improvements": false
+    },
+    {
+      "layer": "pattern",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 14,
+      "feedback_count": 1,
+      "has_improvements": false
+    },
+    {
+      "layer": "integration",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 12,
+      "feedback_count": 0,
+      "has_improvements": false
+    },
+    {
+      "layer": "performance",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 1,
+      "feedback_count": 0,
+      "has_improvements": false
+    },
+    {
+      "layer": "meta_learning",
+      "success": true,
+      "duration_ms": 0,
+      "validations": 12,
+      "patterns": 0,
+      "feedback_count": 0,
+      "has_improvements": false
+    }
+  ],
+  "learning_metrics": {
+    "patterns_learned": 3,
+    "feedback_history_size": 0,
+    "performance_history_size": 1,
+    "schema_evolution_cycles": 0
+  },
+  "system_health": {
+    "multilayer_efficiency": 0.8,
+    "feedback_effectiveness": 0.0,
+    "learning_velocity": 1501.3385370359679,
+    "overall_score": 0.4
+  }
+}

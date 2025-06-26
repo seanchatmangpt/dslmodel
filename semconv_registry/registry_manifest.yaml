@@ -8,3 +8,6 @@ description: "Semantic conventions for SwarmAgent telemetry"
 files:
   - swarm_agents.yaml
   - dslmodel.yaml
+  - claude_code_tools.yaml
+  - dslmodel_360.yaml
+  - pqc_global.yaml

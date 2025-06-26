@@ -1,0 +1,9 @@
+# Registry manifest for Claude Code tools
+name: "claude_code_tools"
+version: "1.0.0"
+semconv_version: "1.28.0"
+schema_base_url: "https://opentelemetry.io/schemas/claude"
+description: "Semantic conventions for Claude Code tool telemetry"
+
+files:
+  - claude_code_tools.yaml

@@ -11,7 +11,7 @@ from typing_extensions import Annotated
 from dslmodel import init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
 from dslmodel.template import render
-from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree, agent_coordination_cli, evolution, auto_evolution, evolution_worktree, complete_8020_validation, unified_evolution_cli, unified_8020_evolution, consolidated_cli
+from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree, agent_coordination_cli, evolution, auto_evolution, evolution_worktree, complete_8020_validation, unified_evolution_cli, unified_8020_evolution, consolidated_cli, ollama_autonomous, system_introspection, disc_autonomous, weaver_diagrams, disc_integrated_auto, weaver_autonomous_loop, multilayer_weaver_feedback, otel_learning_engine, health_8020_improvement, claude_code_otel_monitoring
 try:
     from dslmodel.commands import pqc
     PQC_AVAILABLE = True
@@ -61,6 +61,9 @@ app.add_typer(name="validate", typer_instance=validate_otel.app, help="Concurren
 app.add_typer(name="validate-weaver", typer_instance=validate_weaver.app, help="Weaver-first OpenTelemetry validation using semantic conventions")
 app.add_typer(name="validation-loop", typer_instance=validation_loop.app, help="Continuous SwarmAgent validation loop with auto-remediation")
 app.add_typer(name="ollama", typer_instance=ollama_validate.app, help="Ollama configuration validation and management")
+app.add_typer(name="ollama-auto", typer_instance=ollama_autonomous.app, help="🤖 Autonomous Ollama system - gap detection and self-healing")
+app.add_typer(name="disc-auto", typer_instance=disc_autonomous.app, help="🧠 DISC autonomous compensation - behavioral gap detection and compensation")
+app.add_typer(name="disc-integrated", typer_instance=disc_integrated_auto.app, help="🤝 DISC-integrated autonomous system - decisions with behavioral compensation")
 app.add_typer(name="weaver", typer_instance=weaver.app, help="Weaver-first auto-generation from semantic conventions")
 app.add_typer(name="weaver-health", typer_instance=weaver_health_check.app, help="Weaver global health checks with Ollama validation")
 app.add_typer(name="worktree", typer_instance=worktree.app, help="Git worktree management for exclusive worktree development")
@@ -71,13 +74,8 @@ app.add_typer(name="agents", typer_instance=agent_coordination_cli.app, help="Ag
 # ============================================================================
 # NEW: Consolidated 8020 CLI Structure (5 commands replace 20+)
 # ============================================================================
-# Remove the confusing nested structure - integrate directly into main CLI
-# New clean commands at top level
-app.add_typer(name="evolve-ultimate", typer_instance=consolidated_cli.evolve_app, help="🧬 Ultimate evolution system - all capabilities")
-app.add_typer(name="validate-all", typer_instance=consolidated_cli.validate_app, help="✅ All validation systems - OTEL, Weaver, 8020")
-app.add_typer(name="generate-all", typer_instance=consolidated_cli.generate_app, help="🔧 All generation systems - DSL, Weaver, OpenAPI")
-app.add_typer(name="agents-all", typer_instance=consolidated_cli.agents_app, help="🤖 All agent systems - Swarm, coordination, worktree")
-app.add_typer(name="security-all", typer_instance=consolidated_cli.security_app, help="🔒 All security systems - RedTeam, PQC, monitoring")
+# Simple consolidated commands - use the main app from consolidated_cli
+app.add_typer(name="dsl", typer_instance=consolidated_cli.app, help="🎯 Consolidated CLI - Core and Advanced commands")
 
 # ============================================================================
 # LEGACY: Keep for backward compatibility (will be deprecated)
@@ -88,6 +86,13 @@ app.add_typer(name="evolve-legacy", typer_instance=evolution.app, help="Legacy a
 app.add_typer(name="auto-evolve", typer_instance=auto_evolution.app, help="Automatic evolution with SwarmAgent integration")
 app.add_typer(name="evolve-worktree", typer_instance=evolution_worktree.app, help="Worktree-based evolution with OTEL telemetry")
 app.add_typer(name="8020", typer_instance=complete_8020_validation.app, help="Complete 8020 SwarmAgent feature validation and demonstration")
+app.add_typer(name="introspect", typer_instance=system_introspection.app, help="🔍 System introspection - echo internal structure and architecture")
+app.add_typer(name="weaver-diagrams", typer_instance=weaver_diagrams.app, help="🧵 Weaver architecture diagrams - visualize all Weaver aspects")
+app.add_typer(name="weaver-loop", typer_instance=weaver_autonomous_loop.app, help="🔄 Weaver autonomous loop - 10-minute feature completion cycles")
+app.add_typer(name="weaver-multilayer", typer_instance=multilayer_weaver_feedback.app, help="🧵 Multi-layer Weaver validation with feedback loops and self-improvement")
+app.add_typer(name="otel-learn", typer_instance=otel_learning_engine.app, help="🧠 OTEL Learning Engine - Feed telemetry data to language models")
+app.add_typer(name="health-8020", typer_instance=health_8020_improvement.app, help="🎯 80/20 Health Improvement - Optimize system health using Pareto Principle")
+app.add_typer(name="otel-monitor", typer_instance=claude_code_otel_monitoring.app, help="🔍 Claude Code OTEL monitoring and gap detection")
 
 
 # ============================================================================  

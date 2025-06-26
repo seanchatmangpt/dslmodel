@@ -1,1 +1,1 @@
-{"id": "agent_1", "status": "active", "model": "ollama/qwen3", "created": "2025-06-26T01:23:52.105422", "demo": true}
+{"agent_id": "agent1", "status": "active"}

@@ -1,0 +1,148 @@
+layer_type: base
+version: 1.0.0
+dependencies: []
+metadata:
+  description: Foundational semantic conventions for all telemetry data
+  maintainer: DSLModel Core Team
+  otel_version: 1.21.0
+groups:
+- id: base.operation
+  type: attribute_group
+  brief: Base attributes for any operation
+  attributes:
+  - ref: operation.name
+    requirement_level: required
+  - ref: operation.type
+    requirement_level: required
+  - ref: operation.duration_ms
+    requirement_level: recommended
+  - ref: operation.status
+    requirement_level: required
+  - ref: session.id
+    requirement_level: recommended
+- id: base.error
+  type: attribute_group
+  brief: Base attributes for error reporting
+  attributes:
+  - ref: error.type
+    requirement_level: required
+  - ref: error.message
+    requirement_level: recommended
+  - ref: operation.status
+    requirement_level: required
+- id: base.performance
+  type: attribute_group
+  brief: Base attributes for performance monitoring
+  attributes:
+  - ref: operation.duration_ms
+    requirement_level: required
+  - ref: performance.cpu_time_ms
+    requirement_level: recommended
+  - ref: performance.memory_bytes
+    requirement_level: optional
+  - ref: resource.size_bytes
+    requirement_level: optional
+- id: base.span
+  type: span
+  span_kind: internal
+  brief: Base span for all operations
+  attributes:
+  - ref: operation.name
+    requirement_level: required
+  - ref: operation.type
+    requirement_level: required
+  - ref: session.id
+    requirement_level: recommended
+  - ref: user.id
+    requirement_level: optional
+attributes:
+- id: session.id
+  type: string
+  requirement_level: recommended
+  brief: Unique identifier for the current session
+  examples:
+  - session_1234567890
+  - sess_abc123
+  note: Should be consistent across all operations in a session
+- id: user.id
+  type: string
+  requirement_level: optional
+  brief: Identifier for the user performing the operation
+  examples:
+  - user_123
+  - admin
+  - anonymous
+- id: operation.name
+  type: string
+  requirement_level: required
+  brief: Name of the operation being performed
+  examples:
+  - file.read
+  - web.fetch
+  - command.execute
+- id: operation.type
+  type: string
+  requirement_level: required
+  brief: Category of operation
+  examples:
+  - io
+  - network
+  - compute
+  - system
+- id: operation.duration_ms
+  type: double
+  requirement_level: recommended
+  brief: Duration of the operation in milliseconds
+  examples:
+  - 12.5
+  - 150.0
+  - 2500.0
+- id: operation.status
+  type: string
+  requirement_level: required
+  brief: Status of the operation
+  examples:
+  - success
+  - error
+  - timeout
+  - cancelled
+- id: error.type
+  type: string
+  requirement_level: recommended
+  brief: Type of error that occurred
+  examples:
+  - FileNotFound
+  - NetworkTimeout
+  - ValidationError
+  note: Only present when operation.status is 'error'
+- id: error.message
+  type: string
+  requirement_level: recommended
+  brief: Human-readable error message
+  examples:
+  - 'File not found: /path/to/file'
+  - Connection timeout after 30s
+- id: resource.size_bytes
+  type: int
+  requirement_level: optional
+  brief: Size of the resource being operated on in bytes
+  examples:
+  - 1024
+  - 5242880
+  - 0
+- id: performance.cpu_time_ms
+  type: double
+  requirement_level: optional
+  brief: CPU time consumed by the operation in milliseconds
+  examples:
+  - 5.2
+  - 150.0
+  - 1000.0
+- id: performance.memory_bytes
+  type: int
+  requirement_level: optional
+  brief: Peak memory usage during operation in bytes
+  examples:
+  - 1048576
+  - 16777216
+  - 134217728

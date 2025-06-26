@@ -149,3 +149,529 @@ This CLI can integrate with:
 - Monitoring systems via JSON logs
 - Agent frameworks for autonomous operation
 - Project management tools via export
+
+## Architecture Diagrams
+
+### 1. Overall Claude Code Architecture
+
+```mermaid
+graph TB
+    subgraph "Claude Code Core"
+        CC[Claude Code Instance]
+        CM[Conversation Manager]
+        TM[Tool Manager]
+        MM[Memory Manager]
+    end
+    
+    subgraph "DSLModel Integration"
+        CLI[DSL CLI Interface]
+        SA[SwarmAgent System]
+        OTEL[OpenTelemetry]
+        WE[Weaver Engine]
+    end
+    
+    subgraph "Cognitive Enhancement Layer"
+        CE[Cognitive Engine]
+        PL[Pattern Learning]
+        WO[Workflow Optimizer]
+        CT[Context Tracker]
+    end
+    
+    subgraph "Storage & Persistence"
+        FS[File System]
+        GIT[Git Repositories]
+        JSONL[JSONL Telemetry]
+        CLAUDE_MD[CLAUDE.md]
+    end
+    
+    CC --> CM --> TM
+    CC --> MM
+    TM --> CLI
+    CLI --> SA
+    SA --> OTEL
+    CLI --> WE
+    
+    CC --> CE
+    CE --> PL
+    CE --> WO
+    CE --> CT
+    
+    MM --> FS
+    CM --> CLAUDE_MD
+    OTEL --> JSONL
+    CLI --> GIT
+    
+    style CC fill:#f9f,stroke:#333,stroke-width:4px
+    style CE fill:#bbf,stroke:#333,stroke-width:2px
+    style SA fill:#bfb,stroke:#333,stroke-width:2px
+```
+
+### 2. CLI Command Structure & Consolidation
+
+```mermaid
+graph LR
+    subgraph "Legacy Structure (25+ commands)"
+        L1[dsl gen]
+        L2[dsl evolve]
+        L3[dsl evolve-unified]
+        L4[dsl evolve-legacy]
+        L5[dsl auto-evolve]
+        L6[dsl evolve-worktree]
+        L7[dsl 8020]
+        L8[dsl validate]
+        L9[dsl validate-weaver]
+        L10[dsl forge]
+        L11[dsl weaver]
+        L12[dsl worktree]
+        L13[dsl swarm]
+        L14[dsl agents]
+        L15[dsl redteam]
+        L16[dsl telemetry]
+    end
+    
+    subgraph "Consolidated 80/20 Structure"
+        subgraph "Core Commands (80% usage)"
+            C1[dsl gen<br/>Model Generation]
+            C2[dsl evolve<br/>Unified Evolution]
+            C3[dsl agent<br/>Agent Coordination]
+            C4[dsl validate<br/>All Validation]
+            C5[dsl dev<br/>Dev Tools]
+            C6[dsl demo<br/>Demonstrations]
+        end
+        
+        subgraph "Advanced (20% usage)"
+            A1[dsl security<br/>Security Tools]
+            A2[dsl telemetry<br/>Monitoring]
+            A3[dsl research<br/>Research Tools]
+        end
+    end
+    
+    L1 --> C1
+    L2 --> C2
+    L3 --> C2
+    L4 --> C2
+    L5 --> C2
+    L6 --> C2
+    L7 --> C4
+    L8 --> C4
+    L9 --> C4
+    L10 --> C5
+    L11 --> C5
+    L12 --> C5
+    L13 --> C3
+    L14 --> C3
+    L15 --> A1
+    L16 --> A2
+    
+    style C1 fill:#f96,stroke:#333,stroke-width:2px
+    style C2 fill:#f96,stroke:#333,stroke-width:2px
+    style C3 fill:#f96,stroke:#333,stroke-width:2px
+    style C4 fill:#f96,stroke:#333,stroke-width:2px
+```
+
+### 3. SwarmAgent Communication Flow
+
+```mermaid
+sequenceDiagram
+    participant RobertsAgent
+    participant ScrumAgent
+    participant LeanAgent
+    participant OTEL
+    participant JSONL
+    
+    Note over RobertsAgent: Motion Proposed
+    RobertsAgent->>OTEL: emit_span("swarmsh.roberts.open")
+    OTEL->>JSONL: Write span to file
+    
+    RobertsAgent->>RobertsAgent: State: IDLE → MOTION_OPEN
+    
+    Note over RobertsAgent: Voting
+    RobertsAgent->>OTEL: emit_span("swarmsh.roberts.vote")
+    OTEL->>JSONL: Write span
+    RobertsAgent->>RobertsAgent: State: MOTION_OPEN → VOTING
+    
+    Note over RobertsAgent: Motion Passes
+    RobertsAgent->>OTEL: emit_span("swarmsh.roberts.close")
+    OTEL->>ScrumAgent: Trigger: "swarmsh.scrum.plan"
+    
+    Note over ScrumAgent: Sprint Planning
+    ScrumAgent->>ScrumAgent: State: IDLE → PLANNING
+    ScrumAgent->>OTEL: emit_span("swarmsh.scrum.plan")
+    
+    Note over ScrumAgent: Defect Found
+    ScrumAgent->>OTEL: emit_span("swarmsh.scrum.review")
+    OTEL->>LeanAgent: Trigger: "swarmsh.lean.define"
+    
+    Note over LeanAgent: DMAIC Cycle
+    LeanAgent->>LeanAgent: State: IDLE → DEFINE
+    LeanAgent->>OTEL: emit_span("swarmsh.lean.define")
+    
+    Note over LeanAgent: Process Change
+    LeanAgent->>OTEL: emit_span("swarmsh.lean.improve")
+    OTEL->>RobertsAgent: Trigger: "swarmsh.roberts.open"
+    
+    Note over JSONL: Continuous span streaming
+```
+
+### 4. OTEL Telemetry Integration
+
+```mermaid
+graph TB
+    subgraph "Telemetry Sources"
+        S1[SwarmAgent Spans]
+        S2[Evolution Metrics]
+        S3[Validation Results]
+        S4[Cognitive Events]
+        S5[Worktree Operations]
+    end
+    
+    subgraph "OTEL Core"
+        TP[TracerProvider]
+        SP[SpanProcessor]
+        SE[SpanExporter]
+        SC[SpanContext]
+    end
+    
+    subgraph "Exporters"
+        JE[JSONL Exporter]
+        CE[Console Exporter]
+        ME[Memory Exporter]
+    end
+    
+    subgraph "Storage"
+        SPANS[spans.jsonl]
+        AGENT[agent_coordination/]
+        METRICS[metrics.json]
+    end
+    
+    subgraph "Consumers"
+        VAL[Validators]
+        MON[Monitors]
+        LEARN[Learning Systems]
+    end
+    
+    S1 --> TP
+    S2 --> TP
+    S3 --> TP
+    S4 --> TP
+    S5 --> TP
+    
+    TP --> SP
+    SP --> SE
+    SE --> JE
+    SE --> CE
+    SE --> ME
+    
+    JE --> SPANS
+    JE --> AGENT
+    ME --> METRICS
+    
+    SPANS --> VAL
+    AGENT --> MON
+    METRICS --> LEARN
+    
+    style TP fill:#f9f,stroke:#333,stroke-width:2px
+    style JE fill:#9f9,stroke:#333,stroke-width:2px
+```
+
+### 5. Evolution System Workflow
+
+```mermaid
+stateDiagram-v2
+    [*] --> Analysis: Start Evolution
+    
+    Analysis --> Detection: Analyze Gaps
+    Detection --> Prioritization: Detect Issues
+    Prioritization --> Implementation: 80/20 Prioritize
+    
+    state Implementation {
+        [*] --> Worktree: Create Worktree
+        Worktree --> Mutation: Apply Changes
+        Mutation --> Testing: Run Tests
+        Testing --> Validation: Validate
+        Validation --> [*]: Success
+        Validation --> Worktree: Failure
+    }
+    
+    Implementation --> Merge: All Tests Pass
+    Merge --> Monitoring: Deploy
+    Monitoring --> Learning: Collect Metrics
+    Learning --> [*]: Complete
+    
+    Learning --> Analysis: Continuous Loop
+    
+    note right of Prioritization
+        80/20 Rule:
+        Focus on 20% changes
+        that deliver 80% value
+    end note
+    
+    note right of Monitoring
+        OTEL telemetry tracks:
+        - Performance impact
+        - Error rates
+        - User satisfaction
+    end note
+```
+
+### 6. Validation Pipeline
+
+```mermaid
+graph LR
+    subgraph "Input Sources"
+        IS1[JSONL Spans]
+        IS2[Agent Telemetry]
+        IS3[Evolution Metrics]
+    end
+    
+    subgraph "Validation Types"
+        subgraph "OTEL Validation"
+            OV1[Span Schema]
+            OV2[Trace Integrity]
+            OV3[Attribute Compliance]
+        end
+        
+        subgraph "Weaver Validation"
+            WV1[Semantic Conventions]
+            WV2[Attribute Rules]
+            WV3[Span Relationships]
+        end
+        
+        subgraph "8020 Validation"
+            EV1[Efficiency Metrics]
+            EV2[Value Delivery]
+            EV3[Effort Analysis]
+        end
+    end
+    
+    subgraph "Results"
+        R1[Validation Report]
+        R2[Success Metrics]
+        R3[Failure Analysis]
+        R4[Remediation Actions]
+    end
+    
+    IS1 --> OV1
+    IS2 --> WV1
+    IS3 --> EV1
+    
+    OV1 --> R1
+    OV2 --> R1
+    OV3 --> R1
+    
+    WV1 --> R2
+    WV2 --> R2
+    WV3 --> R2
+    
+    EV1 --> R3
+    EV2 --> R3
+    EV3 --> R4
+    
+    style EV1 fill:#f96,stroke:#333,stroke-width:2px
+    style EV2 fill:#f96,stroke:#333,stroke-width:2px
+```
+
+### 7. Worktree Management System
+
+```mermaid
+graph TB
+    subgraph "Worktree Lifecycle"
+        CREATE[Create Worktree]
+        CHECKOUT[Checkout Branch]
+        DEVELOP[Development]
+        TEST[Testing]
+        VALIDATE[Validation]
+        MERGE[Merge]
+        CLEANUP[Cleanup]
+    end
+    
+    subgraph "Isolation Benefits"
+        ISO1[Safe Experimentation]
+        ISO2[Parallel Development]
+        ISO3[Easy Rollback]
+        ISO4[Clean Testing]
+    end
+    
+    subgraph "Integration Points"
+        GIT[Git Commands]
+        SWARM[SwarmAgent Coordination]
+        OTEL[OTEL Telemetry]
+        EVOLVE[Evolution System]
+    end
+    
+    CREATE --> CHECKOUT
+    CHECKOUT --> DEVELOP
+    DEVELOP --> TEST
+    TEST --> VALIDATE
+    VALIDATE --> MERGE
+    VALIDATE --> CLEANUP
+    MERGE --> CLEANUP
+    
+    CREATE --> ISO1
+    DEVELOP --> ISO2
+    TEST --> ISO3
+    VALIDATE --> ISO4
+    
+    CREATE --> GIT
+    DEVELOP --> SWARM
+    TEST --> OTEL
+    MERGE --> EVOLVE
+    
+    style CREATE fill:#9f9,stroke:#333,stroke-width:2px
+    style MERGE fill:#f99,stroke:#333,stroke-width:2px
+```
+
+### 8. Cognitive Enhancement Architecture
+
+```mermaid
+graph TB
+    subgraph "Claude Code Core"
+        CC[Claude Code Instance]
+        CONTEXT[Context Manager]
+        TOOLS[Tool Executor]
+    end
+    
+    subgraph "Cognitive Enhancements"
+        subgraph "Memory System"
+            SM[Session Memory]
+            PM[Pattern Memory]
+            CM[Context Memory]
+        end
+        
+        subgraph "Learning System"
+            PL[Pattern Learner]
+            SL[Success Learner]
+            FL[Failure Learner]
+        end
+        
+        subgraph "Optimization System"
+            WO[Workflow Optimizer]
+            CO[Context Optimizer]
+            TO[Task Optimizer]
+        end
+    end
+    
+    subgraph "Auto-Deployment"
+        AD[Auto-Deployer]
+        CV[Capability Validator]
+        CI[Continuous Improvement]
+    end
+    
+    subgraph "Integration"
+        DSL[DSLModel Integration]
+        SWARM[SwarmAgent Network]
+        TELEM[Telemetry System]
+    end
+    
+    CC --> CONTEXT
+    CC --> TOOLS
+    
+    CONTEXT --> SM
+    CONTEXT --> PM
+    CONTEXT --> CM
+    
+    TOOLS --> PL
+    TOOLS --> SL
+    TOOLS --> FL
+    
+    PL --> WO
+    SL --> CO
+    FL --> TO
+    
+    AD --> CV
+    CV --> CI
+    CI --> CC
+    
+    WO --> DSL
+    CO --> SWARM
+    TO --> TELEM
+    
+    style CC fill:#f9f,stroke:#333,stroke-width:4px
+    style AD fill:#9ff,stroke:#333,stroke-width:2px
+    style PL fill:#ff9,stroke:#333,stroke-width:2px
+```
+
+### 9. 80/20 System Integration
+
+```mermaid
+pie title "80/20 Command Usage Distribution"
+    "Core Commands (80%)" : 80
+    "Advanced Commands (20%)" : 20
+```
+
+```mermaid
+graph LR
+    subgraph "80% Value Delivery"
+        V1[Model Generation]
+        V2[Evolution System]
+        V3[Agent Coordination]
+        V4[Validation]
+        V5[Development Tools]
+    end
+    
+    subgraph "20% Effort Focus"
+        E1[Consolidated CLI]
+        E2[Unified Commands]
+        E3[Auto-Optimization]
+        E4[Smart Defaults]
+    end
+    
+    E1 --> V1
+    E1 --> V2
+    E2 --> V3
+    E2 --> V4
+    E3 --> V5
+    E4 --> V1
+    E4 --> V2
+    
+    style E1 fill:#9f9,stroke:#333,stroke-width:2px
+    style E2 fill:#9f9,stroke:#333,stroke-width:2px
+```
+
+### 10. Complete System Flow
+
+```mermaid
+flowchart TB
+    subgraph "User Interaction"
+        USER[User] --> CMD[CLI Command]
+    end
+    
+    subgraph "Claude Code Processing"
+        CMD --> CC[Claude Code]
+        CC --> PARSE[Parse Intent]
+        PARSE --> ENHANCE[Cognitive Enhancement]
+        ENHANCE --> EXEC[Execute]
+    end
+    
+    subgraph "DSLModel Ecosystem"
+        EXEC --> DSL{DSL Router}
+        DSL --> GEN[Generation]
+        DSL --> EVOLVE[Evolution]
+        DSL --> AGENT[Agents]
+        DSL --> VALIDATE[Validation]
+    end
+    
+    subgraph "Telemetry & Learning"
+        GEN --> OTEL[OTEL Spans]
+        EVOLVE --> OTEL
+        AGENT --> OTEL
+        VALIDATE --> OTEL
+        
+        OTEL --> LEARN[Learning System]
+        LEARN --> PATTERN[Pattern Recognition]
+        PATTERN --> ENHANCE
+    end
+    
+    subgraph "Results"
+        GEN --> RESULT[Output]
+        EVOLVE --> RESULT
+        AGENT --> RESULT
+        VALIDATE --> RESULT
+        RESULT --> USER
+    end
+    
+    style USER fill:#f9f,stroke:#333,stroke-width:4px
+    style CC fill:#9ff,stroke:#333,stroke-width:2px
+    style OTEL fill:#ff9,stroke:#333,stroke-width:2px
+    style LEARN fill:#9f9,stroke:#333,stroke-width:2px
+```
