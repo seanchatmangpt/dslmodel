@@ -27,12 +27,28 @@ from .models.evolution_worktree import (
     Evolution_worktree_coordination
 )
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 try:
     from ..otel.otel_instrumentation import init_otel, get_otel
     OTEL_AVAILABLE = True
-except ImportError:
-    from ..otel.otel_instrumentation_mock import init_otel, get_otel
-    OTEL_AVAILABLE = False
+    logger.info("✅ OTEL instrumentation loaded successfully")
+except ImportError as e:
+    logger.warning(f"⚠️  OTEL instrumentation unavailable: {e}")
+    try:
+        from ..otel.otel_instrumentation_mock import init_otel, get_otel
+        OTEL_AVAILABLE = False
+        logger.info("📋 Using OTEL mock for testing")
+    except ImportError as mock_e:
+        logger.error(f"❌ Failed to load OTEL mock: {mock_e}")
+        # Minimal fallback functions
+        def init_otel(**kwargs):
+            return None
+        def get_otel():
+            return None
+        OTEL_AVAILABLE = False
 
 class EvolutionStrategy(DSLModel):
     """Evolution strategy configuration"""

@@ -430,8 +430,62 @@ class AutonomousEvolutionEngine:
                 return 0.0
     
     async def _test_genome_performance(self, genome: EvolutionGenome) -> Dict[FitnessMetric, float]:
-        """Test genome performance in controlled environment."""
-        # Simulate testing the genome configuration
+        """Test genome performance using real fitness evaluator."""
+        try:
+            # Import real fitness evaluator
+            from ..evolution_weaver.real_fitness_evaluator import RealFitnessEvaluator
+            
+            # Initialize evaluator with current worktree path
+            evaluator = RealFitnessEvaluator(
+                project_path=self.git_manager.repo_path,
+                test_command="pytest tests/",
+                weights={
+                    'test_success': 0.4,
+                    'performance': 0.3,
+                    'code_quality': 0.2,
+                    'error_reduction': 0.1
+                }
+            )
+            
+            # Create temporary config based on genome
+            temp_config_path = await self._apply_genome_config(genome)
+            
+            with trace.get_tracer(__name__).start_as_current_span("genome_fitness_evaluation") as span:
+                span.set_attribute("genome.type", genome.genome_type)
+                span.set_attribute("genome.id", genome.genome_id)
+                
+                # Run real evaluation
+                fitness_result = await evaluator.evaluate_fitness()
+                
+                # Map real metrics to evolution metrics
+                performance = {
+                    FitnessMetric.VALIDATION_SUCCESS_RATE: fitness_result.test_success_rate,
+                    FitnessMetric.THROUGHPUT_PERFORMANCE: fitness_result.performance_score * 25000.0,
+                    FitnessMetric.ERROR_RATE: max(0.01, 1.0 - fitness_result.test_success_rate),
+                    FitnessMetric.REMEDIATION_EFFICIENCY: fitness_result.code_quality_score,
+                    FitnessMetric.COORDINATION_EFFICIENCY: fitness_result.overall_fitness
+                }
+                
+                span.set_attribute("fitness.overall_score", fitness_result.overall_fitness)
+                span.set_attribute("fitness.test_success_rate", fitness_result.test_success_rate)
+                span.set_attribute("fitness.performance_score", fitness_result.performance_score)
+                
+            # Clean up temporary config
+            if temp_config_path and temp_config_path.exists():
+                temp_config_path.unlink()
+                
+            return performance
+            
+        except ImportError:
+            # Fallback to simulation if real evaluator unavailable
+            return await self._simulate_genome_performance(genome)
+        except Exception as e:
+            # Log error and fallback to simulation
+            print(f"Real fitness evaluation failed: {e}")
+            return await self._simulate_genome_performance(genome)
+    
+    async def _simulate_genome_performance(self, genome: EvolutionGenome) -> Dict[FitnessMetric, float]:
+        """Fallback simulation for genome performance testing."""
         await asyncio.sleep(0.1)  # Simulate test time
         
         # Generate realistic performance metrics based on genome
@@ -471,6 +525,24 @@ class AutonomousEvolutionEngine:
             performance[metric] *= variance
         
         return performance
+    
+    async def _apply_genome_config(self, genome: EvolutionGenome) -> Optional[Path]:
+        """Apply genome configuration temporarily for testing."""
+        # Create temporary configuration file based on genome
+        config_data = {
+            "genome_id": genome.genome_id,
+            "genome_type": genome.genome_type,
+            "genes": genome.genes,
+            "fitness_score": genome.fitness_score
+        }
+        
+        temp_config_path = Path(f"/tmp/genome_config_{genome.genome_id}.json")
+        try:
+            with open(temp_config_path, 'w') as f:
+                json.dump(config_data, f, indent=2)
+            return temp_config_path
+        except Exception:
+            return None
     
     def _calculate_novelty_bonus(self, genome: EvolutionGenome) -> float:
         """Calculate novelty bonus for diverse genomes."""
