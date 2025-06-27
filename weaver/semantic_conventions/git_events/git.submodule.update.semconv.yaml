@@ -1,0 +1,43 @@
+groups:
+  - id: git.submodule.update
+    prefix: git
+    type: span
+    brief: "Git submodule operations"
+    attributes:
+      - id: submodule.url
+        type: string
+        brief: "URL of the submodule repository"
+        examples: ["https://github.com/org/domain-pack", "git@github.com:org/energy-pack.git"]
+        requirement_level: required
+      - id: submodule.path
+        type: string
+        brief: "Local path where submodule is mounted"
+        examples: ["domain_packs/energy", "libs/core", "weaver/templates"]
+        requirement_level: required
+      - id: submodule.sha
+        type: string
+        brief: "Commit SHA being checked out in submodule"
+        examples: ["abc123def456", "HEAD", "v1.2.3"]
+        requirement_level: required
+      - id: submodule.operation
+        type: string
+        brief: "Type of submodule operation"
+        examples: ["add", "update", "sync", "deinit"]
+        requirement_level: required
+      - id: submodule.recursive
+        type: boolean
+        brief: "Whether operation was recursive"
+        requirement_level: optional
+      - id: git.working_directory
+        type: string
+        brief: "Git working directory"
+        examples: ["/Users/sac/dev/dslmodel", "/workspace/agent_001"]
+        requirement_level: required
+      - id: git.exit_code
+        type: int
+        brief: "Git command exit code"
+        examples: [0, 1, 128]
+        requirement_level: required
+    spans:
+      - span_name: git.submodule.update
+        brief: "Git submodule lifecycle operation"

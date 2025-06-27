@@ -1,0 +1,488 @@
+layer_type: application
+version: 1.0.0
+extends: [base_layer]
+dependencies: []
+metadata:
+  name: "Weaver Forge Git Agent Operations"
+  description: "Comprehensive semantic conventions for intelligent git agent automation and DX loop operations"
+  documentation: "https://github.com/seanchatmangpt/dslmodel/docs/weaver-forge-git-agent"
+  stability: stable
+
+# Git Agent Core Operations
+groups:
+  # Git Agent Decision Making
+  - id: git_agent.decision
+    type: span
+    span_kind: internal
+    brief: "Git agent autonomous decision-making operations"
+    note: "Covers all intelligent decision-making processes by the git agent"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: git_agent.action
+        type: string
+        requirement_level: required
+        brief: "Type of git action being considered"
+        examples: ["commit", "branch", "merge", "tag", "push", "pull", "rebase", "stash"]
+      - id: git_agent.confidence
+        type: double
+        requirement_level: required
+        brief: "Confidence score for the decision (0.0-1.0)"
+      - id: git_agent.phase
+        type: string
+        requirement_level: required
+        brief: "DX loop phase where decision was made"
+        examples: ["detection", "analysis", "planning", "execution", "validation", "optimization"]
+      - id: git_agent.reasoning
+        type: string
+        requirement_level: recommended
+        brief: "Human-readable reasoning for the decision"
+      - id: git_agent.expected_outcome
+        type: string
+        requirement_level: optional
+        brief: "Expected outcome of the decision"
+      - id: git_agent.commands.count
+        type: int
+        requirement_level: optional
+        brief: "Number of git commands to be executed"
+
+  # DX Loop Operations
+  - id: git_agent.dx_loop
+    type: span
+    span_kind: internal
+    brief: "Developer Experience loop iteration operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dx_loop.iteration
+        type: int
+        requirement_level: required
+        brief: "Current loop iteration number"
+      - id: dx_loop.phase
+        type: string
+        requirement_level: required
+        brief: "Current phase of the DX loop"
+        examples: ["detection", "analysis", "planning", "execution", "validation", "optimization", "feedback"]
+      - id: dx_loop.duration
+        type: double
+        requirement_level: recommended
+        brief: "Duration of the current loop iteration in seconds"
+      - id: dx_loop.decisions_count
+        type: int
+        requirement_level: optional
+        brief: "Number of decisions made in this iteration"
+
+  # Git Agent Execution
+  - id: git_agent.execution
+    type: span
+    span_kind: internal
+    brief: "Git agent command execution operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: git_agent.command
+        type: string
+        requirement_level: required
+        brief: "Git command being executed"
+        examples: ["git commit", "git push", "git merge", "git rebase"]
+      - id: git_agent.command.args
+        type: string[]
+        requirement_level: optional
+        brief: "Arguments passed to the git command"
+      - id: git_agent.execution.result
+        type: string
+        requirement_level: recommended
+        brief: "Result of command execution"
+        examples: ["success", "failure", "partial"]
+      - id: git_agent.execution.output
+        type: string
+        requirement_level: optional
+        brief: "Command output or error message"
+      - id: git_agent.rollback.available
+        type: boolean
+        requirement_level: optional
+        brief: "Whether rollback is available for this operation"
+
+  # Repository Analysis
+  - id: git_agent.analysis
+    type: span
+    span_kind: internal
+    brief: "Repository state analysis operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: git_repo.analysis.type
+        type: string
+        requirement_level: required
+        brief: "Type of repository analysis"
+        examples: ["health_check", "opportunity_detection", "state_assessment", "metrics_calculation"]
+      - id: git_repo.commits.total
+        type: int
+        requirement_level: recommended
+        brief: "Total number of commits in repository"
+      - id: git_repo.branches.total
+        type: int
+        requirement_level: recommended
+        brief: "Total number of branches"
+      - id: git_repo.branches.active
+        type: int
+        requirement_level: optional
+        brief: "Number of active branches"
+      - id: git_repo.branches.stale
+        type: int
+        requirement_level: optional
+        brief: "Number of stale branches"
+      - id: git_repo.uncommitted.files
+        type: int
+        requirement_level: optional
+        brief: "Number of files with uncommitted changes"
+      - id: git_repo.unpushed.commits
+        type: int
+        requirement_level: optional
+        brief: "Number of unpushed commits"
+
+  # DX Metrics Calculation
+  - id: git_agent.metrics
+    type: span
+    span_kind: internal
+    brief: "Developer Experience metrics calculation"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dx_metrics.commit_frequency
+        type: double
+        requirement_level: required
+        brief: "Commits per hour metric"
+      - id: dx_metrics.branch_health
+        type: double
+        requirement_level: required
+        brief: "Branch health score (0.0-1.0)"
+      - id: dx_metrics.merge_success_rate
+        type: double
+        requirement_level: recommended
+        brief: "Merge success rate (0.0-1.0)"
+      - id: dx_metrics.conflict_rate
+        type: double
+        requirement_level: recommended
+        brief: "Conflict rate (0.0-1.0)"
+      - id: dx_metrics.automation_efficiency
+        type: double
+        requirement_level: required
+        brief: "Automation efficiency score (0.0-1.0)"
+      - id: dx_metrics.developer_satisfaction
+        type: double
+        requirement_level: optional
+        brief: "Developer satisfaction score (0.0-1.0)"
+
+  # Weaver Forge Integration
+  - id: weaver_forge.operation
+    type: span
+    span_kind: internal
+    brief: "Weaver Forge integration operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: weaver_forge.mode
+        type: string
+        requirement_level: required
+        brief: "Weaver Forge operation mode"
+        examples: ["auto", "assisted", "manual", "validation"]
+      - id: weaver_forge.semconv.layers_loaded
+        type: int
+        requirement_level: recommended
+        brief: "Number of semantic convention layers loaded"
+      - id: weaver_forge.semconv.compliance_score
+        type: double
+        requirement_level: optional
+        brief: "Semantic convention compliance score (0.0-1.0)"
+      - id: weaver_forge.config.auto_commit
+        type: boolean
+        requirement_level: optional
+        brief: "Whether auto-commit is enabled"
+      - id: weaver_forge.config.auto_push
+        type: boolean
+        requirement_level: optional
+        brief: "Whether auto-push is enabled"
+      - id: weaver_forge.config.min_confidence
+        type: double
+        requirement_level: optional
+        brief: "Minimum confidence threshold for automatic actions"
+
+  # Opportunity Detection
+  - id: git_agent.opportunity
+    type: span
+    span_kind: internal
+    brief: "Git automation opportunity detection"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: opportunity.type
+        type: string
+        requirement_level: required
+        brief: "Type of detected opportunity"
+        examples: ["uncommitted_changes", "unpushed_commits", "branch_cleanup", "merge_opportunity", "tag_creation"]
+      - id: opportunity.priority
+        type: string
+        requirement_level: required
+        brief: "Priority level of the opportunity"
+        examples: ["critical", "high", "medium", "low"]
+      - id: opportunity.impact
+        type: string
+        requirement_level: recommended
+        brief: "Expected impact of addressing the opportunity"
+        examples: ["dx_improvement", "code_quality", "team_efficiency", "risk_reduction"]
+      - id: opportunity.effort
+        type: string
+        requirement_level: recommended
+        brief: "Estimated effort to address the opportunity"
+        examples: ["minimal", "low", "medium", "high"]
+      - id: opportunity.automation_potential
+        type: double
+        requirement_level: optional
+        brief: "Potential for automation (0.0-1.0)"
+
+  # Feedback Collection
+  - id: git_agent.feedback
+    type: span
+    span_kind: internal
+    brief: "DX feedback collection and analysis"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: feedback.source
+        type: string
+        requirement_level: required
+        brief: "Source of feedback"
+        examples: ["metrics", "user_input", "system_analysis", "performance_data"]
+      - id: feedback.type
+        type: string
+        requirement_level: required
+        brief: "Type of feedback"
+        examples: ["performance", "usability", "efficiency", "satisfaction", "error_rate"]
+      - id: feedback.score
+        type: double
+        requirement_level: recommended
+        brief: "Feedback score (0.0-1.0)"
+      - id: feedback.actionable
+        type: boolean
+        requirement_level: optional
+        brief: "Whether feedback is actionable"
+      - id: feedback.recommendations.count
+        type: int
+        requirement_level: optional
+        brief: "Number of recommendations generated"
+
+# Extended Attributes for Git Agent Operations
+attributes:
+  # Git Agent Configuration
+  - id: git_agent.version
+    type: string
+    brief: "Version of the git agent"
+    examples: ["1.0.0", "2.1.3"]
+    stability: stable
+
+  - id: git_agent.mode
+    type: string
+    brief: "Operating mode of the git agent"
+    examples: ["autonomous", "assisted", "manual", "learning"]
+    stability: stable
+
+  - id: git_agent.learning.enabled
+    type: boolean
+    brief: "Whether machine learning is enabled"
+    stability: experimental
+
+  # Repository Context
+  - id: git_repo.url
+    type: string
+    brief: "Repository URL"
+    stability: stable
+
+  - id: git_repo.branch.current
+    type: string
+    brief: "Current active branch"
+    stability: stable
+
+  - id: git_repo.remote.default
+    type: string
+    brief: "Default remote name"
+    examples: ["origin", "upstream"]
+    stability: stable
+
+  # DX Context
+  - id: dx_context.team_size
+    type: int
+    brief: "Size of the development team"
+    stability: experimental
+
+  - id: dx_context.project_phase
+    type: string
+    brief: "Current project development phase"
+    examples: ["development", "testing", "staging", "production"]
+    stability: experimental
+
+  - id: dx_context.workflow_type
+    type: string
+    brief: "Type of development workflow"
+    examples: ["gitflow", "github_flow", "gitlab_flow", "custom"]
+    stability: stable
+
+# Metric Instruments for Git Agent Operations
+metric_instruments:
+  # Core Git Agent Metrics
+  - name: git_agent.decisions.total
+    instrument: counter
+    unit: "1"
+    description: "Total number of decisions made by git agent"
+    attributes: [git_agent.action, git_agent.phase, operation.status]
+
+  - name: git_agent.decisions.confidence
+    instrument: histogram
+    unit: "1"
+    description: "Confidence scores of git agent decisions"
+    attributes: [git_agent.action, git_agent.phase]
+
+  - name: git_agent.execution.duration
+    instrument: histogram
+    unit: "ms"
+    description: "Duration of git agent command executions"
+    attributes: [git_agent.action, git_agent.command]
+
+  - name: git_agent.execution.success_rate
+    instrument: gauge
+    unit: "1"
+    description: "Success rate of git agent executions"
+    attributes: [git_agent.action]
+
+  # DX Loop Metrics
+  - name: dx_loop.iterations.total
+    instrument: counter
+    unit: "1"
+    description: "Total number of DX loop iterations"
+    attributes: [dx_loop.phase]
+
+  - name: dx_loop.duration
+    instrument: histogram
+    unit: "s"
+    description: "Duration of DX loop iterations"
+    attributes: [dx_loop.phase]
+
+  - name: dx_metrics.commit_frequency
+    instrument: gauge
+    unit: "1/h"
+    description: "Current commit frequency per hour"
+
+  - name: dx_metrics.automation_efficiency
+    instrument: gauge
+    unit: "1"
+    description: "Current automation efficiency score"
+
+  - name: dx_metrics.branch_health
+    instrument: gauge
+    unit: "1"
+    description: "Current branch health score"
+
+  # Repository Metrics
+  - name: git_repo.commits.total
+    instrument: gauge
+    unit: "1"
+    description: "Total number of commits in repository"
+
+  - name: git_repo.branches.total
+    instrument: gauge
+    unit: "1"
+    description: "Total number of branches"
+
+  - name: git_repo.opportunities.detected
+    instrument: counter
+    unit: "1"
+    description: "Number of automation opportunities detected"
+    attributes: [opportunity.type, opportunity.priority]
+
+  # Weaver Forge Metrics
+  - name: weaver_forge.semconv.compliance
+    instrument: gauge
+    unit: "1"
+    description: "Semantic convention compliance score"
+
+  - name: weaver_forge.operations.total
+    instrument: counter
+    unit: "1"
+    description: "Total Weaver Forge operations"
+    attributes: [weaver_forge.mode, operation.status]
+
+# Event Definitions for Git Agent Operations
+events:
+  - name: git_agent.decision.made
+    description: "Git agent made an autonomous decision"
+    attributes: [git_agent.action, git_agent.confidence, git_agent.phase]
+
+  - name: git_agent.execution.completed
+    description: "Git agent completed command execution"
+    attributes: [git_agent.command, git_agent.execution.result]
+
+  - name: dx_loop.iteration.completed
+    description: "DX loop iteration completed"
+    attributes: [dx_loop.iteration, dx_loop.phase, dx_loop.duration]
+
+  - name: git_repo.opportunity.detected
+    description: "Automation opportunity detected in repository"
+    attributes: [opportunity.type, opportunity.priority, opportunity.automation_potential]
+
+  - name: weaver_forge.semconv.violation
+    description: "Semantic convention violation detected"
+    attributes: [weaver_forge.semconv.compliance_score]
+
+  - name: dx_metrics.threshold.exceeded
+    description: "DX metric exceeded threshold"
+    attributes: [dx_metrics.commit_frequency, dx_metrics.automation_efficiency]
+
+# Advanced Git Agent Workflows
+workflow_patterns:
+  - name: "Auto-Commit Workflow"
+    description: "Automated commit creation based on change detection"
+    phases: [detection, analysis, planning, execution, validation]
+    
+  - name: "Smart Branch Management"
+    description: "Intelligent branch creation, merging, and cleanup"
+    phases: [analysis, planning, execution, optimization]
+    
+  - name: "Continuous DX Optimization"
+    description: "Continuous optimization of developer experience"
+    phases: [detection, analysis, optimization, feedback]
+    
+  - name: "Semantic Convention Enforcement"
+    description: "Automated enforcement of semantic conventions"
+    phases: [validation, planning, execution, feedback]

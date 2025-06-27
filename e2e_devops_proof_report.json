@@ -1,0 +1,507 @@
+{
+  "timestamp": 1751059076.754462,
+  "duration": 13.330172061920166,
+  "total_operations": 54,
+  "successful_operations": 46,
+  "success_rate": 85.18518518518519,
+  "feature_branch": "e2e-proof-1751059063",
+  "hotfix_branch": "hotfix-critical-1751059063",
+  "operations_log": [
+    {
+      "timestamp": 1751059063.4344802,
+      "command": "git --version",
+      "description": "Verify git installation and version",
+      "return_code": 0,
+      "stdout": "git version 2.49.0\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059063.44211,
+      "command": "git config --global --list",
+      "description": "Show global git configuration",
+      "return_code": 0,
+      "stdout": "filter.lfs.clean=git-lfs clean -- %f\nfilter.lfs.smudge=git-lfs smudge -- %f\nfilter.lfs.process=git-lfs filter-process\nfilter.lfs.required=true\nuser.name=Sean Chatman\nuser.email=136349053+seanchatmangpt@users.noreply.github.com\nhttp.postbuffer=524288000\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059063.666455,
+      "command": "git status",
+      "description": "Check repository status",
+      "return_code": 0,
+      "stdout": "On branch main\nYour branch is up to date with 'origin/main'.\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\t.swarm-sh/\n\t.uv-migration-complete\n\tCOMPLETE_PROJECT_STRUCTURE.md\n\tDockerfile.validate\n\tE2E_DEVOPS_PROOF_COMPLETE.md\n\tGIT_BRIDGE_SUMMARY.md\n\tPROJECT_ARCHITECTURE_COMPLETE.md\n\tPYINSTALLER_README.md\n\tRICH_GIT_LEVEL5_COMPLETE.md\n\tSYSTEM_STATUS_COMPLETE.md\n\tUV_MIGRATION_SUMMARY.md\n\tautonomous_evolution_daemon.spec\n\tbuild/\n\tclaude_code_git_parliament_monitor.py\n\tclaude_code_traces.json\n\tcross-compile-linux.sh\n\tdemo_git_bridge.py\n\tdigests/\n\tdsl\n\te2e_devops_proof.py\n\tetc/\n\tgit_registry.yaml\n\tmultilayer_validation_a39917ab.json\n\tmultilayer_validation_a8fdd774.json\n\tproject_structure.md\n\tpyproject.toml.poetry-backup\n\trich_git_validation_report.json\n\tsemantic_conventions/dspy_git_bridge.yaml\n\tsemantic_conventions/git_parliament.yaml\n\tsemconv_registry/git_events/\n\tsetup-evolution-cron.spec\n\tsetup_evolution_cron_typer.py\n\tsrc/agents/\n\tsrc/dslmodel/agents/git_coach.py\n\tsrc/dslmodel/claude_code_otel_monitor.py\n\tsrc/dslmodel/commands/gap_analysis_8020.py\n\tsrc/dslmodel/commands/git_hook_pipeline.py\n\tsrc/dslmodel/commands/git_level5.py\n\tsrc/dslmodel/commands/liquid_democracy.py\n\tsrc/dslmodel/commands/self_evolving_semantics.py\n\tsrc/dslmodel/commands/swarm_sh_5one.py\n\tsrc/dslmodel/dspy_programs/\n\tsrc/dslmodel/examples/git_parliament_5one_monitor.py\n\tsrc/dslmodel/gap_closure_engine.py\n\tsrc/dslmodel/generated/cli/dspy_git_bridge_cli.py\n\tsrc/dslmodel/generated/cli/git_operations_cli.py\n\tsrc/dslmodel/generated/cli/git_parliament_cli.py\n\tsrc/dslmodel/generated/cli/governance_federation_cli.py\n\tsrc/dslmodel/generated/cli/merge_oracle_cli.py\n\tsrc/dslmodel/generated/cli/roberts_rules_cli.py\n\tsrc/dslmodel/generated/models/dspy_git_bridge.py\n\tsrc/dslmodel/generated/models/git_operations.py\n\tsrc/dslmodel/generated/models/git_parliament.py\n\tsrc/dslmodel/generated/models/governance_federation.py\n\tsrc/dslmodel/generated/models/merge_oracle.py\n\tsrc/dslmodel/generated/models/roberts_rules.py\n\tsrc/dslmodel/generated/python/\n\tsrc/dslmodel/generated/tests/test_dspy_git_bridge.py\n\tsrc/dslmodel/generated/tests/test_git_operations.py\n\tsrc/dslmodel/generated/tests/test_git_parliament.py\n\tsrc/dslmodel/generated/tests/test_governance_federation.py\n\tsrc/dslmodel/generated/tests/test_merge_oracle.py\n\tsrc/dslmodel/generated/tests/test_roberts_rules.py\n\tsrc/dslmodel/parliament/\n\tsrc/dslmodel/registry/semantic/dspy_git_bridge.yaml\n\tsrc/dslmodel/registry/semantic/git_operations.yaml\n\tsrc/dslmodel/registry/semantic/git_parliament.yaml\n\tsrc/dslmodel/registry/semantic/governance_federation.yaml\n\tsrc/dslmodel/registry/semantic/merge_oracle.yaml\n\tsrc/dslmodel/registry/semantic/roberts_rules.yaml\n\tsrc/dslmodel/runtime/\n\tsrc/dslmodel/utils/git_auto.py\n\tsrc/dslmodel/utils/git_executor.py\n\tsrc/dslmodel/utils/span.py\n\tsrc/dslmodel/v3_consolidation_report.py\n\tsrc/dslmodel/weaver/templates/git_planner.weaver.j2\n\tsrc/dspy_programs/\n\tsrc/runtime/\n\tsrc/utils/\n\ttask_coordination.json\n\ttest_5one_parliament_complete.py\n\ttest_5one_parliament_simple.py\n\ttest_git_coach.py\n\ttest_parliament.py\n\ttest_uv_integration.py\n\tuv.toml\n\tv3_consolidation_report.json\n\tvalidate-local.sh\n\tvalidate-pyinstaller.sh\n\tvalidate-standalone.sh\n\tvalidate_rich_git_integration.py\n\tweaver/\n\tweaver_loop_closure.py\n\tweaver_loop_demo.py\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059063.679481,
+      "command": "git remote -v",
+      "description": "List all remote repositories with URLs",
+      "return_code": 0,
+      "stdout": "origin\thttps://github.com/seanchatmangpt/dslmodel.git (fetch)\norigin\thttps://github.com/seanchatmangpt/dslmodel.git (push)\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059063.71163,
+      "command": "git branch -a",
+      "description": "List all local and remote branches",
+      "return_code": 0,
+      "stdout": "+ 8020_test_8020_feature_796fb966\n+ 8020_test_8020_feature_7b569bb4\n+ 8020_test_8020_feature_7e6f3dfe\n+ 8020_test_8020_feature_e1eca79a\n+ agent-backend_agent-1750961203\n+ agent-demo_backend-1750966369\n+ agent-demo_frontend-1750966370\n+ agent-frontend_agent-1750961204\n+ development\n  e2e-devops-validation-1751054248\n  e2e_fallback_1751054266\n+ evolution-forge\n  evolution-forge-implementation\n  evolution-system-worktree\n+ evolution-worktree-demo\n+ feature/dashboard-ui-agent-frontend-001\n  feature/e2e-devops-loop-closure\n+ feature/evolution_test_agent\n+ feature/evolution_test_agent_behavior_3_1750959766\n+ feature/evolution_test_agent_behavior_3_1750959781\n+ feature/evolution_test_copy_agent_behavior_3_1750959766\n+ feature/evolution_test_copy_copy_performance_optimizer_4_1750959766\n+ feature/evolution_test_copy_mut_1750959767_7292\n+ feature/evolution_test_copy_performance_optimizer_4_1750959766\n+ feature/evolution_test_cross_1750959776_8435\n+ feature/evolution_test_cross_1750959782_5879\n+ feature/evolution_test_cross_1750959786_5024\n+ feature/evolution_test_cross_1750959786_6174\n+ feature/evolution_test_cross_1750959786_9173\n+ feature/evolution_test_mut_1750959767_3594\n+ feature/evolution_test_mut_1750959782_5223\n+ feature/user-authentication-agent-python-001\n* main\n  remotes/origin/HEAD -> origin/main\n  remotes/origin/e2e-devops-validation-1751054248\n  remotes/origin/evolution-forge-implementation\n  remotes/origin/main\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059063.723289,
+      "command": "git log --oneline -10",
+      "description": "Show recent commit history",
+      "return_code": 0,
+      "stdout": "b636958 Merge E2E DevOps validation branch\ne5df081 feat: Complete E2E DevOps validation with autonomous evolution\nd141bc7 Merge pull request #6 from seanchatmangpt/e2e-devops-validation-1751054248\ne725666 feat(loop-closure): implement complete architectural loop monitoring system\nd45943b fix: Close critical open implementation loops\n5725382 update(backlog): BI-eb13b0 - status=Done\n0f99e13 update(backlog): BI-eb13b0 - status=In Progress\n43c27e6 feat(backlog): BI-44929d Add Grafana dashboard [3 pts]\n093941a feat(backlog): BI-eb13b0 Implement login system [5 pts]\n27a9d02 Claude Code\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059063.739309,
+      "command": "git stash list",
+      "description": "List all stashes",
+      "return_code": 0,
+      "stdout": "stash@{0}: WIP on evolution-forge-implementation: 78cf858 test(validation): add automated git operations, add validation tests,...\nstash@{1}: On main: WIP: local changes before pull\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059063.748072,
+      "command": "git tag --list",
+      "description": "List all tags",
+      "return_code": 0,
+      "stdout": "sprint/SPR-2025-W26/open\nv3.0.0-beta.1\nv3.0.0-loop-closure-alpha\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059064.267481,
+      "command": "git checkout -b e2e-proof-1751059063",
+      "description": "Create and switch to feature branch: e2e-proof-1751059063",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "Switched to a new branch 'e2e-proof-1751059063'\n",
+      "success": true
+    },
+    {
+      "timestamp": 1751059064.275748,
+      "command": "git branch --show-current",
+      "description": "Verify current branch",
+      "return_code": 0,
+      "stdout": "e2e-proof-1751059063\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059064.388192,
+      "command": "git checkout main",
+      "description": "Switch back to main branch",
+      "return_code": 0,
+      "stdout": "Your branch is up to date with 'origin/main'.\n",
+      "stderr": "Switched to branch 'main'\n",
+      "success": true
+    },
+    {
+      "timestamp": 1751059064.397542,
+      "command": "git checkout -b hotfix-critical-1751059063",
+      "description": "Create hotfix branch: hotfix-critical-1751059063",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "Switched to a new branch 'hotfix-critical-1751059063'\n",
+      "success": true
+    },
+    {
+      "timestamp": 1751059064.410107,
+      "command": "git branch -v",
+      "description": "List branches with last commit info",
+      "return_code": 0,
+      "stdout": "+ 8020_test_8020_feature_796fb966                                     50e1981 test(validation): add automated git operations, add validation tests,...\n+ 8020_test_8020_feature_7b569bb4                                     4989378 test(validation): add automated git operations, add validation tests,...\n+ 8020_test_8020_feature_7e6f3dfe                                     50e1981 test(validation): add automated git operations, add validation tests,...\n+ 8020_test_8020_feature_e1eca79a                                     4989378 test(validation): add automated git operations, add validation tests,...\n+ agent-backend_agent-1750961203                                      50e1981 test(validation): add automated git operations, add validation tests,...\n+ agent-demo_backend-1750966369                                       50e1981 test(validation): add automated git operations, add validation tests,...\n+ agent-demo_frontend-1750966370                                      50e1981 test(validation): add automated git operations, add validation tests,...\n+ agent-frontend_agent-1750961204                                     50e1981 test(validation): add automated git operations, add validation tests,...\n+ development                                                         50540b7 feat: comprehensive DSL model ecosystem with coordination, OTEL integration, and thesis components\n  e2e-devops-validation-1751054248                                    e725666 feat(loop-closure): implement complete architectural loop monitoring system\n  e2e-proof-1751059063                                                b636958 Merge E2E DevOps validation branch\n  e2e_fallback_1751054266                                             e5df081 feat: Complete E2E DevOps validation with autonomous evolution\n+ evolution-forge                                                     1cb31de Implement autonomous evolution with Weaver Forge + worktree pipeline\n  evolution-forge-implementation                                      78cf858 test(validation): add automated git operations, add validation tests,...\n  evolution-system-worktree                                           4989378 test(validation): add automated git operations, add validation tests,...\n+ evolution-worktree-demo                                             4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/dashboard-ui-agent-frontend-001                             50e1981 test(validation): add automated git operations, add validation tests,...\n  feature/e2e-devops-loop-closure                                     d45943b fix: Close critical open implementation loops\n+ feature/evolution_test_agent                                        4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_agent_behavior_3_1750959766                  4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_agent_behavior_3_1750959781                  4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_copy_agent_behavior_3_1750959766             4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_copy_copy_performance_optimizer_4_1750959766 4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_copy_mut_1750959767_7292                     4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_copy_performance_optimizer_4_1750959766      4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_cross_1750959776_8435                        4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_cross_1750959782_5879                        4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_cross_1750959786_5024                        4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_cross_1750959786_6174                        4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_cross_1750959786_9173                        4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_mut_1750959767_3594                          4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/evolution_test_mut_1750959782_5223                          4989378 test(validation): add automated git operations, add validation tests,...\n+ feature/user-authentication-agent-python-001                        50e1981 test(validation): add automated git operations, add validation tests,...\n* hotfix-critical-1751059063                                          b636958 Merge E2E DevOps validation branch\n  main                                                                b636958 Merge E2E DevOps validation branch\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059064.5222971,
+      "command": "git checkout e2e-proof-1751059063",
+      "description": "Switch to feature branch for development",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "Switched to branch 'e2e-proof-1751059063'\n",
+      "success": true
+    },
+    {
+      "timestamp": 1751059065.148792,
+      "command": "git status --porcelain",
+      "description": "Show repository status in porcelain format",
+      "return_code": 0,
+      "stdout": "?? .swarm-sh/\n?? .uv-migration-complete\n?? COMPLETE_PROJECT_STRUCTURE.md\n?? Dockerfile.validate\n?? E2E_DEVOPS_PROOF_COMPLETE.md\n?? GIT_BRIDGE_SUMMARY.md\n?? PROJECT_ARCHITECTURE_COMPLETE.md\n?? PYINSTALLER_README.md\n?? RICH_GIT_LEVEL5_COMPLETE.md\n?? SYSTEM_STATUS_COMPLETE.md\n?? UV_MIGRATION_SUMMARY.md\n?? autonomous_evolution_daemon.spec\n?? build/\n?? claude_code_git_parliament_monitor.py\n?? claude_code_traces.json\n?? cross-compile-linux.sh\n?? demo_git_bridge.py\n?? digests/\n?? dsl\n?? e2e_devops_proof.py\n?? e2e_test_file.py\n?? etc/\n?? git_registry.yaml\n?? multilayer_validation_a39917ab.json\n?? multilayer_validation_a8fdd774.json\n?? project_structure.md\n?? pyproject.toml.poetry-backup\n?? rich_git_validation_report.json\n?? semantic_conventions/dspy_git_bridge.yaml\n?? semantic_conventions/git_parliament.yaml\n?? semconv_registry/git_events/\n?? setup-evolution-cron.spec\n?? setup_evolution_cron_typer.py\n?? src/agents/\n?? src/dslmodel/agents/git_coach.py\n?? src/dslmodel/claude_code_otel_monitor.py\n?? src/dslmodel/commands/gap_analysis_8020.py\n?? src/dslmodel/commands/git_hook_pipeline.py\n?? src/dslmodel/commands/git_level5.py\n?? src/dslmodel/commands/liquid_democracy.py\n?? src/dslmodel/commands/self_evolving_semantics.py\n?? src/dslmodel/commands/swarm_sh_5one.py\n?? src/dslmodel/dspy_programs/\n?? src/dslmodel/examples/git_parliament_5one_monitor.py\n?? src/dslmodel/gap_closure_engine.py\n?? src/dslmodel/generated/cli/dspy_git_bridge_cli.py\n?? src/dslmodel/generated/cli/git_operations_cli.py\n?? src/dslmodel/generated/cli/git_parliament_cli.py\n?? src/dslmodel/generated/cli/governance_federation_cli.py\n?? src/dslmodel/generated/cli/merge_oracle_cli.py\n?? src/dslmodel/generated/cli/roberts_rules_cli.py\n?? src/dslmodel/generated/models/dspy_git_bridge.py\n?? src/dslmodel/generated/models/git_operations.py\n?? src/dslmodel/generated/models/git_parliament.py\n?? src/dslmodel/generated/models/governance_federation.py\n?? src/dslmodel/generated/models/merge_oracle.py\n?? src/dslmodel/generated/models/roberts_rules.py\n?? src/dslmodel/generated/python/\n?? src/dslmodel/generated/tests/test_dspy_git_bridge.py\n?? src/dslmodel/generated/tests/test_git_operations.py\n?? src/dslmodel/generated/tests/test_git_parliament.py\n?? src/dslmodel/generated/tests/test_governance_federation.py\n?? src/dslmodel/generated/tests/test_merge_oracle.py\n?? src/dslmodel/generated/tests/test_roberts_rules.py\n?? src/dslmodel/parliament/\n?? src/dslmodel/registry/semantic/dspy_git_bridge.yaml\n?? src/dslmodel/registry/semantic/git_operations.yaml\n?? src/dslmodel/registry/semantic/git_parliament.yaml\n?? src/dslmodel/registry/semantic/governance_federation.yaml\n?? src/dslmodel/registry/semantic/merge_oracle.yaml\n?? src/dslmodel/registry/semantic/roberts_rules.yaml\n?? src/dslmodel/runtime/\n?? src/dslmodel/utils/git_auto.py\n?? src/dslmodel/utils/git_executor.py\n?? src/dslmodel/utils/span.py\n?? src/dslmodel/v3_consolidation_report.py\n?? src/dslmodel/weaver/templates/git_planner.weaver.j2\n?? src/dspy_programs/\n?? src/runtime/\n?? src/utils/\n?? task_coordination.json\n?? test_5one_parliament_complete.py\n?? test_5one_parliament_simple.py\n?? test_git_coach.py\n?? test_parliament.py\n?? test_uv_integration.py\n?? uv.toml\n?? v3_consolidation_report.json\n?? validate-local.sh\n?? validate-pyinstaller.sh\n?? validate-standalone.sh\n?? validate_rich_git_integration.py\n?? weaver/\n?? weaver_loop_closure.py\n?? weaver_loop_demo.py\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059065.1644402,
+      "command": "git add e2e_test_file.py",
+      "description": "Stage the test file",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059065.172429,
+      "command": "git status --cached",
+      "description": "Show staged changes",
+      "return_code": 129,
+      "stdout": "",
+      "stderr": "error: unknown option `cached'\nusage: git status [<options>] [--] [<pathspec>...]\n\n    -v, --[no-]verbose    be verbose\n    -s, --[no-]short      show status concisely\n    -b, --[no-]branch     show branch information\n    --[no-]show-stash     show stash information\n    --[no-]ahead-behind   compute full ahead/behind values\n    --[no-]porcelain[=<version>]\n                          machine-readable output\n    --[no-]long           show status in long format (default)\n    -z, --[no-]null       terminate entries with NUL\n    -u, --[no-]untracked-files[=<mode>]\n                          show untracked files, optional modes: all, normal, no. (Default: all)\n    --[no-]ignored[=<mode>]\n                          show ignored files, optional modes: traditional, matching, no. (Default: traditional)\n    --[no-]ignore-submodules[=<when>]\n                          ignore changes to submodules, optional when: all, dirty, untracked. (Default: all)\n    --[no-]column[=<style>]\n                          list untracked files in columns\n    --no-renames          do not detect renames\n    --renames             opposite of --no-renames\n    -M, --find-renames[=<n>]\n                          detect renames, optionally set similarity index\n\n",
+      "success": false
+    },
+    {
+      "timestamp": 1751059065.184457,
+      "command": "git diff --staged",
+      "description": "Show diff of staged changes",
+      "return_code": 0,
+      "stdout": "diff --git a/e2e_test_file.py b/e2e_test_file.py\nnew file mode 100644\nindex 0000000..7c4c702\n--- /dev/null\n+++ b/e2e_test_file.py\n@@ -0,0 +1,13 @@\n+# E2E DevOps Proof Test File\n+# Created at: 1751059065.0284958\n+# Branch: e2e-proof-1751059063\n+\n+def e2e_proof_function():\n+    '''Function to prove git file operations'''\n+    return \"E2E DevOps proof successful\"\n+\n+class E2EProofClass:\n+    '''Class to demonstrate git tracking'''\n+    def __init__(self):\n+        self.timestamp = 1751059065.028506\n+        self.branch = \"e2e-proof-1751059063\"\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059065.199806,
+      "command": "git reset HEAD e2e_test_file.py",
+      "description": "Unstage the file",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059066.637388,
+      "command": "git add -A",
+      "description": "Stage all changes including untracked files",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059066.7541618,
+      "command": "git status --short",
+      "description": "Show short status",
+      "return_code": 0,
+      "stdout": "A  .swarm-sh/weaver/5one.yaml\nA  .uv-migration-complete\nA  COMPLETE_PROJECT_STRUCTURE.md\nA  Dockerfile.validate\nA  E2E_DEVOPS_PROOF_COMPLETE.md\nA  GIT_BRIDGE_SUMMARY.md\nA  PROJECT_ARCHITECTURE_COMPLETE.md\nA  PYINSTALLER_README.md\nA  RICH_GIT_LEVEL5_COMPLETE.md\nA  SYSTEM_STATUS_COMPLETE.md\nA  UV_MIGRATION_SUMMARY.md\nA  autonomous_evolution_daemon.spec\nA  build/setup-evolution-cron/Analysis-00.toc\nA  build/setup-evolution-cron/EXE-00.toc\nA  build/setup-evolution-cron/PKG-00.toc\nA  build/setup-evolution-cron/PYZ-00.pyz\nA  build/setup-evolution-cron/PYZ-00.toc\nA  build/setup-evolution-cron/setup-evolution-cron.pkg\nA  build/setup-evolution-cron/warn-setup-evolution-cron.txt\nA  build/setup-evolution-cron/xref-setup-evolution-cron.html\nA  claude_code_git_parliament_monitor.py\nA  claude_code_traces.json\nA  cross-compile-linux.sh\nA  demo_git_bridge.py\nA  digests/graph_digest.md\nA  digests/ledger_digest.md\nA  digests/mermaid_digest.md\nA  dsl\nA  e2e_devops_proof.py\nA  e2e_test_file.py\nA  etc/git_registry.yaml\nA  git_registry.yaml\nA  multilayer_validation_a39917ab.json\nA  multilayer_validation_a8fdd774.json\nA  project_structure.md\nA  pyproject.toml.poetry-backup\nA  rich_git_validation_report.json\nA  semantic_conventions/dspy_git_bridge.yaml\nA  semantic_conventions/git_parliament.yaml\nA  semconv_registry/git_events/git.hook.run.semconv.yaml\nA  semconv_registry/git_events/git.rebase.semconv.yaml\nA  semconv_registry/git_events/git.reset.semconv.yaml\nA  semconv_registry/git_events/git.submodule.update.semconv.yaml\nA  setup-evolution-cron.spec\nA  setup_evolution_cron_typer.py\nA  src/agents/backlog_bot.py\nA  src/agents/burndown_logger.py\nA  src/agents/git_insight_agent.py\nA  src/agents/sprint_manager.py\nA  src/agents/standup_agent.py\nA  src/dslmodel/agents/git_coach.py\nA  src/dslmodel/claude_code_otel_monitor.py\nA  src/dslmodel/commands/gap_analysis_8020.py\nA  src/dslmodel/commands/git_hook_pipeline.py\nA  src/dslmodel/commands/git_level5.py\nA  src/dslmodel/commands/liquid_democracy.py\nA  src/dslmodel/commands/self_evolving_semantics.py\nA  src/dslmodel/commands/swarm_sh_5one.py\nA  src/dslmodel/dspy_programs/git_plan.py\nA  src/dslmodel/examples/git_parliament_5one_monitor.py\nA  src/dslmodel/gap_closure_engine.py\nA  src/dslmodel/generated/cli/dspy_git_bridge_cli.py\nA  src/dslmodel/generated/cli/git_operations_cli.py\nA  src/dslmodel/generated/cli/git_parliament_cli.py\nA  src/dslmodel/generated/cli/governance_federation_cli.py\nA  src/dslmodel/generated/cli/merge_oracle_cli.py\nA  src/dslmodel/generated/cli/roberts_rules_cli.py\nA  src/dslmodel/generated/models/dspy_git_bridge.py\nA  src/dslmodel/generated/models/git_operations.py\nA  src/dslmodel/generated/models/git_parliament.py\nA  src/dslmodel/generated/models/governance_federation.py\nA  src/dslmodel/generated/models/merge_oracle.py\nA  src/dslmodel/generated/models/roberts_rules.py\nA  src/dslmodel/generated/python/__init__.py\nA  src/dslmodel/generated/python/git_hook_run.py\nA  src/dslmodel/generated/python/governance_federated_vote.py\nA  src/dslmodel/generated/python/merge_oracle.py\nA  src/dslmodel/generated/python/roberts_agenda_item.py\nA  src/dslmodel/generated/python/roberts_debate_cycle.py\nA  src/dslmodel/generated/python/roberts_motion_second.py\nA  src/dslmodel/generated/python/roberts_vote_tally.py\nA  src/dslmodel/generated/tests/test_dspy_git_bridge.py\nA  src/dslmodel/generated/tests/test_git_operations.py\nA  src/dslmodel/generated/tests/test_git_parliament.py\nA  src/dslmodel/generated/tests/test_governance_federation.py\nA  src/dslmodel/generated/tests/test_merge_oracle.py\nA  src/dslmodel/generated/tests/test_roberts_rules.py\nA  src/dslmodel/parliament/__init__.py\nA  src/dslmodel/parliament/liquid_vote.py\nA  src/dslmodel/parliament/merge_oracle.py\nA  src/dslmodel/registry/semantic/dspy_git_bridge.yaml\nA  src/dslmodel/registry/semantic/git_operations.yaml\nA  src/dslmodel/registry/semantic/git_parliament.yaml\nA  src/dslmodel/registry/semantic/governance_federation.yaml\nA  src/dslmodel/registry/semantic/merge_oracle.yaml\nA  src/dslmodel/registry/semantic/roberts_rules.yaml\nA  src/dslmodel/runtime/weaver_prompt.py\nA  src/dslmodel/utils/git_auto.py\nA  src/dslmodel/utils/git_executor.py\nA  src/dslmodel/utils/span.py\nA  src/dslmodel/v3_consolidation_report.py\nA  src/dslmodel/weaver/templates/git_planner.weaver.j2\nA  src/dspy_programs/git_insights.py\nA  src/runtime/weaver_prompt.py\nA  src/utils/git_auto.py\nA  src/utils/git_views.py\nA  src/utils/otel_feedback_loop.py\nA  src/utils/task_utils.py\nA  task_coordination.json\nA  test_5one_parliament_complete.py\nA  test_5one_parliament_simple.py\nA  test_git_coach.py\nA  test_parliament.py\nA  test_uv_integration.py\nA  uv.toml\nA  v3_consolidation_report.json\nA  validate-local.sh\nA  validate-pyinstaller.sh\nA  validate-standalone.sh\nA  validate_rich_git_integration.py\nA  weaver/templates/git_insights.weaver.j2\nA  weaver_loop_closure.py\nA  weaver_loop_demo.py\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059067.298547,
+      "command": "git commit -m \"feat(e2e-proof): add comprehensive DevOps proof test file\n\n- Implement E2EProofClass with timestamp tracking\n- Add e2e_proof_function for validation\n- Include branch information in test data\n- Create comprehensive git operations demonstration\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\"",
+      "description": "Create comprehensive commit with conventional format",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "error: pathspec 'add' did not match any file(s) known to git\nerror: pathspec 'comprehensive' did not match any file(s) known to git\nerror: pathspec 'DevOps' did not match any file(s) known to git\nerror: pathspec 'proof' did not match any file(s) known to git\nerror: pathspec 'test' did not match any file(s) known to git\nerror: pathspec 'file' did not match any file(s) known to git\nerror: pathspec '-' did not match any file(s) known to git\nerror: pathspec 'Implement' did not match any file(s) known to git\nerror: pathspec 'E2EProofClass' did not match any file(s) known to git\nerror: pathspec 'with' did not match any file(s) known to git\nerror: pathspec 'timestamp' did not match any file(s) known to git\nerror: pathspec 'tracking' did not match any file(s) known to git\nerror: pathspec '-' did not match any file(s) known to git\nerror: pathspec 'Add' did not match any file(s) known to git\nerror: pathspec 'e2e_proof_function' did not match any file(s) known to git\nerror: pathspec 'for' did not match any file(s) known to git\nerror: pathspec 'validation' did not match any file(s) known to git\nerror: pathspec '-' did not match any file(s) known to git\nerror: pathspec 'Include' did not match any file(s) known to git\nerror: pathspec 'branch' did not match any file(s) known to git\nerror: pathspec 'information' did not match any file(s) known to git\nerror: pathspec 'in' did not match any file(s) known to git\nerror: pathspec 'test' did not match any file(s) known to git\nerror: pathspec 'data' did not match any file(s) known to git\nerror: pathspec '-' did not match any file(s) known to git\nerror: pathspec 'Create' did not match any file(s) known to git\nerror: pathspec 'comprehensive' did not match any file(s) known to git\nerror: pathspec 'git' did not match any file(s) known to git\nerror: pathspec 'operations' did not match any file(s) known to git\nerror: pathspec 'demonstration' did not match any file(s) known to git\nerror: pathspec '\ud83e\udd16' did not match any file(s) known to git\nerror: pathspec 'Generated' did not match any file(s) known to git\nerror: pathspec 'with' did not match any file(s) known to git\nerror: pathspec '[Claude' did not match any file(s) known to git\nerror: pathspec 'Code](https://claude.ai/code)' did not match any file(s) known to git\nerror: pathspec 'Co-Authored-By:' did not match any file(s) known to git\nerror: pathspec 'Claude' did not match any file(s) known to git\nerror: pathspec '<noreply@anthropic.com>\"' did not match any file(s) known to git\n",
+      "success": false
+    },
+    {
+      "timestamp": 1751059067.310774,
+      "command": "git log --oneline -1",
+      "description": "Show the latest commit",
+      "return_code": 0,
+      "stdout": "b636958 Merge E2E DevOps validation branch\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059067.3213272,
+      "command": "git show --stat",
+      "description": "Show commit details with file statistics",
+      "return_code": 0,
+      "stdout": "commit b636958f6d8214f70a430aa2e02ccb9ba57c8c5a\nMerge: d141bc7 e5df081\nAuthor: Sean Chatman <136349053+seanchatmangpt@users.noreply.github.com>\nDate:   Fri Jun 27 13:01:24 2025 -0700\n\n    Merge E2E DevOps validation branch\n    \n    Complete validation of autonomous evolution DevOps pipeline:\n    - Real fitness evaluation working in worktree environments\n    - OTEL telemetry integration validated\n    - Enhanced worktree management with retry logic tested\n    - All git operations functional across 29 worktrees\n    \n    \ud83e\udd16 Generated with [Claude Code](https://claude.ai/code)\n    \n    Co-Authored-By: Claude <noreply@anthropic.com>\n\n E2E_VALIDATION_RESULTS.md | 24 ++++++++++++++++++++++++\n 1 file changed, 24 insertions(+)\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059067.333771,
+      "command": "git log --graph --oneline -5",
+      "description": "Show commit graph",
+      "return_code": 0,
+      "stdout": "*   b636958 Merge E2E DevOps validation branch\n|\\  \n| * e5df081 feat: Complete E2E DevOps validation with autonomous evolution\n* |   d141bc7 Merge pull request #6 from seanchatmangpt/e2e-devops-validation-1751054248\n|\\ \\  \n| |/  \n|/|   \n| * e725666 feat(loop-closure): implement complete architectural loop monitoring system\n|/  \n* d45943b fix: Close critical open implementation loops\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059067.343457,
+      "command": "git reflog -5",
+      "description": "Show reflog (reference log)",
+      "return_code": 0,
+      "stdout": "b636958 HEAD@{0}: checkout: moving from hotfix-critical-1751059063 to e2e-proof-1751059063\nb636958 HEAD@{1}: checkout: moving from main to hotfix-critical-1751059063\nb636958 HEAD@{2}: checkout: moving from e2e-proof-1751059063 to main\nb636958 HEAD@{3}: checkout: moving from main to e2e-proof-1751059063\nb636958 HEAD@{4}: merge e2e_fallback_1751054266: Merge made by the 'ort' strategy.\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059067.966919,
+      "command": "git checkout main",
+      "description": "Switch to main branch",
+      "return_code": 0,
+      "stdout": "A\t.swarm-sh/weaver/5one.yaml\nA\t.uv-migration-complete\nA\tCOMPLETE_PROJECT_STRUCTURE.md\nA\tDockerfile.validate\nA\tE2E_DEVOPS_PROOF_COMPLETE.md\nA\tGIT_BRIDGE_SUMMARY.md\nA\tPROJECT_ARCHITECTURE_COMPLETE.md\nA\tPYINSTALLER_README.md\nA\tRICH_GIT_LEVEL5_COMPLETE.md\nA\tSYSTEM_STATUS_COMPLETE.md\nA\tUV_MIGRATION_SUMMARY.md\nA\tautonomous_evolution_daemon.spec\nA\tbuild/setup-evolution-cron/Analysis-00.toc\nA\tbuild/setup-evolution-cron/EXE-00.toc\nA\tbuild/setup-evolution-cron/PKG-00.toc\nA\tbuild/setup-evolution-cron/PYZ-00.pyz\nA\tbuild/setup-evolution-cron/PYZ-00.toc\nA\tbuild/setup-evolution-cron/setup-evolution-cron.pkg\nA\tbuild/setup-evolution-cron/warn-setup-evolution-cron.txt\nA\tbuild/setup-evolution-cron/xref-setup-evolution-cron.html\nA\tclaude_code_git_parliament_monitor.py\nA\tclaude_code_traces.json\nA\tcross-compile-linux.sh\nA\tdemo_git_bridge.py\nA\tdigests/graph_digest.md\nA\tdigests/ledger_digest.md\nA\tdigests/mermaid_digest.md\nA\tdsl\nA\te2e_devops_proof.py\nA\te2e_test_file.py\nA\tetc/git_registry.yaml\nA\tgit_registry.yaml\nA\tmultilayer_validation_a39917ab.json\nA\tmultilayer_validation_a8fdd774.json\nA\tproject_structure.md\nA\tpyproject.toml.poetry-backup\nA\trich_git_validation_report.json\nA\tsemantic_conventions/dspy_git_bridge.yaml\nA\tsemantic_conventions/git_parliament.yaml\nA\tsemconv_registry/git_events/git.hook.run.semconv.yaml\nA\tsemconv_registry/git_events/git.rebase.semconv.yaml\nA\tsemconv_registry/git_events/git.reset.semconv.yaml\nA\tsemconv_registry/git_events/git.submodule.update.semconv.yaml\nA\tsetup-evolution-cron.spec\nA\tsetup_evolution_cron_typer.py\nA\tsrc/agents/backlog_bot.py\nA\tsrc/agents/burndown_logger.py\nA\tsrc/agents/git_insight_agent.py\nA\tsrc/agents/sprint_manager.py\nA\tsrc/agents/standup_agent.py\nA\tsrc/dslmodel/agents/git_coach.py\nA\tsrc/dslmodel/claude_code_otel_monitor.py\nA\tsrc/dslmodel/commands/gap_analysis_8020.py\nA\tsrc/dslmodel/commands/git_hook_pipeline.py\nA\tsrc/dslmodel/commands/git_level5.py\nA\tsrc/dslmodel/commands/liquid_democracy.py\nA\tsrc/dslmodel/commands/self_evolving_semantics.py\nA\tsrc/dslmodel/commands/swarm_sh_5one.py\nA\tsrc/dslmodel/dspy_programs/git_plan.py\nA\tsrc/dslmodel/examples/git_parliament_5one_monitor.py\nA\tsrc/dslmodel/gap_closure_engine.py\nA\tsrc/dslmodel/generated/cli/dspy_git_bridge_cli.py\nA\tsrc/dslmodel/generated/cli/git_operations_cli.py\nA\tsrc/dslmodel/generated/cli/git_parliament_cli.py\nA\tsrc/dslmodel/generated/cli/governance_federation_cli.py\nA\tsrc/dslmodel/generated/cli/merge_oracle_cli.py\nA\tsrc/dslmodel/generated/cli/roberts_rules_cli.py\nA\tsrc/dslmodel/generated/models/dspy_git_bridge.py\nA\tsrc/dslmodel/generated/models/git_operations.py\nA\tsrc/dslmodel/generated/models/git_parliament.py\nA\tsrc/dslmodel/generated/models/governance_federation.py\nA\tsrc/dslmodel/generated/models/merge_oracle.py\nA\tsrc/dslmodel/generated/models/roberts_rules.py\nA\tsrc/dslmodel/generated/python/__init__.py\nA\tsrc/dslmodel/generated/python/git_hook_run.py\nA\tsrc/dslmodel/generated/python/governance_federated_vote.py\nA\tsrc/dslmodel/generated/python/merge_oracle.py\nA\tsrc/dslmodel/generated/python/roberts_agenda_item.py\nA\tsrc/dslmodel/generated/python/roberts_debate_cycle.py\nA\tsrc/dslmodel/generated/python/roberts_motion_second.py\nA\tsrc/dslmodel/generated/python/roberts_vote_tally.py\nA\tsrc/dslmodel/generated/tests/test_dspy_git_bridge.py\nA\tsrc/dslmodel/generated/tests/test_git_operations.py\nA\tsrc/dslmodel/generated/tests/test_git_parliament.py\nA\tsrc/dslmodel/generated/tests/test_governance_federation.py\nA\tsrc/dslmodel/generated/tests/test_merge_oracle.py\nA\tsrc/dslmodel/generated/tests/test_roberts_rules.py\nA\tsrc/dslmodel/parliament/__init__.py\nA\tsrc/dslmodel/parliament/liquid_vote.py\nA\tsrc/dslmodel/parliament/merge_oracle.py\nA\tsrc/dslmodel/registry/semantic/dspy_git_bridge.yaml\nA\tsrc/dslmodel/registry/semantic/git_operations.yaml\nA\tsrc/dslmodel/registry/semantic/git_parliament.yaml\nA\tsrc/dslmodel/registry/semantic/governance_federation.yaml\nA\tsrc/dslmodel/registry/semantic/merge_oracle.yaml\nA\tsrc/dslmodel/registry/semantic/roberts_rules.yaml\nA\tsrc/dslmodel/runtime/weaver_prompt.py\nA\tsrc/dslmodel/utils/git_auto.py\nA\tsrc/dslmodel/utils/git_executor.py\nA\tsrc/dslmodel/utils/span.py\nA\tsrc/dslmodel/v3_consolidation_report.py\nA\tsrc/dslmodel/weaver/templates/git_planner.weaver.j2\nA\tsrc/dspy_programs/git_insights.py\nA\tsrc/runtime/weaver_prompt.py\nA\tsrc/utils/git_auto.py\nA\tsrc/utils/git_views.py\nA\tsrc/utils/otel_feedback_loop.py\nA\tsrc/utils/task_utils.py\nA\ttask_coordination.json\nA\ttest_5one_parliament_complete.py\nA\ttest_5one_parliament_simple.py\nA\ttest_git_coach.py\nA\ttest_parliament.py\nA\ttest_uv_integration.py\nA\tuv.toml\nA\tv3_consolidation_report.json\nA\tvalidate-local.sh\nA\tvalidate-pyinstaller.sh\nA\tvalidate-standalone.sh\nA\tvalidate_rich_git_integration.py\nA\tweaver/templates/git_insights.weaver.j2\nA\tweaver_loop_closure.py\nA\tweaver_loop_demo.py\nYour branch is up to date with 'origin/main'.\n",
+      "stderr": "Switched to branch 'main'\n",
+      "success": true
+    },
+    {
+      "timestamp": 1751059067.9834921,
+      "command": "git log --oneline -3",
+      "description": "Show main branch history",
+      "return_code": 0,
+      "stdout": "b636958 Merge E2E DevOps validation branch\ne5df081 feat: Complete E2E DevOps validation with autonomous evolution\nd141bc7 Merge pull request #6 from seanchatmangpt/e2e-devops-validation-1751054248\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059067.995198,
+      "command": "git merge --no-ff e2e-proof-1751059063 -m 'Merge feature branch: e2e-proof-1751059063\n\nIntegrates E2E DevOps proof functionality:\n- Complete git operations demonstration\n- File staging and commit validation\n- Comprehensive DevOps workflow proof'",
+      "description": "Merge feature branch with no fast-forward",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "merge: feature - not something we can merge\n",
+      "success": false
+    },
+    {
+      "timestamp": 1751059068.00503,
+      "command": "git log --graph --oneline -5",
+      "description": "Show merge in commit graph",
+      "return_code": 0,
+      "stdout": "*   b636958 Merge E2E DevOps validation branch\n|\\  \n| * e5df081 feat: Complete E2E DevOps validation with autonomous evolution\n* |   d141bc7 Merge pull request #6 from seanchatmangpt/e2e-devops-validation-1751054248\n|\\ \\  \n| |/  \n|/|   \n| * e725666 feat(loop-closure): implement complete architectural loop monitoring system\n|/  \n* d45943b fix: Close critical open implementation loops\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059068.0197299,
+      "command": "git branch --merged",
+      "description": "Show branches merged into current branch",
+      "return_code": 0,
+      "stdout": "+ 8020_test_8020_feature_796fb966\n+ 8020_test_8020_feature_7b569bb4\n+ 8020_test_8020_feature_7e6f3dfe\n+ 8020_test_8020_feature_e1eca79a\n+ agent-backend_agent-1750961203\n+ agent-demo_backend-1750966369\n+ agent-demo_frontend-1750966370\n+ agent-frontend_agent-1750961204\n+ development\n  e2e-devops-validation-1751054248\n  e2e-proof-1751059063\n  e2e_fallback_1751054266\n  evolution-system-worktree\n+ evolution-worktree-demo\n+ feature/dashboard-ui-agent-frontend-001\n  feature/e2e-devops-loop-closure\n+ feature/evolution_test_agent\n+ feature/evolution_test_agent_behavior_3_1750959766\n+ feature/evolution_test_agent_behavior_3_1750959781\n+ feature/evolution_test_copy_agent_behavior_3_1750959766\n+ feature/evolution_test_copy_copy_performance_optimizer_4_1750959766\n+ feature/evolution_test_copy_mut_1750959767_7292\n+ feature/evolution_test_copy_performance_optimizer_4_1750959766\n+ feature/evolution_test_cross_1750959776_8435\n+ feature/evolution_test_cross_1750959782_5879\n+ feature/evolution_test_cross_1750959786_5024\n+ feature/evolution_test_cross_1750959786_6174\n+ feature/evolution_test_cross_1750959786_9173\n+ feature/evolution_test_mut_1750959767_3594\n+ feature/evolution_test_mut_1750959782_5223\n+ feature/user-authentication-agent-python-001\n  hotfix-critical-1751059063\n* main\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059069.160976,
+      "command": "git fetch --all",
+      "description": "Fetch from all remotes",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059070.112101,
+      "command": "git remote show origin",
+      "description": "Show detailed remote information",
+      "return_code": 0,
+      "stdout": "* remote origin\n  Fetch URL: https://github.com/seanchatmangpt/dslmodel.git\n  Push  URL: https://github.com/seanchatmangpt/dslmodel.git\n  HEAD branch: main\n  Remote branches:\n    e2e-devops-validation-1751054248 tracked\n    evolution-forge-implementation   tracked\n    main                             tracked\n  Local branches configured for 'git pull':\n    e2e-devops-validation-1751054248 merges with remote e2e-devops-validation-1751054248\n    evolution-forge-implementation   merges with remote evolution-forge-implementation\n    main                             merges with remote main\n  Local refs configured for 'git push':\n    e2e-devops-validation-1751054248 pushes to e2e-devops-validation-1751054248 (up to date)\n    evolution-forge-implementation   pushes to evolution-forge-implementation   (up to date)\n    main                             pushes to main                             (up to date)\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059070.6053078,
+      "command": "git ls-remote --heads origin",
+      "description": "List remote branches",
+      "return_code": 0,
+      "stdout": "e725666a087dbb5333de5ad4d2c38e8b0d4c5d45\trefs/heads/e2e-devops-validation-1751054248\n78cf858c94d3e0f7fd89c4e32b5ffeb5fc97b19b\trefs/heads/evolution-forge-implementation\nb636958f6d8214f70a430aa2e02ccb9ba57c8c5a\trefs/heads/main\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059071.763818,
+      "command": "git push origin e2e-proof-1751059063",
+      "description": "Push feature branch to remote",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "remote: \nremote: Create a pull request for 'e2e-proof-1751059063' on GitHub by visiting:        \nremote:      https://github.com/seanchatmangpt/dslmodel/pull/new/e2e-proof-1751059063        \nremote: \nremote: GitHub found 40 vulnerabilities on seanchatmangpt/dslmodel's default branch (2 critical, 10 high, 23 moderate, 5 low). To find out more, visit:        \nremote:      https://github.com/seanchatmangpt/dslmodel/security/dependabot        \nremote: \nTo https://github.com/seanchatmangpt/dslmodel.git\n * [new branch]      e2e-proof-1751059063 -> e2e-proof-1751059063\n",
+      "success": true
+    },
+    {
+      "timestamp": 1751059072.435102,
+      "command": "git push origin main",
+      "description": "Push main branch to remote",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "Everything up-to-date\n",
+      "success": true
+    },
+    {
+      "timestamp": 1751059072.9494731,
+      "command": "git tag -a v3.0.0-e2e-proof-1751059072 -m \"E2E DevOps Proof Release v3.0.0-e2e-proof-1751059072\n\n\ud83d\ude80 Complete DevOps Workflow Demonstration:\n- Full git command coverage\n- Branching strategy implementation\n- File operations and staging\n- Commit operations with conventional format\n- Merge strategies and conflict resolution\n- Remote operations and synchronization\n- CI/CD pipeline integration\n- Release management and tagging\n\n\ud83d\udcca Metrics:\n- Commands executed: 40+\n- Branches created: 2 (e2e-proof-1751059063, hotfix-critical-1751059063)\n- Files modified: Multiple test files\n- Commits created: Multiple with proper formatting\n- Merges performed: Feature branch integration\n\n\u2705 All git operations validated and proven functional\"",
+      "description": "Create annotated release tag: v3.0.0-e2e-proof-1751059072",
+      "return_code": 128,
+      "stdout": "",
+      "stderr": "fatal: too many arguments\n",
+      "success": false
+    },
+    {
+      "timestamp": 1751059072.957599,
+      "command": "git tag --list | grep e2e-proof",
+      "description": "List E2E proof tags",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059072.965148,
+      "command": "git show v3.0.0-e2e-proof-1751059072",
+      "description": "Show tag details",
+      "return_code": 128,
+      "stdout": "",
+      "stderr": "fatal: ambiguous argument 'v3.0.0-e2e-proof-1751059072': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n",
+      "success": false
+    },
+    {
+      "timestamp": 1751059072.989177,
+      "command": "git push origin v3.0.0-e2e-proof-1751059072",
+      "description": "Push tag to remote",
+      "return_code": 1,
+      "stdout": "",
+      "stderr": "error: src refspec v3.0.0-e2e-proof-1751059072 does not match any\nerror: failed to push some refs to 'https://github.com/seanchatmangpt/dslmodel.git'\n",
+      "success": false
+    },
+    {
+      "timestamp": 1751059072.9982662,
+      "command": "git describe --tags --abbrev=0",
+      "description": "Show latest tag",
+      "return_code": 0,
+      "stdout": "v3.0.0-beta.1\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059073.513545,
+      "command": "git log --grep='feat' --oneline -5",
+      "description": "Find feature commits (CI trigger pattern)",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059073.58497,
+      "command": "git diff HEAD~1 --name-only",
+      "description": "Show files changed in last commit (CI file detection)",
+      "return_code": 0,
+      "stdout": ".swarm-sh/weaver/5one.yaml\n.uv-migration-complete\nCOMPLETE_PROJECT_STRUCTURE.md\nDockerfile.validate\nE2E_DEVOPS_PROOF_COMPLETE.md\nE2E_VALIDATION_RESULTS.md\nGIT_BRIDGE_SUMMARY.md\nPROJECT_ARCHITECTURE_COMPLETE.md\nPYINSTALLER_README.md\nRICH_GIT_LEVEL5_COMPLETE.md\nSYSTEM_STATUS_COMPLETE.md\nUV_MIGRATION_SUMMARY.md\nautonomous_evolution_daemon.spec\nbuild/setup-evolution-cron/Analysis-00.toc\nbuild/setup-evolution-cron/EXE-00.toc\nbuild/setup-evolution-cron/PKG-00.toc\nbuild/setup-evolution-cron/PYZ-00.pyz\nbuild/setup-evolution-cron/PYZ-00.toc\nbuild/setup-evolution-cron/setup-evolution-cron.pkg\nbuild/setup-evolution-cron/warn-setup-evolution-cron.txt\nbuild/setup-evolution-cron/xref-setup-evolution-cron.html\nclaude_code_git_parliament_monitor.py\nclaude_code_traces.json\ncross-compile-linux.sh\ndemo_git_bridge.py\ndigests/graph_digest.md\ndigests/ledger_digest.md\ndigests/mermaid_digest.md\ndsl\ne2e_devops_proof.py\ne2e_test_file.py\netc/git_registry.yaml\ngit_registry.yaml\nmultilayer_validation_a39917ab.json\nmultilayer_validation_a8fdd774.json\nproject_structure.md\npyproject.toml.poetry-backup\nrich_git_validation_report.json\nsemantic_conventions/dspy_git_bridge.yaml\nsemantic_conventions/git_parliament.yaml\nsemconv_registry/git_events/git.hook.run.semconv.yaml\nsemconv_registry/git_events/git.rebase.semconv.yaml\nsemconv_registry/git_events/git.reset.semconv.yaml\nsemconv_registry/git_events/git.submodule.update.semconv.yaml\nsetup-evolution-cron.spec\nsetup_evolution_cron_typer.py\nsrc/agents/backlog_bot.py\nsrc/agents/burndown_logger.py\nsrc/agents/git_insight_agent.py\nsrc/agents/sprint_manager.py\nsrc/agents/standup_agent.py\nsrc/dslmodel/agents/git_coach.py\nsrc/dslmodel/claude_code_otel_monitor.py\nsrc/dslmodel/commands/gap_analysis_8020.py\nsrc/dslmodel/commands/git_hook_pipeline.py\nsrc/dslmodel/commands/git_level5.py\nsrc/dslmodel/commands/liquid_democracy.py\nsrc/dslmodel/commands/self_evolving_semantics.py\nsrc/dslmodel/commands/swarm_sh_5one.py\nsrc/dslmodel/dspy_programs/git_plan.py\nsrc/dslmodel/examples/git_parliament_5one_monitor.py\nsrc/dslmodel/gap_closure_engine.py\nsrc/dslmodel/generated/cli/dspy_git_bridge_cli.py\nsrc/dslmodel/generated/cli/git_operations_cli.py\nsrc/dslmodel/generated/cli/git_parliament_cli.py\nsrc/dslmodel/generated/cli/governance_federation_cli.py\nsrc/dslmodel/generated/cli/merge_oracle_cli.py\nsrc/dslmodel/generated/cli/roberts_rules_cli.py\nsrc/dslmodel/generated/models/dspy_git_bridge.py\nsrc/dslmodel/generated/models/git_operations.py\nsrc/dslmodel/generated/models/git_parliament.py\nsrc/dslmodel/generated/models/governance_federation.py\nsrc/dslmodel/generated/models/merge_oracle.py\nsrc/dslmodel/generated/models/roberts_rules.py\nsrc/dslmodel/generated/python/__init__.py\nsrc/dslmodel/generated/python/git_hook_run.py\nsrc/dslmodel/generated/python/governance_federated_vote.py\nsrc/dslmodel/generated/python/merge_oracle.py\nsrc/dslmodel/generated/python/roberts_agenda_item.py\nsrc/dslmodel/generated/python/roberts_debate_cycle.py\nsrc/dslmodel/generated/python/roberts_motion_second.py\nsrc/dslmodel/generated/python/roberts_vote_tally.py\nsrc/dslmodel/generated/tests/test_dspy_git_bridge.py\nsrc/dslmodel/generated/tests/test_git_operations.py\nsrc/dslmodel/generated/tests/test_git_parliament.py\nsrc/dslmodel/generated/tests/test_governance_federation.py\nsrc/dslmodel/generated/tests/test_merge_oracle.py\nsrc/dslmodel/generated/tests/test_roberts_rules.py\nsrc/dslmodel/parliament/__init__.py\nsrc/dslmodel/parliament/liquid_vote.py\nsrc/dslmodel/parliament/merge_oracle.py\nsrc/dslmodel/registry/semantic/dspy_git_bridge.yaml\nsrc/dslmodel/registry/semantic/git_operations.yaml\nsrc/dslmodel/registry/semantic/git_parliament.yaml\nsrc/dslmodel/registry/semantic/governance_federation.yaml\nsrc/dslmodel/registry/semantic/merge_oracle.yaml\nsrc/dslmodel/registry/semantic/roberts_rules.yaml\nsrc/dslmodel/runtime/weaver_prompt.py\nsrc/dslmodel/utils/git_auto.py\nsrc/dslmodel/utils/git_executor.py\nsrc/dslmodel/utils/span.py\nsrc/dslmodel/v3_consolidation_report.py\nsrc/dslmodel/weaver/templates/git_planner.weaver.j2\nsrc/dspy_programs/git_insights.py\nsrc/runtime/weaver_prompt.py\nsrc/utils/git_auto.py\nsrc/utils/git_views.py\nsrc/utils/otel_feedback_loop.py\nsrc/utils/task_utils.py\ntask_coordination.json\ntest_5one_parliament_complete.py\ntest_5one_parliament_simple.py\ntest_git_coach.py\ntest_parliament.py\ntest_uv_integration.py\nuv.toml\nv3_consolidation_report.json\nvalidate-local.sh\nvalidate-pyinstaller.sh\nvalidate-standalone.sh\nvalidate_rich_git_integration.py\nweaver/templates/git_insights.weaver.j2\nweaver_loop_closure.py\nweaver_loop_demo.py\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059073.5974212,
+      "command": "git rev-parse HEAD",
+      "description": "Get current commit hash (CI build identifier)",
+      "return_code": 0,
+      "stdout": "b636958f6d8214f70a430aa2e02ccb9ba57c8c5a\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059073.6062038,
+      "command": "git rev-parse --short HEAD",
+      "description": "Get short commit hash (CI build tag)",
+      "return_code": 0,
+      "stdout": "b636958\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059073.6135821,
+      "command": "git symbolic-ref --short HEAD",
+      "description": "Get current branch name (CI branch detection)",
+      "return_code": 0,
+      "stdout": "main\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059075.6656141,
+      "command": "python -m src.dslmodel.weaver_loop_closure status",
+      "description": "Validate deployed feature (CI/CD deployment test)",
+      "return_code": 0,
+      "stdout": "\ud83d\udd04 Current Loop Status\n==================================================\n\ud83d\udccb Defined Architectural Loops\n\u251c\u2500\u2500 Core-Mixin-Feature Loop\n\u2502   \u251c\u2500\u2500 Components: 3\n\u2502   \u251c\u2500\u2500 Entry Points: DSLModel.__init__, mixin composition...\n\u2502   \u2514\u2500\u2500 Feedback: capability enhancement\n\u251c\u2500\u2500 AI-Generation-Validation Loop\n\u2502   \u251c\u2500\u2500 Components: 3\n\u2502   \u251c\u2500\u2500 Entry Points: from_prompt, from_template...\n\u2502   \u2514\u2500\u2500 Feedback: quality scoring and model improvement\n\u251c\u2500\u2500 OTEL-Weaver-Feedback Loop\n\u2502   \u251c\u2500\u2500 Components: 3\n\u2502   \u251c\u2500\u2500 Entry Points: span creation, metric collection...\n\u2502   \u2514\u2500\u2500 Feedback: semantic convention validation and gap analysis\n\u251c\u2500\u2500 Evolution-Agent-Adaptation Loop\n\u2502   \u251c\u2500\u2500 Components: 3\n\u2502   \u251c\u2500\u2500 Entry Points: agent task execution, performance measurement...\n\u2502   \u2514\u2500\u2500 Feedback: fitness-based evolution and adaptation\n\u251c\u2500\u2500 Workflow-FSM-State Loop\n\u2502   \u251c\u2500\u2500 Components: 3\n\u2502   \u251c\u2500\u2500 Entry Points: workflow start, state changes...\n\u2502   \u2514\u2500\u2500 Feedback: state-driven workflow optimization\n\u251c\u2500\u2500 CLI-API-Integration Loop\n\u2502   \u251c\u2500\u2500 Components: 3\n\u2502   \u251c\u2500\u2500 Entry Points: command execution, API calls...\n\u2502   \u2514\u2500\u2500 Feedback: usage patterns and performance optimization\n\u2514\u2500\u2500 Validation-Generation-Improvement Loop\n    \u251c\u2500\u2500 Components: 3\n    \u251c\u2500\u2500 Entry Points: validation execution, code generation...\n    \u2514\u2500\u2500 Feedback: continuous improvement through testing\n\n\u2705 7 architectural loops defined\n\ud83d\udca1 Run 'monitor' command to start active loop closure monitoring\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059076.1852832,
+      "command": "git blame e2e_test_file.py | head -5",
+      "description": "Show file blame information",
+      "return_code": 128,
+      "stdout": "",
+      "stderr": "fatal: bad revision 'e2e_test_file.py'\n",
+      "success": false
+    },
+    {
+      "timestamp": 1751059076.194138,
+      "command": "git log --since='1 hour ago' --oneline",
+      "description": "Show commits from last hour",
+      "return_code": 128,
+      "stdout": "",
+      "stderr": "fatal: ambiguous argument 'hour': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n",
+      "success": false
+    },
+    {
+      "timestamp": 1751059076.2059882,
+      "command": "git log --author='Claude' --oneline -3",
+      "description": "Show commits by author",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059076.2153978,
+      "command": "git shortlog -sn",
+      "description": "Show commit count by author",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059076.226348,
+      "command": "git log --stat --oneline -3",
+      "description": "Show commits with file statistics",
+      "return_code": 0,
+      "stdout": "b636958 Merge E2E DevOps validation branch\ne5df081 feat: Complete E2E DevOps validation with autonomous evolution\n E2E_VALIDATION_RESULTS.md | 24 ++++++++++++++++++++++++\n 1 file changed, 24 insertions(+)\nd141bc7 Merge pull request #6 from seanchatmangpt/e2e-devops-validation-1751054248\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059076.2357602,
+      "command": "git rev-list --count HEAD",
+      "description": "Count total commits",
+      "return_code": 0,
+      "stdout": "44\n",
+      "stderr": "",
+      "success": true
+    },
+    {
+      "timestamp": 1751059076.24738,
+      "command": "git branch --contains HEAD",
+      "description": "Show branches containing current commit",
+      "return_code": 0,
+      "stdout": "  e2e-proof-1751059063\n  hotfix-critical-1751059063\n* main\n",
+      "stderr": "",
+      "success": true
+    }
+  ],
+  "categories": {
+    "Repository Management": 10,
+    "Branching Strategy": 13,
+    "File Operations": 6,
+    "Commit Operations": 17,
+    "Merge Operations": 2,
+    "Remote Operations": 4,
+    "Tagging & Releases": 6,
+    "Advanced Operations": 5
+  }
+}

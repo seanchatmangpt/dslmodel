@@ -1,0 +1,419 @@
+# Git Registry - Level-5 Git-Native Substrate for Swarm SH
+# Complete mapping of Git primitives to spans and wrappers
+version: "1.0"
+registry_name: "rich_git_level5"
+
+# =============================================================================
+# 1. Data-layer superpowers
+# =============================================================================
+
+# Worktree operations for tick isolation and WASI builds
+worktree_add:
+  cmd: "git worktree add {path} {sha}"
+  span: "git.worktree.lifecycle"
+  cwd_arg: null
+  attributes:
+    operation: "add"
+    isolation_level: "tick"
+
+worktree_remove:
+  cmd: "git worktree remove {path}"
+  span: "git.worktree.lifecycle"
+  cwd_arg: null
+  attributes:
+    operation: "remove"
+
+worktree_list:
+  cmd: "git worktree list"
+  span: "git.worktree.lifecycle"
+  cwd_arg: null
+  attributes:
+    operation: "list"
+
+# Sparse checkout for speed optimization
+sparse_checkout_init:
+  cmd: "git config core.sparseCheckout true"
+  span: "git.checkout"
+  cwd_arg: null
+  attributes:
+    sparse: true
+    operation: "init"
+
+sparse_checkout_set:
+  cmd: "git sparse-checkout set {patterns}"
+  span: "git.checkout"
+  cwd_arg: null
+  attributes:
+    sparse: true
+    operation: "set"
+
+# Partial clone for disk-light history
+partial_clone:
+  cmd: "git clone --filter=blob:none --depth 1 {url} {dst}"
+  span: "git.clone.shallow"
+  cwd_arg: null
+  attributes:
+    filter: "blob:none"
+    depth: 1
+
+partial_clone_treeless:
+  cmd: "git clone --filter=tree:0 {url} {dst}"
+  span: "git.clone.shallow"
+  cwd_arg: null
+  attributes:
+    filter: "tree:0"
+
+# Bundle operations for offline air-gap snapshots
+bundle_create:
+  cmd: "git bundle create {bundle_file} {refs}"
+  span: "compliance.object.eject"
+  cwd_arg: null
+  attributes:
+    bundle_type: "snapshot"
+    refs: "{refs}"
+
+bundle_verify:
+  cmd: "git bundle verify {bundle_file}"
+  span: "compliance.object.verify"
+  cwd_arg: null
+
+bundle_clone:
+  cmd: "git clone {bundle_file} {dst}"
+  span: "git.clone"
+  cwd_arg: null
+  attributes:
+    source_type: "bundle"
+
+# =============================================================================
+# 2. Collaboration & federation
+# =============================================================================
+
+# Submodule operations for domain pack mounting
+submodule_add:
+  cmd: "git submodule add {url} {path}"
+  span: "git.submodule.update"
+  cwd_arg: null
+  attributes:
+    operation: "add"
+
+submodule_update:
+  cmd: "git submodule update --init --recursive"
+  span: "git.submodule.update"
+  cwd_arg: null
+  attributes:
+    operation: "update"
+    recursive: true
+
+submodule_sync:
+  cmd: "git submodule sync --recursive"
+  span: "git.submodule.update"
+  cwd_arg: null
+  attributes:
+    operation: "sync"
+    recursive: true
+
+# Remote operations for multi-org federation
+remote_add:
+  cmd: "git remote add {name} {url}"
+  span: "git.remote"
+  cwd_arg: null
+  attributes:
+    operation: "add"
+
+remote_set_url:
+  cmd: "git remote set-url {name} {url}"
+  span: "git.remote"
+  cwd_arg: null
+  attributes:
+    operation: "set_url"
+
+# Notes operations for debate and DMAIC data
+notes_add:
+  cmd: "git notes --ref={ref} add -m '{message}' {commit}"
+  span: "roberts.debate.cycle"
+  cwd_arg: null
+  attributes:
+    notes_ref: "{ref}"
+    argument_hash: "{commit}"
+
+notes_show:
+  cmd: "git notes --ref={ref} show {commit}"
+  span: "roberts.debate.cycle"
+  cwd_arg: null
+  attributes:
+    notes_ref: "{ref}"
+    operation: "show"
+
+# =============================================================================
+# 3. Workflow / history manipulation
+# =============================================================================
+
+# Cherry-pick for promoting agent patches
+cherry_pick:
+  cmd: "git cherry-pick {commit}"
+  span: "git.merge"
+  cwd_arg: null
+  attributes:
+    strategy: "cherry-pick"
+
+cherry_pick_range:
+  cmd: "git cherry-pick {start}..{end}"
+  span: "git.merge"
+  cwd_arg: null
+  attributes:
+    strategy: "cherry-pick"
+    range: true
+
+# Rebase operations for linearizing MergeOracle output
+rebase_interactive:
+  cmd: "git rebase -i {base}"
+  span: "git.rebase"
+  cwd_arg: null
+  attributes:
+    mode: "interactive"
+
+rebase_preserve_merges:
+  cmd: "git rebase --rebase-merges {base}"
+  span: "git.rebase"
+  cwd_arg: null
+  attributes:
+    mode: "rebase-merges"
+
+# Reset operations for instant rollback
+reset_soft:
+  cmd: "git reset --soft {commit}"
+  span: "git.reset"
+  cwd_arg: null
+  attributes:
+    mode: "soft"
+    to_sha: "{commit}"
+
+reset_mixed:
+  cmd: "git reset --mixed {commit}"
+  span: "git.reset"
+  cwd_arg: null
+  attributes:
+    mode: "mixed"
+    to_sha: "{commit}"
+
+reset_hard:
+  cmd: "git reset --hard {commit}"
+  span: "git.reset"
+  cwd_arg: null
+  attributes:
+    mode: "hard"
+    to_sha: "{commit}"
+
+reset_keep:
+  cmd: "git reset --keep {commit}"
+  span: "git.reset"
+  cwd_arg: null
+  attributes:
+    mode: "keep"
+    to_sha: "{commit}"
+
+# Bisect for autonomic root-cause search
+bisect_start:
+  cmd: "git bisect start"
+  span: "git.bisect"
+  cwd_arg: null
+  attributes:
+    operation: "start"
+
+bisect_good:
+  cmd: "git bisect good {commit}"
+  span: "git.bisect"
+  cwd_arg: null
+  attributes:
+    operation: "good"
+    commit: "{commit}"
+
+bisect_bad:
+  cmd: "git bisect bad {commit}"
+  span: "git.bisect"
+  cwd_arg: null
+  attributes:
+    operation: "bad"
+    commit: "{commit}"
+
+bisect_reset:
+  cmd: "git bisect reset"
+  span: "git.bisect"
+  cwd_arg: null
+  attributes:
+    operation: "reset"
+
+# =============================================================================
+# 4. Security & provenance
+# =============================================================================
+
+# GPG signing operations
+commit_signed:
+  cmd: "git commit -S -m '{message}'"
+  span: "compliance.gpg.signature"
+  cwd_arg: null
+  attributes:
+    signature_type: "commit"
+
+tag_signed:
+  cmd: "git tag -s {tag_name} -m '{message}'"
+  span: "compliance.gpg.signature"
+  cwd_arg: null
+  attributes:
+    signature_type: "tag"
+
+verify_commit:
+  cmd: "git verify-commit {commit}"
+  span: "compliance.gpg.verification"
+  cwd_arg: null
+  attributes:
+    verification_type: "commit"
+
+verify_tag:
+  cmd: "git verify-tag {tag}"
+  span: "compliance.gpg.verification"
+  cwd_arg: null
+  attributes:
+    verification_type: "tag"
+
+# SBOM and attestation notes
+notes_attestation_add:
+  cmd: "git notes --ref=attestation add -m '{sbom_hash}' {commit}"
+  span: "compliance.sbom.artifact"
+  cwd_arg: null
+  attributes:
+    attestation_type: "sbom"
+    sbom_hash: "{sbom_hash}"
+
+# =============================================================================
+# 5. Maintenance & performance
+# =============================================================================
+
+# Garbage collection operations
+gc_aggressive:
+  cmd: "git gc --aggressive"
+  span: "git.gc"
+  cwd_arg: null
+  attributes:
+    aggressive: true
+
+gc_auto:
+  cmd: "git gc --auto"
+  span: "git.gc"
+  cwd_arg: null
+  attributes:
+    auto: true
+
+# Repack with bitmaps for federation performance
+repack_bitmaps:
+  cmd: "git repack -adb --write-bitmaps"
+  span: "git.gc"
+  cwd_arg: null
+  attributes:
+    bitmaps: true
+    aggressive: true
+
+# Prune operations for cleaning vote ref spam
+prune_refs:
+  cmd: "git remote prune {remote}"
+  span: "git.prune"
+  cwd_arg: null
+  attributes:
+    prune_type: "remote_refs"
+
+prune_objects:
+  cmd: "git prune"
+  span: "git.prune"
+  cwd_arg: null
+  attributes:
+    prune_type: "objects"
+
+expire_reflog:
+  cmd: "git reflog expire --expire=now --all"
+  span: "git.prune"
+  cwd_arg: null
+  attributes:
+    prune_type: "reflog"
+
+# =============================================================================
+# 6. Advanced operations
+# =============================================================================
+
+# Worktree with branch creation
+worktree_add_branch:
+  cmd: "git worktree add -b {branch} {path} {start_point}"
+  span: "git.worktree.lifecycle"
+  cwd_arg: null
+  attributes:
+    operation: "add"
+    creates_branch: true
+    branch: "{branch}"
+
+# Fetch with specific refspecs
+fetch_refs:
+  cmd: "git fetch {remote} {refspec}"
+  span: "git.fetch"
+  cwd_arg: null
+  attributes:
+    refspec: "{refspec}"
+
+# Archive operations
+archive_create:
+  cmd: "git archive --format=tar.gz --output={output} {tree_ish}"
+  span: "git.archive"
+  cwd_arg: null
+  attributes:
+    format: "tar.gz"
+    tree_ish: "{tree_ish}"
+
+# Show operations for inspection
+show_commit:
+  cmd: "git show {commit}"
+  span: "git.show"
+  cwd_arg: null
+  attributes:
+    object_type: "commit"
+
+show_tree:
+  cmd: "git show {tree_ish}:{path}"
+  span: "git.show"
+  cwd_arg: null
+  attributes:
+    object_type: "tree"
+
+# Log operations with specific formats
+log_oneline:
+  cmd: "git log --oneline {range}"
+  span: "git.log"
+  cwd_arg: null
+  attributes:
+    format: "oneline"
+    range: "{range}"
+
+log_graph:
+  cmd: "git log --graph --pretty=format:'%h -%d %s (%cr) <%an>' {range}"
+  span: "git.log"
+  cwd_arg: null
+  attributes:
+    format: "graph"
+    range: "{range}"
+
+# =============================================================================
+# 7. Hook management
+# =============================================================================
+
+# Hook installation and execution
+install_hook:
+  cmd: "cp {hook_script} .git/hooks/{hook_name} && chmod +x .git/hooks/{hook_name}"
+  span: "git.hook.install"
+  cwd_arg: null
+  attributes:
+    hook_name: "{hook_name}"
+
+run_hook:
+  cmd: ".git/hooks/{hook_name}"
+  span: "git.hook.run"
+  cwd_arg: null
+  attributes:
+    hook_name: "{hook_name}"
+    manual_trigger: true

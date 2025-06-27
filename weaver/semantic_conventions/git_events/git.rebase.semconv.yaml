@@ -1,0 +1,62 @@
+groups:
+  - id: git.rebase
+    prefix: git
+    type: span
+    brief: "Git rebase operations for history linearization"
+    attributes:
+      - id: rebase.onto
+        type: string
+        brief: "Target branch or commit for rebase"
+        examples: ["main", "origin/main", "abc123def456"]
+        requirement_level: required
+      - id: rebase.branch
+        type: string
+        brief: "Branch being rebased"
+        examples: ["feature/new-agent", "hotfix/urgent", "agent_001_work"]
+        requirement_level: required
+      - id: rebase.mode
+        type: string
+        brief: "Rebase mode used"
+        examples: ["interactive", "preserve-merges", "rebase-merges", "autosquash"]
+        requirement_level: optional
+      - id: rebase.commits_replayed
+        type: int
+        brief: "Number of commits replayed during rebase"
+        examples: [3, 15, 42]
+        requirement_level: required
+      - id: rebase.conflicts_resolved
+        type: int
+        brief: "Number of conflicts resolved"
+        examples: [0, 2, 8]
+        requirement_level: optional
+      - id: rebase.strategy
+        type: string
+        brief: "Merge strategy used"
+        examples: ["recursive", "ours", "theirs", "octopus"]
+        requirement_level: optional
+      - id: rebase.is_merge_oracle
+        type: boolean
+        brief: "Whether rebase is from MergeOracle output"
+        requirement_level: optional
+      - id: rebase.release_preparation
+        type: boolean
+        brief: "Whether rebase is for release preparation"
+        requirement_level: optional
+      - id: git.working_directory
+        type: string
+        brief: "Git working directory"
+        examples: ["/Users/sac/dev/dslmodel", "/workspace/agent_001"]
+        requirement_level: required
+      - id: git.exit_code
+        type: int
+        brief: "Git command exit code"
+        examples: [0, 1, 128]
+        requirement_level: required
+      - id: git.original_head
+        type: string
+        brief: "Original HEAD before rebase"
+        examples: ["abc123def456"]
+        requirement_level: required
+    spans:
+      - span_name: git.rebase
+        brief: "Git rebase operation for history linearization and MergeOracle integration"

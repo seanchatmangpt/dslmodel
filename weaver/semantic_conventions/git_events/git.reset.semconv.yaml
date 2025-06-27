@@ -1,0 +1,53 @@
+groups:
+  - id: git.reset
+    prefix: git
+    type: span
+    brief: "Git reset operations for rollback and state management"
+    attributes:
+      - id: reset.target_sha
+        type: string
+        brief: "Target commit SHA for reset operation"
+        examples: ["abc123def456", "HEAD~1", "origin/main"]
+        requirement_level: required
+      - id: reset.mode
+        type: string
+        brief: "Reset mode used"
+        examples: ["soft", "mixed", "hard", "keep", "merge"]
+        requirement_level: required
+      - id: reset.files_affected
+        type: int
+        brief: "Number of files affected by reset"
+        examples: [0, 5, 23]
+        requirement_level: optional
+      - id: reset.reason
+        type: string
+        brief: "Reason for reset operation"
+        examples: ["sandbox_failure", "test_regression", "manual_rollback", "merge_conflict"]
+        requirement_level: optional
+      - id: reset.previous_sha
+        type: string
+        brief: "SHA before reset (for rollback tracking)"
+        examples: ["def456abc123", "HEAD"]
+        requirement_level: required
+      - id: reset.is_autonomous
+        type: boolean
+        brief: "Whether reset was triggered autonomously"
+        requirement_level: optional
+      - id: git.working_directory
+        type: string
+        brief: "Git working directory"
+        examples: ["/Users/sac/dev/dslmodel", "/workspace/agent_001"]
+        requirement_level: required
+      - id: git.exit_code
+        type: int
+        brief: "Git command exit code"
+        examples: [0, 1, 128]
+        requirement_level: required
+      - id: git.reflog_entry
+        type: string
+        brief: "Reflog entry created by reset"
+        examples: ["HEAD@{0}: reset: moving to abc123"]
+        requirement_level: optional
+    spans:
+      - span_name: git.reset
+        brief: "Git reset operation for instant rollback and state management"

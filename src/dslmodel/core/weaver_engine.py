@@ -13,6 +13,16 @@ from typing import Dict, Any, List, Optional
 from pathlib import Path
 from dataclasses import dataclass
 import datetime
+from enum import Enum
+
+class GenerationType(Enum):
+    """Types of generation supported by Weaver."""
+    MODEL = "model"
+    CLI = "cli"
+    TEST = "test"
+    SEMANTIC_CONVENTION = "semantic_convention"
+    TELEMETRY = "telemetry"
+    VALIDATION = "validation"
 
 try:
     from ...utils.span import span

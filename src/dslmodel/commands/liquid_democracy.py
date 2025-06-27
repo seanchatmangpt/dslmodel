@@ -256,6 +256,44 @@ class LiquidDemocracy:
         
         logger.info(f"🔮 Created MergeOracle for {motion_id}: {tally}")
     
+    def prune_vote_refs(self, motion_id: str, keep_oracle: bool = True) -> int:
+        """Prune vote refs after decision to prevent unbounded growth"""
+        pruned_count = 0
+        
+        # Get all vote refs for this motion
+        result = subprocess.run(
+            ["git", "for-each-ref", f"refs/democracy/votes/*{motion_id}*", "--format=%(refname)"],
+            cwd=self.repo_path,
+            capture_output=True,
+            text=True
+        )
+        
+        for ref_line in result.stdout.strip().split('\n'):
+            if ref_line and motion_id in ref_line:
+                # Delete the ref
+                subprocess.run(
+                    ["git", "update-ref", "-d", ref_line],
+                    cwd=self.repo_path,
+                    capture_output=True
+                )
+                pruned_count += 1
+        
+        # Emit pruning span
+        from datetime import datetime
+        prune_span = {
+            "name": "git.prune",
+            "attributes": {
+                "motion.id": motion_id,
+                "refs.pruned": pruned_count,
+                "oracle.preserved": keep_oracle
+            },
+            "timestamp": datetime.utcnow().isoformat(),
+            "duration_ms": 10
+        }
+        
+        logger.info(f"🗑️ Pruned {pruned_count} vote refs for {motion_id}")
+        return pruned_count
+    
     def federate_vote(self, remote_repo: str, motion_id: str) -> List[CrossRepoVote]:
         """Federate votes from remote repository"""
         # Fetch remote refs

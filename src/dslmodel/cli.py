@@ -95,6 +95,11 @@ app.add_typer(name="health-8020", typer_instance=health_8020_improvement.app, he
 app.add_typer(name="otel-monitor", typer_instance=claude_code_otel_monitoring.app, help="🔍 Claude Code OTEL monitoring and gap detection")
 app.add_typer(name="gap-8020", typer_instance=gap_analysis_8020.app, help="🔍 80/20 Gap Analysis - Identify and close system gaps using OTEL monitoring")
 app.add_typer(name="5one", typer_instance=swarm_sh_5one.app, help="🚀 Swarm SH 5-ONE: Git-Native Hyper-Intelligence Platform")
+try:
+    from dslmodel.commands import weaver_forge_dx_loop
+    app.add_typer(name="forge-dx", typer_instance=weaver_forge_dx_loop.app, help="🔄 Weaver Forge Git Agent Auto DX Loop")
+except ImportError:
+    pass  # forge-dx not available due to missing dependencies
 
 
 # ============================================================================  

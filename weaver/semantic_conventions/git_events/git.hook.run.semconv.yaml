@@ -1,0 +1,54 @@
+groups:
+  - id: git.hook.run
+    prefix: git
+    type: span
+    brief: "Git hook execution"
+    attributes:
+      - id: hook.name
+        type: string
+        brief: "Name of the git hook"
+        examples: ["pre-commit", "post-commit", "pre-push", "update", "post-receive"]
+        requirement_level: required
+      - id: hook.type
+        type: string
+        brief: "Hook execution context"
+        examples: ["client", "server"]
+        requirement_level: required
+      - id: hook.script_path
+        type: string
+        brief: "Path to hook script"
+        examples: [".git/hooks/pre-commit", "/usr/local/bin/forge-validate"]
+        requirement_level: optional
+      - id: hook.exit_code
+        type: int
+        brief: "Hook script exit code"
+        examples: [0, 1, 2]
+        requirement_level: required
+      - id: hook.duration_ms
+        type: int
+        brief: "Hook execution time in milliseconds"
+        examples: [150, 2500, 30000]
+        requirement_level: optional
+      - id: hook.triggered_by
+        type: string
+        brief: "Git operation that triggered hook"
+        examples: ["commit", "push", "merge", "rebase"]
+        requirement_level: required
+      - id: hook.validation_results
+        type: string[]
+        brief: "Validation results from hook execution"
+        examples: ["lint: passed", "forge: validated", "tests: 15/15 passed"]
+        requirement_level: optional
+      - id: git.working_directory
+        type: string
+        brief: "Git working directory"
+        examples: ["/Users/sac/dev/dslmodel", "/workspace/agent_001"]
+        requirement_level: required
+      - id: git.commit_sha
+        type: string
+        brief: "Commit SHA being processed"
+        examples: ["abc123def456", "HEAD~1"]
+        requirement_level: optional
+    spans:
+      - span_name: git.hook.run
+        brief: "Git hook execution with validation and telemetry"

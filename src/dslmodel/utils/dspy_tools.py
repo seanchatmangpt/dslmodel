@@ -1,8 +1,10 @@
 import dspy
+import os
+from typing import Optional
 
 
 def init_lm(
-        model: str = "ollama/qwen3",
+        model: Optional[str] = None,
         experimental: bool = True,
         adapter: dspy.ChatAdapter | None = None,
         validate_ollama: bool = True,
@@ -10,9 +12,10 @@ def init_lm(
 ) -> dspy.LM:
     """
     Initialize a language model using the new DSPy 2.5 setup.
+    Reads configuration from environment variables.
 
     :param model: Model name, supporting `openai/` prefixed endpoints.
-                  Defaults to `'ollama/qwen3'`.
+                  Defaults to SWARMSH_LM env var or 'ollama/qwen3'.
     :type model: str, optional
     :param experimental: Enable experimental DSPy settings for the LM.
                          Defaults to `True`.
@@ -41,6 +44,21 @@ def init_lm(
     :return: Configured LM object.
     :rtype: dspy.LM
     """
+    # Read configuration from environment variables
+    if model is None:
+        model = os.getenv('SWARMSH_LM', 'ollama/qwen3')
+    
+    # Override kwargs with environment defaults if not provided
+    env_config = {
+        'temperature': float(os.getenv('SWARMSH_LM_TEMPERATURE', '0.0')),
+        'max_tokens': int(os.getenv('SWARMSH_LM_MAX_TOKENS', '1000'))
+    }
+    
+    # Update with env values only if not explicitly provided
+    for key, value in env_config.items():
+        if key not in kwargs:
+            kwargs[key] = value
+    
     # Validate Ollama models if enabled and model starts with "ollama/"
     if validate_ollama and model.startswith("ollama/"):
         try:

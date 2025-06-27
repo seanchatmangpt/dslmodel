@@ -84,14 +84,21 @@ def execute_git_command(
     try:
         # Format command with provided kwargs
         cmd = cmd_template.format(**kwargs)
-        cmd_parts = cmd.split()
+        
+        # Handle special cases for git operations with messages
+        if operation == "tag_annotate":
+            cmd_parts = ["git", "tag", "-a", kwargs["name"], "-m", kwargs["message"]]
+        elif operation == "notes_add":
+            cmd_parts = ["git", "notes", f"--ref={kwargs['ref']}", "add", "-m", kwargs["message"], kwargs["target"]]
+        else:
+            cmd_parts = cmd.split()
         
         # Determine working directory
         working_dir = cwd
         if config.get("cwd_arg") and config["cwd_arg"] in kwargs:
             working_dir = kwargs[config["cwd_arg"]]
         
-        logger.info(f"Executing git command: {cmd} (cwd: {working_dir})")
+        logger.info(f"Executing git command: {operation} (cwd: {working_dir})")
         
         # Execute command
         result = subprocess.run(

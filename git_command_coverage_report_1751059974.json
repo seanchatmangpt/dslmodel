@@ -1,0 +1,359 @@
+{
+  "summary": {
+    "total_commands": 29,
+    "covered_commands": 15,
+    "coverage_percentage": 51.724137931034484,
+    "level_5_coverage": 100.0
+  },
+  "category_breakdown": {
+    "data_layer": {
+      "total": 4,
+      "covered": 4,
+      "commands": [
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "worktree_add"
+          ],
+          "level": "level-5",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "sparse_checkout"
+          ],
+          "level": "level-5",
+          "frequency": "daily"
+        },
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "partial_clone"
+          ],
+          "level": "level-5",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "bundle_create"
+          ],
+          "level": "level-5",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    "collaboration": {
+      "total": 5,
+      "covered": 3,
+      "commands": [
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "submodule_add",
+            "submodule_update"
+          ],
+          "level": "advanced",
+          "frequency": "monthly"
+        },
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "submodule_update"
+          ],
+          "level": "advanced",
+          "frequency": "monthly"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "advanced",
+          "frequency": "monthly"
+        },
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "notes_add"
+          ],
+          "level": "advanced",
+          "frequency": "weekly"
+        },
+        {
+          "command": "cp",
+          "covered": false,
+          "usage": [],
+          "level": "advanced",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    "workflow": {
+      "total": 4,
+      "covered": 2,
+      "commands": [
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "cherry_pick"
+          ],
+          "level": "intermediate",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "rebase"
+          ],
+          "level": "intermediate",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "intermediate",
+          "frequency": "emergency"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "intermediate",
+          "frequency": "emergency"
+        }
+      ]
+    },
+    "security": {
+      "total": 4,
+      "covered": 0,
+      "commands": [
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "advanced",
+          "frequency": "daily"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "advanced",
+          "frequency": "weekly"
+        },
+        {
+          "command": "rekor-cli",
+          "covered": false,
+          "usage": [],
+          "level": "advanced",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "advanced",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    "maintenance": {
+      "total": 4,
+      "covered": 1,
+      "commands": [
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "gc_aggressive"
+          ],
+          "level": "intermediate",
+          "frequency": "monthly"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "intermediate",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "intermediate",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "intermediate",
+          "frequency": "emergency"
+        }
+      ]
+    },
+    "advanced": {
+      "total": 3,
+      "covered": 2,
+      "commands": [
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "worktree_add"
+          ],
+          "level": "basic",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "bundle_create"
+          ],
+          "level": "basic",
+          "frequency": "weekly"
+        },
+        {
+          "command": "git",
+          "covered": false,
+          "usage": [],
+          "level": "basic",
+          "frequency": "weekly"
+        }
+      ]
+    },
+    "federation": {
+      "total": 2,
+      "covered": 2,
+      "commands": [
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "fetch_all"
+          ],
+          "level": "level-5",
+          "frequency": "daily"
+        },
+        {
+          "command": "git",
+          "covered": true,
+          "usage": [
+            "push_mirror"
+          ],
+          "level": "level-5",
+          "frequency": "daily"
+        }
+      ]
+    },
+    "hook_pipeline": {
+      "total": 3,
+      "covered": 1,
+      "commands": [
+        {
+          "command": "pre_commit",
+          "covered": false,
+          "usage": [],
+          "level": "basic",
+          "frequency": "daily"
+        },
+        {
+          "command": "pre_push",
+          "covered": true,
+          "usage": [
+            "push_mirror"
+          ],
+          "level": "basic",
+          "frequency": "daily"
+        },
+        {
+          "command": "post_commit",
+          "covered": false,
+          "usage": [],
+          "level": "basic",
+          "frequency": "daily"
+        }
+      ]
+    }
+  },
+  "level_breakdown": {
+    "level-5": {
+      "total": 6,
+      "covered": 6
+    },
+    "advanced": {
+      "total": 9,
+      "covered": 3
+    },
+    "intermediate": {
+      "total": 8,
+      "covered": 3
+    },
+    "basic": {
+      "total": 6,
+      "covered": 3
+    }
+  },
+  "frequency_breakdown": {
+    "weekly": {
+      "total": 15,
+      "covered": 8
+    },
+    "daily": {
+      "total": 7,
+      "covered": 4
+    },
+    "monthly": {
+      "total": 4,
+      "covered": 3
+    },
+    "emergency": {
+      "total": 3,
+      "covered": 0
+    }
+  },
+  "scenario_coverage": {
+    "rich_git_validation": 13
+  },
+  "missing_commands": [
+    "collaboration.remote_add",
+    "collaboration.hook_install",
+    "workflow.reset_keep",
+    "workflow.bisect_auto",
+    "security.sign_commit",
+    "security.sign_tag",
+    "security.rekor_submit",
+    "security.sbom_attach",
+    "maintenance.repack_bitmaps",
+    "maintenance.prune_refs",
+    "maintenance.expire_reflog",
+    "advanced.fsck_full",
+    "hook_pipeline.pre_commit",
+    "hook_pipeline.post_commit"
+  ],
+  "recommendations": [
+    "Coverage below 70% - implement additional DevOps scenarios",
+    "Add edge case scenarios (disaster recovery, complex merges)",
+    "Implement security scenarios to cover: security.sign_commit, security.sign_tag, security.rekor_submit",
+    "Implement maintenance scenarios to cover: maintenance.repack_bitmaps, maintenance.prune_refs, maintenance.expire_reflog",
+    "Priority: Implement scenarios for critical commands: security.sign_commit, hook_pipeline.pre_commit, hook_pipeline.post_commit"
+  ],
+  "e2e_integration": {
+    "demo_scenarios": 0,
+    "systems_integrated": 0,
+    "total_git_operations": 0
+  }
+}

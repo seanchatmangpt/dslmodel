@@ -1,7 +1,7 @@
-# DSLModel Makefile - 80/20 Testing Implementation
-# Inspired by swarmsh testing patterns
+# Swarm SH 5-ONE Makefile
+# Common operations for development and deployment
 
-.PHONY: help test test-essential test-unit test-integration test-performance test-quick otel-validate verify test-deps check-deps clean install dev
+.PHONY: help init gen test tick validate clean demo motion cost-report prune-refs monitor health validate-multilayer dev deploy
 
 # Default target
 help:
