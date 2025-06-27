@@ -31,9 +31,9 @@ def check_weaver_sync() -> bool:
     
     print("🧵 Weaver files changed, validating and regenerating...")
     
-    # Run forge validate
+    # Run forge validate using uv run to ensure correct environment
     validate_result = subprocess.run(
-        ["python", "-m", "dslmodel.cli", "weaver", "validate"],
+        ["uv", "run", "python", "-m", "dslmodel.cli", "weaver", "validate"],
         capture_output=True,
         text=True
     )
@@ -43,9 +43,9 @@ def check_weaver_sync() -> bool:
         print(validate_result.stderr)
         return False
     
-    # Run forge generate  
+    # Run forge generate using uv run to ensure correct environment
     generate_result = subprocess.run(
-        ["python", "-m", "dslmodel.cli", "weaver", "generate"],
+        ["uv", "run", "python", "-m", "dslmodel.cli", "weaver", "generate"],
         capture_output=True,
         text=True
     )
