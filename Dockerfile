@@ -29,6 +29,7 @@ USER root
 # Install uv
 RUN --mount=type=cache,target=/root/.cache/pip/ \
     curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.local/bin:$PATH"
 
 # Install compilers that may be required for certain packages or platforms.
 RUN --mount=type=cache,target=/var/cache/apt/ \
@@ -39,9 +40,9 @@ RUN --mount=type=cache,target=/var/cache/apt/ \
 USER user
 
 # Install the run time Python dependencies in the virtual environments.
-COPY --chown=user:user requirements.txt pyproject.toml /workspaces/dslmodel/
+COPY --chown=user:user pyproject.toml uv.lock uv.toml /workspaces/dslmodel/
 RUN mkdir -p src/dslmodel/ && touch src/dslmodel/__init__.py && touch README.md
-RUN uv pip install -r requirements.txt
+RUN uv sync --frozen
 
 FROM builder as dev
 
@@ -58,7 +59,7 @@ RUN git config --system --add safe.directory '*'
 USER user
 
 # Install the development Python dependencies in the virtual environments.
-RUN uv pip install -e ".[dev,test]"
+RUN uv sync --frozen --all-groups
 
 # Persist output generated during docker build so that we can restore it in the dev container.
 COPY --chown=user:user .pre-commit-config.yaml /workspaces/dslmodel/

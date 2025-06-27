@@ -17,7 +17,8 @@ from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import SimpleSpanProcessor, BatchSpanProcessor
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter
-from opentelemetry.exporter.jaeger.thrift import JaegerExporter
+# Jaeger exporter commented out to avoid dependency issues
+# from opentelemetry.exporter.jaeger.thrift import JaegerExporter
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.trace import Status, StatusCode
 from opentelemetry.util.types import AttributeValue
@@ -73,19 +74,19 @@ class ClaudeCodeTelemetry:
         console_processor = SimpleSpanProcessor(console_exporter)
         self.tracer_provider.add_span_processor(console_processor)
         
-        # Jaeger exporter if configured
-        jaeger_endpoint = os.getenv("JAEGER_ENDPOINT")
-        if jaeger_endpoint:
-            try:
-                jaeger_exporter = JaegerExporter(
-                    agent_host_name=jaeger_endpoint.split("://")[1].split(":")[0],
-                    agent_port=int(jaeger_endpoint.split(":")[-1])
-                )
-                jaeger_processor = BatchSpanProcessor(jaeger_exporter)
-                self.tracer_provider.add_span_processor(jaeger_processor)
-                console.print(f"[green]✓ Jaeger exporter configured: {jaeger_endpoint}[/green]")
-            except Exception as e:
-                console.print(f"[yellow]Warning: Could not setup Jaeger exporter: {e}[/yellow]")
+        # Jaeger exporter if configured (commented out to avoid dependency issues)
+        # jaeger_endpoint = os.getenv("JAEGER_ENDPOINT")
+        # if jaeger_endpoint:
+        #     try:
+        #         jaeger_exporter = JaegerExporter(
+        #             agent_host_name=jaeger_endpoint.split("://")[1].split(":")[0],
+        #             agent_port=int(jaeger_endpoint.split(":")[-1])
+        #         )
+        #         jaeger_processor = BatchSpanProcessor(jaeger_exporter)
+        #         self.tracer_provider.add_span_processor(jaeger_processor)
+        #         console.print(f"[green]✓ Jaeger exporter configured: {jaeger_endpoint}[/green]")
+        #     except Exception as e:
+        #         console.print(f"[yellow]Warning: Could not setup Jaeger exporter: {e}[/yellow]")
     
     def instrument_file_operation(self, operation: str):
         """Decorator for file operations (Read, Write, Edit, MultiEdit)"""

@@ -86,27 +86,34 @@ app = typer.Typer(help="🔍 Claude Code OTEL monitoring and gap detection")
 console = Console()
 
 # Initialize OTEL for Claude Code
-resource = Resource.create({
-    "service.name": "claude-code-cli",
-    "service.version": "2.0.0", 
-    "deployment.environment": "development"
-})
+if OTEL_DEPS_AVAILABLE:
+    resource = Resource.create({
+        "service.name": "claude-code-cli",
+        "service.version": "2.0.0", 
+        "deployment.environment": "development"
+    })
 
-trace.set_tracer_provider(TracerProvider(resource=resource))
-tracer = trace.get_tracer(__name__)
+    trace.set_tracer_provider(TracerProvider(resource=resource))
+    tracer = trace.get_tracer(__name__)
 
-# Configure exporters
-jaeger_exporter = JaegerExporter(
-    agent_host_name="localhost",
-    agent_port=14268,
-)
+    # Configure exporters if available
+    if JAEGER_AVAILABLE:
+        try:
+            jaeger_exporter = JaegerExporter(
+                agent_host_name="localhost",
+                agent_port=14268,
+            )
+            span_processor = BatchSpanProcessor(jaeger_exporter)
+            trace.get_tracer_provider().add_span_processor(span_processor)
+        except Exception as e:
+            logger.warning(f"Jaeger exporter configuration failed: {e}")
 
-span_processor = BatchSpanProcessor(jaeger_exporter)
-trace.get_tracer_provider().add_span_processor(span_processor)
-
-# Auto-instrument common libraries
-RequestsInstrumentor().instrument()
-LoggingInstrumentor().instrument()
+    # Auto-instrument common libraries if available
+    if INSTRUMENTATION_AVAILABLE:
+        RequestsInstrumentor().instrument()
+        LoggingInstrumentor().instrument()
+else:
+    tracer = trace.get_tracer(__name__)
 
 
 class CLIOperation(Enum):
@@ -342,8 +349,18 @@ class ClaudeCodeOTELMonitor:
         }
 
 
-# Global monitor instance
-monitor = ClaudeCodeOTELMonitor()
+# Global monitor instance - shared across CLI invocations
+_global_monitor = None
+
+def get_monitor():
+    """Get or create the global monitor instance"""
+    global _global_monitor
+    if _global_monitor is None:
+        _global_monitor = ClaudeCodeOTELMonitor()
+    return _global_monitor
+
+# Convenience alias
+monitor = get_monitor()
 
 
 def otel_instrumented(operation: CLIOperation):

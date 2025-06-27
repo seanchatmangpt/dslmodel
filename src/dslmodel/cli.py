@@ -11,7 +11,7 @@ from typing_extensions import Annotated
 from dslmodel import init_instant
 from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
 from dslmodel.template import render
-from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree, agent_coordination_cli, evolution, auto_evolution, evolution_worktree, complete_8020_validation, unified_evolution_cli, unified_8020_evolution, consolidated_cli, ollama_autonomous, system_introspection, disc_autonomous, weaver_diagrams, disc_integrated_auto, weaver_autonomous_loop, multilayer_weaver_feedback, otel_learning_engine, health_8020_improvement, claude_code_otel_monitoring
+from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree, agent_coordination_cli, evolution, auto_evolution, evolution_worktree, complete_8020_validation, unified_evolution_cli, unified_8020_evolution, consolidated_cli, ollama_autonomous, system_introspection, disc_autonomous, weaver_diagrams, disc_integrated_auto, weaver_autonomous_loop, multilayer_weaver_feedback, otel_learning_engine, health_8020_improvement, claude_code_otel_monitoring, gap_analysis_8020, swarm_sh_5one
 try:
     from dslmodel.commands import pqc
     PQC_AVAILABLE = True
@@ -93,6 +93,8 @@ app.add_typer(name="weaver-multilayer", typer_instance=multilayer_weaver_feedbac
 app.add_typer(name="otel-learn", typer_instance=otel_learning_engine.app, help="🧠 OTEL Learning Engine - Feed telemetry data to language models")
 app.add_typer(name="health-8020", typer_instance=health_8020_improvement.app, help="🎯 80/20 Health Improvement - Optimize system health using Pareto Principle")
 app.add_typer(name="otel-monitor", typer_instance=claude_code_otel_monitoring.app, help="🔍 Claude Code OTEL monitoring and gap detection")
+app.add_typer(name="gap-8020", typer_instance=gap_analysis_8020.app, help="🔍 80/20 Gap Analysis - Identify and close system gaps using OTEL monitoring")
+app.add_typer(name="5one", typer_instance=swarm_sh_5one.app, help="🚀 Swarm SH 5-ONE: Git-Native Hyper-Intelligence Platform")
 
 
 # ============================================================================  

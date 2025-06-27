@@ -70,7 +70,7 @@ DSLModel v3 is a **production-ready** SwarmAgent coordination framework with **8
 - ✅ **Scrum Agent**: Delivery management (PLANNING → EXECUTING → REVIEW → RETRO)
 - ✅ **Lean Agent**: Quality optimization (DEFINE → MEASURE → ANALYZE → IMPROVE → CONTROL)
 - ✅ **Real Telemetry**: 65+ spans in `~/s2s/agent_coordination/telemetry_spans.jsonl`
-- ✅ **CLI Integration**: 40+ working commands via `swarm_cli.py` + poetry tasks
+- ✅ **CLI Integration**: 40+ working commands via `swarm_cli.py` + uv tasks
 - ✅ **E2E Workflows**: Complete working demonstration system
 
 ## System Architecture

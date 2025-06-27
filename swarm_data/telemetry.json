@@ -71,5 +71,64 @@
     "data": {
       "work_id": "work_e9652e8e"
     }
+  },
+  {
+    "timestamp": "2025-06-27T12:28:57.240636",
+    "event": "agent_created",
+    "data": {
+      "agent_id": "agent_1751052537239076000",
+      "name": "agent_0"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T12:28:57.241447",
+    "event": "agent_created",
+    "data": {
+      "agent_id": "agent_1751052537241176000",
+      "name": "agent_1"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T12:28:57.242034",
+    "event": "agent_created",
+    "data": {
+      "agent_id": "agent_1751052537241800000",
+      "name": "agent_2"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T12:28:57.243268",
+    "event": "work_created",
+    "data": {
+      "work_id": "work_c4d4d9c0"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T12:28:57.243843",
+    "event": "work_created",
+    "data": {
+      "work_id": "work_29fbbc44"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T12:28:57.244440",
+    "event": "work_created",
+    "data": {
+      "work_id": "work_7bf70b6e"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T12:28:57.244986",
+    "event": "work_created",
+    "data": {
+      "work_id": "work_a94995ac"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T12:28:57.245563",
+    "event": "work_created",
+    "data": {
+      "work_id": "work_eaf9d336"
+    }
   }
 ]

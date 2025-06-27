@@ -24,7 +24,7 @@ The core SwarmAgent framework enables telemetry-driven multi-agent coordination:
 
 **Status**: ✅ **Production Ready**
 
-Complete command-line interface with both standalone and poetry integration:
+Complete command-line interface with both standalone and uv integration:
 
 ```bash
 # Standalone CLI (100% working)
@@ -118,7 +118,7 @@ pip install dslmodel[otel]
 # Or from source
 git clone https://github.com/seanchatmangpt/dslmodel.git
 cd dslmodel
-poetry install -E otel
+uv sync --extra otel
 ```
 
 ### Step 2: Verify Installation
@@ -216,9 +216,9 @@ python swarm_cli.py --help
 
 **3. Poetry Tasks Failing**
 ```bash
-# Verify poetry setup
-poetry install -E otel
-poetry run python swarm_cli.py status
+# Verify uv setup
+uv sync --extra otel
+uv run python swarm_cli.py status
 ```
 
 ### Validation Commands

@@ -1,87 +1,87 @@
-[build-system] # https://python-poetry.org/docs/pyproject/#poetry-and-pep-517
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry] # https://python-poetry.org/docs/pyproject/
+[project]
 name = "dslmodel"
 version = "2024.12.22.2"
 description = "Pydantic + DSPy instances from prompts and Jinja."
-authors = ["Sean Chatman <info@chatmangpt.com>"]
+authors = [{name = "Sean Chatman", email = "info@chatmangpt.com"}]
 readme = "README.md"
-repository = "https://github.com/seanchatmangpt/dslmodel"
+requires-python = ">=3.12,<4.0"
+license = {text = "MIT"}
+dependencies = [
+    "coloredlogs>=15.0.1",
+    "poethepoet>=0.25.0",
+    "pyperclip>=1.9.0",
+    "inflection>=0.5.1",
+    "jinja2-time>=0.2.0",
+    "jinja2-ext>=0.1",
+    "loguru>=0.7.2",
+    "munch>=4.0.0",
+    "ijson>=3.3.0",
+    "factory-boy>=3.3.1",
+    "inject>=5.2.1",
+    "pytest-xdist>=3.6.1",
+    "jupyter>=1.1.1",
+    "wcmatch>=10.0",
+    "pandasql>=0.7.3",
+    "pytest>=8.3.3",
+    "transitions>=0.9.2",
+    "apscheduler>=3.10.4",
+    "pygithub>=2.4.0",
+    "hypothesis>=6.114.1",
+    "reactivex>=4.0.4",
+    "toml>=0.10.2",
+    "python-socketio[asyncio-client]>=5.11.4",
+    "injector>=0.22.0",
+    "mcp>=1.0.0",
+    "nest-asyncio>=1.6.0",
+    "cloudpickle>=3.1.0",
+    "aiofiles>=24.1.0",
+    "pydantic-ai>=0.0.14",
+    "pydantic2-schemaorg>=0.2.0",
+    "typer>=0.9.0",
+    "rich>=13.7.0",
+    "faker>=37.4.0",
+    "dspy-ai>=2.6.27",
+    "networkx>=3.5",
+]
 
-[tool.poetry.scripts] # https://python-poetry.org/docs/pyproject/#scripts
+[project.scripts]
 dsl = "dslmodel.cli:app"
 jygen = "jygen.cli:app"
 
-[tool.poetry.dependencies] # https://python-poetry.org/docs/dependency-specification/
-coloredlogs = ">=15.0.1"
-poethepoet = ">=0.25.0"
-python = ">=3.12,<4.0"
-pyperclip = "^1.9.0"
-inflection = "^0.5.1"
-jinja2-time = "^0.2.0"
-jinja2-ext = "^0.1"
-loguru = "^0.7.2"
-munch = "^4.0.0"
-ijson = "^3.3.0"
-factory-boy = "^3.3.1"
-inject = "^5.2.1"
-pytest-xdist = "^3.6.1"
-jupyter = "^1.1.1"
-wcmatch = "^10.0"
-pandasql = "^0.7.3"
-pytest = "^8.3.3"
-transitions = "^0.9.2"
-apscheduler = "^3.10.4"
-pygithub = "^2.4.0"
-hypothesis = "^6.114.1"
-reactivex = "^4.0.4"
-toml = "^0.10.2"
-python-socketio = { extras = ["asyncio-client"], version = "^5.11.4" }
-injector = "^0.22.0"
-mcp = "^1.0.0"
-nest-asyncio = "^1.6.0"
-cloudpickle = "^3.1.0"
-aiofiles = "^24.1.0"
-pydantic-ai = "^0.0.14"
-pydantic2-schemaorg = "^0.2.0"
-typer = "^0.9.0"
-rich = "^13.7.0"
-faker = "^37.4.0"
+[project.urls]
+Repository = "https://github.com/seanchatmangpt/dslmodel"
 
-# OpenTelemetry dependencies (optional)
-opentelemetry-api = { version = "^1.20.0", optional = true }
-opentelemetry-sdk = { version = "^1.20.0", optional = true }
-opentelemetry-exporter-otlp = { version = "^1.20.0", optional = true }
-opentelemetry-instrumentation = { version = "^0.41b0", optional = true }
-opentelemetry-semantic-conventions = { version = "^0.41b0", optional = true }
-dspy-ai = "^2.6.27"
-
-[tool.poetry.extras]
+[project.optional-dependencies]
 otel = [
-    "opentelemetry-api",
-    "opentelemetry-sdk", 
-    "opentelemetry-exporter-otlp",
-    "opentelemetry-instrumentation",
-    "opentelemetry-semantic-conventions"
+    "opentelemetry-api>=1.20.0",
+    "opentelemetry-sdk>=1.20.0", 
+    "opentelemetry-exporter-otlp>=1.20.0",
+    "opentelemetry-instrumentation>=0.41b0",
+    "opentelemetry-semantic-conventions>=0.41b0"
 ]
 
-[tool.poetry.group.test.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
-coverage = { extras = ["toml"], version = ">=7.4.4" }
-pytest = ">=8.1.1"
-pytest-mock = ">=3.14.0"
-pytest-xdist = ">=3.5.0"
-pytest-watch = ">=4.2.0"
+test = [
+    "coverage[toml]>=7.4.4",
+    "pytest>=8.1.1",
+    "pytest-mock>=3.14.0",
+    "pytest-xdist>=3.5.0",
+    "pytest-watch>=4.2.0"
+]
 
 
-[tool.poetry.group.dev.dependencies] # https://python-poetry.org/docs/master/managing-dependencies/
-cruft = ">=2.15.0"
-ipykernel = ">=6.29.4"
-ipython = ">=8.23.0"
-ipywidgets = ">=8.1.2"
-pdoc = ">=14.4.0"
-pytest-asyncio = "^0.24.0"
+dev = [
+    "cruft>=2.15.0",
+    "ipykernel>=6.29.4",
+    "ipython>=8.23.0",
+    "ipywidgets>=8.1.2",
+    "pdoc>=14.4.0",
+    "pytest-asyncio>=0.24.0",
+    "pyinstaller>=6.14.1; python_version >= '3.12' and python_version < '3.14'"
+]
 
 [tool.coverage.report] # https://coverage.readthedocs.io/en/latest/config.html#report
 precision = 1
@@ -602,4 +602,108 @@ help = "Safe evolution: analyze and show improvements (no auto-apply)"
 sequence = [
     { cmd = "python src/dslmodel/commands/auto_evolve_cli.py analyze" },
     { cmd = "python src/dslmodel/commands/auto_evolve_cli.py evolve --dry-run" }
+]
+
+# PyInstaller build tasks
+[tool.poe.tasks.build-daemon]
+help = "Build autonomous evolution daemon as standalone executable"
+cmd = """
+pyinstaller --onefile --name=autonomous-evolution-daemon 
+  --add-data="src/dslmodel/registry:dslmodel/registry"
+  --add-data="src/dslmodel/generated:dslmodel/generated"
+  --hidden-import=opentelemetry.exporter.otlp.proto.grpc.trace_exporter
+  --hidden-import=opentelemetry.sdk.trace.export
+  --hidden-import=loguru
+  --hidden-import=typer
+  --hidden-import=rich
+  --collect-all=dslmodel
+  src/dslmodel/commands/autonomous_evolution_daemon.py
+"""
+
+[tool.poe.tasks.build-cron-setup]
+help = "Build cron setup tool as standalone executable"
+cmd = """
+pyinstaller --onefile --name=setup-evolution-cron
+  --hidden-import=typer
+  --hidden-import=typer.core
+  --hidden-import=typer.main
+  setup_evolution_cron_typer.py
+"""
+
+[tool.poe.tasks.build-health-test]
+help = "Build health test tool as standalone executable"
+cmd = """
+pyinstaller --onefile --name=autonomous-health-check
+  --add-data="src/dslmodel/generated:dslmodel/generated"
+  --hidden-import=pytest
+  --hidden-import=opentelemetry.sdk.trace.export.in_memory_span_exporter
+  --collect-all=dslmodel
+  tests/test_autonomous_evolution_health.py
+"""
+
+[tool.poe.tasks.build-all]
+help = "Build all autonomous evolution tools as standalone executables"
+sequence = [
+    { cmd = "poe build-daemon" },
+    { cmd = "poe build-cron-setup" },
+    { cmd = "poe build-health-test" }
+]
+
+[tool.poe.tasks.build-package]
+help = "Create distributable package with all autonomous evolution tools"
+sequence = [
+    { cmd = "poe build-all" },
+    { cmd = "mkdir -p dist/autonomous-evolution-package" },
+    { cmd = "cp dist/autonomous-evolution-daemon dist/autonomous-evolution-package/" },
+    { cmd = "cp dist/setup-evolution-cron dist/autonomous-evolution-package/" },
+    { cmd = "cp dist/autonomous-health-check dist/autonomous-evolution-package/" },
+    { cmd = "cp evolution_cron.sh dist/autonomous-evolution-package/" },
+    { cmd = "chmod +x dist/autonomous-evolution-package/*" },
+    { cmd = "tar -czf dist/autonomous-evolution-tools.tar.gz -C dist autonomous-evolution-package" }
+]
+
+[tool.poe.tasks.build-clean]
+help = "Clean PyInstaller build artifacts"
+cmd = "rm -rf build/ dist/ *.spec __pycache__/ .pytest_cache/"
+
+[tool.poe.tasks.build-test]
+help = "Test standalone executables"
+sequence = [
+    { cmd = "dist/autonomous-evolution-daemon --help" },
+    { cmd = "dist/setup-evolution-cron --help" },
+    { cmd = "dist/autonomous-health-check --help || echo 'Health check is a test script'" }
+]
+
+# Development build tasks (faster)
+[tool.poe.tasks.build-daemon-dev]
+help = "Build daemon for development (faster, no optimization)"
+cmd = """
+pyinstaller --onedir --name=autonomous-evolution-daemon-dev
+  --add-data="src/dslmodel/registry:dslmodel/registry"
+  --add-data="src/dslmodel/generated:dslmodel/generated"
+  --hidden-import=opentelemetry.exporter.otlp.proto.grpc.trace_exporter
+  --hidden-import=loguru
+  --hidden-import=typer
+  --collect-all=dslmodel
+  --debug=all
+  src/dslmodel/commands/autonomous_evolution_daemon.py
+"""
+
+[tool.poe.tasks.build-install]
+help = "Install built executables to system PATH"
+sequence = [
+    { cmd = "sudo cp dist/autonomous-evolution-daemon /usr/local/bin/" },
+    { cmd = "sudo cp dist/setup-evolution-cron /usr/local/bin/" },
+    { cmd = "sudo chmod +x /usr/local/bin/autonomous-evolution-daemon" },
+    { cmd = "sudo chmod +x /usr/local/bin/setup-evolution-cron" },
+    { cmd = "echo 'Installed to /usr/local/bin/'" }
+]
+
+# Cross-platform builds
+[tool.poe.tasks.build-cross-platform]
+help = "Build for multiple platforms (requires cross-compilation setup)"
+sequence = [
+    { cmd = "echo 'Building for current platform...'" },
+    { cmd = "poe build-all" },
+    { cmd = "echo 'Note: Cross-platform builds require platform-specific environments'" }
 ]

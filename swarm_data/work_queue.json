@@ -33,17 +33,62 @@
     "description": "Update documentation",
     "priority": "medium",
     "team": null,
-    "status": "pending",
+    "status": "in_progress",
     "created": "2025-06-26T05:59:58.078193",
-    "assigned_to": null
+    "assigned_to": "agent_1750942798074315000"
   },
   {
     "id": "work_2273f05b",
     "description": "Review code changes",
     "priority": "medium",
     "team": null,
-    "status": "pending",
+    "status": "in_progress",
     "created": "2025-06-26T05:59:58.078737",
+    "assigned_to": "agent_1750942798075143000"
+  },
+  {
+    "id": "work_c4d4d9c0",
+    "description": "Analyze system logs",
+    "priority": "medium",
+    "team": null,
+    "status": "in_progress",
+    "created": "2025-06-27T12:28:57.242809",
+    "assigned_to": "agent_1751052537239076000"
+  },
+  {
+    "id": "work_29fbbc44",
+    "description": "Generate performance report",
+    "priority": "medium",
+    "team": null,
+    "status": "in_progress",
+    "created": "2025-06-27T12:28:57.243624",
+    "assigned_to": "agent_1751052537241176000"
+  },
+  {
+    "id": "work_7bf70b6e",
+    "description": "Optimize database queries",
+    "priority": "medium",
+    "team": null,
+    "status": "in_progress",
+    "created": "2025-06-27T12:28:57.244222",
+    "assigned_to": "agent_1751052537241800000"
+  },
+  {
+    "id": "work_a94995ac",
+    "description": "Update documentation",
+    "priority": "medium",
+    "team": null,
+    "status": "pending",
+    "created": "2025-06-27T12:28:57.244778",
+    "assigned_to": null
+  },
+  {
+    "id": "work_eaf9d336",
+    "description": "Review code changes",
+    "priority": "medium",
+    "team": null,
+    "status": "pending",
+    "created": "2025-06-27T12:28:57.245354",
     "assigned_to": null
   }
 ]
