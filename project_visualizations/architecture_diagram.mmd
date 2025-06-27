@@ -1,0 +1,77 @@
+graph TB
+    subgraph "Core Components"
+        DSLModel[DSLModel<br/>Base Class]
+        Workflow[Workflow<br/>Engine]
+        CLI[CLI<br/>Interface]
+        API[API<br/>Server]
+    end
+    
+    subgraph "Mixins"
+        JinjaMixin[Jinja DSL<br/>Mixin]
+        DSPyMixin[DSPy DSL<br/>Mixin]
+        FileMixin[File Handler<br/>Mixin]
+        FSMMixin[FSM<br/>Mixin]
+        ValidationMixin[Validation<br/>Mixin]
+    end
+    
+    subgraph "AI Integration"
+        DSPyModules[DSPy<br/>Modules]
+        Prompts[Prompt<br/>Templates]
+        AIAssistants[AI<br/>Assistants]
+    end
+    
+    subgraph "Examples"
+        Gherkin[Gherkin<br/>Models]
+        SIPOC[SIPOC<br/>Models]
+        BDD[BDD<br/>Models]
+        N8N[N8N Node<br/>Generator]
+        YAWL[YAWL<br/>Models]
+    end
+    
+    subgraph "Infrastructure"
+        OTEL[OpenTelemetry<br/>Integration]
+        Weaver[Semantic<br/>Conventions]
+        Monitor[OTEL<br/>Monitor]
+    end
+    
+    %% Core relationships
+    DSLModel --> JinjaMixin
+    DSLModel --> DSPyMixin
+    DSLModel --> FileMixin
+    DSLModel --> FSMMixin
+    DSLModel --> ValidationMixin
+    
+    %% Workflow relationships
+    Workflow --> DSLModel
+    CLI --> Workflow
+    API --> Workflow
+    
+    %% AI relationships
+    DSPyMixin --> DSPyModules
+    DSPyModules --> Prompts
+    DSPyModules --> AIAssistants
+    
+    %% Example relationships
+    Gherkin --> DSLModel
+    SIPOC --> DSLModel
+    BDD --> DSLModel
+    N8N --> DSLModel
+    YAWL --> DSLModel
+    
+    %% Infrastructure relationships
+    OTEL --> Monitor
+    Weaver --> OTEL
+    Monitor --> API
+    
+    %% Styling
+    classDef core fill:#e1f5fe,stroke:#01579b,stroke-width:3px
+    classDef mixin fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef ai fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef example fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef infra fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    
+    class DSLModel,Workflow,CLI,API core
+    class JinjaMixin,DSPyMixin,FileMixin,FSMMixin,ValidationMixin mixin
+    class DSPyModules,Prompts,AIAssistants ai
+    class Gherkin,SIPOC,BDD,N8N,YAWL example
+    class OTEL,Weaver,Monitor infra

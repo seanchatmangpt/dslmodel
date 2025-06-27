@@ -1,0 +1,2687 @@
+{
+  "components": {
+    "dsl_models": {
+      "type": "core",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/dsl_models.py",
+      "imports": [
+        "pydantic",
+        "typing",
+        "dslmodel.mixins"
+      ],
+      "exports": [
+        "DSLModel",
+        "field_names"
+      ],
+      "dependencies": [
+        "dslmodel.mixins"
+      ],
+      "features": [
+        "DSLModel.field_names"
+      ],
+      "complexity": 0,
+      "lines_of_code": 37
+    },
+    "cli": {
+      "type": "core",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/cli.py",
+      "imports": [
+        "typing_extensions",
+        "json",
+        "dslmodel.utils.json_output",
+        "typer",
+        "dslmodel.generators.gen_dslmodel_class",
+        "time",
+        "dslmodel",
+        "rich.panel",
+        "rich.console",
+        "dslmodel.utils.dspy_tools",
+        "rich.table",
+        "pathlib",
+        "yaml",
+        "dslmodel.generators.dsl_class_generator",
+        "dslmodel.commands",
+        "dslmodel.template",
+        "rich"
+      ],
+      "exports": [
+        "generate_models",
+        "show_consolidation_info",
+        "show_migration_guide",
+        "json_callback",
+        "generate_class",
+        "main"
+      ],
+      "dependencies": [
+        "dslmodel.utils.json_output",
+        "dslmodel.generators.gen_dslmodel_class",
+        "dslmodel.generators.dsl_class_generator",
+        "dslmodel",
+        "dslmodel.utils.dspy_tools",
+        "dslmodel.commands",
+        "dslmodel.template"
+      ],
+      "features": [],
+      "complexity": 13,
+      "lines_of_code": 277
+    },
+    "api": {
+      "type": "core",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/api.py",
+      "imports": [
+        "coloredlogs",
+        "uvicorn",
+        "time",
+        "typing",
+        "asyncio",
+        "fastapi",
+        "fastapi.middleware.cors",
+        "logging",
+        "starlette.responses",
+        "openai"
+      ],
+      "exports": [
+        "ConnectionManager",
+        "disconnect"
+      ],
+      "dependencies": [],
+      "features": [
+        "ConnectionManager.disconnect"
+      ],
+      "complexity": 6,
+      "lines_of_code": 142
+    },
+    "file_handler_mixin": {
+      "type": "mixin",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/mixins/file_handler_mixin.py",
+      "imports": [
+        "aiofiles",
+        "dslmodel.dspy_modules.file_name_module",
+        "os",
+        "typing"
+      ],
+      "exports": [
+        "FileHandlerMixin"
+      ],
+      "dependencies": [
+        "dslmodel.dspy_modules.file_name_module"
+      ],
+      "features": [],
+      "complexity": 7,
+      "lines_of_code": 78
+    },
+    "fsm_mixin": {
+      "type": "mixin",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/mixins/fsm_mixin.py",
+      "imports": [
+        "transitions.core",
+        "transitions",
+        "functools",
+        "dslmodel.dspy_modules.fsm_trigger_module",
+        "inspect"
+      ],
+      "exports": [
+        "setup_fsm",
+        "decorator",
+        "wrapper",
+        "trigger",
+        "possible_transitions",
+        "state_enum_value",
+        "FSMMixin",
+        "add_transition",
+        "state_transition_possibilities",
+        "initialize_transitions",
+        "forward",
+        "setup_transitions",
+        "possible_triggers"
+      ],
+      "dependencies": [
+        "dslmodel.dspy_modules.fsm_trigger_module"
+      ],
+      "features": [
+        "FSMMixin.setup_fsm",
+        "FSMMixin.setup_transitions",
+        "FSMMixin.initialize_transitions",
+        "FSMMixin.add_transition",
+        "FSMMixin.possible_transitions",
+        "FSMMixin.possible_triggers",
+        "FSMMixin.forward",
+        "FSMMixin.state_enum_value"
+      ],
+      "complexity": 8,
+      "lines_of_code": 139
+    },
+    "file_handler_dsl_mixin": {
+      "type": "mixin",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/mixins/file_handler_dsl_mixin.py",
+      "imports": [
+        "dslmodel.dspy_modules.file_name_module",
+        "os",
+        "typing"
+      ],
+      "exports": [
+        "load",
+        "generate_filename",
+        "FileHandlerDSLMixin",
+        "save"
+      ],
+      "dependencies": [
+        "dslmodel.dspy_modules.file_name_module"
+      ],
+      "features": [
+        "FileHandlerDSLMixin.generate_filename",
+        "FileHandlerDSLMixin.save",
+        "FileHandlerDSLMixin.load"
+      ],
+      "complexity": 7,
+      "lines_of_code": 77
+    },
+    "instance_mixin": {
+      "type": "mixin",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/mixins/instance_mixin.py",
+      "imports": [
+        "pydantic",
+        "dslmodel.utils.pydantic_ai_tools",
+        "pydantic_ai",
+        "typing"
+      ],
+      "exports": [
+        "InstanceMixin"
+      ],
+      "dependencies": [
+        "dslmodel.utils.pydantic_ai_tools"
+      ],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 25
+    },
+    "to_from_mixin": {
+      "type": "mixin",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/mixins/to_from_mixin.py",
+      "imports": [
+        "json",
+        "toml",
+        "typing",
+        "abc",
+        "yaml",
+        "pathlib",
+        "aiofiles",
+        "pydantic"
+      ],
+      "exports": [
+        "ToFromMixin",
+        "model_dump",
+        "model_validate",
+        "model_dump_json"
+      ],
+      "dependencies": [],
+      "features": [
+        "ToFromMixin.model_dump",
+        "ToFromMixin.model_validate",
+        "ToFromMixin.model_dump_json"
+      ],
+      "complexity": 16,
+      "lines_of_code": 144
+    },
+    "jinja_dsl_mixin": {
+      "type": "mixin",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/mixins/jinja_dsl_mixin.py",
+      "imports": [
+        "pydantic_core",
+        "dslmodel.template"
+      ],
+      "exports": [
+        "render_defaults",
+        "JinjaDSLMixin"
+      ],
+      "dependencies": [
+        "dslmodel.template"
+      ],
+      "features": [
+        "JinjaDSLMixin.render_defaults"
+      ],
+      "complexity": 5,
+      "lines_of_code": 31
+    },
+    "dspy_dsl_mixin": {
+      "type": "mixin",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/mixins/dspy_dsl_mixin.py",
+      "imports": [
+        "dslmodel.dspy_modules.gen_pydantic_instance",
+        "dslmodel.template",
+        "typing",
+        "dspy"
+      ],
+      "exports": [
+        "from_template",
+        "from_prompt",
+        "DSPyDSLMixin",
+        "from_signature"
+      ],
+      "dependencies": [
+        "dslmodel.dspy_modules.gen_pydantic_instance",
+        "dslmodel.template"
+      ],
+      "features": [
+        "DSPyDSLMixin.from_prompt",
+        "DSPyDSLMixin.from_template",
+        "DSPyDSLMixin.from_signature"
+      ],
+      "complexity": 2,
+      "lines_of_code": 74
+    },
+    "to_from_dsl_mixin": {
+      "type": "mixin",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/mixins/to_from_dsl_mixin.py",
+      "imports": [
+        "json",
+        "toml",
+        "typing",
+        "abc",
+        "yaml",
+        "pathlib",
+        "pydantic"
+      ],
+      "exports": [
+        "model_validate",
+        "from_dict",
+        "model_dump_json",
+        "from_toml",
+        "to_yaml",
+        "from_yaml",
+        "ToFromDSLMixin",
+        "from_json",
+        "model_dump",
+        "to_toml",
+        "to_json"
+      ],
+      "dependencies": [],
+      "features": [
+        "ToFromDSLMixin.model_dump",
+        "ToFromDSLMixin.model_validate",
+        "ToFromDSLMixin.model_dump_json",
+        "ToFromDSLMixin.from_dict",
+        "ToFromDSLMixin.from_yaml",
+        "ToFromDSLMixin.from_json",
+        "ToFromDSLMixin.from_toml",
+        "ToFromDSLMixin.to_yaml",
+        "ToFromDSLMixin.to_json",
+        "ToFromDSLMixin.to_toml"
+      ],
+      "complexity": 16,
+      "lines_of_code": 136
+    },
+    "thesis_otel_loop": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/thesis_otel_loop.py",
+      "imports": [
+        "json",
+        "uuid",
+        "time",
+        "enum",
+        "collections",
+        "typing",
+        "pathlib",
+        "pydantic",
+        "datetime",
+        "dataclasses",
+        "__future__",
+        "random"
+      ],
+      "exports": [
+        "SemanticConvention",
+        "get_recent_spans",
+        "demo_otel_loop",
+        "Contradiction",
+        "duration_ms",
+        "ResolutionProposal",
+        "to_weaver_yaml",
+        "add_span",
+        "ContradictionDetector",
+        "ContradictionType",
+        "get_trace",
+        "run_iteration",
+        "SpanData",
+        "FeedbackLoopState",
+        "initialize",
+        "Config",
+        "SemanticAttribute",
+        "create_initial_convention",
+        "SemanticGroup",
+        "detect_contradictions",
+        "OTELFeedbackLoop",
+        "LLMResolver",
+        "propose_resolution",
+        "TraceCollector",
+        "SpanContext"
+      ],
+      "dependencies": [],
+      "features": [
+        "SpanData.duration_ms",
+        "TraceCollector.add_span",
+        "TraceCollector.get_trace",
+        "TraceCollector.get_recent_spans",
+        "SemanticConvention.to_weaver_yaml",
+        "ContradictionDetector.detect_contradictions",
+        "LLMResolver.propose_resolution",
+        "OTELFeedbackLoop.initialize",
+        "OTELFeedbackLoop.run_iteration"
+      ],
+      "complexity": 32,
+      "lines_of_code": 573
+    },
+    "organizational_transformation_demo": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/organizational_transformation_demo.py",
+      "imports": [
+        "json",
+        "opentelemetry.sdk.trace",
+        "dslmodel.template.functional",
+        "time",
+        "opentelemetry.sdk.trace.export",
+        "typing",
+        "asyncio",
+        "pathlib",
+        "opentelemetry",
+        "pydantic",
+        "dslmodel.mixins",
+        "datetime"
+      ],
+      "exports": [
+        "close_voting",
+        "second_motion",
+        "LeanSixSigmaAgent",
+        "Motion",
+        "open_voting",
+        "Epic",
+        "generate_demo_artifacts",
+        "execute_sprint",
+        "receive_motion",
+        "analyze_root_causes",
+        "DefectAnalysis",
+        "OrganizationalTransformationOrchestrator",
+        "RobertsRulesAgent",
+        "initiate_improvement_project",
+        "implement_control_plan",
+        "initiate_pi_planning",
+        "plan_sprints",
+        "ScrumAtScaleAgent",
+        "create_epics_from_governance",
+        "conduct_retrospective",
+        "establish_baseline_metrics",
+        "design_improvements"
+      ],
+      "dependencies": [
+        "dslmodel.template.functional",
+        "dslmodel.mixins"
+      ],
+      "features": [
+        "RobertsRulesAgent.receive_motion",
+        "RobertsRulesAgent.second_motion",
+        "RobertsRulesAgent.open_voting",
+        "RobertsRulesAgent.close_voting",
+        "ScrumAtScaleAgent.initiate_pi_planning",
+        "ScrumAtScaleAgent.create_epics_from_governance",
+        "ScrumAtScaleAgent.plan_sprints",
+        "ScrumAtScaleAgent.execute_sprint",
+        "ScrumAtScaleAgent.conduct_retrospective",
+        "LeanSixSigmaAgent.initiate_improvement_project",
+        "LeanSixSigmaAgent.establish_baseline_metrics",
+        "LeanSixSigmaAgent.analyze_root_causes",
+        "LeanSixSigmaAgent.design_improvements",
+        "LeanSixSigmaAgent.implement_control_plan",
+        "OrganizationalTransformationOrchestrator.generate_demo_artifacts"
+      ],
+      "complexity": 27,
+      "lines_of_code": 974
+    },
+    "autonomous_decision_spec_standalone": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/autonomous_decision_spec_standalone.py",
+      "imports": [
+        "enum",
+        "dataclasses",
+        "typing"
+      ],
+      "exports": [
+        "SpanKind",
+        "AttrType",
+        "Span",
+        "ConventionSet",
+        "get_convention_sets",
+        "Cardinality",
+        "Attribute",
+        "to_dict",
+        "to_yaml_groups"
+      ],
+      "dependencies": [],
+      "features": [
+        "Attribute.to_dict",
+        "Span.to_dict",
+        "ConventionSet.to_yaml_groups"
+      ],
+      "complexity": 3,
+      "lines_of_code": 287
+    },
+    "gherkin_models": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/gherkin_models.py",
+      "imports": [
+        "dslmodel",
+        "dslmodel.utils.dspy_tools",
+        "typing",
+        "pydantic",
+        "__future__"
+      ],
+      "exports": [
+        "Feature",
+        "ScenarioOutline",
+        "Scenario",
+        "Example",
+        "Rule",
+        "DataTable",
+        "Background",
+        "GherkinDocument",
+        "DocString",
+        "Step",
+        "Comment",
+        "main"
+      ],
+      "dependencies": [
+        "dslmodel",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 212
+    },
+    "file_tree_wip": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/file_tree_wip.py",
+      "imports": [
+        "dslmodel.utils.pydantic_ai_tools",
+        "pydantic2_schemaorg.Organization",
+        "pydantic2_schemaorg.Language",
+        "pydantic",
+        "typing",
+        "dslmodel.utils.dspy_tools",
+        "asyncio",
+        "pydantic2_schemaorg.DefinedTerm",
+        "pydantic2_schemaorg.Person",
+        "pydantic2_schemaorg",
+        "pydantic2_schemaorg.EducationalOccupationalCredential",
+        "pydantic2_schemaorg.Place",
+        "pydantic2_schemaorg.CreativeWork",
+        "pydantic2_schemaorg.Thing"
+      ],
+      "exports": [
+        "Publication",
+        "Volunteer",
+        "Profile",
+        "Skill",
+        "Basics",
+        "Award",
+        "Reference",
+        "Resume",
+        "Language",
+        "Certificate",
+        "Education",
+        "Project",
+        "Location",
+        "Work",
+        "Interest"
+      ],
+      "dependencies": [
+        "dslmodel.utils.pydantic_ai_tools",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 212
+    },
+    "simple_qwen3_fsm_demo": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/simple_qwen3_fsm_demo.py",
+      "imports": [
+        "json",
+        "dspy",
+        "enum",
+        "dslmodel.dsl_models",
+        "typing",
+        "asyncio",
+        "loguru",
+        "dslmodel.mixins.fsm_mixin",
+        "pydantic",
+        "dslmodel.dspy_modules.fsm_trigger_module",
+        "dslmodel.utils.llm_init"
+      ],
+      "exports": [
+        "unblock_task",
+        "start_analysis",
+        "begin_execution",
+        "complete_task",
+        "block_task",
+        "start_review",
+        "TaskState",
+        "AITaskManager",
+        "get_smart_status_summary",
+        "model_post_init",
+        "create_plan",
+        "ai_next_action_suggestion",
+        "cancel_task"
+      ],
+      "dependencies": [
+        "dslmodel.dspy_modules.fsm_trigger_module",
+        "dslmodel.mixins.fsm_mixin",
+        "dslmodel.dsl_models",
+        "dslmodel.utils.llm_init"
+      ],
+      "features": [
+        "AITaskManager.model_post_init",
+        "AITaskManager.start_analysis",
+        "AITaskManager.create_plan",
+        "AITaskManager.begin_execution",
+        "AITaskManager.start_review",
+        "AITaskManager.complete_task",
+        "AITaskManager.block_task",
+        "AITaskManager.unblock_task",
+        "AITaskManager.cancel_task",
+        "AITaskManager.ai_next_action_suggestion",
+        "AITaskManager.get_smart_status_summary"
+      ],
+      "complexity": 7,
+      "lines_of_code": 347
+    },
+    "run_thesis_otel_loop": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/run_thesis_otel_loop.py",
+      "imports": [
+        "thesis_complete_standalone",
+        "sys",
+        "thesis_otel_loop",
+        "time",
+        "thesis_weaver_templates",
+        "thesis_complete",
+        "pathlib",
+        "thesis_otel_integration"
+      ],
+      "exports": [
+        "run_complete_otel_ecosystem"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 6,
+      "lines_of_code": 201
+    },
+    "e2e_360_demo": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/e2e_360_demo.py",
+      "imports": [
+        "json",
+        "time",
+        "typing",
+        "asyncio",
+        "pathlib",
+        "pydantic",
+        "datetime"
+      ],
+      "exports": [
+        "log_action",
+        "OrganizationalDemo",
+        "generate_360_artifacts"
+      ],
+      "dependencies": [],
+      "features": [
+        "OrganizationalDemo.log_action",
+        "OrganizationalDemo.generate_360_artifacts"
+      ],
+      "complexity": 7,
+      "lines_of_code": 581
+    },
+    "thesis_complete_standalone": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/thesis_complete_standalone.py",
+      "imports": [
+        "json",
+        "sys",
+        "enum",
+        "typing",
+        "yaml",
+        "pydantic",
+        "__future__",
+        "datetime"
+      ],
+      "exports": [
+        "generate_otel_yaml",
+        "FeedbackLoopStep",
+        "ThesisComplete",
+        "generate_forge_rust",
+        "to_yaml",
+        "InversionPair",
+        "from_json",
+        "TRIZMap",
+        "create_default_thesis",
+        "to_json",
+        "FeedbackLoopPhase",
+        "SpanSpec"
+      ],
+      "dependencies": [],
+      "features": [
+        "ThesisComplete.create_default_thesis",
+        "ThesisComplete.to_json",
+        "ThesisComplete.to_yaml",
+        "ThesisComplete.from_json",
+        "ThesisComplete.generate_otel_yaml",
+        "ThesisComplete.generate_forge_rust"
+      ],
+      "complexity": 7,
+      "lines_of_code": 332
+    },
+    "pyai_workflow": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/pyai_workflow.py",
+      "imports": [
+        "dslmodel.utils.pydantic_ai_tools",
+        "typing",
+        "asyncio",
+        "pydantic",
+        "pydantic_ai"
+      ],
+      "exports": [
+        "WorkflowResult",
+        "WorkflowDeps",
+        "Workflow"
+      ],
+      "dependencies": [
+        "dslmodel.utils.pydantic_ai_tools"
+      ],
+      "features": [],
+      "complexity": 6,
+      "lines_of_code": 164
+    },
+    "aps_models": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/aps_models.py",
+      "imports": [
+        "dslmodel.utils.model_tools",
+        "dslmodel",
+        "dslmodel.utils.dspy_tools",
+        "pydantic",
+        "dslmodel.template"
+      ],
+      "exports": [
+        "Meeting",
+        "BusinessRequirements",
+        "Development",
+        "Task",
+        "Interaction",
+        "Participant",
+        "run_participants_concurrently",
+        "Deployment",
+        "Subtask",
+        "Project",
+        "Amendment",
+        "main",
+        "Workflow"
+      ],
+      "dependencies": [
+        "dslmodel.template",
+        "dslmodel.utils.model_tools",
+        "dslmodel",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "features": [],
+      "complexity": 4,
+      "lines_of_code": 242
+    },
+    "social_network": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/social_network.py",
+      "imports": [
+        "pydantic",
+        "dslmodel"
+      ],
+      "exports": [
+        "SocialNetwork"
+      ],
+      "dependencies": [
+        "dslmodel"
+      ],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 83
+    },
+    "dsl_context": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/dsl_context.py",
+      "imports": [
+        "dslmodel.examples.file_tree",
+        "os"
+      ],
+      "exports": [
+        "write_tree_to_disk",
+        "create_recruiter_context_tree"
+      ],
+      "dependencies": [
+        "dslmodel.examples.file_tree"
+      ],
+      "features": [],
+      "complexity": 6,
+      "lines_of_code": 128
+    },
+    "enterprise_demo_minimal": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/enterprise_demo_minimal.py",
+      "imports": [
+        "dspy",
+        "typing",
+        "asyncio",
+        "loguru",
+        "pydantic",
+        "dslmodel.utils.llm_init",
+        "random"
+      ],
+      "exports": [
+        "inject_parliamentary_chaos",
+        "LeanSixSigmaDemo",
+        "RobertsRulesDemo",
+        "swarmsh_resolution",
+        "ScrumAtScaleDemo",
+        "inject_scrum_chaos",
+        "inject_lean_chaos",
+        "EnterpriseCoordinationDemo"
+      ],
+      "dependencies": [
+        "dslmodel.utils.llm_init"
+      ],
+      "features": [
+        "RobertsRulesDemo.inject_parliamentary_chaos",
+        "RobertsRulesDemo.swarmsh_resolution",
+        "ScrumAtScaleDemo.inject_scrum_chaos",
+        "ScrumAtScaleDemo.swarmsh_resolution",
+        "LeanSixSigmaDemo.inject_lean_chaos",
+        "LeanSixSigmaDemo.swarmsh_resolution"
+      ],
+      "complexity": 9,
+      "lines_of_code": 358
+    },
+    "thesis_otel_integration": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/thesis_otel_integration.py",
+      "imports": [
+        "json",
+        "os",
+        "typing",
+        "pathlib",
+        "subprocess",
+        "yaml",
+        "tempfile",
+        "pydantic",
+        "__future__",
+        "datetime"
+      ],
+      "exports": [
+        "to_yaml_file",
+        "run_forge",
+        "query_traces",
+        "run_pipeline",
+        "load_traces",
+        "OTELCollectorConfig",
+        "generate_docker_compose",
+        "demo_otel_integration",
+        "TraceAnalyzer",
+        "OTELIntegrationPipeline",
+        "TraceQuery",
+        "WeaverForgeConfig",
+        "analyze_patterns",
+        "create_example_app",
+        "generate_weaver_config",
+        "setup_workspace",
+        "generate_prometheus_config"
+      ],
+      "dependencies": [],
+      "features": [
+        "OTELCollectorConfig.to_yaml_file",
+        "WeaverForgeConfig.generate_weaver_config",
+        "WeaverForgeConfig.run_forge",
+        "TraceAnalyzer.load_traces",
+        "TraceAnalyzer.query_traces",
+        "TraceAnalyzer.analyze_patterns",
+        "OTELIntegrationPipeline.setup_workspace",
+        "OTELIntegrationPipeline.generate_docker_compose",
+        "OTELIntegrationPipeline.generate_prometheus_config",
+        "OTELIntegrationPipeline.create_example_app",
+        "OTELIntegrationPipeline.run_pipeline"
+      ],
+      "complexity": 22,
+      "lines_of_code": 601
+    },
+    "telemetry_inversion_spec_standalone": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/telemetry_inversion_spec_standalone.py",
+      "imports": [
+        "enum",
+        "dataclasses",
+        "typing"
+      ],
+      "exports": [
+        "SpanKind",
+        "AttrType",
+        "Span",
+        "ConventionSet",
+        "get_convention_sets",
+        "Cardinality",
+        "Attribute",
+        "to_dict",
+        "to_yaml_groups"
+      ],
+      "dependencies": [],
+      "features": [
+        "Attribute.to_dict",
+        "Span.to_dict",
+        "ConventionSet.to_yaml_groups"
+      ],
+      "complexity": 3,
+      "lines_of_code": 158
+    },
+    "semantic_genetic_algo": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/semantic_genetic_algo.py",
+      "imports": [
+        "dslmodel",
+        "typing"
+      ],
+      "exports": [
+        "FinalSelectionResponse",
+        "FitnessScore",
+        "llm_genetic",
+        "MutationResponse",
+        "SelectionResponse",
+        "CrossoverResponse",
+        "main"
+      ],
+      "dependencies": [
+        "dslmodel"
+      ],
+      "features": [],
+      "complexity": 9,
+      "lines_of_code": 94
+    },
+    "evolution_tracker": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/evolution_tracker.py",
+      "imports": [
+        "json",
+        "enum",
+        "dslmodel",
+        "random",
+        "typing",
+        "pathlib",
+        "logging",
+        "dslmodel.mixins",
+        "datetime"
+      ],
+      "exports": [
+        "mutations_improve_fitness",
+        "analyze_fitness",
+        "EvolutionState",
+        "run_evolution_cycle",
+        "main",
+        "select_mutations",
+        "has_fitness_data",
+        "complete_cycle",
+        "start_evolution_cycle",
+        "get_evolution_status",
+        "rollback_complete",
+        "FitnessMetrics",
+        "evaluate_mutations",
+        "apply_mutations",
+        "has_pending_mutations",
+        "generate_mutations",
+        "EvolutionResult",
+        "select_best_mutations",
+        "MutationProposal",
+        "reset_for_next_cycle",
+        "initiate_rollback",
+        "validate_changes",
+        "EvolutionTracker",
+        "calculate_mutation_fitness",
+        "propose_mutations"
+      ],
+      "dependencies": [
+        "dslmodel",
+        "dslmodel.mixins"
+      ],
+      "features": [
+        "EvolutionTracker.start_evolution_cycle",
+        "EvolutionTracker.propose_mutations",
+        "EvolutionTracker.evaluate_mutations",
+        "EvolutionTracker.select_best_mutations",
+        "EvolutionTracker.apply_mutations",
+        "EvolutionTracker.validate_changes",
+        "EvolutionTracker.complete_cycle",
+        "EvolutionTracker.initiate_rollback",
+        "EvolutionTracker.rollback_complete",
+        "EvolutionTracker.reset_for_next_cycle",
+        "EvolutionTracker.has_fitness_data",
+        "EvolutionTracker.has_pending_mutations",
+        "EvolutionTracker.mutations_improve_fitness",
+        "EvolutionTracker.analyze_fitness",
+        "EvolutionTracker.generate_mutations",
+        "EvolutionTracker.calculate_mutation_fitness",
+        "EvolutionTracker.select_mutations",
+        "EvolutionTracker.get_evolution_status",
+        "EvolutionTracker.run_evolution_cycle"
+      ],
+      "complexity": 14,
+      "lines_of_code": 343
+    },
+    "enterprise_coordination_demo": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/enterprise_coordination_demo.py",
+      "imports": [
+        "dslmodel.otel.fsm_weaver_integration",
+        "dspy",
+        "enum",
+        "dslmodel.dsl_models",
+        "random",
+        "typing",
+        "asyncio",
+        "loguru",
+        "dslmodel.mixins.fsm_mixin",
+        "pydantic",
+        "dslmodel.utils.llm_init",
+        "datetime"
+      ],
+      "exports": [
+        "RobertsRulesEngine",
+        "inject_parliamentary_chaos",
+        "inject_lean_process_chaos",
+        "inject_scrum_coordination_chaos",
+        "swarmsh_lean_process_resolution",
+        "LeanSixSigmaEngine",
+        "swarmsh_parliamentary_resolution",
+        "RobertsState",
+        "swarmsh_scrum_coordination_resolution",
+        "LeanState",
+        "ScrumAtScaleEngine",
+        "model_post_init",
+        "ScrumState",
+        "EnterpriseCoordinationDemo",
+        "start_process_improvement",
+        "start_coordinated_sprint",
+        "present_motion"
+      ],
+      "dependencies": [
+        "dslmodel.otel.fsm_weaver_integration",
+        "dslmodel.mixins.fsm_mixin",
+        "dslmodel.dsl_models",
+        "dslmodel.utils.llm_init"
+      ],
+      "features": [
+        "RobertsRulesEngine.model_post_init",
+        "RobertsRulesEngine.present_motion",
+        "RobertsRulesEngine.inject_parliamentary_chaos",
+        "RobertsRulesEngine.swarmsh_parliamentary_resolution",
+        "ScrumAtScaleEngine.model_post_init",
+        "ScrumAtScaleEngine.start_coordinated_sprint",
+        "ScrumAtScaleEngine.inject_scrum_coordination_chaos",
+        "ScrumAtScaleEngine.swarmsh_scrum_coordination_resolution",
+        "LeanSixSigmaEngine.model_post_init",
+        "LeanSixSigmaEngine.start_process_improvement",
+        "LeanSixSigmaEngine.inject_lean_process_chaos",
+        "LeanSixSigmaEngine.swarmsh_lean_process_resolution",
+        "EnterpriseCoordinationDemo.model_post_init"
+      ],
+      "complexity": 5,
+      "lines_of_code": 552
+    },
+    "swarm_fsm_integration": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/swarm_fsm_integration.py",
+      "imports": [
+        "enum",
+        "dslmodel",
+        "random",
+        "typing",
+        "dslmodel.mixins",
+        "datetime"
+      ],
+      "exports": [
+        "get_status",
+        "claim_work",
+        "Agent",
+        "validate_failure",
+        "AgentState",
+        "WorkState",
+        "add_work",
+        "SwarmCoordinator",
+        "complete_work",
+        "process_cycle",
+        "submit_for_validation",
+        "begin_work",
+        "add_agent",
+        "WorkItem",
+        "assign_to_agent",
+        "SwarmWorkItem",
+        "SwarmAgent",
+        "start_work",
+        "return_to_idle",
+        "demo",
+        "validate_success",
+        "retry_work"
+      ],
+      "dependencies": [
+        "dslmodel",
+        "dslmodel.mixins"
+      ],
+      "features": [
+        "SwarmWorkItem.assign_to_agent",
+        "SwarmWorkItem.start_work",
+        "SwarmWorkItem.submit_for_validation",
+        "SwarmWorkItem.validate_success",
+        "SwarmWorkItem.validate_failure",
+        "SwarmWorkItem.retry_work",
+        "SwarmAgent.claim_work",
+        "SwarmAgent.begin_work",
+        "SwarmAgent.complete_work",
+        "SwarmAgent.return_to_idle",
+        "SwarmCoordinator.add_agent",
+        "SwarmCoordinator.add_work",
+        "SwarmCoordinator.process_cycle",
+        "SwarmCoordinator.get_status"
+      ],
+      "complexity": 9,
+      "lines_of_code": 266
+    },
+    "domain_gen": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/domain_gen.py",
+      "imports": [
+        "pyperclip",
+        "dslmodel.spreadsheet",
+        "dslmodel.utils.file_tools",
+        "dslmodel",
+        "pydantic",
+        "dslmodel.generators"
+      ],
+      "exports": [
+        "main"
+      ],
+      "dependencies": [
+        "dslmodel.utils.file_tools",
+        "dslmodel",
+        "dslmodel.generators",
+        "dslmodel.spreadsheet"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 72
+    },
+    "thesis_workflow": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/thesis_workflow.py",
+      "imports": [
+        "dslmodel.workflow",
+        "dslmodel",
+        "typing",
+        "thesis_complete",
+        "pydantic"
+      ],
+      "exports": [
+        "generate",
+        "ThesisGenerator",
+        "ThesisValidation",
+        "create_thesis_workflow",
+        "ThesisWorkflowConfig",
+        "ThesisExtension",
+        "from_extensions",
+        "demo_ai_extension"
+      ],
+      "dependencies": [
+        "dslmodel.workflow",
+        "dslmodel"
+      ],
+      "features": [
+        "ThesisGenerator.generate",
+        "ThesisGenerator.from_extensions"
+      ],
+      "complexity": 3,
+      "lines_of_code": 282
+    },
+    "agent_orchestration_telemetry_fixed": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/agent_orchestration_telemetry_fixed.py",
+      "imports": [
+        "json",
+        "opentelemetry.sdk.trace",
+        "time",
+        "enum",
+        "opentelemetry.sdk.trace.export",
+        "typing",
+        "asyncio",
+        "pathlib",
+        "opentelemetry",
+        "opentelemetry.sdk.metrics",
+        "opentelemetry.trace.status",
+        "dataclasses",
+        "datetime"
+      ],
+      "exports": [
+        "WorkflowPhase",
+        "TelemetryValidation",
+        "TelemetryOrchestrator",
+        "AgentType",
+        "TransformationAttributes"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 21,
+      "lines_of_code": 630
+    },
+    "sipoc_models": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/sipoc_models.py",
+      "imports": [
+        "pydantic",
+        "dslmodel",
+        "typing"
+      ],
+      "exports": [
+        "SIPOC",
+        "Program",
+        "Customer",
+        "Input",
+        "Output",
+        "main",
+        "Supplier",
+        "ProcessStep"
+      ],
+      "dependencies": [
+        "dslmodel"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 164
+    },
+    "evolution_tracker_simple": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/evolution_tracker_simple.py",
+      "imports": [
+        "enum",
+        "typing",
+        "datetime"
+      ],
+      "exports": [
+        "EvolutionTrackerDemo",
+        "transition_to",
+        "run_evolution_demo",
+        "EvolutionState",
+        "main"
+      ],
+      "dependencies": [],
+      "features": [
+        "EvolutionTrackerDemo.transition_to",
+        "EvolutionTrackerDemo.run_evolution_demo"
+      ],
+      "complexity": 7,
+      "lines_of_code": 138
+    },
+    "ccs_graph": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/ccs_graph.py",
+      "imports": [
+        "pydantic",
+        "dslmodel.utils.dspy_tools",
+        "dslmodel",
+        "typing"
+      ],
+      "exports": [
+        "GraphOfThoughts",
+        "parse",
+        "GraphOfThoughtsModel",
+        "get_node",
+        "visualize",
+        "Node",
+        "add_connection",
+        "main"
+      ],
+      "dependencies": [
+        "dslmodel",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "features": [
+        "GraphOfThoughts.get_node",
+        "GraphOfThoughts.add_connection",
+        "GraphOfThoughts.visualize",
+        "GraphOfThoughtsModel.parse"
+      ],
+      "complexity": 5,
+      "lines_of_code": 114
+    },
+    "n8n_node_generator": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/n8n_node_generator.py",
+      "imports": [
+        "pydantic",
+        "os",
+        "jinja2",
+        "typing"
+      ],
+      "exports": [
+        "NodeSpec",
+        "FieldSpec",
+        "write_node_to_disk",
+        "generate_node_code",
+        "main"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 2,
+      "lines_of_code": 163
+    },
+    "thesis_weaver_templates": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/thesis_weaver_templates.py",
+      "imports": [
+        "typing",
+        "pathlib",
+        "textwrap",
+        "pydantic",
+        "__future__"
+      ],
+      "exports": [
+        "PythonSpanTemplate",
+        "save_templates",
+        "demo_weaver_templates",
+        "WeaverTemplate",
+        "TypeScriptSpanTemplate",
+        "RustSpanTemplate",
+        "render",
+        "generate_code",
+        "WeaverTemplateManager"
+      ],
+      "dependencies": [],
+      "features": [
+        "WeaverTemplate.render",
+        "RustSpanTemplate.render",
+        "PythonSpanTemplate.render",
+        "TypeScriptSpanTemplate.render",
+        "WeaverTemplateManager.save_templates",
+        "WeaverTemplateManager.generate_code"
+      ],
+      "complexity": 11,
+      "lines_of_code": 655
+    },
+    "dsl_ui": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/dsl_ui.py",
+      "imports": [
+        "pydantic",
+        "enum",
+        "dslmodel",
+        "typing"
+      ],
+      "exports": [
+        "UI",
+        "UIType",
+        "main",
+        "Attribute",
+        "Response"
+      ],
+      "dependencies": [
+        "dslmodel"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 52
+    },
+    "enterprise_coordination_demo_simple": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/enterprise_coordination_demo_simple.py",
+      "imports": [
+        "dspy",
+        "enum",
+        "dslmodel.dsl_models",
+        "random",
+        "typing",
+        "asyncio",
+        "loguru",
+        "dslmodel.mixins.fsm_mixin",
+        "pydantic",
+        "dslmodel.utils.llm_init",
+        "datetime"
+      ],
+      "exports": [
+        "RobertsRulesEngine",
+        "inject_parliamentary_chaos",
+        "inject_lean_process_chaos",
+        "inject_scrum_coordination_chaos",
+        "swarmsh_lean_process_resolution",
+        "LeanSixSigmaEngine",
+        "swarmsh_parliamentary_resolution",
+        "RobertsState",
+        "swarmsh_scrum_coordination_resolution",
+        "LeanState",
+        "ScrumAtScaleEngine",
+        "model_post_init",
+        "ScrumState",
+        "EnterpriseCoordinationDemo",
+        "start_process_improvement",
+        "start_coordinated_sprint",
+        "present_motion"
+      ],
+      "dependencies": [
+        "dslmodel.mixins.fsm_mixin",
+        "dslmodel.dsl_models",
+        "dslmodel.utils.llm_init"
+      ],
+      "features": [
+        "RobertsRulesEngine.model_post_init",
+        "RobertsRulesEngine.present_motion",
+        "RobertsRulesEngine.inject_parliamentary_chaos",
+        "RobertsRulesEngine.swarmsh_parliamentary_resolution",
+        "ScrumAtScaleEngine.model_post_init",
+        "ScrumAtScaleEngine.start_coordinated_sprint",
+        "ScrumAtScaleEngine.inject_scrum_coordination_chaos",
+        "ScrumAtScaleEngine.swarmsh_scrum_coordination_resolution",
+        "LeanSixSigmaEngine.model_post_init",
+        "LeanSixSigmaEngine.start_process_improvement",
+        "LeanSixSigmaEngine.inject_lean_process_chaos",
+        "LeanSixSigmaEngine.swarmsh_lean_process_resolution"
+      ],
+      "complexity": 5,
+      "lines_of_code": 568
+    },
+    "dslmodel_weaver_fsm_workflow": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/dslmodel_weaver_fsm_workflow.py",
+      "imports": [
+        "dslmodel.otel.fsm_weaver_integration",
+        "dslmodel.workflow",
+        "opentelemetry.trace",
+        "enum",
+        "dslmodel.dsl_models",
+        "typing",
+        "asyncio",
+        "pathlib",
+        "loguru",
+        "opentelemetry",
+        "pydantic",
+        "datetime"
+      ],
+      "exports": [
+        "DataPipelineModel",
+        "transform_data",
+        "fail_pipeline",
+        "create_workflow",
+        "start_ingestion",
+        "validate_data",
+        "should_enrich",
+        "from_config",
+        "store_results",
+        "complete_pipeline",
+        "DataPipelineOrchestrator",
+        "enrich_data",
+        "error_rate",
+        "model_post_init",
+        "DataPipelineState",
+        "validity_rate",
+        "DataQualityMetrics",
+        "retry_stage",
+        "to_workflow_action"
+      ],
+      "dependencies": [
+        "dslmodel.otel.fsm_weaver_integration",
+        "dslmodel.workflow",
+        "dslmodel.dsl_models"
+      ],
+      "features": [
+        "DataQualityMetrics.validity_rate",
+        "DataQualityMetrics.error_rate",
+        "DataPipelineModel.model_post_init",
+        "DataPipelineModel.start_ingestion",
+        "DataPipelineModel.validate_data",
+        "DataPipelineModel.transform_data",
+        "DataPipelineModel.enrich_data",
+        "DataPipelineModel.store_results",
+        "DataPipelineModel.complete_pipeline",
+        "DataPipelineModel.retry_stage",
+        "DataPipelineModel.fail_pipeline",
+        "DataPipelineModel.should_enrich",
+        "DataPipelineModel.to_workflow_action",
+        "DataPipelineOrchestrator.create_workflow",
+        "DataPipelineOrchestrator.from_config"
+      ],
+      "complexity": 12,
+      "lines_of_code": 428
+    },
+    "workflow": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/workflow.py",
+      "imports": [
+        "pydantic",
+        "dslmodel",
+        "openai",
+        "typing"
+      ],
+      "exports": [
+        "WorkflowPattern",
+        "WorkflowReasoningOutput",
+        "main",
+        "WorkflowRequirement",
+        "WorkflowReasoningStep"
+      ],
+      "dependencies": [
+        "dslmodel"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 57
+    },
+    "yawl_models": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/yawl_models.py",
+      "imports": [],
+      "exports": [],
+      "dependencies": [],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 0
+    },
+    "node": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/node.py",
+      "imports": [
+        "pathlib",
+        "dslmodel.examples.gherkin_models",
+        "jinja2",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "exports": [
+        "render_pytest_bdd",
+        "main"
+      ],
+      "dependencies": [
+        "dslmodel.examples.gherkin_models",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 87
+    },
+    "challenger": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/challenger.py",
+      "imports": [
+        "dspygen.rdddy.base_inhabitant",
+        "enum",
+        "dslmodel",
+        "logging",
+        "dspygen.utils.dspy_tools",
+        "dslmodel.mixins"
+      ],
+      "exports": [
+        "conduct_outreach",
+        "new_opportunity",
+        "tailor_solution",
+        "close_deal",
+        "start_research",
+        "revise_proposal",
+        "complete_sale",
+        "deepen_discovery",
+        "restart_outreach",
+        "perform_discovery",
+        "prompt",
+        "SalesState",
+        "negotiation_failed",
+        "handle_objections",
+        "main",
+        "ChallengerSalesAgent"
+      ],
+      "dependencies": [
+        "dslmodel",
+        "dslmodel.mixins"
+      ],
+      "features": [
+        "ChallengerSalesAgent.start_research",
+        "ChallengerSalesAgent.conduct_outreach",
+        "ChallengerSalesAgent.perform_discovery",
+        "ChallengerSalesAgent.tailor_solution",
+        "ChallengerSalesAgent.handle_objections",
+        "ChallengerSalesAgent.close_deal",
+        "ChallengerSalesAgent.complete_sale",
+        "ChallengerSalesAgent.revise_proposal",
+        "ChallengerSalesAgent.deepen_discovery",
+        "ChallengerSalesAgent.restart_outreach",
+        "ChallengerSalesAgent.negotiation_failed",
+        "ChallengerSalesAgent.new_opportunity",
+        "ChallengerSalesAgent.prompt"
+      ],
+      "complexity": 1,
+      "lines_of_code": 122
+    },
+    "demo": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/demo.py",
+      "imports": [
+        "asyncio",
+        "typing",
+        "dspy"
+      ],
+      "exports": [],
+      "dependencies": [],
+      "features": [],
+      "complexity": 3,
+      "lines_of_code": 50
+    },
+    "git_parliament_5one_monitor": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/git_parliament_5one_monitor.py",
+      "imports": [
+        "opentelemetry.exporter.otlp.proto.grpc.trace_exporter",
+        "pathlib",
+        "subprocess",
+        "json",
+        "opentelemetry.exporter.otlp.proto.grpc.metric_exporter",
+        "time",
+        "opentelemetry.sdk.trace.export",
+        "asyncio",
+        "opentelemetry.sdk.trace",
+        "opentelemetry.trace",
+        "typing",
+        "hashlib",
+        "opentelemetry",
+        "opentelemetry.sdk.metrics",
+        "opentelemetry.sdk.resources",
+        "uuid",
+        "opentelemetry.sdk.metrics.export",
+        "loguru",
+        "functools",
+        "dataclasses",
+        "datetime"
+      ],
+      "exports": [
+        "wrapper",
+        "decorator",
+        "parliament_span",
+        "instrument_agent",
+        "second",
+        "debate",
+        "instrumented_tally",
+        "git_operation_span",
+        "InstrumentedParliament",
+        "new_motion",
+        "setup_5one_monitoring",
+        "instrumented_merge_decision",
+        "vote"
+      ],
+      "dependencies": [],
+      "features": [
+        "InstrumentedParliament.new_motion",
+        "InstrumentedParliament.second",
+        "InstrumentedParliament.debate",
+        "InstrumentedParliament.vote"
+      ],
+      "complexity": 22,
+      "lines_of_code": 663
+    },
+    "bdd": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/bdd.py",
+      "imports": [
+        "pathlib",
+        "dslmodel.examples.gherkin_models",
+        "jinja2",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "exports": [
+        "render_pytest_bdd",
+        "main"
+      ],
+      "dependencies": [
+        "dslmodel.examples.gherkin_models",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 87
+    },
+    "weaver_fsm_example": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/weaver_fsm_example.py",
+      "imports": [
+        "dslmodel.otel.fsm_weaver_integration",
+        "opentelemetry.sdk.trace",
+        "opentelemetry.sdk.metrics.export",
+        "enum",
+        "opentelemetry.sdk.trace.export",
+        "typing",
+        "asyncio",
+        "loguru",
+        "opentelemetry",
+        "opentelemetry.sdk.metrics",
+        "opentelemetry.sdk.resources",
+        "pydantic",
+        "dslmodel.utils.llm_init"
+      ],
+      "exports": [
+        "start_payment",
+        "cancel_order",
+        "complete_payment",
+        "OrderWorkflow",
+        "ship_order",
+        "fail_order",
+        "ai_risk_assessment",
+        "OrderState",
+        "generate_custom_workflow_example",
+        "deliver_order",
+        "model_post_init",
+        "start_fulfillment",
+        "validate_order"
+      ],
+      "dependencies": [
+        "dslmodel.otel.fsm_weaver_integration",
+        "dslmodel.utils.llm_init"
+      ],
+      "features": [
+        "OrderWorkflow.model_post_init",
+        "OrderWorkflow.validate_order",
+        "OrderWorkflow.start_payment",
+        "OrderWorkflow.complete_payment",
+        "OrderWorkflow.start_fulfillment",
+        "OrderWorkflow.ship_order",
+        "OrderWorkflow.deliver_order",
+        "OrderWorkflow.cancel_order",
+        "OrderWorkflow.ai_risk_assessment",
+        "OrderWorkflow.fail_order"
+      ],
+      "complexity": 8,
+      "lines_of_code": 350
+    },
+    "thesis_complete": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/thesis_complete.py",
+      "imports": [
+        "enum",
+        "dslmodel",
+        "typing",
+        "pydantic",
+        "__future__",
+        "datetime"
+      ],
+      "exports": [
+        "generate_otel_yaml",
+        "FeedbackLoopStep",
+        "ThesisComplete",
+        "generate_forge_rust",
+        "InversionPair",
+        "TRIZMap",
+        "create_default_thesis",
+        "demo_thesis_usage",
+        "FeedbackLoopPhase",
+        "SpanSpec"
+      ],
+      "dependencies": [
+        "dslmodel"
+      ],
+      "features": [
+        "ThesisComplete.create_default_thesis",
+        "ThesisComplete.generate_otel_yaml",
+        "ThesisComplete.generate_forge_rust"
+      ],
+      "complexity": 3,
+      "lines_of_code": 316
+    },
+    "ccs_models": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/ccs_models.py",
+      "imports": [
+        "pydantic",
+        "dslmodel",
+        "typing"
+      ],
+      "exports": [
+        "CodebaseContextSpecification",
+        "GraphOfThoughts",
+        "DiagramFile",
+        "Metadata",
+        "Node",
+        "get_node",
+        "Config",
+        "main",
+        "ContextDirectory",
+        "add_connection",
+        "ContextFile"
+      ],
+      "dependencies": [
+        "dslmodel"
+      ],
+      "features": [
+        "GraphOfThoughts.get_node",
+        "GraphOfThoughts.add_connection"
+      ],
+      "complexity": 3,
+      "lines_of_code": 243
+    },
+    "agent_orchestration_telemetry": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/agent_orchestration_telemetry.py",
+      "imports": [
+        "json",
+        "opentelemetry.sdk.trace",
+        "time",
+        "enum",
+        "opentelemetry.sdk.trace.export",
+        "typing",
+        "asyncio",
+        "pathlib",
+        "opentelemetry",
+        "opentelemetry.sdk.metrics",
+        "opentelemetry.trace.status",
+        "dataclasses",
+        "datetime"
+      ],
+      "exports": [
+        "WorkflowPhase",
+        "TelemetryValidation",
+        "TelemetryOrchestrator",
+        "AgentType",
+        "TransformationAttributes"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 19,
+      "lines_of_code": 609
+    },
+    "gh_actions_models": {
+      "type": "example",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/examples/gh_actions_models.py",
+      "imports": [
+        "dslmodel",
+        "dslmodel.utils.dspy_tools",
+        "typing",
+        "pydantic",
+        "__future__"
+      ],
+      "exports": [
+        "GHActionsDocument",
+        "Job",
+        "Trigger",
+        "Step",
+        "ActionReference",
+        "main",
+        "Workflow"
+      ],
+      "dependencies": [
+        "dslmodel",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 131
+    },
+    "git_auto": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/git_auto.py",
+      "imports": [
+        "dslmodel.utils.span",
+        "yaml",
+        "subprocess",
+        "pathlib",
+        "functools"
+      ],
+      "exports": [
+        "wrapper",
+        "decorator",
+        "git_wrap"
+      ],
+      "dependencies": [
+        "dslmodel.utils.span"
+      ],
+      "features": [],
+      "complexity": 3,
+      "lines_of_code": 41
+    },
+    "chat_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/chat_tools.py",
+      "imports": [
+        "dspy",
+        "traceback",
+        "typer",
+        "sys"
+      ],
+      "exports": [
+        "global_exception_handler",
+        "ErrorAnalysis",
+        "set_global_exception_handler",
+        "ChatbotAssistance",
+        "handle_global_error",
+        "chatbot"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 2,
+      "lines_of_code": 189
+    },
+    "dspy_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/dspy_tools.py",
+      "imports": [
+        "warnings",
+        "ollama_validator",
+        "dspy"
+      ],
+      "exports": [
+        "init_lm",
+        "init_versatile",
+        "init_instant",
+        "init_text"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 3,
+      "lines_of_code": 155
+    },
+    "llm_init": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/llm_init.py",
+      "imports": [
+        "loguru",
+        "subprocess",
+        "typing",
+        "dspy"
+      ],
+      "exports": [
+        "init_openai",
+        "test_model",
+        "current_lm",
+        "init_lm",
+        "get_available_ollama_models",
+        "init_phi4",
+        "is_lm_initialized",
+        "init_qwen3",
+        "init_ollama"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 11,
+      "lines_of_code": 222
+    },
+    "pydantic_ai_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/pydantic_ai_tools.py",
+      "imports": [
+        "typing",
+        "asyncio",
+        "functools",
+        "pydantic",
+        "pydantic_ai",
+        "datetime"
+      ],
+      "exports": [
+        "HelloWorldModel",
+        "InstanceMixin",
+        "AgentModel",
+        "elapsed_time"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 93
+    },
+    "file_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/file_tools.py",
+      "imports": [
+        "json",
+        "fnmatch",
+        "contextlib",
+        "pathlib",
+        "anyio",
+        "yaml",
+        "tempfile",
+        "tiktoken",
+        "re"
+      ],
+      "exports": [
+        "is_binary",
+        "source_dir",
+        "pages_dir",
+        "data_dir",
+        "find_project_root",
+        "main",
+        "is_ignored",
+        "templates_dir",
+        "get_source",
+        "rm_dir",
+        "find_gitignore",
+        "match_gitignore_pattern",
+        "project_dir",
+        "subcommands_dir",
+        "count_tokens",
+        "parse_gitignore",
+        "extract_code",
+        "tmp_file",
+        "is_sungen",
+        "lm_dir",
+        "dspy_modules_dir",
+        "slugify",
+        "plugins_dir",
+        "signatures_dir",
+        "dsl_dir"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 18,
+      "lines_of_code": 256
+    },
+    "route_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/route_tools.py",
+      "imports": [
+        "re",
+        "typing"
+      ],
+      "exports": [
+        "to_regex",
+        "ParsedPathSegment",
+        "to_solidstart",
+        "parse_segment",
+        "sanitize_capture_group",
+        "to_sveltekit",
+        "ParsedPathSegmentToken",
+        "to_vuerouter",
+        "ParsedPath",
+        "parse_path",
+        "to_radix"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 44,
+      "lines_of_code": 212
+    },
+    "json_output": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/json_output.py",
+      "imports": [
+        "json",
+        "sys",
+        "typing",
+        "pathlib",
+        "contextlib",
+        "datetime"
+      ],
+      "exports": [
+        "json_command",
+        "add_error",
+        "format_generation_result",
+        "output",
+        "get_formatter",
+        "format_demo_results",
+        "JSONFormatter",
+        "add_data",
+        "set_success",
+        "format_system_status",
+        "print",
+        "format_validation_result",
+        "format_file_list",
+        "format_telemetry_spans",
+        "add_metadata",
+        "add_warning",
+        "set_command",
+        "set_json_mode"
+      ],
+      "dependencies": [],
+      "features": [
+        "JSONFormatter.set_json_mode",
+        "JSONFormatter.set_command",
+        "JSONFormatter.add_data",
+        "JSONFormatter.add_metadata",
+        "JSONFormatter.add_error",
+        "JSONFormatter.add_warning",
+        "JSONFormatter.set_success",
+        "JSONFormatter.output",
+        "JSONFormatter.print"
+      ],
+      "complexity": 7,
+      "lines_of_code": 196
+    },
+    "log_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/log_tools.py",
+      "imports": [
+        "sys",
+        "dslmodel.utils.file_tools",
+        "typing",
+        "pathlib",
+        "contextlib",
+        "loguru",
+        "logging"
+      ],
+      "exports": [
+        "init_log",
+        "log_debug",
+        "log_info",
+        "log_critical",
+        "log_warning",
+        "log_exception",
+        "log_error"
+      ],
+      "dependencies": [
+        "dslmodel.utils.file_tools"
+      ],
+      "features": [],
+      "complexity": 1,
+      "lines_of_code": 112
+    },
+    "ollama_validator": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/ollama_validator.py",
+      "imports": [
+        "json",
+        "requests",
+        "dspy",
+        "os",
+        "typing",
+        "pathlib",
+        "logging",
+        "argparse",
+        "urllib.parse",
+        "dataclasses"
+      ],
+      "exports": [
+        "get_recommended_models",
+        "validate_ollama_globally",
+        "safe_init_ollama",
+        "validate_url",
+        "validate_configuration",
+        "OllamaValidator",
+        "get_available_models",
+        "suggest_fixes",
+        "OllamaConfig",
+        "check_server_availability",
+        "create_env_template",
+        "main",
+        "validate_model_availability"
+      ],
+      "dependencies": [],
+      "features": [
+        "OllamaValidator.validate_url",
+        "OllamaValidator.check_server_availability",
+        "OllamaValidator.get_available_models",
+        "OllamaValidator.validate_model_availability",
+        "OllamaValidator.validate_configuration",
+        "OllamaValidator.get_recommended_models",
+        "OllamaValidator.suggest_fixes",
+        "OllamaValidator.create_env_template"
+      ],
+      "complexity": 35,
+      "lines_of_code": 343
+    },
+    "worktree_manager": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/worktree_manager.py",
+      "imports": [
+        "typing",
+        "pathlib",
+        "subprocess",
+        "loguru",
+        "dataclasses",
+        "datetime"
+      ],
+      "exports": [
+        "WorktreeManager",
+        "switch_worktree",
+        "create_worktree",
+        "Worktree",
+        "get_worktree",
+        "cleanup_stale_worktrees",
+        "remove_worktree",
+        "list_worktrees",
+        "merge_completed_feature"
+      ],
+      "dependencies": [],
+      "features": [
+        "WorktreeManager.list_worktrees",
+        "WorktreeManager.create_worktree",
+        "WorktreeManager.remove_worktree",
+        "WorktreeManager.switch_worktree",
+        "WorktreeManager.get_worktree",
+        "WorktreeManager.cleanup_stale_worktrees",
+        "WorktreeManager.merge_completed_feature"
+      ],
+      "complexity": 20,
+      "lines_of_code": 227
+    },
+    "model_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/model_tools.py",
+      "imports": [
+        "dslmodel",
+        "typing",
+        "dslmodel.utils.dspy_tools",
+        "logging",
+        "functools",
+        "pydantic",
+        "concurrent.futures"
+      ],
+      "exports": [
+        "model_to_string_values",
+        "ScenarioAnalysis",
+        "main2",
+        "run_dsls",
+        "run_dsl_matrix",
+        "Perspective",
+        "from_prompt_chain",
+        "ExampleModel",
+        "run_task",
+        "main",
+        "task"
+      ],
+      "dependencies": [
+        "dslmodel",
+        "dslmodel.utils.dspy_tools"
+      ],
+      "features": [],
+      "complexity": 11,
+      "lines_of_code": 209
+    },
+    "watch_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/watch_tools.py",
+      "imports": [
+        "time",
+        "typing",
+        "loguru",
+        "watchdog.events",
+        "watchdog.observers",
+        "functools"
+      ],
+      "exports": [
+        "watchdog_rerun",
+        "decorator",
+        "wrapper",
+        "on_modified",
+        "WatchdogHandler"
+      ],
+      "dependencies": [],
+      "features": [
+        "WatchdogHandler.on_modified"
+      ],
+      "complexity": 3,
+      "lines_of_code": 52
+    },
+    "str_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/str_tools.py",
+      "imports": [
+        "inflection"
+      ],
+      "exports": [
+        "camelize_lower",
+        "dasherize",
+        "pythonic_str"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 12
+    },
+    "cli_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/cli_tools.py",
+      "imports": [
+        "pathlib",
+        "os",
+        "importlib"
+      ],
+      "exports": [
+        "load_commands",
+        "source_dir"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 3,
+      "lines_of_code": 25
+    },
+    "span": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/span.py",
+      "imports": [
+        "contextlib",
+        "opentelemetry"
+      ],
+      "exports": [
+        "wrapper",
+        "decorator",
+        "span_decorator",
+        "span"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 24
+    },
+    "source_tools": {
+      "type": "utility",
+      "path": "/Users/sac/dev/dslmodel/src/dslmodel/utils/source_tools.py",
+      "imports": [
+        "enum",
+        "textwrap",
+        "typing",
+        "inspect"
+      ],
+      "exports": [
+        "ExampleEnum",
+        "collect_all_sources_as_string",
+        "process_field_type",
+        "SubModel",
+        "collect_class_sources",
+        "handle_complex_type",
+        "ExampleModel",
+        "collect_enum_sources"
+      ],
+      "dependencies": [],
+      "features": [],
+      "complexity": 13,
+      "lines_of_code": 112
+    },
+    "test_weaver_otel_integration": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_weaver_otel_integration.py",
+      "imports": [
+        "json",
+        "shutil",
+        "dspy",
+        "typing",
+        "asyncio",
+        "subprocess",
+        "pathlib",
+        "dslmodel.commands.weaver_health_check",
+        "tempfile",
+        "yaml",
+        "dslmodel.utils.ollama_validator",
+        "pytest"
+      ],
+      "exports": [
+        "health_checker",
+        "sample_semconv",
+        "test_ollama_availability",
+        "setup_test_environment",
+        "SemanticValidator",
+        "test_weaver_yaml_structure",
+        "test_health_check_json_output",
+        "Validator",
+        "test_dslmodel_integration_modules",
+        "cleanup_test_environment",
+        "TestWeaverOTELIntegration",
+        "test_weaver_validation_compatibility",
+        "ollama_validator"
+      ],
+      "dependencies": [
+        "dslmodel.commands.weaver_health_check",
+        "dslmodel.utils.ollama_validator"
+      ],
+      "features": [
+        "TestWeaverOTELIntegration.health_checker",
+        "TestWeaverOTELIntegration.ollama_validator",
+        "TestWeaverOTELIntegration.sample_semconv",
+        "TestWeaverOTELIntegration.test_ollama_availability",
+        "TestWeaverOTELIntegration.test_weaver_yaml_structure",
+        "TestWeaverOTELIntegration.test_weaver_validation_compatibility",
+        "TestWeaverOTELIntegration.test_dslmodel_integration_modules",
+        "TestWeaverOTELIntegration.test_health_check_json_output"
+      ],
+      "complexity": 23,
+      "lines_of_code": 431
+    },
+    "test_cli_essential": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_cli_essential.py",
+      "imports": [
+        "json",
+        "time",
+        "os",
+        "typing",
+        "pathlib",
+        "subprocess",
+        "tempfile",
+        "pytest"
+      ],
+      "exports": [
+        "run_cmd",
+        "test_performance_baseline",
+        "setup",
+        "test_error_handling_essential",
+        "TestCLIEssential",
+        "CLITestRunner",
+        "test_otel_instrumentation_quick",
+        "test_poetry_dependencies_essential",
+        "validate_otel_span",
+        "test_core_commands_smoke",
+        "test_pyproject_configuration",
+        "test_dslmodel_core_imports"
+      ],
+      "dependencies": [],
+      "features": [
+        "CLITestRunner.run_cmd",
+        "CLITestRunner.validate_otel_span",
+        "TestCLIEssential.setup",
+        "TestCLIEssential.test_core_commands_smoke",
+        "TestCLIEssential.test_poetry_dependencies_essential",
+        "TestCLIEssential.test_dslmodel_core_imports",
+        "TestCLIEssential.test_pyproject_configuration",
+        "TestCLIEssential.test_error_handling_essential",
+        "TestCLIEssential.test_otel_instrumentation_quick"
+      ],
+      "complexity": 18,
+      "lines_of_code": 245
+    },
+    "test_organizational_transformation": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_organizational_transformation.py",
+      "imports": [
+        "json",
+        "opentelemetry.sdk.trace",
+        "opentelemetry.trace",
+        "sys",
+        "dslmodel.examples.e2e_360_demo",
+        "opentelemetry.sdk.trace.export",
+        "typing",
+        "asyncio",
+        "subprocess",
+        "pathlib",
+        "yaml",
+        "opentelemetry",
+        "dslmodel.examples.agent_orchestration_telemetry_fixed",
+        "pytest",
+        "datetime"
+      ],
+      "exports": [
+        "setup",
+        "test_semantic_convention_templates",
+        "test_cli_integration",
+        "test_e2e_360_demo_execution",
+        "TestWeaverEnforcement",
+        "test_artifacts_generation",
+        "test_weaver_validation",
+        "test_error_handling",
+        "test_integration_flow",
+        "TestOrganizationalTransformation",
+        "test_otel_semantic_conventions",
+        "test_weaver_validation_script",
+        "test_weaver_config_exists"
+      ],
+      "dependencies": [
+        "dslmodel.examples.e2e_360_demo",
+        "dslmodel.examples.agent_orchestration_telemetry_fixed"
+      ],
+      "features": [
+        "TestOrganizationalTransformation.setup",
+        "TestOrganizationalTransformation.test_e2e_360_demo_execution",
+        "TestOrganizationalTransformation.test_otel_semantic_conventions",
+        "TestOrganizationalTransformation.test_weaver_validation",
+        "TestOrganizationalTransformation.test_cli_integration",
+        "TestOrganizationalTransformation.test_integration_flow",
+        "TestOrganizationalTransformation.test_artifacts_generation",
+        "TestOrganizationalTransformation.test_error_handling",
+        "TestWeaverEnforcement.test_weaver_config_exists",
+        "TestWeaverEnforcement.test_semantic_convention_templates",
+        "TestWeaverEnforcement.test_weaver_validation_script"
+      ],
+      "complexity": 10,
+      "lines_of_code": 534
+    },
+    "test_import": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_import.py",
+      "imports": [
+        "dslmodel"
+      ],
+      "exports": [
+        "test_import"
+      ],
+      "dependencies": [
+        "dslmodel"
+      ],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 8
+    },
+    "test_weaver_fsm_integration": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_weaver_fsm_integration.py",
+      "imports": [
+        "dslmodel.otel.fsm_weaver_integration",
+        "enum",
+        "dslmodel.dsl_models",
+        "pathlib",
+        "yaml",
+        "unittest.mock",
+        "dslmodel.mixins.fsm_mixin",
+        "dslmodel.otel.weaver_integration",
+        "pydantic",
+        "pytest"
+      ],
+      "exports": [
+        "test_observable_fsm_mixin_inheritance",
+        "TestObservableFSM",
+        "test_weaver_fsm_model_inheritance",
+        "transition",
+        "start",
+        "TestState",
+        "TestModel",
+        "test_dslmodel_features_preserved",
+        "TestWeaverFSMIntegration",
+        "test_fsm_state_transitions",
+        "test_fsm_template_generation",
+        "finish",
+        "model_post_init",
+        "test_observability_setup",
+        "test_multiple_inheritance_mro",
+        "test_model_serialization",
+        "test_workflow_state_generator_init",
+        "test_create_workflow_semconv",
+        "test_observable_trigger_decorator"
+      ],
+      "dependencies": [
+        "dslmodel.otel.fsm_weaver_integration",
+        "dslmodel.mixins.fsm_mixin",
+        "dslmodel.dsl_models",
+        "dslmodel.otel.weaver_integration"
+      ],
+      "features": [
+        "TestObservableFSM.model_post_init",
+        "TestObservableFSM.start",
+        "TestObservableFSM.finish",
+        "TestWeaverFSMIntegration.test_observable_fsm_mixin_inheritance",
+        "TestWeaverFSMIntegration.test_weaver_fsm_model_inheritance",
+        "TestWeaverFSMIntegration.test_fsm_state_transitions",
+        "TestWeaverFSMIntegration.test_model_serialization",
+        "TestWeaverFSMIntegration.test_observability_setup",
+        "TestWeaverFSMIntegration.test_workflow_state_generator_init",
+        "TestWeaverFSMIntegration.test_create_workflow_semconv",
+        "TestWeaverFSMIntegration.test_dslmodel_features_preserved",
+        "TestWeaverFSMIntegration.test_observable_trigger_decorator",
+        "TestWeaverFSMIntegration.test_multiple_inheritance_mro",
+        "TestWeaverFSMIntegration.test_fsm_template_generation",
+        "TestModel.transition"
+      ],
+      "complexity": 0,
+      "lines_of_code": 209
+    },
+    "test_models": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_models.py",
+      "imports": [],
+      "exports": [],
+      "dependencies": [],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 0
+    },
+    "test_e2e": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_e2e.py",
+      "imports": [
+        "time",
+        "typing",
+        "dslmodel.examples.enterprise_demo_minimal",
+        "asyncio",
+        "pytest",
+        "dslmodel.utils.llm_init"
+      ],
+      "exports": [
+        "test_qwen3_initialization",
+        "TestDemoGenerationEngine",
+        "test_scrum_coordination_metrics",
+        "test_coordination_improvement_calculations",
+        "benchmark_results",
+        "test_roberts_rules_chaos_injection",
+        "TestLLMIntegration",
+        "test_roberts_rules_resolution",
+        "test_chaos_scenario_diversity",
+        "TestEnterpriseCoordinationE2E",
+        "test_ai_resolution_generation",
+        "test_lean_six_sigma_roi_transformation"
+      ],
+      "dependencies": [
+        "dslmodel.utils.llm_init",
+        "dslmodel.examples.enterprise_demo_minimal"
+      ],
+      "features": [
+        "TestEnterpriseCoordinationE2E.test_roberts_rules_chaos_injection",
+        "TestEnterpriseCoordinationE2E.test_roberts_rules_resolution",
+        "TestEnterpriseCoordinationE2E.test_scrum_coordination_metrics",
+        "TestEnterpriseCoordinationE2E.test_lean_six_sigma_roi_transformation",
+        "TestEnterpriseCoordinationE2E.test_coordination_improvement_calculations",
+        "TestDemoGenerationEngine.test_chaos_scenario_diversity",
+        "TestLLMIntegration.test_qwen3_initialization",
+        "TestLLMIntegration.test_ai_resolution_generation"
+      ],
+      "complexity": 9,
+      "lines_of_code": 293
+    },
+    "test_api": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_api.py",
+      "imports": [],
+      "exports": [],
+      "dependencies": [],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 3
+    },
+    "test_autonomous_evolution_health": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_autonomous_evolution_health.py",
+      "imports": [
+        "json",
+        "src.dslmodel.generated.models.autonomous_evolution_loop",
+        "sys",
+        "setup_evolution_cron",
+        "time",
+        "asyncio",
+        "pathlib",
+        "unittest.mock",
+        "src.dslmodel.commands.autonomous_evolution_daemon",
+        "pytest"
+      ],
+      "exports": [
+        "test_setup_evolution_cron_imports",
+        "daemon",
+        "test_weaver_models_importable",
+        "TestRealSystemIntegration",
+        "test_evolution_strategies_configured",
+        "TestAutonomousEvolutionHealth",
+        "test_daemon_initialization",
+        "test_cron_scripts_exist",
+        "test_telemetry_emission_works"
+      ],
+      "dependencies": [
+        "src.dslmodel.commands.autonomous_evolution_daemon",
+        "src.dslmodel.generated.models.autonomous_evolution_loop"
+      ],
+      "features": [
+        "TestAutonomousEvolutionHealth.daemon",
+        "TestAutonomousEvolutionHealth.test_weaver_models_importable",
+        "TestAutonomousEvolutionHealth.test_telemetry_emission_works",
+        "TestAutonomousEvolutionHealth.test_daemon_initialization",
+        "TestAutonomousEvolutionHealth.test_evolution_strategies_configured",
+        "TestAutonomousEvolutionHealth.test_cron_scripts_exist",
+        "TestRealSystemIntegration.test_setup_evolution_cron_imports"
+      ],
+      "complexity": 7,
+      "lines_of_code": 279
+    },
+    "test_cli": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_cli.py",
+      "imports": [
+        "typer.testing",
+        "dslmodel.cli"
+      ],
+      "exports": [],
+      "dependencies": [
+        "dslmodel.cli"
+      ],
+      "features": [],
+      "complexity": 0,
+      "lines_of_code": 7
+    },
+    "test_otel_validation": {
+      "type": "test",
+      "path": "/Users/sac/dev/dslmodel/tests/test_otel_validation.py",
+      "imports": [
+        "json",
+        "sys",
+        "typing",
+        "pathlib",
+        "subprocess",
+        "yaml",
+        "pytest"
+      ],
+      "exports": [
+        "setup",
+        "test_weaver_config_validation",
+        "test_integration_points_validation",
+        "test_validation_summary_format",
+        "test_demo_output_exists",
+        "TestOTELValidation",
+        "test_span_attribute_validation",
+        "test_semantic_conventions_compliance",
+        "test_telemetry_output_validation",
+        "test_weaver_semantic_template",
+        "test_cli_otel_commands"
+      ],
+      "dependencies": [],
+      "features": [
+        "TestOTELValidation.setup",
+        "TestOTELValidation.test_demo_output_exists",
+        "TestOTELValidation.test_telemetry_output_validation",
+        "TestOTELValidation.test_semantic_conventions_compliance",
+        "TestOTELValidation.test_weaver_config_validation",
+        "TestOTELValidation.test_cli_otel_commands",
+        "TestOTELValidation.test_span_attribute_validation",
+        "TestOTELValidation.test_integration_points_validation",
+        "TestOTELValidation.test_weaver_semantic_template",
+        "TestOTELValidation.test_validation_summary_format"
+      ],
+      "complexity": 16,
+      "lines_of_code": 328
+    }
+  },
+  "statistics": {
+    "total_components": 82,
+    "total_loc": 18666,
+    "total_features": 308,
+    "by_type": {
+      "test": 11,
+      "example": 43,
+      "mixin": 8,
+      "utility": 17,
+      "core": 3
+    }
+  }
+}

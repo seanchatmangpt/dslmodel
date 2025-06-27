@@ -1,0 +1,70 @@
+classDiagram
+    class DSLModel {
+        +from_prompt(prompt: str) DSLModel
+        +from_template(template: str) DSLModel
+        +from_signature(signature: str) DSLModel
+        +to_yaml() str
+        +to_json() str
+        +save(path: Path) None
+        +load(path: Path) DSLModel
+        +validate() ValidationResult
+        +render() str
+    }
+    
+    class JinjaDSLMixin {
+        +render_field(field: str) str
+        +render_all() dict
+        +get_template_vars() dict
+    }
+    
+    class DSPyDSLMixin {
+        +generate(prompt: str) dict
+        +optimize(examples: list) None
+        +predict(input: dict) dict
+    }
+    
+    class FileHandlerDSLMixin {
+        +to_yaml() str
+        +to_json() str
+        +to_toml() str
+        +from_yaml(data: str) DSLModel
+        +detect_format(path: Path) str
+    }
+    
+    class FSMMixin {
+        +add_state(state: str) None
+        +add_transition(trigger: str) None
+        +trigger(event: str) bool
+        +get_state() str
+        +get_transitions() list
+    }
+    
+    class Workflow {
+        +name: str
+        +jobs: List[Job]
+        +execute() WorkflowResult
+        +validate() ValidationResult
+        +get_dag() dict
+    }
+    
+    class Job {
+        +name: str
+        +actions: List[Action]
+        +dependencies: List[str]
+        +execute() JobResult
+    }
+    
+    class Action {
+        +name: str
+        +module: str
+        +method: str
+        +execute() ActionResult
+    }
+    
+    DSLModel --|> JinjaDSLMixin
+    DSLModel --|> DSPyDSLMixin
+    DSLModel --|> FileHandlerDSLMixin
+    DSLModel --|> FSMMixin
+    
+    Workflow "1" --> "*" Job
+    Job "1" --> "*" Action
