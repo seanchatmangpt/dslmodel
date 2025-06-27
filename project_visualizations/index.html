@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DSLModel v3 Project Visualizations</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .nav button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background: #007acc;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .nav button:hover {
+            background: #005a9e;
+        }
+        .nav button.active {
+            background: #005a9e;
+        }
+        .diagram-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .diagram {
+            display: none;
+            text-align: center;
+        }
+        .diagram.active {
+            display: block;
+        }
+        .diagram h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .mermaid {
+            text-align: center;
+        }
+        .description {
+            max-width: 800px;
+            margin: 20px auto;
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DSLModel v3 Project Visualizations</h1>
+        <p class="subtitle">Comprehensive project structure and architecture diagrams</p>
+    </div>
+    
+    <div class="nav">
+        <button onclick="showDiagram('architecture')" class="active">Architecture</button>
+        <button onclick="showDiagram('dependencies')">Dependencies</button>
+        <button onclick="showDiagram('feature_map')">Feature Map</button>
+        <button onclick="showDiagram('data_flow')">Data Flow</button>
+        <button onclick="showDiagram('timeline')">Timeline</button>
+        <button onclick="showDiagram('api_surface')">API Surface</button>
+    </div>
+    
+    <div class="diagram-container">
+        <div id="architecture" class="diagram active">
+            <h2>Architecture Overview</h2>
+            <p class="description">
+                High-level component architecture showing the relationships between core components,
+                mixins, AI integration, examples, and infrastructure.
+            </p>
+            <div class="mermaid">
+graph TB
+    subgraph "Core Components"
+        DSLModel[DSLModel<br/>Base Class]
+        Workflow[Workflow<br/>Engine]
+        CLI[CLI<br/>Interface]
+        API[API<br/>Server]
+    end
+    
+    subgraph "Mixins"
+        JinjaMixin[Jinja DSL<br/>Mixin]
+        DSPyMixin[DSPy DSL<br/>Mixin]
+        FileMixin[File Handler<br/>Mixin]
+        FSMMixin[FSM<br/>Mixin]
+        ValidationMixin[Validation<br/>Mixin]
+    end
+    
+    subgraph "AI Integration"
+        DSPyModules[DSPy<br/>Modules]
+        Prompts[Prompt<br/>Templates]
+        AIAssistants[AI<br/>Assistants]
+    end
+    
+    subgraph "Examples"
+        Gherkin[Gherkin<br/>Models]
+        SIPOC[SIPOC<br/>Models]
+        BDD[BDD<br/>Models]
+        N8N[N8N Node<br/>Generator]
+        YAWL[YAWL<br/>Models]
+    end
+    
+    subgraph "Infrastructure"
+        OTEL[OpenTelemetry<br/>Integration]
+        Weaver[Semantic<br/>Conventions]
+        Monitor[OTEL<br/>Monitor]
+    end
+    
+    %% Core relationships
+    DSLModel --> JinjaMixin
+    DSLModel --> DSPyMixin
+    DSLModel --> FileMixin
+    DSLModel --> FSMMixin
+    DSLModel --> ValidationMixin
+    
+    %% Workflow relationships
+    Workflow --> DSLModel
+    CLI --> Workflow
+    API --> Workflow
+    
+    %% AI relationships
+    DSPyMixin --> DSPyModules
+    DSPyModules --> Prompts
+    DSPyModules --> AIAssistants
+    
+    %% Example relationships
+    Gherkin --> DSLModel
+    SIPOC --> DSLModel
+    BDD --> DSLModel
+    N8N --> DSLModel
+    YAWL --> DSLModel
+    
+    %% Infrastructure relationships
+    OTEL --> Monitor
+    Weaver --> OTEL
+    Monitor --> API
+    
+    %% Styling
+    classDef core fill:#e1f5fe,stroke:#01579b,stroke-width:3px
+    classDef mixin fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef ai fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef example fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef infra fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    
+    class DSLModel,Workflow,CLI,API core
+    class JinjaMixin,DSPyMixin,FileMixin,FSMMixin,ValidationMixin mixin
+    class DSPyModules,Prompts,AIAssistants ai
+    class Gherkin,SIPOC,BDD,N8N,YAWL example
+    class OTEL,Weaver,Monitor infra
+
+            </div>
+        </div>
+        
+        <div id="dependencies" class="diagram">
+            <h2>Dependency Graph</h2>
+            <p class="description">
+                Module dependency relationships showing how components interact and depend on each other.
+            </p>
+            <div class="mermaid">
+graph LR
+    subgraph "Core Layer"
+        dsl_models[dsl_models]
+        workflow[workflow]
+        cli[cli]
+        api[api]
+    end
+    
+    subgraph "Mixin Layer"
+        jinja_dsl_mixin[jinja_dsl_mixin]
+        dspy_dsl_mixin[dspy_dsl_mixin]
+        file_handler_mixin[file_handler_mixin]
+        fsm_mixin[fsm_mixin]
+        validation_mixin[validation_mixin]
+    end
+    
+    subgraph "Utility Layer"
+        dspy_tools[dspy_tools]
+        source_tools[source_tools]
+        file_tools[file_tools]
+    end
+    
+    subgraph "Integration Layer"
+        weaver_multilayer[weaver_multilayer]
+        otel_gap_analyzer[otel_gap_analyzer]
+        claude_code_otel_monitor[claude_code_otel_monitor]
+    end
+    
+    cli --> dspy_tools
+    cli --> json_output
+    instance_mixin --> pydantic_ai_tools
+    git_auto --> span
+    log_tools --> file_tools
+    model_tools --> dspy_tools
+    
+    classDef core fill:#bbdefb,stroke:#1565c0,stroke-width:3px
+    classDef mixin fill:#ce93d8,stroke:#6a1b9a,stroke-width:2px
+    classDef util fill:#a5d6a7,stroke:#2e7d32,stroke-width:2px
+    classDef integration fill:#ffcc80,stroke:#ef6c00,stroke-width:2px
+
+            </div>
+        </div>
+        
+        <div id="feature_map" class="diagram">
+            <h2>Feature Map</h2>
+            <p class="description">
+                Comprehensive mind map of all DSLModel features and capabilities organized by category.
+            </p>
+            <div class="mermaid">
+mindmap
+  root((DSLModel v3))
+    Model Creation
+      Declarative Models
+        Pydantic BaseModel
+        Field Validation
+        Type Safety
+      AI Generation
+        from_prompt()
+        from_template()
+        from_signature()
+      Template Rendering
+        Jinja2 Integration
+        Dynamic Fields
+        Nested Templates
+    
+    Workflow Engine
+      Hierarchical Structure
+        Workflows
+        Jobs
+        Actions
+      Execution
+        Dependency Resolution
+        Conditional Logic
+        Retry Handling
+        SLA Tracking
+      Configuration
+        YAML Based
+        Environment Management
+        Context Passing
+    
+    AI Integration
+      DSPy Framework
+        Language Models
+        Prompt Optimization
+        Chain of Thought
+      Model Support
+        OpenAI GPT-4
+        Claude
+        Local Models
+      AI Assistants
+        Context Management
+        Tool Integration
+        Memory Systems
+    
+    File Operations
+      Serialization
+        YAML
+        JSON
+        TOML
+      Validation
+        Schema Validation
+        Type Checking
+        Custom Rules
+      Persistence
+        Load/Save
+        Format Detection
+        Encoding Handling
+    
+    State Management
+      FSM Integration
+        State Definitions
+        Transitions
+        Guards
+        Callbacks
+      Event System
+        Triggers
+        Actions
+        History
+    
+    Developer Experience
+      CLI Tools
+        Project Init
+        Model Generation
+        Workflow Execution
+      API Server
+        FastAPI Integration
+        Auto Documentation
+        REST Endpoints
+      Testing
+        90% Coverage
+        Fixtures
+        Mocking
+    
+    Observability
+      OpenTelemetry
+        Spans
+        Metrics
+        Traces
+      Semantic Conventions
+        Multi-layer System
+        Validation
+        Gap Analysis
+      Monitoring
+        Real-time Tracking
+        Compliance Checking
+        80/20 Analysis
+    
+    Examples
+      Domain Models
+        Gherkin/BDD
+        SIPOC
+        CCS Graph
+      Integrations
+        N8N Nodes
+        YAWL Workflows
+        Agent Models
+      Templates
+        Project Templates
+        Model Templates
+        Workflow Templates
+
+            </div>
+        </div>
+        
+        <div id="data_flow" class="diagram">
+            <h2>Data Flow</h2>
+            <p class="description">
+                Sequence diagram showing how data flows through the system during model creation and workflow execution.
+            </p>
+            <div class="mermaid">
+sequenceDiagram
+    participant User
+    participant CLI
+    participant DSLModel
+    participant Mixins
+    participant AI
+    participant Storage
+    participant OTEL
+    
+    User->>CLI: Create model from prompt
+    CLI->>DSLModel: Initialize with prompt
+    DSLModel->>AI: Generate via DSPy
+    AI-->>DSLModel: Return generated fields
+    DSLModel->>Mixins: Apply transformations
+    Mixins-->>DSLModel: Enhanced model
+    DSLModel->>Storage: Serialize to YAML
+    Storage-->>User: Model file created
+    
+    Note over DSLModel,OTEL: Telemetry Collection
+    DSLModel->>OTEL: Emit spans
+    OTEL->>OTEL: Validate conventions
+    
+    User->>CLI: Execute workflow
+    CLI->>DSLModel: Load workflow
+    DSLModel->>Mixins: Validate structure
+    loop For each job
+        DSLModel->>DSLModel: Resolve dependencies
+        DSLModel->>DSLModel: Execute actions
+        DSLModel->>OTEL: Track execution
+    end
+    DSLModel-->>User: Workflow results
+
+            </div>
+        </div>
+        
+        <div id="timeline" class="diagram">
+            <h2>Evolution Timeline</h2>
+            <p class="description">
+                Project evolution timeline showing development phases from initial creation to v3 consolidation.
+            </p>
+            <div class="mermaid">
+gantt
+    title DSLModel Evolution to v3
+    dateFormat YYYY-MM-DD
+    section Core Development
+    Base DSLModel Class           :done, core1, 2024-01-01, 30d
+    Mixin Architecture            :done, core2, after core1, 45d
+    Workflow Engine               :done, core3, after core2, 60d
+    
+    section AI Integration
+    DSPy Integration              :done, ai1, 2024-03-01, 30d
+    Prompt Templates              :done, ai2, after ai1, 20d
+    AI Assistants                 :done, ai3, after ai2, 40d
+    
+    section Infrastructure
+    CLI Development               :done, infra1, 2024-02-15, 25d
+    API Server                    :done, infra2, after infra1, 30d
+    Testing Framework             :done, infra3, 2024-04-01, 20d
+    
+    section Observability
+    OTEL Integration              :done, obs1, 2024-05-01, 30d
+    Semantic Conventions          :done, obs2, after obs1, 25d
+    Gap Analysis Tools            :done, obs3, after obs2, 20d
+    Real-time Monitoring          :done, obs4, after obs3, 15d
+    
+    section v3 Consolidation
+    Architecture Review           :active, v3-1, 2024-06-20, 10d
+    Feature Consolidation         :v3-2, after v3-1, 15d
+    Documentation Update          :v3-3, after v3-1, 20d
+    Performance Optimization      :v3-4, after v3-2, 15d
+    Release Preparation           :v3-5, after v3-4, 10d
+
+            </div>
+        </div>
+        
+        <div id="api_surface" class="diagram">
+            <h2>API Surface</h2>
+            <p class="description">
+                Class diagram showing the public API surface of core DSLModel components and their methods.
+            </p>
+            <div class="mermaid">
+classDiagram
+    class DSLModel {
+        +from_prompt(prompt: str) DSLModel
+        +from_template(template: str) DSLModel
+        +from_signature(signature: str) DSLModel
+        +to_yaml() str
+        +to_json() str
+        +save(path: Path) None
+        +load(path: Path) DSLModel
+        +validate() ValidationResult
+        +render() str
+    }
+    
+    class JinjaDSLMixin {
+        +render_field(field: str) str
+        +render_all() dict
+        +get_template_vars() dict
+    }
+    
+    class DSPyDSLMixin {
+        +generate(prompt: str) dict
+        +optimize(examples: list) None
+        +predict(input: dict) dict
+    }
+    
+    class FileHandlerDSLMixin {
+        +to_yaml() str
+        +to_json() str
+        +to_toml() str
+        +from_yaml(data: str) DSLModel
+        +detect_format(path: Path) str
+    }
+    
+    class FSMMixin {
+        +add_state(state: str) None
+        +add_transition(trigger: str) None
+        +trigger(event: str) bool
+        +get_state() str
+        +get_transitions() list
+    }
+    
+    class Workflow {
+        +name: str
+        +jobs: List[Job]
+        +execute() WorkflowResult
+        +validate() ValidationResult
+        +get_dag() dict
+    }
+    
+    class Job {
+        +name: str
+        +actions: List[Action]
+        +dependencies: List[str]
+        +execute() JobResult
+    }
+    
+    class Action {
+        +name: str
+        +module: str
+        +method: str
+        +execute() ActionResult
+    }
+    
+    DSLModel --|> JinjaDSLMixin
+    DSLModel --|> DSPyDSLMixin
+    DSLModel --|> FileHandlerDSLMixin
+    DSLModel --|> FSMMixin
+    
+    Workflow "1" --> "*" Job
+    Job "1" --> "*" Action
+
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#e1f5fe',
+                primaryBorderColor: '#01579b',
+                primaryTextColor: '#000',
+                fontFamily: 'Arial, sans-serif'
+            }
+        });
+        
+        function showDiagram(diagramId) {
+            // Hide all diagrams
+            document.querySelectorAll('.diagram').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+            
+            // Show selected diagram
+            document.getElementById(diagramId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

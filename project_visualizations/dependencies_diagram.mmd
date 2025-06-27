@@ -1,0 +1,39 @@
+graph LR
+    subgraph "Core Layer"
+        dsl_models[dsl_models]
+        workflow[workflow]
+        cli[cli]
+        api[api]
+    end
+    
+    subgraph "Mixin Layer"
+        jinja_dsl_mixin[jinja_dsl_mixin]
+        dspy_dsl_mixin[dspy_dsl_mixin]
+        file_handler_mixin[file_handler_mixin]
+        fsm_mixin[fsm_mixin]
+        validation_mixin[validation_mixin]
+    end
+    
+    subgraph "Utility Layer"
+        dspy_tools[dspy_tools]
+        source_tools[source_tools]
+        file_tools[file_tools]
+    end
+    
+    subgraph "Integration Layer"
+        weaver_multilayer[weaver_multilayer]
+        otel_gap_analyzer[otel_gap_analyzer]
+        claude_code_otel_monitor[claude_code_otel_monitor]
+    end
+    
+    cli --> json_output
+    cli --> dspy_tools
+    instance_mixin --> pydantic_ai_tools
+    git_auto --> span
+    log_tools --> file_tools
+    model_tools --> dspy_tools
+    
+    classDef core fill:#bbdefb,stroke:#1565c0,stroke-width:3px
+    classDef mixin fill:#ce93d8,stroke:#6a1b9a,stroke-width:2px
+    classDef util fill:#a5d6a7,stroke:#2e7d32,stroke-width:2px
+    classDef integration fill:#ffcc80,stroke:#ef6c00,stroke-width:2px

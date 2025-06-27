@@ -1,0 +1,537 @@
+layer_type: application
+version: 3.0.0
+extends: [base_layer, file_domain, web_domain]
+dependencies: []
+metadata:
+  name: "DSLModel Complete Ecosystem"
+  description: "Comprehensive semantic conventions for the entire DSLModel project ecosystem"
+  documentation: "https://github.com/seanchatmangpt/dslmodel"
+  stability: stable
+
+# Core DSL Model Operations
+groups:
+  # Core Model Lifecycle
+  - id: dslmodel.core.creation
+    type: span
+    span_kind: internal
+    brief: "DSL Model creation and initialization operations"
+    note: "Covers model instantiation from various sources"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.creation.source
+        type: string
+        requirement_level: required
+        brief: "Source of model creation"
+        examples: ["prompt", "template", "signature", "yaml", "json"]
+      - id: dslmodel.creation.method
+        type: string
+        requirement_level: required
+        brief: "Method used for creation"
+        examples: ["from_prompt", "from_template", "from_signature", "from_yaml"]
+      - id: dslmodel.model.type
+        type: string
+        requirement_level: recommended
+        brief: "Type of DSL model being created"
+      - id: dslmodel.model.complexity
+        type: int
+        requirement_level: optional
+        brief: "Complexity score of the model"
+
+  # Mixin System Operations
+  - id: dslmodel.mixin.application
+    type: span
+    span_kind: internal
+    brief: "Mixin application and composition operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.mixin.type
+        type: string
+        requirement_level: required
+        brief: "Type of mixin being applied"
+        examples: ["dspy", "jinja", "file_handler", "fsm", "validation"]
+      - id: dslmodel.mixin.composition
+        type: string[]
+        requirement_level: recommended
+        brief: "List of mixins being composed"
+      - id: dslmodel.mixin.inheritance_order
+        type: string[]
+        requirement_level: optional
+        brief: "Method resolution order for mixins"
+
+  # AI Integration Loop (DSPy)
+  - id: dslmodel.ai.generation
+    type: span
+    span_kind: internal
+    brief: "AI-powered model generation operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.ai.model
+        type: string
+        requirement_level: required
+        brief: "AI model used for generation"
+        examples: ["gpt-4", "claude-3", "qwen3", "ollama"]
+      - id: dslmodel.ai.prompt
+        type: string
+        requirement_level: recommended
+        brief: "Input prompt for generation"
+      - id: dslmodel.ai.tokens.input
+        type: int
+        requirement_level: optional
+        brief: "Number of input tokens"
+      - id: dslmodel.ai.tokens.output
+        type: int
+        requirement_level: optional
+        brief: "Number of output tokens"
+      - id: dslmodel.ai.quality_score
+        type: double
+        requirement_level: optional
+        brief: "Quality score of generated output"
+
+  # Template System
+  - id: dslmodel.template.rendering
+    type: span
+    span_kind: internal
+    brief: "Jinja2 template rendering operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.template.engine
+        type: string
+        requirement_level: required
+        brief: "Template engine used"
+        examples: ["jinja2", "custom"]
+      - id: dslmodel.template.source
+        type: string
+        requirement_level: recommended
+        brief: "Template source or path"
+      - id: dslmodel.template.variables
+        type: string[]
+        requirement_level: optional
+        brief: "Template variables used"
+
+  # File Operations (Enhanced)
+  - id: dslmodel.file.serialization
+    type: span
+    span_kind: internal
+    brief: "File serialization and deserialization operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - ref: file.path
+        requirement_level: required
+      - id: dslmodel.file.format
+        type: string
+        requirement_level: required
+        brief: "File format for serialization"
+        examples: ["yaml", "json", "toml", "xml"]
+      - id: dslmodel.file.encoding
+        type: string
+        requirement_level: recommended
+        brief: "File encoding"
+        examples: ["utf-8", "ascii"]
+      - id: dslmodel.file.validation
+        type: boolean
+        requirement_level: optional
+        brief: "Whether validation was performed"
+
+  # Workflow Engine
+  - id: dslmodel.workflow.execution
+    type: span
+    span_kind: internal
+    brief: "Workflow execution operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.workflow.id
+        type: string
+        requirement_level: required
+        brief: "Unique workflow identifier"
+      - id: dslmodel.workflow.name
+        type: string
+        requirement_level: required
+        brief: "Workflow name"
+      - id: dslmodel.workflow.jobs.total
+        type: int
+        requirement_level: recommended
+        brief: "Total number of jobs in workflow"
+      - id: dslmodel.workflow.jobs.completed
+        type: int
+        requirement_level: recommended
+        brief: "Number of completed jobs"
+      - id: dslmodel.workflow.parallel
+        type: boolean
+        requirement_level: optional
+        brief: "Whether workflow supports parallel execution"
+
+  # FSM Operations
+  - id: dslmodel.fsm.transition
+    type: span
+    span_kind: internal
+    brief: "Finite State Machine transition operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.fsm.state.from
+        type: string
+        requirement_level: required
+        brief: "Source state"
+      - id: dslmodel.fsm.state.to
+        type: string
+        requirement_level: required
+        brief: "Destination state"
+      - id: dslmodel.fsm.trigger
+        type: string
+        requirement_level: required
+        brief: "Trigger that caused transition"
+      - id: dslmodel.fsm.guard
+        type: string
+        requirement_level: optional
+        brief: "Guard condition evaluated"
+
+  # Agent System
+  - id: dslmodel.agent.operation
+    type: span
+    span_kind: internal
+    brief: "Agent system operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.agent.id
+        type: string
+        requirement_level: required
+        brief: "Agent identifier"
+      - id: dslmodel.agent.type
+        type: string
+        requirement_level: required
+        brief: "Type of agent"
+        examples: ["research", "validation", "evolution", "coordination"]
+      - id: dslmodel.agent.swarm.id
+        type: string
+        requirement_level: optional
+        brief: "Swarm identifier if part of swarm"
+      - id: dslmodel.agent.task
+        type: string
+        requirement_level: recommended
+        brief: "Task description"
+
+  # Evolution System
+  - id: dslmodel.evolution.cycle
+    type: span
+    span_kind: internal
+    brief: "Evolution cycle operations"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.evolution.cycle.id
+        type: string
+        requirement_level: required
+        brief: "Evolution cycle identifier"
+      - id: dslmodel.evolution.fitness.before
+        type: double
+        requirement_level: recommended
+        brief: "Fitness score before evolution"
+      - id: dslmodel.evolution.fitness.after
+        type: double
+        requirement_level: recommended
+        brief: "Fitness score after evolution"
+      - id: dslmodel.evolution.mutations.count
+        type: int
+        requirement_level: optional
+        brief: "Number of mutations applied"
+
+  # Validation System
+  - id: dslmodel.validation.check
+    type: span
+    span_kind: internal
+    brief: "Validation operations across the system"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.validation.type
+        type: string
+        requirement_level: required
+        brief: "Type of validation"
+        examples: ["schema", "semantic", "otel", "weaver", "business"]
+      - id: dslmodel.validation.errors.count
+        type: int
+        requirement_level: recommended
+        brief: "Number of validation errors"
+      - id: dslmodel.validation.warnings.count
+        type: int
+        requirement_level: optional
+        brief: "Number of validation warnings"
+      - id: dslmodel.validation.success_rate
+        type: double
+        requirement_level: optional
+        brief: "Validation success rate"
+
+  # CLI Command Execution
+  - id: dslmodel.cli.command
+    type: span
+    span_kind: internal
+    brief: "CLI command execution"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - id: dslmodel.cli.command.name
+        type: string
+        requirement_level: required
+        brief: "CLI command name"
+      - id: dslmodel.cli.arguments
+        type: string[]
+        requirement_level: optional
+        brief: "Command arguments"
+      - id: dslmodel.cli.output.format
+        type: string
+        requirement_level: optional
+        brief: "Output format"
+        examples: ["json", "yaml", "table", "text"]
+
+  # API Operations  
+  - id: dslmodel.api.request
+    type: span
+    span_kind: server
+    brief: "API request handling"
+    attributes:
+      - ref: operation.name
+        requirement_level: required
+      - ref: span.kind
+        requirement_level: required
+      - ref: operation.status
+        requirement_level: required
+      - ref: http.method
+        requirement_level: required
+      - ref: http.url
+        requirement_level: required
+      - ref: http.status_code
+        requirement_level: required
+      - id: dslmodel.api.endpoint
+        type: string
+        requirement_level: required
+        brief: "API endpoint path"
+      - id: dslmodel.api.version
+        type: string
+        requirement_level: recommended
+        brief: "API version"
+
+# Ecosystem Integration Attributes
+attributes:
+  # Core System Attributes
+  - id: dslmodel.version
+    type: string
+    brief: "DSLModel framework version"
+    examples: ["3.0.0", "2.1.0"]
+    stability: stable
+
+  - id: dslmodel.component
+    type: string
+    brief: "DSLModel component involved in operation"
+    examples: ["core", "mixins", "agents", "workflow", "evolution", "validation"]
+    stability: stable
+
+  - id: dslmodel.session.id
+    type: string
+    brief: "DSLModel session identifier"
+    stability: stable
+
+  - id: dslmodel.request.id
+    type: string
+    brief: "Request identifier for tracing"
+    stability: stable
+
+  # Performance Attributes
+  - id: dslmodel.performance.complexity
+    type: int
+    brief: "Computational complexity score"
+    stability: experimental
+
+  - id: dslmodel.performance.memory.peak
+    type: int
+    brief: "Peak memory usage in bytes"
+    stability: experimental
+
+  - id: dslmodel.performance.cache.hit
+    type: boolean
+    brief: "Whether cache was hit"
+    stability: experimental
+
+  # Quality Attributes
+  - id: dslmodel.quality.coverage
+    type: double
+    brief: "Test coverage percentage"
+    stability: experimental
+
+  - id: dslmodel.quality.health_score
+    type: double
+    brief: "System health score (0-100)"
+    stability: experimental
+
+  # Integration Context
+  - id: dslmodel.integration.external_system
+    type: string
+    brief: "External system being integrated with"
+    examples: ["opentelemetry", "github", "jira", "slack"]
+    stability: stable
+
+  - id: dslmodel.context.environment
+    type: string
+    brief: "Execution environment"
+    examples: ["development", "testing", "staging", "production"]
+    stability: stable
+
+# Metric Instruments for Complete Observability
+metric_instruments:
+  # Core Metrics
+  - name: dslmodel.operations.total
+    instrument: counter
+    unit: "1"
+    description: "Total number of DSLModel operations"
+    attributes: [dslmodel.component, operation.name, operation.status]
+
+  - name: dslmodel.operations.duration
+    instrument: histogram
+    unit: "ms"
+    description: "Duration of DSLModel operations"
+    attributes: [dslmodel.component, operation.name]
+
+  # AI/Generation Metrics
+  - name: dslmodel.ai.tokens.consumed
+    instrument: counter
+    unit: "1"
+    description: "Total AI tokens consumed"
+    attributes: [dslmodel.ai.model]
+
+  - name: dslmodel.ai.quality.score
+    instrument: gauge
+    unit: "1"
+    description: "Current AI generation quality score"
+    attributes: [dslmodel.ai.model]
+
+  # Evolution Metrics
+  - name: dslmodel.evolution.fitness
+    instrument: gauge
+    unit: "1"
+    description: "Current evolution fitness score"
+    attributes: [dslmodel.evolution.cycle.id]
+
+  - name: dslmodel.evolution.cycles.completed
+    instrument: counter
+    unit: "1"
+    description: "Number of evolution cycles completed"
+
+  # Validation Metrics
+  - name: dslmodel.validation.success_rate
+    instrument: gauge
+    unit: "1"
+    description: "Current validation success rate"
+    attributes: [dslmodel.validation.type]
+
+  - name: dslmodel.validation.errors
+    instrument: counter
+    unit: "1"
+    description: "Number of validation errors"
+    attributes: [dslmodel.validation.type]
+
+  # System Health Metrics
+  - name: dslmodel.health.score
+    instrument: gauge
+    unit: "1"
+    description: "Overall system health score"
+    attributes: [dslmodel.component]
+
+  - name: dslmodel.performance.memory.usage
+    instrument: gauge
+    unit: "By"
+    description: "Current memory usage"
+    attributes: [dslmodel.component]
+
+# Event Definitions for Feedback Loops
+events:
+  - name: dslmodel.model.created
+    description: "A new DSL model was successfully created"
+    attributes: [dslmodel.creation.source, dslmodel.model.type]
+
+  - name: dslmodel.validation.failed
+    description: "Validation failed for a component"
+    attributes: [dslmodel.validation.type, dslmodel.validation.errors.count]
+
+  - name: dslmodel.evolution.improved
+    description: "Evolution cycle resulted in improvement"
+    attributes: [dslmodel.evolution.fitness.before, dslmodel.evolution.fitness.after]
+
+  - name: dslmodel.agent.task.completed
+    description: "Agent successfully completed a task"
+    attributes: [dslmodel.agent.type, dslmodel.agent.task]
+
+  - name: dslmodel.workflow.completed
+    description: "Workflow execution completed"
+    attributes: [dslmodel.workflow.id, dslmodel.workflow.jobs.completed]
+
+# Feedback Loop Definitions
+feedback_loops:
+  - name: "Core-Mixin-Feature Loop"
+    description: "DSLModel core functionality enhanced by mixins creates new features that improve core"
+    components: [dslmodel.core.creation, dslmodel.mixin.application]
+    
+  - name: "AI-Generation-Validation Loop"
+    description: "AI generates models, validation provides feedback, improving generation quality"
+    components: [dslmodel.ai.generation, dslmodel.validation.check]
+    
+  - name: "OTEL-Weaver-Feedback Loop"
+    description: "OTEL collects telemetry, Weaver validates conventions, feedback improves telemetry"
+    components: [dslmodel.validation.check]
+    
+  - name: "Evolution-Agent-Adaptation Loop"
+    description: "Agents execute tasks, evolution improves performance, adaptation enhances agents"
+    components: [dslmodel.agent.operation, dslmodel.evolution.cycle]
+    
+  - name: "Workflow-FSM-State Loop"
+    description: "Workflows manage state transitions, FSM provides state management, states drive workflows"
+    components: [dslmodel.workflow.execution, dslmodel.fsm.transition]

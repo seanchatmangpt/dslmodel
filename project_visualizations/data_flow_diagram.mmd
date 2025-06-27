@@ -1,0 +1,31 @@
+sequenceDiagram
+    participant User
+    participant CLI
+    participant DSLModel
+    participant Mixins
+    participant AI
+    participant Storage
+    participant OTEL
+    
+    User->>CLI: Create model from prompt
+    CLI->>DSLModel: Initialize with prompt
+    DSLModel->>AI: Generate via DSPy
+    AI-->>DSLModel: Return generated fields
+    DSLModel->>Mixins: Apply transformations
+    Mixins-->>DSLModel: Enhanced model
+    DSLModel->>Storage: Serialize to YAML
+    Storage-->>User: Model file created
+    
+    Note over DSLModel,OTEL: Telemetry Collection
+    DSLModel->>OTEL: Emit spans
+    OTEL->>OTEL: Validate conventions
+    
+    User->>CLI: Execute workflow
+    CLI->>DSLModel: Load workflow
+    DSLModel->>Mixins: Validate structure
+    loop For each job
+        DSLModel->>DSLModel: Resolve dependencies
+        DSLModel->>DSLModel: Execute actions
+        DSLModel->>OTEL: Track execution
+    end
+    DSLModel-->>User: Workflow results
