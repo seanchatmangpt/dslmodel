@@ -1,0 +1,43 @@
+groups:
+  - id: git.hook
+    prefix: git.hook
+    type: span
+    brief: "Git hook execution for validation and automation pipelines"
+    spans:
+      - id: git.hook.run
+        span_name: "git.hook.run"
+        brief: "Git hook execution event"
+        attributes:
+          - id: git.hook.type
+            type: string
+            brief: "Type of git hook being executed"
+            requirement_level: required
+            examples: ["pre-commit", "post-commit", "pre-push", "post-receive", "update"]
+          - id: git.hook.script
+            type: string
+            brief: "Script or command being executed"
+            requirement_level: required
+            examples: ["forge validate", "poetry run ruff check", "./validate-security.sh"]
+          - id: git.hook.exit_code
+            type: int
+            brief: "Exit code of the hook execution"
+            requirement_level: required
+            examples: [0, 1, 2]
+          - id: git.hook.duration_ms
+            type: int
+            brief: "Hook execution duration in milliseconds"
+            requirement_level: optional
+            examples: [1500, 3200, 850]
+          - id: git.hook.validation_type
+            type: string
+            brief: "Type of validation performed"
+            requirement_level: optional
+            examples: ["lint", "forge", "security", "test", "span_sync"]
+          - id: git.hook.files_checked
+            type: int
+            brief: "Number of files processed by hook"
+            requirement_level: optional
+          - id: forge.validation_result
+            type: boolean
+            brief: "Result of forge validation if applicable"
+            requirement_level: optional

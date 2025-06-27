@@ -1,0 +1,66 @@
+# Git command registry for YAML-driven automation
+
+branch:
+  cmd: "git branch {name} {base}"
+  span: "git_branch"
+  cwd_arg: "repo"
+
+notes_add:
+  cmd: "git notes --ref={ref} add -m {message} {target}"
+  span: "git_note_add"
+  cwd_arg: null
+
+commit:
+  cmd: "git commit -m {msg}"
+  span: "git_commit"
+  cwd_arg: null
+
+push:
+  cmd: "git push {remote} {refspec}"
+  span: "git_push"
+  cwd_arg: "repo_path"
+
+fetch:
+  cmd: "git fetch {remote} {ref}"
+  span: "git_fetch"
+  cwd_arg: "repo"
+
+merge:
+  cmd: "git merge {branch}"
+  span: "git_merge"
+  cwd_arg: "repo"
+
+ls_remote:
+  cmd: "git ls-remote {remote} {pattern}"
+  span: "git_ls_remote"
+  cwd_arg: null
+
+tag_annotate:
+  cmd: "git tag -a {name} -m {message}"
+  span: "git_tag_annotate"
+  cwd_arg: null
+
+clone:
+  cmd: "git clone {repo_url} {target_path}"
+  span: "git_clone"
+  cwd_arg: null
+
+worktree:
+  cmd: "git worktree add {path} {sha}"
+  span: "git_worktree"
+  cwd_arg: null
+
+prune:
+  cmd: "git prune"
+  span: "git_prune"
+  cwd_arg: null
+
+reset:
+  cmd: "git reset {mode} {ref}"
+  span: "git_reset"
+  cwd_arg: null
+
+submodule:
+  cmd: "git submodule {action} {args}"
+  span: "git_submodule"
+  cwd_arg: null

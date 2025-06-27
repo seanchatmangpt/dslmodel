@@ -1,0 +1,11 @@
+# Span: ahi.summary.digest   {{ "~ do not remove" }}
+INPUT-TYPE: {{ input_type }}               <!-- graph | mermaid | ref-ledger -->
+RAW-DATA:
+{{ raw | indent(2) }}
+
+Return JSON with keys:
+{
+  "summary": "50-word executive summary",
+  "risks": ["short bullet", …]   // up to 3
+  "next_tasks": [ { "agent": "agent_name", "arg": [ ... ] }, … ]
+}

@@ -1,0 +1,48 @@
+groups:
+  - id: git.rebase
+    prefix: git.rebase
+    type: span
+    brief: "Git rebase operations for history linearization and merge optimization"
+    spans:
+      - id: git.rebase
+        span_name: "git.rebase"
+        brief: "Git rebase operation for history management"
+        attributes:
+          - id: git.rebase.strategy
+            type: string
+            brief: "Rebase strategy used"
+            requirement_level: required
+            examples: ["rebase-merges", "interactive", "onto", "preserve-merges"]
+          - id: git.rebase.onto_sha
+            type: string
+            brief: "Target base commit SHA"
+            requirement_level: required
+            examples: ["a1b2c3d4e5f6", "origin/main", "release/v1.0"]
+          - id: git.rebase.from_sha
+            type: string
+            brief: "Starting commit SHA for rebase range"
+            requirement_level: optional
+            examples: ["b2c3d4e5f6a1"]
+          - id: git.rebase.commits_replayed
+            type: int
+            brief: "Number of commits replayed during rebase"
+            requirement_level: optional
+            examples: [5, 12, 1]
+          - id: git.rebase.conflicts_count
+            type: int
+            brief: "Number of conflicts encountered"
+            requirement_level: optional
+            examples: [0, 3, 1]
+          - id: git.rebase.merge_oracle_optimized
+            type: boolean
+            brief: "Whether MergeOracle optimization was applied"
+            requirement_level: optional
+          - id: git.rebase.interactive_commands
+            type: string
+            brief: "Interactive rebase commands used"
+            requirement_level: optional
+            examples: ["pick,squash,edit", "reword,fixup"]
+          - id: release.preparation
+            type: boolean
+            brief: "Whether rebase is for release preparation"
+            requirement_level: optional

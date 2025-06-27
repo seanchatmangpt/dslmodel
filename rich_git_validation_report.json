@@ -1,0 +1,230 @@
+{
+  "timestamp": 1751054276.7750359,
+  "total_tests": 44,
+  "passed_tests": 37,
+  "failed_tests": 7,
+  "success_rate": 84.0909090909091,
+  "status": "PASS",
+  "tests": [
+    {
+      "name": "Directory exists: src/dslmodel/commands",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Directory exists: semconv_registry",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Directory exists: src/dslmodel/weaver",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Directory exists: src/dslmodel/otel",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "File exists: src/dslmodel/commands/git_level5.py",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "File exists: src/dslmodel/commands/git_hook_pipeline.py",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "File exists: git_registry.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "File exists: pyproject.toml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "File exists: uv.lock",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "UV command available",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "UV run functionality",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "DSL wrapper script",
+      "success": false,
+      "details": ""
+    },
+    {
+      "name": "Git events directory exists",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Semantic convention: git.submodule.update.semconv.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Valid YAML structure: git.submodule.update.semconv.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Semantic convention: git.hook.run.semconv.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Valid YAML structure: git.hook.run.semconv.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Semantic convention: git.reset.semconv.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Valid YAML structure: git.reset.semconv.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Semantic convention: git.rebase.semconv.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Valid YAML structure: git.rebase.semconv.yaml",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Git registry file exists",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Registry section: data_layer",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Registry section: collaboration",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Registry section: workflow",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Registry section: security",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Registry section: maintenance",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Registry section: federation",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Command data_layer.worktree",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Command collaboration.submodule_add",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Command workflow.cherry_pick",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Command security.sign_commit",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Command maintenance.gc_aggressive",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "GitLevel5 import",
+      "success": false,
+      "details": "cannot import name 'git_wrap' from 'dslmodel.utils.source_tools' (/Users/sac/dev/dslmodel/src/dslmodel/utils/source_tools.py)"
+    },
+    {
+      "name": "GitHookPipeline import",
+      "success": false,
+      "details": "cannot import name 'WeaverOtelValidator' from 'dslmodel.validation.weaver_otel_validator' (/Users/sac/dev/dslmodel/src/dslmodel/validation/weaver_otel_validator.py)"
+    },
+    {
+      "name": "Weaver command available",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Weaver registry check command",
+      "success": true,
+      "details": "error: unexpected argument 'semconv_registry' found\n\nUsage: weaver registry check [OPTIONS]\n\nFor mor"
+    },
+    {
+      "name": "OpenTelemetry imports",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Tracer creation",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "Span creation and attributes",
+      "success": true,
+      "details": ""
+    },
+    {
+      "name": "DSL CLI available",
+      "success": false,
+      "details": ""
+    },
+    {
+      "name": "Weaver health command",
+      "success": false,
+      "details": ""
+    },
+    {
+      "name": "OTEL monitor command",
+      "success": false,
+      "details": ""
+    },
+    {
+      "name": "Health analysis command",
+      "success": false,
+      "details": ""
+    }
+  ]
+}

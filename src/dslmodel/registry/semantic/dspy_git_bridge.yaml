@@ -1,0 +1,79 @@
+groups:
+  - id: dspy.git.bridge
+    type: attribute_group
+    brief: DSPy Git Bridge attributes
+    attributes:
+      - id: git.plan.goal
+        type: string
+        brief: Natural language goal from user
+      - id: git.plan.operations
+        type: int
+        brief: Number of git operations in plan
+      - id: git.plan.hash
+        type: string
+        brief: Hash of the plan for reproducibility
+      - id: git.operation.name
+        type: string
+        brief: Git operation being executed
+      - id: git.operation.args
+        type: string
+        brief: Arguments passed to git operation
+
+  - id: dspy.llm
+    type: attribute_group
+    brief: DSPy LLM attributes
+    attributes:
+      - id: llm.model
+        type: string
+        brief: LLM model used for planning
+      - id: llm.temperature
+        type: double
+        brief: Temperature setting for generation
+      - id: llm.tokens.input
+        type: int
+        brief: Input token count
+      - id: llm.tokens.output
+        type: int
+        brief: Output token count
+
+spans:
+  - span_name: dspy.git.plan
+    brief: DSPy generates git operation plan from natural language
+    attributes:
+      - ref: dspy.git.bridge
+      - ref: dspy.llm
+
+  - span_name: dspy.git.execute
+    brief: Execute git plan through git_auto wrappers
+    attributes:
+      - ref: dspy.git.bridge
+      - id: git.execute.success
+        type: boolean
+        brief: Whether all operations succeeded
+      - id: git.execute.duration_ms
+        type: double
+        brief: Total execution time
+
+  - span_name: git.coach.session
+    brief: Complete git coaching session
+    attributes:
+      - ref: dspy.git.bridge
+      - id: coach.task_file
+        type: string
+        brief: Path to task file
+      - id: coach.result
+        type: string
+        brief: JSON result of coaching session
+
+  - span_name: weaver.loop.closure
+    brief: Weaver closes integration loops
+    attributes:
+      - id: loop.type
+        type: string
+        brief: Type of loop being closed
+      - id: loop.components
+        type: string
+        brief: Components involved in loop
+      - id: loop.status
+        type: string
+        brief: Status of loop closure

@@ -1,0 +1,248 @@
+# Git Registry for Level-5 Rich-Git Operations
+# Maps Git commands to spans and wrapper functions for Swarm SH integration
+
+version: "1.0"
+description: "Advanced Git primitives for federation-ready AHI cells"
+
+# Data-layer superpowers
+data_layer:
+  worktree:
+    cmd: "git worktree add {path} {sha}"
+    span: "git.worktree.lifecycle"
+    cwd_arg: null
+    wrapper: "git_auto.add_worktree"
+    purpose: "Tick isolation, WASI builds"
+    
+  sparse_checkout:
+    cmd: "git config core.sparseCheckout true && echo '{pattern}' >> .git/info/sparse-checkout"
+    span: "git.checkout"
+    attributes:
+      sparse: true
+    wrapper: "git_auto.enable_sparse_checkout"
+    purpose: "Speed up agent clones (only /weaver or /tasks)"
+    
+  partial_clone:
+    cmd: "git clone --filter=blob:none --depth {depth} {url} {dst}"
+    span: "git.clone"
+    attributes:
+      shallow: true
+      filter: "blob:none"
+    wrapper: "git_auto.partial_clone"
+    purpose: "Disk-light history on edge nodes"
+    
+  bundle_create:
+    cmd: "git bundle create {bundle_file} {refs}"
+    span: "compliance.object.eject"
+    size_threshold: "2MB"
+    wrapper: "patch_manager.eject_blobs"
+    purpose: "Offline air-gap snapshot"
+
+# Collaboration & federation
+collaboration:
+  submodule_add:
+    cmd: "git submodule add {url} {path}"
+    span: "git.submodule.update"
+    cwd_arg: null
+    wrapper: "git_auto.add_domain_pack"
+    purpose: "Mount external domain packs"
+    
+  submodule_update:
+    cmd: "git submodule update --init --recursive"
+    span: "git.submodule.update"
+    wrapper: "git_auto.update_submodules"
+    purpose: "Sync federation dependencies"
+    
+  remote_add:
+    cmd: "git remote add {name} {url}"
+    span: "git.remote"
+    wrapper: "git_auto.add_federation_remote"
+    purpose: "Multi-org federation"
+    
+  notes_add:
+    cmd: "git notes --ref={ref} add -m '{message}' {commit}"
+    span: "roberts.debate.cycle"
+    attributes:
+      argument_hash: true
+    wrapper: "roberts.attach_debate_argument"
+    purpose: "Attach debate arguments, DMAIC data"
+    
+  hook_install:
+    cmd: "cp {hook_script} .git/hooks/{hook_type} && chmod +x .git/hooks/{hook_type}"
+    span: "git.hook.run"
+    wrapper: "git_auto.install_validation_hook"
+    purpose: "Lint, Forge validate, span sync"
+
+# Workflow & history manipulation  
+workflow:
+  cherry_pick:
+    cmd: "git cherry-pick {commit}"
+    span: "git.merge"
+    attributes:
+      strategy: "cherry-pick"
+    wrapper: "git_auto.promote_agent_patch"
+    purpose: "Promote single agent patch to hot-fix branch"
+    
+  rebase_merges:
+    cmd: "git rebase --rebase-merges {onto}"
+    span: "git.rebase"
+    attributes:
+      commits_replayed: true
+    wrapper: "git_auto.linearize_merge_oracle"
+    purpose: "Linearize MergeOracle output before release tag"
+    
+  reset_keep:
+    cmd: "git reset --keep {sha}"
+    span: "git.reset"
+    attributes:
+      to_sha: true
+      preserve_working_tree: true
+    wrapper: "git_auto.sandbox_rollback"
+    purpose: "Instant rollback if sandbox fails"
+    
+  bisect_auto:
+    cmd: "git bisect start && git bisect run {test_script}"
+    span: "git.bisect"
+    attributes:
+      automated: true
+    wrapper: "git_auto.autonomic_root_cause"
+    purpose: "DMAIC measure regression search"
+
+# Security & provenance
+security:
+  sign_commit:
+    cmd: "git commit -S -m '{message}'"
+    span: "compliance.gpg.signature"
+    wrapper: "patch_manager.sign_commit"
+    purpose: "GPG-signed commits for provenance"
+    
+  sign_tag:
+    cmd: "git tag -s {tag} -m '{message}'"
+    span: "compliance.gpg.signature"
+    wrapper: "patch_manager.sign_tag"
+    purpose: "Signed release tags"
+    
+  rekor_submit:
+    cmd: "rekor-cli upload --artifact {signature} --public-key {pubkey}"
+    span: "compliance.transparency_log"
+    wrapper: "utils.patch_signer.submit_to_rekor"
+    purpose: "Sigstore transparency logging"
+    
+  sbom_attach:
+    cmd: "git notes --ref=attestation add -m '{sbom_hash}' {commit}"
+    span: "compliance.sbom.artifact"
+    wrapper: "patch_manager.attach_sbom"
+    purpose: "Store SBOM hash per commit"
+
+# Maintenance & performance
+maintenance:
+  gc_aggressive:
+    cmd: "git gc --aggressive --prune=now"
+    span: "git.gc"
+    attributes:
+      aggressive: true
+    wrapper: "git_auto.nightly_maintenance"
+    purpose: "Nightly repo size control"
+    schedule: "0 2 * * *"  # 2 AM daily
+    
+  repack_bitmaps:
+    cmd: "git repack -adb --write-bitmaps"
+    span: "git.gc"
+    attributes:
+      bitmaps: true
+    wrapper: "git_auto.optimize_federation"
+    purpose: "Faster clone/fetch for federation peers"
+    
+  prune_refs:
+    cmd: "git for-each-ref --format='delete %(refname)' refs/votes | git update-ref --stdin"
+    span: "git.prune"
+    attributes:
+      ref_type: "votes"
+    wrapper: "roberts.clean_vote_refs"
+    purpose: "Clean vote ref spam"
+    
+  expire_reflog:
+    cmd: "git reflog expire --expire=30.days --all"
+    span: "git.gc"
+    attributes:
+      reflog_expired: true
+    wrapper: "git_auto.expire_old_history"
+    purpose: "Clean old reflog entries"
+
+# Advanced operations
+advanced:
+  worktree_prune:
+    cmd: "git worktree prune"
+    span: "git.worktree.lifecycle"
+    attributes:
+      operation: "prune"
+    wrapper: "git_auto.cleanup_worktrees"
+    purpose: "Remove stale worktree references"
+    
+  bundle_verify:
+    cmd: "git bundle verify {bundle_file}"
+    span: "compliance.object.verify"
+    wrapper: "patch_manager.verify_bundle"
+    purpose: "Validate bundle integrity"
+    
+  fsck_full:
+    cmd: "git fsck --full --strict"
+    span: "git.fsck"
+    attributes:
+      full_check: true
+    wrapper: "git_auto.integrity_check"
+    purpose: "Repository integrity validation"
+
+# Federation-specific operations
+federation:
+  fetch_all_remotes:
+    cmd: "git remote | xargs -I {} git fetch {}"
+    span: "git.fetch"
+    attributes:
+      all_remotes: true
+    wrapper: "git_auto.sync_federation"
+    purpose: "Sync all federation remotes"
+    
+  push_mirror:
+    cmd: "git push --mirror {remote}"
+    span: "git.push"
+    attributes:
+      mirror: true
+    wrapper: "git_auto.mirror_to_federation"
+    purpose: "Mirror repository to federation peer"
+
+# Cron-scheduled tasks
+cron_tasks:
+  - agent: "git_gc"
+    command: "gc_aggressive"
+    schedule: "0 2 * * *"
+    priority: 5
+    
+  - agent: "federation_sync"
+    command: "fetch_all_remotes"
+    schedule: "*/15 * * * *"
+    priority: 3
+    
+  - agent: "worktree_cleanup"
+    command: "worktree_prune"
+    schedule: "0 1 * * 0"
+    priority: 4
+
+# Hook pipeline configuration
+hook_pipeline:
+  pre_commit:
+    validators:
+      - "forge validate"
+      - "ruff check --fix"
+      - "pytest tests/essential/"
+    span: "git.hook.run"
+    
+  pre_push:
+    validators:
+      - "weaver registry check"
+      - "dsl health-8020 analyze"
+    span: "git.hook.run"
+    
+  post_commit:
+    actions:
+      - "dsl otel-monitor emit-commit"
+    span: "git.hook.run"

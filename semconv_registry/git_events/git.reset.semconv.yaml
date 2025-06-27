@@ -1,0 +1,42 @@
+groups:
+  - id: git.reset
+    prefix: git.reset
+    type: span
+    brief: "Git reset operations for rollback and state management"
+    spans:
+      - id: git.reset
+        span_name: "git.reset"
+        brief: "Git reset operation for state rollback"
+        attributes:
+          - id: git.reset.mode
+            type: string
+            brief: "Reset mode used"
+            requirement_level: required
+            examples: ["soft", "mixed", "hard", "keep", "merge"]
+          - id: git.reset.to_sha
+            type: string
+            brief: "Target commit SHA for reset"
+            requirement_level: required
+            examples: ["a1b2c3d4e5f6", "HEAD~1", "origin/main"]
+          - id: git.reset.from_sha
+            type: string
+            brief: "Starting commit SHA before reset"
+            requirement_level: optional
+            examples: ["b2c3d4e5f6a1"]
+          - id: git.reset.files_affected
+            type: int
+            brief: "Number of files affected by reset"
+            requirement_level: optional
+          - id: git.reset.reason
+            type: string
+            brief: "Reason for the reset operation"
+            requirement_level: optional
+            examples: ["sandbox_failure", "rollback_deploy", "clean_workspace", "autonomous_recovery"]
+          - id: sandbox.failure_recovery
+            type: boolean
+            brief: "Whether this reset is for sandbox failure recovery"
+            requirement_level: optional
+          - id: git.reset.preserve_working_tree
+            type: boolean
+            brief: "Whether working tree changes were preserved"
+            requirement_level: optional

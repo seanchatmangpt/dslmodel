@@ -1,0 +1,4 @@
+# UV Configuration
+
+# Installer settings
+compile-bytecode = true

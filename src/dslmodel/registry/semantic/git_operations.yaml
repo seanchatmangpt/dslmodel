@@ -1,0 +1,108 @@
+groups:
+  - id: git
+    type: span
+    prefix: git
+    brief: "Git operations instrumentation"
+    attributes:
+      - id: operation
+        type: string
+        brief: "Git operation being performed"
+        examples: ["branch", "commit", "merge", "push", "notes_add"]
+        requirement_level: required
+      - id: repository
+        type: string
+        brief: "Repository path"
+        examples: ["/home/user/repo", "."]
+      - id: branch
+        type: string
+        brief: "Branch name"
+        examples: ["main", "motions/M123456"]
+      - id: ref
+        type: string
+        brief: "Git reference"
+        examples: ["refs/heads/main", "refs/vote/M123/repo1"]
+      - id: sha
+        type: string
+        brief: "Git SHA hash"
+        examples: ["a1b2c3d4e5f6"]
+      - id: remote
+        type: string
+        brief: "Remote repository name"
+        examples: ["origin", "upstream"]
+      - id: error.code
+        type: int
+        brief: "Git error code if operation failed"
+
+    spans:
+      - id: branch
+        type: span
+        brief: "Git branch operation"
+        attributes:
+          - ref: git.operation
+            requirement_level: required
+          - ref: git.branch
+            requirement_level: required
+          - id: base
+            type: string
+            brief: "Base branch or commit"
+            examples: ["HEAD", "main"]
+      
+      - id: commit
+        type: span
+        brief: "Git commit operation"
+        attributes:
+          - ref: git.operation
+            requirement_level: required
+          - id: message
+            type: string
+            brief: "Commit message"
+          - id: files.count
+            type: int
+            brief: "Number of files in commit"
+      
+      - id: note_add
+        type: span
+        brief: "Git notes addition"
+        attributes:
+          - ref: git.operation
+            requirement_level: required
+          - id: note.ref
+            type: string
+            brief: "Notes reference namespace"
+            examples: ["second", "debate"]
+          - id: target
+            type: string
+            brief: "Target object SHA"
+          - id: message.length
+            type: int
+            brief: "Length of note message"
+      
+      - id: push
+        type: span
+        brief: "Git push operation"
+        attributes:
+          - ref: git.operation
+            requirement_level: required
+          - ref: git.remote
+            requirement_level: required
+          - id: refspec
+            type: string
+            brief: "Push refspec"
+            examples: ["refs/vote/M123/repo1"]
+          - id: bytes.sent
+            type: int
+            brief: "Bytes sent during push"
+      
+      - id: merge
+        type: span
+        brief: "Git merge operation"
+        attributes:
+          - ref: git.operation
+            requirement_level: required
+          - ref: git.branch
+          - id: fast_forward
+            type: boolean
+            brief: "Whether merge was fast-forward"
+          - id: conflicts.count
+            type: int
+            brief: "Number of merge conflicts"

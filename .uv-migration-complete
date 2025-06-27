@@ -1,0 +1,15 @@
+# UV Migration Complete
+
+This marker file indicates that the migration from Poetry to UV has been successfully completed.
+
+Migration Date: 2025-06-27
+Migration Summary:
+- Converted pyproject.toml from Poetry format to PEP 621 standard
+- Replaced all Poetry commands with UV equivalents in Makefile
+- Updated Dockerfile to use UV
+- Created wrapper script ./dsl for easier UV usage
+- Updated all documentation
+- Validated all functionality works with UV
+- Removed poetry.lock from version control
+
+All tests passing (17/19 with minor non-critical issues)

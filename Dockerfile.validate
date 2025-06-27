@@ -1,0 +1,31 @@
+# Dockerfile for validating PyInstaller build in clean environment
+FROM python:3.12-slim
+
+# Install only system dependencies needed for the executable
+RUN apt-get update && apt-get install -y \
+    cron \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user
+RUN useradd -m -s /bin/bash testuser
+
+# Create working directory
+WORKDIR /app
+
+# Copy only the built executable
+COPY dist/setup-evolution-cron /app/
+
+# Copy the evolution script that the tool expects
+COPY evolution_cron.sh /app/
+
+# Make both executable
+RUN chmod +x /app/setup-evolution-cron /app/evolution_cron.sh
+
+# Switch to non-root user
+USER testuser
+
+# Set up environment
+ENV PATH="/app:$PATH"
+
+# Default command to show help
+CMD ["./setup-evolution-cron", "--help"]

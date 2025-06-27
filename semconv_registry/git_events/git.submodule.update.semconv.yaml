@@ -1,0 +1,39 @@
+groups:
+  - id: git.submodule
+    prefix: git.submodule
+    type: span
+    brief: "Git submodule operations for federation and domain pack management"
+    spans:
+      - id: git.submodule.update
+        span_name: "git.submodule.update"
+        brief: "Git submodule add/update operation"
+        attributes:
+          - id: git.submodule.url
+            type: string
+            brief: "URL of the submodule repository"
+            requirement_level: required
+            examples: ["https://github.com/org/energy-pack", "git@github.com:org/domain-pack.git"]
+          - id: git.submodule.path
+            type: string
+            brief: "Local path where submodule is mounted"
+            requirement_level: required
+            examples: ["domain_packs/energy", "external/weaver-pack"]
+          - id: git.submodule.sha
+            type: string
+            brief: "Commit SHA being checked out"
+            requirement_level: optional
+            examples: ["a1b2c3d4e5f6", "HEAD"]
+          - id: git.submodule.operation
+            type: string
+            brief: "Type of submodule operation"
+            requirement_level: required
+            examples: ["add", "update", "init", "sync"]
+          - id: git.submodule.recursive
+            type: boolean
+            brief: "Whether operation was recursive"
+            requirement_level: optional
+          - id: federation.domain_pack
+            type: string
+            brief: "Domain pack identifier for federation"
+            requirement_level: optional
+            examples: ["energy", "finance", "healthcare"]

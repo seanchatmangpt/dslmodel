@@ -1,0 +1,124 @@
+groups:
+  - id: git.operations
+    type: attribute_group
+    brief: Git operation attributes
+    attributes:
+      - id: git.command
+        type: string
+        brief: The git command being executed
+      - id: git.cwd
+        type: string
+        brief: Working directory for git command
+      - id: git.exit_code
+        type: int
+        brief: Exit code of git command
+      - id: git.error
+        type: string
+        brief: Error message if command failed
+
+  - id: parliament.motion
+    type: attribute_group
+    brief: Parliamentary motion attributes
+    attributes:
+      - id: motion.id
+        type: string
+        brief: Unique motion identifier
+      - id: motion.title
+        type: string
+        brief: Motion title
+      - id: motion.author
+        type: string
+        brief: Motion author
+      - id: motion.status
+        type: string
+        brief: Current motion status
+
+  - id: parliament.vote
+    type: attribute_group
+    brief: Vote attributes
+    attributes:
+      - id: vote.value
+        type: string
+        brief: Vote value (for/against/abstain)
+      - id: vote.weight
+        type: double
+        brief: Vote weight in liquid democracy
+      - id: vote.repo
+        type: string
+        brief: Repository casting the vote
+
+spans:
+  - span_name: git_branch
+    brief: Create a new git branch
+    attributes:
+      - ref: git.operations
+
+  - span_name: git_note_add
+    brief: Add a git note
+    attributes:
+      - ref: git.operations
+
+  - span_name: git_commit
+    brief: Create a git commit
+    attributes:
+      - ref: git.operations
+
+  - span_name: git_push
+    brief: Push to remote repository
+    attributes:
+      - ref: git.operations
+
+  - span_name: git_fetch
+    brief: Fetch from remote repository
+    attributes:
+      - ref: git.operations
+
+  - span_name: git_merge
+    brief: Merge git branches
+    attributes:
+      - ref: git.operations
+
+  - span_name: git_ls_remote
+    brief: List remote references
+    attributes:
+      - ref: git.operations
+
+  - span_name: roberts_agenda_item
+    brief: Create parliamentary agenda item
+    attributes:
+      - ref: parliament.motion
+
+  - span_name: roberts_motion_second
+    brief: Second a parliamentary motion
+    attributes:
+      - ref: parliament.motion
+
+  - span_name: roberts_debate_cycle
+    brief: Parliamentary debate cycle
+    attributes:
+      - ref: parliament.motion
+
+  - span_name: roberts_vote_tally
+    brief: Tally parliamentary votes
+    attributes:
+      - ref: parliament.motion
+      - ref: parliament.vote
+
+  - span_name: governance_federated_vote
+    brief: Federated liquid democracy vote tally
+    attributes:
+      - ref: parliament.vote
+      - id: governance.quorum
+        type: double
+        brief: Required quorum percentage
+      - id: governance.result
+        type: boolean
+        brief: Vote result (pass/fail)
+
+  - span_name: merge_oracle
+    brief: Automated merge decision based on votes
+    attributes:
+      - ref: parliament.motion
+      - id: merge.outcome
+        type: string
+        brief: Merge decision (accepted/rejected)

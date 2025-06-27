@@ -1,0 +1,278 @@
+{
+  "timestamp": 1751052583.599023,
+  "version": "3.0.0-planning",
+  "features": [
+    {
+      "name": "Declarative Model Creation",
+      "category": "Core",
+      "maturity": "stable",
+      "test_coverage": 95.0,
+      "documentation": "complete",
+      "api_stability": "stable",
+      "notes": "Foundation feature, well-tested"
+    },
+    {
+      "name": "AI-Powered Generation",
+      "category": "Core",
+      "maturity": "stable",
+      "test_coverage": 88.0,
+      "documentation": "complete",
+      "api_stability": "stable",
+      "notes": "DSPy integration mature"
+    },
+    {
+      "name": "Workflow Engine",
+      "category": "Core",
+      "maturity": "stable",
+      "test_coverage": 92.0,
+      "documentation": "complete",
+      "api_stability": "stable",
+      "notes": "Production-ready"
+    },
+    {
+      "name": "Template Rendering",
+      "category": "Core",
+      "maturity": "stable",
+      "test_coverage": 90.0,
+      "documentation": "complete",
+      "api_stability": "stable",
+      "notes": "Jinja2 integration solid"
+    },
+    {
+      "name": "File Handler Mixin",
+      "category": "Mixin",
+      "maturity": "stable",
+      "test_coverage": 93.0,
+      "documentation": "complete",
+      "api_stability": "stable",
+      "notes": "Multi-format support"
+    },
+    {
+      "name": "FSM Mixin",
+      "category": "Mixin",
+      "maturity": "stable",
+      "test_coverage": 85.0,
+      "documentation": "partial",
+      "api_stability": "stable",
+      "notes": "Needs more examples"
+    },
+    {
+      "name": "Validation Mixin",
+      "category": "Mixin",
+      "maturity": "experimental",
+      "test_coverage": 75.0,
+      "documentation": "partial",
+      "api_stability": "unstable",
+      "notes": "Under active development"
+    },
+    {
+      "name": "CLI Interface",
+      "category": "Infrastructure",
+      "maturity": "stable",
+      "test_coverage": 88.0,
+      "documentation": "complete",
+      "api_stability": "stable",
+      "notes": "Typer-based, user-friendly"
+    },
+    {
+      "name": "API Server",
+      "category": "Infrastructure",
+      "maturity": "stable",
+      "test_coverage": 82.0,
+      "documentation": "complete",
+      "api_stability": "stable",
+      "notes": "FastAPI with auto-docs"
+    },
+    {
+      "name": "OpenTelemetry Integration",
+      "category": "Infrastructure",
+      "maturity": "experimental",
+      "test_coverage": 70.0,
+      "documentation": "partial",
+      "api_stability": "unstable",
+      "notes": "New feature, evolving"
+    },
+    {
+      "name": "Domain Model Examples",
+      "category": "Examples",
+      "maturity": "stable",
+      "test_coverage": 80.0,
+      "documentation": "complete",
+      "api_stability": "stable",
+      "notes": "Good variety of examples"
+    },
+    {
+      "name": "Integration Examples",
+      "category": "Examples",
+      "maturity": "experimental",
+      "test_coverage": 60.0,
+      "documentation": "partial",
+      "api_stability": "unstable",
+      "notes": "N8N, YAWL examples new"
+    }
+  ],
+  "technical_debt": [
+    {
+      "component": "Validation Mixin",
+      "issue": "Incomplete async validation support",
+      "severity": "medium",
+      "effort": "16h",
+      "impact": "Limited async workflow validation",
+      "resolution": "Implement async validators"
+    },
+    {
+      "component": "DSPy Integration",
+      "issue": "Hard-coded model configurations",
+      "severity": "low",
+      "effort": "8h",
+      "impact": "Limited model flexibility",
+      "resolution": "Make models configurable"
+    },
+    {
+      "component": "Test Suite",
+      "issue": "Missing integration tests for OTEL",
+      "severity": "medium",
+      "effort": "12h",
+      "impact": "OTEL features not fully tested",
+      "resolution": "Add comprehensive OTEL tests"
+    },
+    {
+      "component": "Documentation",
+      "issue": "API reference incomplete for new features",
+      "severity": "medium",
+      "effort": "20h",
+      "impact": "User adoption friction",
+      "resolution": "Generate complete API docs"
+    },
+    {
+      "component": "Examples",
+      "issue": "Examples not using latest patterns",
+      "severity": "low",
+      "effort": "10h",
+      "impact": "Confusion about best practices",
+      "resolution": "Update all examples"
+    },
+    {
+      "component": "Performance",
+      "issue": "Workflow execution not optimized",
+      "severity": "medium",
+      "effort": "24h",
+      "impact": "Slow for large workflows",
+      "resolution": "Implement parallel execution"
+    }
+  ],
+  "performance": [
+    {
+      "operation": "Model creation from prompt",
+      "current_ms": 850.0,
+      "target_ms": 500.0,
+      "status": "needs_improvement"
+    },
+    {
+      "operation": "YAML serialization (1MB)",
+      "current_ms": 45.0,
+      "target_ms": 50.0,
+      "status": "good"
+    },
+    {
+      "operation": "Workflow execution (10 jobs)",
+      "current_ms": 2300.0,
+      "target_ms": 1000.0,
+      "status": "critical"
+    },
+    {
+      "operation": "Template rendering",
+      "current_ms": 12.0,
+      "target_ms": 20.0,
+      "status": "good"
+    },
+    {
+      "operation": "Validation (complex model)",
+      "current_ms": 180.0,
+      "target_ms": 100.0,
+      "status": "needs_improvement"
+    }
+  ],
+  "test_coverage": {
+    "dsl_models": 95.0,
+    "workflow": 92.0,
+    "cli": 88.0,
+    "api": 82.0,
+    "mixins": 87.0,
+    "utils": 90.0
+  },
+  "api_changes": [
+    {
+      "component": "DSLModel",
+      "change": "Add async support to from_prompt()",
+      "breaking": false,
+      "migration": "Backward compatible, returns awaitable"
+    },
+    {
+      "component": "Workflow",
+      "change": "Parallel job execution",
+      "breaking": false,
+      "migration": "Opt-in via parallel=True parameter"
+    },
+    {
+      "component": "ValidationMixin",
+      "change": "Async validators",
+      "breaking": true,
+      "migration": "Update custom validators to async"
+    },
+    {
+      "component": "FileHandlerMixin",
+      "change": "Streaming support for large files",
+      "breaking": false,
+      "migration": "New stream parameter, defaults to False"
+    }
+  ],
+  "roadmap": {
+    "version": "3.0.0",
+    "release_target": "2024-Q3",
+    "themes": [
+      "Performance Optimization",
+      "Async/Await Support",
+      "Enhanced Observability",
+      "API Stability"
+    ],
+    "milestones": [
+      {
+        "name": "Performance Sprint",
+        "duration": "2 weeks",
+        "goals": [
+          "Optimize workflow execution",
+          "Implement parallel processing",
+          "Reduce model creation latency"
+        ]
+      },
+      {
+        "name": "Async Migration",
+        "duration": "3 weeks",
+        "goals": [
+          "Add async support to core APIs",
+          "Update validators for async",
+          "Maintain backward compatibility"
+        ]
+      },
+      {
+        "name": "Observability Enhancement",
+        "duration": "2 weeks",
+        "goals": [
+          "Complete OTEL integration",
+          "Add performance metrics",
+          "Implement distributed tracing"
+        ]
+      },
+      {
+        "name": "Documentation & Polish",
+        "duration": "1 week",
+        "goals": [
+          "Update all documentation",
+          "Create migration guide",
+          "Update examples"
+        ]
+      }
+    ]
+  }
+}

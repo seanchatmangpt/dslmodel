@@ -1,0 +1,15 @@
+# Swarm SH 5-ONE Semantic Convention
+{
+  "version": "5.1.0",
+  "platform": "swarm-sh-5one",
+  "governance": {
+    "parliament": true,
+    "scrum": true,
+    "lean": true
+  },
+  "runtime": {
+    "wasi": true,
+    "deterministic": true,
+    "max_execution_ms": 5
+  }
+}

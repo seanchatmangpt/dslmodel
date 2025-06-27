@@ -1,0 +1,89 @@
+groups:
+  - id: governance
+    type: span
+    prefix: governance
+    brief: "Federated governance and liquid democracy operations"
+    attributes:
+      - id: federation.type
+        type: string
+        brief: "Type of federation operation"
+        examples: ["vote_collection", "delegation_resolution", "consensus_building"]
+      - id: remote.count
+        type: int
+        brief: "Number of remote repositories participating"
+      - id: delegation.depth
+        type: int
+        brief: "Maximum depth of delegation chain"
+      - id: delegation.from
+        type: string
+        brief: "Delegator repository name"
+      - id: delegation.to
+        type: string
+        brief: "Delegate repository name"
+      - id: participation.rate
+        type: double
+        brief: "Participation rate as percentage"
+        examples: [0.75, 0.60]
+      - id: consensus.threshold
+        type: double
+        brief: "Required consensus threshold"
+        examples: [0.60, 0.66, 0.75]
+      - id: security.alert
+        type: string
+        brief: "Security alert type detected"
+        examples: ["double_voting", "delegation_cycle", "suspicious_weight"]
+
+    spans:
+      - id: federated_vote
+        type: span
+        brief: "Federated vote collection and tallying"
+        attributes:
+          - ref: governance.federation.type
+            requirement_level: required
+          - ref: governance.remote.count
+          - ref: governance.participation.rate
+          - id: votes.collected
+            type: int
+            brief: "Total votes collected from federation"
+          - id: delegations.resolved
+            type: int
+            brief: "Number of delegations resolved"
+      
+      - id: delegation_chain
+        type: span
+        brief: "Vote delegation chain resolution"
+        attributes:
+          - ref: governance.delegation.from
+            requirement_level: required
+          - ref: governance.delegation.to
+            requirement_level: required
+          - ref: governance.delegation.depth
+          - id: cycle.detected
+            type: boolean
+            brief: "Whether a delegation cycle was detected"
+      
+      - id: consensus_check
+        type: span
+        brief: "Consensus verification process"
+        attributes:
+          - ref: governance.consensus.threshold
+            requirement_level: required
+          - ref: governance.participation.rate
+          - id: consensus.reached
+            type: boolean
+            brief: "Whether consensus was reached"
+          - id: approval.rate
+            type: double
+            brief: "Approval rate as percentage"
+      
+      - id: security_validation
+        type: span
+        brief: "Security validation for governance operations"
+        attributes:
+          - ref: governance.security.alert
+          - id: validation.passed
+            type: boolean
+            brief: "Whether security validation passed"
+          - id: anomalies.detected
+            type: int
+            brief: "Number of anomalies detected"
