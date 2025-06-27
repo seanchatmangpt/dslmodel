@@ -1,0 +1,117 @@
+groups:
+  - id: roberts
+    type: span
+    prefix: roberts
+    brief: "Robert's Rules of Order parliamentary procedures in Git"
+    attributes:
+      - id: motion.id
+        type: string
+        brief: "Unique identifier for the motion"
+        examples: ["M123456", "M789abc"]
+        requirement_level: required
+      - id: motion.title
+        type: string
+        brief: "Title of the motion"
+        examples: ["Adopt OTEL v1.4", "Implement feature X"]
+      - id: motion.status
+        type: 
+          members:
+            - id: draft
+              value: "draft"
+            - id: seconded
+              value: "seconded"
+            - id: debate
+              value: "debate"
+            - id: voting
+              value: "voting"
+            - id: passed
+              value: "passed"
+            - id: failed
+              value: "failed"
+        brief: "Current status of the motion"
+      - id: speaker
+        type: string
+        brief: "Name of the participant speaking"
+      - id: stance
+        type:
+          members:
+            - id: pro
+              value: "pro"
+            - id: con
+              value: "con"
+            - id: neutral
+              value: "neutral"
+        brief: "Position taken in debate"
+      - id: vote.value
+        type:
+          members:
+            - id: for
+              value: "for"
+            - id: against
+              value: "against"
+            - id: abstain
+              value: "abstain"
+        brief: "Vote cast on motion"
+      - id: vote.weight
+        type: double
+        brief: "Weight of the vote"
+        examples: [1.0, 2.5]
+      - id: quorum.met
+        type: boolean
+        brief: "Whether quorum was met"
+      - id: outcome
+        type: string
+        brief: "Final outcome of the motion"
+        examples: ["passed", "failed", "tabled"]
+
+    spans:
+      - id: agenda_item
+        type: span
+        brief: "Parliamentary agenda item processing"
+        attributes:
+          - ref: roberts.motion.id
+            requirement_level: required
+          - ref: roberts.motion.title
+          - ref: roberts.motion.status
+      
+      - id: motion_second
+        type: span
+        brief: "Motion seconding process"
+        attributes:
+          - ref: roberts.motion.id
+            requirement_level: required
+          - ref: roberts.speaker
+            requirement_level: required
+      
+      - id: debate_cycle
+        type: span
+        brief: "Parliamentary debate cycle"
+        attributes:
+          - ref: roberts.motion.id
+            requirement_level: required
+          - ref: roberts.speaker
+          - ref: roberts.stance
+          - id: argument.length
+            type: int
+            brief: "Length of the argument in characters"
+      
+      - id: vote_tally
+        type: span
+        brief: "Vote tallying and outcome determination"
+        attributes:
+          - ref: roberts.motion.id
+            requirement_level: required
+          - ref: roberts.quorum.met
+          - ref: roberts.outcome
+          - id: total.votes
+            type: int
+            brief: "Total number of votes cast"
+          - id: votes.for
+            type: int
+            brief: "Number of votes in favor"
+          - id: votes.against
+            type: int
+            brief: "Number of votes against"
+          - id: votes.abstain
+            type: int
+            brief: "Number of abstentions"

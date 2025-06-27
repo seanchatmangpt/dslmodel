@@ -1,0 +1,271 @@
+schema_url: https://opentelemetry.io/schemas/1.21.0
+file_format: 1.1.0
+
+groups:
+  - id: autonomous.evolution.scheduler
+    type: span
+    brief: "Autonomous evolution cron scheduler"
+    note: >
+      Tracks the continuous cron scheduler that runs evolution cycles every 10 minutes,
+      ensuring meaningful work is performed and system continuously improves.
+    attributes:
+      - id: scheduler_id
+        type: string
+        requirement_level: required
+        brief: "Unique identifier for the scheduler instance"
+        examples: ['scheduler-001', 'darwin-cron', 'evolution-daemon']
+      - id: schedule_interval_minutes
+        type: int
+        requirement_level: required
+        brief: "Interval between evolution cycles in minutes"
+      - id: scheduler_state
+        type: string
+        requirement_level: required
+        brief: "Current state of the scheduler"
+        examples: ['starting', 'running', 'paused', 'stopping', 'error']
+      - id: total_cycles_completed
+        type: int
+        requirement_level: opt_in
+        brief: "Total number of evolution cycles completed"
+      - id: uptime_minutes
+        type: int
+        requirement_level: opt_in
+        brief: "Scheduler uptime in minutes"
+      - id: meaningful_work_threshold
+        type: double
+        requirement_level: opt_in
+        brief: "Minimum fitness improvement to consider work meaningful"
+      - id: resource_limits
+        type: string
+        requirement_level: opt_in
+        brief: "JSON string of resource limits for evolution"
+      - id: last_meaningful_work_time
+        type: int
+        requirement_level: opt_in
+        brief: "Timestamp of last meaningful work completion"
+
+  - id: autonomous.evolution.cycle
+    type: span
+    brief: "Single autonomous evolution cycle execution"
+    note: >
+      Tracks one complete evolution cycle within the autonomous scheduler,
+      including strategy selection, execution, and meaningful work assessment.
+    attributes:
+      - id: cycle_id
+        type: string
+        requirement_level: required
+        brief: "Unique identifier for this evolution cycle"
+      - id: scheduler_id
+        type: string
+        requirement_level: required
+        brief: "Parent scheduler that initiated this cycle"
+      - id: cycle_number
+        type: int
+        requirement_level: required
+        brief: "Sequential cycle number since scheduler start"
+      - id: selected_strategy
+        type: string
+        requirement_level: required
+        brief: "Evolution strategy selected for this cycle"
+        examples: ['performance', 'security', 'quality', 'features', 'architecture']
+      - id: cycle_duration_ms
+        type: int
+        requirement_level: opt_in
+        brief: "Total duration of the evolution cycle"
+      - id: experiments_created
+        type: int
+        requirement_level: opt_in
+        brief: "Number of experiments created in this cycle"
+      - id: fitness_improvement
+        type: double
+        requirement_level: opt_in
+        brief: "Fitness improvement achieved in this cycle"
+      - id: meaningful_work_achieved
+        type: boolean
+        requirement_level: required
+        brief: "Whether this cycle achieved meaningful work"
+      - id: resource_usage
+        type: string
+        requirement_level: opt_in
+        brief: "JSON string of resource usage during cycle"
+      - id: next_cycle_recommendation
+        type: string
+        requirement_level: opt_in
+        brief: "Recommended strategy for next cycle"
+
+  - id: autonomous.evolution.strategy_selection
+    type: span
+    brief: "Intelligent strategy selection for evolution cycle"
+    note: >
+      Tracks the AI-driven selection of evolution strategy based on telemetry analysis,
+      historical performance, and system needs assessment.
+    attributes:
+      - id: cycle_id
+        type: string
+        requirement_level: required
+        brief: "Evolution cycle requesting strategy selection"
+      - id: telemetry_analysis_duration_ms
+        type: int
+        requirement_level: opt_in
+        brief: "Time spent analyzing telemetry for strategy selection"
+      - id: available_strategies
+        type: string
+        requirement_level: required
+        brief: "JSON array of available evolution strategies"
+      - id: strategy_scores
+        type: string
+        requirement_level: opt_in
+        brief: "JSON object of strategy fitness scores"
+      - id: selected_strategy
+        type: string
+        requirement_level: required
+        brief: "Strategy selected by AI analysis"
+      - id: selection_confidence
+        type: double
+        requirement_level: opt_in
+        brief: "Confidence score for strategy selection (0-1)"
+      - id: historical_performance
+        type: string
+        requirement_level: opt_in
+        brief: "JSON object of historical strategy performance"
+      - id: system_needs_priority
+        type: string
+        requirement_level: opt_in
+        brief: "Current highest priority system need"
+        examples: ['performance', 'reliability', 'security', 'maintainability']
+
+  - id: autonomous.evolution.meaningful_work
+    type: span
+    brief: "Assessment of meaningful work completion"
+    note: >
+      Evaluates whether an evolution cycle produced meaningful improvements worthy
+      of deployment, based on fitness thresholds and impact assessment.
+    attributes:
+      - id: cycle_id
+        type: string
+        requirement_level: required
+        brief: "Evolution cycle being assessed"
+      - id: assessment_type
+        type: string
+        requirement_level: required
+        brief: "Type of meaningful work assessment"
+        examples: ['fitness_threshold', 'impact_analysis', 'user_value', 'technical_debt']
+      - id: baseline_fitness
+        type: double
+        requirement_level: required
+        brief: "Baseline fitness before evolution cycle"
+      - id: achieved_fitness
+        type: double
+        requirement_level: required
+        brief: "Fitness achieved after evolution cycle"
+      - id: improvement_percentage
+        type: double
+        requirement_level: required
+        brief: "Percentage improvement in fitness"
+      - id: meaningful_threshold
+        type: double
+        requirement_level: required
+        brief: "Threshold for considering work meaningful"
+      - id: work_classification
+        type: string
+        requirement_level: required
+        brief: "Classification of work meaningfulness"
+        examples: ['highly_meaningful', 'meaningful', 'marginal', 'insignificant']
+      - id: impact_areas
+        type: string
+        requirement_level: opt_in
+        brief: "JSON array of areas impacted by the work"
+      - id: deployment_recommended
+        type: boolean
+        requirement_level: required
+        brief: "Whether deployment is recommended"
+
+  - id: autonomous.evolution.resource_management
+    type: span
+    brief: "Resource management for autonomous evolution"
+    note: >
+      Tracks resource allocation, monitoring, and cleanup for continuous evolution,
+      ensuring system stability and preventing resource exhaustion.
+    attributes:
+      - id: scheduler_id
+        type: string
+        requirement_level: required
+        brief: "Scheduler managing resources"
+      - id: resource_type
+        type: string
+        requirement_level: required
+        brief: "Type of resource being managed"
+        examples: ['worktrees', 'memory', 'cpu', 'disk', 'network']
+      - id: current_usage
+        type: double
+        requirement_level: required
+        brief: "Current resource usage (percentage or absolute)"
+      - id: usage_limit
+        type: double
+        requirement_level: required
+        brief: "Resource usage limit"
+      - id: resource_action
+        type: string
+        requirement_level: required
+        brief: "Resource management action taken"
+        examples: ['allocate', 'cleanup', 'throttle', 'alert', 'emergency_stop']
+      - id: resources_cleaned
+        type: int
+        requirement_level: opt_in
+        brief: "Number of resources cleaned up"
+      - id: cleanup_success
+        type: boolean
+        requirement_level: opt_in
+        brief: "Whether resource cleanup was successful"
+      - id: resource_health_score
+        type: double
+        requirement_level: opt_in
+        brief: "Overall resource health score (0-1)"
+
+  - id: autonomous.evolution.error_recovery
+    type: span
+    brief: "Error handling and recovery for autonomous evolution"
+    note: >
+      Tracks error conditions, recovery attempts, and system resilience measures
+      to ensure continuous operation despite failures.
+    attributes:
+      - id: scheduler_id
+        type: string
+        requirement_level: required
+        brief: "Scheduler experiencing the error"
+      - id: error_type
+        type: string
+        requirement_level: required
+        brief: "Type of error encountered"
+        examples: ['git_operation', 'resource_exhaustion', 'strategy_failure', 'network_timeout']
+      - id: error_severity
+        type: string
+        requirement_level: required
+        brief: "Severity level of the error"
+        examples: ['low', 'medium', 'high', 'critical']
+      - id: error_message
+        type: string
+        requirement_level: opt_in
+        brief: "Detailed error message"
+      - id: recovery_action
+        type: string
+        requirement_level: required
+        brief: "Recovery action taken"
+        examples: ['retry', 'skip_cycle', 'switch_strategy', 'emergency_stop', 'cleanup_and_restart']
+      - id: recovery_success
+        type: boolean
+        requirement_level: required
+        brief: "Whether recovery was successful"
+      - id: retry_count
+        type: int
+        requirement_level: opt_in
+        brief: "Number of retry attempts made"
+      - id: recovery_duration_ms
+        type: int
+        requirement_level: opt_in
+        brief: "Time taken for recovery"
+      - id: system_stability_impact
+        type: string
+        requirement_level: opt_in
+        brief: "Impact on overall system stability"
+        examples: ['none', 'minimal', 'moderate', 'significant']

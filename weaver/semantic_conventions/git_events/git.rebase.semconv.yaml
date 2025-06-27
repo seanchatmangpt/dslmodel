@@ -1,3 +1,5 @@
+name: "git.rebase"
+version: "1.0.0"
 groups:
   - id: git.rebase
     prefix: git

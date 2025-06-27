@@ -1,0 +1,231 @@
+# OpenTelemetry Collector Configuration for Swarm Agents
+# This configuration sets up a complete observability pipeline for the swarm
+
+receivers:
+  # OTLP receiver for spans, metrics, and logs
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+        cors:
+          allowed_origins:
+            - "http://*"
+            - "https://*"
+  
+  # Prometheus receiver to scrape agent metrics
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: 'swarm-agents'
+          scrape_interval: 10s
+          static_configs:
+            - targets: 
+              - 'roberts-agent:8000'
+              - 'scrum-agent:8001' 
+              - 'lean-agent:8002'
+              - 'ping-agent:8003'
+  
+  # File receiver for legacy JSONL spans (migration path)
+  filelog:
+    include: 
+      - /var/log/swarm/telemetry_spans.jsonl
+    operators:
+      - type: json_parser
+        timestamp:
+          parse_from: attributes.timestamp
+          layout_type: epoch
+      - type: move
+        from: attributes.name
+        to: body.name
+      - type: trace_parser
+        trace_id:
+          parse_from: attributes.trace_id
+        span_id:
+          parse_from: attributes.span_id
+
+processors:
+  # Add resource attributes to all telemetry
+  resource:
+    attributes:
+      - key: deployment.environment
+        value: "${DEPLOYMENT_ENV}"
+        action: upsert
+      - key: service.namespace
+        value: "swarmsh"
+        action: upsert
+      - key: telemetry.sdk.name
+        value: "opentelemetry"
+        action: upsert
+  
+  # Batch processing for efficiency
+  batch:
+    timeout: 5s
+    send_batch_size: 1024
+    send_batch_max_size: 2048
+  
+  # Add span metrics
+  spanmetrics:
+    metrics_exporter: prometheus
+    latency_histogram_buckets: [1ms, 5ms, 10ms, 25ms, 50ms, 100ms, 250ms, 500ms, 1s, 2s, 5s]
+    dimensions:
+      - name: swarm.agent.name
+      - name: swarm.framework
+      - name: swarm.command
+      - name: swarm.agent.state
+  
+  # Tail sampling for important traces
+  tail_sampling:
+    decision_wait: 10s
+    num_traces: 100000
+    expected_new_traces_per_sec: 1000
+    policies:
+      # Always sample errors
+      - name: errors
+        type: status_code
+        status_code: {status_codes: [ERROR]}
+      
+      # Always sample state transitions
+      - name: state-transitions
+        type: string_attribute
+        string_attribute: {key: swarm.agent.transition, values: [".*"]}
+      
+      # Sample 10% of everything else
+      - name: default
+        type: probabilistic
+        probabilistic: {sampling_percentage: 10}
+  
+  # Intelligent routing based on agent type
+  routing:
+    from_attribute: "swarm.framework"
+    table:
+      - value: "roberts"
+        exporters: [jaeger, otlp/governance]
+      - value: "scrum"
+        exporters: [jaeger, otlp/delivery]
+      - value: "lean"
+        exporters: [jaeger, otlp/optimization]
+    default_exporters: [jaeger, otlp/default]
+  
+  # Add trace context to logs
+  attributes:
+    actions:
+      - key: trace_id
+        from_attribute: trace_id
+        action: upsert
+      - key: span_id
+        from_attribute: span_id
+        action: upsert
+      - key: service.name
+        from_attribute: service_name
+        action: upsert
+
+exporters:
+  # Jaeger for trace visualization
+  jaeger:
+    endpoint: jaeger:14250
+    tls:
+      insecure: true
+  
+  # Prometheus for metrics
+  prometheus:
+    endpoint: 0.0.0.0:8889
+    namespace: swarm
+    const_labels:
+      environment: "${DEPLOYMENT_ENV}"
+  
+  # OTLP exporters for different frameworks
+  otlp/governance:
+    endpoint: governance-backend:4317
+    tls:
+      insecure: true
+    headers:
+      api-key: "${GOVERNANCE_API_KEY}"
+  
+  otlp/delivery:
+    endpoint: delivery-backend:4317
+    tls:
+      insecure: true
+    headers:
+      api-key: "${DELIVERY_API_KEY}"
+  
+  otlp/optimization:
+    endpoint: optimization-backend:4317
+    tls:
+      insecure: true
+    headers:
+      api-key: "${OPTIMIZATION_API_KEY}"
+  
+  otlp/default:
+    endpoint: default-backend:4317
+    tls:
+      insecure: true
+  
+  # Elasticsearch for logs
+  elasticsearch:
+    endpoints:
+      - http://elasticsearch:9200
+    logs_index: swarm-logs
+    traces_index: swarm-traces
+    metrics_index: swarm-metrics
+  
+  # Debug exporter for development
+  debug:
+    verbosity: detailed
+    sampling_initial: 5
+    sampling_thereafter: 200
+
+service:
+  # Extensions for health checks and metrics
+  extensions: [health_check, pprof, zpages]
+  
+  pipelines:
+    # Trace pipeline
+    traces:
+      receivers: [otlp, filelog]
+      processors: [resource, batch, spanmetrics, tail_sampling, routing]
+      exporters: [jaeger, elasticsearch]
+    
+    # Metrics pipeline
+    metrics:
+      receivers: [otlp, prometheus]
+      processors: [resource, batch]
+      exporters: [prometheus, elasticsearch]
+    
+    # Logs pipeline
+    logs:
+      receivers: [otlp, filelog]
+      processors: [resource, batch, attributes]
+      exporters: [elasticsearch]
+    
+    # Debug pipeline (disabled in production)
+    traces/debug:
+      receivers: [otlp]
+      processors: [resource]
+      exporters: [debug]
+
+extensions:
+  # Health check endpoint
+  health_check:
+    endpoint: 0.0.0.0:13133
+    path: "/health"
+  
+  # Performance profiling
+  pprof:
+    endpoint: 0.0.0.0:1777
+  
+  # zPages for debugging
+  zpages:
+    endpoint: 0.0.0.0:55679
+
+# Telemetry for the collector itself
+telemetry:
+  logs:
+    level: info
+    initial_fields:
+      service: otel-collector
+  
+  metrics:
+    level: detailed
+    address: 0.0.0.0:8888

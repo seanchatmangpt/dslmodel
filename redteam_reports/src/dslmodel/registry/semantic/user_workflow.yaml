@@ -1,0 +1,96 @@
+groups:
+  - id: user.authentication
+    type: span
+    span_kind: internal
+    prefix: app.user
+    brief: "User authentication operations"
+    attributes:
+      - id: operation
+        type: string
+        requirement_level: required
+        brief: "Type of authentication operation"
+        examples: ['login', 'logout', 'password_reset', 'mfa_verify']
+      - id: user_id
+        type: string
+        requirement_level: required
+        brief: "Unique user identifier"
+        examples: ['user-123', 'admin-456']
+      - id: session_id
+        type: string
+        requirement_level: recommended
+        brief: "User session identifier"
+      - id: auth_method
+        type: string
+        requirement_level: recommended
+        brief: "Authentication method used"
+        examples: ['password', 'oauth', 'sso', 'mfa']
+      - id: success
+        type: boolean
+        requirement_level: required
+        brief: "Whether authentication was successful"
+      - id: duration_ms
+        type: int
+        requirement_level: opt_in
+        brief: "Authentication duration in milliseconds"
+      - id: error_code
+        type: string
+        requirement_level: opt_in
+        brief: "Error code if authentication failed"
+        examples: ['invalid_credentials', 'account_locked', 'token_expired']
+
+  - id: user.profile_management
+    type: span
+    span_kind: internal
+    prefix: app.user
+    brief: "User profile management operations"
+    attributes:
+      - id: operation
+        type: string
+        requirement_level: required
+        brief: "Type of profile operation"
+        examples: ['create', 'update', 'delete', 'view']
+      - id: user_id
+        type: string
+        requirement_level: required
+        brief: "Target user identifier"
+      - id: fields_updated
+        type: string[]
+        requirement_level: recommended
+        brief: "List of profile fields that were updated"
+        examples: [['name', 'email'], ['avatar', 'preferences']]
+      - id: data_size_bytes
+        type: int
+        requirement_level: opt_in
+        brief: "Size of profile data in bytes"
+      - id: validation_errors
+        type: string[]
+        requirement_level: opt_in
+        brief: "List of validation errors encountered"
+
+  - id: user.preference_sync
+    type: span
+    span_kind: internal
+    prefix: app.user
+    brief: "User preference synchronization"
+    attributes:
+      - id: user_id
+        type: string
+        requirement_level: required
+        brief: "User identifier for preference sync"
+      - id: sync_direction
+        type: string
+        requirement_level: required
+        brief: "Direction of synchronization"
+        examples: ['upload', 'download', 'bidirectional']
+      - id: preferences_count
+        type: int
+        requirement_level: recommended
+        brief: "Number of preferences synchronized"
+      - id: sync_success
+        type: boolean
+        requirement_level: required
+        brief: "Whether sync completed successfully"
+      - id: conflicts_resolved
+        type: int
+        requirement_level: opt_in
+        brief: "Number of conflicts resolved during sync"

@@ -1,0 +1,277 @@
+# SwarmAgent Semantic Conventions
+# OpenTelemetry Weaver schema for span-driven agent coordination
+# 80/20 focus: standardize all agent spans with consistent schema
+
+groups:
+  # Core SwarmAgent span attributes
+  - id: swarm.agent.core
+    type: attribute_group
+    brief: "Core attributes for all SwarmAgent spans"
+    attributes:
+      - id: swarm.agent
+        type: string
+        brief: "Name of the SwarmAgent generating the span"
+        requirement_level: required
+        examples: ["roberts", "scrum", "lean", "system"]
+      - id: swarm.trigger
+        type: string
+        brief: "Event trigger that caused this span"
+        requirement_level: required
+        examples: ["open", "vote", "close", "plan", "review", "define", "measure"]
+      - id: swarm.coordination.session_id
+        type: string
+        brief: "Coordination session identifier"
+        requirement_level: opt_in
+        examples: ["session_12345"]
+
+  # Roberts Rules agent attributes
+  - id: swarm.agent.roberts
+    type: attribute_group
+    brief: "Attributes for Roberts Rules governance agent"
+    extends: swarm.agent.core
+    attributes:
+      - id: motion_id
+        type: string
+        brief: "Unique identifier for the motion being processed"
+        requirement_level: required
+        examples: ["motion_approve_sprint_42", "test_motion_123"]
+      - id: meeting_id
+        type: string
+        brief: "Meeting session identifier"
+        requirement_level: recommended
+        examples: ["board_q1", "test_meeting"]
+      - id: voting_method
+        type: string
+        brief: "Method used for voting on the motion"
+        requirement_level: opt_in
+        examples: ["voice_vote", "ballot", "roll_call"]
+      - id: vote_result
+        type: string
+        brief: "Result of the vote"
+        requirement_level: opt_in
+        examples: ["passed", "failed", "deferred"]
+      - id: votes_yes
+        type: int
+        brief: "Number of yes votes"
+        requirement_level: opt_in
+        examples: [8, 12, 5]
+      - id: votes_no
+        type: int
+        brief: "Number of no votes"
+        requirement_level: opt_in
+        examples: [1, 2, 0]
+      - id: sprint_number
+        type: string
+        brief: "Sprint number associated with the motion"
+        requirement_level: opt_in
+        examples: ["42", "100"]
+
+  # Scrum delivery agent attributes
+  - id: swarm.agent.scrum
+    type: attribute_group
+    brief: "Attributes for Scrum delivery management agent"
+    extends: swarm.agent.core
+    attributes:
+      - id: sprint_number
+        type: string
+        brief: "Sprint identifier"
+        requirement_level: required
+        examples: ["42", "99", "100"]
+      - id: team_id
+        type: string
+        brief: "Development team identifier"
+        requirement_level: recommended
+        examples: ["alpha", "beta", "gamma"]
+      - id: capacity
+        type: int
+        brief: "Team capacity for the sprint"
+        requirement_level: opt_in
+        examples: [50, 40, 60]
+      - id: velocity
+        type: int
+        brief: "Team velocity achieved"
+        requirement_level: opt_in
+        examples: [45, 38, 48]
+      - id: defect_rate
+        type: double
+        brief: "Defect rate percentage"
+        requirement_level: opt_in
+        examples: [4.5, 5.2, 3.1]
+
+  # Lean optimization agent attributes  
+  - id: swarm.agent.lean
+    type: attribute_group
+    brief: "Attributes for Lean process optimization agent"
+    extends: swarm.agent.core
+    attributes:
+      - id: project_id
+        type: string
+        brief: "Lean improvement project identifier"
+        requirement_level: required
+        examples: ["defect_reduction_q4", "quality-improvement", "opt_100"]
+      - id: problem_statement
+        type: string
+        brief: "Problem statement being addressed"
+        requirement_level: recommended
+        examples: ["Defect>4.5%", "High defect rate", "Defect rate above 3%"]
+      - id: improvement_target
+        type: string
+        brief: "Target improvement metric"
+        requirement_level: opt_in
+        examples: ["reduce_defects_by_50%", "increase_velocity_by_20%"]
+
+  # System and test agent attributes
+  - id: swarm.agent.system
+    type: attribute_group
+    brief: "Attributes for system and test agents"
+    extends: swarm.agent.core
+    attributes:
+      - id: test_type
+        type: string
+        brief: "Type of test being performed"
+        requirement_level: opt_in
+        examples: ["e2e_validation", "integration", "performance"]
+      - id: system
+        type: string
+        brief: "System being tested or managed"
+        requirement_level: opt_in
+        examples: ["swarm_agent", "coordination_engine"]
+
+  # Legacy work management attributes (for s2s.work.* spans)
+  - id: swarm.work.legacy
+    type: attribute_group
+    brief: "Legacy work management attributes (deprecated)"
+    attributes:
+      - id: work_item_id
+        type: string
+        brief: "Work item identifier (legacy format)"
+        requirement_level: required
+        examples: ["work_1750923842587605000"]
+
+# Span definitions for all SwarmAgent operations
+spans:
+  # Roberts Rules governance spans
+  - span_name: swarmsh.roberts.open
+    brief: "Roberts Rules motion opening span"
+    attributes:
+      - ref: swarm.agent.roberts
+      - ref: swarm.agent.core
+    events:
+      - motion_opened
+      - quorum_established
+
+  - span_name: swarmsh.roberts.vote
+    brief: "Roberts Rules voting process span"
+    attributes:
+      - ref: swarm.agent.roberts
+      - ref: swarm.agent.core
+    events:
+      - voting_started
+      - votes_collected
+
+  - span_name: swarmsh.roberts.close
+    brief: "Roberts Rules motion closure span"
+    attributes:
+      - ref: swarm.agent.roberts
+      - ref: swarm.agent.core
+    events:
+      - motion_resolved
+      - next_action_triggered
+
+  # Scrum delivery spans
+  - span_name: swarmsh.scrum.plan
+    brief: "Scrum sprint planning span"
+    attributes:
+      - ref: swarm.agent.scrum
+      - ref: swarm.agent.core
+    events:
+      - sprint_planned
+      - capacity_allocated
+
+  - span_name: swarmsh.scrum.review
+    brief: "Scrum sprint review span"
+    attributes:
+      - ref: swarm.agent.scrum
+      - ref: swarm.agent.core
+    events:
+      - metrics_collected
+      - quality_assessed
+
+  # Lean optimization spans
+  - span_name: swarmsh.lean.define
+    brief: "Lean Define phase span"
+    attributes:
+      - ref: swarm.agent.lean
+      - ref: swarm.agent.core
+    events:
+      - problem_identified
+      - project_initiated
+
+  - span_name: swarmsh.lean.measure
+    brief: "Lean Measure phase span"
+    attributes:
+      - ref: swarm.agent.lean
+      - ref: swarm.agent.core
+    events:
+      - baseline_established
+      - metrics_defined
+
+  - span_name: swarmsh.lean.analyze
+    brief: "Lean Analyze phase span"
+    attributes:
+      - ref: swarm.agent.lean
+      - ref: swarm.agent.core
+    events:
+      - root_cause_identified
+      - solution_proposed
+
+  # System and test spans
+  - span_name: swarmsh.test.span
+    brief: "Generic test span"
+    attributes:
+      - ref: swarm.agent.system
+      - ref: swarm.agent.core
+
+  - span_name: swarmsh.test.example
+    brief: "Example test span"
+    attributes:
+      - ref: swarm.agent.system
+      - ref: swarm.agent.core
+
+  - span_name: swarmsh.test.e2e
+    brief: "End-to-end validation span"
+    attributes:
+      - ref: swarm.agent.system
+      - ref: swarm.agent.core
+
+  - span_name: cleanup
+    brief: "System cleanup span"
+    attributes:
+      - ref: swarm.agent.system
+      - ref: swarm.agent.core
+
+  # Legacy work spans (deprecated)
+  - span_name: s2s.work.claim_fast
+    brief: "Legacy work claim span (deprecated)"
+    attributes:
+      - ref: swarm.work.legacy
+    deprecated: "Use swarmsh.* spans instead"
+
+  - span_name: s2s.work.complete
+    brief: "Legacy work completion span (deprecated)" 
+    attributes:
+      - ref: swarm.work.legacy
+    deprecated: "Use swarmsh.* spans instead"
+
+# Scope definitions
+scope:
+  name: SwarmAgent
+  version: "1.0.0"
+  brief: "Span-driven agent coordination system"
+  note: >
+    SwarmAgent uses OpenTelemetry spans as the primary coordination mechanism.
+    Each agent emits spans with standardized attributes to trigger other agents
+    and maintain coordination state across the distributed system.
+
+# Schema requirements
+schema_url: "https://opentelemetry.io/schemas/swarm-agent"

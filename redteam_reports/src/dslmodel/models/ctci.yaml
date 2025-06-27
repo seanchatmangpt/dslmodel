@@ -1,0 +1,31 @@
+blocks:
+- content: class ListNode:\n    def __init__(self, x):\n        self.val = x\n        self.next = None\n\n\ndef reverseList(head):\n    prev = None\n    while head:\n        next_node = head.next\n        head.next = prev\n        prev = head\n        head = next_node\n    return prev
+  filename: reverse_linked_list.py
+  language: python
+- content: def removeDuplicates(nums):\n    if not nums:\n        return 0\n    i = 0\n    for j in range(1, len(nums)):\n        if nums[j] != nums[i]:\n            i += 1\n            nums[i] = nums[j]\n    return i + 1
+  filename: remove_duplicates.py
+  language: python
+- content: class Stack:\n    def __init__(self):\n        self.stack = []\n\n    def push(self, x):\n        self.stack.append(x)\n\n    def pop(self):\n        if self.empty():\n            return None\n        return self.stack.pop()\n\n    def top(self):\n        if self.empty():\n            return None\n        return self.stack[-1]\n\n    def empty(self):\n        return len(self.stack) == 0
+  filename: stack.py
+  language: python
+- content: def isPalindrome(s):\n    s = ''.join(c for c in s if c.isalnum()).lower()\n    return s == s[::-1]
+  filename: validate_palindrome.py
+  language: python
+- content: def firstUniqChar(s):\n    count = {}\n    for i in s:\n        if i in count:\n            count[i] += 1\n        else:\n            count[i] = 1\n    for i in range(len(s)):\n        if count[s[i]] == 1:\n            return i\n    return -1
+  filename: find_first_non_repeating_character.py
+  language: python
+- content: class TreeNode:\n    def __init__(self, x):\n        self.val = x\n        self.left = None\n        self.right = None\n\ndef lowestCommonAncestor(root, p, q):\n    if not root:\n        return None\n    if root.val == p.val or root.val == q.val:\n        return root\n    left = lowestCommonAncestor(root.left, p, q)\n    right = lowestCommonAncestor(root.right, p, q)\n    if left and right:\n        return root\n    return left if left else right
+  filename: find_first_common_ancestor.py
+  language: python
+- content: import re\n\ndef validIPAddress(IP):\n    if '.' in IP:\n        return 'IPv4' if re.match(r'^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$', IP) else 'Neither'\n    elif ':' in IP:\n        return 'IPv6' if re.match(r'^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$', IP) else 'Neither'\n    else:\n        return 'Neither'
+  filename: validate_ip_address.py
+  language: python
+- content: def findMissingNumber(nums):\n    n = len(nums)\n    total_sum = n * (n + 1) // 2\n    return total_sum - sum(nums)
+  filename: find_missing_number.py
+  language: python
+- content: def maxSubArray(nums):\n    if not nums:\n        return 0\n    cur_sum = max_sum = nums[0]\n    for i in range(1, len(nums)):\n        cur_sum = max(nums[i], cur_sum + nums[i])\n        max_sum = max(max_sum, cur_sum)\n    return max_sum
+  filename: find_maximum_subarray.py
+  language: python
+- content: 'def isValid(s):\n    stack = []\n    mapping = {'')'': ''('', ''}'': ''{'', '']'': ''[''}\n    for char in s:\n        if char in mapping.values():\n            stack.append(char)\n        elif char in mapping.keys():\n            if not stack or mapping[char] != stack.pop():\n                return False\n    return not stack'
+  filename: validate_balanced_parentheses.py
+  language: python

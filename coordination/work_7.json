@@ -1,1 +1,1 @@
-{"id": "work_7", "status": "pending", "prompt": "Generate demo content for task 7", "model": "ollama/qwen3", "created": "2025-06-26T01:23:52.106126", "demo": true}
+{"id": "work_7", "status": "pending", "prompt": "Demo task 7: Generate content", "created": "2025-06-27T15:41:04.946526", "demo_cycle": true}

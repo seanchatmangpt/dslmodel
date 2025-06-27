@@ -1,0 +1,252 @@
+#!/usr/bin/env yaml
+# Claude Assistant Semantic Conventions
+# Self-mapping using weaver-first approach
+# Maps Claude's cognitive processes and behaviors into OTEL telemetry
+
+groups:
+  - id: claude.request.process
+    type: span
+    brief: "Claude processes user request"
+    note: "Tracks the complete request processing lifecycle"
+    attributes:
+      - id: claude.request.id
+        type: string
+        brief: "Unique identifier for the user request"
+        requirement_level: required
+      - id: claude.request.input_tokens
+        type: int
+        brief: "Number of input tokens in the request"
+        requirement_level: recommended
+      - id: claude.request.complexity
+        type: string
+        brief: "Assessed complexity of the request"
+        requirement_level: recommended
+        examples: ["simple", "moderate", "complex", "multi_step"]
+      - id: claude.request.domain
+        type: string
+        brief: "Primary domain of the request"
+        requirement_level: recommended
+        examples: ["code", "analysis", "writing", "planning", "debugging"]
+      - id: claude.thinking.duration_ms
+        type: double
+        brief: "Time spent in initial thinking phase"
+        requirement_level: recommended
+
+  - id: claude.thinking.analyze
+    type: span
+    brief: "Claude analyzes and understands the request"
+    note: "Deep analysis phase before action"
+    attributes:
+      - id: claude.thinking.approach
+        type: string
+        brief: "Selected approach for handling the request"
+        requirement_level: recommended
+        examples: ["direct_answer", "step_by_step", "research_first", "validate_assumptions"]
+      - id: claude.thinking.context_pieces
+        type: int
+        brief: "Number of context pieces considered"
+        requirement_level: recommended
+      - id: claude.thinking.assumptions_identified
+        type: int
+        brief: "Number of assumptions identified"
+        requirement_level: recommended
+      - id: claude.thinking.risks_assessed
+        type: string[]
+        brief: "Risks or concerns identified"
+        requirement_level: optional
+
+  - id: claude.tool.use
+    type: span
+    brief: "Claude uses a tool to accomplish task"
+    note: "Tracks tool usage and effectiveness"
+    attributes:
+      - id: claude.tool.name
+        type: string
+        brief: "Name of the tool being used"
+        requirement_level: required
+        examples: ["Read", "Write", "Bash", "Edit", "Task"]
+      - id: claude.tool.purpose
+        type: string
+        brief: "Why this tool was chosen"
+        requirement_level: recommended
+      - id: claude.tool.input_size
+        type: int
+        brief: "Size of input to the tool"
+        requirement_level: optional
+      - id: claude.tool.success
+        type: boolean
+        brief: "Whether tool use was successful"
+        requirement_level: required
+      - id: claude.tool.error_type
+        type: string
+        brief: "Type of error if tool use failed"
+        requirement_level: optional
+        examples: ["file_not_found", "permission_denied", "syntax_error", "timeout"]
+
+  - id: claude.problem.solve
+    type: span
+    brief: "Claude engages in problem-solving"
+    note: "Complex reasoning and solution development"
+    attributes:
+      - id: claude.problem.type
+        type: string
+        brief: "Type of problem being solved"
+        requirement_level: recommended
+        examples: ["debug", "implement", "design", "optimize", "analyze"]
+      - id: claude.problem.steps_planned
+        type: int
+        brief: "Number of steps in the planned solution"
+        requirement_level: recommended
+      - id: claude.problem.iterations
+        type: int
+        brief: "Number of iterations required"
+        requirement_level: recommended
+      - id: claude.problem.blockers_encountered
+        type: int
+        brief: "Number of blockers encountered"
+        requirement_level: optional
+      - id: claude.problem.solution_confidence
+        type: double
+        brief: "Confidence in the solution (0.0-1.0)"
+        requirement_level: optional
+
+  - id: claude.validation.check
+    type: span
+    brief: "Claude validates work or assumptions"
+    note: "Quality assurance and verification phase"
+    attributes:
+      - id: claude.validation.type
+        type: string
+        brief: "Type of validation performed"
+        requirement_level: required
+        examples: ["syntax_check", "logic_review", "test_run", "assumption_verify"]
+      - id: claude.validation.tests_performed
+        type: int
+        brief: "Number of validation tests performed"
+        requirement_level: recommended
+      - id: claude.validation.issues_found
+        type: int
+        brief: "Number of issues found during validation"
+        requirement_level: recommended
+      - id: claude.validation.confidence_level
+        type: double
+        brief: "Confidence level after validation (0.0-1.0)"
+        requirement_level: recommended
+
+  - id: claude.learning.adapt
+    type: span
+    brief: "Claude learns and adapts from feedback"
+    note: "Learning from errors and user feedback"
+    attributes:
+      - id: claude.learning.feedback_type
+        type: string
+        brief: "Type of feedback received"
+        requirement_level: recommended
+        examples: ["correction", "clarification", "praise", "criticism"]
+      - id: claude.learning.adjustment_made
+        type: string
+        brief: "Adjustment made based on feedback"
+        requirement_level: recommended
+      - id: claude.learning.pattern_recognized
+        type: boolean
+        brief: "Whether a new pattern was recognized"
+        requirement_level: optional
+      - id: claude.learning.strategy_updated
+        type: boolean
+        brief: "Whether strategy was updated"
+        requirement_level: optional
+
+  - id: claude.communication.respond
+    type: span
+    brief: "Claude formulates and delivers response"
+    note: "Final response preparation and delivery"
+    attributes:
+      - id: claude.response.format
+        type: string
+        brief: "Format of the response"
+        requirement_level: recommended
+        examples: ["text", "code", "json", "markdown", "mixed"]
+      - id: claude.response.output_tokens
+        type: int
+        brief: "Number of tokens in the response"
+        requirement_level: recommended
+      - id: claude.response.confidence
+        type: double
+        brief: "Overall confidence in the response (0.0-1.0)"
+        requirement_level: recommended
+      - id: claude.response.follow_up_needed
+        type: boolean
+        brief: "Whether follow-up is likely needed"
+        requirement_level: optional
+      - id: claude.response.user_satisfaction_prediction
+        type: double
+        brief: "Predicted user satisfaction (0.0-1.0)"
+        requirement_level: optional
+
+  - id: claude.memory.manage
+    type: span
+    brief: "Claude manages context and memory"
+    note: "Context window and memory management"
+    attributes:
+      - id: claude.memory.context_length
+        type: int
+        brief: "Current context length in tokens"
+        requirement_level: recommended
+      - id: claude.memory.context_utilization
+        type: double
+        brief: "Percentage of context window used (0.0-1.0)"
+        requirement_level: recommended
+      - id: claude.memory.priority_items
+        type: int
+        brief: "Number of high-priority context items"
+        requirement_level: optional
+      - id: claude.memory.context_compression_applied
+        type: boolean
+        brief: "Whether context compression was applied"
+        requirement_level: optional
+
+  - id: claude.ethical.consider
+    type: span
+    brief: "Claude performs ethical consideration"
+    note: "Safety and ethical evaluation of requests"
+    attributes:
+      - id: claude.ethical.safety_check
+        type: boolean
+        brief: "Whether safety check was performed"
+        requirement_level: required
+      - id: claude.ethical.risk_level
+        type: string
+        brief: "Assessed risk level"
+        requirement_level: recommended
+        examples: ["none", "low", "medium", "high", "critical"]
+      - id: claude.ethical.guidelines_consulted
+        type: string[]
+        brief: "Ethical guidelines consulted"
+        requirement_level: optional
+      - id: claude.ethical.action_taken
+        type: string
+        brief: "Action taken based on ethical assessment"
+        requirement_level: optional
+        examples: ["proceed", "modify_approach", "decline", "request_clarification"]
+
+  - id: claude.performance.optimize
+    type: span
+    brief: "Claude optimizes performance and efficiency"
+    note: "Self-optimization of processes"
+    attributes:
+      - id: claude.performance.efficiency_score
+        type: double
+        brief: "Self-assessed efficiency score (0.0-1.0)"
+        requirement_level: optional
+      - id: claude.performance.bottleneck_identified
+        type: string
+        brief: "Performance bottleneck identified"
+        requirement_level: optional
+      - id: claude.performance.optimization_applied
+        type: string
+        brief: "Optimization technique applied"
+        requirement_level: optional
+        examples: ["parallel_processing", "early_termination", "caching", "prioritization"]
+
+semantic_convention_version: "1.0.0"
+schema_url: "https://dslmodel.ai/schemas/claude_assistant/1.0.0"

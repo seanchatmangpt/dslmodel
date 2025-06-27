@@ -4,6 +4,10 @@ This directory contains comprehensive context documentation following the **Code
 
 > **Validation Status**: 85% of claimed functionality verified working through skeptical testing (June 2025)
 
+# Context Directory Structure
+
+Each subdirectory in this folder corresponds to a top-level DSL command (e.g., gen, evolve, agent, validate, dev, demo, security, telemetry, research, etc). Each folder contains context, documentation, and examples for that command.
+
 ## 📁 Directory Structure
 
 ```

@@ -1,0 +1,37 @@
+{#- Template for generating attribute documentation -#}
+# OpenTelemetry Semantic Conventions
+
+Generated from semantic conventions using Weaver Forge.
+
+{% for group in ctx.groups %}
+## {{ group.id }}
+
+{{ group.brief }}
+
+{% if group.note %}
+> **Note:** {{ group.note }}
+{% endif %}
+
+{% if group.attributes %}
+### Attributes
+
+| Attribute | Type | Description | Requirement Level |
+|-----------|------|-------------|-------------------|
+{% for attribute in group.attributes %}
+| `{{ attribute.name }}` | {{ attribute.type if attribute.type is string else "enum" }} | {{ attribute.brief }} | {{ attribute.requirement_level | default("recommended") }} |
+{% endfor %}
+{% endif %}
+
+{% if group.type == "metric" %}
+### Metric Details
+
+- **Name:** `{{ group.metric_name }}`
+- **Instrument:** {{ group.instrument }}
+- **Unit:** {{ group.unit | default("1") }}
+{% endif %}
+
+{% endfor %}
+
+---
+
+_Generated from OpenTelemetry Semantic Conventions using Weaver Forge_

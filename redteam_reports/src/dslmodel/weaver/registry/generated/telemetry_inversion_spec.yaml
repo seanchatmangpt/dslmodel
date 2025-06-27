@@ -1,0 +1,71 @@
+groups:
+- id: swarmsh.thesis.telemetry_as_system
+  brief: Telemetry is the foundational substrate of all behaviour.
+  type: span
+  span_kind: internal
+  prefix: swarmsh.thesis
+  attributes:
+  - id: detail
+    type: string
+    brief: Free-form note or JSON blob
+    requirement_level: recommended
+- id: swarmsh.thesis.span_drives_code
+  brief: Spans define code artifacts (CLI, shell, Rust).
+  type: span
+  span_kind: internal
+  prefix: swarmsh.thesis
+  attributes:
+  - id: detail
+    type: string
+    brief: Free-form note or JSON blob
+    requirement_level: recommended
+- id: swarmsh.thesis.trace_to_prompt_emergence
+  brief: Traces synthesize LLM prompts; prompts are not hand-written.
+  type: span
+  span_kind: internal
+  prefix: swarmsh.thesis
+  attributes:
+  - id: detail
+    type: string
+    brief: Free-form note or JSON blob
+    requirement_level: recommended
+- id: swarmsh.thesis.telemetry_communication_channel
+  brief: Spans serve as the inter-agent communication medium.
+  type: span
+  span_kind: internal
+  prefix: swarmsh.thesis
+  attributes:
+  - id: detail
+    type: string
+    brief: Free-form note or JSON blob
+    requirement_level: recommended
+- id: swarmsh.thesis.belief_inversion
+  brief: Matrix contrasting traditional assumptions with SwarmSH inversions.
+  type: span
+  span_kind: internal
+  prefix: swarmsh.thesis
+  attributes:
+  - id: detail
+    type: string
+    brief: Free-form note or JSON blob
+    requirement_level: recommended
+- id: swarmsh.thesis.scaling_with_certainty
+  brief: Auditability and convergence guarantees rooted in spans.
+  type: span
+  span_kind: internal
+  prefix: swarmsh.thesis
+  attributes:
+  - id: detail
+    type: string
+    brief: Free-form note or JSON blob
+    requirement_level: recommended
+- id: swarmsh.thesis.system_models_itself
+  brief: System trace is a live self-model accessible to humans and agents.
+  type: span
+  span_kind: internal
+  prefix: swarmsh.thesis
+  attributes:
+  - id: detail
+    type: string
+    brief: Free-form note or JSON blob
+    requirement_level: recommended

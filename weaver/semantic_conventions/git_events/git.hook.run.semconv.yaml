@@ -1,3 +1,5 @@
+name: "git.hook.run"
+version: "1.0.0"
 groups:
   - id: git.hook.run
     prefix: git

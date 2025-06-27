@@ -1,0 +1,81 @@
+groups:
+  - id: merge_oracle
+    type: span
+    prefix: merge_oracle
+    brief: "Merge oracle decision system for Git parliament"
+    attributes:
+      - id: motion.id
+        type: string
+        brief: "Motion identifier being decided"
+        requirement_level: required
+      - id: decision.outcome
+        type:
+          members:
+            - id: accept
+              value: "accept"
+            - id: reject
+              value: "reject"
+            - id: defer
+              value: "defer"
+        brief: "Decision outcome"
+      - id: decision.confidence
+        type: double
+        brief: "Confidence level of the decision"
+        examples: [0.95, 0.80]
+      - id: decision.factors
+        type: string[]
+        brief: "Factors considered in decision"
+        examples: [["quorum_met", "high_approval", "no_security_issues"]]
+      - id: merge.type
+        type: string
+        brief: "Type of merge operation"
+        examples: ["fast_forward", "no_ff", "squash"]
+      - id: merge.conflicts
+        type: int
+        brief: "Number of merge conflicts"
+
+    spans:
+      - id: decision_process
+        type: span
+        brief: "Merge oracle decision process"
+        attributes:
+          - ref: merge_oracle.motion.id
+          - ref: merge_oracle.decision.outcome
+          - ref: merge_oracle.decision.confidence
+          - ref: merge_oracle.decision.factors
+          - id: tally.duration_ms
+            type: double
+            brief: "Duration of vote tally in milliseconds"
+          - id: analysis.duration_ms
+            type: double
+            brief: "Duration of decision analysis in milliseconds"
+      
+      - id: merge_execution
+        type: span
+        brief: "Git merge execution"
+        attributes:
+          - ref: merge_oracle.motion.id
+          - ref: merge_oracle.merge.type
+          - ref: merge_oracle.merge.conflicts
+          - id: merge.success
+            type: boolean
+            brief: "Whether merge succeeded"
+          - id: branch.deleted
+            type: boolean
+            brief: "Whether motion branch was deleted"
+      
+      - id: oracle_learning
+        type: span
+        brief: "Oracle learning from decision outcomes"
+        attributes:
+          - ref: merge_oracle.motion.id
+          - id: feedback.type
+            type: string
+            brief: "Type of feedback received"
+            examples: ["positive", "negative", "neutral"]
+          - id: pattern.learned
+            type: string
+            brief: "Pattern learned from outcome"
+          - id: confidence.adjustment
+            type: double
+            brief: "Adjustment to confidence model"

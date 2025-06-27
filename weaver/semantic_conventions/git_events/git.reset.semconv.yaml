@@ -1,37 +1,39 @@
+name: "git.reset"
+version: "1.0.0"
 groups:
   - id: git.reset
     prefix: git
     type: span
-    brief: "Git reset operations for rollback and state management"
+    brief: "Git reset operations for repository state management"
     attributes:
-      - id: reset.target_sha
-        type: string
-        brief: "Target commit SHA for reset operation"
-        examples: ["abc123def456", "HEAD~1", "origin/main"]
-        requirement_level: required
       - id: reset.mode
         type: string
         brief: "Reset mode used"
-        examples: ["soft", "mixed", "hard", "keep", "merge"]
+        examples: ["soft", "mixed", "hard", "merge", "keep"]
         requirement_level: required
+      - id: reset.target
+        type: string
+        brief: "Target commit or reference for reset"
+        examples: ["HEAD~1", "abc123def456", "origin/main"]
+        requirement_level: required
+      - id: reset.reason
+        type: string
+        brief: "Reason for reset operation"
+        examples: ["undo_last_commit", "clean_working_directory", "revert_merge"]
+        requirement_level: optional
       - id: reset.files_affected
         type: int
         brief: "Number of files affected by reset"
         examples: [0, 5, 23]
         requirement_level: optional
-      - id: reset.reason
-        type: string
-        brief: "Reason for reset operation"
-        examples: ["sandbox_failure", "test_regression", "manual_rollback", "merge_conflict"]
-        requirement_level: optional
-      - id: reset.previous_sha
-        type: string
-        brief: "SHA before reset (for rollback tracking)"
-        examples: ["def456abc123", "HEAD"]
-        requirement_level: required
-      - id: reset.is_autonomous
+      - id: reset.is_agent_operation
         type: boolean
-        brief: "Whether reset was triggered autonomously"
+        brief: "Whether reset was performed by an agent"
+        requirement_level: optional
+      - id: reset.agent_id
+        type: string
+        brief: "ID of agent that performed reset"
+        examples: ["agent_001", "weaver_forge", "autonomous_dx"]
         requirement_level: optional
       - id: git.working_directory
         type: string
@@ -43,11 +45,11 @@ groups:
         brief: "Git command exit code"
         examples: [0, 1, 128]
         requirement_level: required
-      - id: git.reflog_entry
+      - id: git.previous_head
         type: string
-        brief: "Reflog entry created by reset"
-        examples: ["HEAD@{0}: reset: moving to abc123"]
-        requirement_level: optional
+        brief: "Previous HEAD before reset"
+        examples: ["abc123def456"]
+        requirement_level: required
     spans:
       - span_name: git.reset
-        brief: "Git reset operation for instant rollback and state management"
+        brief: "Git reset operation for repository state management and agent coordination"

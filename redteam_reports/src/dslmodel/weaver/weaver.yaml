@@ -1,0 +1,7 @@
+# Weaver configuration for DSL Model project
+# Focused on Python model generation from semantic conventions
+
+# Default parameters available to all templates
+params:
+  project_name: "DSLModel"
+  language: "python"

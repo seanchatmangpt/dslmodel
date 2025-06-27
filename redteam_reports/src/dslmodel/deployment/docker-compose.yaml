@@ -1,0 +1,309 @@
+# Full OpenTelemetry Observability Stack for Swarm Agents
+# Provides distributed tracing, metrics collection, and log aggregation
+
+version: '3.8'
+
+services:
+  # OpenTelemetry Collector - Central telemetry hub
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: swarm-otel-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel_collector_config.yaml:/etc/otel-collector-config.yaml
+      - ./logs:/var/log/swarm
+    ports:
+      - "4317:4317"   # OTLP gRPC receiver
+      - "4318:4318"   # OTLP HTTP receiver
+      - "8889:8889"   # Prometheus metrics
+      - "13133:13133" # Health check
+      - "55679:55679" # zPages
+      - "1777:1777"   # pprof
+    environment:
+      - DEPLOYMENT_ENV=${DEPLOYMENT_ENV:-development}
+      - GOVERNANCE_API_KEY=${GOVERNANCE_API_KEY:-}
+      - DELIVERY_API_KEY=${DELIVERY_API_KEY:-}
+      - OPTIMIZATION_API_KEY=${OPTIMIZATION_API_KEY:-}
+    networks:
+      - swarm-otel
+    depends_on:
+      - jaeger
+      - prometheus
+      - elasticsearch
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:13133/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Jaeger - Distributed tracing backend
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: swarm-jaeger
+    ports:
+      - "16686:16686" # Jaeger UI
+      - "14250:14250" # gRPC
+      - "14268:14268" # HTTP
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+      - SPAN_STORAGE_TYPE=elasticsearch
+      - ES_SERVER_URLS=http://elasticsearch:9200
+      - ES_USERNAME=elastic
+      - ES_PASSWORD=changeme
+    networks:
+      - swarm-otel
+    depends_on:
+      - elasticsearch
+
+  # Prometheus - Metrics collection and alerting
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: swarm-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus-rules.yml:/etc/prometheus/rules.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+      - '--web.enable-admin-api'
+      - '--storage.tsdb.retention.time=30d'
+    networks:
+      - swarm-otel
+
+  # Grafana - Metrics visualization and dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: swarm-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_FEATURE_TOGGLES_ENABLE=traceToMetrics
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - swarm-otel
+    depends_on:
+      - prometheus
+      - jaeger
+
+  # Elasticsearch - Logs and traces storage
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0
+    container_name: swarm-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - xpack.security.transport.ssl.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - swarm-otel
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Kibana - Log visualization and analysis
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.12.0
+    container_name: swarm-kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - xpack.security.enabled=false
+    ports:
+      - "5601:5601"
+    networks:
+      - swarm-otel
+    depends_on:
+      - elasticsearch
+
+  # Redis - Real-time span streaming (alternative to file watching)
+  redis:
+    image: redis:7-alpine
+    container_name: swarm-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - swarm-otel
+    command: redis-server --appendonly yes
+
+  # AlertManager - Handles alerts from Prometheus
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: swarm-alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - alertmanager-data:/alertmanager
+    networks:
+      - swarm-otel
+
+  # Node Exporter - System metrics for swarm nodes
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: swarm-node-exporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    networks:
+      - swarm-otel
+
+  # Vector - High-performance log processing (alternative to Fluentd)
+  vector:
+    image: timberio/vector:latest-alpine
+    container_name: swarm-vector
+    volumes:
+      - ./vector.toml:/etc/vector/vector.toml
+      - ./logs:/var/log/swarm
+    environment:
+      - VECTOR_CONFIG_DIR=/etc/vector
+    networks:
+      - swarm-otel
+    depends_on:
+      - elasticsearch
+
+  # Swarm Agent Services (examples)
+  roberts-agent:
+    build:
+      context: ../../..
+      dockerfile: Dockerfile.agent
+      args:
+        AGENT_TYPE: roberts
+    container_name: swarm-roberts-agent
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_SERVICE_NAME=roberts-agent
+      - OTEL_RESOURCE_ATTRIBUTES=service.namespace=swarmsh,agent.framework=roberts
+      - DEPLOYMENT_ENV=${DEPLOYMENT_ENV:-development}
+    volumes:
+      - ./logs:/var/log/swarm
+      - agent-data:/app/data
+    networks:
+      - swarm-otel
+    depends_on:
+      - otel-collector
+    ports:
+      - "8000:8000"  # Prometheus metrics
+    restart: unless-stopped
+
+  scrum-agent:
+    build:
+      context: ../../..
+      dockerfile: Dockerfile.agent
+      args:
+        AGENT_TYPE: scrum
+    container_name: swarm-scrum-agent
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_SERVICE_NAME=scrum-agent
+      - OTEL_RESOURCE_ATTRIBUTES=service.namespace=swarmsh,agent.framework=scrum
+      - DEPLOYMENT_ENV=${DEPLOYMENT_ENV:-development}
+    volumes:
+      - ./logs:/var/log/swarm
+      - agent-data:/app/data
+    networks:
+      - swarm-otel
+    depends_on:
+      - otel-collector
+    ports:
+      - "8001:8000"  # Prometheus metrics
+    restart: unless-stopped
+
+  lean-agent:
+    build:
+      context: ../../..
+      dockerfile: Dockerfile.agent
+      args:
+        AGENT_TYPE: lean
+    container_name: swarm-lean-agent
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_SERVICE_NAME=lean-agent
+      - OTEL_RESOURCE_ATTRIBUTES=service.namespace=swarmsh,agent.framework=lean
+      - DEPLOYMENT_ENV=${DEPLOYMENT_ENV:-development}
+    volumes:
+      - ./logs:/var/log/swarm
+      - agent-data:/app/data
+    networks:
+      - swarm-otel
+    depends_on:
+      - otel-collector
+    ports:
+      - "8002:8000"  # Prometheus metrics
+    restart: unless-stopped
+
+  # Load Generator - Simulates work for testing
+  load-generator:
+    build:
+      context: ../../..
+      dockerfile: Dockerfile.load-gen
+    container_name: swarm-load-generator
+    environment:
+      - CLI_ENDPOINT=http://coordination-cli:8080
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - LOAD_PATTERN=${LOAD_PATTERN:-steady}
+      - LOAD_RATE=${LOAD_RATE:-1}
+    networks:
+      - swarm-otel
+    depends_on:
+      - coordination-cli
+    restart: unless-stopped
+
+  # Coordination CLI as a service for webhooks/API
+  coordination-cli:
+    build:
+      context: ../../..
+      dockerfile: Dockerfile.cli
+    container_name: swarm-coordination-cli
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_SERVICE_NAME=coordination-cli
+    ports:
+      - "8080:8080"
+    volumes:
+      - agent-data:/app/data
+    networks:
+      - swarm-otel
+    depends_on:
+      - otel-collector
+
+volumes:
+  prometheus-data:
+  grafana-data:
+  elasticsearch-data:
+  redis-data:
+  alertmanager-data:
+  agent-data:
+
+networks:
+  swarm-otel:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

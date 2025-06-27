@@ -1,1 +1,1 @@
-{"id": "telemetry_0", "timestamp": "2025-06-26T01:23:52.106660", "metrics": {"response_time_ms": 800, "success_rate": 0.85, "model": "ollama/qwen3"}, "demo": true}
+{"id": "telemetry_0", "timestamp": "2025-06-27T15:41:04.947210", "metrics": {"response_time": 800, "success_rate": 0.85}, "demo_cycle": true}

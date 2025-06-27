@@ -1,0 +1,34 @@
+{
+  "all_tests_passed": true,
+  "test_results": {
+    "span_operations": {
+      "success": true,
+      "duration": 0.20132207870483398,
+      "span_name": "agent.worktree.create",
+      "agent_id": "dogfood_agent_1",
+      "details": "Basic span operations successful"
+    },
+    "span_factory": {
+      "success": true,
+      "duration": 0.15340089797973633,
+      "spans_created": 3,
+      "spans_expected": 3,
+      "details": "Factory created 3 spans successfully"
+    },
+    "coordination_spans": {
+      "success": true,
+      "duration": 0.3056979179382324,
+      "coordination_steps": 5,
+      "details": "Coordination spans sequence successful"
+    },
+    "semantic_conventions": {
+      "success": true,
+      "duration": 2.384185791015625e-05,
+      "compliance_rate": 1.0,
+      "attribute_compliance": 1.0,
+      "available_spans": 10,
+      "details": "Semantic conventions 100.0% compliant"
+    }
+  },
+  "report": "\n\ud83c\udf56 DOGFOOD TEST REPORT - We Ate Our Own Cooking!\n===============================================\n\n\ud83c\udfaf Test Summary:\n- Tests Run: 4\n- Tests Passed: 4\n- Tests Failed: 0\n- Success Rate: 100.0%\n\n\ud83d\udcca Detailed Results:\n  span_operations: \u2713 PASS (0.20s)\n    \u2192 Basic span operations successful\n  span_factory: \u2713 PASS (0.15s)\n    \u2192 Factory created 3 spans successfully\n  coordination_spans: \u2713 PASS (0.31s)\n    \u2192 Coordination spans sequence successful\n  semantic_conventions: \u2713 PASS (0.00s)\n    \u2192 Semantic conventions 100.0% compliant\n\n\u23f1\ufe0f  Total Test Duration: 0.66s\n\n\ud83d\udccb Semantic Conventions:\n  - Compliance Rate: 100.0%\n  - Available Spans: 10\n\n\ud83c\udfd7\ufe0f  Span Factory:\n  - Spans Created: 3\n  - Success Rate: 100%\n\n\ud83c\udf89 DOGFOOD SUCCESS! Our weaver-first system works perfectly!\n   All OTEL spans are generated correctly according to semantic conventions.\n   The system successfully eats its own dogfood. \ud83c\udf56\u2713\n"
+}

@@ -1,1 +1,1 @@
-{"work_id": "work2", "type": "task"}
+{"id": "work_2", "status": "pending", "prompt": "Demo task 2: Generate content", "created": "2025-06-27T15:41:04.945903", "demo_cycle": true}

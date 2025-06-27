@@ -1,0 +1,201 @@
+groups:
+  - id: swarm.worktree.coordination
+    type: span
+    brief: "SwarmAgent coordination within Git worktrees"
+    note: "Tracks how SwarmAgents coordinate development work across isolated Git worktrees"
+    attributes:
+      - id: agent_id
+        type: string
+        requirement_level: required
+        brief: "Unique identifier for the SwarmAgent"
+        examples: ['roberts-001', 'scrum-002', 'lean-003']
+      - id: worktree_path
+        type: string
+        requirement_level: required
+        brief: "Path to the Git worktree being managed"
+        examples: ['/path/to/worktrees/feature_auth', '/path/to/worktrees/bugfix_validation']
+      - id: branch_name
+        type: string
+        requirement_level: required
+        brief: "Git branch associated with the worktree"
+        examples: ['feature/user-authentication', 'bugfix/memory-leak', 'refactor/api-cleanup']
+      - id: coordination_action
+        type: string
+        requirement_level: required
+        brief: "Type of coordination action being performed"
+        examples: ['claim_worktree', 'release_worktree', 'sync_progress', 'merge_request']
+      - id: work_item_id
+        type: string
+        requirement_level: optional
+        brief: "Associated work item or ticket identifier"
+        examples: ['TASK-123', 'BUG-456', 'EPIC-789']
+      - id: team_name
+        type: string
+        requirement_level: optional
+        brief: "Team responsible for the worktree"
+        examples: ['backend', 'frontend', 'devops', 'security']
+      - id: priority_level
+        type: string
+        requirement_level: optional
+        brief: "Priority level of the work"
+        examples: ['critical', 'high', 'medium', 'low']
+        
+  - id: swarm.worktree.lifecycle
+    type: span
+    brief: "SwarmAgent worktree lifecycle management"
+    note: "Tracks the full lifecycle of worktrees managed by SwarmAgents"
+    attributes:
+      - id: agent_id
+        type: string
+        requirement_level: required
+        brief: "SwarmAgent managing the lifecycle"
+      - id: worktree_path
+        type: string
+        requirement_level: required
+        brief: "Path to the worktree"
+      - id: lifecycle_phase
+        type: string
+        requirement_level: required
+        brief: "Current phase in worktree lifecycle"
+        examples: ['created', 'claimed', 'active', 'testing', 'review', 'merged', 'archived']
+      - id: duration_ms
+        type: int
+        requirement_level: optional
+        brief: "Duration of the lifecycle phase in milliseconds"
+      - id: base_branch
+        type: string
+        requirement_level: optional
+        brief: "Base branch for the worktree"
+        examples: ['main', 'develop', 'release/v2.0']
+      - id: files_modified
+        type: int
+        requirement_level: optional
+        brief: "Number of files modified in this phase"
+      - id: commits_count
+        type: int
+        requirement_level: optional
+        brief: "Number of commits in this worktree"
+        
+  - id: swarm.worktree.validation
+    type: span
+    brief: "SwarmAgent worktree validation and quality checks"
+    note: "Tracks validation activities performed by SwarmAgents on worktrees"
+    attributes:
+      - id: agent_id
+        type: string
+        requirement_level: required
+        brief: "SwarmAgent performing validation"
+      - id: worktree_path
+        type: string
+        requirement_level: required
+        brief: "Path to the worktree being validated"
+      - id: validation_type
+        type: string
+        requirement_level: required
+        brief: "Type of validation being performed"
+        examples: ['lint_check', 'test_execution', 'security_scan', 'performance_test', 'integration_test']
+      - id: validation_result
+        type: string
+        requirement_level: required
+        brief: "Result of the validation"
+        examples: ['passed', 'failed', 'warning', 'skipped']
+      - id: issues_found
+        type: int
+        requirement_level: optional
+        brief: "Number of issues found during validation"
+      - id: execution_time_ms
+        type: int
+        requirement_level: optional
+        brief: "Time taken to execute validation in milliseconds"
+      - id: coverage_percentage
+        type: double
+        requirement_level: optional
+        brief: "Test coverage percentage (for test validations)"
+      - id: error_details
+        type: string
+        requirement_level: optional
+        brief: "Detailed error information if validation failed"
+        
+  - id: swarm.worktree.merge
+    type: span
+    brief: "SwarmAgent worktree merge operations"
+    note: "Tracks merge operations coordinated by SwarmAgents"
+    attributes:
+      - id: agent_id
+        type: string
+        requirement_level: required
+        brief: "SwarmAgent coordinating the merge"
+      - id: source_worktree
+        type: string
+        requirement_level: required
+        brief: "Source worktree path being merged"
+      - id: target_branch
+        type: string
+        requirement_level: required
+        brief: "Target branch for the merge"
+        examples: ['main', 'develop', 'release/v2.0']
+      - id: merge_strategy
+        type: string
+        requirement_level: optional
+        brief: "Strategy used for merging"
+        examples: ['merge', 'squash', 'rebase']
+      - id: conflicts_detected
+        type: boolean
+        requirement_level: optional
+        brief: "Whether merge conflicts were detected"
+      - id: conflicts_resolved
+        type: int
+        requirement_level: optional
+        brief: "Number of conflicts resolved"
+      - id: pr_number
+        type: string
+        requirement_level: optional
+        brief: "Pull request number associated with merge"
+      - id: reviewers
+        type: string
+        requirement_level: optional
+        brief: "List of reviewers for the merge"
+      - id: merge_success
+        type: boolean
+        requirement_level: required
+        brief: "Whether the merge completed successfully"
+        
+  - id: swarm.worktree.telemetry
+    type: span
+    brief: "SwarmAgent worktree telemetry collection"
+    note: "Tracks telemetry and monitoring data collection from worktrees"
+    attributes:
+      - id: agent_id
+        type: string
+        requirement_level: required
+        brief: "SwarmAgent collecting telemetry"
+      - id: worktree_path
+        type: string
+        requirement_level: required
+        brief: "Worktree being monitored"
+      - id: telemetry_type
+        type: string
+        requirement_level: required
+        brief: "Type of telemetry being collected"
+        examples: ['otel_spans', 'metrics', 'logs', 'traces', 'performance']
+      - id: spans_collected
+        type: int
+        requirement_level: optional
+        brief: "Number of OTEL spans collected"
+      - id: metrics_count
+        type: int
+        requirement_level: optional
+        brief: "Number of metrics collected"
+      - id: collection_duration_ms
+        type: int
+        requirement_level: optional
+        brief: "Time taken to collect telemetry data"
+      - id: trace_id
+        type: string
+        requirement_level: optional
+        brief: "Associated distributed trace identifier"
+      - id: export_format
+        type: string
+        requirement_level: optional
+        brief: "Format used for telemetry export"
+        examples: ['otlp', 'jaeger', 'zipkin', 'prometheus']

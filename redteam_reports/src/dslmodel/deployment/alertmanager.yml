@@ -1,0 +1,118 @@
+# AlertManager configuration for Swarm Agents
+
+global:
+  smtp_smarthost: 'localhost:587'
+  smtp_from: 'alerts@swarm.local'
+  smtp_auth_username: 'alerts@swarm.local'
+  smtp_auth_password: 'password'
+
+route:
+  group_by: ['alertname', 'cluster']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+  receiver: 'default'
+  
+  routes:
+    # Critical alerts go to on-call
+    - match:
+        severity: critical
+      receiver: 'critical-alerts'
+      group_wait: 0s
+      repeat_interval: 5m
+    
+    # Agent-specific alerts
+    - match_re:
+        alertname: Agent.*
+      receiver: 'agent-team'
+      group_by: ['agent_name']
+    
+    # Infrastructure alerts
+    - match_re:
+        alertname: (OTel|Jaeger|Elasticsearch).*
+      receiver: 'infrastructure-team'
+    
+    # Business metrics
+    - match_re:
+        alertname: (Motion|Sprint|Lean).*
+      receiver: 'business-team'
+
+receivers:
+  - name: 'default'
+    webhook_configs:
+      - url: 'http://coordination-cli:8080/webhooks/alert'
+        send_resolved: true
+
+  - name: 'critical-alerts'
+    email_configs:
+      - to: 'oncall@swarm.local'
+        subject: '🚨 CRITICAL: {{ .GroupLabels.alertname }}'
+        body: |
+          {{ range .Alerts }}
+          Alert: {{ .Annotations.summary }}
+          Description: {{ .Annotations.description }}
+          Labels: {{ range .Labels.SortedPairs }}{{ .Name }}={{ .Value }} {{ end }}
+          {{ end }}
+    
+    slack_configs:
+      - api_url: '${SLACK_WEBHOOK_URL}'
+        channel: '#alerts-critical'
+        title: '🚨 Critical Alert: {{ .GroupLabels.alertname }}'
+        text: |
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          {{ .Annotations.description }}
+          {{ end }}
+        send_resolved: true
+
+  - name: 'agent-team'
+    slack_configs:
+      - api_url: '${SLACK_WEBHOOK_URL}'
+        channel: '#swarm-agents'
+        title: '🤖 Agent Alert: {{ .GroupLabels.alertname }}'
+        text: |
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          Agent: {{ .Labels.agent_name }}
+          {{ .Annotations.description }}
+          {{ end }}
+        send_resolved: true
+
+  - name: 'infrastructure-team'
+    slack_configs:
+      - api_url: '${SLACK_WEBHOOK_URL}'
+        channel: '#infrastructure'
+        title: '🏗️ Infrastructure Alert: {{ .GroupLabels.alertname }}'
+        text: |
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          {{ .Annotations.description }}
+          {{ end }}
+        send_resolved: true
+
+  - name: 'business-team'
+    slack_configs:
+      - api_url: '${SLACK_WEBHOOK_URL}'
+        channel: '#swarm-business'
+        title: '📊 Business Metric Alert: {{ .GroupLabels.alertname }}'
+        text: |
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          {{ .Annotations.description }}
+          {{ end }}
+        send_resolved: true
+
+inhibit_rules:
+  # Inhibit agent alerts if the whole collector is down
+  - source_match:
+      alertname: OTelCollectorDown
+    target_match_re:
+      alertname: Agent.*
+    equal: ['cluster']
+
+  # Inhibit span drops if Elasticsearch is down
+  - source_match:
+      alertname: ElasticsearchDown
+    target_match:
+      alertname: SpanDrops
+    equal: ['cluster']

@@ -1,3 +1,4 @@
+name: "git_registry"
 # Git Registry - Level-5 Git-Native Substrate for Swarm SH
 # Complete mapping of Git primitives to spans and wrappers
 version: "1.0"

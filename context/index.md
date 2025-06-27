@@ -55,6 +55,13 @@ architecture:
       usage: "MQ7 event registration and handling for distributed coordination"
 ---
 
+# Command Context Structure
+
+Each subdirectory in this directory corresponds to a top-level DSL command. Inside each folder, you will find:
+- Context and usage notes for the command
+- Documentation and examples
+- Any related diagrams or references
+
 # DSLModel SwarmAgent Framework v3 - Production Validated
 
 ## Overview

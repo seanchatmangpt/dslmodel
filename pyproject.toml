@@ -2,14 +2,17 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/dslmodel"]
+
 [project]
 name = "dslmodel"
 version = "2024.12.22.2"
 description = "Pydantic + DSPy instances from prompts and Jinja."
-authors = [{name = "Sean Chatman", email = "info@chatmangpt.com"}]
+authors = [{ name = "Sean Chatman", email = "info@chatmangpt.com" }]
 readme = "README.md"
 requires-python = ">=3.12,<4.0"
-license = {text = "MIT"}
+license = { text = "MIT" }
 dependencies = [
     "coloredlogs>=15.0.1",
     "poethepoet>=0.25.0",
@@ -58,10 +61,10 @@ Repository = "https://github.com/seanchatmangpt/dslmodel"
 [project.optional-dependencies]
 otel = [
     "opentelemetry-api>=1.20.0",
-    "opentelemetry-sdk>=1.20.0", 
+    "opentelemetry-sdk>=1.20.0",
     "opentelemetry-exporter-otlp>=1.20.0",
     "opentelemetry-instrumentation>=0.41b0",
-    "opentelemetry-semantic-conventions>=0.41b0"
+    "opentelemetry-semantic-conventions>=0.41b0",
 ]
 
 test = [
@@ -69,7 +72,7 @@ test = [
     "pytest>=8.1.1",
     "pytest-mock>=3.14.0",
     "pytest-xdist>=3.5.0",
-    "pytest-watch>=4.2.0"
+    "pytest-watch>=4.2.0",
 ]
 
 
@@ -80,7 +83,7 @@ dev = [
     "ipywidgets>=8.1.2",
     "pdoc>=14.4.0",
     "pytest-asyncio>=0.24.0",
-    "pyinstaller>=6.14.1; python_version >= '3.12' and python_version < '3.14'"
+    "pyinstaller>=6.14.1; python_version >= '3.12' and python_version < '3.14'",
 ]
 
 [tool.coverage.report] # https://coverage.readthedocs.io/en/latest/config.html#report
@@ -236,7 +239,7 @@ help = "Initialize swarm with demo data"
 sequence = [
     { cmd = "python swarm_cli.py emit swarmsh.roberts.open --agent roberts --trigger open" },
     { cmd = "python swarm_cli.py emit swarmsh.scrum.plan --agent scrum --trigger plan" },
-    { cmd = "python swarm_cli.py status" }
+    { cmd = "python swarm_cli.py status" },
 ]
 
 [tool.poe.tasks.swarm-cycle]
@@ -244,7 +247,7 @@ help = "Run a complete swarm workflow cycle"
 sequence = [
     { cmd = "python swarm_cli.py workflow governance" },
     { cmd = "python swarm_cli.py workflow sprint" },
-    { cmd = "python swarm_cli.py watch --last 5" }
+    { cmd = "python swarm_cli.py watch --last 5" },
 ]
 
 [tool.poe.tasks.swarm-clean]
@@ -275,7 +278,7 @@ sequence = [
     { cmd = "dsl otel work claim bug 'Memory leak' --priority critical --team backend" },
     { cmd = "dsl otel work claim feature 'Dark mode' --priority medium --team frontend" },
     { cmd = "dsl otel work list --show-traces" },
-    { cmd = "dsl otel otel status" }
+    { cmd = "dsl otel otel status" },
 ]
 
 [tool.poe.tasks.otel-install]
@@ -444,7 +447,7 @@ help = "Run all Weaver validation checks"
 sequence = [
     { cmd = "dsl weaver-health check --detailed" },
     { cmd = "dsl weaver-health validate --model qwen3" },
-    { cmd = "dsl ollama check" }
+    { cmd = "dsl ollama check" },
 ]
 
 # Integration test tasks
@@ -499,7 +502,7 @@ help = "Run 80/20 transformation workflow"
 sequence = [
     { cmd = "python src/dslmodel/commands/transformation_cli.py init" },
     { cmd = "python src/dslmodel/commands/transformation_cli.py run" },
-    { cmd = "python src/dslmodel/commands/transformation_cli.py status" }
+    { cmd = "python src/dslmodel/commands/transformation_cli.py status" },
 ]
 
 [tool.poe.tasks.transform-validate-full]
@@ -507,7 +510,7 @@ help = "Full validation with tests and reports"
 sequence = [
     { cmd = "python src/dslmodel/commands/transformation_cli.py validate" },
     { cmd = "poetry run pytest tests/test_otel_validation.py -v" },
-    { cmd = "python src/dslmodel/commands/transformation_cli.py report" }
+    { cmd = "python src/dslmodel/commands/transformation_cli.py report" },
 ]
 
 # Git Auto DX tasks
@@ -556,7 +559,7 @@ cmd = "python src/dslmodel/commands/git_auto_cli.py config --show"
 help = "80/20 git workflow: status -> auto commit/push"
 sequence = [
     { cmd = "python src/dslmodel/commands/git_auto_cli.py status" },
-    { cmd = "python src/dslmodel/commands/git_auto_cli.py auto --push" }
+    { cmd = "python src/dslmodel/commands/git_auto_cli.py auto --push" },
 ]
 
 [tool.poe.tasks.git-safe]
@@ -564,7 +567,7 @@ help = "Safe git workflow: add + commit (manual review for push)"
 sequence = [
     { cmd = "python src/dslmodel/commands/git_auto_cli.py add" },
     { cmd = "python src/dslmodel/commands/git_auto_cli.py commit" },
-    { cmd = "python src/dslmodel/commands/git_auto_cli.py status" }
+    { cmd = "python src/dslmodel/commands/git_auto_cli.py status" },
 ]
 
 # Auto Evolution tasks
@@ -594,14 +597,14 @@ help = "Complete evolution cycle: analyze -> evolve -> learn"
 sequence = [
     { cmd = "python src/dslmodel/commands/auto_evolve_cli.py analyze" },
     { cmd = "python src/dslmodel/commands/auto_evolve_cli.py evolve --auto-apply" },
-    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py learn" }
+    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py learn" },
 ]
 
 [tool.poe.tasks.evolve-safe]
 help = "Safe evolution: analyze and show improvements (no auto-apply)"
 sequence = [
     { cmd = "python src/dslmodel/commands/auto_evolve_cli.py analyze" },
-    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py evolve --dry-run" }
+    { cmd = "python src/dslmodel/commands/auto_evolve_cli.py evolve --dry-run" },
 ]
 
 # PyInstaller build tasks
@@ -646,7 +649,7 @@ help = "Build all autonomous evolution tools as standalone executables"
 sequence = [
     { cmd = "poe build-daemon" },
     { cmd = "poe build-cron-setup" },
-    { cmd = "poe build-health-test" }
+    { cmd = "poe build-health-test" },
 ]
 
 [tool.poe.tasks.build-package]
@@ -659,7 +662,7 @@ sequence = [
     { cmd = "cp dist/autonomous-health-check dist/autonomous-evolution-package/" },
     { cmd = "cp evolution_cron.sh dist/autonomous-evolution-package/" },
     { cmd = "chmod +x dist/autonomous-evolution-package/*" },
-    { cmd = "tar -czf dist/autonomous-evolution-tools.tar.gz -C dist autonomous-evolution-package" }
+    { cmd = "tar -czf dist/autonomous-evolution-tools.tar.gz -C dist autonomous-evolution-package" },
 ]
 
 [tool.poe.tasks.build-clean]
@@ -671,7 +674,7 @@ help = "Test standalone executables"
 sequence = [
     { cmd = "dist/autonomous-evolution-daemon --help" },
     { cmd = "dist/setup-evolution-cron --help" },
-    { cmd = "dist/autonomous-health-check --help || echo 'Health check is a test script'" }
+    { cmd = "dist/autonomous-health-check --help || echo 'Health check is a test script'" },
 ]
 
 # Development build tasks (faster)
@@ -696,7 +699,7 @@ sequence = [
     { cmd = "sudo cp dist/setup-evolution-cron /usr/local/bin/" },
     { cmd = "sudo chmod +x /usr/local/bin/autonomous-evolution-daemon" },
     { cmd = "sudo chmod +x /usr/local/bin/setup-evolution-cron" },
-    { cmd = "echo 'Installed to /usr/local/bin/'" }
+    { cmd = "echo 'Installed to /usr/local/bin/'" },
 ]
 
 # Cross-platform builds
@@ -705,5 +708,11 @@ help = "Build for multiple platforms (requires cross-compilation setup)"
 sequence = [
     { cmd = "echo 'Building for current platform...'" },
     { cmd = "poe build-all" },
-    { cmd = "echo 'Note: Cross-platform builds require platform-specific environments'" }
+    { cmd = "echo 'Note: Cross-platform builds require platform-specific environments'" },
+]
+
+[dependency-groups]
+otel = [
+    "opentelemetry-exporter-prometheus>=0.55b1",
+    "opentelemetry-instrumentation-logging>=0.55b1",
 ]

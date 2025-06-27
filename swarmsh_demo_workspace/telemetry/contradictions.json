@@ -1,0 +1,29 @@
+[
+  {
+    "type": "performance",
+    "severity": 0.1,
+    "description": "Found 1 slow spans exceeding 1000ms",
+    "affected_spans": [
+      "swarmsh.process.heavy_computation"
+    ],
+    "resolution": "Add span.sampling_priority attribute to reduce overhead"
+  },
+  {
+    "type": "retry_storm",
+    "severity": 0.35,
+    "description": "Retry storm detected for swarmsh.external.api_call",
+    "affected_spans": [
+      "swarmsh.external.api_call"
+    ],
+    "resolution": "Add circuit breaker span attributes"
+  },
+  {
+    "type": "missing_span",
+    "severity": 0.7,
+    "description": "Expected span 'swarmsh.thesis.span_drives_code' missing after 'swarmsh.thesis.telemetry_as_system'",
+    "affected_spans": [
+      "swarmsh.thesis.telemetry_as_system"
+    ],
+    "resolution": "Add semantic convention for 'swarmsh.thesis.span_drives_code' span"
+  }
+]
