@@ -227,8 +227,20 @@ class CapabilityRegistry:
             for receipt in receipts
             if receipt.required and receipt.standing is not CapabilityStanding.ALIVE
         ]
+        if not receipts:
+            aggregate = CapabilityStanding.UNKNOWN.value
+        elif all(receipt.standing is CapabilityStanding.ALIVE for receipt in receipts):
+            aggregate = CapabilityStanding.ALIVE.value
+        elif any(receipt.standing is CapabilityStanding.ALIVE for receipt in receipts):
+            aggregate = CapabilityStanding.PARTIAL_ALIVE.value
+        elif any(receipt.standing is CapabilityStanding.BUILD_BROKEN for receipt in receipts):
+            aggregate = CapabilityStanding.BUILD_BROKEN.value
+        elif all(receipt.standing is CapabilityStanding.UNSUPPORTED for receipt in receipts):
+            aggregate = CapabilityStanding.UNSUPPORTED.value
+        else:
+            aggregate = CapabilityStanding.UNKNOWN.value
         return {
-            "standing": "ALIVE" if not required_failures else "PARTIAL_ALIVE",
+            "standing": aggregate,
             "counts": counts,
             "required_failures": required_failures,
             "capabilities": [receipt.as_dict() for receipt in receipts],
