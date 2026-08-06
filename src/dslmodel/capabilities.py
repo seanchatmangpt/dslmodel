@@ -1,7 +1,9 @@
-"""Capability admission, mounting, and receipt generation for DSLModel.
+"""Capability admission, execution verification, and artifact receipts.
 
-The registry deliberately treats every command surface independently.  A missing
-optional dependency can remove one edge without collapsing the complete CLI.
+A capability is ALIVE only after its Typer application imports, mounts, and an
+explicit verifier command executes successfully. Historical or experimental
+surfaces belong in a separate non-admitted catalog; they are not silently
+counted as product capabilities.
 """
 
 from __future__ import annotations
@@ -13,12 +15,15 @@ from hashlib import sha256
 from importlib import import_module
 from io import StringIO
 import json
+from pathlib import Path
 from types import ModuleType
 from typing import Any, Callable, Iterable, Mapping
 
+from typer.testing import CliRunner
+
 
 class CapabilityStanding(StrEnum):
-    """Execution standing for one capability boundary."""
+    """Execution standing for one admitted capability boundary."""
 
     UNKNOWN = "UNKNOWN"
     PARTIAL_ALIVE = "PARTIAL_ALIVE"
@@ -30,20 +35,21 @@ class CapabilityStanding(StrEnum):
 
 @dataclass(frozen=True, slots=True)
 class CapabilitySpec:
-    """Declarative description of a CLI capability."""
+    """Declarative description of one admitted CLI capability."""
 
     name: str
     module: str
     help: str
-    group: str = "legacy"
+    group: str = "core"
     required: bool = False
     app_attribute: str = "app"
     command: str | None = None
+    verifier_args: tuple[str, ...] | None = ("--help",)
 
 
 @dataclass(frozen=True, slots=True)
 class CapabilityReceipt:
-    """Evidence produced while admitting and mounting a capability."""
+    """Evidence produced while importing, mounting, and executing a capability."""
 
     name: str
     module: str
@@ -52,10 +58,14 @@ class CapabilityReceipt:
     standing: CapabilityStanding
     imported: bool = False
     mounted: bool = False
+    executed: bool = False
+    verifier_args: tuple[str, ...] | None = None
+    exit_code: int | None = None
     reason: str | None = None
     missing_dependency: str | None = None
     exception_type: str | None = None
     import_output: str | None = None
+    verification_output: str | None = None
 
     @property
     def receipt_id(self) -> str:
@@ -71,10 +81,14 @@ class CapabilityReceipt:
             "standing": self.standing.value,
             "imported": self.imported,
             "mounted": self.mounted,
+            "executed": self.executed,
+            "verifier_args": list(self.verifier_args) if self.verifier_args is not None else None,
+            "exit_code": self.exit_code,
             "reason": self.reason,
             "missing_dependency": self.missing_dependency,
             "exception_type": self.exception_type,
             "import_output": self.import_output,
+            "verification_output": self.verification_output,
         }
         if include_receipt:
             payload["receipt_id"] = self.receipt_id
@@ -85,7 +99,7 @@ Importer = Callable[[str], ModuleType]
 
 
 class CapabilityRegistry:
-    """Admit optional command modules without global failure coupling."""
+    """Admit command modules independently and require observed execution."""
 
     def __init__(
         self,
@@ -102,6 +116,10 @@ class CapabilityRegistry:
     def _clean_output(stdout: StringIO, stderr: StringIO) -> str | None:
         text = "\n".join(part.strip() for part in (stdout.getvalue(), stderr.getvalue()) if part.strip())
         return text[:4000] or None
+
+    @staticmethod
+    def _truncate(text: str | None) -> str | None:
+        return text[:4000] if text else None
 
     @staticmethod
     def _classify_import_failure(
@@ -129,6 +147,7 @@ class CapabilityRegistry:
             group=spec.group,
             required=spec.required,
             standing=standing,
+            verifier_args=spec.verifier_args,
             reason=str(exc),
             missing_dependency=str(missing) if missing else None,
             exception_type=type(exc).__name__,
@@ -136,7 +155,7 @@ class CapabilityRegistry:
         )
 
     def probe(self, spec: CapabilitySpec, *, refresh: bool = False) -> CapabilityReceipt:
-        """Import and validate one capability, emitting a typed receipt."""
+        """Import one capability; import alone is PARTIAL_ALIVE, never ALIVE."""
 
         if not refresh and spec.name in self._receipts:
             return self._receipts[spec.name]
@@ -148,7 +167,7 @@ class CapabilityRegistry:
                     module = self._importer(spec.module)
             else:
                 module = self._importer(spec.module)
-        except Exception as exc:  # imports are an admission boundary
+        except Exception as exc:
             receipt = self._classify_import_failure(
                 spec,
                 exc,
@@ -166,6 +185,7 @@ class CapabilityRegistry:
                 required=spec.required,
                 standing=CapabilityStanding.BUILD_BROKEN,
                 imported=True,
+                verifier_args=spec.verifier_args,
                 reason=f"module has no Typer app attribute {spec.app_attribute!r}",
                 import_output=self._clean_output(stdout, stderr),
             )
@@ -176,19 +196,21 @@ class CapabilityRegistry:
                 module=spec.module,
                 group=spec.group,
                 required=spec.required,
-                standing=CapabilityStanding.ALIVE,
+                standing=CapabilityStanding.PARTIAL_ALIVE,
                 imported=True,
+                verifier_args=spec.verifier_args,
                 import_output=self._clean_output(stdout, stderr),
+                reason="imported but not yet executed",
             )
 
         self._receipts[spec.name] = receipt
         return receipt
 
     def mount(self, parent: Any, spec: CapabilitySpec) -> CapabilityReceipt:
-        """Mount one admitted Typer application under its declared name."""
+        """Mount and execute a verifier for one admitted Typer application."""
 
         receipt = self.probe(spec)
-        if receipt.standing is not CapabilityStanding.ALIVE:
+        if receipt.standing not in {CapabilityStanding.PARTIAL_ALIVE, CapabilityStanding.ALIVE}:
             return receipt
 
         module = self._modules[spec.name]
@@ -206,9 +228,35 @@ class CapabilityRegistry:
             self._receipts[spec.name] = failed
             return failed
 
-        mounted = replace(receipt, mounted=True)
-        self._receipts[spec.name] = mounted
-        return mounted
+        mounted = replace(receipt, mounted=True, reason="mounted but not yet executed")
+        if spec.verifier_args is None:
+            self._receipts[spec.name] = mounted
+            return mounted
+
+        result = CliRunner().invoke(app, list(spec.verifier_args), catch_exceptions=True)
+        if result.exit_code != 0:
+            failed = replace(
+                mounted,
+                standing=CapabilityStanding.BUILD_BROKEN,
+                executed=True,
+                exit_code=result.exit_code,
+                reason=f"verifier exited {result.exit_code}",
+                exception_type=type(result.exception).__name__ if result.exception else None,
+                verification_output=self._truncate(result.output),
+            )
+            self._receipts[spec.name] = failed
+            return failed
+
+        alive = replace(
+            mounted,
+            standing=CapabilityStanding.ALIVE,
+            executed=True,
+            exit_code=0,
+            reason="verifier executed successfully",
+            verification_output=self._truncate(result.output),
+        )
+        self._receipts[spec.name] = alive
+        return alive
 
     def mount_all(self, parent: Any, specs: Iterable[CapabilitySpec]) -> tuple[CapabilityReceipt, ...]:
         return tuple(self.mount(parent, spec) for spec in specs)
@@ -235,6 +283,8 @@ class CapabilityRegistry:
             aggregate = CapabilityStanding.PARTIAL_ALIVE.value
         elif any(receipt.standing is CapabilityStanding.BUILD_BROKEN for receipt in receipts):
             aggregate = CapabilityStanding.BUILD_BROKEN.value
+        elif any(receipt.standing is CapabilityStanding.PARTIAL_ALIVE for receipt in receipts):
+            aggregate = CapabilityStanding.PARTIAL_ALIVE.value
         elif all(receipt.standing is CapabilityStanding.UNSUPPORTED for receipt in receipts):
             aggregate = CapabilityStanding.UNSUPPORTED.value
         else:
@@ -254,13 +304,45 @@ class CapabilityRegistry:
         )
 
 
+def artifact_receipt(path: Path) -> dict[str, Any]:
+    """Create a deterministic receipt for one regular file."""
+
+    if not path.is_file():
+        raise ValueError(f"artifact is not a regular file: {path}")
+    data = path.read_bytes()
+    payload = {
+        "algorithm": "sha256",
+        "path": str(path),
+        "size": len(data),
+        "digest": sha256(data).hexdigest(),
+    }
+    identity = {
+        "algorithm": payload["algorithm"],
+        "size": payload["size"],
+        "digest": payload["digest"],
+    }
+    canonical = json.dumps(identity, sort_keys=True, separators=(",", ":"))
+    payload["receipt_id"] = sha256(canonical.encode("utf-8")).hexdigest()
+    return payload
+
+
+def verify_artifact_receipt(path: Path, expected_digest: str) -> bool:
+    """Verify an artifact against an expected SHA-256 digest."""
+
+    return artifact_receipt(path)["digest"] == expected_digest.lower()
+
+
 def render_receipts_json(registries: Mapping[str, CapabilityRegistry]) -> str:
     """Render multiple registry reports in a stable machine-readable envelope."""
 
     reports = {name: registry.report() for name, registry in sorted(registries.items())}
-    standing = (
-        "ALIVE"
-        if all(report["standing"] == "ALIVE" for report in reports.values())
-        else "PARTIAL_ALIVE"
-    )
+    if reports and all(report["standing"] == CapabilityStanding.ALIVE.value for report in reports.values()):
+        standing = CapabilityStanding.ALIVE.value
+    elif any(
+        report["standing"] in {CapabilityStanding.ALIVE.value, CapabilityStanding.PARTIAL_ALIVE.value}
+        for report in reports.values()
+    ):
+        standing = CapabilityStanding.PARTIAL_ALIVE.value
+    else:
+        standing = CapabilityStanding.UNKNOWN.value
     return json.dumps({"standing": standing, "registries": reports}, indent=2, sort_keys=True)
