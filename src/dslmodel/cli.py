@@ -1,281 +1,165 @@
-"""dslmodel CLI."""
+"""DSLModel CLI with independently admitted capability surfaces."""
 
+from __future__ import annotations
+
+import json
+import os
 from pathlib import Path
+from typing import Annotated
 
-from dslmodel.utils.dspy_tools import init_lm
-from dslmodel.utils.json_output import set_json_mode, json_command
 import typer
-from rich import print
-from typing_extensions import Annotated
+from rich.console import Console
+from rich.table import Table
 
-from dslmodel import init_instant
-from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
-from dslmodel.template import render
-from dslmodel.commands import slidev, forge, autonomous, swarm, thesis_cli, demo, capability_map, validate_otel, ollama_validate, weaver, validate_weaver, worktree, telemetry_cli, weaver_health_check, redteam, validation_loop, swarm_worktree, agent_coordination_cli, evolution, auto_evolution, evolution_worktree, complete_8020_validation, unified_evolution_cli, unified_8020_evolution, consolidated_cli, ollama_autonomous, system_introspection, disc_autonomous, weaver_diagrams, disc_integrated_auto, weaver_autonomous_loop, multilayer_weaver_feedback, otel_learning_engine, health_8020_improvement, claude_code_otel_monitoring, gap_analysis_8020, swarm_sh_5one
-try:
-    from dslmodel.commands import pqc
-    PQC_AVAILABLE = True
-except ImportError:
-    PQC_AVAILABLE = False
-try:
-    from dslmodel.commands import otel_coordination_cli
-    OTEL_AVAILABLE = True
-except ImportError:
-    OTEL_AVAILABLE = False
+from dslmodel.capabilities import (
+    CapabilityRegistry,
+    CapabilitySpec,
+    CapabilityStanding,
+)
+from dslmodel.generators.openapi_models import (
+    OpenAPIGenerationError,
+    generate_openapi_models,
+)
 
-app = typer.Typer()
+console = Console()
+app = typer.Typer(
+    help="DSLModel — deterministic model manufacture and independently admitted capabilities.",
+    no_args_is_help=True,
+)
+registry = CapabilityRegistry()
 
-# Global JSON flag callback
-def json_callback(value: bool):
-    if value:
-        set_json_mode(True)
 
-# Add global --json option
+ROOT_CAPABILITIES = (
+    CapabilitySpec("dsl", "dslmodel.commands.consolidated_cli", "Consolidated ERRC command surface", group="core", required=True),
+    CapabilitySpec("slidev", "dslmodel.commands.slidev", "Slidev presentation tools", group="research"),
+    CapabilitySpec("forge", "dslmodel.commands.forge", "Weaver Forge workflow commands", group="development"),
+    CapabilitySpec("auto", "dslmodel.commands.autonomous", "Autonomous Decision Engine", group="agents"),
+    CapabilitySpec("swarm", "dslmodel.commands.swarm", "SwarmAgent coordination", group="agents"),
+    CapabilitySpec("thesis", "dslmodel.commands.thesis_cli", "SwarmSH thesis tools", group="research"),
+    CapabilitySpec("demo", "dslmodel.commands.demo", "Full-cycle demonstrations", group="core"),
+    CapabilitySpec("capability", "dslmodel.commands.capability_map", "Capability mapping", group="research"),
+    CapabilitySpec("validate", "dslmodel.commands.validate_otel", "OpenTelemetry validation", group="validation"),
+    CapabilitySpec("validate-weaver", "dslmodel.commands.validate_weaver", "Weaver validation", group="validation"),
+    CapabilitySpec("validation-loop", "dslmodel.commands.validation_loop", "Continuous validation", group="validation"),
+    CapabilitySpec("ollama", "dslmodel.commands.ollama_validate", "Ollama validation", group="runtime"),
+    CapabilitySpec("ollama-auto", "dslmodel.commands.ollama_autonomous", "Autonomous Ollama repair", group="runtime"),
+    CapabilitySpec("disc-auto", "dslmodel.commands.disc_autonomous", "DISC compensation", group="agents"),
+    CapabilitySpec("disc-integrated", "dslmodel.commands.disc_integrated_auto", "DISC-integrated decisions", group="agents"),
+    CapabilitySpec("weaver", "dslmodel.commands.weaver", "Weaver semantic conventions", group="development"),
+    CapabilitySpec("weaver-health", "dslmodel.commands.weaver_health_check", "Weaver health checks", group="validation"),
+    CapabilitySpec("worktree", "dslmodel.commands.worktree", "Git worktree management", group="development"),
+    CapabilitySpec("swarm-worktree", "dslmodel.commands.swarm_worktree", "Swarm worktree coordination", group="agents"),
+    CapabilitySpec("telemetry", "dslmodel.commands.telemetry_cli", "Telemetry monitoring", group="telemetry"),
+    CapabilitySpec("redteam", "dslmodel.commands.redteam", "Security validation", group="security"),
+    CapabilitySpec("agents", "dslmodel.commands.agent_coordination_cli", "Agent coordination", group="agents"),
+    CapabilitySpec("evolve", "dslmodel.commands.unified_8020_evolution", "Unified 80/20 evolution", group="evolution"),
+    CapabilitySpec("evolve-unified", "dslmodel.commands.unified_evolution_cli", "Unified evolution", group="evolution"),
+    CapabilitySpec("evolve-legacy", "dslmodel.commands.evolution", "Legacy evolution", group="evolution"),
+    CapabilitySpec("auto-evolve", "dslmodel.commands.auto_evolution", "Automatic evolution", group="evolution"),
+    CapabilitySpec("evolve-worktree", "dslmodel.commands.evolution_worktree", "Worktree evolution", group="evolution"),
+    CapabilitySpec("8020", "dslmodel.commands.complete_8020_validation", "Complete 80/20 validation", group="validation"),
+    CapabilitySpec("introspect", "dslmodel.commands.system_introspection", "System introspection", group="research"),
+    CapabilitySpec("weaver-diagrams", "dslmodel.commands.weaver_diagrams", "Weaver diagrams", group="research"),
+    CapabilitySpec("weaver-loop", "dslmodel.commands.weaver_autonomous_loop", "Weaver autonomous loop", group="evolution"),
+    CapabilitySpec("weaver-multilayer", "dslmodel.commands.multilayer_weaver_feedback", "Multilayer Weaver feedback", group="evolution"),
+    CapabilitySpec("otel-learn", "dslmodel.commands.otel_learning_engine", "OTEL learning", group="telemetry"),
+    CapabilitySpec("health-8020", "dslmodel.commands.health_8020_improvement", "80/20 health improvement", group="validation"),
+    CapabilitySpec("otel-monitor", "dslmodel.commands.claude_code_otel_monitoring", "Claude Code OTEL monitoring", group="telemetry"),
+    CapabilitySpec("gap-8020", "dslmodel.commands.gap_analysis_8020", "80/20 gap analysis", group="validation"),
+    CapabilitySpec("5one", "dslmodel.commands.swarm_sh_5one", "Swarm SH 5-ONE", group="agents"),
+    CapabilitySpec("pqc", "dslmodel.commands.pqc", "Post-quantum cryptography", group="security"),
+    CapabilitySpec("otel", "dslmodel.commands.otel_coordination_cli", "OTEL coordination", group="telemetry"),
+    CapabilitySpec("forge-dx", "dslmodel.commands.weaver_forge_dx_loop", "Forge developer-experience loop", group="development"),
+)
+
+
 @app.callback()
 def main(
-    json_output: bool = typer.Option(
-        False,
-        "--json",
-        help="Output results in JSON format",
-        callback=json_callback,
-        is_eager=True
-    )
-):
-    """DSLModel CLI - Telemetry-driven development platform."""
-    pass
+    json_output: bool = typer.Option(False, "--json", help="Emit machine-readable output where supported."),
+) -> None:
+    """Initialize the DSLModel command surface without importing optional capabilities globally."""
 
-# app.add_typer(name="asyncapi", typer_instance=asyncapi.app)
-app.add_typer(name="slidev", typer_instance=slidev.app)
-# app.add_typer(name="coord", typer_instance=coordination_cli.app, help="Agent coordination system")
-if PQC_AVAILABLE:
-    app.add_typer(name="pqc", typer_instance=pqc.app, help="Post-Quantum Cryptography commands")
-if OTEL_AVAILABLE:
-    app.add_typer(name="otel", typer_instance=otel_coordination_cli.app, help="OTEL-enhanced coordination system")
-app.add_typer(name="forge", typer_instance=forge.app, help="Weaver Forge workflow commands")
-app.add_typer(name="auto", typer_instance=autonomous.app, help="Autonomous Decision Engine")
-app.add_typer(name="swarm", typer_instance=swarm.app, help="SwarmAgent coordination and management")
-app.add_typer(name="thesis", typer_instance=thesis_cli.app, help="SwarmSH thesis implementation and demo")
-app.add_typer(name="demo", typer_instance=demo.app, help="Automated full cycle demonstrations")
-app.add_typer(name="capability", typer_instance=capability_map.app, help="SwarmAgent capability mapping and visualization")
-app.add_typer(name="validate", typer_instance=validate_otel.app, help="Concurrent OpenTelemetry validation and testing")
-app.add_typer(name="validate-weaver", typer_instance=validate_weaver.app, help="Weaver-first OpenTelemetry validation using semantic conventions")
-app.add_typer(name="validation-loop", typer_instance=validation_loop.app, help="Continuous SwarmAgent validation loop with auto-remediation")
-app.add_typer(name="ollama", typer_instance=ollama_validate.app, help="Ollama configuration validation and management")
-app.add_typer(name="ollama-auto", typer_instance=ollama_autonomous.app, help="🤖 Autonomous Ollama system - gap detection and self-healing")
-app.add_typer(name="disc-auto", typer_instance=disc_autonomous.app, help="🧠 DISC autonomous compensation - behavioral gap detection and compensation")
-app.add_typer(name="disc-integrated", typer_instance=disc_integrated_auto.app, help="🤝 DISC-integrated autonomous system - decisions with behavioral compensation")
-app.add_typer(name="weaver", typer_instance=weaver.app, help="Weaver-first auto-generation from semantic conventions")
-app.add_typer(name="weaver-health", typer_instance=weaver_health_check.app, help="Weaver global health checks with Ollama validation")
-app.add_typer(name="worktree", typer_instance=worktree.app, help="Git worktree management for exclusive worktree development")
-app.add_typer(name="swarm-worktree", typer_instance=swarm_worktree.app, help="SwarmAgent worktree coordination with OTEL telemetry")
-app.add_typer(name="telemetry", typer_instance=telemetry_cli.app, help="Real-time telemetry, auto-remediation, and security monitoring")
-app.add_typer(name="redteam", typer_instance=redteam.app, help="Automated red team security testing and vulnerability assessment")
-app.add_typer(name="agents", typer_instance=agent_coordination_cli.app, help="Agent coordination with exclusive worktrees and OTEL communication")
-# ============================================================================
-# NEW: Consolidated 8020 CLI Structure (5 commands replace 20+)
-# ============================================================================
-# Simple consolidated commands - use the main app from consolidated_cli
-app.add_typer(name="dsl", typer_instance=consolidated_cli.app, help="🎯 Consolidated CLI - Core and Advanced commands")
-
-# ============================================================================
-# LEGACY: Keep for backward compatibility (will be deprecated)
-# ============================================================================
-app.add_typer(name="evolve", typer_instance=unified_8020_evolution.app, help="Ultimate 8020 Evolution System - Evolution + Validation + Learning")
-app.add_typer(name="evolve-unified", typer_instance=unified_evolution_cli.app, help="Unified Evolution System - All capabilities in one interface") 
-app.add_typer(name="evolve-legacy", typer_instance=evolution.app, help="Legacy autonomous evolution system")
-app.add_typer(name="auto-evolve", typer_instance=auto_evolution.app, help="Automatic evolution with SwarmAgent integration")
-app.add_typer(name="evolve-worktree", typer_instance=evolution_worktree.app, help="Worktree-based evolution with OTEL telemetry")
-app.add_typer(name="8020", typer_instance=complete_8020_validation.app, help="Complete 8020 SwarmAgent feature validation and demonstration")
-app.add_typer(name="introspect", typer_instance=system_introspection.app, help="🔍 System introspection - echo internal structure and architecture")
-app.add_typer(name="weaver-diagrams", typer_instance=weaver_diagrams.app, help="🧵 Weaver architecture diagrams - visualize all Weaver aspects")
-app.add_typer(name="weaver-loop", typer_instance=weaver_autonomous_loop.app, help="🔄 Weaver autonomous loop - 10-minute feature completion cycles")
-app.add_typer(name="weaver-multilayer", typer_instance=multilayer_weaver_feedback.app, help="🧵 Multi-layer Weaver validation with feedback loops and self-improvement")
-app.add_typer(name="otel-learn", typer_instance=otel_learning_engine.app, help="🧠 OTEL Learning Engine - Feed telemetry data to language models")
-app.add_typer(name="health-8020", typer_instance=health_8020_improvement.app, help="🎯 80/20 Health Improvement - Optimize system health using Pareto Principle")
-app.add_typer(name="otel-monitor", typer_instance=claude_code_otel_monitoring.app, help="🔍 Claude Code OTEL monitoring and gap detection")
-app.add_typer(name="gap-8020", typer_instance=gap_analysis_8020.app, help="🔍 80/20 Gap Analysis - Identify and close system gaps using OTEL monitoring")
-app.add_typer(name="5one", typer_instance=swarm_sh_5one.app, help="🚀 Swarm SH 5-ONE: Git-Native Hyper-Intelligence Platform")
-try:
-    from dslmodel.commands import weaver_forge_dx_loop
-    app.add_typer(name="forge-dx", typer_instance=weaver_forge_dx_loop.app, help="🔄 Weaver Forge Git Agent Auto DX Loop")
-except ImportError:
-    pass  # forge-dx not available due to missing dependencies
-
-
-# ============================================================================  
-# CONSOLIDATION HELPER COMMANDS
-# ============================================================================
-
-@app.command("consolidation")
-def show_consolidation_info():
-    """Show information about the new consolidated CLI structure"""
-    from rich.console import Console
-    from rich.panel import Panel
-    
-    console = Console()
-    console.print("🧬 DSLModel CLI Consolidation")
-    console.print("=" * 35)
-    
-    console.print(Panel(
-        "🎯 **New Consolidated Structure**:\n\n"
-        "Use `dsl dsl <command>` for consolidated interface:\n"
-        "• `dsl dsl status` - Show consolidated CLI status\n"
-        "• `dsl dsl core gen` - Generate models\n"
-        "• `dsl dsl core evolve ultimate` - Ultimate evolution\n"
-        "• `dsl dsl core agent coordinate` - Agent coordination\n"
-        "• `dsl dsl core validate 8020` - 8020 validation\n"
-        "• `dsl dsl core dev forge` - Development tools\n"
-        "• `dsl dsl migrate` - See full migration guide\n\n"
-        "**Benefits**: 25+ commands → 6 core commands\n"
-        "**Principle**: 80/20 usage optimization",
-        title="📊 Consolidated CLI",
-        border_style="blue"
-    ))
-
-
-@app.command("migrate")  
-def show_migration_guide():
-    """Show migration guide to consolidated commands"""
-    from rich.console import Console
-    from rich.table import Table
-    from rich.panel import Panel
-    
-    console = Console()
-    console.print("🔄 Command Migration Guide")
-    console.print("=" * 30)
-    
-    migration_table = Table(title="📋 Old → New Command Mapping")
-    migration_table.add_column("Current Command", style="red")
-    migration_table.add_column("New Consolidated Command", style="green")
-    migration_table.add_column("Category", style="yellow")
-    
-    migrations = [
-        ("dsl gen", "dsl dsl core gen", "Generation"),
-        ("dsl evolve", "dsl dsl core evolve ultimate", "Evolution"),
-        ("dsl agents", "dsl dsl core agent coordinate", "Agents"),
-        ("dsl validate", "dsl dsl core validate otel", "Validation"),
-        ("dsl 8020", "dsl dsl core validate 8020", "Validation"),
-        ("dsl forge", "dsl dsl core dev forge", "Development"),
-        ("dsl weaver", "dsl dsl core dev weaver", "Development"),
-        ("dsl worktree", "dsl dsl core dev worktree", "Development"),
-        ("dsl demo", "dsl dsl core demo full-cycle", "Demo"),
-        ("dsl redteam", "dsl dsl advanced security redteam", "Security"),
-        ("dsl telemetry", "dsl dsl advanced telemetry monitor", "Monitoring"),
-        ("dsl thesis", "dsl dsl advanced research thesis", "Research")
-    ]
-    
-    for old, new, category in migrations:
-        migration_table.add_row(old, new, category)
-    
-    console.print(migration_table)
-    
-    console.print(Panel(
-        "💡 **Quick Access**:\n"
-        "• Use `dsl dsl --help` to see all consolidated options\n"
-        "• Use `dsl consolidation` for structure overview\n"
-        "• Legacy commands still work but are deprecated",
-        title="🚀 Getting Started",
-        border_style="green"
-    ))
+    if json_output:
+        os.environ["DSLMODEL_JSON"] = "1"
+        try:
+            from dslmodel.utils.json_output import set_json_mode
+        except (ImportError, ModuleNotFoundError):
+            return
+        set_json_mode(True)
 
 
 @app.command("gen")
 def generate_class(
-        prompt: str = typer.Argument(
-            ..., help="A natural language description of the model(s) to generate."
-        ),
-        output_dir: Path = typer.Option(
-            Path.cwd(),
-            "--output-dir",
-            help="The directory to save the generated class files. Defaults to the current directory.",
-        ),
-        file_format: str = typer.Option(
-            "py",
-            "--file-format",
-            help="The file format for saving the generated models. Defaults to 'py'.",
-        ),
-        config: Path = typer.Option(None, "--config", help="Path to a custom configuration file."),
-        model: Annotated[str, "model to use."] = "groq/llama-3.2-90b-text-preview",
-):
-    """
-    Generate DSLModel-based classes from a natural language prompt.
+    prompt: str = typer.Argument(..., help="Natural-language model description."),
+    output_dir: Path = typer.Option(Path.cwd(), "--output-dir", help="Destination directory."),
+    file_format: str = typer.Option("py", "--file-format", help="Generated file format."),
+    config: Path | None = typer.Option(None, "--config", help="Optional generator configuration."),
+    model: Annotated[str, typer.Option("--model", help="Language model identifier.")] = "groq/llama-3.2-90b-text-preview",
+) -> None:
+    """Generate DSLModel classes through the existing LLM-backed generator."""
 
-    The generated classes are saved to the specified directory in the chosen format.
-    """
-    with json_command("gen") as formatter:
-        formatter.add_data("prompt", prompt)
-        formatter.add_data("output_dir", str(output_dir))
-        formatter.add_data("file_format", file_format)
-        formatter.add_data("model", model)
-        
-        formatter.print(f"Generating class from prompt: '{prompt}'")
-        from dslmodel.utils.dspy_tools import init_instant
+    try:
+        from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
+        from dslmodel.utils.dspy_tools import init_lm
+    except (ImportError, ModuleNotFoundError) as exc:
+        console.print(f"[red]REFUSED:GENERATOR_UNAVAILABLE[/red] {exc}")
+        raise typer.Exit(2) from exc
 
-        init_lm(model=model)
-        # init_instant()
-
-        # Delegate the core logic to the generate_and_save_dslmodel function
-        try:
-            _, output_file = generate_and_save_dslmodel(prompt, output_dir, file_format, config)
-            formatter.add_data("output_file", str(output_file))
-            formatter.add_data("generation_successful", True)
-            formatter.print(f"Class generated successfully! Saved in: {output_file}.")
-        except Exception as e:
-            formatter.add_error(f"Error generating class: {e}")
-            formatter.print(f"Error generating class: {e}", level="error")
-            raise typer.Exit(code=1)
-
-
-import json
-from pathlib import Path
-
-import typer
-import yaml
-
-
-@app.command("openapi", help="Generate Pydantic models from an OpenAPI schema.")
-def generate_models(openapi_file: Path = Path("openapi.yaml"), output_dir: Path = Path(".")):
-    # Ensure the output directory exists
     output_dir.mkdir(parents=True, exist_ok=True)
+    init_lm(model=model)
+    try:
+        _, output_file = generate_and_save_dslmodel(prompt, output_dir, file_format, config)
+    except Exception as exc:
+        console.print(f"[red]BUILD_BROKEN[/red] {exc}")
+        raise typer.Exit(1) from exc
+    console.print(f"[green]ALIVE[/green] {output_file}")
 
-    # Load the OpenAPI file
-    with open(openapi_file) as file:
-        if openapi_file.suffix in [".yaml", ".yml"]:
-            openapi_data = yaml.safe_load(file)
-        elif openapi_file.suffix == ".json":
-            openapi_data = json.load(file)
-        else:
-            typer.echo("Unsupported file format. Use YAML or JSON.")
-            raise typer.Exit()
 
-    # Process each schema in OpenAPI
-    schemas = openapi_data.get("components", {}).get("schemas", {})
-    if not schemas:
-        typer.echo("No schemas found in the OpenAPI file.")
-        raise typer.Exit()
+@app.command("openapi")
+def openapi(
+    openapi_file: Path = typer.Argument(..., exists=True, readable=True, help="OpenAPI JSON or YAML document."),
+    output_file: Path = typer.Option(Path("models.py"), "--output", "-o", help="Generated Python module."),
+) -> None:
+    """Generate all component schemas as deterministic Pydantic v2 models."""
 
-    init_instant()
+    try:
+        generated = generate_openapi_models(openapi_file, output_file)
+    except OpenAPIGenerationError as exc:
+        console.print(f"[red]REFUSED:OPENAPI_NOT_ADMITTED[/red] {exc}")
+        raise typer.Exit(2) from exc
+    console.print(f"[green]ALIVE[/green] {generated}")
 
-    for schema_name, schema in schemas.items():
-        if schema_name != "Pet":
-            continue
-        print(schema)
-        # Render the model
-        jinja_template = """I need a DSLModel called {{ schema_name }} with the following fields:
-        {% for field_name, field_info in swagger['properties'].items() %}
-            {{ field_name }}: {{ field_info['type'] }} = Field(..., description="{{ field_info.get('description', '') }}")
-        {% endfor %}
-        """
-        prompt = render(jinja_template, schema_name=schema_name, swagger=schema)
-        from dslmodel.generators.dsl_class_generator import DSLClassGenerator
 
-        DSLClassGenerator(prompt, max_workers=3)()
+@app.command("doctor")
+def doctor(
+    as_json: bool = typer.Option(False, "--json", help="Emit JSON receipts."),
+    strict: bool = typer.Option(False, "--strict", help="Fail when a required capability is not ALIVE."),
+    include_alive: bool = typer.Option(False, "--all", help="Show ALIVE capabilities as well as failures."),
+) -> None:
+    """Report exact import and mount standing for every advertised command."""
 
-        from time import sleep
+    report = registry.report()
+    if as_json or os.getenv("DSLMODEL_JSON") == "1":
+        typer.echo(json.dumps(report, indent=2, sort_keys=True))
+    else:
+        table = Table(title=f"DSLModel capability standing: {report['standing']}")
+        table.add_column("Capability")
+        table.add_column("Group")
+        table.add_column("Standing")
+        table.add_column("Evidence")
+        for receipt in registry.receipts:
+            if not include_alive and receipt.standing is CapabilityStanding.ALIVE:
+                continue
+            evidence = receipt.reason or ("mounted" if receipt.mounted else "imported")
+            table.add_row(receipt.name, receipt.group, receipt.standing.value, evidence)
+        console.print(table)
+        counts = ", ".join(f"{key}={value}" for key, value in report["counts"].items() if value)
+        console.print(counts)
+    if strict and registry.required_failures():
+        raise typer.Exit(1)
 
-        sleep(1)
 
-        typer.echo(f"Generated Pydantic model for '{schema_name}'")
+registry.mount_all(app, ROOT_CAPABILITIES)
 
 
 if __name__ == "__main__":
