@@ -84,7 +84,7 @@ class OpenAPIModelGenerator:
     ) -> tuple[dict[str, Any], set[str], Any]:
         properties: dict[str, Any] = {}
         required: set[str] = set()
-        additional: Any = schema.get("additionalProperties", False)
+        additional: Any = schema.get("additionalProperties", True)
 
         ref = schema.get("$ref")
         if isinstance(ref, str):
@@ -102,7 +102,9 @@ class OpenAPIModelGenerator:
             )
             properties.update(part_properties)
             required.update(part_required)
-            if part_additional is not False:
+            if part_additional is False:
+                additional = False
+            elif isinstance(part_additional, Mapping):
                 additional = part_additional
 
         direct_properties = schema.get("properties", {}) or {}
@@ -206,31 +208,56 @@ class OpenAPIModelGenerator:
             else:
                 raise OpenAPIGenerationError(f"unsupported schema type: {schema_type!r}")
 
+        constraints = self._constraint_arguments(schema)
+        if constraints and result not in {"Any", "None"}:
+            self.imports.add("Annotated")
+            result = f"Annotated[{result}, Field({', '.join(constraints)})]"
         if schema.get("nullable") and "None" not in result:
             result = f"{result} | None"
         return result
+
+    @staticmethod
+    def _constraint_arguments(schema: Mapping[str, Any]) -> list[str]:
+        arguments: list[str] = []
+        for source, target in {
+            "minLength": "min_length",
+            "maxLength": "max_length",
+            "pattern": "pattern",
+            "minItems": "min_length",
+            "maxItems": "max_length",
+        }.items():
+            if source in schema:
+                arguments.append(f"{target}={schema[source]!r}")
+
+        minimum = schema.get("minimum")
+        exclusive_minimum = schema.get("exclusiveMinimum")
+        if isinstance(exclusive_minimum, bool):
+            if minimum is not None:
+                arguments.append(f"{'gt' if exclusive_minimum else 'ge'}={minimum!r}")
+        elif exclusive_minimum is not None:
+            arguments.append(f"gt={exclusive_minimum!r}")
+        elif minimum is not None:
+            arguments.append(f"ge={minimum!r}")
+
+        maximum = schema.get("maximum")
+        exclusive_maximum = schema.get("exclusiveMaximum")
+        if isinstance(exclusive_maximum, bool):
+            if maximum is not None:
+                arguments.append(f"{'lt' if exclusive_maximum else 'le'}={maximum!r}")
+        elif exclusive_maximum is not None:
+            arguments.append(f"lt={exclusive_maximum!r}")
+        elif maximum is not None:
+            arguments.append(f"le={maximum!r}")
+        return arguments
 
     @staticmethod
     def _field_arguments(schema: Mapping[str, Any], alias: str | None) -> list[str]:
         arguments: list[str] = []
         if alias:
             arguments.append(f"alias={alias!r}")
-        mapping = {
-            "description": "description",
-            "title": "title",
-            "minimum": "ge",
-            "exclusiveMinimum": "gt",
-            "maximum": "le",
-            "exclusiveMaximum": "lt",
-            "minLength": "min_length",
-            "maxLength": "max_length",
-            "pattern": "pattern",
-            "minItems": "min_length",
-            "maxItems": "max_length",
-        }
-        for source, target in mapping.items():
-            if source in schema and not isinstance(schema[source], bool):
-                arguments.append(f"{target}={schema[source]!r}")
+        for source in ("description", "title"):
+            if source in schema:
+                arguments.append(f"{source}={schema[source]!r}")
         return arguments
 
     def _render_enum(self, name: str, schema: Mapping[str, Any]) -> str:
@@ -265,29 +292,33 @@ class OpenAPIModelGenerator:
             return self._render_root_model(name, schema)
 
         properties, required, additional = self._flatten_object(schema)
+        if not properties and isinstance(additional, Mapping):
+            return self._render_root_model(name, {"type": "object", "additionalProperties": additional})
+
         self.model_names.append(name)
         lines = [f"class {name}(BaseModel):"]
+        extra_mode = "forbid" if additional is False else "allow"
+        lines.append(f"    model_config = {{'extra': {extra_mode!r}, 'populate_by_name': True}}")
         if not properties:
-            if additional is not False:
-                lines.append("    model_config = {'extra': 'allow'}")
-            else:
-                lines.append("    pass")
             return "\n".join(lines)
+
+        if isinstance(additional, Mapping):
+            lines.append(
+                f"    __pydantic_extra__: dict[str, {self._type_for(additional)}] = Field(init=False)"
+            )
 
         for raw_field, field_schema in properties.items():
             if not isinstance(field_schema, Mapping):
                 raise OpenAPIGenerationError(f"property {raw_name}.{raw_field} must be an object")
             field_name, alias = _field_name(str(raw_field))
             annotation = self._type_for(field_schema)
-            is_required = raw_field in required and "default" not in field_schema
+            is_required = raw_field in required
             if not is_required and "None" not in annotation:
                 annotation = f"{annotation} | None"
             default = "..." if is_required else repr(field_schema.get("default", None))
             arguments = self._field_arguments(field_schema, alias)
             field_call = ", ".join([default, *arguments])
             lines.append(f"    {field_name}: {annotation} = Field({field_call})")
-        if additional is not False:
-            lines.append("\n    model_config = {'extra': 'allow'}")
         return "\n".join(lines)
 
     def render(self) -> str:
@@ -309,7 +340,7 @@ class OpenAPIModelGenerator:
             import_lines.append(f"from datetime import {names}")
         if "Enum" in self.imports:
             import_lines.append("from enum import Enum")
-        typing_names = sorted({"Any", "Literal"} & self.imports)
+        typing_names = sorted({"Annotated", "Any", "Literal"} & self.imports)
         if typing_names:
             import_lines.append(f"from typing import {', '.join(typing_names)}")
         if "UUID" in self.imports:
