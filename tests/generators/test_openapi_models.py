@@ -141,3 +141,82 @@ def test_colliding_python_class_names_are_refused() -> None:
     }
     with pytest.raises(OpenAPIGenerationError, match="duplicate Python identifiers"):
         OpenAPIModelGenerator(document).render()
+
+
+def test_additional_properties_semantics_are_preserved() -> None:
+    document = {
+        "components": {
+            "schemas": {
+                "OpenObject": {
+                    "type": "object",
+                    "properties": {"name": {"type": "string"}},
+                },
+                "ClosedObject": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "properties": {"name": {"type": "string"}},
+                },
+                "Counters": {
+                    "type": "object",
+                    "additionalProperties": {"type": "integer", "minimum": 0},
+                },
+            }
+        }
+    }
+    namespace: dict = {}
+    exec(compile(OpenAPIModelGenerator(document).render(), "extra_models.py", "exec"), namespace)
+
+    assert namespace["OpenObject"](name="x", extra=1).model_extra == {"extra": 1}
+    with pytest.raises(ValidationError):
+        namespace["ClosedObject"](name="x", extra=1)
+    assert namespace["Counters"]({"ok": 1}).root == {"ok": 1}
+    with pytest.raises(ValidationError):
+        namespace["Counters"]({"bad": -1})
+
+
+def test_required_property_with_default_remains_required() -> None:
+    document = {
+        "components": {
+            "schemas": {
+                "RequiredDefault": {
+                    "type": "object",
+                    "required": ["mode"],
+                    "properties": {"mode": {"type": "string", "default": "safe"}},
+                }
+            }
+        }
+    }
+    namespace: dict = {}
+    exec(compile(OpenAPIModelGenerator(document).render(), "required_models.py", "exec"), namespace)
+    with pytest.raises(ValidationError):
+        namespace["RequiredDefault"]()
+    assert namespace["RequiredDefault"](mode="safe").mode == "safe"
+
+
+def test_openapi_30_boolean_exclusive_bounds() -> None:
+    document = {
+        "components": {
+            "schemas": {
+                "Range": {
+                    "type": "object",
+                    "required": ["value"],
+                    "properties": {
+                        "value": {
+                            "type": "number",
+                            "minimum": 0,
+                            "exclusiveMinimum": True,
+                            "maximum": 10,
+                            "exclusiveMaximum": True,
+                        }
+                    },
+                }
+            }
+        }
+    }
+    namespace: dict = {}
+    exec(compile(OpenAPIModelGenerator(document).render(), "range_models.py", "exec"), namespace)
+    assert namespace["Range"](value=5).value == 5
+    with pytest.raises(ValidationError):
+        namespace["Range"](value=0)
+    with pytest.raises(ValidationError):
+        namespace["Range"](value=10)
