@@ -111,13 +111,23 @@ def openapi(
 @app.command("status")
 def status(
     as_json: bool = typer.Option(False, "--json"),
-    strict: bool = typer.Option(False, "--strict"),
+    strict: bool = typer.Option(False, "--strict", help="Fail when any advertised capability is not ALIVE."),
     include_alive: bool = typer.Option(False, "--all"),
 ) -> None:
     """Show per-capability import/mount standing and deterministic receipt IDs."""
 
     report = {name: registry.report() for name, registry in sorted(registries.items())}
-    overall = "ALIVE" if all(item["standing"] == "ALIVE" for item in report.values()) else "PARTIAL_ALIVE"
+    group_standings = {item["standing"] for item in report.values()}
+    if group_standings == {CapabilityStanding.ALIVE.value}:
+        overall = CapabilityStanding.ALIVE.value
+    elif CapabilityStanding.ALIVE.value in group_standings or CapabilityStanding.PARTIAL_ALIVE.value in group_standings:
+        overall = CapabilityStanding.PARTIAL_ALIVE.value
+    elif CapabilityStanding.BUILD_BROKEN.value in group_standings:
+        overall = CapabilityStanding.BUILD_BROKEN.value
+    elif group_standings == {CapabilityStanding.UNSUPPORTED.value}:
+        overall = CapabilityStanding.UNSUPPORTED.value
+    else:
+        overall = CapabilityStanding.UNKNOWN.value
     payload = {"standing": overall, "groups": report}
     if as_json:
         typer.echo(json.dumps(payload, indent=2, sort_keys=True))
@@ -140,7 +150,7 @@ def status(
                     receipt.reason or ("mounted" if receipt.mounted else "imported"),
                 )
         console.print(table)
-    if strict and any(registry.required_failures() for registry in registries.values()):
+    if strict and overall != CapabilityStanding.ALIVE.value:
         raise typer.Exit(1)
 
 
