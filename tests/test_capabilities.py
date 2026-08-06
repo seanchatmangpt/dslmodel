@@ -74,5 +74,23 @@ def test_required_failure_controls_registry_standing() -> None:
     registry.probe(CapabilitySpec("required", "example.required", "required", required=True))
 
     report = registry.report()
-    assert report["standing"] == "PARTIAL_ALIVE"
+    assert report["standing"] == "UNSUPPORTED"
     assert report["required_failures"][0]["name"] == "required"
+
+
+def test_registry_aggregate_never_crowns_partial_surface() -> None:
+    healthy = ModuleType("healthy")
+    healthy.app = typer.Typer()
+
+    def importer(name: str) -> ModuleType:
+        if name == "example.healthy":
+            return healthy
+        error = ModuleNotFoundError("No module named 'missing_dep'")
+        error.name = "missing_dep"
+        raise error
+
+    registry = CapabilityRegistry(importer=importer)
+    registry.mount(typer.Typer(), CapabilitySpec("healthy", "example.healthy", "healthy"))
+    registry.probe(CapabilitySpec("missing", "example.missing", "missing"))
+
+    assert registry.report()["standing"] == "PARTIAL_ALIVE"
