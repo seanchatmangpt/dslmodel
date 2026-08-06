@@ -133,7 +133,7 @@ def openapi(
 @app.command("doctor")
 def doctor(
     as_json: bool = typer.Option(False, "--json", help="Emit JSON receipts."),
-    strict: bool = typer.Option(False, "--strict", help="Fail when a required capability is not ALIVE."),
+    strict: bool = typer.Option(False, "--strict", help="Fail when any advertised capability is not ALIVE."),
     include_alive: bool = typer.Option(False, "--all", help="Show ALIVE capabilities as well as failures."),
 ) -> None:
     """Report exact import and mount standing for every advertised command."""
@@ -155,7 +155,7 @@ def doctor(
         console.print(table)
         counts = ", ".join(f"{key}={value}" for key, value in report["counts"].items() if value)
         console.print(counts)
-    if strict and registry.required_failures():
+    if strict and report["standing"] != CapabilityStanding.ALIVE.value:
         raise typer.Exit(1)
 
 
