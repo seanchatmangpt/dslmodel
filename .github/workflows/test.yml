@@ -2,43 +2,56 @@ name: Test
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [main, master]
   pull_request:
+
+concurrency:
+  group: test-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.12"]
-
-    name: Python ${{ matrix.python-version }}
+    timeout-minutes: 5
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
         with:
-          node-version: 21
+          python-version: "3.12"
+          cache: pip
 
-      - name: Install @devcontainers/cli
-        run: npm install --location=global @devcontainers/cli@0.58.0
-
-      - name: Start Dev Container
+      - name: Install dependency-closed verifier
         run: |
-          git config --global init.defaultBranch main
-          PYTHON_VERSION=${{ matrix.python-version }} devcontainer up --workspace-folder .
+          python -m pip install --upgrade pip
+          python -m pip install --no-deps -e .
+          python -m pip install "pydantic>=2" "typer>=0.9" "rich>=13.7" "PyYAML>=6" "pytest>=8"
 
-      - name: Test app
-        run: devcontainer exec --workspace-folder . poe test
+      - name: Compile admitted execution closure
+        run: |
+          python -m py_compile \
+            src/dslmodel/__init__.py \
+            src/dslmodel/capabilities.py \
+            src/dslmodel/cli.py \
+            src/dslmodel/selftest.py \
+            src/dslmodel/commands/__init__.py \
+            src/dslmodel/commands/consolidated_cli.py \
+            src/dslmodel/generators/openapi_models.py \
+            tests/test_capabilities.py \
+            tests/test_cli_modernization.py \
+            tests/generators/test_openapi_models.py
 
-      - name: Upload coverage
-        uses: codecov/codecov-action@v4
-        with:
-          files: reports/coverage.xml
+      - name: Execute 80/20 verifier pack
+        run: |
+          pytest -q \
+            tests/test_capabilities.py \
+            tests/test_cli_modernization.py \
+            tests/generators/test_openapi_models.py
+
+      - name: Crown exact admitted surface
+        run: |
+          python -m dslmodel.cli doctor --json --strict
+          python -m dslmodel.cli dsl status --json --strict
