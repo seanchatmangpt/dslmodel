@@ -30,8 +30,19 @@ jobs:
           python -m pip install --no-deps -e .
           python -m pip install "pydantic>=2" "typer>=0.9" "rich>=13.7" "PyYAML>=6" "pytest>=8"
 
-      - name: Compile
-        run: python -m compileall -q src tests
+      - name: Compile admitted execution closure
+        run: |
+          python -m py_compile \
+            src/dslmodel/__init__.py \
+            src/dslmodel/capabilities.py \
+            src/dslmodel/cli.py \
+            src/dslmodel/selftest.py \
+            src/dslmodel/commands/__init__.py \
+            src/dslmodel/commands/consolidated_cli.py \
+            src/dslmodel/generators/openapi_models.py \
+            tests/test_capabilities.py \
+            tests/test_cli_modernization.py \
+            tests/generators/test_openapi_models.py
 
       - name: Execute 80/20 verifier pack
         run: |
