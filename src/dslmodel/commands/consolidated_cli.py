@@ -1,96 +1,96 @@
-"""ERRC-modernized consolidated DSLModel CLI.
+"""Canonical 80/20 DSLModel command surface.
 
-Every existing Typer application is delegated directly.  Optional import failure
-is isolated to its own capability and preserved as a machine-readable receipt.
+Historical command modules remain in the repository for reversible recovery, but
+are not admitted into the product surface. The retained commands cover the
+highest-value jobs with deterministic local execution and receipts.
 """
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 import typer
 from rich.console import Console
 from rich.table import Table
 
-from dslmodel.capabilities import CapabilityRegistry, CapabilitySpec, CapabilityStanding
+from dslmodel.capabilities import artifact_receipt, verify_artifact_receipt
 from dslmodel.generators.openapi_models import OpenAPIGenerationError, generate_openapi_models
+from dslmodel.selftest import run_selftests
 
 console = Console()
-app = typer.Typer(help="Consolidated DSLModel capabilities", no_args_is_help=True)
-core_app = typer.Typer(help="Core manufacture, evolution, coordination, validation, and development")
-advanced_app = typer.Typer(help="Security, telemetry, and research capabilities")
-validation_app = typer.Typer(help="Validation implementations")
-development_app = typer.Typer(help="Development implementations")
-security_app = typer.Typer(help="Security implementations")
-telemetry_app = typer.Typer(help="Telemetry implementations")
-research_app = typer.Typer(help="Research implementations")
+app = typer.Typer(help="DSLModel 80/20 — manufacture, validate, and receipt", no_args_is_help=True)
+core_app = typer.Typer(help="Deterministic model manufacture")
+evidence_app = typer.Typer(help="Artifact receipt and replay")
 
-registries = {
-    "core": CapabilityRegistry(),
-    "validation": CapabilityRegistry(),
-    "development": CapabilityRegistry(),
-    "security": CapabilityRegistry(),
-    "telemetry": CapabilityRegistry(),
-    "research": CapabilityRegistry(),
-}
-
-
-CORE_CAPABILITIES = (
-    CapabilitySpec("evolution", "dslmodel.commands.unified_8020_evolution", "Unified 80/20 evolution", group="core", command="evolve"),
-    CapabilitySpec("agents", "dslmodel.commands.agent_coordination_cli", "Agent coordination", group="core", command="agent"),
-    CapabilitySpec("demo", "dslmodel.commands.demo", "Full-cycle demonstrations", group="core"),
-)
-VALIDATION_CAPABILITIES = (
-    CapabilitySpec("otel-validation", "dslmodel.commands.validate_otel", "OpenTelemetry validation", group="validation", command="otel"),
-    CapabilitySpec("weaver-validation", "dslmodel.commands.validate_weaver", "Weaver validation", group="validation", command="weaver"),
-    CapabilitySpec("complete-8020", "dslmodel.commands.complete_8020_validation", "Complete 80/20 validation", group="validation", command="8020"),
-    CapabilitySpec("validation-loop", "dslmodel.commands.validation_loop", "Continuous validation loop", group="validation", command="loop"),
-)
-DEVELOPMENT_CAPABILITIES = (
-    CapabilitySpec("forge", "dslmodel.commands.forge", "Weaver Forge", group="development"),
-    CapabilitySpec("weaver", "dslmodel.commands.weaver", "Weaver semantic conventions", group="development"),
-    CapabilitySpec("worktree", "dslmodel.commands.worktree", "Git worktree management", group="development"),
-)
-SECURITY_CAPABILITIES = (
-    CapabilitySpec("redteam", "dslmodel.commands.redteam", "Red-team validation", group="security"),
-    CapabilitySpec("pqc", "dslmodel.commands.pqc", "Post-quantum cryptography", group="security"),
-)
-TELEMETRY_CAPABILITIES = (
-    CapabilitySpec("monitor", "dslmodel.commands.telemetry_cli", "Telemetry monitoring", group="telemetry"),
-    CapabilitySpec("ollama", "dslmodel.commands.ollama_validate", "Ollama runtime validation", group="telemetry"),
-    CapabilitySpec("otel-coordination", "dslmodel.commands.otel_coordination_cli", "OTEL coordination", group="telemetry", command="coordination"),
-)
-RESEARCH_CAPABILITIES = (
-    CapabilitySpec("thesis", "dslmodel.commands.thesis_cli", "SwarmSH thesis", group="research"),
-    CapabilitySpec("capability-map", "dslmodel.commands.capability_map", "Capability mapping", group="research", command="capability"),
-    CapabilitySpec("slidev", "dslmodel.commands.slidev", "Slidev presentations", group="research"),
+ADMITTED_CAPABILITIES: tuple[dict[str, str], ...] = (
+    {"name": "core.openapi", "purpose": "OpenAPI 3 to executable Pydantic v2 manufacture"},
+    {"name": "validate.selftest", "purpose": "Dependency-closed semantic self-play"},
+    {"name": "evidence.receipt", "purpose": "Deterministic artifact identity and replay"},
+    {"name": "system.status", "purpose": "Machine-readable aggregate standing"},
+    {"name": "system.inventory", "purpose": "Admitted and non-admitted capability catalog"},
 )
 
+_RETIRED_NAMES = (
+    "gen",
+    "slidev",
+    "forge",
+    "auto",
+    "swarm",
+    "thesis",
+    "demo",
+    "capability",
+    "validate",
+    "validate-weaver",
+    "validation-loop",
+    "ollama",
+    "ollama-auto",
+    "disc-auto",
+    "disc-integrated",
+    "weaver",
+    "weaver-health",
+    "worktree",
+    "swarm-worktree",
+    "telemetry",
+    "redteam",
+    "agents",
+    "evolve",
+    "evolve-unified",
+    "evolve-legacy",
+    "auto-evolve",
+    "evolve-worktree",
+    "8020",
+    "introspect",
+    "weaver-diagrams",
+    "weaver-loop",
+    "weaver-multilayer",
+    "otel-learn",
+    "health-8020",
+    "otel-monitor",
+    "gap-8020",
+    "5one",
+    "pqc",
+    "otel",
+    "forge-dx",
+)
 
-@core_app.command("gen")
-def generate_models(
-    prompt: str = typer.Argument(..., help="Natural-language model description."),
-    output_dir: Path = typer.Option(Path.cwd(), "--output-dir"),
-    file_format: str = typer.Option("py", "--format"),
-    model: str = typer.Option("groq/llama-3.2-90b-text-preview", "--model"),
-) -> None:
-    """Execute the existing model generator rather than reporting a placeholder."""
+NON_ADMITTED_CAPABILITIES: tuple[dict[str, str], ...] = tuple(
+    {
+        "name": name,
+        "disposition": "NOT_ADMITTED",
+        "reason": "legacy alias, experimental integration, or external-runtime surface without dependency-closed execution proof",
+        "replacement": "dsl core openapi | dsl selftest | dsl evidence receipt | dsl status | dsl inventory",
+    }
+    for name in _RETIRED_NAMES
+)
 
-    try:
-        from dslmodel.generators.gen_dslmodel_class import generate_and_save_dslmodel
-        from dslmodel.utils.dspy_tools import init_lm
-    except (ImportError, ModuleNotFoundError) as exc:
-        console.print(f"[red]REFUSED:GENERATOR_UNAVAILABLE[/red] {exc}")
-        raise typer.Exit(2) from exc
-    output_dir.mkdir(parents=True, exist_ok=True)
-    init_lm(model=model)
-    try:
-        _, output_file = generate_and_save_dslmodel(prompt, output_dir, file_format, None)
-    except Exception as exc:
-        console.print(f"[red]BUILD_BROKEN[/red] {exc}")
-        raise typer.Exit(1) from exc
-    console.print(f"[green]ALIVE[/green] {output_file}")
+
+def _emit(payload: dict[str, Any], *, as_json: bool) -> None:
+    if as_json:
+        typer.echo(json.dumps(payload, indent=2, sort_keys=True))
+        return
+    console.print_json(data=payload)
 
 
 @core_app.command("openapi")
@@ -105,69 +105,87 @@ def openapi(
     except OpenAPIGenerationError as exc:
         console.print(f"[red]REFUSED:OPENAPI_NOT_ADMITTED[/red] {exc}")
         raise typer.Exit(2) from exc
-    console.print(f"[green]ALIVE[/green] {generated}")
+    receipt = artifact_receipt(generated)
+    console.print(f"[green]ALIVE[/green] {generated} sha256={receipt['digest']}")
+
+
+@evidence_app.command("receipt")
+def receipt(
+    artifact: Path = typer.Argument(..., exists=True, readable=True),
+    expected_digest: str | None = typer.Option(None, "--expect", help="Expected SHA-256 digest."),
+    as_json: bool = typer.Option(False, "--json"),
+) -> None:
+    """Create a receipt or replay an expected artifact identity."""
+
+    try:
+        payload = artifact_receipt(artifact)
+    except ValueError as exc:
+        console.print(f"[red]REFUSED:ARTIFACT_NOT_ADMITTED[/red] {exc}")
+        raise typer.Exit(2) from exc
+    verified = expected_digest is None or verify_artifact_receipt(artifact, expected_digest)
+    payload["standing"] = "ALIVE" if verified else "BUILD_BROKEN"
+    payload["verified"] = verified
+    _emit(payload, as_json=as_json)
+    if not verified:
+        raise typer.Exit(1)
+
+
+@app.command("selftest")
+def selftest(
+    as_json: bool = typer.Option(False, "--json"),
+    strict: bool = typer.Option(False, "--strict"),
+) -> None:
+    """Execute the complete admitted capability pack."""
+
+    payload = run_selftests()
+    _emit(payload, as_json=as_json)
+    if strict and payload["standing"] != "ALIVE":
+        raise typer.Exit(1)
 
 
 @app.command("status")
 def status(
     as_json: bool = typer.Option(False, "--json"),
-    strict: bool = typer.Option(False, "--strict", help="Fail when any advertised capability is not ALIVE."),
-    include_alive: bool = typer.Option(False, "--all"),
+    strict: bool = typer.Option(False, "--strict"),
 ) -> None:
-    """Show per-capability import/mount standing and deterministic receipt IDs."""
+    """Execute and report aggregate standing for the admitted product surface."""
 
-    report = {name: registry.report() for name, registry in sorted(registries.items())}
-    group_standings = {item["standing"] for item in report.values()}
-    if group_standings == {CapabilityStanding.ALIVE.value}:
-        overall = CapabilityStanding.ALIVE.value
-    elif CapabilityStanding.ALIVE.value in group_standings or CapabilityStanding.PARTIAL_ALIVE.value in group_standings:
-        overall = CapabilityStanding.PARTIAL_ALIVE.value
-    elif CapabilityStanding.BUILD_BROKEN.value in group_standings:
-        overall = CapabilityStanding.BUILD_BROKEN.value
-    elif group_standings == {CapabilityStanding.UNSUPPORTED.value}:
-        overall = CapabilityStanding.UNSUPPORTED.value
-    else:
-        overall = CapabilityStanding.UNKNOWN.value
-    payload = {"standing": overall, "groups": report}
-    if as_json:
-        typer.echo(json.dumps(payload, indent=2, sort_keys=True))
-    else:
-        table = Table(title=f"Consolidated capability standing: {overall}")
-        table.add_column("Capability")
-        table.add_column("Group")
-        table.add_column("Standing")
-        table.add_column("Receipt")
-        table.add_column("Evidence")
-        for registry in registries.values():
-            for receipt in registry.receipts:
-                if not include_alive and receipt.standing is CapabilityStanding.ALIVE:
-                    continue
-                table.add_row(
-                    receipt.name,
-                    receipt.group,
-                    receipt.standing.value,
-                    receipt.receipt_id[:12],
-                    receipt.reason or ("mounted" if receipt.mounted else "imported"),
-                )
-        console.print(table)
-    if strict and overall != CapabilityStanding.ALIVE.value:
+    verification = run_selftests()
+    payload = {
+        "standing": verification["standing"],
+        "admitted_count": len(ADMITTED_CAPABILITIES),
+        "non_admitted_count": len(NON_ADMITTED_CAPABILITIES),
+        "checks": verification["checks"],
+    }
+    _emit(payload, as_json=as_json)
+    if strict and payload["standing"] != "ALIVE":
         raise typer.Exit(1)
 
 
-registries["core"].mount_all(core_app, CORE_CAPABILITIES)
-registries["validation"].mount_all(validation_app, VALIDATION_CAPABILITIES)
-registries["development"].mount_all(development_app, DEVELOPMENT_CAPABILITIES)
-registries["security"].mount_all(security_app, SECURITY_CAPABILITIES)
-registries["telemetry"].mount_all(telemetry_app, TELEMETRY_CAPABILITIES)
-registries["research"].mount_all(research_app, RESEARCH_CAPABILITIES)
+@app.command("inventory")
+def inventory(as_json: bool = typer.Option(False, "--json")) -> None:
+    """Show retained capabilities and reversible non-admitted legacy surfaces."""
 
-core_app.add_typer(validation_app, name="validate")
-core_app.add_typer(development_app, name="dev")
-advanced_app.add_typer(security_app, name="security")
-advanced_app.add_typer(telemetry_app, name="telemetry")
-advanced_app.add_typer(research_app, name="research")
+    payload = {
+        "standing": "ALIVE",
+        "admitted": list(ADMITTED_CAPABILITIES),
+        "non_admitted": list(NON_ADMITTED_CAPABILITIES),
+    }
+    if as_json:
+        typer.echo(json.dumps(payload, indent=2, sort_keys=True))
+        return
+
+    admitted = Table(title="Admitted 80/20 capabilities")
+    admitted.add_column("Capability")
+    admitted.add_column("Purpose")
+    for item in ADMITTED_CAPABILITIES:
+        admitted.add_row(item["name"], item["purpose"])
+    console.print(admitted)
+    console.print(f"Preserved non-admitted legacy surfaces: {len(NON_ADMITTED_CAPABILITIES)}")
+
+
 app.add_typer(core_app, name="core")
-app.add_typer(advanced_app, name="advanced")
+app.add_typer(evidence_app, name="evidence")
 
 
 if __name__ == "__main__":
