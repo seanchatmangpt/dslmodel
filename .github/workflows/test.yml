@@ -46,6 +46,7 @@ jobs:
             src/dslmodel/selftest.py \
             src/dslmodel/commands/__init__.py \
             src/dslmodel/commands/consolidated_cli.py \
+            src/dslmodel/generators/__init__.py \
             src/dslmodel/generators/openapi_models.py \
             tests/test_capabilities.py \
             tests/test_cli_modernization.py \
