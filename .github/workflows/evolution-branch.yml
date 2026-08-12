@@ -1,0 +1,63 @@
+name: Evolution Branch Validation
+
+on:
+  push:
+    branches: [evolution-forge-implementation]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  worktree-evolution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Install verifier
+        run: python -m pip install --disable-pip-version-check 'pytest>=8,<10'
+
+      - name: Compile repaired branch surface
+        run: |
+          python -m py_compile \
+            src/dslmodel/evolution/worktree_evolution_engine.py \
+            src/dslmodel/commands/evolution_worktree.py \
+            tests/test_worktree_evolution_execution.py
+
+      - name: Execute worktree patch validation and merge receipts
+        run: |
+          python -m pytest --noconftest -o addopts= -q tests/test_worktree_evolution_execution.py
+
+      - name: Refuse synthetic evidence regression
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files = [
+              Path('src/dslmodel/evolution/worktree_evolution_engine.py'),
+              Path('src/dslmodel/commands/evolution_worktree.py'),
+          ]
+          forbidden = (
+              'random.uniform',
+              'random.randint',
+              '95% pass rate',
+              'Simulate validation',
+              'Simulate merge',
+              'Simulate monitoring',
+              'deployment_success=True',
+          )
+          violations = {
+              str(path): [marker for marker in forbidden if marker in path.read_text(encoding='utf-8')]
+              for path in files
+          }
+          violations = {path: markers for path, markers in violations.items() if markers}
+          if violations:
+              raise SystemExit(violations)
+          print('synthetic-evidence-regression=REFUSED')
+          PY
