@@ -15,11 +15,16 @@ concurrency:
 jobs:
   admitted-core:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Fetch branch graph for vacuity audit
+        run: git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
 
       - name: Set up Python 3.12
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -32,7 +37,7 @@ jobs:
           python -m pip install --disable-pip-version-check -e '.[test]'
           python -m pip check
 
-      - name: Compile admitted execution closure
+      - name: Compile admitted execution closure and audit tooling
         run: |
           python -m py_compile \
             src/dslmodel/__init__.py \
@@ -43,10 +48,12 @@ jobs:
             src/dslmodel/commands/consolidated_cli.py \
             src/dslmodel/generators/__init__.py \
             src/dslmodel/generators/openapi_models.py \
+            scripts/audit_vacuity.py \
             tests/test_capabilities.py \
             tests/test_cli_modernization.py \
             tests/generators/test_openapi_models.py \
-            tests/test_distribution_contract.py
+            tests/test_distribution_contract.py \
+            tests/test_vacuity_audit.py
 
       - name: Execute admitted verifier pack
         run: |
@@ -54,7 +61,16 @@ jobs:
             tests/test_capabilities.py \
             tests/test_cli_modernization.py \
             tests/generators/test_openapi_models.py \
-            tests/test_distribution_contract.py
+            tests/test_distribution_contract.py \
+            tests/test_vacuity_audit.py
+
+      - name: Audit every branch and implementation blob for vacuity
+        run: |
+          python scripts/audit_vacuity.py \
+            --all-branches \
+            --json reports/vacuity-audit.json \
+            --fail-on none \
+            --max-print 250
 
       - name: Build and install wheel in a clean environment
         run: |
