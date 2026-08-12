@@ -27,6 +27,9 @@ dsl = "dslmodel.cli:app"
 Repository = "https://github.com/seanchatmangpt/dslmodel"
 
 [project.optional-dependencies]
+readers = [
+    "pypdf>=6.5,<7",
+]
 test = [
     "pytest>=8,<10",
 ]
