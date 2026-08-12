@@ -1,0 +1,10 @@
+# Default ownership
+* @seanchatmangpt
+
+# Release and supply-chain boundaries
+/.github/workflows/ @seanchatmangpt
+/pyproject.toml @seanchatmangpt
+/Dockerfile @seanchatmangpt
+/SECURITY.md @seanchatmangpt
+/src/dslmodel/capabilities.py @seanchatmangpt
+/src/dslmodel/commands/consolidated_cli.py @seanchatmangpt
