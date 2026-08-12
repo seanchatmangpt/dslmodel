@@ -7,9 +7,7 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any
 
-from pydantic import Field, field_validator
-
-from dslmodel import DSLModel
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class PQCError(RuntimeError):
@@ -33,21 +31,13 @@ class PQCAlgorithmType(str, Enum):
 
     ML_KEM = "ml_kem"
     ML_DSA = "ml_dsa"
-
-    # Historical names remain aliases so stored data can be read without
-    # continuing to present pre-standard algorithm names as distinct backends.
     KYBER = "ml_kem"
     DILITHIUM = "ml_dsa"
-
-    # These names remain parseable for historical records but are intentionally
-    # unsupported by the production provider in this package.
     FALCON = "falcon"
     SPHINCS_PLUS = "sphincs_plus"
 
 
 class PQCSecurityLevel(int, Enum):
-    """NIST-style security category used to select parameter sets."""
-
     LEVEL_1 = 1
     LEVEL_2 = 2
     LEVEL_3 = 3
@@ -59,16 +49,20 @@ def _utcnow() -> datetime:
     return datetime.now(timezone.utc)
 
 
-class PQCKeyPair(DSLModel):
+class _PQCModel(BaseModel):
+    model_config = ConfigDict(validate_assignment=True, extra="forbid")
+
+
+class PQCKeyPair(_PQCModel):
     """Serialized public/private material produced by an admitted provider."""
 
-    algorithm: PQCAlgorithmType = Field(..., description="PQC algorithm type")
-    security_level: PQCSecurityLevel = Field(..., description="Security category")
-    public_key: bytes = Field(..., description="Raw public key bytes")
-    private_key: bytes | None = Field(None, description="Raw private seed bytes; None for public-only records")
-    key_id: str = Field(..., min_length=1, description="Stable identifier derived from the public key")
+    algorithm: PQCAlgorithmType
+    security_level: PQCSecurityLevel
+    public_key: bytes
+    private_key: bytes | None = None
+    key_id: str = Field(..., min_length=1)
     created_at: datetime = Field(default_factory=_utcnow)
-    expires_at: datetime | None = Field(None, description="Optional key expiration time")
+    expires_at: datetime | None = None
     metadata: dict[str, Any] = Field(default_factory=dict)
 
     @field_validator("expires_at")
@@ -83,23 +77,23 @@ class PQCKeyPair(DSLModel):
         return self.expires_at is not None and _utcnow() > self.expires_at
 
 
-class PQCSignature(DSLModel):
-    """Signature bytes plus replay metadata; verification never trusts the metadata alone."""
+class PQCSignature(_PQCModel):
+    """Signature bytes plus replay metadata; verification never trusts metadata alone."""
 
-    algorithm: PQCAlgorithmType = Field(..., description="Signature algorithm")
+    algorithm: PQCAlgorithmType
     signature: bytes = Field(..., min_length=1)
-    message_hash: str = Field(..., min_length=1, description="Audit digest, not verification authority")
+    message_hash: str = Field(..., min_length=1)
     key_id: str = Field(..., min_length=1)
     timestamp: datetime = Field(default_factory=_utcnow)
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
-class PQCCiphertext(DSLModel):
+class PQCCiphertext(_PQCModel):
     """Authenticated payload ciphertext plus KEM encapsulation material."""
 
-    algorithm: PQCAlgorithmType = Field(..., description="KEM algorithm")
-    ciphertext: bytes = Field(..., min_length=1, description="AEAD ciphertext including authentication tag")
-    encapsulated_key: bytes | None = Field(None, description="KEM ciphertext used to recover the shared secret")
+    algorithm: PQCAlgorithmType
+    ciphertext: bytes = Field(..., min_length=1)
+    encapsulated_key: bytes | None = None
     recipient_key_id: str = Field(..., min_length=1)
     sender_key_id: str | None = None
     timestamp: datetime = Field(default_factory=_utcnow)
@@ -130,7 +124,7 @@ class PQCProvider(ABC):
         """Decapsulate and authenticate/decrypt a payload."""
 
 
-class HybridPQCScheme(DSLModel):
+class HybridPQCScheme(_PQCModel):
     """Configuration record for callers that implement an external hybrid scheme."""
 
     classical_algorithm: str = Field(..., min_length=1)
