@@ -1,511 +1,441 @@
+"""Execution-backed evolution experiments using Git worktrees.
+
+This module does not invent mutations, fitness, validation results, deployment
+success, or monitoring data. Construction is supplied as patch artifacts;
+validation is observed command execution; merge is an explicit actuation path
+that is disabled unless the caller grants authority.
 """
-Worktree-based Evolution Engine
-Uses Git worktrees for isolated evolution experiments with OTEL coordination
-"""
+
+from __future__ import annotations
 
 import asyncio
-import json
-import time
-import uuid
-from pathlib import Path
-from typing import Dict, List, Optional, Any, Set
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from enum import Enum
-
-from ..generated.models.evolution import (
-    Evolution,
-    EvolutionWorktree,
-    EvolutionValidation, 
-    EvolutionDeployment
-)
-from ..agents.worktree_agent import WorktreeAgent, WorktreeCoordinator, FeatureTask
-from ..otel.otel_instrumentation_mock import init_otel, SwarmSpanAttributes
-from ..utils.llm_init import init_qwen3
+from hashlib import sha256
+import json
+from pathlib import Path
+import shlex
+import subprocess
+import time
+from typing import Any, Iterable, Sequence
+import uuid
 
 
-class EvolutionStrategy(Enum):
-    """Evolution strategies for system improvement."""
+class EvolutionError(RuntimeError):
+    """Base error for evolution experiment failures."""
+
+
+class EvolutionAdmissionError(EvolutionError):
+    """Raised when an experiment input cannot be admitted."""
+
+
+class EvolutionActuationRefused(EvolutionError):
+    """Raised when a state-changing operation lacks explicit authority."""
+
+
+class EvolutionStrategy(str, Enum):
     PERFORMANCE_OPTIMIZATION = "performance_optimization"
     COORDINATION_IMPROVEMENT = "coordination_improvement"
     FEATURE_ENHANCEMENT = "feature_enhancement"
     RELIABILITY_IMPROVEMENT = "reliability_improvement"
 
 
-@dataclass
+@dataclass(frozen=True, slots=True)
+class CommandReceipt:
+    """Observed execution evidence for one command."""
+
+    argv: tuple[str, ...]
+    cwd: str
+    exit_code: int
+    stdout: str
+    stderr: str
+    duration_seconds: float
+
+    @property
+    def ok(self) -> bool:
+        return self.exit_code == 0
+
+    @property
+    def receipt_id(self) -> str:
+        payload = json.dumps(asdict(self), sort_keys=True, separators=(",", ":"))
+        return sha256(payload.encode("utf-8")).hexdigest()
+
+
+@dataclass(slots=True)
 class EvolutionCandidate:
-    """A candidate for system evolution."""
     candidate_id: str
     strategy: EvolutionStrategy
     description: str
     worktree_path: str
-    mutations: List[Dict[str, Any]] = field(default_factory=list)
+    branch_name: str
+    base_commit: str
+    applied_patches: list[str] = field(default_factory=list)
+    validation_results: dict[str, Any] | None = None
     fitness_score: float = 0.0
-    validation_results: Optional[Dict[str, Any]] = None
-    telemetry_data: Dict[str, Any] = field(default_factory=dict)
 
 
-@dataclass
+@dataclass(slots=True)
 class EvolutionGeneration:
-    """Results from one evolution generation."""
     generation_id: str
-    candidates: List[EvolutionCandidate]
-    best_candidate: Optional[EvolutionCandidate]
+    candidates: list[EvolutionCandidate]
+    best_candidate: EvolutionCandidate | None
     fitness_improvement: float
     deployed: bool = False
 
 
+@dataclass(frozen=True, slots=True)
+class MergeReceipt:
+    experiment_id: str
+    source_branch: str
+    target_branch: str
+    before_sha: str
+    after_sha: str
+    command: CommandReceipt
+
+    @property
+    def receipt_id(self) -> str:
+        payload = json.dumps(
+            {
+                "experiment_id": self.experiment_id,
+                "source_branch": self.source_branch,
+                "target_branch": self.target_branch,
+                "before_sha": self.before_sha,
+                "after_sha": self.after_sha,
+                "command_receipt": self.command.receipt_id,
+            },
+            sort_keys=True,
+            separators=(",", ":"),
+        )
+        return sha256(payload.encode("utf-8")).hexdigest()
+
+
 class WorktreeEvolutionEngine:
-    """
-    Evolution engine that uses Git worktrees for isolated experiments.
-    
-    Each evolution candidate is tested in its own worktree with full
-    OTEL coordination and telemetry validation.
-    """
-    
+    """Apply explicit patches in isolated worktrees and validate by execution."""
+
     def __init__(
         self,
-        base_path: str = "/Users/sac/dev/dslmodel-evolution",
-        population_size: int = 5,
-        mutation_rate: float = 0.1
-    ):
-        self.base_path = Path(base_path)
-        self.base_path.mkdir(parents=True, exist_ok=True)
-        
+        base_path: str | Path = ".",
+        *,
+        verifier_command: Sequence[str] = ("python", "-m", "pytest", "-q"),
+        worktrees_root: str | Path | None = None,
+        allow_merge: bool = False,
+        merge_target: str | None = None,
+        monitor_command: Sequence[str] | None = None,
+        population_size: int = 1,
+        mutation_rate: float = 0.0,
+    ) -> None:
+        self.base_path = Path(base_path).resolve()
+        if not (self.base_path / ".git").exists():
+            # Worktrees have a .git *file*, so exists() is the right predicate.
+            raise EvolutionAdmissionError(f"base_path is not a Git working tree: {self.base_path}")
+        if not verifier_command:
+            raise EvolutionAdmissionError("verifier_command must not be empty")
+        self.verifier_command = tuple(str(item) for item in verifier_command)
+        self.monitor_command = tuple(str(item) for item in monitor_command) if monitor_command else None
+        self.allow_merge = allow_merge
+        self.merge_target = merge_target
         self.population_size = population_size
         self.mutation_rate = mutation_rate
+        self.worktrees_root = (
+            Path(worktrees_root).resolve()
+            if worktrees_root is not None
+            else self.base_path.parent / f".{self.base_path.name}-evolution-worktrees"
+        )
+        self.worktrees_root.mkdir(parents=True, exist_ok=True)
+        self.active_candidates: dict[str, EvolutionCandidate] = {}
+        self.evolution_history: list[EvolutionGeneration] = []
         self.current_generation = 0
-        
-        # Initialize OTEL coordination
-        self.otel = init_otel(
-            service_name="evolution-engine",
-            service_version="1.0.0",
-            enable_console_export=True
+
+    @staticmethod
+    def parse_command(command: str) -> tuple[str, ...]:
+        parsed = tuple(shlex.split(command))
+        if not parsed:
+            raise EvolutionAdmissionError("command must not be empty")
+        return parsed
+
+    @staticmethod
+    def _completed_receipt(
+        argv: Sequence[str],
+        cwd: Path,
+        completed: subprocess.CompletedProcess[str],
+        started: float,
+    ) -> CommandReceipt:
+        return CommandReceipt(
+            argv=tuple(argv),
+            cwd=str(cwd),
+            exit_code=completed.returncode,
+            stdout=completed.stdout[-16000:],
+            stderr=completed.stderr[-16000:],
+            duration_seconds=max(0.0, time.monotonic() - started),
         )
-        
-        # Initialize AI
-        init_qwen3(temperature=0.2)
-        
-        # Initialize worktree coordinator
-        self.worktree_coordinator = WorktreeCoordinator(
-            coordinator_id="evolution-coordinator"
+
+    def run_command(
+        self,
+        argv: Sequence[str],
+        *,
+        cwd: Path | None = None,
+        check: bool = False,
+    ) -> CommandReceipt:
+        if not argv:
+            raise EvolutionAdmissionError("cannot execute an empty command")
+        target = (cwd or self.base_path).resolve()
+        started = time.monotonic()
+        completed = subprocess.run(
+            list(argv),
+            cwd=target,
+            capture_output=True,
+            text=True,
+            check=False,
         )
-        
-        # Track evolution history
-        self.evolution_history: List[EvolutionGeneration] = []
-        self.active_candidates: Set[str] = set()
-        
-        print(f"🧬 WorktreeEvolutionEngine initialized")
-        print(f"   Base path: {self.base_path}")
-        print(f"   Population size: {self.population_size}")
-        print(f"   Mutation rate: {self.mutation_rate}")
-    
+        receipt = self._completed_receipt(argv, target, completed, started)
+        if check and not receipt.ok:
+            raise EvolutionError(
+                f"command failed ({receipt.exit_code}): {' '.join(receipt.argv)}\n{receipt.stderr or receipt.stdout}"
+            )
+        return receipt
+
+    def run_git(self, args: Sequence[str], *, cwd: Path | None = None, check: bool = True) -> CommandReceipt:
+        return self.run_command(("git", *args), cwd=cwd, check=check)
+
+    def _head_sha(self, cwd: Path | None = None) -> str:
+        return self.run_git(("rev-parse", "HEAD"), cwd=cwd).stdout.strip()
+
+    def _current_branch(self, cwd: Path | None = None) -> str:
+        branch = self.run_git(("branch", "--show-current"), cwd=cwd).stdout.strip()
+        if not branch:
+            raise EvolutionAdmissionError("operation requires a named Git branch, not detached HEAD")
+        return branch
+
+    def create_candidate(
+        self,
+        strategy: EvolutionStrategy,
+        *,
+        candidate_id: str | None = None,
+    ) -> EvolutionCandidate:
+        candidate_id = candidate_id or f"exp-{uuid.uuid4().hex[:12]}"
+        if candidate_id in self.active_candidates:
+            raise EvolutionAdmissionError(f"candidate already exists: {candidate_id}")
+        if any(character not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_" for character in candidate_id):
+            raise EvolutionAdmissionError("candidate_id may contain only letters, numbers, '-' and '_'")
+        base_commit = self._head_sha()
+        branch_name = f"evolution/{candidate_id}"
+        worktree_path = self.worktrees_root / candidate_id
+        if worktree_path.exists():
+            raise EvolutionAdmissionError(f"worktree path already exists: {worktree_path}")
+        self.run_git(("worktree", "add", "-b", branch_name, str(worktree_path), base_commit))
+        candidate = EvolutionCandidate(
+            candidate_id=candidate_id,
+            strategy=strategy,
+            description=f"{strategy.value} candidate",
+            worktree_path=str(worktree_path),
+            branch_name=branch_name,
+            base_commit=base_commit,
+        )
+        self.active_candidates[candidate_id] = candidate
+        return candidate
+
+    def apply_patch(self, candidate_id: str, patch_path: str | Path) -> dict[str, Any]:
+        candidate = self._require_candidate(candidate_id)
+        patch = Path(patch_path).resolve()
+        if not patch.is_file():
+            raise EvolutionAdmissionError(f"patch does not exist: {patch}")
+        worktree = Path(candidate.worktree_path)
+        patch_bytes = patch.read_bytes()
+        patch_digest = sha256(patch_bytes).hexdigest()
+        check_receipt = self.run_git(("apply", "--check", str(patch)), cwd=worktree, check=False)
+        if not check_receipt.ok:
+            raise EvolutionAdmissionError(
+                f"patch is not applicable: {patch}\n{check_receipt.stderr or check_receipt.stdout}"
+            )
+        self.run_git(("apply", str(patch)), cwd=worktree)
+        diff_check = self.run_git(("diff", "--check"), cwd=worktree, check=False)
+        if not diff_check.ok:
+            self.run_git(("reset", "--hard", "HEAD"), cwd=worktree)
+            raise EvolutionAdmissionError(f"patch creates invalid diff: {diff_check.stderr or diff_check.stdout}")
+        self.run_git(("add", "-A"), cwd=worktree)
+        staged = self.run_git(("diff", "--cached", "--quiet"), cwd=worktree, check=False)
+        if staged.exit_code == 0:
+            raise EvolutionAdmissionError("patch produced no staged change")
+        commit = self.run_command(
+            (
+                "git",
+                "-c",
+                "user.name=DSLModel Evolution",
+                "-c",
+                "user.email=evolution@localhost",
+                "commit",
+                "-m",
+                f"evolution: apply {patch.name}",
+            ),
+            cwd=worktree,
+            check=True,
+        )
+        candidate.applied_patches.append(patch_digest)
+        return {
+            "candidate_id": candidate_id,
+            "patch": str(patch),
+            "patch_sha256": patch_digest,
+            "commit_sha": self._head_sha(worktree),
+            "commit_receipt": commit.receipt_id,
+        }
+
+    async def validate_candidate(self, candidate_id: str) -> dict[str, Any]:
+        candidate = self._require_candidate(candidate_id)
+        worktree = Path(candidate.worktree_path)
+        diff_check = self.run_git(("diff", "--check", "HEAD^", "HEAD"), cwd=worktree, check=False)
+        verifier = await self._run_async(self.verifier_command, cwd=worktree)
+        validation_passed = diff_check.ok and verifier.ok
+        # Fitness is intentionally a binary consequence of the declared verifier.
+        # No synthetic performance or quality metric is manufactured here.
+        fitness = 1.0 if validation_passed else 0.0
+        result = {
+            "validation_passed": validation_passed,
+            "fitness_score": fitness,
+            "fitness_improvement": 0.0,
+            "tests_total": 1,
+            "tests_passed": 1 if validation_passed else 0,
+            "verifier": asdict(verifier) | {"receipt_id": verifier.receipt_id},
+            "diff_check": asdict(diff_check) | {"receipt_id": diff_check.receipt_id},
+            "candidate_head": self._head_sha(worktree),
+            "base_commit": candidate.base_commit,
+        }
+        candidate.validation_results = result
+        candidate.fitness_score = fitness
+        return result
+
+    async def _run_async(self, argv: Sequence[str], *, cwd: Path) -> CommandReceipt:
+        started = time.monotonic()
+        process = await asyncio.create_subprocess_exec(
+            *argv,
+            cwd=cwd,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        stdout, stderr = await process.communicate()
+        return CommandReceipt(
+            argv=tuple(argv),
+            cwd=str(cwd),
+            exit_code=process.returncode,
+            stdout=stdout.decode("utf-8", errors="replace")[-16000:],
+            stderr=stderr.decode("utf-8", errors="replace")[-16000:],
+            duration_seconds=max(0.0, time.monotonic() - started),
+        )
+
     async def evolve_generation(
         self,
-        strategy: EvolutionStrategy = EvolutionStrategy.COORDINATION_IMPROVEMENT
+        strategy: EvolutionStrategy = EvolutionStrategy.COORDINATION_IMPROVEMENT,
+        *,
+        patches: Iterable[str | Path] = (),
     ) -> EvolutionGeneration:
-        """Evolve one generation using worktree isolation."""
-        
+        """Construct one candidate per supplied patch and execute its verifier."""
+
+        supplied = tuple(patches)
+        if not supplied:
+            raise EvolutionAdmissionError("evolve_generation requires explicit patch artifacts")
         generation_id = f"gen-{self.current_generation:03d}-{uuid.uuid4().hex[:8]}"
-        
-        with self.otel.trace_span(
-            name="evolution.generation",
-            attributes={
-                SwarmSpanAttributes.SWARM_FRAMEWORK: "evolution",
-                SwarmSpanAttributes.SWARM_PHASE: "generation",
-                "evolution.generation.id": generation_id,
-                "evolution.strategy": strategy.value,
-                "evolution.population_size": self.population_size
-            }
-        ) as span:
-            
-            print(f"🧬 Starting evolution generation {self.current_generation}")
-            print(f"   Strategy: {strategy.value}")
-            print(f"   Population: {self.population_size}")
-            
-            # Create evolution model for telemetry
-            evolution_model = Evolution(
-                generation_id=generation_id,
-                strategy=strategy.value,
-                fitness_score=0.0,
-                experiment_id=f"exp-{generation_id}",
-                worktree_path=str(self.base_path)
-            )
-            
-            evolution_trace_id = evolution_model.emit_telemetry()
-            
-            # Generate candidate mutations
-            candidates = await self._generate_candidates(strategy, generation_id)
-            
-            # Test candidates in parallel worktrees
-            validated_candidates = await self._test_candidates_in_worktrees(candidates)
-            
-            # Select best candidate
-            best_candidate = self._select_best_candidate(validated_candidates)
-            
-            # Calculate fitness improvement
-            previous_best = 0.0
-            if self.evolution_history:
-                previous_best = max(
-                    gen.best_candidate.fitness_score for gen in self.evolution_history
-                    if gen.best_candidate
-                )
-            
-            current_best = best_candidate.fitness_score if best_candidate else 0.0
-            fitness_improvement = current_best - previous_best
-            
-            # Create generation result
-            generation = EvolutionGeneration(
-                generation_id=generation_id,
-                candidates=validated_candidates,
-                best_candidate=best_candidate,
-                fitness_improvement=fitness_improvement
-            )
-            
-            # Record generation completion
-            span.add_event("evolution.generation.complete", {
-                "candidates_tested": len(validated_candidates),
-                "best_fitness": current_best,
-                "fitness_improvement": fitness_improvement,
-                "trace_id": evolution_trace_id
-            })
-            
-            self.evolution_history.append(generation)
-            self.current_generation += 1
-            
-            print(f"✅ Generation {self.current_generation - 1} complete")
-            print(f"   Best fitness: {current_best:.3f}")
-            print(f"   Improvement: {fitness_improvement:.3f}")
-            
-            return generation
-    
-    async def _generate_candidates(
-        self, 
-        strategy: EvolutionStrategy, 
-        generation_id: str
-    ) -> List[EvolutionCandidate]:
-        """Generate evolution candidates for testing."""
-        
-        candidates = []
-        
-        for i in range(self.population_size):
-            candidate_id = f"{generation_id}-cand-{i:02d}"
-            worktree_path = str(self.base_path / f"worktree-{candidate_id}")
-            
-            # Generate mutations based on strategy
-            mutations = await self._generate_mutations(strategy)
-            
-            candidate = EvolutionCandidate(
-                candidate_id=candidate_id,
-                strategy=strategy,
-                description=f"{strategy.value} optimization candidate {i+1}",
-                worktree_path=worktree_path,
-                mutations=mutations
-            )
-            
+        candidates: list[EvolutionCandidate] = []
+        for index, patch in enumerate(supplied):
+            candidate = self.create_candidate(strategy, candidate_id=f"{generation_id}-cand-{index:02d}")
+            self.apply_patch(candidate.candidate_id, patch)
+            await self.validate_candidate(candidate.candidate_id)
             candidates.append(candidate)
-            self.active_candidates.add(candidate_id)
-            
-            print(f"   📋 Generated candidate: {candidate_id}")
-        
-        return candidates
-    
-    async def _generate_mutations(self, strategy: EvolutionStrategy) -> List[Dict[str, Any]]:
-        """Generate mutations based on evolution strategy."""
-        
-        base_mutations = {
-            EvolutionStrategy.COORDINATION_IMPROVEMENT: [
-                {
-                    "type": "coordination_pattern",
-                    "target": "agent_communication",
-                    "change": "reduce_coordination_overhead",
-                    "value": 0.15
-                },
-                {
-                    "type": "otel_optimization", 
-                    "target": "span_collection",
-                    "change": "optimize_telemetry_batching",
-                    "value": 0.2
-                }
-            ],
-            EvolutionStrategy.PERFORMANCE_OPTIMIZATION: [
-                {
-                    "type": "algorithm_optimization",
-                    "target": "task_assignment",
-                    "change": "improve_load_balancing",
-                    "value": 0.25
-                },
-                {
-                    "type": "caching_strategy",
-                    "target": "validation_cache",
-                    "change": "intelligent_cache_warming",
-                    "value": 0.3
-                }
-            ],
-            EvolutionStrategy.FEATURE_ENHANCEMENT: [
-                {
-                    "type": "ai_reasoning",
-                    "target": "decision_making",
-                    "change": "enhanced_context_analysis",
-                    "value": 0.2
-                },
-                {
-                    "type": "automation_expansion",
-                    "target": "remediation_workflows", 
-                    "change": "predictive_issue_detection",
-                    "value": 0.35
-                }
-            ]
-        }
-        
-        return base_mutations.get(strategy, [])
-    
-    async def _test_candidates_in_worktrees(
-        self, 
-        candidates: List[EvolutionCandidate]
-    ) -> List[EvolutionCandidate]:
-        """Test all candidates in parallel worktrees."""
-        
-        print(f"🧪 Testing {len(candidates)} candidates in worktrees...")
-        
-        # Create agents for each candidate
-        agents = []
-        for candidate in candidates:
-            agent = WorktreeAgent(agent_id=f"evo-agent-{candidate.candidate_id}")
-            agents.append(agent)
-            self.worktree_coordinator.add_agent(agent)
-        
-        # Create feature tasks for testing
-        tasks = []
-        for i, candidate in enumerate(candidates):
-            task = FeatureTask(
-                name=f"evolution-test-{candidate.candidate_id}",
-                description=f"Test evolution candidate: {candidate.description}",
-                branch_name=f"evolution/{candidate.candidate_id}",
-                worktree_path=candidate.worktree_path,
-                requirements=[
-                    "Apply evolution mutations",
-                    "Run performance benchmarks", 
-                    "Collect telemetry metrics",
-                    "Validate fitness criteria"
-                ]
-            )
-            
-            tasks.append(task)
-            self.worktree_coordinator.add_task(task)
-        
-        # Run coordination to assign and execute tasks
-        await self.worktree_coordinator.coordinate_development()
-        
-        # Collect results from each candidate test
-        validated_candidates = []
-        for candidate, task in zip(candidates, tasks):
-            if task.status == "completed":
-                # Validate candidate and calculate fitness
-                validation_result = await self._validate_candidate(candidate, task)
-                candidate.validation_results = validation_result
-                candidate.fitness_score = self._calculate_fitness_score(validation_result)
-                
-                # Create validation telemetry
-                validation_model = EvolutionValidation(
-                    validation_type="worktree_integration_test",
-                    validation_score=candidate.fitness_score,
-                    tests_passed=validation_result.get("tests_passed", 0),
-                    tests_total=validation_result.get("tests_total", 0),
-                    performance_delta=validation_result.get("performance_improvement", 0.0)
-                )
-                
-                validation_model.emit_telemetry()
-                
-                print(f"   ✅ {candidate.candidate_id}: fitness {candidate.fitness_score:.3f}")
-            else:
-                candidate.fitness_score = 0.0
-                print(f"   ❌ {candidate.candidate_id}: test failed")
-            
-            validated_candidates.append(candidate)
-        
-        return validated_candidates
-    
-    async def _validate_candidate(
-        self, 
-        candidate: EvolutionCandidate, 
-        task: FeatureTask
-    ) -> Dict[str, Any]:
-        """Validate a candidate based on worktree test results."""
-        
-        with self.otel.trace_span(
-            name="evolution.validation",
-            attributes={
-                "evolution.candidate.id": candidate.candidate_id,
-                "evolution.strategy": candidate.strategy.value,
-                "evolution.worktree.path": candidate.worktree_path
-            }
-        ):
-            
-            # Simulate validation metrics (in real implementation, would analyze test results)
-            import random
-            
-            validation_results = {
-                "tests_passed": random.randint(18, 25),
-                "tests_total": 25,
-                "performance_improvement": random.uniform(-5.0, 30.0),
-                "error_rate_change": random.uniform(-15.0, 5.0),
-                "coordination_efficiency": random.uniform(0.7, 0.95),
-                "telemetry_quality": random.uniform(0.8, 1.0),
-                "stability_score": random.uniform(0.75, 1.0)
-            }
-            
-            # Add strategy-specific validation
-            if candidate.strategy == EvolutionStrategy.COORDINATION_IMPROVEMENT:
-                validation_results["coordination_latency_reduction"] = random.uniform(10.0, 40.0)
-            elif candidate.strategy == EvolutionStrategy.PERFORMANCE_OPTIMIZATION:
-                validation_results["throughput_increase"] = random.uniform(15.0, 50.0)
-            
-            return validation_results
-    
-    def _calculate_fitness_score(self, validation_results: Dict[str, Any]) -> float:
-        """Calculate fitness score from validation results."""
-        
-        weights = {
-            "test_success_rate": 0.3,
-            "performance_improvement": 0.25,
-            "coordination_efficiency": 0.2, 
-            "stability_score": 0.15,
-            "telemetry_quality": 0.1
-        }
-        
-        fitness = 0.0
-        
-        # Test success rate
-        if validation_results.get("tests_total", 0) > 0:
-            success_rate = validation_results["tests_passed"] / validation_results["tests_total"]
-            fitness += success_rate * weights["test_success_rate"]
-        
-        # Performance improvement (normalized)
-        perf_improvement = validation_results.get("performance_improvement", 0.0)
-        normalized_perf = max(0, min(perf_improvement / 50.0, 1.0))  # 50% is max
-        fitness += normalized_perf * weights["performance_improvement"]
-        
-        # Coordination efficiency
-        coord_eff = validation_results.get("coordination_efficiency", 0.0)
-        fitness += coord_eff * weights["coordination_efficiency"]
-        
-        # Stability score
-        stability = validation_results.get("stability_score", 0.0)
-        fitness += stability * weights["stability_score"]
-        
-        # Telemetry quality
-        telemetry = validation_results.get("telemetry_quality", 0.0)
-        fitness += telemetry * weights["telemetry_quality"]
-        
-        return min(fitness, 1.0)  # Cap at 1.0
-    
-    def _select_best_candidate(
-        self, 
-        candidates: List[EvolutionCandidate]
-    ) -> Optional[EvolutionCandidate]:
-        """Select the best candidate based on fitness scores."""
-        
-        if not candidates:
+        best = self._select_best_candidate(candidates)
+        generation = EvolutionGeneration(
+            generation_id=generation_id,
+            candidates=candidates,
+            best_candidate=best,
+            fitness_improvement=0.0,
+        )
+        self.evolution_history.append(generation)
+        self.current_generation += 1
+        return generation
+
+    @staticmethod
+    def _select_best_candidate(candidates: Sequence[EvolutionCandidate]) -> EvolutionCandidate | None:
+        admitted = [candidate for candidate in candidates if candidate.validation_results and candidate.validation_results["validation_passed"]]
+        if not admitted:
             return None
-        
-        # Sort by fitness score
-        sorted_candidates = sorted(candidates, key=lambda c: c.fitness_score, reverse=True)
-        
-        best = sorted_candidates[0]
-        
-        # Only return if fitness is above threshold
-        if best.fitness_score > 0.7:
-            return best
-        
-        return None
-    
-    async def deploy_candidate(
-        self, 
-        candidate: EvolutionCandidate,
-        strategy: str = "gradual_rollout"
-    ) -> bool:
-        """Deploy a successful evolution candidate."""
-        
-        with self.otel.trace_span(
-            name="evolution.deployment",
-            attributes={
-                "evolution.candidate.id": candidate.candidate_id,
-                "evolution.deployment.strategy": strategy,
-                "evolution.fitness.score": candidate.fitness_score
-            }
-        ) as span:
-            
-            print(f"🚀 Deploying candidate: {candidate.candidate_id}")
-            
-            # Create deployment telemetry
-            deployment_model = EvolutionDeployment(
-                deployment_strategy=strategy,
-                deployment_success=True,
-                rollback_enabled=True,
-                fitness_improvement=candidate.fitness_score * 100  # Convert to percentage
+        # All admitted candidates passed the same verifier. Preserve combinatorial
+        # optionality by deterministic identity rather than fabricating ranking.
+        return min(admitted, key=lambda candidate: candidate.candidate_id)
+
+    def merge_successful_candidate(self, candidate_id: str, *, target_branch: str | None = None) -> MergeReceipt:
+        """Actuate a verified merge only when authority was granted at construction."""
+
+        if not self.allow_merge:
+            raise EvolutionActuationRefused("merge authority is disabled; construct engine with allow_merge=True")
+        candidate = self._require_candidate(candidate_id)
+        if not candidate.validation_results or not candidate.validation_results.get("validation_passed"):
+            raise EvolutionActuationRefused("candidate has no successful execution-backed validation receipt")
+        target = target_branch or self.merge_target or self._current_branch()
+        current = self._current_branch()
+        if current != target:
+            raise EvolutionActuationRefused(
+                f"base checkout is on {current!r}; refusing implicit switch to merge target {target!r}"
             )
-            
-            deployment_trace_id = deployment_model.emit_telemetry()
-            
-            # Simulate deployment process
-            await asyncio.sleep(2)
-            
-            # Record successful deployment
-            span.add_event("evolution.deployment.complete", {
-                "deployment_success": True,
-                "trace_id": deployment_trace_id,
-                "fitness_score": candidate.fitness_score
-            })
-            
-            print(f"✅ Deployment successful: {candidate.candidate_id}")
-            return True
-    
-    async def run_evolution_cycles(
-        self, 
-        cycles: int = 3,
-        strategy: EvolutionStrategy = EvolutionStrategy.COORDINATION_IMPROVEMENT
-    ) -> List[EvolutionGeneration]:
-        """Run multiple evolution cycles."""
-        
-        results = []
-        
-        for cycle in range(cycles):
-            print(f"\n🔄 Evolution Cycle {cycle + 1}/{cycles}")
-            print("=" * 40)
-            
-            generation = await self.evolve_generation(strategy)
-            results.append(generation)
-            
-            # Deploy best candidate if good enough
-            if generation.best_candidate and generation.best_candidate.fitness_score > 0.8:
-                await self.deploy_candidate(generation.best_candidate)
-                generation.deployed = True
-            
-            # Brief pause between cycles
-            await asyncio.sleep(1)
-        
-        return results
-    
-    def get_evolution_status(self) -> Dict[str, Any]:
-        """Get current evolution status."""
-        
-        total_candidates = sum(len(gen.candidates) for gen in self.evolution_history)
-        successful_deployments = sum(1 for gen in self.evolution_history if gen.deployed)
-        
-        best_fitness = 0.0
-        if self.evolution_history:
-            best_fitness = max(
-                gen.best_candidate.fitness_score for gen in self.evolution_history
-                if gen.best_candidate
-            )
-        
+        before = self._head_sha()
+        merge = self.run_git(
+            ("merge", "--no-ff", "--no-edit", candidate.branch_name),
+            check=False,
+        )
+        if not merge.ok:
+            self.run_git(("merge", "--abort"), check=False)
+            raise EvolutionError(f"merge failed: {merge.stderr or merge.stdout}")
+        after = self._head_sha()
+        return MergeReceipt(
+            experiment_id=candidate.candidate_id,
+            source_branch=candidate.branch_name,
+            target_branch=target,
+            before_sha=before,
+            after_sha=after,
+            command=merge,
+        )
+
+    async def monitor_candidate(self, candidate_id: str) -> dict[str, Any]:
+        """Execute a caller-supplied monitoring command; never synthesize health."""
+
+        self._require_candidate(candidate_id)
+        if self.monitor_command is None:
+            raise EvolutionAdmissionError("monitoring requires an explicit monitor_command")
+        receipt = await self._run_async(self.monitor_command, cwd=self.base_path)
+        return {
+            "healthy": receipt.ok,
+            "command": asdict(receipt) | {"receipt_id": receipt.receipt_id},
+        }
+
+    def cleanup_candidate(self, candidate_id: str, *, delete_branch: bool = True) -> dict[str, Any]:
+        candidate = self._require_candidate(candidate_id)
+        worktree = Path(candidate.worktree_path)
+        remove = self.run_git(("worktree", "remove", str(worktree)), check=False)
+        if not remove.ok:
+            raise EvolutionError(f"worktree removal failed: {remove.stderr or remove.stdout}")
+        branch_receipt: CommandReceipt | None = None
+        if delete_branch:
+            branch_receipt = self.run_git(("branch", "-d", candidate.branch_name), check=False)
+            if not branch_receipt.ok:
+                raise EvolutionError(f"branch deletion failed: {branch_receipt.stderr or branch_receipt.stdout}")
+        del self.active_candidates[candidate_id]
+        return {
+            "candidate_id": candidate_id,
+            "worktree_removed": True,
+            "worktree_receipt": remove.receipt_id,
+            "branch_deleted": bool(branch_receipt),
+            "branch_receipt": branch_receipt.receipt_id if branch_receipt else None,
+        }
+
+    def _require_candidate(self, candidate_id: str) -> EvolutionCandidate:
+        try:
+            return self.active_candidates[candidate_id]
+        except KeyError as exc:
+            raise EvolutionAdmissionError(f"unknown candidate: {candidate_id}") from exc
+
+    def get_evolution_status(self) -> dict[str, Any]:
         return {
             "current_generation": self.current_generation,
             "total_generations": len(self.evolution_history),
-            "total_candidates_tested": total_candidates,
-            "successful_deployments": successful_deployments,
-            "best_fitness_score": best_fitness,
-            "active_candidates": len(self.active_candidates),
-            "population_size": self.population_size,
-            "mutation_rate": self.mutation_rate
+            "active_candidates": sorted(self.active_candidates),
+            "verifier_command": list(self.verifier_command),
+            "allow_merge": self.allow_merge,
+            "merge_target": self.merge_target,
+            "monitor_command": list(self.monitor_command) if self.monitor_command else None,
         }
