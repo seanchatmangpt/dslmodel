@@ -1,9 +1,4 @@
-"""Canonical 80/20 DSLModel command surface.
-
-Historical command modules remain in the repository for reversible recovery, but
-are not admitted into the product surface. The retained commands cover the
-highest-value jobs with deterministic local execution and receipts.
-"""
+"""Canonical DSLModel command surface and capability inventory."""
 
 from __future__ import annotations
 
@@ -20,7 +15,7 @@ from dslmodel.generators.openapi_models import OpenAPIGenerationError, generate_
 from dslmodel.selftest import run_selftests
 
 console = Console()
-app = typer.Typer(help="DSLModel 80/20 — manufacture, validate, and receipt", no_args_is_help=True)
+app = typer.Typer(help="DSLModel — manufacture, validate, and receipt", no_args_is_help=True)
 core_app = typer.Typer(help="Deterministic model manufacture")
 evidence_app = typer.Typer(help="Artifact receipt and replay")
 
@@ -29,7 +24,25 @@ ADMITTED_CAPABILITIES: tuple[dict[str, str], ...] = (
     {"name": "validate.selftest", "purpose": "Dependency-closed semantic self-play"},
     {"name": "evidence.receipt", "purpose": "Deterministic artifact identity and replay"},
     {"name": "system.status", "purpose": "Machine-readable aggregate standing"},
-    {"name": "system.inventory", "purpose": "Admitted and non-admitted capability catalog"},
+    {"name": "system.inventory", "purpose": "Capability and exclusion catalog"},
+)
+
+OPTIONAL_CAPABILITIES: tuple[dict[str, str], ...] = (
+    {
+        "name": "library.documents",
+        "standing": "ALIVE_CORE_OPTIONAL_PDF",
+        "purpose": "TXT/Markdown/DOCX/EPUB readers; PDF requires dslmodel[readers]",
+    },
+    {
+        "name": "library.pqc",
+        "standing": "ALIVE_WITH_EXTRA",
+        "purpose": "ML-KEM + AES-256-GCM and ML-DSA; requires dslmodel[pqc]",
+    },
+    {
+        "name": "library.verbs",
+        "standing": "ALIVE",
+        "purpose": "Composable JSON fetch/process/atomic-persist transformations",
+    },
 )
 
 _RETIRED_NAMES = (
@@ -70,7 +83,6 @@ _RETIRED_NAMES = (
     "otel-monitor",
     "gap-8020",
     "5one",
-    "pqc",
     "otel",
     "forge-dx",
 )
@@ -78,8 +90,8 @@ _RETIRED_NAMES = (
 NON_ADMITTED_CAPABILITIES: tuple[dict[str, str], ...] = tuple(
     {
         "name": name,
-        "disposition": "NOT_ADMITTED",
-        "reason": "legacy alias, experimental integration, or external-runtime surface without dependency-closed execution proof",
+        "disposition": "NOT_SHIPPED",
+        "reason": "historical command, experimental integration, or external-runtime surface without current execution proof",
         "replacement": "dsl core openapi | dsl selftest | dsl evidence receipt | dsl status | dsl inventory",
     }
     for name in _RETIRED_NAMES
@@ -135,8 +147,6 @@ def selftest(
     as_json: bool = typer.Option(False, "--json"),
     strict: bool = typer.Option(False, "--strict"),
 ) -> None:
-    """Execute the complete admitted capability pack."""
-
     payload = run_selftests()
     _emit(payload, as_json=as_json)
     if strict and payload["standing"] != "ALIVE":
@@ -148,12 +158,11 @@ def status(
     as_json: bool = typer.Option(False, "--json"),
     strict: bool = typer.Option(False, "--strict"),
 ) -> None:
-    """Execute and report aggregate standing for the admitted product surface."""
-
     verification = run_selftests()
     payload = {
         "standing": verification["standing"],
         "admitted_count": len(ADMITTED_CAPABILITIES),
+        "optional_count": len(OPTIONAL_CAPABILITIES),
         "non_admitted_count": len(NON_ADMITTED_CAPABILITIES),
         "checks": verification["checks"],
     }
@@ -164,24 +173,31 @@ def status(
 
 @app.command("inventory")
 def inventory(as_json: bool = typer.Option(False, "--json")) -> None:
-    """Show retained capabilities and reversible non-admitted legacy surfaces."""
-
     payload = {
         "standing": "ALIVE",
         "admitted": list(ADMITTED_CAPABILITIES),
+        "optional": list(OPTIONAL_CAPABILITIES),
         "non_admitted": list(NON_ADMITTED_CAPABILITIES),
     }
     if as_json:
         typer.echo(json.dumps(payload, indent=2, sort_keys=True))
         return
 
-    admitted = Table(title="Admitted 80/20 capabilities")
+    admitted = Table(title="Admitted capabilities")
     admitted.add_column("Capability")
     admitted.add_column("Purpose")
     for item in ADMITTED_CAPABILITIES:
         admitted.add_row(item["name"], item["purpose"])
     console.print(admitted)
-    console.print(f"Preserved non-admitted legacy surfaces: {len(NON_ADMITTED_CAPABILITIES)}")
+
+    optional = Table(title="Implemented optional libraries")
+    optional.add_column("Capability")
+    optional.add_column("Standing")
+    optional.add_column("Purpose")
+    for item in OPTIONAL_CAPABILITIES:
+        optional.add_row(item["name"], item["standing"], item["purpose"])
+    console.print(optional)
+    console.print(f"Preserved but not shipped historical command surfaces: {len(NON_ADMITTED_CAPABILITIES)}")
 
 
 app.add_typer(core_app, name="core")
