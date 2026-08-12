@@ -148,6 +148,7 @@ class SaveToFile(DSLVerb):
             raise VerbExecutionError("SaveToFile requires 'processed_data' in context")
         path = Path(context.get("file_path", "output.json"))
         path.parent.mkdir(parents=True, exist_ok=True)
+        temp_path: Path | None = None
         try:
             with NamedTemporaryFile(
                 "w",
@@ -162,10 +163,11 @@ class SaveToFile(DSLVerb):
                 temp_path = Path(handle.name)
             temp_path.replace(path)
         except (OSError, TypeError, ValueError) as exc:
-            try:
-                temp_path.unlink(missing_ok=True)  # type: ignore[possibly-undefined]
-            except OSError:
-                pass
+            if temp_path is not None:
+                try:
+                    temp_path.unlink(missing_ok=True)
+                except OSError:
+                    pass
             raise VerbExecutionError(f"failed to save JSON to {path}: {exc}") from exc
         context["saved_file"] = str(path)
         return context
