@@ -8,6 +8,7 @@ into an unusable base-class object.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from contextlib import suppress
 import json
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -42,8 +43,6 @@ class DSLVerb(ABC):
         self.context.update(updates)
 
     def curry(self, **kwargs: Any) -> Callable[[Context], Context]:
-        """Return a callable that overlays preset values before execution."""
-
         preset = {**self.context, **kwargs}
 
         def curried(context: Context) -> Context:
@@ -53,16 +52,12 @@ class DSLVerb(ABC):
         return curried
 
     def bind(self, func: Callable[[Any], Any]) -> "ValueVerb":
-        """Transform a previously produced ``value`` while preserving context."""
-
         if not hasattr(self, "value"):
             raise VerbExecutionError("bind requires the verb to expose a 'value' attribute")
         return ValueVerb(func(getattr(self, "value")), context=self.context)
 
 
 class ValueVerb(DSLVerb):
-    """Concrete verb carrying a value through a composition chain."""
-
     def __init__(self, value: Any, context: Context | None = None) -> None:
         super().__init__(context=context)
         self.value = value
@@ -73,8 +68,6 @@ class ValueVerb(DSLVerb):
 
 
 class ComposeVerb(DSLVerb):
-    """Sequentially execute two verbs using the first result as the second input."""
-
     def __init__(self, verb1: DSLVerb, verb2: DSLVerb) -> None:
         super().__init__(context={**verb1.context, **verb2.context})
         self.verb1 = verb1
@@ -82,7 +75,7 @@ class ComposeVerb(DSLVerb):
 
     def __call__(self, context: Context) -> Context:
         first = self.verb1(context)
-        if first is None:  # defensive compatibility for third-party legacy verbs
+        if first is None:
             raise VerbExecutionError(f"{type(self.verb1).__name__} returned None")
         second = self.verb2(first)
         if second is None:
@@ -164,10 +157,8 @@ class SaveToFile(DSLVerb):
             temp_path.replace(path)
         except (OSError, TypeError, ValueError) as exc:
             if temp_path is not None:
-                try:
+                with suppress(OSError):
                     temp_path.unlink(missing_ok=True)
-                except OSError:
-                    pass
             raise VerbExecutionError(f"failed to save JSON to {path}: {exc}") from exc
         context["saved_file"] = str(path)
         return context
