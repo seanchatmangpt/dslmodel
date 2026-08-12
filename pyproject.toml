@@ -3,7 +3,48 @@ requires = ["hatchling>=1.27,<2"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/dslmodel"]
+only-include = [
+    "src/dslmodel/__init__.py",
+    "src/dslmodel/capabilities.py",
+    "src/dslmodel/cli.py",
+    "src/dslmodel/selftest.py",
+    "src/dslmodel/verbs.py",
+    "src/dslmodel/commands/__init__.py",
+    "src/dslmodel/commands/consolidated_cli.py",
+    "src/dslmodel/generators/__init__.py",
+    "src/dslmodel/generators/openapi_models.py",
+    "src/dslmodel/readers/__init__.py",
+    "src/dslmodel/readers/doc_reader.py",
+    "src/dslmodel/pqc/__init__.py",
+    "src/dslmodel/pqc/algorithms.py",
+    "src/dslmodel/pqc/core.py",
+    "src/dslmodel/pqc/global_manager.py",
+    "src/dslmodel/pqc/multi_language.py",
+]
+sources = ["src"]
+
+[tool.hatch.build.targets.sdist]
+only-include = [
+    "pyproject.toml",
+    "README.md",
+    "LICENSE",
+    "src/dslmodel/__init__.py",
+    "src/dslmodel/capabilities.py",
+    "src/dslmodel/cli.py",
+    "src/dslmodel/selftest.py",
+    "src/dslmodel/verbs.py",
+    "src/dslmodel/commands/__init__.py",
+    "src/dslmodel/commands/consolidated_cli.py",
+    "src/dslmodel/generators/__init__.py",
+    "src/dslmodel/generators/openapi_models.py",
+    "src/dslmodel/readers/__init__.py",
+    "src/dslmodel/readers/doc_reader.py",
+    "src/dslmodel/pqc/__init__.py",
+    "src/dslmodel/pqc/algorithms.py",
+    "src/dslmodel/pqc/core.py",
+    "src/dslmodel/pqc/global_manager.py",
+    "src/dslmodel/pqc/multi_language.py",
+]
 
 [project]
 name = "dslmodel"
