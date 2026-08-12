@@ -5,53 +5,141 @@ on:
     branches: [main, master]
   pull_request:
 
+permissions:
+  contents: read
+
 concurrency:
   group: test-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  test:
+  admitted-core:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Fetch complete branch graph for audit
+        run: git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
           cache: pip
 
-      - name: Install dependency-closed verifier
+      - name: Install distribution plus verifier closures
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install --no-deps -e .
-          python -m pip install "pydantic>=2" "typer>=0.9" "rich>=13.7" "PyYAML>=6" "pytest>=8"
+          python -m pip install --disable-pip-version-check -e '.[test,pqc,readers]'
+          python -m pip check
 
-      - name: Compile admitted execution closure
+      - name: Compile shipped implementation and audit tooling
         run: |
           python -m py_compile \
             src/dslmodel/__init__.py \
             src/dslmodel/capabilities.py \
             src/dslmodel/cli.py \
             src/dslmodel/selftest.py \
+            src/dslmodel/verbs.py \
             src/dslmodel/commands/__init__.py \
             src/dslmodel/commands/consolidated_cli.py \
+            src/dslmodel/generators/__init__.py \
             src/dslmodel/generators/openapi_models.py \
+            src/dslmodel/readers/__init__.py \
+            src/dslmodel/readers/doc_reader.py \
+            src/dslmodel/pqc/__init__.py \
+            src/dslmodel/pqc/core.py \
+            src/dslmodel/pqc/algorithms.py \
+            src/dslmodel/pqc/global_manager.py \
+            src/dslmodel/pqc/multi_language.py \
+            scripts/audit_vacuity.py \
             tests/test_capabilities.py \
             tests/test_cli_modernization.py \
-            tests/generators/test_openapi_models.py
+            tests/generators/test_openapi_models.py \
+            tests/test_distribution_contract.py \
+            tests/test_doc_reader.py \
+            tests/test_verbs.py \
+            tests/test_pqc.py \
+            tests/test_vacuity_audit.py
 
-      - name: Execute 80/20 verifier pack
+      - name: Execute repaired and admitted verifier pack
         run: |
-          pytest -q \
+          python -m pytest --noconftest -o addopts= -q \
             tests/test_capabilities.py \
             tests/test_cli_modernization.py \
-            tests/generators/test_openapi_models.py
+            tests/generators/test_openapi_models.py \
+            tests/test_distribution_contract.py \
+            tests/test_doc_reader.py \
+            tests/test_verbs.py \
+            tests/test_pqc.py \
+            tests/test_vacuity_audit.py
 
-      - name: Crown exact admitted surface
+      - name: Audit every branch and implementation blob for vacuity
+        env:
+          CANONICAL_BRANCH: ${{ github.head_ref || github.ref_name }}
         run: |
-          python -m dslmodel.cli doctor --json --strict
-          python -m dslmodel.cli dsl status --json --strict
+          python scripts/audit_vacuity.py \
+            --all-branches \
+            --canonical-branch "${CANONICAL_BRANCH}" \
+            --json reports/vacuity-audit.json \
+            --fail-on high \
+            --max-print 250
+
+      - name: Build wheel and prove exact file boundary
+        run: |
+          python -m pip wheel --no-deps --wheel-dir dist .
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+
+          wheel = next(Path("dist").glob("dslmodel-*.whl"))
+          with ZipFile(wheel) as archive:
+              names = set(archive.namelist())
+          required = {
+              "dslmodel/cli.py",
+              "dslmodel/verbs.py",
+              "dslmodel/readers/doc_reader.py",
+              "dslmodel/pqc/algorithms.py",
+          }
+          forbidden_fragments = (
+              "dslmodel/evolution/",
+              "dslmodel/agents/",
+              "dslmodel/commands/swarm",
+              "dslmodel/commands/ollama",
+              "dslmodel/thesis/",
+          )
+          missing = sorted(required - names)
+          forbidden = sorted(name for name in names if any(fragment in name for fragment in forbidden_fragments))
+          if missing or forbidden:
+              raise SystemExit({"missing": missing, "forbidden": forbidden})
+          print({"wheel": str(wheel), "files": len(names), "required": sorted(required)})
+          PY
+
+      - name: Install wheel in clean environment and replay core receipts
+        run: |
+          python -m venv /tmp/dslmodel-wheel
+          /tmp/dslmodel-wheel/bin/python -m pip install --disable-pip-version-check dist/dslmodel-*.whl
+          /tmp/dslmodel-wheel/bin/python -m pip check
+          /tmp/dslmodel-wheel/bin/dsl doctor --json --strict
+          /tmp/dslmodel-wheel/bin/dsl dsl status --json --strict
+          /tmp/dslmodel-wheel/bin/dsl dsl inventory --json
+          /tmp/dslmodel-wheel/bin/python - <<'PY'
+          import importlib.util
+          assert importlib.util.find_spec("dslmodel.verbs") is not None
+          assert importlib.util.find_spec("dslmodel.readers.doc_reader") is not None
+          assert importlib.util.find_spec("dslmodel.pqc.algorithms") is not None
+          assert importlib.util.find_spec("dslmodel.evolution") is None
+          assert importlib.util.find_spec("dslmodel.commands.swarm") is None
+          print("clean-wheel-boundary=ALIVE")
+          PY
+
+      - name: Crown exact admitted CLI surface
+        run: |
+          dsl --help
+          dsl doctor --json --strict
+          dsl dsl status --json --strict
+          dsl dsl inventory --json

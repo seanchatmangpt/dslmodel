@@ -1,111 +1,139 @@
-"""
-Core Post-Quantum Cryptography Models and Interfaces
-"""
+"""Core models and interfaces for post-quantum cryptographic operations."""
+
+from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from datetime import datetime, timezone
 from enum import Enum
-from typing import Dict, Any, Optional, List, Tuple
-from pydantic import Field, validator
-from datetime import datetime
+from typing import Any
 
-from dslmodel import DSLModel
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+
+class PQCError(RuntimeError):
+    """Base error for cryptographic capability failures."""
+
+
+class PQCBackendUnavailable(PQCError):
+    """Raised when the optional production cryptography backend is unavailable."""
+
+
+class PQCUnsupportedAlgorithm(PQCError):
+    """Raised when a historical algorithm has no admitted production backend."""
+
+
+class PQCOperationError(PQCError):
+    """Raised when a cryptographic operation fails authentication or admission."""
+
 
 class PQCAlgorithmType(str, Enum):
-    """NIST-approved PQC algorithm types"""
-    # Key Encapsulation Mechanisms (KEM)
-    KYBER = "kyber"
-    
-    # Digital Signatures
-    DILITHIUM = "dilithium"
+    """Canonical production algorithms plus compatibility aliases."""
+
+    ML_KEM = "ml_kem"
+    ML_DSA = "ml_dsa"
+    KYBER = "ml_kem"
+    DILITHIUM = "ml_dsa"
     FALCON = "falcon"
     SPHINCS_PLUS = "sphincs_plus"
 
+
 class PQCSecurityLevel(int, Enum):
-    """NIST security levels for PQC"""
-    LEVEL_1 = 1  # Equivalent to AES-128
-    LEVEL_2 = 2  # Equivalent to SHA-256/SHA3-256
-    LEVEL_3 = 3  # Equivalent to AES-192
-    LEVEL_4 = 4  # Equivalent to SHA-384/SHA3-384  
-    LEVEL_5 = 5  # Equivalent to AES-256
+    LEVEL_1 = 1
+    LEVEL_2 = 2
+    LEVEL_3 = 3
+    LEVEL_4 = 4
+    LEVEL_5 = 5
 
-class PQCKeyPair(DSLModel):
-    """Post-quantum cryptographic key pair"""
-    algorithm: PQCAlgorithmType = Field(..., description="PQC algorithm type")
-    security_level: PQCSecurityLevel = Field(..., description="NIST security level")
-    public_key: bytes = Field(..., description="Public key bytes")
-    private_key: Optional[bytes] = Field(None, description="Private key bytes (None if public only)")
-    key_id: str = Field(..., description="Unique key identifier")
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    expires_at: Optional[datetime] = Field(None, description="Key expiration time")
-    metadata: Dict[str, Any] = Field(default_factory=dict, description="Additional metadata")
-    
-    @validator('expires_at')
-    def validate_expiration(cls, v, values):
-        if v and 'created_at' in values:
-            if v <= values['created_at']:
-                raise ValueError("Expiration must be after creation time")
-        return v
-    
+
+def _utcnow() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+class _PQCModel(BaseModel):
+    model_config = ConfigDict(validate_assignment=True, extra="forbid")
+
+
+class PQCKeyPair(_PQCModel):
+    """Serialized public/private material produced by an admitted provider."""
+
+    algorithm: PQCAlgorithmType
+    security_level: PQCSecurityLevel
+    public_key: bytes
+    private_key: bytes | None = None
+    key_id: str = Field(..., min_length=1)
+    created_at: datetime = Field(default_factory=_utcnow)
+    expires_at: datetime | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("expires_at")
+    @classmethod
+    def validate_expiration(cls, value: datetime | None, info: Any) -> datetime | None:
+        created_at = info.data.get("created_at")
+        if value is not None and created_at is not None and value <= created_at:
+            raise ValueError("expiration must be after creation time")
+        return value
+
     def is_expired(self) -> bool:
-        """Check if key has expired"""
-        if not self.expires_at:
-            return False
-        return datetime.utcnow() > self.expires_at
+        return self.expires_at is not None and _utcnow() > self.expires_at
 
-class PQCSignature(DSLModel):
-    """Post-quantum digital signature"""
-    algorithm: PQCAlgorithmType = Field(..., description="Signature algorithm")
-    signature: bytes = Field(..., description="Signature bytes")
-    message_hash: str = Field(..., description="Hash of signed message")
-    key_id: str = Field(..., description="ID of signing key")
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
-    metadata: Dict[str, Any] = Field(default_factory=dict)
 
-class PQCCiphertext(DSLModel):
-    """Post-quantum encrypted data"""
-    algorithm: PQCAlgorithmType = Field(..., description="Encryption algorithm")
-    ciphertext: bytes = Field(..., description="Encrypted data")
-    encapsulated_key: Optional[bytes] = Field(None, description="KEM encapsulated key")
-    recipient_key_id: str = Field(..., description="Recipient's key ID")
-    sender_key_id: Optional[str] = Field(None, description="Sender's key ID")
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
-    metadata: Dict[str, Any] = Field(default_factory=dict)
+class PQCSignature(_PQCModel):
+    """Signature bytes plus replay metadata; verification never trusts metadata alone."""
+
+    algorithm: PQCAlgorithmType
+    signature: bytes = Field(..., min_length=1)
+    message_hash: str = Field(..., min_length=1)
+    key_id: str = Field(..., min_length=1)
+    timestamp: datetime = Field(default_factory=_utcnow)
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class PQCCiphertext(_PQCModel):
+    """Authenticated payload ciphertext plus KEM encapsulation material."""
+
+    algorithm: PQCAlgorithmType
+    ciphertext: bytes = Field(..., min_length=1)
+    encapsulated_key: bytes | None = None
+    recipient_key_id: str = Field(..., min_length=1)
+    sender_key_id: str | None = None
+    timestamp: datetime = Field(default_factory=_utcnow)
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
 
 class PQCProvider(ABC):
-    """Abstract base class for PQC algorithm providers"""
-    
+    """Execution contract for one cryptographic backend."""
+
     @abstractmethod
     def generate_keypair(self, security_level: PQCSecurityLevel) -> PQCKeyPair:
-        """Generate a new PQC key pair"""
-        pass
-    
+        """Generate and serialize a provider key pair."""
+
     @abstractmethod
     def sign(self, message: bytes, private_key: bytes) -> PQCSignature:
-        """Create a PQC signature"""
-        pass
-    
+        """Cryptographically sign a message."""
+
     @abstractmethod
     def verify(self, message: bytes, signature: PQCSignature, public_key: bytes) -> bool:
-        """Verify a PQC signature"""
-        pass
-    
+        """Cryptographically verify a signature against public key bytes."""
+
     @abstractmethod
     def encrypt(self, plaintext: bytes, public_key: bytes) -> PQCCiphertext:
-        """Encrypt data using PQC"""
-        pass
-    
+        """KEM-encapsulate a shared key and AEAD-encrypt a payload."""
+
     @abstractmethod
     def decrypt(self, ciphertext: PQCCiphertext, private_key: bytes) -> bytes:
-        """Decrypt PQC ciphertext"""
-        pass
+        """Decapsulate and authenticate/decrypt a payload."""
 
-class HybridPQCScheme(DSLModel):
-    """Hybrid classical + post-quantum scheme for transition period"""
-    classical_algorithm: str = Field(..., description="Classical algorithm (e.g., RSA, ECDSA)")
-    pqc_algorithm: PQCAlgorithmType = Field(..., description="PQC algorithm")
-    mode: str = Field("concatenate", description="Combination mode: concatenate, nested, or xor")
-    transition_date: datetime = Field(..., description="Date to fully transition to PQC")
-    
+
+class HybridPQCScheme(_PQCModel):
+    """Configuration record for callers that implement an external hybrid scheme."""
+
+    classical_algorithm: str = Field(..., min_length=1)
+    pqc_algorithm: PQCAlgorithmType
+    mode: str = Field("concatenate", pattern="^(concatenate|nested|xor)$")
+    transition_date: datetime
+
     def should_use_hybrid(self) -> bool:
-        """Check if still in hybrid mode"""
-        return datetime.utcnow() < self.transition_date
+        transition = self.transition_date
+        if transition.tzinfo is None:
+            transition = transition.replace(tzinfo=timezone.utc)
+        return _utcnow() < transition

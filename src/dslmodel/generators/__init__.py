@@ -1,13 +1,15 @@
-"""Generators module for DSLModel."""
-from .gen_python_primitive import gen_bool, gen_dict, gen_float, gen_int, gen_list, gen_str
-from .notebook_generator import IPythonNotebookGenerator
+"""Deterministic generator API shipped by the production distribution."""
+
+from .openapi_models import (
+    OpenAPIGenerationError,
+    OpenAPIModelGenerator,
+    generate_openapi_models,
+    load_openapi,
+)
 
 __all__ = [
-    'gen_bool',
-    'gen_dict',
-    'gen_float',
-    'gen_int',
-    'gen_list',
-    'gen_str',
-    'IPythonNotebookGenerator',
+    "OpenAPIGenerationError",
+    "OpenAPIModelGenerator",
+    "load_openapi",
+    "generate_openapi_models",
 ]

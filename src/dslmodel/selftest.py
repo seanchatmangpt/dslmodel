@@ -1,4 +1,4 @@
-"""Dependency-closed 80/20 execution verifier for DSLModel."""
+"""Dependency-closed execution verifier for DSLModel."""
 
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ from tempfile import TemporaryDirectory
 from types import ModuleType
 from typing import Callable
 
+from pydantic import ValidationError
 import typer
 
 from dslmodel.capabilities import (
@@ -85,12 +86,13 @@ components:
             raise AssertionError("generated model did not preserve aliases and values")
         try:
             module.Pet.model_validate({"display-name": "Mark", "unexpected": True})
-        except Exception:
-            pass
+        except ValidationError as exc:
+            if not any(error.get("type") == "extra_forbidden" for error in exc.errors()):
+                raise AssertionError(f"unexpected validation failure: {exc.errors()}") from exc
         else:
             raise AssertionError("additionalProperties=false was not enforced")
         compile(output.read_text(encoding="utf-8"), str(output), "exec")
-        return "generated, imported, validated, and rejected forbidden properties"
+        return "generated, imported, validated, and rejected forbidden properties with extra_forbidden"
 
 
 def _check_capability_execution() -> str:
@@ -138,8 +140,6 @@ _CHECKS: tuple[tuple[str, Callable[[], str]], ...] = (
 
 
 def run_selftests() -> dict[str, object]:
-    """Execute the admitted 80/20 capability pack and return receipts."""
-
     receipts: list[SelfTestReceipt] = []
     for name, check in _CHECKS:
         try:
@@ -166,7 +166,4 @@ def run_selftests() -> dict[str, object]:
         if receipts and all(item.standing is CapabilityStanding.ALIVE for item in receipts)
         else CapabilityStanding.BUILD_BROKEN.value
     )
-    return {
-        "standing": standing,
-        "checks": [item.as_dict() for item in receipts],
-    }
+    return {"standing": standing, "checks": [item.as_dict() for item in receipts]}
