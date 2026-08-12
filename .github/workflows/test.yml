@@ -5,18 +5,17 @@ on:
     branches: [main, master]
   pull_request:
 
+permissions:
+  contents: read
+
 concurrency:
   group: test-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-env:
-  PYTHONPATH: src
-  PIP_DISABLE_PIP_VERSION_CHECK: "1"
-
 jobs:
-  test:
+  admitted-core:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
       - name: Checkout
@@ -28,14 +27,10 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Install admitted verifier closure
+      - name: Install actual distribution contract
         run: |
-          python -m pip install \
-            "pydantic>=2" \
-            "typer>=0.9" \
-            "rich>=13.7" \
-            "PyYAML>=6" \
-            "pytest>=8"
+          python -m pip install --disable-pip-version-check -e '.[test]'
+          python -m pip check
 
       - name: Compile admitted execution closure
         run: |
@@ -50,16 +45,29 @@ jobs:
             src/dslmodel/generators/openapi_models.py \
             tests/test_capabilities.py \
             tests/test_cli_modernization.py \
-            tests/generators/test_openapi_models.py
+            tests/generators/test_openapi_models.py \
+            tests/test_distribution_contract.py
 
       - name: Execute admitted verifier pack
         run: |
           python -m pytest --noconftest -o addopts= -q \
             tests/test_capabilities.py \
             tests/test_cli_modernization.py \
-            tests/generators/test_openapi_models.py
+            tests/generators/test_openapi_models.py \
+            tests/test_distribution_contract.py
+
+      - name: Build and install wheel in a clean environment
+        run: |
+          python -m pip wheel --wheel-dir dist .
+          python -m venv /tmp/dslmodel-wheel
+          /tmp/dslmodel-wheel/bin/python -m pip install --disable-pip-version-check dist/dslmodel-*.whl
+          /tmp/dslmodel-wheel/bin/python -m pip check
+          /tmp/dslmodel-wheel/bin/dsl doctor --json --strict
+          /tmp/dslmodel-wheel/bin/dsl dsl status --json --strict
 
       - name: Crown exact admitted surface
         run: |
-          python -m dslmodel.cli doctor --json --strict
-          python -m dslmodel.cli dsl status --json --strict
+          dsl --help
+          dsl doctor --json --strict
+          dsl dsl status --json --strict
+          dsl dsl inventory --json
