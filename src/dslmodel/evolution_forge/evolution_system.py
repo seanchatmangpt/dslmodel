@@ -1,121 +1,233 @@
-"""
-Evolution System Telemetry Implementation
-Auto-generated from telemetry specification.
+"""Execution-backed telemetry events for evolution operations.
+
+Emission receipts prove that the local OpenTelemetry API path executed. They do
+not claim that an exporter, collector, or backend received the span; exporter
+standing belongs to the configured telemetry runtime.
 """
 
-import time
-import uuid
-from typing import Dict, Any, Optional
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass
+from hashlib import sha256
+import json
 from pathlib import Path
-from loguru import logger
+from typing import Any, Mapping
+
 from opentelemetry import trace
-from opentelemetry.trace import Status, StatusCode
 
 
-tracer = trace.get_tracer(__name__, "0.1.0")
+class EvolutionTelemetryError(ValueError):
+    """Raised when an evolution telemetry request is not admitted."""
+
+
+@dataclass(frozen=True, slots=True)
+class EmissionReceipt:
+    operation: str
+    span_name: str
+    session_id: str
+    attributes: dict[str, str | int | float | bool]
+    recording: bool
+    trace_id: str | None
+    span_id: str | None
+
+    @property
+    def receipt_id(self) -> str:
+        payload = json.dumps(asdict(self), sort_keys=True, separators=(",", ":"))
+        return sha256(payload.encode("utf-8")).hexdigest()
+
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self) | {"receipt_id": self.receipt_id}
 
 
 class EvolutionSystem:
-    """Implementation of Evolution System Telemetry."""
-    
-    def __init__(self):
-        """Initialize the evolution_system."""
-        self.trace_id = str(uuid.uuid4())
-        self._start_time = time.time()
-        logger.info(f"Initialized {self.__class__.__name__} (trace: {self.trace_id})")
-    
-    def get_status(self) -> Dict[str, Any]:
-        """Get current status."""
+    """Emit typed evolution spans and retain local execution receipts."""
+
+    OPERATIONS = {"analyze", "generate", "apply", "learn", "validate", "worktree"}
+
+    def __init__(self, tracer: trace.Tracer | None = None) -> None:
+        self.tracer = tracer or trace.get_tracer(__name__, "1.0.0")
+        self._receipts: list[EmissionReceipt] = []
+
+    @staticmethod
+    def _normalize_attributes(attributes: Mapping[str, Any]) -> dict[str, str | int | float | bool]:
+        normalized: dict[str, str | int | float | bool] = {}
+        for key, value in attributes.items():
+            if not isinstance(key, str) or not key:
+                raise EvolutionTelemetryError("attribute names must be non-empty strings")
+            if isinstance(value, (str, int, float, bool)):
+                normalized[key] = value
+            elif value is None:
+                continue
+            else:
+                raise EvolutionTelemetryError(
+                    f"attribute {key!r} has unsupported value type {type(value).__name__}"
+                )
+        return normalized
+
+    def _emit(
+        self,
+        operation: str,
+        session_id: str,
+        attributes: Mapping[str, Any],
+    ) -> EmissionReceipt:
+        if operation not in self.OPERATIONS:
+            raise EvolutionTelemetryError(f"unsupported operation: {operation}")
+        if not isinstance(session_id, str) or not session_id.strip():
+            raise EvolutionTelemetryError("session_id must be a non-empty string")
+
+        normalized = self._normalize_attributes(attributes)
+        normalized["evolution.session_id"] = session_id
+        span_name = f"dslmodel.evolution.{operation}"
+        with self.tracer.start_as_current_span(span_name) as span:
+            for key, value in normalized.items():
+                span.set_attribute(key, value)
+            context = span.get_span_context()
+            valid_context = bool(context.is_valid)
+            receipt = EmissionReceipt(
+                operation=operation,
+                span_name=span_name,
+                session_id=session_id,
+                attributes=normalized,
+                recording=span.is_recording(),
+                trace_id=f"{context.trace_id:032x}" if valid_context else None,
+                span_id=f"{context.span_id:016x}" if valid_context else None,
+            )
+        self._receipts.append(receipt)
+        return receipt
+
+    def emit_analyze(self, session_id: str, analysis_type: str, issues_found: int) -> EmissionReceipt:
+        return self._emit(
+            "analyze",
+            session_id,
+            {
+                "evolution.analysis_type": analysis_type,
+                "evolution.issues_found": issues_found,
+            },
+        )
+
+    def emit_generate(
+        self,
+        session_id: str,
+        improvement_id: str,
+        improvement_type: str,
+        confidence_score: float,
+        priority: str,
+    ) -> EmissionReceipt:
+        return self._emit(
+            "generate",
+            session_id,
+            {
+                "evolution.improvement_id": improvement_id,
+                "evolution.improvement_type": improvement_type,
+                "evolution.confidence_score": confidence_score,
+                "evolution.priority": priority,
+            },
+        )
+
+    def emit_apply(
+        self,
+        session_id: str,
+        improvement_id: str,
+        application_mode: str,
+        application_result: str,
+    ) -> EmissionReceipt:
+        return self._emit(
+            "apply",
+            session_id,
+            {
+                "evolution.improvement_id": improvement_id,
+                "evolution.application_mode": application_mode,
+                "evolution.application_result": application_result,
+            },
+        )
+
+    def emit_learn(self, session_id: str, patterns_analyzed: int, success_rate: float) -> EmissionReceipt:
+        if not 0.0 <= success_rate <= 1.0:
+            raise EvolutionTelemetryError("success_rate must be between 0 and 1")
+        return self._emit(
+            "learn",
+            session_id,
+            {
+                "evolution.patterns_analyzed": patterns_analyzed,
+                "evolution.success_rate": success_rate,
+            },
+        )
+
+    def emit_validate(
+        self,
+        session_id: str,
+        improvement_id: str,
+        validation_type: str,
+        validation_result: str,
+    ) -> EmissionReceipt:
+        return self._emit(
+            "validate",
+            session_id,
+            {
+                "evolution.improvement_id": improvement_id,
+                "evolution.validation_type": validation_type,
+                "evolution.validation_result": validation_result,
+            },
+        )
+
+    def emit_worktree(self, session_id: str, worktree_id: str, worktree_action: str) -> EmissionReceipt:
+        return self._emit(
+            "worktree",
+            session_id,
+            {
+                "evolution.worktree_id": worktree_id,
+                "evolution.worktree_action": worktree_action,
+            },
+        )
+
+    def get_status(self) -> dict[str, Any]:
+        last = self._receipts[-1] if self._receipts else None
         return {
             "initialized": True,
-            "trace_id": self.trace_id,
-            "uptime_seconds": int(time.time() - self._start_time),
-            "spans_available": 6
+            "emissions_observed": len(self._receipts),
+            "last_receipt_id": last.receipt_id if last else None,
+            "exporter_delivery": "UNKNOWN",
         }
-    
-    def run(self, config: Optional[Path] = None) -> Dict[str, Any]:
-        """Run the main operation."""
-        try:
-            # Implement main logic here
-            logger.info(f"Running {self.__class__.__name__}")
-            
-            # Example: emit some spans
-            
-    def emit_analyze(self, evolution.session_id: str, evolution.analysis_type: str, evolution.issues_found: int):
-        """Emit dslmodel.evolution.analyze span."""
-        with tracer.start_as_current_span("dslmodel.evolution.analyze") as span:
-            # Set attributes
-            span.set_attribute("evolution.session_id", evolution.session_id)
-            span.set_attribute("evolution.analysis_type", evolution.analysis_type)
-            span.set_attribute("evolution.issues_found", evolution.issues_found)
-            
-            logger.debug(f"Emitted {span.name}")
 
-    def emit_generate(self, evolution.session_id: str, evolution.improvement_id: str, evolution.improvement_type: str, evolution.confidence_score: float, evolution.priority: str):
-        """Emit dslmodel.evolution.generate span."""
-        with tracer.start_as_current_span("dslmodel.evolution.generate") as span:
-            # Set attributes
-            span.set_attribute("evolution.session_id", evolution.session_id)
-            span.set_attribute("evolution.improvement_id", evolution.improvement_id)
-            span.set_attribute("evolution.improvement_type", evolution.improvement_type)
-            span.set_attribute("evolution.confidence_score", evolution.confidence_score)
-            span.set_attribute("evolution.priority", evolution.priority)
-            
-            logger.debug(f"Emitted {span.name}")
+    def run(self, config: Path | None = None) -> dict[str, Any]:
+        """Emit one operation from an explicit JSON configuration file."""
 
-    def emit_apply(self, evolution.session_id: str, evolution.improvement_id: str, evolution.application_mode: str, evolution.application_result: str):
-        """Emit dslmodel.evolution.apply span."""
-        with tracer.start_as_current_span("dslmodel.evolution.apply") as span:
-            # Set attributes
-            span.set_attribute("evolution.session_id", evolution.session_id)
-            span.set_attribute("evolution.improvement_id", evolution.improvement_id)
-            span.set_attribute("evolution.application_mode", evolution.application_mode)
-            span.set_attribute("evolution.application_result", evolution.application_result)
-            
-            logger.debug(f"Emitted {span.name}")
-
-    def emit_learn(self, evolution.session_id: str, evolution.patterns_analyzed: int, evolution.success_rate: float):
-        """Emit dslmodel.evolution.learn span."""
-        with tracer.start_as_current_span("dslmodel.evolution.learn") as span:
-            # Set attributes
-            span.set_attribute("evolution.session_id", evolution.session_id)
-            span.set_attribute("evolution.patterns_analyzed", evolution.patterns_analyzed)
-            span.set_attribute("evolution.success_rate", evolution.success_rate)
-            
-            logger.debug(f"Emitted {span.name}")
-
-    def emit_validate(self, evolution.session_id: str, evolution.improvement_id: str, evolution.validation_type: str, evolution.validation_result: str):
-        """Emit dslmodel.evolution.validate span."""
-        with tracer.start_as_current_span("dslmodel.evolution.validate") as span:
-            # Set attributes
-            span.set_attribute("evolution.session_id", evolution.session_id)
-            span.set_attribute("evolution.improvement_id", evolution.improvement_id)
-            span.set_attribute("evolution.validation_type", evolution.validation_type)
-            span.set_attribute("evolution.validation_result", evolution.validation_result)
-            
-            logger.debug(f"Emitted {span.name}")
-
-    def emit_worktree(self, evolution.session_id: str, evolution.worktree_id: str, evolution.worktree_action: str):
-        """Emit dslmodel.evolution.worktree span."""
-        with tracer.start_as_current_span("dslmodel.evolution.worktree") as span:
-            # Set attributes
-            span.set_attribute("evolution.session_id", evolution.session_id)
-            span.set_attribute("evolution.worktree_id", evolution.worktree_id)
-            span.set_attribute("evolution.worktree_action", evolution.worktree_action)
-            
-            logger.debug(f"Emitted {span.name}")
-
-            
-            return {
-                "success": True,
-                "trace_id": self.trace_id,
-                "duration_ms": int((time.time() - self._start_time) * 1000)
-            }
-            
-        except Exception as e:
-            logger.error(f"Operation failed: {e}")
+        if config is None:
             return {
                 "success": False,
-                "error": str(e),
-                "trace_id": self.trace_id
+                "standing": "REFUSED",
+                "error": "configuration is required; no telemetry operation is inferred",
             }
+        try:
+            document = json.loads(config.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            return {"success": False, "standing": "BUILD_BROKEN", "error": str(exc)}
+        if not isinstance(document, dict):
+            return {
+                "success": False,
+                "standing": "REFUSED",
+                "error": "configuration root must be an object",
+            }
+        operation = document.get("operation")
+        session_id = document.get("session_id")
+        attributes = document.get("attributes", {})
+        if not isinstance(operation, str) or operation not in self.OPERATIONS:
+            return {
+                "success": False,
+                "standing": "REFUSED",
+                "error": f"operation must be one of {sorted(self.OPERATIONS)}",
+            }
+        if not isinstance(session_id, str) or not session_id:
+            return {"success": False, "standing": "REFUSED", "error": "session_id is required"}
+        if not isinstance(attributes, dict):
+            return {"success": False, "standing": "REFUSED", "error": "attributes must be an object"}
+        try:
+            receipt = self._emit(operation, session_id, attributes)
+        except EvolutionTelemetryError as exc:
+            return {"success": False, "standing": "REFUSED", "error": str(exc)}
+        return {
+            "success": True,
+            "standing": "ALIVE",
+            "emission": receipt.as_dict(),
+            "exporter_delivery": "UNKNOWN",
+        }
