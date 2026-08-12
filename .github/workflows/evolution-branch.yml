@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  worktree-evolution:
+  execution-evidence:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -21,19 +21,27 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install verifier
-        run: python -m pip install --disable-pip-version-check 'pytest>=8,<10'
+      - name: Install verifier closure
+        run: |
+          python -m pip install --disable-pip-version-check \
+            'pytest>=8,<10' \
+            'opentelemetry-api>=1.20,<2'
 
       - name: Compile repaired branch surface
         run: |
           python -m py_compile \
             src/dslmodel/evolution/worktree_evolution_engine.py \
             src/dslmodel/commands/evolution_worktree.py \
-            tests/test_worktree_evolution_execution.py
+            src/dslmodel/evolution_forge/evolution_system.py \
+            src/dslmodel/evolution_forge/evolution_system_cli.py \
+            tests/test_worktree_evolution_execution.py \
+            tests/test_evolution_system_telemetry.py
 
-      - name: Execute worktree patch validation and merge receipts
+      - name: Execute worktree and telemetry receipts
         run: |
-          python -m pytest --noconftest -o addopts= -q tests/test_worktree_evolution_execution.py
+          python -m pytest --noconftest -o addopts= -q \
+            tests/test_worktree_evolution_execution.py \
+            tests/test_evolution_system_telemetry.py
 
       - name: Refuse synthetic evidence regression
         run: |
@@ -42,6 +50,7 @@ jobs:
           files = [
               Path('src/dslmodel/evolution/worktree_evolution_engine.py'),
               Path('src/dslmodel/commands/evolution_worktree.py'),
+              Path('src/dslmodel/evolution_forge/evolution_system.py'),
           ]
           forbidden = (
               'random.uniform',
@@ -51,6 +60,7 @@ jobs:
               'Simulate merge',
               'Simulate monitoring',
               'deployment_success=True',
+              'Implement main logic here',
           )
           violations = {
               str(path): [marker for marker in forbidden if marker in path.read_text(encoding='utf-8')]
