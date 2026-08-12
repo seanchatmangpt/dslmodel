@@ -1,8 +1,7 @@
 """Language binding manufacture for the admitted DSLModel PQC backend.
 
 Historically this module emitted random-byte crypto clients for several
-languages. That is unsafe: a generated file looked deployable without any
-execution proof. The current implementation emits one dependency-closed Python
+languages. The current implementation emits one dependency-closed Python
 binding backed by DSLModel's verified ML-KEM/ML-DSA providers and explicitly
 refuses language targets for which this repository has no compiled verifier.
 """
@@ -13,15 +12,15 @@ from pathlib import Path
 from textwrap import dedent
 from typing import Any
 
-from dslmodel import DSLModel
-from pydantic import Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from .core import PQCUnsupportedAlgorithm
 
 
-class PQCLanguageBinding(DSLModel):
+class PQCLanguageBinding(BaseModel):
     """Receipt describing one generated, verifier-owned language binding."""
 
+    model_config = ConfigDict(extra="forbid")
     language: str
     output_file: str
     dependencies: dict[str, str] = Field(default_factory=dict)
