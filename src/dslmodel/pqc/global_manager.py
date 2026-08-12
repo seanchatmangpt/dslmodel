@@ -12,9 +12,8 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any
 
-from pydantic import Field
+from pydantic import BaseModel, ConfigDict, Field
 
-from dslmodel import DSLModel
 from .algorithms import MLDSAAlgorithm, MLKEMAlgorithm
 from .core import (
     PQCAlgorithmType,
@@ -28,6 +27,10 @@ from .core import (
 
 class PQCPolicyRequired(ValueError):
     """Raised when an operation requires authoritative policy not supplied by the caller."""
+
+
+class _PolicyModel(BaseModel):
+    model_config = ConfigDict(validate_assignment=True, extra="forbid")
 
 
 class PQCRegion(str, Enum):
@@ -52,7 +55,7 @@ class PQCCompliance(str, Enum):
     CCCS = "cccs"
 
 
-class RegionalPQCPolicy(DSLModel):
+class RegionalPQCPolicy(_PolicyModel):
     """Caller-supplied policy receipt for one region."""
 
     region: PQCRegion
@@ -62,11 +65,11 @@ class RegionalPQCPolicy(DSLModel):
     hybrid_required_until: datetime | None = None
     mandatory_from: datetime | None = None
     additional_requirements: dict[str, Any] = Field(default_factory=dict)
-    authority: str = Field(..., min_length=1, description="Policy source/authority identifier")
-    observed_at: datetime = Field(..., description="When this policy was observed")
+    authority: str = Field(..., min_length=1)
+    observed_at: datetime
 
 
-class GlobalPQCConfiguration(DSLModel):
+class GlobalPQCConfiguration(_PolicyModel):
     default_kem_algorithm: PQCAlgorithmType = PQCAlgorithmType.ML_KEM
     default_signature_algorithm: PQCAlgorithmType = PQCAlgorithmType.ML_DSA
     default_security_level: PQCSecurityLevel = PQCSecurityLevel.LEVEL_3
@@ -75,7 +78,7 @@ class GlobalPQCConfiguration(DSLModel):
     require_forward_secrecy: bool = True
 
 
-class PQCKeyStore(DSLModel):
+class PQCKeyStore(_PolicyModel):
     store_id: str
     region: PQCRegion
     keys: dict[str, PQCKeyPair] = Field(default_factory=dict)
@@ -149,8 +152,10 @@ class GlobalPQCManager:
                     candidate
                     for candidate in policy.allowed_algorithms
                     if candidate in self.providers
-                    and ((purpose == "encryption" and candidate is PQCAlgorithmType.ML_KEM)
-                         or (purpose == "signature" and candidate is PQCAlgorithmType.ML_DSA))
+                    and (
+                        (purpose == "encryption" and candidate is PQCAlgorithmType.ML_KEM)
+                        or (purpose == "signature" and candidate is PQCAlgorithmType.ML_DSA)
+                    )
                 ]
                 if not admitted:
                     raise PQCUnsupportedAlgorithm(
@@ -167,8 +172,6 @@ class GlobalPQCManager:
         algorithm: PQCAlgorithmType,
         security_level: PQCSecurityLevel,
     ) -> bool:
-        """Verify only the technical algorithm/level predicates supplied by policy."""
-
         policy = self.require_regional_policy(region)
         return algorithm in policy.allowed_algorithms and security_level.value >= policy.minimum_security_level.value
 
@@ -244,8 +247,6 @@ class GlobalPQCManager:
         return self.providers[PQCAlgorithmType.ML_DSA].verify(message, signature, keypair.public_key)
 
     def get_global_readiness_report(self) -> dict[str, Any]:
-        """Report observed key/policy state without manufacturing compliance readiness."""
-
         regions: dict[str, Any] = {}
         for region in PQCRegion:
             policy = self.get_regional_policy(region)
@@ -268,8 +269,6 @@ class GlobalPQCManager:
 
 
 def create_default_regional_policies() -> list[RegionalPQCPolicy]:
-    """Refuse to manufacture jurisdiction policy from stale library defaults."""
-
     raise PQCPolicyRequired(
         "DSLModel does not embed default jurisdictional PQC policies; supply policies with authority and observed_at"
     )
