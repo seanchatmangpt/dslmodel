@@ -3,3 +3,7 @@
 
 # Git
 .git/
+
+# Local worktrees and agent sandboxes
+agent_worktrees/
+worktrees/

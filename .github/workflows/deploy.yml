@@ -1,6 +1,13 @@
 name: Deploy
 
 on:
+  pull_request:
+    paths:
+      - ".github/workflows/deploy.yml"
+      - "Dockerfile"
+      - ".dockerignore"
+      - "pyproject.toml"
+      - "src/**"
   push:
     tags:
       - "v*.*.*"
@@ -8,7 +15,7 @@ on:
     inputs:
       environment:
         required: true
-        description: Deployment environment
+        description: Deployment image channel
         default: development
         type: choice
         options:
@@ -18,36 +25,73 @@ on:
           - acceptance
           - production
 
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: deploy-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 env:
-  DEFAULT_DEPLOYMENT_ENVIRONMENT: feature
   DOCKER_REGISTRY: ghcr.io
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
-    if: startsWith(github.ref, 'refs/tags/v')
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Log in to the Docker registry
+      - name: Resolve image identity and actuation mode
+        id: image
+        shell: bash
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          DEPLOY_ENVIRONMENT: ${{ inputs.environment }}
+        run: |
+          set -euo pipefail
+          image="${DOCKER_REGISTRY}/${GITHUB_REPOSITORY,,}"
+          case "${GITHUB_EVENT_NAME}" in
+            pull_request)
+              tag="pr-${PR_NUMBER}"
+              push_image=false
+              ;;
+            workflow_dispatch)
+              tag="${DEPLOY_ENVIRONMENT}"
+              push_image=true
+              ;;
+            push)
+              tag="${GITHUB_REF_NAME}"
+              push_image=true
+              ;;
+            *)
+              echo "REFUSED:UNSUPPORTED_DEPLOY_EVENT ${GITHUB_EVENT_NAME}" >&2
+              exit 2
+              ;;
+          esac
+          {
+            echo "image=${image}"
+            echo "tag=${tag}"
+            echo "push=${push_image}"
+          } >> "${GITHUB_OUTPUT}"
+
+      - name: Log in to GHCR
+        if: steps.image.outputs.push == 'true'
         uses: docker/login-action@v3
         with:
           registry: ${{ env.DOCKER_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set Docker image tag
-        run: echo "GIT_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-
-      - name: Build and push Docker image
+      - name: Build admitted runtime and conditionally publish
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: true
-          tags: |
-            ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ github.repository }}:${{ github.event.inputs.environment || env.DEFAULT_DEPLOYMENT_ENVIRONMENT }}
-            ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ github.repository }}:${{ env.GIT_TAG }}
           target: app
+          push: ${{ steps.image.outputs.push == 'true' }}
+          tags: |
+            ${{ steps.image.outputs.image }}:${{ steps.image.outputs.tag }}
+            ${{ steps.image.outputs.image }}:sha-${{ github.sha }}
